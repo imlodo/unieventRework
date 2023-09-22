@@ -1,0 +1,21 @@
+<div class="bgimg w3-display-container w3-text-white">
+    <div class="w3-display-middle">
+		<div class="card">
+			<div class="card-header">
+				<a href="/"><img class="d-block mx-auto mt-4 p-2" src="assets/img/logo_unievent_white.svg" alt="" width="" height="100"></a>
+				<h3>Accedi</h3>
+				<div class="text-center">
+					<!--<% if(session.error) {%><h6 style="color:rgb(255, 61, 61);"><%=session.error%></h6><%}%>-->
+                </div>
+			</div>
+			<div class="card-body">
+				<unievent-login-form (onLogin)="login()"></unievent-login-form>
+			</div>
+			<div class="card-footer">
+				<div class="d-flex justify-content-center links" style="font-size: 1.3rem;">
+					<label class="mr-2">Non hai un account? </label><a href="/signup">Registrati</a>
+				</div>
+			</div>
+		</div>
+    </div>
+</div>
