@@ -11,8 +11,12 @@ export class LoginFormDataModel {
     @minLength({value:4, message: messages.t_password.minLenght})
     t_password: string;
 
+    @prop()
+    t_remember_username: boolean;
+
     constructor() {
         this.t_username = null;
         this.t_password = null;
+        this.t_remember_username = null;
     }
 }

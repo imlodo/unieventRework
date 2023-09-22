@@ -33,13 +33,15 @@ export class LoginFormComponent implements OnInit {
 
   get t_username() { return this.form.get('t_username').value; }
   get t_password() { return this.form.get('t_password').value; }
+  get t_remember_username() { return this.form.get('t_remember_username').value; }
 
   set t_username(t_username: string) { this.form.get('t_username').setValue(t_username); }
   set t_password(t_password: string) { this.form.get('t_password').setValue(t_password); }
+  set t_remember_username(t_remember_username: string) { this.form.get('t_remember_username').setValue(t_remember_username); }
 
   login() { 
-    if (!this.form.valid) { this.onLogin.emit(); } 
-    return this.form.markAllAsTouched();
+    if (this.form.valid) { this.onLogin.emit(); } 
+    else { return this.form.markAllAsTouched(); }
   }
 
   resetForm() {
