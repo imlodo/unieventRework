@@ -1,0 +1,51 @@
+<form [formGroup]="form" *ngIf="form" class="row d-block m-0 p-0">
+    <div class="row g-3">
+
+        <div class="col-sm-6">
+            <label for="t_name" class="form-label">Nome *</label>
+            <input formControlName="t_name" type="text" class="form-control" name="t_name" id="t_name">
+        </div>
+
+        <div class="col-sm-6">
+            <label for="t_surname" class="form-label">Cognome *</label>
+            <input formControlName="t_surname" id="t_surname" type="text" class="form-control" name="t_surname">
+        </div>
+
+        <div class="col-sm-6">
+            <label for="t_username" class="form-label">Username *</label>
+            <div class="input-group form-group mb-3">
+                <span [ngClass]="dynamicClass['t_username']" class="input-group-text input-w-icon"><i class="gg-user"></i></span>
+                <input formControlName="t_username" id="t_username" type="text" class="form-control" name="t_username" (focus)="addFocusClass('t_username')" (focusout)="removeFocusClass('t_username')">
+            </div>
+        </div>
+
+        <div class="col-sm-6">
+            <label for="t_password" class="form-label">Password *</label>
+            <div class="input-group form-group mb-3">
+                <span [ngClass]="dynamicClass['t_password']" class="input-group-text input-w-icon"><i class="gg-key"></i></span>
+                <input formControlName="t_password" id="t_password" type="password" autocomplete="current-password"
+                    class="form-control" name="t_password" (focus)="addFocusClass('t_password')" (focusout)="removeFocusClass('t_password')">
+            </div>
+        </div>
+
+        <div class="col-sm-6">
+            <label for="t_birthday" class="form-label">Data di nascita *</label>
+            <div class="input-group form-group mb-3">
+                <input type="date" class="form-control" name="t_birthday" formControlName="t_birthday" id="t_birthday">
+            </div>
+        </div>
+
+        <div class="col-sm-6">
+            <label for="t_password" class="form-label">Corso di studi</label>
+            <div class="input-group form-group mb-3">
+                <select class="form-select" name="t_course" formControlName="t_course" id="t_course" aria-label="--Seleziona un corso--">
+                    <option value="" disabled selected>-- Seleziona un corso --</option>
+                    <option *ngFor="let el of COURSES_OBJECT" value="{{el}}">{{COURSES[el]}}</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <hr class="my-4">
+    <button class="w-100 btn btn-primary btn-xl btn-color shadow-none" (click)="signUp()" type="submit">Crea
+        account</button>
+</form>

@@ -7,6 +7,8 @@ import { EventCreateComponent } from './modules/event/components/event-create/ev
 import { EventDetailComponent } from './modules/event/components/event-detail/event-detail.component';
 import { CoreModule } from './core/core.module';
 import { RxReactiveFormsModule } from '@rxweb/reactive-form-validators';
+import { MatTooltipModule } from '@angular/material/tooltip'; 
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -17,8 +19,10 @@ import { RxReactiveFormsModule } from '@rxweb/reactive-form-validators';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    MatTooltipModule,
     CoreModule,
-    RxReactiveFormsModule
+    RxReactiveFormsModule,
+    BrowserAnimationsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

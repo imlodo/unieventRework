@@ -1,21 +1,33 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { LoginComponent, SignupComponent } from './components';
-import { LoginFormComponent } from './forms/login-form/login-form.component';
+import { LoginComponent, SignupComponent, SearchCollapseComponent, NavbarComponent, HomepageComponent } from './components';
+import { LoginFormComponent,SignupFormComponent } from './forms';
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatTooltipModule } from '@angular/material/tooltip';
+
 
 @NgModule({
 	declarations: [
 		LoginComponent,
 		SignupComponent,
-		LoginFormComponent
+		LoginFormComponent,
+		NavbarComponent,
+		HomepageComponent,
+		SignupFormComponent,
+		SearchCollapseComponent
 	],
 	imports: [
 		CommonModule,
 		FormsModule,
+		MatTooltipModule,
 		ReactiveFormsModule,
+		BrowserAnimationsModule,
+		ToastrModule.forRoot(), // ToastrModule added
 	],
 	exports: [
 	],
+	  
 })
 export class CoreModule { }

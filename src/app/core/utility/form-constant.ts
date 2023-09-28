@@ -13,12 +13,24 @@ export const regex_form_control = {
 
 export const messages = {
     t_username: {
-		required: "User.create.form.errors.t_username.required",
-		pattern: "User.create.form.errors.t_username.pattern"
+		required: "Core.form.errors.t_username.required",
+		pattern: "Core.form.errors.t_username.pattern"
 	},
 	t_password: {
-		required: "User.create.form.errors.t_password.required",
-		pattern: "User.create.form.errors.t_password.pattern",
-		minLenght: "User.create.form.errors.t_password.minLength"
+		required: "Core.form.errors.t_password.required",
+		pattern: "Core.form.errors.t_password.pattern",
+		minLenght: "Core.form.errors.t_password.minLength"
 	},
+	t_name: {
+		required: "Core.form.errors.t_name.required",
+		minLenght: "Core.form.errors.t_name.minLength"
+	},
+	t_surname: {
+		required: "Core.form.errors.t_surname.required",
+		minLenght: "Core.form.errors.t_surname.minLength"
+	},
+	t_birthday: {
+		required: "Core.form.errors.t_birthday.required",
+	},
+
 };

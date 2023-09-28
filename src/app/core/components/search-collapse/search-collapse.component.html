@@ -1,0 +1,11 @@
+<ng-container *ngIf="isShow">
+    <p class="text-end p-3 m-0">
+        <a class="text-decoration-none pointer" data-bs-toggle="collapse" href="#showSearch" role="button" aria-expanded="false"
+        aria-controls="showSearch" (click)="isShow=!isShow">Nascondi</a>
+    </p>
+</ng-container>
+<div [ngClass]="isShow ? 'collapse show' : 'collapse'" id="showSearch">
+    <div class="card card-body">
+        Qui va inserito il form della ricerca
+    </div>
+</div>

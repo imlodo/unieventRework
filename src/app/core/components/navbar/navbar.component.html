@@ -1,0 +1,54 @@
+<header class="navbar navbar-dark sticky-top flex-md-nowrap p-0 shadow" style="background-color:#30363c; z-index: 1;">
+    <a class="" href="/">
+        <div class="m-3"><img src="/assets/img/logo_unievent_white.svg" width="150px" /></div>
+    </a>
+    <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse"
+        data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <input class="form-control form-control-dark w-100" type="text" placeholder="Cerca eventi o topic"
+        aria-label="Search" style="visibility:hidden;">
+
+    <ng-container *ngIf="online" class="on-nav">
+        <div class="navbar-nav">
+            <div class="nav-item text-nowrap">
+                <a class="nav-link px-3 link-icon-text no-padding" href="/viewFriendRequest"><i class="gg-bell"></i>
+                    <span [ngClass]="notificationCount <= 99 ? '': 'bell-info-full'"
+                        class="bell-info">{{notificationCount > 99 ? '99+' : notificationCount}}</span>
+                </a>
+            </div>
+        </div>
+        <div class="navbar-nav">
+            <div class="nav-item text-nowrap">
+                <a class="nav-link px-3 link-icon-text" href="/profile"><i class="gg-profile"></i><span>Bentornato,
+                        Antonio</span></a>
+            </div>
+        </div>
+        <div class="navbar-nav">
+            <div class="nav-item text-nowrap">
+                <a class="nav-link px-3 link-icon-text pointer" (click)="logout()"><i
+                        class="gg-log-out"></i><span>Logout</span></a>
+            </div>
+        </div>
+    </ng-container>
+    <ng-container *ngIf="!online" class="off-nav">
+        <div class="navbar-nav">
+            <div class="nav-item text-nowrap">
+                <a class="nav-link px-3 link-icon-text" href="/login"><i class="gg-log-in"></i><span>Login</span></a>
+            </div>
+        </div>
+        <div class="navbar-nav">
+            <div class="nav-item text-nowrap">
+                <a class="nav-link px-3" href="/signup">Registrati</a>
+            </div>
+        </div>
+        <div class="navbar-nav border-search-left mx-3">
+            <div class="nav-item text-nowrap nav-link" data-bs-toggle="collapse"
+                [attr.href]="isShowed ?  '' : '#showSearch' " role="button" aria-expanded="false"
+                aria-controls="showSearch" (click)="showCollapse()">
+                <i #tooltip="matTooltip" matTooltip="Cerca" matTooltipPosition="left" matTooltipHideDelay="100"
+                    class="gg-search"></i>
+            </div>
+        </div>
+    </ng-container>
+</header>

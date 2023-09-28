@@ -1,0 +1,1 @@
+export { LocalService } from "./localStorageService/local.service";
