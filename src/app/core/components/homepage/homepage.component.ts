@@ -1,5 +1,5 @@
 import { AfterViewInit, ChangeDetectorRef, Component, ViewChild } from '@angular/core';
-import { SearchCollapseComponent } from '../../components';
+import { NavbarComponent, SearchCollapseComponent } from '../../components';
 
 @Component({
   selector: 'unievent-homepage',
@@ -8,7 +8,8 @@ import { SearchCollapseComponent } from '../../components';
 })
 export class HomepageComponent implements AfterViewInit{
   @ViewChild(SearchCollapseComponent) searchCollapse:SearchCollapseComponent;
-  
+  @ViewChild(NavbarComponent) navbar: NavbarComponent;
+
   constructor(private cdr:ChangeDetectorRef){
 
   }
@@ -21,4 +22,9 @@ export class HomepageComponent implements AfterViewInit{
     if(!this.searchCollapse.isShow)
       this.searchCollapse.isShow = true;
   }
+
+  updateSearchButton(){
+    this.navbar.isShowed = false;
+  }
+
 }

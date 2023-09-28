@@ -6,6 +6,7 @@ import { LoginFormComponent,SignupFormComponent } from './forms';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { NgSelectModule } from '@ng-select/ng-select';
 
 
 @NgModule({
@@ -24,6 +25,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 		MatTooltipModule,
 		ReactiveFormsModule,
 		BrowserAnimationsModule,
+		NgSelectModule,
 		ToastrModule.forRoot(), // ToastrModule added
 	],
 	exports: [

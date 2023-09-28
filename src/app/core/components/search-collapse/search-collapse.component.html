@@ -1,11 +1,42 @@
-<ng-container *ngIf="isShow">
-    <p class="text-end p-3 m-0">
-        <a class="text-decoration-none pointer" data-bs-toggle="collapse" href="#showSearch" role="button" aria-expanded="false"
-        aria-controls="showSearch" (click)="isShow=!isShow">Nascondi</a>
-    </p>
-</ng-container>
-<div [ngClass]="isShow ? 'collapse show' : 'collapse'" id="showSearch">
-    <div class="card card-body">
-        Qui va inserito il form della ricerca
+<div [ngClass]="isShow ? 'collapse show' : 'collapse'" class="pt-2" id="showSearch">
+    <div class="card card-body border-0">
+        <div class="form-group has-search">
+            <span class="fa fa-search form-control-feedback"></span>
+            <div class="d-flex px-5"><input type="text" class="form-control rounded-0"
+                    placeholder="Ricerca eventi e topic...">
+                <button class="btn btn-primary btn-color-no-hover rounded-0">Cerca</button>
+            </div>
+        </div>
+        <div class="mx-8 mt-4">
+            <span>Filtri di ricerca</span>
+            <div class="card card-body">
+                <div class="row">
+                    <div class="col-sm-3">
+                        <div class="form-group">
+                            <span class="text-secondary">Dove?</span>
+                            <ng-select [items]="city" bindLabel="Denominazione in italiano"
+                                bindValue="Codice Comune formato numerico" [(ngModel)]="selectedCar"
+                                placeholder="Seleziona Città">
+                            </ng-select>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="form-group">
+                            <span class="text-secondary">Quando?</span>
+                            <input type="date" min="1923-01-01" class="form-control" name="t_birthday"
+                                formControlName="t_birthday" id="t_birthday">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
+<ng-container *ngIf="isShow">
+    <p class="text-end pt-1 px-3 m-0">
+        <a class="text-decoration-none pointer" data-bs-toggle="collapse" href="#showSearch" role="button"
+            aria-expanded="false" aria-controls="showSearch" (click)="isShow=!isShow; hideSearch()"><span
+                class="text-dark d-flex d-md-inline-flex justify-content-end align-items-end">Nascondi<i
+                    class="mx-1 gg-chevron-up"></i></span></a>
+    </p>
+</ng-container>

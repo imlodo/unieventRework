@@ -31,7 +31,8 @@
         <div class="col-sm-6">
             <label for="t_birthday" class="form-label">Data di nascita *</label>
             <div class="input-group form-group mb-3">
-                <input type="date" class="form-control" name="t_birthday" formControlName="t_birthday" id="t_birthday">
+                <!-- il min renderlo parametrizzato in base al controllo min del model, che va aggiunto anch'esso-->
+                <input type="date" min="1923-01-01" class="form-control" name="t_birthday" formControlName="t_birthday" id="t_birthday">
             </div>
         </div>
 

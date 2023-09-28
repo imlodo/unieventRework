@@ -1,3 +1,4 @@
+@import "~@ng-select/ng-select/themes/default.theme.css";
 @import url('https://fonts.googleapis.com/css?family=Numans');
 @import 'ngx-toastr/toastr';
 @import "~bootstrap/dist/css/bootstrap.css";
@@ -145,7 +146,7 @@ h2 {
     margin-left: 25px;
     margin-right: 20px;
     margin-bottom: 4px;
-    
+
 }
 
 .gg-search::after {
@@ -162,8 +163,80 @@ h2 {
     left: 12px
 }
 
-.border-search-left{
+.gg-chevron-up {
+    box-sizing: border-box;
+    position: relative;
+    display: block;
+    transform: scale(var(--ggs, 1));
+    width: 22px;
+    height: 22px;
+    border: 2px solid transparent;
+    border-radius: 100px
+}
+
+.gg-chevron-up::after {
+    content: "";
+    display: block;
+    box-sizing: border-box;
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    border-top: 2px solid;
+    border-right: 2px solid;
+    transform: rotate(-45deg);
+    left: 0px;
+    bottom: 2px;
+}
+
+.border-search-left {
     border-left: 2px solid #a8aaac;
 }
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.btn-color, .btn-color:active {
+    background-color: #d32e2a !important;
+    border-color: #d32e2a !important;
+    color: white;
+}
+
+.btn-color:hover {
+    background-color: white !important;
+    border-color: white !important;
+    color: black !important;
+}
+
+.btn-color-no-hover{
+    background-color: #d32e2a !important;
+    border-color: #d32e2a !important;
+    color: white;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.mx-8{
+    margin-right: 8rem!important;
+    margin-left: 8rem!important;
+}
+
+.has-search .form-control {
+    padding-left: 2.375rem;
+}
+
+.has-search .form-control-feedback {
+    position: absolute;
+    z-index: 2;
+    display: block;
+    width: 2.375rem;
+    height: 2.375rem;
+    line-height: 2.375rem;
+    text-align: center;
+    pointer-events: none;
+    color: #aaa;
+}
