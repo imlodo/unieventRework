@@ -7,6 +7,8 @@ import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { NgSelectModule } from '@ng-select/ng-select';
+import { SearchFormComponent } from './forms/search-form/search-form.component';
+import { SlideshowComponent } from './components/slideshow/slideshow.component';
 
 
 @NgModule({
@@ -17,7 +19,9 @@ import { NgSelectModule } from '@ng-select/ng-select';
 		NavbarComponent,
 		HomepageComponent,
 		SignupFormComponent,
-		SearchCollapseComponent
+		SearchCollapseComponent,
+  SearchFormComponent,
+  SlideshowComponent
 	],
 	imports: [
 		CommonModule,

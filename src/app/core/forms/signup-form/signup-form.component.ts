@@ -46,7 +46,6 @@ export class SignupFormComponent {
   set t_course(t_course: string) { this.form.get('t_course').setValue(t_course); }
 
   signUp() {
-    console.log("blblblb")
     this.toastr.clear();
     if (this.form.valid) { this.onSignUp.emit(); }
     else {
