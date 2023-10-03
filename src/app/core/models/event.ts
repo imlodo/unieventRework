@@ -1,6 +1,7 @@
 import { EventPrice } from "./eventPrice";
 
 export interface Event {
+    n_id: number;
     t_title: string;
     t_image_link: string;
     t_address: string;
@@ -8,6 +9,7 @@ export interface Event {
     t_city: string;
     t_state: string;
     t_type?: string;
+    t_province: string;
     t_external_link?: string;
     t_date: Date;
     t_sell_end: Date; //data di fine vendita dei biglietti per quell'evento

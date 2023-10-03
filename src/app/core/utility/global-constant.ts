@@ -2,11 +2,13 @@ import { Event } from "../models/event";
 export const MAX_NUM_SLIDE = 5;
 export const eventList: Array<Event> = [
     {
+        n_id: 1,
         t_title: "Discoteca tropicale",
         t_image_link: "https://discoteche-riccione-rimini.it/wp-content/uploads/2023/08/byblos-riccione-20-ago-2023.webp",
         t_address: "Via Roma 19",
         t_cap: "84084",
         t_city: "Fisciano",
+        t_province: "SA",
         t_state: "Italy",
         t_date: new Date("2024-04-15"),
         t_sell_end: new Date("2024-04-14"),
@@ -24,11 +26,13 @@ export const eventList: Array<Event> = [
         n_vendite: 1000
     },
     {
+        n_id: 2,
         t_title: "Ladies Night",
         t_image_link: "https://img.freepik.com/free-vector/gradient-girls-night-neon-poster-template_52683-86711.jpg?w=740&t=st=1696171997~exp=1696172597~hmac=ac486126a384bafb1ab62294d5643e6bea2b06338c7633dce9fd352d051c2027",
         t_address: "Viale Antonio Bandiera",
         t_cap: "84131",
         t_city: "Salerno",
+        t_province: "SA",
         t_state: "Italy",
         t_date: new Date("2023-12-1"),
         t_sell_end: new Date("2023-11-30"),
@@ -52,11 +56,13 @@ export const eventList: Array<Event> = [
         n_vendite: 13000
     },
     {
+        n_id: 3,
         t_title: "Carnival Party",
         t_image_link: "https://d2fa23zcjd5klo.cloudfront.net/square/event/057bf979-fc07-42ef-9644-99eb7d0ffd84.jpg",
         t_address: "SS7 12",
         t_cap: "81100",
         t_city: "Caserta",
+        t_province: "CE",
         t_state: "Italy",
         t_date: new Date("2024-02-23"),
         t_sell_end: new Date("2024-02-22"),
@@ -73,25 +79,29 @@ export const eventList: Array<Event> = [
         n_vendite: 4096
     },
     {
+        n_id: 4,
         t_title: "Wine Music",
         t_image_link: "https://www.toteadv.it/wp-content/uploads/2020/08/locandina_eventi_2017_antica_cantina_veneta.jpg",
         t_address: "Via Giordano Bruno 24",
         t_cap: "35124",
         t_city: "Padova",
+        t_province: "PD",
         t_state: "Italy",
         t_date: new Date("2024-09-29"),
         t_sell_end: new Date("2024-09-28"),
         b_active: true,
         b_external_event: true,
-        t_external_link: "",
+        t_external_link: "https://www.google.com",
         n_click: 6499
     },
     {
+        n_id: 5,
         t_title: "Memorie di natale",
         t_image_link: "http://www.oasisantantonio.it/eventi/locandina_natale2012.jpg",
         t_address: "Via dei cipressi",
         t_cap: "98122",
         t_city: "Messina",
+        t_province: "ME",
         t_state: "Italy",
         t_date: new Date("2012-12-25"),
         t_sell_end: new Date("2012-12-24"),
@@ -103,11 +113,13 @@ export const eventList: Array<Event> = [
         n_vendite: 13999
     },
     {
+        n_id: 6,
         t_title: "Vegvisir Dark Ambient Festival",
         t_image_link: "https://www.goth.it/images/events/d/55317_20220226centrale66_front_379x464x71fa.jpg",
         t_address: "Via Nicolo dell'abate 66",
         t_cap: "41121",
         t_city: "Modena",
+        t_province: "MO",
         t_state: "Italy",
         t_date: new Date("2023-02-26"),
         t_sell_end: new Date("2023-02-25"),

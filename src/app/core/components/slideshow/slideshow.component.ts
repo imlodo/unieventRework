@@ -10,6 +10,7 @@ import { Event } from '../../models/event';
 })
 export class SlideshowComponent {
   eventListFilter:Array<Event>;
+  @Input() default_img_link:string = "/assets/img/pexels-sebastian-ervi-1763075.jpg"
   @Input() id:string = "default";
 
   constructor(){
@@ -48,6 +49,16 @@ export class SlideshowComponent {
     })
     for(let delCount = 0; (this.eventListFilter.length > MAX_NUM_SLIDE) && MAX_NUM_SLIDE >= 0; delCount++){
       this.eventListFilter.pop();
+    }
+  }
+
+  buyOrGoToEvent(el:Event){
+    if(el.b_external_event){
+      window.open(el.t_external_link,"_blank");
+    }
+    else{
+      alert(el.n_id);
+      //Vai all'acquista biglietto
     }
   }
 }

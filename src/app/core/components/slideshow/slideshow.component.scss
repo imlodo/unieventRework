@@ -1,9 +1,14 @@
+.background-caption{
+    background: #00000080;
+    border-radius: 10px;
+}
 .carousel-indicators {
     margin-right: 43% !important;
-    margin-bottom: 1rem !important;
+    margin-bottom: 3rem !important;
     margin-left: 43% !important;
-    background: rgb(0 0 0 / 74%);
+    background: rgb(0 0 0 / 63%);
     border-radius: 100px;
+    border: 3px solid #ff6565;
 }
 
 @media(max-width:700px) {
@@ -20,6 +25,24 @@
         background-size: cover;
         background-position: center center;
     }
+
+    .btn-slide-mobile{
+        font-size: 13px !important;
+    }
+    
+    .slide-caption-p-padding-margin {
+        padding: 0px !important;
+        margin: 0px 0px 12px 0px !important;
+    }
+
+    .carousel-indicators{
+        border: 2px solid #ff6565;
+    }
+    .carousel-indicators [data-bs-target] {
+        width: 8px!important;
+        height: 8px!important;
+        
+    }
 }
 
 @media(min-width:701px) and (max-width:999px) {
@@ -30,6 +53,7 @@
         background: rgb(0 0 0 / 74%);
         border-radius: 100px;
     }
+
     .carousel-inner img {
         height: 400px !important;
         background-size: cover;
@@ -45,10 +69,16 @@
         background: rgb(0 0 0 / 74%);
         border-radius: 100px;
     }
+
     .carousel-inner img {
         height: 600px !important;
         background-size: cover;
         background-position: center center;
+    }
+
+    .carousel-caption {
+        top: 100px !important;
+        left: 70px !important;
     }
 }
 
@@ -70,4 +100,38 @@
     height: 845px;
     object-fit: cover;
     background-position: center center;
+}
+
+.carousel-caption {
+    top: 0px;
+    max-height: fit-content;
+    left: 0px;
+    max-width: fit-content;
+}
+
+@media (min-width:1200px){
+    .carousel-caption {
+        top: 200px;
+        max-height: fit-content;
+        left: 70px;
+        max-width: fit-content;
+    }
+}
+
+.btn-color-opacity{
+    --bs-btn-bg: #d32d2a2c !important;
+    border: 1px solid #d32e2a;
+}
+
+.btn-color-opacity:hover{
+    background: #d32d2a73 !important;
+}
+
+.btn-color-no-opacity{
+    background: #00000000 !important;
+    border: 1px solid white;
+}
+
+.btn-color-no-opacity:hover{
+    background: #00000056 !important;
 }
