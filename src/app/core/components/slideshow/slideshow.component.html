@@ -18,12 +18,12 @@
             <img [attr.src]="el.t_image_link ? el.t_image_link : default_img_link" class="d-block w-100" [attr.alt]="el.t_title" style="filter: brightness(50%);">
             <div class="carousel-caption d-block p-lg-4 p-3 m-3 ">
                 <p class="h1 h1-mobile pb-3 slide-caption-p-padding-margin">{{el.t_title}}</p>
-                <p class="h6 h6-mobile pb-3 slide-caption-p-padding-margin">📅 {{el.t_date.toLocaleDateString('it-it', { weekday:"long", year:"numeric", month:"long",
+                <p class="h6 h6-mobile pb-3 slide-caption-p-padding-margin">📅 {{el.t_event_dates[0].toLocaleDateString('it-it', { weekday:"long", year:"numeric", month:"long",
                     day:"numeric"})}}</p>
-                <p class="h6 h6-mobile pb-3 slide-caption-p-padding-margin">📌 {{el.t_address +", "+el.t_cap+", "+el.t_city+" ("+el.t_province+")"}}</p>
+                <p class="h6 h6-mobile pb-3 slide-caption-p-padding-margin">📌 {{el.t_location.t_address +", "+el.t_location.t_cap+", "+el.t_location.t_city+" ("+el.t_location.t_province+")"}}</p>
                 <div class="d-flex justify-content-center">
-                    <button *ngIf="!el.b_external_event" style="margin-right: 20px;" class="btn btn-danger btn-color-opacity btn-slide-mobile" (click)="buyOrGoToEvent(el)">ACQUISTA BIGLIETTO</button>
-                    <button class="btn btn-secondary btn-color-no-opacity btn-slide-mobile" (click)="buyOrGoToEvent(el)">VAI ALL' EVENTO</button>
+                    <button *ngIf="!el.b_external_event" style="margin-right: 20px;" class="btn btn-danger btn-color-opacity btn-slide-mobile" (click)="buyOrGoToEvent(el,'buy')">ACQUISTA BIGLIETTO</button>
+                    <button class="btn btn-secondary btn-color-no-opacity btn-slide-mobile" (click)="buyOrGoToEvent(el,'go')">VAI ALL' EVENTO</button>
                 </div>
             </div>
         </div>

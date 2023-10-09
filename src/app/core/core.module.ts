@@ -2,13 +2,15 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent, SignupComponent, SearchCollapseComponent, NavbarComponent, HomepageComponent } from './components';
-import { LoginFormComponent,SignupFormComponent } from './forms';
+import { LoginFormComponent, SignupFormComponent } from './forms';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { SearchFormComponent } from './forms/search-form/search-form.component';
 import { SlideshowComponent } from './components/slideshow/slideshow.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
+import { InternalServerErrorComponent } from './components/internal-server-error/internal-server-error.component';
 
 
 @NgModule({
@@ -16,12 +18,14 @@ import { SlideshowComponent } from './components/slideshow/slideshow.component';
 		LoginComponent,
 		SignupComponent,
 		LoginFormComponent,
-		NavbarComponent,
+		NotFoundComponent,
+		InternalServerErrorComponent,
 		HomepageComponent,
 		SignupFormComponent,
-		SearchCollapseComponent,
-  SearchFormComponent,
-  SlideshowComponent
+		NavbarComponent,
+    	SearchCollapseComponent,
+		SearchFormComponent,
+		SlideshowComponent,
 	],
 	imports: [
 		CommonModule,
@@ -33,7 +37,9 @@ import { SlideshowComponent } from './components/slideshow/slideshow.component';
 		ToastrModule.forRoot(), // ToastrModule added
 	],
 	exports: [
+		NavbarComponent,
+    	SearchCollapseComponent,
 	],
-	  
+
 })
 export class CoreModule { }

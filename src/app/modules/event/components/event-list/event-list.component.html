@@ -1,0 +1,13 @@
+<div class="m-3 d-flex justify-content-between align-items-center">
+    <p class="m-0">{{eventList?.length}} Eventi</p>
+    <div class="m-0">
+        <button *ngIf="!isCalendar" type="button" class="btn btn-light border" (click)="isCalendar=!isCalendar">
+            <p class="d-flex m-0 align-items-center justify-content-center"><i
+                    class="gg-calendar-dates text-event-color-primary margin-right-5"></i> Calendario</p>
+        </button>
+        <button *ngIf="isCalendar" type="button" class="btn btn-light border" (click)="isCalendar=!isCalendar">
+            <p class="d-flex m-0 align-items-center justify-content-center"><i
+                    class="gg-layout-list text-event-color-primary margin-right-5"></i> Elenco date</p>
+        </button>
+    </div>
+</div>

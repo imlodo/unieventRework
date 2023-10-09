@@ -367,6 +367,74 @@ body {
     background: currentColor
 }
 
+.gg-calendar-dates {
+    box-sizing: border-box;
+    position: relative;
+    display: block;
+    transform: scale(var(--ggs, 1));
+    width: 18px;
+    height: 18px;
+    border: 2px solid;
+    border-radius: 3px;
+}
+
+.gg-calendar-dates::after,
+.gg-calendar-dates::before {
+    content: "";
+    display: block;
+    box-sizing: border-box;
+    position: absolute;
+    border-radius: 3px;
+    height: 2px;
+    left: 2px
+}
+
+.gg-calendar-dates::before {
+    background: currentColor;
+    width: 2px;
+    box-shadow:
+        4px 0 0, 8px 0 0, 0 4px 0,
+        4px 4px 0, 8px 4px 0;
+    top: 6px
+}
+
+.gg-calendar-dates::after {
+    width: 10px;
+    top: -4px;
+    box-shadow: 0 6px 0 0
+}
+
+.gg-layout-list {
+    transform: scale(var(--ggs, 1))
+}
+
+.gg-layout-list,
+.gg-layout-list::after,
+.gg-layout-list::before {
+    box-sizing: border-box;
+    position: relative;
+    display: block;
+    width: 10px;
+    height: 2px;
+    border-left: 6px double;
+    border-right: 4px solid
+}
+
+.gg-layout-list::after,
+.gg-layout-list::before {
+    content: "";
+    position: absolute;
+    left: -6px
+}
+
+.gg-layout-list::after {
+    bottom: 4px
+}
+
+.gg-layout-list::before {
+    top: 4px
+}
+
 @media(max-width:700px) {
     .h1-mobile {
         font-size: 1.25rem !important;
@@ -381,6 +449,10 @@ body {
     }
 }
 
-.text-event-color-primary{
+.text-event-color-primary {
     color: #d32e2a;
+}
+
+.margin-right-5{
+    margin-right: 5px;
 }

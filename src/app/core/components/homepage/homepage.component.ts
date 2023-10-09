@@ -1,30 +1,9 @@
-import { AfterViewInit, ChangeDetectorRef, Component, ViewChild } from '@angular/core';
-import { NavbarComponent, SearchCollapseComponent } from '../../components';
-
+import { Component } from '@angular/core';
 @Component({
   selector: 'unievent-homepage',
   templateUrl: './homepage.component.html',
   styleUrls: ['./homepage.component.scss']
 })
-export class HomepageComponent implements AfterViewInit{
-  @ViewChild(SearchCollapseComponent) searchCollapse:SearchCollapseComponent;
-  @ViewChild(NavbarComponent) navbar: NavbarComponent;
-
-  constructor(private cdr:ChangeDetectorRef){
-
-  }
-  
-  ngAfterViewInit(): void {
-    this.cdr.detectChanges();
-  }
-
-  showCollapse(){
-    if(!this.searchCollapse.isShow)
-      this.searchCollapse.isShow = true;
-  }
-
-  updateSearchButton(){
-    this.navbar.isShowed = false;
-  }
+export class HomepageComponent {
 
 }
