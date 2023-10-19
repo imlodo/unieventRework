@@ -1,3 +1,4 @@
+import { EventColor } from "calendar-utils";
 import { Event } from "../models/event";
 export const MAX_NUM_SLIDE = 5;
 export enum EVENT_TYPE {
@@ -17,7 +18,7 @@ export const eventList: Array<Event> = [
         n_id: 1,
         t_title: "Discoteca tropicale",
         n_group_id: 1,
-        t_image_link: "https://discoteche-riccione-rimini.it/wp-content/uploads/2023/08/byblos-riccione-20-ago-2023.webp",
+        t_image_link: "https://rivieraticket.it/wp-content/uploads/2023/08/Tropical-closing-party-Byblos-01-09-23.jpg",
         t_type: EVENT_TYPE.PARTY,
         t_location: {
             n_id: 1,
@@ -26,12 +27,12 @@ export const eventList: Array<Event> = [
             t_city: "Fisciano",
             t_province: "SA",
             t_state: "Italy",
+            t_location_name: "Disco Fisciano"
         },
-        t_event_dates:[
+        t_event_dates: [
             new Date("2024-04-15"),
             new Date("2024-04-15")
         ],
-        t_sell_end: new Date("2024-04-14"),
         t_price: [
             {
                 n_id: 1,
@@ -68,12 +69,12 @@ export const eventList: Array<Event> = [
             t_city: "Salerno",
             t_province: "SA",
             t_state: "Italy",
+            t_location_name: "Disco Bandiera"
         },
-        t_event_dates:[
+        t_event_dates: [
             new Date("2023-11-30"),
             new Date("2023-11-30")
         ],
-        t_sell_end: new Date("2023-11-29"),
         t_type: EVENT_TYPE.PARTY,
         t_price: [
             {
@@ -118,12 +119,12 @@ export const eventList: Array<Event> = [
             t_city: "Caserta",
             t_province: "CE",
             t_state: "Italy",
+            t_location_name: "La Suerte"
         },
-        t_event_dates:[
+        t_event_dates: [
             new Date("2024-02-23"),
             new Date("2024-02-23"),
         ],
-        t_sell_end: new Date("2024-02-22"),
         t_type: EVENT_TYPE.PARTY,
         t_price: [
             {
@@ -153,13 +154,13 @@ export const eventList: Array<Event> = [
             t_cap: "35124",
             t_city: "Padova",
             t_province: "PD",
-            t_state: "Italy"
+            t_state: "Italy",
+            t_location_name: "I padovani pazzi"
         },
-        t_event_dates:[
+        t_event_dates: [
             new Date("2024-09-20"),
             new Date("2024-09-29"),
         ],
-        t_sell_end: new Date("2024-09-28"),
         t_type: EVENT_TYPE.PARTY,
         b_active: true,
         b_external_event: true,
@@ -178,12 +179,12 @@ export const eventList: Array<Event> = [
             t_city: "Messina",
             t_province: "ME",
             t_state: "Italy",
+            t_location_name: "I Cudittu"
         },
-        t_event_dates:[
+        t_event_dates: [
             new Date("2012-12-24"),
             new Date("2012-12-25"),
         ],
-        t_sell_end: new Date("2012-12-24"),
         t_day_sell_max: 500,
         t_total_sell_max: 1000,
         t_type: EVENT_TYPE.PARTY,
@@ -210,12 +211,12 @@ export const eventList: Array<Event> = [
             t_city: "Modena",
             t_province: "MO",
             t_state: "Italy",
+            t_location_name: "I Modenesi Incalliti"
         },
-        t_event_dates:[
+        t_event_dates: [
             new Date("2023-02-15"),
             new Date("2023-02-25"),
         ],
-        t_sell_end: new Date("2023-02-25"),
         t_day_sell_max: 1000,
         t_total_sell_max: 12000,
         t_type: EVENT_TYPE.PARTY,
@@ -243,7 +244,7 @@ export const allEventList: Array<Event> = [
         t_title: "Discoteca tropicale",
         t_description: "Scopri gli appuntamenti della discoteca tropicale. A breve l'annuncio di nuove date nelle stesse città.",
         n_group_id: 1,
-        t_image_link: "https://discoteche-riccione-rimini.it/wp-content/uploads/2023/08/byblos-riccione-20-ago-2023.webp",
+        t_image_link: "https://rivieraticket.it/wp-content/uploads/2023/08/Tropical-closing-party-Byblos-01-09-23.jpg",
         t_type: EVENT_TYPE.PARTY,
         t_location: {
             n_id: 1,
@@ -252,12 +253,12 @@ export const allEventList: Array<Event> = [
             t_city: "Fisciano",
             t_province: "SA",
             t_state: "Italy",
+            t_location_name: "Disco Fisciano"
         },
-        t_event_dates:[
+        t_event_dates: [
             new Date("2024-04-15"),
             new Date("2024-04-15"),
         ],
-        t_sell_end: new Date("2024-04-14"),
         t_price: [
             {
                 n_id: 1,
@@ -304,12 +305,12 @@ export const allEventList: Array<Event> = [
             t_city: "Salerno",
             t_province: "SA",
             t_state: "Italy",
+            t_location_name: "Disco Bandiera"
         },
-        t_event_dates:[
+        t_event_dates: [
             new Date("2023-11-30"),
             new Date("2023-11-30"),
         ],
-        t_sell_end: new Date("2023-11-29"),
         t_type: EVENT_TYPE.PARTY,
         t_price: [
             {
@@ -354,12 +355,12 @@ export const allEventList: Array<Event> = [
             t_city: "Caserta",
             t_province: "CE",
             t_state: "Italy",
+            t_location_name: "La Suerte"
         },
-        t_event_dates:[
+        t_event_dates: [
             new Date("2024-02-23"),
             new Date("2024-02-23"),
         ],
-        t_sell_end: new Date("2024-02-22"),
         t_type: EVENT_TYPE.PARTY,
         t_price: [
             {
@@ -389,13 +390,13 @@ export const allEventList: Array<Event> = [
             t_cap: "35124",
             t_city: "Padova",
             t_province: "PD",
-            t_state: "Italy"
+            t_state: "Italy",
+            t_location_name: "I padovani pazzi"
         },
-        t_event_dates:[
+        t_event_dates: [
             new Date("2024-09-20"),
             new Date("2024-09-29"),
         ],
-        t_sell_end: new Date("2024-09-28"),
         t_type: EVENT_TYPE.PARTY,
         b_active: true,
         b_external_event: true,
@@ -414,12 +415,12 @@ export const allEventList: Array<Event> = [
             t_city: "Messina",
             t_province: "ME",
             t_state: "Italy",
+            t_location_name: "I Cudittu"
         },
-        t_event_dates:[
+        t_event_dates: [
             new Date("2012-12-24"),
             new Date("2012-12-25"),
         ],
-        t_sell_end: new Date("2012-12-24"),
         t_day_sell_max: 500,
         t_total_sell_max: 1000,
         t_type: EVENT_TYPE.PARTY,
@@ -446,12 +447,12 @@ export const allEventList: Array<Event> = [
             t_city: "Modena",
             t_province: "MO",
             t_state: "Italy",
+            t_location_name: "I Modenesi Incalliti"
         },
-        t_event_dates:[
+        t_event_dates: [
             new Date("2023-02-15"),
             new Date("2023-02-26"),
         ],
-        t_sell_end: new Date("2023-02-25"),
         t_day_sell_max: 1000,
         t_total_sell_max: 12000,
         t_type: EVENT_TYPE.PARTY,
@@ -475,7 +476,7 @@ export const allEventList: Array<Event> = [
         n_id: 7,
         t_title: "Discoteca tropicale",
         n_group_id: 1,
-        t_image_link: "https://discoteche-riccione-rimini.it/wp-content/uploads/2023/08/byblos-riccione-20-ago-2023.webp",
+        t_image_link: "https://rivieraticket.it/wp-content/uploads/2023/08/Tropical-closing-party-Byblos-01-09-23.jpg",
         t_type: EVENT_TYPE.PARTY,
         t_location: {
             n_id: 7,
@@ -484,12 +485,12 @@ export const allEventList: Array<Event> = [
             t_city: "Roma",
             t_province: "RM",
             t_state: "Italy",
+            t_location_name: "I Pazzi Belli"
         },
-        t_event_dates:[
+        t_event_dates: [
             new Date("2024-04-17"),
             new Date("2024-04-17"),
         ],
-        t_sell_end: new Date("2024-04-16"),
         t_price: [
             {
                 n_id: 12,
@@ -517,7 +518,7 @@ export const allEventList: Array<Event> = [
         n_id: 8,
         t_title: "Discoteca tropicale",
         n_group_id: 1,
-        t_image_link: "https://discoteche-riccione-rimini.it/wp-content/uploads/2023/08/byblos-riccione-20-ago-2023.webp",
+        t_image_link: "https://rivieraticket.it/wp-content/uploads/2023/08/Tropical-closing-party-Byblos-01-09-23.jpg",
         t_type: EVENT_TYPE.PARTY,
         t_location: {
             n_id: 8,
@@ -526,12 +527,12 @@ export const allEventList: Array<Event> = [
             t_city: "Lucca",
             t_province: "LU",
             t_state: "Italy",
+            t_location_name: "Villa Armani"
         },
-        t_event_dates:[
+        t_event_dates: [
             new Date("2024-05-15"),
             new Date("2024-05-15"),
         ],
-        t_sell_end: new Date("2024-05-14"),
         t_price: [
             {
                 n_id: 15,
@@ -552,7 +553,7 @@ export const allEventList: Array<Event> = [
         n_id: 9,
         t_title: "Discoteca tropicale",
         n_group_id: 1,
-        t_image_link: "https://discoteche-riccione-rimini.it/wp-content/uploads/2023/08/byblos-riccione-20-ago-2023.webp",
+        t_image_link: "https://rivieraticket.it/wp-content/uploads/2023/08/Tropical-closing-party-Byblos-01-09-23.jpg",
         t_type: EVENT_TYPE.PARTY,
         t_location: {
             n_id: 9,
@@ -561,12 +562,12 @@ export const allEventList: Array<Event> = [
             t_city: "Cava De' Tirreni",
             t_province: "SA",
             t_state: "Italy",
+            t_location_name: "Vanilla Disque"
         },
-        t_event_dates:[
+        t_event_dates: [
             new Date("2024-08-15"),
             new Date("2024-08-15"),
         ],
-        t_sell_end: new Date("2024-08-14"),
         t_price: [
             {
                 n_id: 4,
@@ -597,7 +598,7 @@ export const allEventList: Array<Event> = [
         n_id: 10,
         t_title: "Discoteca tropicale",
         n_group_id: 1,
-        t_image_link: "https://discoteche-riccione-rimini.it/wp-content/uploads/2023/08/byblos-riccione-20-ago-2023.webp",
+        t_image_link: "https://rivieraticket.it/wp-content/uploads/2023/08/Tropical-closing-party-Byblos-01-09-23.jpg",
         t_type: EVENT_TYPE.PARTY,
         t_location: {
             n_id: 1,
@@ -606,12 +607,12 @@ export const allEventList: Array<Event> = [
             t_city: "Fisciano",
             t_province: "SA",
             t_state: "Italy",
+            t_location_name: "Disco Fisciano"
         },
-        t_event_dates:[
+        t_event_dates: [
             new Date("2024-09-15"),
             new Date("2024-09-15"),
         ],
-        t_sell_end: new Date("2024-09-14"),
         t_price: [
             {
                 n_id: 1,
@@ -639,7 +640,7 @@ export const allEventList: Array<Event> = [
         n_id: 11,
         t_title: "Discoteca tropicale",
         n_group_id: 1,
-        t_image_link: "https://discoteche-riccione-rimini.it/wp-content/uploads/2023/08/byblos-riccione-20-ago-2023.webp",
+        t_image_link: "https://rivieraticket.it/wp-content/uploads/2023/08/Tropical-closing-party-Byblos-01-09-23.jpg",
         t_type: EVENT_TYPE.PARTY,
         t_location: {
             n_id: 10,
@@ -648,29 +649,29 @@ export const allEventList: Array<Event> = [
             t_city: "Nocera Superiore",
             t_province: "SA",
             t_state: "Italy",
+            t_location_name: "Villa Nuceria"
         },
-        t_event_dates:[
+        t_event_dates: [
             new Date("2024-11-15"),
             new Date("2024-11-15"),
         ],
-        t_sell_end: new Date("2024-11-14"),
         t_price: [
             {
                 n_id: 19,
                 ticket_price: 30,
-                t_type:EVENT_TICKET_TYPE.STANDARD_TICKET_PRICE
+                t_type: EVENT_TICKET_TYPE.STANDARD_TICKET_PRICE
             },
             {
                 n_id: 20,
                 ticket_price: 60,
-                t_type:EVENT_TICKET_TYPE.CONSUPTION_TICKET_PRICE
+                t_type: EVENT_TICKET_TYPE.CONSUPTION_TICKET_PRICE
             },
             {
                 n_id: 21,
                 ticket_price: 600,
                 table_min_num_person: 6,
                 table_max_num_person: 10,
-                t_type:EVENT_TICKET_TYPE.BOTTLE_TICKET_PRICE
+                t_type: EVENT_TICKET_TYPE.BOTTLE_TICKET_PRICE
             }
         ],
         t_company: {
@@ -694,12 +695,12 @@ export const allEventList: Array<Event> = [
             t_city: "Salerno",
             t_province: "SA",
             t_state: "Italy",
+            t_location_name: "La Gazzella"
         },
-        t_event_dates:[
+        t_event_dates: [
             new Date("2023-12-30"),
             new Date("2023-12-30"),
         ],
-        t_sell_end: new Date("2023-12-29"),
         t_type: EVENT_TYPE.PARTY,
         t_price: [
             {
@@ -744,12 +745,12 @@ export const allEventList: Array<Event> = [
             t_city: "Salerno",
             t_province: "SA",
             t_state: "Italy",
+            t_location_name: "Teatro Verdi"
         },
-        t_event_dates:[
+        t_event_dates: [
             new Date("2024-03-23"),
             new Date("2024-03-23"),
         ],
-        t_sell_end: new Date("2024-03-22"),
         t_type: EVENT_TYPE.PARTY,
         t_price: [
             {
@@ -781,12 +782,12 @@ export const allEventList: Array<Event> = [
             t_city: "Napoli",
             t_province: "NA",
             t_state: "Italy",
+            t_location_name: "Teatro della disgrazia"
         },
-        t_event_dates:[
+        t_event_dates: [
             new Date("2023-12-24"),
             new Date("2023-12-25"),
         ],
-        t_sell_end: new Date("2023-12-24"),
         t_day_sell_max: 500,
         t_total_sell_max: 1000,
         t_type: EVENT_TYPE.PARTY,
@@ -813,12 +814,12 @@ export const allEventList: Array<Event> = [
             t_city: "Scampia",
             t_province: "NA",
             t_state: "Italy",
+            t_location_name: "Teatro della disgrazia"
         },
-        t_event_dates:[
+        t_event_dates: [
             new Date("2023-02-02"),
             new Date("2023-02-26"),
         ],
-        t_sell_end: new Date("2023-02-25"),
         t_day_sell_max: 1000,
         t_total_sell_max: 24000,
         t_type: EVENT_TYPE.PARTY,
@@ -848,8 +849,18 @@ export const ROUTE_LIST =
     },
     event: {
         detail: "/event/detail",
+        ticket: {
+            list: "/event/ticket/list"
+        }
     },
     payment: {
         checkout: "/payment/checkout"
     }
+};
+
+export const COLORS: Record<string, EventColor> = {
+    red: { primary: '#ad2121', secondary: '#FAE3E3' },
+    green: { primary: '#016272', secondary: '#016272' },
+    blue: { primary: '#1e90ff', secondary: '#D1E8FF' },
+    yellow: { primary: '#e3bc08', secondary: '#FDF1BA' }
 };

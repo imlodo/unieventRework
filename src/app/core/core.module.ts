@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { LoginComponent, SignupComponent, SearchCollapseComponent, NavbarComponent, HomepageComponent } from './components';
+import { LoginComponent, SignupComponent, SearchCollapseComponent, NavbarComponent, HomepageComponent, ModalComponent } from './components';
 import { LoginFormComponent, SignupFormComponent } from './forms';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -11,7 +11,6 @@ import { SearchFormComponent } from './forms/search-form/search-form.component';
 import { SlideshowComponent } from './components/slideshow/slideshow.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { InternalServerErrorComponent } from './components/internal-server-error/internal-server-error.component';
-
 
 @NgModule({
 	declarations: [
@@ -23,23 +22,25 @@ import { InternalServerErrorComponent } from './components/internal-server-error
 		HomepageComponent,
 		SignupFormComponent,
 		NavbarComponent,
-    	SearchCollapseComponent,
+		ModalComponent,
+		SearchCollapseComponent,
 		SearchFormComponent,
-		SlideshowComponent,
+		SlideshowComponent
 	],
 	imports: [
 		CommonModule,
 		FormsModule,
 		MatTooltipModule,
 		ReactiveFormsModule,
-		BrowserAnimationsModule,
 		NgSelectModule,
 		ToastrModule.forRoot(), // ToastrModule added
 	],
 	exports: [
 		NavbarComponent,
-    	SearchCollapseComponent,
+		ModalComponent,
+		SearchCollapseComponent
 	],
-
+	providers:[
+	]
 })
 export class CoreModule { }

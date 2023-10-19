@@ -50,12 +50,6 @@ export class EventPosterComponent implements AfterViewInit {
   }
 
   setMinPrice() {
-    this.eventData.t_price.forEach(el => {
-      if (!this.minPrice)
-        this.minPrice = el.ticket_price;
-      if (this.minPrice > el.ticket_price)
-        this.minPrice = el.ticket_price;
-    });
     this.groupEvents.forEach(el => {
       el.t_price.forEach(el => {
         if (!this.minPrice)
@@ -68,17 +62,6 @@ export class EventPosterComponent implements AfterViewInit {
 
   setAverangeStars() {
     this.countReviews = 0;
-    if (this.eventData.t_reviews) {
-      this.eventData.t_reviews.forEach(el => {
-        if (el.n_stars) {
-          if (!this.averangeStars)
-            this.averangeStars = el.n_stars;
-          else
-            this.averangeStars += el.n_stars;
-          this.countReviews += 1;
-        }
-      });
-    }
     this.groupEvents.forEach(el => {
       if (el.t_reviews) {
         el.t_reviews.forEach(el2 => {

@@ -1,13 +1,153 @@
 <div class="m-3 d-flex justify-content-between align-items-center">
     <p class="m-0">{{eventList?.length}} Eventi</p>
     <div class="m-0">
-        <button *ngIf="!isCalendar" type="button" class="btn btn-light border" (click)="isCalendar=!isCalendar">
+        <button *ngIf="!isCalendar" type="button" class="btn btn-light border margin-right-10"
+            (click)="setDefaultViewDate(); isCalendar=!isCalendar; scrollToBottom();">
             <p class="d-flex m-0 align-items-center justify-content-center"><i
                     class="gg-calendar-dates text-event-color-primary margin-right-5"></i> Calendario</p>
         </button>
-        <button *ngIf="isCalendar" type="button" class="btn btn-light border" (click)="isCalendar=!isCalendar">
+        <button *ngIf="isCalendar" type="button" class="btn btn-light border margin-right-10"
+            (click)="setDefaultViewDate(); isCalendar=!isCalendar; scrollToBottom();">
             <p class="d-flex m-0 align-items-center justify-content-center"><i
                     class="gg-layout-list text-event-color-primary margin-right-5"></i> Elenco date</p>
         </button>
+        <button type="button" class="btn btn-light border" (click)="isFilter=!isFilter;">
+            <p class="d-flex m-0 align-items-center justify-content-center"><i
+                    class="gg-layout-list text-event-color-primary margin-right-5"></i> Filtri</p>
+        </button>
     </div>
 </div>
+<div *ngIf="isFilter">
+    <unievent-event-filter-form></unievent-event-filter-form>
+</div>
+<div *ngIf="!isCalendar" class="m-1 row" id="eventCalendarList">
+    <div class="col-12 my-2" *ngFor="let el of eventList">
+        <div class="d-flex justify-content-between align-items-center">
+            <div class="card w-100">
+                <div [ngClass]="currentScreenSize != 'xl' && currentScreenSize != 'lg' ? 'col-12' : 'd-flex' ">
+                    <div [ngClass]="currentScreenSize != 'xl' && currentScreenSize != 'lg' ? 'col-xs-12 border-bottom' : 'border-end p-3' "
+                        class=" text-center d-grid align-items-center justify-content-center p-2"
+                        style="justify-items: center; min-width: 110px;">
+                        <h1 class="text-event-color-primary m-0">{{el.t_event_dates[0].toLocaleDateString('it-it',
+                            {day:"numeric"})}}</h1>
+                        <h4 class="m-0">{{el.t_event_dates[0].toLocaleDateString('it-it', {month:"short",
+                            year:"numeric"})}}</h4>
+                        <h5 class="m-0">{{el.t_event_dates[0].toLocaleDateString('it-it', {weekday:"short", hour:
+                            '2-digit', minute: '2-digit'})}}</h5>
+                    </div>
+                    <div
+                        [ngClass]="currentScreenSize != 'xl' && currentScreenSize != 'lg' ? 'col-12 text-center p-0' : 'd-flex col justify-content-between p-2'">
+                        <div
+                            [ngClass]="currentScreenSize != 'xl' && currentScreenSize != 'lg' ? 'col-12 border-bottom py-2' : 'd-grid text-start p-2'">
+                            <h1 class="m-0">{{el.t_title}}</h1>
+                            <h3 class="m-0">{{el.t_location.t_location_name}}</h3>
+                            <h5 class="m-0">{{el.t_description}}</h5>
+                        </div>
+                        <div
+                            [ngClass]="currentScreenSize != 'xl' && currentScreenSize != 'lg' ? 'col-12 py-3' : 'd-grid text-center p-2'">
+                            <div class="d-flex mb-2 justify-content-center align-items-center">
+                                <span class="cal-event" [style.backgroundColor]="getEventTicketAvailability(el).primary"
+                                    style="width: 10px; 
+                                            height: 10px;
+                                            border-radius: 50%;
+                                            display: inline-block;
+                                            margin: 2px;">
+                                </span>
+                                <span>Biglietti Disponibili</span>
+                            </div>
+                            <div class="h6 m-0 pb-2">da {{getMinPriceForEvent(el)}} €</div>
+                            <button class="btn btn-primary btn-color-hover-border"
+                                (click)="goToBuyTicket(el.n_id)">Acquista</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div *ngIf="isCalendar" id="eventCalendarList">
+    <div class="d-flex justify-content-center align-items-center">
+        <span class="pointer" (click)="decrement()" style="margin-top: 3px; margin-right: 3px;"><i
+                class="gg-chevron-left"></i></span>
+        <h2 class="m-0" style="margin-top: 3px !important;">{{viewDate.toLocaleDateString('it-it', {month:"long",
+            year:"numeric"})}}</h2>
+        <span class="pointer" (click)="increment()" style="margin-top: 3px; margin-left: 3px;"><i
+                class="gg-chevron-right"></i></span>
+    </div>
+    <br />
+    <mwl-calendar-month-view [cellTemplate]="customCellTemplate" [openDayEventsTemplate]="openDayEventsTemplate"
+        [refresh]="refresh" [locale]="locale" [viewDate]="viewDate" [events]="events" [refresh]="refresh"
+        [activeDayIsOpen]="activeDayIsOpen" (dayClicked)="dayClicked($event.day)"> <!--(eventClicked)="handleEvent('Clicked', $event.event)"-->
+    </mwl-calendar-month-view>
+    <unievent-modal></unievent-modal>
+
+    <ng-template #customCellTemplate let-day="day" let-locale="locale">
+        <div *ngIf="currentScreenSize == 'xl' || currentScreenSize == 'lg'" class="row m-0 my-2">
+            <span class="fw-light h3 col-12">{{ day.date | calendarDate:'monthViewDayNumber':locale }}</span>
+            <span class="col-12" *ngIf="day.events.length > 0">{{day.events[0].title|uppercase}}</span>
+            <span style="font-size:0.75rem" class="col-12" *ngIf="day.events.length > 0">{{day.events[0].meta.eventData.t_location.t_location_name}}</span>
+            <span style="font-size:0.75rem" class="col-12" *ngIf="day.events.length > 0">{{day.events[0].meta.eventData.t_event_dates?.[0].toLocaleDateString('it-it',{weekday:"short",hour:'2-digit', minute: '2-digit'})}}</span>
+            <span style="font-size:0.75rem" class="col-12 text-event-color-primary" *ngIf="day.events.length > 0">da {{getMinPriceForEvent(day.events[0].meta.eventData)}} €</span>
+        </div>
+        <div class="cal-cell-top" *ngIf="currentScreenSize != 'xl' && currentScreenSize != 'lg'">
+            <span class="cal-day-number">{{ day.date | calendarDate:'monthViewDayNumber':locale }}</span>
+        </div>
+        <div class="pl-2 text-center" *ngIf="currentScreenSize != 'xl' && currentScreenSize != 'lg'">
+            <span class="cal-event" *ngFor="let event of day.events"
+                [ngStyle]="{'background-color': event.color.primary}"></span>
+        </div>
+    </ng-template>
+
+    <ng-template #openDayEventsTemplate let-events="events" let-isOpen="isOpen" let-eventClicked="eventClicked">
+        <div class="p-0 cal-open-day-events" [@collapse] *ngIf="isOpen">
+            <div *ngFor="let event of events" [ngClass]="event?.cssClass" mwlDraggable [dropData]="{event: event}"
+                [dragAxis]="{x: event.draggable, y: event.draggable}">
+                <mwl-calendar-event-title [event]="event" [customTemplate]="eventTitleTemplate" view="month"
+                    (mwlClick)="eventClicked.emit({event: event})">
+                </mwl-calendar-event-title>
+                <mwl-calendar-event-actions [event]="event"></mwl-calendar-event-actions>
+            </div>
+        </div>
+    </ng-template>
+
+    <ng-template #eventTitleTemplate let-event="event" let-locale="locale">
+        <div class="d-flex justify-content-between align-items-center">
+            <div class="card w-100 rounded-0">
+                <div [ngClass]="currentScreenSize != 'xl' && currentScreenSize != 'lg' ? 'col-12' : 'd-flex' ">
+                    <div [ngClass]="currentScreenSize != 'xl' && currentScreenSize != 'lg' ? 'col-xs-12 border-bottom' : 'border-end p-3' "
+                        class=" text-center d-grid align-items-center justify-content-center p-2"
+                        style="justify-items: center; min-width: 110px;">
+                        <h1 class="text-event-color-primary m-0">
+                            {{event.meta.eventData.t_event_dates?.[0].toLocaleDateString('it-it',
+                            {day:"numeric"})}}</h1>
+                        <h4 class="m-0">{{event.meta.eventData.t_event_dates?.[0].toLocaleDateString('it-it',
+                            {month:"short",
+                            year:"numeric"})}}</h4>
+                        <h5 class="m-0">{{event.meta.eventData.t_event_dates?.[0].toLocaleDateString('it-it',
+                            {weekday:"short", hour:
+                            '2-digit', minute: '2-digit'})}}</h5>
+                    </div>
+                    <div
+                        [ngClass]="currentScreenSize != 'xl' && currentScreenSize != 'lg' ? 'col-12 text-center p-0' : 'd-flex col justify-content-between p-2'">
+                        <div
+                            [ngClass]="currentScreenSize != 'xl' && currentScreenSize != 'lg' ? 'col-12 border-bottom py-2' : 'd-grid text-start p-2'">
+                            <h1 class="m-0">{{event.title}}</h1>
+                            <h3 class="m-0">{{event.meta.eventData.t_location?.t_location_name}}</h3>
+                            <h5 class="m-0">{{event.meta.eventData.t_description}}</h5>
+                        </div>
+                        <div
+                            [ngClass]="currentScreenSize != 'xl' && currentScreenSize != 'lg' ? 'col-12 py-3' : 'd-grid text-center p-2'">
+                            <div class="d-flex mb-2 justify-content-center">
+                                <span class="cal-event" [style.backgroundColor]="event.color.primary"></span>
+                                <span>Biglietti Disponibili</span>
+                            </div>
+                            <div class="h6 m-0 pb-2">da {{getMinPriceForEvent(event.meta.eventData)}} €</div>
+                            <button class="btn btn-primary btn-color-hover-border"
+                                (click)="goToBuyTicket(event.meta.eventData.n_id)">Acquista</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ng-template>
+    <div>

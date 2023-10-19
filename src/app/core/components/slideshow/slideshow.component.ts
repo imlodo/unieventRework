@@ -26,7 +26,7 @@ export class SlideshowComponent {
     } else {
       this.eventListFilter = this.eventListFilter.filter(el => el.b_active);
     }
-    this.eventListFilter = this.eventListFilter.filter(el => el.t_sell_end >= new Date());
+    this.eventListFilter = this.eventListFilter.filter(el => el.t_event_dates[el.t_event_dates.length-1] >= new Date()); //Se c'è ancora una data disponibile
     this.eventListFilter = this.eventListFilter.sort((a, b) => {
       if (a.n_vendite && b.n_vendite) {
         if (a.n_vendite > b.n_vendite)
@@ -70,7 +70,7 @@ export class SlideshowComponent {
       if (type == 'go') {
         this.router.navigate([ROUTE_LIST.event.detail, params]);
       } else {
-        this.router.navigate([ROUTE_LIST.payment.checkout, params]);
+        this.router.navigate([ROUTE_LIST.event.ticket.list, params]);
       }
     }
   }

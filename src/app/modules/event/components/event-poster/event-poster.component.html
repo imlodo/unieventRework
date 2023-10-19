@@ -1,20 +1,29 @@
 <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
   <div class="carousel-inner">
-    <div class="carousel-item active" style="max-height: 600px;">
-      <img *ngIf="eventData && eventData.t_image_link" src="{{eventData.t_image_link}}"
-        class="d-block w-100" alt="..." style="filter: brightness(30%);">
-        <div class="carousel-caption d-block p-lg-4 p-3 m-3 ">
-          <p *ngIf="eventData && eventData.t_title" class="h1 h1-mobile slide-caption-p-padding-margin pb-1">{{eventData.t_title | uppercase }}</p>
-          <p *ngIf="eventData && eventData.t_description" class="h6-mobile slide-caption-p-padding-margin pb-1">{{eventData.t_description}}</p>
-          <p *ngIf="eventData && minStartDate && maxStartDate" class="h6-mobile slide-caption-p-padding-margin pb-1">Dal {{minStartDate.toLocaleDateString('it-it', { year:"numeric", month:"numeric",day:"numeric"})}} al {{maxStartDate.toLocaleDateString('it-it', { year:"numeric", month:"numeric",day:"numeric"})}} | {{groupEvents.length}} Eventi</p>
-          <p *ngIf="eventData && minPrice" class="h6-mobile slide-caption-p-padding-margin pb-1">Biglietti da € {{minPrice}}</p>
-          <div *ngIf="eventData && averangeStars" class="d-flex align-items-end pb-1 slide-caption-p-padding-margin" style="margin: 0 -3px 12px;">
-            <mat-icon *ngFor="let ratingId of ratingArr; index as i" class="orange-icon">
-              {{showIcon(i)}}
-            </mat-icon>
-            <div>({{countReviews}})</div>
-          </div>
-          <button class="btn btn-primary btn-color px-3 rounded" (click)="buy()">Acquista ora</button>
+    <div class="carousel-item active" style="max-height: 700px;">
+      <img *ngIf="eventData && eventData.t_image_link" src="{{eventData.t_image_link}}" class="d-block w-100"
+        alt="..." />
+      <div _ngcontent-ng-c3127344369="" class="photo-gradient"></div>
+      <div
+        class="carousel-caption d-grid align-items-center align-content-center justify-content-center p-lg-4 p-3 m-3">
+        <p *ngIf="eventData && eventData.t_title" class="h1 h1-mobile slide-caption-p-padding-margin pb-1">
+          {{eventData.t_title | uppercase }}</p>
+        <p *ngIf="eventData && eventData.t_description" class="h6-mobile slide-caption-p-padding-margin pb-1">
+          {{eventData.t_description}}</p>
+        <p *ngIf="eventData && minStartDate && maxStartDate" class="h6-mobile slide-caption-p-padding-margin pb-1">Dal
+          {{minStartDate.toLocaleDateString('it-it', { year:"numeric", month:"numeric",day:"numeric"})}} al
+          {{maxStartDate.toLocaleDateString('it-it', { year:"numeric", month:"numeric",day:"numeric"})}} |
+          {{groupEvents.length}} Eventi</p>
+        <p *ngIf="eventData && minPrice" class="h6-mobile slide-caption-p-padding-margin pb-1">Biglietti da €
+          {{minPrice}}</p>
+        <div *ngIf="eventData && averangeStars" class="d-flex align-items-end pb-1 slide-caption-p-padding-margin"
+          style="margin: 0 -3px 12px;">
+          <mat-icon *ngFor="let ratingId of ratingArr; index as i" class="orange-icon">
+            {{showIcon(i)}}
+          </mat-icon>
+          <div>({{countReviews}})</div>
+        </div>
+        <button class="btn btn-primary btn-color px-3 rounded" (click)="buy()">Acquista ora</button>
       </div>
     </div>
   </div>

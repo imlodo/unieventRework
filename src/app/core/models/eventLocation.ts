@@ -5,4 +5,5 @@ export interface EventLocation {
     t_city: string;
     t_state: string;
     t_province: string;
+    t_location_name: string;
 }

@@ -10,6 +10,13 @@ import { EventPosterComponent } from './components/event-poster/event-poster.com
 import { MatIconModule } from '@angular/material/icon';
 import { EventDetailFormComponent } from './forms/event-detail-form/event-detail-form.component';
 import { EventListComponent } from './components/event-list/event-list.component';
+import { EventTicketListComponent } from './components/event-ticket-list/event-ticket-list.component';
+import { CalendarModule, DateAdapter } from 'angular-calendar';
+import { momentAdapterFactory } from 'src/app/app.module';
+import { FlatpickrModule } from 'angularx-flatpickr';
+import { CoreModule } from 'src/app/core/core.module';
+import { EventFilterFormComponent } from './forms/event-filter-form/event-filter-form.component';
+import { NgSelectModule } from '@ng-select/ng-select';
 
 
 @NgModule({
@@ -20,18 +27,26 @@ import { EventListComponent } from './components/event-list/event-list.component
     EventPosterComponent,
     EventDetailFormComponent,
     EventListComponent,
+    EventTicketListComponent,
+    EventFilterFormComponent
   ],
   imports: [
     CommonModule,
     FormsModule,
+    CoreModule,
     MatIconModule,
     ReactiveFormsModule,
     RxReactiveFormsModule,
     EventRoutingModule,
+    CalendarModule.forRoot({ provide: DateAdapter, useFactory: momentAdapterFactory }),
+    FlatpickrModule.forRoot(),
+    NgSelectModule,
   ],
   exports: [
     EventCreateComponent,
-    EventDetailComponent,
+    EventDetailComponent
+  ],
+  providers: [
   ],
   id: 'Event'
 })

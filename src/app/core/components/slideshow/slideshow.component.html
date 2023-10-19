@@ -15,8 +15,9 @@
     </div>
     <div class="carousel-inner">
         <div *ngFor="let el of eventListFilter; let i=index;" class="carousel-item" [ngClass]="!i ? 'active' : '' ">
-            <img [attr.src]="el.t_image_link ? el.t_image_link : default_img_link" class="d-block w-100" [attr.alt]="el.t_title" style="filter: brightness(50%);">
-            <div class="carousel-caption d-block p-lg-4 p-3 m-3 ">
+            <img [attr.src]="el.t_image_link ? el.t_image_link : default_img_link" class="d-block w-100" [attr.alt]="el.t_title">
+            <div _ngcontent-ng-c3127344369="" class="photo-gradient"></div>
+            <div class="carousel-caption d-grid align-items-center align-content-center justify-content-center p-lg-4 p-3 m-3 " style="top:0">
                 <p class="h1 h1-mobile pb-3 slide-caption-p-padding-margin">{{el.t_title}}</p>
                 <p class="h6 h6-mobile pb-3 slide-caption-p-padding-margin">📅 {{el.t_event_dates[0].toLocaleDateString('it-it', { weekday:"long", year:"numeric", month:"long",
                     day:"numeric"})}}</p>

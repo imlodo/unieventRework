@@ -1,3 +1,4 @@
+export { ModalComponent } from "./modal/modal.component";
 export { LoginComponent } from "./login/login.component";
 export { SignupComponent } from "./signup/signup.component";
 export { NavbarComponent } from "./navbar/navbar.component";

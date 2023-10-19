@@ -1,4 +1,4 @@
-<unievent-navbar id="nav" (onShowCollapse)="showCollapse()"></unievent-navbar>
+<unievent-navbar *ngIf="showMenu" id="nav" (onShowCollapse)="showCollapse()"></unievent-navbar>
 <unievent-search-collapse (onHideSearch)="updateSearchButton()"></unievent-search-collapse>
 <router-outlet></router-outlet>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">

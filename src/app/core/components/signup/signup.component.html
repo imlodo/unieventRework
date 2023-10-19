@@ -1,14 +1,13 @@
-<div class="bgimg w3-display-container w3-text-white">
-    <div class="w3-display-middle">
-        <main class="background p-4">
+<div class="bgimg w3-display-container w3-text-white d-flex align-items-center justify-content-center">
+    <div class="d-flex p-3">
+        <main class="background p-4 rounded">
             <div style="opacity: 1!important;" class="text-center">
-                <a href="/"><img class="d-block mx-auto" src="/assets/img/logo_unievent_white.svg" alt="" width=""
-                        height="150"></a>
+                <a href="/"><img class="d-block mx-auto" src="/assets/img/logo_unievent_white.svg" alt="" style="max-height: 100px;"></a>
                 <h2>Crea nuovo account</h2>
                 <p>Per completare la registrazione compila i seguenti campi.</p>
             </div>
             <div class="row">
-                <div class="col-1" style="width: 100%;">
+                <div class="">
                     <unievent-signup-form (onSignUp)="signUp()" ></unievent-signup-form>
                 </div>
             </div>

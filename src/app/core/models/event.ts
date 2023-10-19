@@ -16,7 +16,6 @@ export interface Event {
     t_type: EVENT_TYPE;
     t_location: EventLocation;
     t_event_dates: Array<Date>; //Da quando a quando, considerare anche gli orari
-    t_sell_end: Date; //data di fine vendita dei biglietti per quell'evento
     t_price?: Array<EventTicketPrice>;
     t_service_price?: Array<EventServicePrice>;
     t_reviews?: Array<EventReview>;

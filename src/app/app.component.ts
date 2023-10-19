@@ -1,5 +1,6 @@
 import { ChangeDetectorRef, Component, ViewChild } from '@angular/core';
 import { NavbarComponent, SearchCollapseComponent } from './core/components';
+import { NavigationStart, Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -12,8 +13,14 @@ export class AppComponent {
   @ViewChild(SearchCollapseComponent) searchCollapse:SearchCollapseComponent;
   @ViewChild(NavbarComponent) navbar: NavbarComponent;
 
-  constructor(private cdr:ChangeDetectorRef){
+  showMenu:boolean = true;
 
+  constructor(private router:Router,private cdr:ChangeDetectorRef){
+    router.events.forEach(route=>{
+      if(route instanceof NavigationStart){
+        this.showMenu = route.url !== '/login' && route.url !== '/signup';
+      }
+    })
   }
   
   ngAfterViewInit(): void {

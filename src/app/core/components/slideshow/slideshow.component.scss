@@ -27,7 +27,7 @@
     }
 
     .btn-slide-mobile{
-        font-size: 13px !important;
+        font-size: 12px !important;
     }
     
     .slide-caption-p-padding-margin {
@@ -75,11 +75,6 @@
         background-size: cover;
         background-position: center center;
     }
-
-    .carousel-caption {
-        top: 100px !important;
-        left: 70px !important;
-    }
 }
 
 .carousel-indicators [data-bs-target] {
@@ -100,22 +95,6 @@
     height: 845px;
     object-fit: cover;
     background-position: center center;
-}
-
-.carousel-caption {
-    top: 0px;
-    max-height: fit-content;
-    left: 0px;
-    max-width: fit-content;
-}
-
-@media (min-width:1200px){
-    .carousel-caption {
-        top: 200px;
-        max-height: fit-content;
-        left: 70px;
-        max-width: fit-content;
-    }
 }
 
 .btn-color-opacity{

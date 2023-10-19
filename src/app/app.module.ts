@@ -7,6 +7,13 @@ import { RxReactiveFormsModule } from '@rxweb/reactive-form-validators';
 import { MatTooltipModule } from '@angular/material/tooltip'; 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgSelectModule } from '@ng-select/ng-select';
+import { adapterFactory } from 'angular-calendar/date-adapters/moment';
+import * as moment from 'moment';
+import { NgbModalModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
+export function momentAdapterFactory() {
+  return adapterFactory(moment);
+};
 
 @NgModule({
   declarations: [
@@ -19,7 +26,11 @@ import { NgSelectModule } from '@ng-select/ng-select';
     CoreModule,
     RxReactiveFormsModule,
     BrowserAnimationsModule,
-    NgSelectModule
+    NgSelectModule,
+    NgbModule,
+    NgbModalModule
+  ],
+  exports: [
   ],
   providers: [],
   bootstrap: [AppComponent]
