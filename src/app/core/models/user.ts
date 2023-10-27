@@ -1,10 +1,12 @@
 import { USER_TYPE } from "../utility/global-constant";
 
-export interface UserInfo {
+export interface User {
+    t_username: string;
+    t_password: string;
     t_name: string;
     t_surname?: string;
-    t_description?: string;
     t_alias_generated: string;
+    t_description?: string;
+    t_profile_photo: string;
     t_type: USER_TYPE;
-    t_img_link?: string;
 }

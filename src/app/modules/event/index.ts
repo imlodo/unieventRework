@@ -3,3 +3,6 @@ export { EventDetailComponent } from "./components/event-detail/event-detail.com
 export { EventPageComponent } from "./components/event-page/event-page.component";
 export { EventTicketListComponent } from "./components/event-ticket-list/event-ticket-list.component";
 export { EventFilterFormComponent } from "./forms/event-filter-form/event-filter-form.component";
+export { EventBestTicketFormComponent } from "./forms/event-best-ticket-form/event-best-ticket-form.component";
+export { EventPlanSeatTicketFormComponent } from "./forms/event-plan-seat-ticket-form/event-plan-seat-ticket-form.component";
+export { EventBestTicketFormModel } from "./forms/event-best-ticket-form/event-best-ticket-form.model";

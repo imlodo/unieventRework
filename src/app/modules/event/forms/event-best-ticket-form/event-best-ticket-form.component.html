@@ -1,0 +1,25 @@
+<div *ngIf="formRows" class="row justify-content-center align-items-center py-4">
+    <span class="h5 text-center">Lista biglietti</span>
+    <div class="col-xl-8 col-12">
+        <div *ngFor="let eventBestTicket of formRows.controls; let i = index"
+            class="border-bottom d-flex justify-content-between align-items-center">
+            <span>{{eventBestTicket.get('ticket_title').value}}</span>
+            <form [formGroup]="eventBestTicket" class="class-form d-flex align-items-center justify-content-start">
+                <span class="mx-3" style="font-size:13px; min-width: 35px;">{{' € ' + eventBestTicket.get('ticket_price').value }}</span>
+                <button [disabled]='eventBestTicket.get("n_ticket").value <= 0' class="btn btn-primary btn-color-hover-border button-padding-margin"
+                    (click)="decrementTicket(i)">-</button>
+                <span class="px-3 m-3" style="font-size:20px;">{{eventBestTicket.get('n_ticket').value}}</span>
+                <button [disabled]='eventBestTicket.get("n_ticket").value >= eventBestTicket.get("ticket_person_limit").value ? true : false' class="btn btn-primary btn-color-hover-border button-padding-margin"
+                    (click)="incrementTicket(i)">+</button> 
+                    
+            </form>
+        </div>
+    </div>
+    <div class="col-xl-2 d-flex flex-column col-12 text-center border border-rounded p-3 m-3">
+        <span class="h4 border-bottom pb-2">Riepilogo</span>
+        <span class="m-2">{{'Numero biglietti: ' + getTicketCount() }}</span>
+        <span class="h6 m-2">{{'Prezzo totale: ' + getTicketAmount() + '€'}}</span>
+        <button [disabled]="getTicketCount() > 0 ? false : true" class="btn btn-primary btn-color-hover-border m-2"
+            [ngClass]="">Acquista</button>
+    </div>
+</div>

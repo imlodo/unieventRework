@@ -1,1 +1,24 @@
-<p>ID EVENTO:{{n_id}}</p>
+<div class="container">
+    <p>ID EVENTO:{{n_id}}</p>
+    <div class="d-flex align-items-center justify-content-center">
+        <div class="card border p-5 margin-right-10 align-items-center justify-content-center pointer"
+            (click)="showBest()">
+            <img [attr.src]="isBest ? 'assets/svg/armchair-active.svg' : 'assets/svg/armchair.svg'" width="100px">
+            <span class="h6 font-weight-500 m-0 text-center my-2"
+                [ngClass]="isBest ? 'text-event-color-primary-i' : ''">Posto migliore (Automatico)</span>
+            <input style="width: 1.4rem;height: 1.4rem; accent-color:#d32e2a;" type="radio" name="event-list-radio"
+                value="best" [checked]="isBest" />
+        </div>
+        <div class="card border p-5 align-items-center justify-content-center pointer" (click)="showPlan()">
+            <img [attr.src]="!isBest ? 'assets/svg/stadium-chair-active.svg' : 'assets/svg/stadium-chair.svg'"
+                width="100px">
+            <span class="h6 font-weight-500 font-light m-0 text-center my-2"
+                [ngClass]="!isBest ? 'text-event-color-primary-i' : ''">Scegli in pianta (Manuale)</span>
+            <input style="width: 1.4rem;height: 1.4rem; accent-color:#d32e2a;" type="radio" name="event-list-radio"
+                value="plant" [checked]="!isBest" />
+        </div>
+    </div>
+
+    <unievent-event-best-ticket-form *ngIf="isBest"></unievent-event-best-ticket-form>
+    <unievent-event-plan-seat-ticket-form *ngIf="!isBest"></unievent-event-plan-seat-ticket-form>
+</div>

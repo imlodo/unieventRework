@@ -1,5 +1,7 @@
 export interface EventArtist {
-    t_artist_id:number; //id utente organizzatore
-    t_artist_name:string;
-    t_artist_description:string;
+    t_name?: string;
+    t_surname?: string;
+    t_image_link?: string;
+    t_alias: string;
+    t_desc: string;
 }

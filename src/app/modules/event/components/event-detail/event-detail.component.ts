@@ -81,9 +81,6 @@ export class EventDetailComponent implements AfterViewInit {
             t_company: el.t_company,
             b_external_event: el.b_external_event,
             b_active: el.b_active,
-            t_day_sell_max: el.t_day_sell_max,
-            t_total_sell_max: el.t_total_sell_max,
-            n_vendite: el.n_vendite,
             n_click: el.n_click
           }
           if (!tmpDateArray[date.toLocaleDateString("it-it", { weekday: "long", year: "numeric", month: "long", day: "numeric" })]) {

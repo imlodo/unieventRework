@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { MAX_NUM_SLIDE, ROUTE_LIST } from '../../utility/global-constant';
-import { eventList } from '../../utility/global-constant';
+import { eventOrderedBySell } from '../../utility/global-constant';
 import { Event } from '../../models/event';
 import { GlobalService } from '../../services';
 import { Router } from '@angular/router';
@@ -22,38 +22,11 @@ export class SlideshowComponent {
 
   filterSlideshowList() {
     if(!this.eventListFilter){
-      this.eventListFilter = eventList.filter(el => el.b_active);
+      this.eventListFilter = eventOrderedBySell.filter(el => el.b_active);
     } else {
       this.eventListFilter = this.eventListFilter.filter(el => el.b_active);
     }
-    this.eventListFilter = this.eventListFilter.filter(el => el.t_event_dates[el.t_event_dates.length-1] >= new Date()); //Se c'è ancora una data disponibile
-    this.eventListFilter = this.eventListFilter.sort((a, b) => {
-      if (a.n_vendite && b.n_vendite) {
-        if (a.n_vendite > b.n_vendite)
-          return -1;
-        if (a.n_vendite < b.n_vendite)
-          return 1;
-      }
-      else if (a.n_vendite && b.n_click) {
-        if (a.n_vendite > b.n_click)
-          return -1;
-        if (a.n_vendite < b.n_click)
-          return 1;
-      }
-      else if (a.n_click && b.n_vendite) {
-        if (a.n_click > b.n_vendite)
-          return -1;
-        if (a.n_click < b.n_vendite)
-          return 1;
-      }
-      else if (a.n_click && b.n_click) {
-        if (a.n_click > b.n_click)
-          return -1;
-        if (a.n_click < b.n_click)
-          return 1;
-      }
-      return 0;
-    })
+    this.eventListFilter = this.eventListFilter.filter(el => el.t_event_dates[el.t_event_dates.length-1] >= new Date());
     for (let delCount = 0; (this.eventListFilter.length > MAX_NUM_SLIDE) && MAX_NUM_SLIDE >= 0; delCount++) {
       this.eventListFilter.pop();
     }

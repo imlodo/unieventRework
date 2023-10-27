@@ -1,9 +1,7 @@
 import { UserInfo } from "./userInfo";
 
-export interface EventReview {
+export interface EventDiscussion {
     n_id: number;
-    event_id: number;
-    n_stars: number; 
     t_object: string;
     t_body: string;
     t_image_link?: Array<string>;

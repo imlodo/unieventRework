@@ -17,6 +17,8 @@ import { FlatpickrModule } from 'angularx-flatpickr';
 import { CoreModule } from 'src/app/core/core.module';
 import { EventFilterFormComponent } from './forms/event-filter-form/event-filter-form.component';
 import { NgSelectModule } from '@ng-select/ng-select';
+import { EventBestTicketFormComponent } from './forms/event-best-ticket-form/event-best-ticket-form.component';
+import { EventPlanSeatTicketFormComponent } from './forms/event-plan-seat-ticket-form/event-plan-seat-ticket-form.component';
 
 
 @NgModule({
@@ -28,7 +30,9 @@ import { NgSelectModule } from '@ng-select/ng-select';
     EventDetailFormComponent,
     EventListComponent,
     EventTicketListComponent,
-    EventFilterFormComponent
+    EventFilterFormComponent,
+    EventBestTicketFormComponent,
+    EventPlanSeatTicketFormComponent
   ],
   imports: [
     CommonModule,
