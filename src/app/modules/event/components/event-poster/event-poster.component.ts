@@ -19,7 +19,7 @@ export class EventPosterComponent implements AfterViewInit {
   @Output() onBuy: EventEmitter<void> = new EventEmitter();
 
   constructor(private cdr: ChangeDetectorRef) {
-    
+
   }
 
   ngAfterViewInit(): void {
@@ -33,30 +33,29 @@ export class EventPosterComponent implements AfterViewInit {
   }
 
   setEventRangeDate() {
-    this.minStartDate = this.eventData.t_event_dates[0];
-    this.maxStartDate = this.eventData.t_event_dates[this.eventData.t_event_dates.length - 1]
+    this.minStartDate = this.eventData.t_event_date;
+    this.maxStartDate = this.eventData.t_event_date;
     if (this.groupEvents.length) {
       this.groupEvents.forEach(el => {
-        el.t_event_dates.forEach(date=>{
-          if(this.minStartDate > date)
-            this.minStartDate = date;
-        });
-        el.t_event_dates.forEach(date=>{
-          if(this.maxStartDate < date)
-            this.maxStartDate = date;
-        });
+        if (this.minStartDate > el.t_event_date)
+          this.minStartDate = el.t_event_date;
+        if (this.maxStartDate < el.t_event_date)
+          this.maxStartDate = el.t_event_date;
       })
     }
   }
 
   setMinPrice() {
     this.groupEvents.forEach(el => {
-      el.t_price.forEach(el => {
-        if (!this.minPrice)
-          this.minPrice = el.ticket_price;
-        if (this.minPrice > el.ticket_price)
-          this.minPrice = el.ticket_price;
+      el.t_map_list.forEach(t_maps =>{
+        t_maps.t_object_maps.forEach(map => {
+          if (!this.minPrice)
+            this.minPrice = map.n_object_price;
+          if (this.minPrice > map.n_object_price)
+            this.minPrice = map.n_object_price;
+        });
       });
+      
     });
   }
 

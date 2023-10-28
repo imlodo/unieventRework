@@ -5,7 +5,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { pluck } from 'rxjs';
 import { ROUTE_LIST, allEventList } from '../../../../core/utility/global-constant';
 import { EventPosterComponent } from '../event-poster/event-poster.component';
-import { Event } from 'src/app/core/models/event';
 
 @Component({
   selector: 'app-event-detail',
@@ -57,42 +56,7 @@ export class EventDetailComponent implements AfterViewInit {
   }
 
   getGroupEvents(n_group_id: number) {
-    let tmpGroupEvents = allEventList.filter(el => el.n_group_id == n_group_id);
-    let groupEvents = new Array<Event>();
-    tmpGroupEvents.forEach(el => {
-      if (el.t_event_dates.length > 1) {
-        let tmpDateArray = [];
-        el.t_event_dates.forEach(date => {
-          let tmpEvent: Event = {
-            n_id: el.n_id,
-            n_group_id: el.n_group_id,
-            t_title: el.t_title,
-            t_image_link: el.t_image_link,
-            t_description: el.t_description,
-            t_type: el.t_type,
-            t_location: el.t_location,
-            t_event_dates: [date],
-            t_price: el.t_price,
-            t_service_price: el.t_service_price,
-            t_reviews: el.t_reviews,
-            t_bookings_list: el.t_bookings_list,
-            t_external_link: el.t_external_link,
-            t_artist_list: el.t_artist_list,
-            t_company: el.t_company,
-            b_external_event: el.b_external_event,
-            b_active: el.b_active,
-            n_click: el.n_click
-          }
-          if (!tmpDateArray[date.toLocaleDateString("it-it", { weekday: "long", year: "numeric", month: "long", day: "numeric" })]) {
-            tmpDateArray[date.toLocaleDateString("it-it", { weekday: "long", year: "numeric", month: "long", day: "numeric" })] = true;
-            groupEvents.push(tmpEvent);
-          }
-        });
-      } else {
-        groupEvents.push(el);
-      }
-    });
-    
+    let groupEvents = allEventList.filter(el => el.n_group_id == n_group_id);
     this.elc.setEventList(groupEvents);
     this.epc.groupEvents = groupEvents;
     this.epc.initializeData();

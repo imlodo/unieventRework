@@ -37,11 +37,11 @@ export class EventBestTicketFormComponent {
   get ticket_price() {
     return this.form.get("ticket_price").value;
   }
-  get ticket_total_limit() {
-    return this.form.get("ticket_total_limit").value;
-  }
   get ticket_person_limit() {
     return this.form.get("ticket_person_limit").value;
+  }
+  get ticket_is_available(){
+    return this.form.get('ticket_is_available').value;
   }
 
   set n_id_ticket(n_id_ticket: number) {
@@ -56,11 +56,11 @@ export class EventBestTicketFormComponent {
   set ticket_price(ticket_price: number) {
     this.form.get("ticket_price").setValue(ticket_price);
   }
-  set ticket_total_limit(ticket_total_limit: number) {
-    this.form.get("ticket_total_limit").setValue(ticket_total_limit);
-  }
   set ticket_person_limit(ticket_person_limit: number) {
     this.form.get("ticket_person_limit").setValue(ticket_person_limit);
+  }
+  set ticket_is_available(ticket_is_available:boolean){
+    this.form.get('ticket_is_available').setValue(ticket_is_available);
   }
 
   isValid() : boolean {

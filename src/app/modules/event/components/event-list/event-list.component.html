@@ -28,11 +28,11 @@
                     <div [ngClass]="currentScreenSize != 'xl' && currentScreenSize != 'lg' ? 'col-xs-12 border-bottom' : 'border-end p-3' "
                         class=" text-center d-grid align-items-center justify-content-center p-2"
                         style="justify-items: center; min-width: 110px;">
-                        <h1 class="text-event-color-primary m-0">{{el.t_event_dates[0].toLocaleDateString('it-it',
+                        <h1 class="text-event-color-primary m-0">{{el.t_event_date.toLocaleDateString('it-it',
                             {day:"numeric"})}}</h1>
-                        <h4 class="m-0">{{el.t_event_dates[0].toLocaleDateString('it-it', {month:"short",
+                        <h4 class="m-0">{{el.t_event_date.toLocaleDateString('it-it', {month:"short",
                             year:"numeric"})}}</h4>
-                        <h5 class="m-0">{{el.t_event_dates[0].toLocaleDateString('it-it', {weekday:"short", hour:
+                        <h5 class="m-0">{{el.t_event_date.toLocaleDateString('it-it', {weekday:"short", hour:
                             '2-digit', minute: '2-digit'})}}</h5>
                     </div>
                     <div
@@ -86,7 +86,7 @@
             <span class="fw-light h3 col-12">{{ day.date | calendarDate:'monthViewDayNumber':locale }}</span>
             <span class="col-12" *ngIf="day.events.length > 0">{{day.events[0].title|uppercase}}</span>
             <span style="font-size:0.75rem" class="col-12" *ngIf="day.events.length > 0">{{day.events[0].meta.eventData.t_location.t_location_name}}</span>
-            <span style="font-size:0.75rem" class="col-12" *ngIf="day.events.length > 0">{{day.events[0].meta.eventData.t_event_dates?.[0].toLocaleDateString('it-it',{weekday:"short",hour:'2-digit', minute: '2-digit'})}}</span>
+            <span style="font-size:0.75rem" class="col-12" *ngIf="day.events.length > 0">{{day.events[0].meta.eventData.t_event_date?.toLocaleDateString('it-it',{weekday:"short",hour:'2-digit', minute: '2-digit'})}}</span>
             <span style="font-size:0.75rem" class="col-12 text-event-color-primary" *ngIf="day.events.length > 0">da {{getMinPriceForEvent(day.events[0].meta.eventData)}} €</span>
         </div>
         <div class="cal-cell-top" *ngIf="currentScreenSize != 'xl' && currentScreenSize != 'lg'">
@@ -118,12 +118,12 @@
                         class=" text-center d-grid align-items-center justify-content-center p-2"
                         style="justify-items: center; min-width: 110px;">
                         <h1 class="text-event-color-primary m-0">
-                            {{event.meta.eventData.t_event_dates?.[0].toLocaleDateString('it-it',
+                            {{event.meta.eventData.t_event_date?.toLocaleDateString('it-it',
                             {day:"numeric"})}}</h1>
-                        <h4 class="m-0">{{event.meta.eventData.t_event_dates?.[0].toLocaleDateString('it-it',
+                        <h4 class="m-0">{{event.meta.eventData.t_event_date?.toLocaleDateString('it-it',
                             {month:"short",
                             year:"numeric"})}}</h4>
-                        <h5 class="m-0">{{event.meta.eventData.t_event_dates?.[0].toLocaleDateString('it-it',
+                        <h5 class="m-0">{{event.meta.eventData.t_event_date?.toLocaleDateString('it-it',
                             {weekday:"short", hour:
                             '2-digit', minute: '2-digit'})}}</h5>
                     </div>

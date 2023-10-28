@@ -4,8 +4,8 @@ import { UserInfo } from "./userInfo";
 import { EventLocation } from "./eventLocation";
 import { EventReview } from "./eventReview";
 import { EventService } from "./eventService";
-import { ObjectMap } from "./objectMap";
 import { EventDiscussion } from "./eventDiscussion";
+import { Map } from "./map";
 
 export interface Event {
     n_id: number;
@@ -17,7 +17,7 @@ export interface Event {
     t_external_link?: string;
     t_event_date: Date; //Data Evento, considerare anche gli orari
     t_service_list?: Array<EventService>;
-    t_map: Array<ObjectMap>;
+    t_map_list: Array<Map>;
     t_reviews?: Array<EventReview>;
     t_discussions?: Array<EventDiscussion>;
     t_artist_list?: Array<EventArtist>;

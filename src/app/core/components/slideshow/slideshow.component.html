@@ -19,7 +19,7 @@
             <div _ngcontent-ng-c3127344369="" class="photo-gradient"></div>
             <div class="carousel-caption d-grid align-items-center align-content-center justify-content-center p-lg-4 p-3 m-3 " style="top:0">
                 <p class="h1 h1-mobile pb-3 slide-caption-p-padding-margin">{{el.t_title}}</p>
-                <p class="h6 h6-mobile pb-3 slide-caption-p-padding-margin">📅 {{el.t_event_dates[0].toLocaleDateString('it-it', { weekday:"long", year:"numeric", month:"long",
+                <p class="h6 h6-mobile pb-3 slide-caption-p-padding-margin">📅 {{el.t_event_date.toLocaleDateString('it-it', { weekday:"long", year:"numeric", month:"long",
                     day:"numeric"})}}</p>
                 <p class="h6 h6-mobile pb-3 slide-caption-p-padding-margin">📌 {{el.t_location.t_address +", "+el.t_location.t_cap+", "+el.t_location.t_city+" ("+el.t_location.t_province+")"}}</p>
                 <div class="d-flex justify-content-center">

@@ -22,6 +22,7 @@ export enum EVENT_TICKET_TYPE {
 export interface OBJECT_MAP_TYPE {
     TABLE?: {
         DISCOTECA?: boolean;
+        DISCOTECA_DJ?: boolean;
     },
     SEAT?: {
         TYPE: {
@@ -84,166 +85,174 @@ export const eventOrderedBySell: Array<Event> = [
                 }
             }
         ],
-        t_map: [
+        t_map_list: [
             {
-                n_id: 1,
-                n_id_event: 1,
-                n_min_num_person: 8,
-                n_max_num_person: 15,
-                n_limit_buy_for_person: 1,
-                n_object_price: 700,
-                t_map_cord_x: 1,
-                t_map_cord_y: 2,
-                t_map_cord_z: 1,
-                t_note: "Tavolo normale, inclusa una consumazione da 500€",
-                t_type: {
-                    TABLE: {
-                        DISCOTECA: true
+                t_map_name: "Sala Superiore",
+                t_map_event_id: 1,
+                t_map_id: 1,
+                t_map_total_seat: 300,
+                t_object_maps: [
+                    {
+                        n_id: 1,
+                        n_id_event: 1,
+                        n_min_num_person: 8,
+                        n_max_num_person: 15,
+                        n_limit_buy_for_person: 1,
+                        n_object_price: 700,
+                        t_map_cord_x: 1,
+                        t_map_cord_y: 2,
+                        t_map_cord_z: 1,
+                        t_note: "Tavolo normale, inclusa una consumazione da 500€",
+                        t_type: {
+                            TABLE: {
+                                DISCOTECA: true
+                            }
+                        },
+                        t_seat_list: [
+                            {
+                                n_seat_num: 14,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: true
+                            },
+                            {
+                                n_seat_num: 15,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: true
+                            },
+                            {
+                                n_seat_num: 16,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: true
+                            },
+                            {
+                                n_seat_num: 17,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: true
+                            },
+                            {
+                                n_seat_num: 18,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: true
+                            },
+                            {
+                                n_seat_num: 19,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: true
+                            },
+                            {
+                                n_seat_num: 20,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: true
+                            },
+                            {
+                                n_seat_num: 21,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: false
+                            },
+                            {
+                                n_seat_num: 22,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: false
+                            },
+                            {
+                                n_seat_num: 23,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: false
+                            },
+                            {
+                                n_seat_num: 24,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: false
+                            },
+                            {
+                                n_seat_num: 25,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: false
+                            },
+                            {
+                                n_seat_num: 25,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: false
+                            },
+                            {
+                                n_seat_num: 26,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: false
+                            },
+                            {
+                                n_seat_num: 27,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: false
+                            },
+                        ]
+                    },
+                    {
+                        n_id: 2,
+                        n_id_event: 1,
+                        n_limit_buy_for_person: 5,
+                        n_object_price: 10,
+                        t_map_cord_x: 5,
+                        t_map_cord_y: 25,
+                        t_map_cord_z: 1,
+                        t_note: "Non inclusa consumazione",
+                        t_type: {
+                            SEAT: {
+                                TYPE: {
+                                    NO_CONSUMATION: true
+                                }
+                            }
+                        },
+                        t_seat_list: [
+                            {
+                                n_seat_num: 1,
+                                n_object_map_id: 2,
+                                n_id_event: 1,
+                                is_sell: false
+                            },
+                        ]
+                    },
+                    {
+                        n_id: 3,
+                        n_id_event: 1,
+                        n_limit_buy_for_person: 6,
+                        n_object_price: 20,
+                        t_map_cord_x: 6,
+                        t_map_cord_y: 26,
+                        t_map_cord_z: 1,
+                        t_note: "Consumazione di 2 cocktail inclusa",
+                        t_type: {
+                            SEAT: {
+                                TYPE: {
+                                    WITH_CONSUMATION: true
+                                }
+                            }
+                        },
+                        t_seat_list: [
+                            {
+                                n_seat_num: 2,
+                                n_object_map_id: 3,
+                                n_id_event: 1,
+                                is_sell: false
+                            },
+                        ]
                     }
-                },
-                t_seat_list: [
-                    {
-                        n_seat_num: 14,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: true
-                    },
-                    {
-                        n_seat_num: 15,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: true
-                    },
-                    {
-                        n_seat_num: 16,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: true
-                    },
-                    {
-                        n_seat_num: 17,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: true
-                    },
-                    {
-                        n_seat_num: 18,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: true
-                    },
-                    {
-                        n_seat_num: 19,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: true
-                    },
-                    {
-                        n_seat_num: 20,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: true
-                    },
-                    {
-                        n_seat_num: 21,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: false
-                    },
-                    {
-                        n_seat_num: 22,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: false
-                    },
-                    {
-                        n_seat_num: 23,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: false
-                    },
-                    {
-                        n_seat_num: 24,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: false
-                    },
-                    {
-                        n_seat_num: 25,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: false
-                    },
-                    {
-                        n_seat_num: 25,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: false
-                    },
-                    {
-                        n_seat_num: 26,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: false
-                    },
-                    {
-                        n_seat_num: 27,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: false
-                    },
                 ]
-            },
-            {
-                n_id: 2,
-                n_id_event: 1,
-                n_limit_buy_for_person: 5,
-                n_object_price: 10,
-                t_map_cord_x: 5,
-                t_map_cord_y: 25,
-                t_map_cord_z: 1,
-                t_note: "Non inclusa consumazione",
-                t_type: {
-                    SEAT: {
-                        TYPE: {
-                            NO_CONSUMATION: true
-                        }
-                    }
-                },
-                t_seat_list: [
-                    {
-                        n_seat_num: 1,
-                        n_object_map_id: 2,
-                        n_id_event: 1,
-                        is_sell: false
-                    },
-                ]
-            },
-            {
-                n_id: 3,
-                n_id_event: 1,
-                n_limit_buy_for_person: 6,
-                n_object_price: 20,
-                t_map_cord_x: 6,
-                t_map_cord_y: 26,
-                t_map_cord_z: 1,
-                t_note: "Consumazione di 2 cocktail inclusa",
-                t_type: {
-                    SEAT: {
-                        TYPE: {
-                            WITH_CONSUMATION: true
-                        }
-                    }
-                },
-                t_seat_list: [
-                    {
-                        n_seat_num: 2,
-                        n_object_map_id: 3,
-                        n_id_event: 1,
-                        is_sell: false
-                    },
-                ]
-            },
+            }
         ],
         t_reviews: [
             {
@@ -331,166 +340,174 @@ export const eventOrderedBySell: Array<Event> = [
                 }
             }
         ],
-        t_map: [
+        t_map_list: [
             {
-                n_id: 1,
-                n_id_event: 1,
-                n_min_num_person: 8,
-                n_max_num_person: 15,
-                n_limit_buy_for_person: 1,
-                n_object_price: 700,
-                t_map_cord_x: 1,
-                t_map_cord_y: 2,
-                t_map_cord_z: 1,
-                t_note: "Tavolo normale, inclusa una consumazione da 500€",
-                t_type: {
-                    TABLE: {
-                        DISCOTECA: true
+                t_map_name: "Sala Superiore",
+                t_map_event_id: 1,
+                t_map_id: 1,
+                t_map_total_seat: 300,
+                t_object_maps: [
+                    {
+                        n_id: 1,
+                        n_id_event: 1,
+                        n_min_num_person: 8,
+                        n_max_num_person: 15,
+                        n_limit_buy_for_person: 1,
+                        n_object_price: 700,
+                        t_map_cord_x: 1,
+                        t_map_cord_y: 2,
+                        t_map_cord_z: 1,
+                        t_note: "Tavolo normale, inclusa una consumazione da 500€",
+                        t_type: {
+                            TABLE: {
+                                DISCOTECA: true
+                            }
+                        },
+                        t_seat_list: [
+                            {
+                                n_seat_num: 14,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: true
+                            },
+                            {
+                                n_seat_num: 15,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: true
+                            },
+                            {
+                                n_seat_num: 16,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: true
+                            },
+                            {
+                                n_seat_num: 17,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: true
+                            },
+                            {
+                                n_seat_num: 18,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: true
+                            },
+                            {
+                                n_seat_num: 19,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: true
+                            },
+                            {
+                                n_seat_num: 20,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: true
+                            },
+                            {
+                                n_seat_num: 21,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: false
+                            },
+                            {
+                                n_seat_num: 22,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: false
+                            },
+                            {
+                                n_seat_num: 23,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: false
+                            },
+                            {
+                                n_seat_num: 24,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: false
+                            },
+                            {
+                                n_seat_num: 25,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: false
+                            },
+                            {
+                                n_seat_num: 25,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: false
+                            },
+                            {
+                                n_seat_num: 26,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: false
+                            },
+                            {
+                                n_seat_num: 27,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: false
+                            },
+                        ]
+                    },
+                    {
+                        n_id: 2,
+                        n_id_event: 1,
+                        n_limit_buy_for_person: 5,
+                        n_object_price: 10,
+                        t_map_cord_x: 5,
+                        t_map_cord_y: 25,
+                        t_map_cord_z: 1,
+                        t_note: "Non inclusa consumazione",
+                        t_type: {
+                            SEAT: {
+                                TYPE: {
+                                    NO_CONSUMATION: true
+                                }
+                            }
+                        },
+                        t_seat_list: [
+                            {
+                                n_seat_num: 1,
+                                n_object_map_id: 2,
+                                n_id_event: 1,
+                                is_sell: false
+                            },
+                        ]
+                    },
+                    {
+                        n_id: 3,
+                        n_id_event: 1,
+                        n_limit_buy_for_person: 6,
+                        n_object_price: 20,
+                        t_map_cord_x: 6,
+                        t_map_cord_y: 26,
+                        t_map_cord_z: 1,
+                        t_note: "Consumazione di 2 cocktail inclusa",
+                        t_type: {
+                            SEAT: {
+                                TYPE: {
+                                    WITH_CONSUMATION: true
+                                }
+                            }
+                        },
+                        t_seat_list: [
+                            {
+                                n_seat_num: 2,
+                                n_object_map_id: 3,
+                                n_id_event: 1,
+                                is_sell: false
+                            },
+                        ]
                     }
-                },
-                t_seat_list: [
-                    {
-                        n_seat_num: 14,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: true
-                    },
-                    {
-                        n_seat_num: 15,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: true
-                    },
-                    {
-                        n_seat_num: 16,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: true
-                    },
-                    {
-                        n_seat_num: 17,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: true
-                    },
-                    {
-                        n_seat_num: 18,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: true
-                    },
-                    {
-                        n_seat_num: 19,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: true
-                    },
-                    {
-                        n_seat_num: 20,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: true
-                    },
-                    {
-                        n_seat_num: 21,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: false
-                    },
-                    {
-                        n_seat_num: 22,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: false
-                    },
-                    {
-                        n_seat_num: 23,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: false
-                    },
-                    {
-                        n_seat_num: 24,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: false
-                    },
-                    {
-                        n_seat_num: 25,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: false
-                    },
-                    {
-                        n_seat_num: 25,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: false
-                    },
-                    {
-                        n_seat_num: 26,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: false
-                    },
-                    {
-                        n_seat_num: 27,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: false
-                    },
                 ]
-            },
-            {
-                n_id: 2,
-                n_id_event: 1,
-                n_limit_buy_for_person: 5,
-                n_object_price: 10,
-                t_map_cord_x: 5,
-                t_map_cord_y: 25,
-                t_map_cord_z: 1,
-                t_note: "Non inclusa consumazione",
-                t_type: {
-                    SEAT: {
-                        TYPE: {
-                            NO_CONSUMATION: true
-                        }
-                    }
-                },
-                t_seat_list: [
-                    {
-                        n_seat_num: 1,
-                        n_object_map_id: 2,
-                        n_id_event: 1,
-                        is_sell: false
-                    },
-                ]
-            },
-            {
-                n_id: 3,
-                n_id_event: 1,
-                n_limit_buy_for_person: 6,
-                n_object_price: 20,
-                t_map_cord_x: 6,
-                t_map_cord_y: 26,
-                t_map_cord_z: 1,
-                t_note: "Consumazione di 2 cocktail inclusa",
-                t_type: {
-                    SEAT: {
-                        TYPE: {
-                            WITH_CONSUMATION: true
-                        }
-                    }
-                },
-                t_seat_list: [
-                    {
-                        n_seat_num: 2,
-                        n_object_map_id: 3,
-                        n_id_event: 1,
-                        is_sell: false
-                    },
-                ]
-            },
+            }
         ],
         t_reviews: [
             {
@@ -577,166 +594,174 @@ export const eventOrderedBySell: Array<Event> = [
                 }
             }
         ],
-        t_map: [
+        t_map_list: [
             {
-                n_id: 1,
-                n_id_event: 1,
-                n_min_num_person: 8,
-                n_max_num_person: 15,
-                n_limit_buy_for_person: 1,
-                n_object_price: 700,
-                t_map_cord_x: 1,
-                t_map_cord_y: 2,
-                t_map_cord_z: 1,
-                t_note: "Tavolo normale, inclusa una consumazione da 500€",
-                t_type: {
-                    TABLE: {
-                        DISCOTECA: true
+                t_map_name: "Sala Superiore",
+                t_map_event_id: 1,
+                t_map_id: 1,
+                t_map_total_seat: 300,
+                t_object_maps: [
+                    {
+                        n_id: 1,
+                        n_id_event: 1,
+                        n_min_num_person: 8,
+                        n_max_num_person: 15,
+                        n_limit_buy_for_person: 1,
+                        n_object_price: 700,
+                        t_map_cord_x: 1,
+                        t_map_cord_y: 2,
+                        t_map_cord_z: 1,
+                        t_note: "Tavolo normale, inclusa una consumazione da 500€",
+                        t_type: {
+                            TABLE: {
+                                DISCOTECA: true
+                            }
+                        },
+                        t_seat_list: [
+                            {
+                                n_seat_num: 14,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: true
+                            },
+                            {
+                                n_seat_num: 15,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: true
+                            },
+                            {
+                                n_seat_num: 16,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: true
+                            },
+                            {
+                                n_seat_num: 17,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: true
+                            },
+                            {
+                                n_seat_num: 18,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: true
+                            },
+                            {
+                                n_seat_num: 19,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: true
+                            },
+                            {
+                                n_seat_num: 20,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: true
+                            },
+                            {
+                                n_seat_num: 21,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: false
+                            },
+                            {
+                                n_seat_num: 22,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: false
+                            },
+                            {
+                                n_seat_num: 23,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: false
+                            },
+                            {
+                                n_seat_num: 24,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: false
+                            },
+                            {
+                                n_seat_num: 25,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: false
+                            },
+                            {
+                                n_seat_num: 25,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: false
+                            },
+                            {
+                                n_seat_num: 26,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: false
+                            },
+                            {
+                                n_seat_num: 27,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: false
+                            },
+                        ]
+                    },
+                    {
+                        n_id: 2,
+                        n_id_event: 1,
+                        n_limit_buy_for_person: 5,
+                        n_object_price: 10,
+                        t_map_cord_x: 5,
+                        t_map_cord_y: 25,
+                        t_map_cord_z: 1,
+                        t_note: "Non inclusa consumazione",
+                        t_type: {
+                            SEAT: {
+                                TYPE: {
+                                    NO_CONSUMATION: true
+                                }
+                            }
+                        },
+                        t_seat_list: [
+                            {
+                                n_seat_num: 1,
+                                n_object_map_id: 2,
+                                n_id_event: 1,
+                                is_sell: false
+                            },
+                        ]
+                    },
+                    {
+                        n_id: 3,
+                        n_id_event: 1,
+                        n_limit_buy_for_person: 6,
+                        n_object_price: 20,
+                        t_map_cord_x: 6,
+                        t_map_cord_y: 26,
+                        t_map_cord_z: 1,
+                        t_note: "Consumazione di 2 cocktail inclusa",
+                        t_type: {
+                            SEAT: {
+                                TYPE: {
+                                    WITH_CONSUMATION: true
+                                }
+                            }
+                        },
+                        t_seat_list: [
+                            {
+                                n_seat_num: 2,
+                                n_object_map_id: 3,
+                                n_id_event: 1,
+                                is_sell: false
+                            },
+                        ]
                     }
-                },
-                t_seat_list: [
-                    {
-                        n_seat_num: 14,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: true
-                    },
-                    {
-                        n_seat_num: 15,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: true
-                    },
-                    {
-                        n_seat_num: 16,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: true
-                    },
-                    {
-                        n_seat_num: 17,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: true
-                    },
-                    {
-                        n_seat_num: 18,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: true
-                    },
-                    {
-                        n_seat_num: 19,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: true
-                    },
-                    {
-                        n_seat_num: 20,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: true
-                    },
-                    {
-                        n_seat_num: 21,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: false
-                    },
-                    {
-                        n_seat_num: 22,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: false
-                    },
-                    {
-                        n_seat_num: 23,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: false
-                    },
-                    {
-                        n_seat_num: 24,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: false
-                    },
-                    {
-                        n_seat_num: 25,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: false
-                    },
-                    {
-                        n_seat_num: 25,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: false
-                    },
-                    {
-                        n_seat_num: 26,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: false
-                    },
-                    {
-                        n_seat_num: 27,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: false
-                    },
                 ]
-            },
-            {
-                n_id: 2,
-                n_id_event: 1,
-                n_limit_buy_for_person: 5,
-                n_object_price: 10,
-                t_map_cord_x: 5,
-                t_map_cord_y: 25,
-                t_map_cord_z: 1,
-                t_note: "Non inclusa consumazione",
-                t_type: {
-                    SEAT: {
-                        TYPE: {
-                            NO_CONSUMATION: true
-                        }
-                    }
-                },
-                t_seat_list: [
-                    {
-                        n_seat_num: 1,
-                        n_object_map_id: 2,
-                        n_id_event: 1,
-                        is_sell: false
-                    },
-                ]
-            },
-            {
-                n_id: 3,
-                n_id_event: 1,
-                n_limit_buy_for_person: 6,
-                n_object_price: 20,
-                t_map_cord_x: 6,
-                t_map_cord_y: 26,
-                t_map_cord_z: 1,
-                t_note: "Consumazione di 2 cocktail inclusa",
-                t_type: {
-                    SEAT: {
-                        TYPE: {
-                            WITH_CONSUMATION: true
-                        }
-                    }
-                },
-                t_seat_list: [
-                    {
-                        n_seat_num: 2,
-                        n_object_map_id: 3,
-                        n_id_event: 1,
-                        is_sell: false
-                    },
-                ]
-            },
+            }
         ],
         t_reviews: [
             {
@@ -802,7 +827,7 @@ export const eventOrderedBySell: Array<Event> = [
             t_location_name: "I padovani pazzi"
         },
         t_event_date: new Date("2024-09-20"),
-        t_map: [],
+        t_map_list: [],
         t_type: EVENT_TYPE.PARTY,
         b_active: true,
         b_external_event: true,
@@ -854,166 +879,174 @@ export const eventOrderedBySell: Array<Event> = [
                 }
             }
         ],
-        t_map: [
+        t_map_list: [
             {
-                n_id: 1,
-                n_id_event: 1,
-                n_min_num_person: 8,
-                n_max_num_person: 15,
-                n_limit_buy_for_person: 1,
-                n_object_price: 700,
-                t_map_cord_x: 1,
-                t_map_cord_y: 2,
-                t_map_cord_z: 1,
-                t_note: "Tavolo normale, inclusa una consumazione da 500€",
-                t_type: {
-                    TABLE: {
-                        DISCOTECA: true
+                t_map_name: "Sala Superiore",
+                t_map_event_id: 1,
+                t_map_id: 1,
+                t_map_total_seat: 300,
+                t_object_maps: [
+                    {
+                        n_id: 1,
+                        n_id_event: 1,
+                        n_min_num_person: 8,
+                        n_max_num_person: 15,
+                        n_limit_buy_for_person: 1,
+                        n_object_price: 700,
+                        t_map_cord_x: 1,
+                        t_map_cord_y: 2,
+                        t_map_cord_z: 1,
+                        t_note: "Tavolo normale, inclusa una consumazione da 500€",
+                        t_type: {
+                            TABLE: {
+                                DISCOTECA: true
+                            }
+                        },
+                        t_seat_list: [
+                            {
+                                n_seat_num: 14,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: true
+                            },
+                            {
+                                n_seat_num: 15,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: true
+                            },
+                            {
+                                n_seat_num: 16,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: true
+                            },
+                            {
+                                n_seat_num: 17,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: true
+                            },
+                            {
+                                n_seat_num: 18,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: true
+                            },
+                            {
+                                n_seat_num: 19,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: true
+                            },
+                            {
+                                n_seat_num: 20,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: true
+                            },
+                            {
+                                n_seat_num: 21,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: false
+                            },
+                            {
+                                n_seat_num: 22,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: false
+                            },
+                            {
+                                n_seat_num: 23,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: false
+                            },
+                            {
+                                n_seat_num: 24,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: false
+                            },
+                            {
+                                n_seat_num: 25,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: false
+                            },
+                            {
+                                n_seat_num: 25,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: false
+                            },
+                            {
+                                n_seat_num: 26,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: false
+                            },
+                            {
+                                n_seat_num: 27,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: false
+                            },
+                        ]
+                    },
+                    {
+                        n_id: 2,
+                        n_id_event: 1,
+                        n_limit_buy_for_person: 5,
+                        n_object_price: 10,
+                        t_map_cord_x: 5,
+                        t_map_cord_y: 25,
+                        t_map_cord_z: 1,
+                        t_note: "Non inclusa consumazione",
+                        t_type: {
+                            SEAT: {
+                                TYPE: {
+                                    NO_CONSUMATION: true
+                                }
+                            }
+                        },
+                        t_seat_list: [
+                            {
+                                n_seat_num: 1,
+                                n_object_map_id: 2,
+                                n_id_event: 1,
+                                is_sell: false
+                            },
+                        ]
+                    },
+                    {
+                        n_id: 3,
+                        n_id_event: 1,
+                        n_limit_buy_for_person: 6,
+                        n_object_price: 20,
+                        t_map_cord_x: 6,
+                        t_map_cord_y: 26,
+                        t_map_cord_z: 1,
+                        t_note: "Consumazione di 2 cocktail inclusa",
+                        t_type: {
+                            SEAT: {
+                                TYPE: {
+                                    WITH_CONSUMATION: true
+                                }
+                            }
+                        },
+                        t_seat_list: [
+                            {
+                                n_seat_num: 2,
+                                n_object_map_id: 3,
+                                n_id_event: 1,
+                                is_sell: false
+                            },
+                        ]
                     }
-                },
-                t_seat_list: [
-                    {
-                        n_seat_num: 14,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: true
-                    },
-                    {
-                        n_seat_num: 15,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: true
-                    },
-                    {
-                        n_seat_num: 16,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: true
-                    },
-                    {
-                        n_seat_num: 17,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: true
-                    },
-                    {
-                        n_seat_num: 18,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: true
-                    },
-                    {
-                        n_seat_num: 19,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: true
-                    },
-                    {
-                        n_seat_num: 20,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: true
-                    },
-                    {
-                        n_seat_num: 21,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: false
-                    },
-                    {
-                        n_seat_num: 22,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: false
-                    },
-                    {
-                        n_seat_num: 23,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: false
-                    },
-                    {
-                        n_seat_num: 24,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: false
-                    },
-                    {
-                        n_seat_num: 25,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: false
-                    },
-                    {
-                        n_seat_num: 25,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: false
-                    },
-                    {
-                        n_seat_num: 26,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: false
-                    },
-                    {
-                        n_seat_num: 27,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: false
-                    },
                 ]
-            },
-            {
-                n_id: 2,
-                n_id_event: 1,
-                n_limit_buy_for_person: 5,
-                n_object_price: 10,
-                t_map_cord_x: 5,
-                t_map_cord_y: 25,
-                t_map_cord_z: 1,
-                t_note: "Non inclusa consumazione",
-                t_type: {
-                    SEAT: {
-                        TYPE: {
-                            NO_CONSUMATION: true
-                        }
-                    }
-                },
-                t_seat_list: [
-                    {
-                        n_seat_num: 1,
-                        n_object_map_id: 2,
-                        n_id_event: 1,
-                        is_sell: false
-                    },
-                ]
-            },
-            {
-                n_id: 3,
-                n_id_event: 1,
-                n_limit_buy_for_person: 6,
-                n_object_price: 20,
-                t_map_cord_x: 6,
-                t_map_cord_y: 26,
-                t_map_cord_z: 1,
-                t_note: "Consumazione di 2 cocktail inclusa",
-                t_type: {
-                    SEAT: {
-                        TYPE: {
-                            WITH_CONSUMATION: true
-                        }
-                    }
-                },
-                t_seat_list: [
-                    {
-                        n_seat_num: 2,
-                        n_object_map_id: 3,
-                        n_id_event: 1,
-                        is_sell: false
-                    },
-                ]
-            },
+            }
         ],
         t_reviews: [
             {
@@ -1100,166 +1133,174 @@ export const eventOrderedBySell: Array<Event> = [
                 }
             }
         ],
-        t_map: [
+        t_map_list: [
             {
-                n_id: 1,
-                n_id_event: 1,
-                n_min_num_person: 8,
-                n_max_num_person: 15,
-                n_limit_buy_for_person: 1,
-                n_object_price: 700,
-                t_map_cord_x: 1,
-                t_map_cord_y: 2,
-                t_map_cord_z: 1,
-                t_note: "Tavolo normale, inclusa una consumazione da 500€",
-                t_type: {
-                    TABLE: {
-                        DISCOTECA: true
+                t_map_name: "Sala Superiore",
+                t_map_event_id: 1,
+                t_map_id: 1,
+                t_map_total_seat: 300,
+                t_object_maps: [
+                    {
+                        n_id: 1,
+                        n_id_event: 1,
+                        n_min_num_person: 8,
+                        n_max_num_person: 15,
+                        n_limit_buy_for_person: 1,
+                        n_object_price: 700,
+                        t_map_cord_x: 1,
+                        t_map_cord_y: 2,
+                        t_map_cord_z: 1,
+                        t_note: "Tavolo normale, inclusa una consumazione da 500€",
+                        t_type: {
+                            TABLE: {
+                                DISCOTECA: true
+                            }
+                        },
+                        t_seat_list: [
+                            {
+                                n_seat_num: 14,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: true
+                            },
+                            {
+                                n_seat_num: 15,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: true
+                            },
+                            {
+                                n_seat_num: 16,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: true
+                            },
+                            {
+                                n_seat_num: 17,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: true
+                            },
+                            {
+                                n_seat_num: 18,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: true
+                            },
+                            {
+                                n_seat_num: 19,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: true
+                            },
+                            {
+                                n_seat_num: 20,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: true
+                            },
+                            {
+                                n_seat_num: 21,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: false
+                            },
+                            {
+                                n_seat_num: 22,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: false
+                            },
+                            {
+                                n_seat_num: 23,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: false
+                            },
+                            {
+                                n_seat_num: 24,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: false
+                            },
+                            {
+                                n_seat_num: 25,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: false
+                            },
+                            {
+                                n_seat_num: 25,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: false
+                            },
+                            {
+                                n_seat_num: 26,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: false
+                            },
+                            {
+                                n_seat_num: 27,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: false
+                            },
+                        ]
+                    },
+                    {
+                        n_id: 2,
+                        n_id_event: 1,
+                        n_limit_buy_for_person: 5,
+                        n_object_price: 10,
+                        t_map_cord_x: 5,
+                        t_map_cord_y: 25,
+                        t_map_cord_z: 1,
+                        t_note: "Non inclusa consumazione",
+                        t_type: {
+                            SEAT: {
+                                TYPE: {
+                                    NO_CONSUMATION: true
+                                }
+                            }
+                        },
+                        t_seat_list: [
+                            {
+                                n_seat_num: 1,
+                                n_object_map_id: 2,
+                                n_id_event: 1,
+                                is_sell: false
+                            },
+                        ]
+                    },
+                    {
+                        n_id: 3,
+                        n_id_event: 1,
+                        n_limit_buy_for_person: 6,
+                        n_object_price: 20,
+                        t_map_cord_x: 6,
+                        t_map_cord_y: 26,
+                        t_map_cord_z: 1,
+                        t_note: "Consumazione di 2 cocktail inclusa",
+                        t_type: {
+                            SEAT: {
+                                TYPE: {
+                                    WITH_CONSUMATION: true
+                                }
+                            }
+                        },
+                        t_seat_list: [
+                            {
+                                n_seat_num: 2,
+                                n_object_map_id: 3,
+                                n_id_event: 1,
+                                is_sell: false
+                            },
+                        ]
                     }
-                },
-                t_seat_list: [
-                    {
-                        n_seat_num: 14,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: true
-                    },
-                    {
-                        n_seat_num: 15,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: true
-                    },
-                    {
-                        n_seat_num: 16,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: true
-                    },
-                    {
-                        n_seat_num: 17,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: true
-                    },
-                    {
-                        n_seat_num: 18,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: true
-                    },
-                    {
-                        n_seat_num: 19,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: true
-                    },
-                    {
-                        n_seat_num: 20,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: true
-                    },
-                    {
-                        n_seat_num: 21,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: false
-                    },
-                    {
-                        n_seat_num: 22,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: false
-                    },
-                    {
-                        n_seat_num: 23,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: false
-                    },
-                    {
-                        n_seat_num: 24,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: false
-                    },
-                    {
-                        n_seat_num: 25,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: false
-                    },
-                    {
-                        n_seat_num: 25,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: false
-                    },
-                    {
-                        n_seat_num: 26,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: false
-                    },
-                    {
-                        n_seat_num: 27,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: false
-                    },
                 ]
-            },
-            {
-                n_id: 2,
-                n_id_event: 1,
-                n_limit_buy_for_person: 5,
-                n_object_price: 10,
-                t_map_cord_x: 5,
-                t_map_cord_y: 25,
-                t_map_cord_z: 1,
-                t_note: "Non inclusa consumazione",
-                t_type: {
-                    SEAT: {
-                        TYPE: {
-                            NO_CONSUMATION: true
-                        }
-                    }
-                },
-                t_seat_list: [
-                    {
-                        n_seat_num: 1,
-                        n_object_map_id: 2,
-                        n_id_event: 1,
-                        is_sell: false
-                    },
-                ]
-            },
-            {
-                n_id: 3,
-                n_id_event: 1,
-                n_limit_buy_for_person: 6,
-                n_object_price: 20,
-                t_map_cord_x: 6,
-                t_map_cord_y: 26,
-                t_map_cord_z: 1,
-                t_note: "Consumazione di 2 cocktail inclusa",
-                t_type: {
-                    SEAT: {
-                        TYPE: {
-                            WITH_CONSUMATION: true
-                        }
-                    }
-                },
-                t_seat_list: [
-                    {
-                        n_seat_num: 2,
-                        n_object_map_id: 3,
-                        n_id_event: 1,
-                        is_sell: false
-                    },
-                ]
-            },
+            }
         ],
         t_reviews: [
             {
@@ -1341,166 +1382,174 @@ export const allEventList: Array<Event> = [
                 }
             }
         ],
-        t_map: [
+        t_map_list: [
             {
-                n_id: 1,
-                n_id_event: 1,
-                n_min_num_person: 8,
-                n_max_num_person: 15,
-                n_limit_buy_for_person: 1,
-                n_object_price: 700,
-                t_map_cord_x: 1,
-                t_map_cord_y: 2,
-                t_map_cord_z: 1,
-                t_note: "Tavolo normale, inclusa una consumazione da 500€",
-                t_type: {
-                    TABLE: {
-                        DISCOTECA: true
+                t_map_name: "Sala Superiore",
+                t_map_event_id: 1,
+                t_map_id: 1,
+                t_map_total_seat: 300,
+                t_object_maps: [
+                    {
+                        n_id: 1,
+                        n_id_event: 1,
+                        n_min_num_person: 8,
+                        n_max_num_person: 15,
+                        n_limit_buy_for_person: 1,
+                        n_object_price: 700,
+                        t_map_cord_x: 1,
+                        t_map_cord_y: 2,
+                        t_map_cord_z: 1,
+                        t_note: "Tavolo normale, inclusa una consumazione da 500€",
+                        t_type: {
+                            TABLE: {
+                                DISCOTECA: true
+                            }
+                        },
+                        t_seat_list: [
+                            {
+                                n_seat_num: 14,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: true
+                            },
+                            {
+                                n_seat_num: 15,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: true
+                            },
+                            {
+                                n_seat_num: 16,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: true
+                            },
+                            {
+                                n_seat_num: 17,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: true
+                            },
+                            {
+                                n_seat_num: 18,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: true
+                            },
+                            {
+                                n_seat_num: 19,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: true
+                            },
+                            {
+                                n_seat_num: 20,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: true
+                            },
+                            {
+                                n_seat_num: 21,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: false
+                            },
+                            {
+                                n_seat_num: 22,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: false
+                            },
+                            {
+                                n_seat_num: 23,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: false
+                            },
+                            {
+                                n_seat_num: 24,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: false
+                            },
+                            {
+                                n_seat_num: 25,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: false
+                            },
+                            {
+                                n_seat_num: 25,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: false
+                            },
+                            {
+                                n_seat_num: 26,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: false
+                            },
+                            {
+                                n_seat_num: 27,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: false
+                            },
+                        ]
+                    },
+                    {
+                        n_id: 2,
+                        n_id_event: 1,
+                        n_limit_buy_for_person: 5,
+                        n_object_price: 10,
+                        t_map_cord_x: 5,
+                        t_map_cord_y: 25,
+                        t_map_cord_z: 1,
+                        t_note: "Non inclusa consumazione",
+                        t_type: {
+                            SEAT: {
+                                TYPE: {
+                                    NO_CONSUMATION: true
+                                }
+                            }
+                        },
+                        t_seat_list: [
+                            {
+                                n_seat_num: 1,
+                                n_object_map_id: 2,
+                                n_id_event: 1,
+                                is_sell: false
+                            },
+                        ]
+                    },
+                    {
+                        n_id: 3,
+                        n_id_event: 1,
+                        n_limit_buy_for_person: 6,
+                        n_object_price: 20,
+                        t_map_cord_x: 6,
+                        t_map_cord_y: 26,
+                        t_map_cord_z: 1,
+                        t_note: "Consumazione di 2 cocktail inclusa",
+                        t_type: {
+                            SEAT: {
+                                TYPE: {
+                                    WITH_CONSUMATION: true
+                                }
+                            }
+                        },
+                        t_seat_list: [
+                            {
+                                n_seat_num: 2,
+                                n_object_map_id: 3,
+                                n_id_event: 1,
+                                is_sell: false
+                            },
+                        ]
                     }
-                },
-                t_seat_list: [
-                    {
-                        n_seat_num: 14,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: true
-                    },
-                    {
-                        n_seat_num: 15,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: true
-                    },
-                    {
-                        n_seat_num: 16,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: true
-                    },
-                    {
-                        n_seat_num: 17,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: true
-                    },
-                    {
-                        n_seat_num: 18,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: true
-                    },
-                    {
-                        n_seat_num: 19,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: true
-                    },
-                    {
-                        n_seat_num: 20,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: true
-                    },
-                    {
-                        n_seat_num: 21,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: false
-                    },
-                    {
-                        n_seat_num: 22,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: false
-                    },
-                    {
-                        n_seat_num: 23,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: false
-                    },
-                    {
-                        n_seat_num: 24,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: false
-                    },
-                    {
-                        n_seat_num: 25,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: false
-                    },
-                    {
-                        n_seat_num: 25,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: false
-                    },
-                    {
-                        n_seat_num: 26,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: false
-                    },
-                    {
-                        n_seat_num: 27,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: false
-                    },
                 ]
-            },
-            {
-                n_id: 2,
-                n_id_event: 1,
-                n_limit_buy_for_person: 5,
-                n_object_price: 10,
-                t_map_cord_x: 5,
-                t_map_cord_y: 25,
-                t_map_cord_z: 1,
-                t_note: "Non inclusa consumazione",
-                t_type: {
-                    SEAT: {
-                        TYPE: {
-                            NO_CONSUMATION: true
-                        }
-                    }
-                },
-                t_seat_list: [
-                    {
-                        n_seat_num: 1,
-                        n_object_map_id: 2,
-                        n_id_event: 1,
-                        is_sell: false
-                    },
-                ]
-            },
-            {
-                n_id: 3,
-                n_id_event: 1,
-                n_limit_buy_for_person: 6,
-                n_object_price: 20,
-                t_map_cord_x: 6,
-                t_map_cord_y: 26,
-                t_map_cord_z: 1,
-                t_note: "Consumazione di 2 cocktail inclusa",
-                t_type: {
-                    SEAT: {
-                        TYPE: {
-                            WITH_CONSUMATION: true
-                        }
-                    }
-                },
-                t_seat_list: [
-                    {
-                        n_seat_num: 2,
-                        n_object_map_id: 3,
-                        n_id_event: 1,
-                        is_sell: false
-                    },
-                ]
-            },
+            }
         ],
         t_reviews: [
             {
@@ -1588,166 +1637,174 @@ export const allEventList: Array<Event> = [
                 }
             }
         ],
-        t_map: [
+        t_map_list: [
             {
-                n_id: 1,
-                n_id_event: 1,
-                n_min_num_person: 8,
-                n_max_num_person: 15,
-                n_limit_buy_for_person: 1,
-                n_object_price: 700,
-                t_map_cord_x: 1,
-                t_map_cord_y: 2,
-                t_map_cord_z: 1,
-                t_note: "Tavolo normale, inclusa una consumazione da 500€",
-                t_type: {
-                    TABLE: {
-                        DISCOTECA: true
+                t_map_name: "Sala Superiore",
+                t_map_event_id: 1,
+                t_map_id: 1,
+                t_map_total_seat: 300,
+                t_object_maps: [
+                    {
+                        n_id: 1,
+                        n_id_event: 1,
+                        n_min_num_person: 8,
+                        n_max_num_person: 15,
+                        n_limit_buy_for_person: 1,
+                        n_object_price: 700,
+                        t_map_cord_x: 1,
+                        t_map_cord_y: 2,
+                        t_map_cord_z: 1,
+                        t_note: "Tavolo normale, inclusa una consumazione da 500€",
+                        t_type: {
+                            TABLE: {
+                                DISCOTECA: true
+                            }
+                        },
+                        t_seat_list: [
+                            {
+                                n_seat_num: 14,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: true
+                            },
+                            {
+                                n_seat_num: 15,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: true
+                            },
+                            {
+                                n_seat_num: 16,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: true
+                            },
+                            {
+                                n_seat_num: 17,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: true
+                            },
+                            {
+                                n_seat_num: 18,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: true
+                            },
+                            {
+                                n_seat_num: 19,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: true
+                            },
+                            {
+                                n_seat_num: 20,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: true
+                            },
+                            {
+                                n_seat_num: 21,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: false
+                            },
+                            {
+                                n_seat_num: 22,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: false
+                            },
+                            {
+                                n_seat_num: 23,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: false
+                            },
+                            {
+                                n_seat_num: 24,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: false
+                            },
+                            {
+                                n_seat_num: 25,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: false
+                            },
+                            {
+                                n_seat_num: 25,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: false
+                            },
+                            {
+                                n_seat_num: 26,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: false
+                            },
+                            {
+                                n_seat_num: 27,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: false
+                            },
+                        ]
+                    },
+                    {
+                        n_id: 2,
+                        n_id_event: 1,
+                        n_limit_buy_for_person: 5,
+                        n_object_price: 10,
+                        t_map_cord_x: 5,
+                        t_map_cord_y: 25,
+                        t_map_cord_z: 1,
+                        t_note: "Non inclusa consumazione",
+                        t_type: {
+                            SEAT: {
+                                TYPE: {
+                                    NO_CONSUMATION: true
+                                }
+                            }
+                        },
+                        t_seat_list: [
+                            {
+                                n_seat_num: 1,
+                                n_object_map_id: 2,
+                                n_id_event: 1,
+                                is_sell: false
+                            },
+                        ]
+                    },
+                    {
+                        n_id: 3,
+                        n_id_event: 1,
+                        n_limit_buy_for_person: 6,
+                        n_object_price: 20,
+                        t_map_cord_x: 6,
+                        t_map_cord_y: 26,
+                        t_map_cord_z: 1,
+                        t_note: "Consumazione di 2 cocktail inclusa",
+                        t_type: {
+                            SEAT: {
+                                TYPE: {
+                                    WITH_CONSUMATION: true
+                                }
+                            }
+                        },
+                        t_seat_list: [
+                            {
+                                n_seat_num: 2,
+                                n_object_map_id: 3,
+                                n_id_event: 1,
+                                is_sell: false
+                            },
+                        ]
                     }
-                },
-                t_seat_list: [
-                    {
-                        n_seat_num: 14,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: true
-                    },
-                    {
-                        n_seat_num: 15,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: true
-                    },
-                    {
-                        n_seat_num: 16,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: true
-                    },
-                    {
-                        n_seat_num: 17,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: true
-                    },
-                    {
-                        n_seat_num: 18,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: true
-                    },
-                    {
-                        n_seat_num: 19,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: true
-                    },
-                    {
-                        n_seat_num: 20,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: true
-                    },
-                    {
-                        n_seat_num: 21,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: false
-                    },
-                    {
-                        n_seat_num: 22,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: false
-                    },
-                    {
-                        n_seat_num: 23,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: false
-                    },
-                    {
-                        n_seat_num: 24,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: false
-                    },
-                    {
-                        n_seat_num: 25,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: false
-                    },
-                    {
-                        n_seat_num: 25,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: false
-                    },
-                    {
-                        n_seat_num: 26,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: false
-                    },
-                    {
-                        n_seat_num: 27,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: false
-                    },
                 ]
-            },
-            {
-                n_id: 2,
-                n_id_event: 1,
-                n_limit_buy_for_person: 5,
-                n_object_price: 10,
-                t_map_cord_x: 5,
-                t_map_cord_y: 25,
-                t_map_cord_z: 1,
-                t_note: "Non inclusa consumazione",
-                t_type: {
-                    SEAT: {
-                        TYPE: {
-                            NO_CONSUMATION: true
-                        }
-                    }
-                },
-                t_seat_list: [
-                    {
-                        n_seat_num: 1,
-                        n_object_map_id: 2,
-                        n_id_event: 1,
-                        is_sell: false
-                    },
-                ]
-            },
-            {
-                n_id: 3,
-                n_id_event: 1,
-                n_limit_buy_for_person: 6,
-                n_object_price: 20,
-                t_map_cord_x: 6,
-                t_map_cord_y: 26,
-                t_map_cord_z: 1,
-                t_note: "Consumazione di 2 cocktail inclusa",
-                t_type: {
-                    SEAT: {
-                        TYPE: {
-                            WITH_CONSUMATION: true
-                        }
-                    }
-                },
-                t_seat_list: [
-                    {
-                        n_seat_num: 2,
-                        n_object_map_id: 3,
-                        n_id_event: 1,
-                        is_sell: false
-                    },
-                ]
-            },
+            }
         ],
         t_reviews: [
             {
@@ -1834,166 +1891,174 @@ export const allEventList: Array<Event> = [
                 }
             }
         ],
-        t_map: [
+        t_map_list: [
             {
-                n_id: 1,
-                n_id_event: 1,
-                n_min_num_person: 8,
-                n_max_num_person: 15,
-                n_limit_buy_for_person: 1,
-                n_object_price: 700,
-                t_map_cord_x: 1,
-                t_map_cord_y: 2,
-                t_map_cord_z: 1,
-                t_note: "Tavolo normale, inclusa una consumazione da 500€",
-                t_type: {
-                    TABLE: {
-                        DISCOTECA: true
+                t_map_name: "Sala Superiore",
+                t_map_event_id: 1,
+                t_map_id: 1,
+                t_map_total_seat: 300,
+                t_object_maps: [
+                    {
+                        n_id: 1,
+                        n_id_event: 1,
+                        n_min_num_person: 8,
+                        n_max_num_person: 15,
+                        n_limit_buy_for_person: 1,
+                        n_object_price: 700,
+                        t_map_cord_x: 1,
+                        t_map_cord_y: 2,
+                        t_map_cord_z: 1,
+                        t_note: "Tavolo normale, inclusa una consumazione da 500€",
+                        t_type: {
+                            TABLE: {
+                                DISCOTECA: true
+                            }
+                        },
+                        t_seat_list: [
+                            {
+                                n_seat_num: 14,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: true
+                            },
+                            {
+                                n_seat_num: 15,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: true
+                            },
+                            {
+                                n_seat_num: 16,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: true
+                            },
+                            {
+                                n_seat_num: 17,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: true
+                            },
+                            {
+                                n_seat_num: 18,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: true
+                            },
+                            {
+                                n_seat_num: 19,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: true
+                            },
+                            {
+                                n_seat_num: 20,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: true
+                            },
+                            {
+                                n_seat_num: 21,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: false
+                            },
+                            {
+                                n_seat_num: 22,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: false
+                            },
+                            {
+                                n_seat_num: 23,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: false
+                            },
+                            {
+                                n_seat_num: 24,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: false
+                            },
+                            {
+                                n_seat_num: 25,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: false
+                            },
+                            {
+                                n_seat_num: 25,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: false
+                            },
+                            {
+                                n_seat_num: 26,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: false
+                            },
+                            {
+                                n_seat_num: 27,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: false
+                            },
+                        ]
+                    },
+                    {
+                        n_id: 2,
+                        n_id_event: 1,
+                        n_limit_buy_for_person: 5,
+                        n_object_price: 10,
+                        t_map_cord_x: 5,
+                        t_map_cord_y: 25,
+                        t_map_cord_z: 1,
+                        t_note: "Non inclusa consumazione",
+                        t_type: {
+                            SEAT: {
+                                TYPE: {
+                                    NO_CONSUMATION: true
+                                }
+                            }
+                        },
+                        t_seat_list: [
+                            {
+                                n_seat_num: 1,
+                                n_object_map_id: 2,
+                                n_id_event: 1,
+                                is_sell: false
+                            },
+                        ]
+                    },
+                    {
+                        n_id: 3,
+                        n_id_event: 1,
+                        n_limit_buy_for_person: 6,
+                        n_object_price: 20,
+                        t_map_cord_x: 6,
+                        t_map_cord_y: 26,
+                        t_map_cord_z: 1,
+                        t_note: "Consumazione di 2 cocktail inclusa",
+                        t_type: {
+                            SEAT: {
+                                TYPE: {
+                                    WITH_CONSUMATION: true
+                                }
+                            }
+                        },
+                        t_seat_list: [
+                            {
+                                n_seat_num: 2,
+                                n_object_map_id: 3,
+                                n_id_event: 1,
+                                is_sell: false
+                            },
+                        ]
                     }
-                },
-                t_seat_list: [
-                    {
-                        n_seat_num: 14,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: true
-                    },
-                    {
-                        n_seat_num: 15,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: true
-                    },
-                    {
-                        n_seat_num: 16,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: true
-                    },
-                    {
-                        n_seat_num: 17,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: true
-                    },
-                    {
-                        n_seat_num: 18,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: true
-                    },
-                    {
-                        n_seat_num: 19,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: true
-                    },
-                    {
-                        n_seat_num: 20,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: true
-                    },
-                    {
-                        n_seat_num: 21,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: false
-                    },
-                    {
-                        n_seat_num: 22,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: false
-                    },
-                    {
-                        n_seat_num: 23,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: false
-                    },
-                    {
-                        n_seat_num: 24,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: false
-                    },
-                    {
-                        n_seat_num: 25,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: false
-                    },
-                    {
-                        n_seat_num: 25,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: false
-                    },
-                    {
-                        n_seat_num: 26,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: false
-                    },
-                    {
-                        n_seat_num: 27,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: false
-                    },
                 ]
-            },
-            {
-                n_id: 2,
-                n_id_event: 1,
-                n_limit_buy_for_person: 5,
-                n_object_price: 10,
-                t_map_cord_x: 5,
-                t_map_cord_y: 25,
-                t_map_cord_z: 1,
-                t_note: "Non inclusa consumazione",
-                t_type: {
-                    SEAT: {
-                        TYPE: {
-                            NO_CONSUMATION: true
-                        }
-                    }
-                },
-                t_seat_list: [
-                    {
-                        n_seat_num: 1,
-                        n_object_map_id: 2,
-                        n_id_event: 1,
-                        is_sell: false
-                    },
-                ]
-            },
-            {
-                n_id: 3,
-                n_id_event: 1,
-                n_limit_buy_for_person: 6,
-                n_object_price: 20,
-                t_map_cord_x: 6,
-                t_map_cord_y: 26,
-                t_map_cord_z: 1,
-                t_note: "Consumazione di 2 cocktail inclusa",
-                t_type: {
-                    SEAT: {
-                        TYPE: {
-                            WITH_CONSUMATION: true
-                        }
-                    }
-                },
-                t_seat_list: [
-                    {
-                        n_seat_num: 2,
-                        n_object_map_id: 3,
-                        n_id_event: 1,
-                        is_sell: false
-                    },
-                ]
-            },
+            }
         ],
         t_reviews: [
             {
@@ -2059,7 +2124,7 @@ export const allEventList: Array<Event> = [
             t_location_name: "I padovani pazzi"
         },
         t_event_date: new Date("2024-09-20"),
-        t_map: [],
+        t_map_list: [],
         t_type: EVENT_TYPE.PARTY,
         b_active: true,
         b_external_event: true,
@@ -2111,166 +2176,174 @@ export const allEventList: Array<Event> = [
                 }
             }
         ],
-        t_map: [
+        t_map_list: [
             {
-                n_id: 1,
-                n_id_event: 1,
-                n_min_num_person: 8,
-                n_max_num_person: 15,
-                n_limit_buy_for_person: 1,
-                n_object_price: 700,
-                t_map_cord_x: 1,
-                t_map_cord_y: 2,
-                t_map_cord_z: 1,
-                t_note: "Tavolo normale, inclusa una consumazione da 500€",
-                t_type: {
-                    TABLE: {
-                        DISCOTECA: true
+                t_map_name: "Sala Superiore",
+                t_map_event_id: 1,
+                t_map_id: 1,
+                t_map_total_seat: 300,
+                t_object_maps: [
+                    {
+                        n_id: 1,
+                        n_id_event: 1,
+                        n_min_num_person: 8,
+                        n_max_num_person: 15,
+                        n_limit_buy_for_person: 1,
+                        n_object_price: 700,
+                        t_map_cord_x: 1,
+                        t_map_cord_y: 2,
+                        t_map_cord_z: 1,
+                        t_note: "Tavolo normale, inclusa una consumazione da 500€",
+                        t_type: {
+                            TABLE: {
+                                DISCOTECA: true
+                            }
+                        },
+                        t_seat_list: [
+                            {
+                                n_seat_num: 14,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: true
+                            },
+                            {
+                                n_seat_num: 15,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: true
+                            },
+                            {
+                                n_seat_num: 16,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: true
+                            },
+                            {
+                                n_seat_num: 17,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: true
+                            },
+                            {
+                                n_seat_num: 18,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: true
+                            },
+                            {
+                                n_seat_num: 19,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: true
+                            },
+                            {
+                                n_seat_num: 20,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: true
+                            },
+                            {
+                                n_seat_num: 21,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: false
+                            },
+                            {
+                                n_seat_num: 22,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: false
+                            },
+                            {
+                                n_seat_num: 23,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: false
+                            },
+                            {
+                                n_seat_num: 24,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: false
+                            },
+                            {
+                                n_seat_num: 25,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: false
+                            },
+                            {
+                                n_seat_num: 25,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: false
+                            },
+                            {
+                                n_seat_num: 26,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: false
+                            },
+                            {
+                                n_seat_num: 27,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: false
+                            },
+                        ]
+                    },
+                    {
+                        n_id: 2,
+                        n_id_event: 1,
+                        n_limit_buy_for_person: 5,
+                        n_object_price: 10,
+                        t_map_cord_x: 5,
+                        t_map_cord_y: 25,
+                        t_map_cord_z: 1,
+                        t_note: "Non inclusa consumazione",
+                        t_type: {
+                            SEAT: {
+                                TYPE: {
+                                    NO_CONSUMATION: true
+                                }
+                            }
+                        },
+                        t_seat_list: [
+                            {
+                                n_seat_num: 1,
+                                n_object_map_id: 2,
+                                n_id_event: 1,
+                                is_sell: false
+                            },
+                        ]
+                    },
+                    {
+                        n_id: 3,
+                        n_id_event: 1,
+                        n_limit_buy_for_person: 6,
+                        n_object_price: 20,
+                        t_map_cord_x: 6,
+                        t_map_cord_y: 26,
+                        t_map_cord_z: 1,
+                        t_note: "Consumazione di 2 cocktail inclusa",
+                        t_type: {
+                            SEAT: {
+                                TYPE: {
+                                    WITH_CONSUMATION: true
+                                }
+                            }
+                        },
+                        t_seat_list: [
+                            {
+                                n_seat_num: 2,
+                                n_object_map_id: 3,
+                                n_id_event: 1,
+                                is_sell: false
+                            },
+                        ]
                     }
-                },
-                t_seat_list: [
-                    {
-                        n_seat_num: 14,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: true
-                    },
-                    {
-                        n_seat_num: 15,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: true
-                    },
-                    {
-                        n_seat_num: 16,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: true
-                    },
-                    {
-                        n_seat_num: 17,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: true
-                    },
-                    {
-                        n_seat_num: 18,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: true
-                    },
-                    {
-                        n_seat_num: 19,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: true
-                    },
-                    {
-                        n_seat_num: 20,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: true
-                    },
-                    {
-                        n_seat_num: 21,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: false
-                    },
-                    {
-                        n_seat_num: 22,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: false
-                    },
-                    {
-                        n_seat_num: 23,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: false
-                    },
-                    {
-                        n_seat_num: 24,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: false
-                    },
-                    {
-                        n_seat_num: 25,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: false
-                    },
-                    {
-                        n_seat_num: 25,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: false
-                    },
-                    {
-                        n_seat_num: 26,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: false
-                    },
-                    {
-                        n_seat_num: 27,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: false
-                    },
                 ]
-            },
-            {
-                n_id: 2,
-                n_id_event: 1,
-                n_limit_buy_for_person: 5,
-                n_object_price: 10,
-                t_map_cord_x: 5,
-                t_map_cord_y: 25,
-                t_map_cord_z: 1,
-                t_note: "Non inclusa consumazione",
-                t_type: {
-                    SEAT: {
-                        TYPE: {
-                            NO_CONSUMATION: true
-                        }
-                    }
-                },
-                t_seat_list: [
-                    {
-                        n_seat_num: 1,
-                        n_object_map_id: 2,
-                        n_id_event: 1,
-                        is_sell: false
-                    },
-                ]
-            },
-            {
-                n_id: 3,
-                n_id_event: 1,
-                n_limit_buy_for_person: 6,
-                n_object_price: 20,
-                t_map_cord_x: 6,
-                t_map_cord_y: 26,
-                t_map_cord_z: 1,
-                t_note: "Consumazione di 2 cocktail inclusa",
-                t_type: {
-                    SEAT: {
-                        TYPE: {
-                            WITH_CONSUMATION: true
-                        }
-                    }
-                },
-                t_seat_list: [
-                    {
-                        n_seat_num: 2,
-                        n_object_map_id: 3,
-                        n_id_event: 1,
-                        is_sell: false
-                    },
-                ]
-            },
+            }
         ],
         t_reviews: [
             {
@@ -2357,166 +2430,174 @@ export const allEventList: Array<Event> = [
                 }
             }
         ],
-        t_map: [
+        t_map_list: [
             {
-                n_id: 1,
-                n_id_event: 1,
-                n_min_num_person: 8,
-                n_max_num_person: 15,
-                n_limit_buy_for_person: 1,
-                n_object_price: 700,
-                t_map_cord_x: 1,
-                t_map_cord_y: 2,
-                t_map_cord_z: 1,
-                t_note: "Tavolo normale, inclusa una consumazione da 500€",
-                t_type: {
-                    TABLE: {
-                        DISCOTECA: true
+                t_map_name: "Sala Superiore",
+                t_map_event_id: 1,
+                t_map_id: 1,
+                t_map_total_seat: 300,
+                t_object_maps: [
+                    {
+                        n_id: 1,
+                        n_id_event: 1,
+                        n_min_num_person: 8,
+                        n_max_num_person: 15,
+                        n_limit_buy_for_person: 1,
+                        n_object_price: 700,
+                        t_map_cord_x: 1,
+                        t_map_cord_y: 2,
+                        t_map_cord_z: 1,
+                        t_note: "Tavolo normale, inclusa una consumazione da 500€",
+                        t_type: {
+                            TABLE: {
+                                DISCOTECA: true
+                            }
+                        },
+                        t_seat_list: [
+                            {
+                                n_seat_num: 14,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: true
+                            },
+                            {
+                                n_seat_num: 15,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: true
+                            },
+                            {
+                                n_seat_num: 16,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: true
+                            },
+                            {
+                                n_seat_num: 17,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: true
+                            },
+                            {
+                                n_seat_num: 18,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: true
+                            },
+                            {
+                                n_seat_num: 19,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: true
+                            },
+                            {
+                                n_seat_num: 20,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: true
+                            },
+                            {
+                                n_seat_num: 21,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: false
+                            },
+                            {
+                                n_seat_num: 22,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: false
+                            },
+                            {
+                                n_seat_num: 23,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: false
+                            },
+                            {
+                                n_seat_num: 24,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: false
+                            },
+                            {
+                                n_seat_num: 25,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: false
+                            },
+                            {
+                                n_seat_num: 25,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: false
+                            },
+                            {
+                                n_seat_num: 26,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: false
+                            },
+                            {
+                                n_seat_num: 27,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: false
+                            },
+                        ]
+                    },
+                    {
+                        n_id: 2,
+                        n_id_event: 1,
+                        n_limit_buy_for_person: 5,
+                        n_object_price: 10,
+                        t_map_cord_x: 5,
+                        t_map_cord_y: 25,
+                        t_map_cord_z: 1,
+                        t_note: "Non inclusa consumazione",
+                        t_type: {
+                            SEAT: {
+                                TYPE: {
+                                    NO_CONSUMATION: true
+                                }
+                            }
+                        },
+                        t_seat_list: [
+                            {
+                                n_seat_num: 1,
+                                n_object_map_id: 2,
+                                n_id_event: 1,
+                                is_sell: false
+                            },
+                        ]
+                    },
+                    {
+                        n_id: 3,
+                        n_id_event: 1,
+                        n_limit_buy_for_person: 6,
+                        n_object_price: 20,
+                        t_map_cord_x: 6,
+                        t_map_cord_y: 26,
+                        t_map_cord_z: 1,
+                        t_note: "Consumazione di 2 cocktail inclusa",
+                        t_type: {
+                            SEAT: {
+                                TYPE: {
+                                    WITH_CONSUMATION: true
+                                }
+                            }
+                        },
+                        t_seat_list: [
+                            {
+                                n_seat_num: 2,
+                                n_object_map_id: 3,
+                                n_id_event: 1,
+                                is_sell: false
+                            },
+                        ]
                     }
-                },
-                t_seat_list: [
-                    {
-                        n_seat_num: 14,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: true
-                    },
-                    {
-                        n_seat_num: 15,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: true
-                    },
-                    {
-                        n_seat_num: 16,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: true
-                    },
-                    {
-                        n_seat_num: 17,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: true
-                    },
-                    {
-                        n_seat_num: 18,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: true
-                    },
-                    {
-                        n_seat_num: 19,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: true
-                    },
-                    {
-                        n_seat_num: 20,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: true
-                    },
-                    {
-                        n_seat_num: 21,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: false
-                    },
-                    {
-                        n_seat_num: 22,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: false
-                    },
-                    {
-                        n_seat_num: 23,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: false
-                    },
-                    {
-                        n_seat_num: 24,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: false
-                    },
-                    {
-                        n_seat_num: 25,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: false
-                    },
-                    {
-                        n_seat_num: 25,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: false
-                    },
-                    {
-                        n_seat_num: 26,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: false
-                    },
-                    {
-                        n_seat_num: 27,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: false
-                    },
                 ]
-            },
-            {
-                n_id: 2,
-                n_id_event: 1,
-                n_limit_buy_for_person: 5,
-                n_object_price: 10,
-                t_map_cord_x: 5,
-                t_map_cord_y: 25,
-                t_map_cord_z: 1,
-                t_note: "Non inclusa consumazione",
-                t_type: {
-                    SEAT: {
-                        TYPE: {
-                            NO_CONSUMATION: true
-                        }
-                    }
-                },
-                t_seat_list: [
-                    {
-                        n_seat_num: 1,
-                        n_object_map_id: 2,
-                        n_id_event: 1,
-                        is_sell: false
-                    },
-                ]
-            },
-            {
-                n_id: 3,
-                n_id_event: 1,
-                n_limit_buy_for_person: 6,
-                n_object_price: 20,
-                t_map_cord_x: 6,
-                t_map_cord_y: 26,
-                t_map_cord_z: 1,
-                t_note: "Consumazione di 2 cocktail inclusa",
-                t_type: {
-                    SEAT: {
-                        TYPE: {
-                            WITH_CONSUMATION: true
-                        }
-                    }
-                },
-                t_seat_list: [
-                    {
-                        n_seat_num: 2,
-                        n_object_map_id: 3,
-                        n_id_event: 1,
-                        is_sell: false
-                    },
-                ]
-            },
+            }
         ],
         t_reviews: [
             {
@@ -2562,10 +2643,10 @@ export const allEventList: Array<Event> = [
         n_id: 7,
         t_title: "Discoteca tropicale",
         n_group_id: 1,
-        n_click:3941,
+        n_click: 3941,
         t_image_link: "https://rivieraticket.it/wp-content/uploads/2023/08/Tropical-closing-party-Byblos-01-09-23.jpg",
         t_type: EVENT_TYPE.PARTY,
-        t_event_date:new Date("2024-04-17"),
+        t_event_date: new Date("2024-04-17"),
         t_service_list: [
             {
                 n_service_id: 1,
@@ -2594,166 +2675,174 @@ export const allEventList: Array<Event> = [
                 }
             }
         ],
-        t_map: [
+        t_map_list: [
             {
-                n_id: 1,
-                n_id_event: 1,
-                n_min_num_person: 8,
-                n_max_num_person: 15,
-                n_limit_buy_for_person: 1,
-                n_object_price: 700,
-                t_map_cord_x: 1,
-                t_map_cord_y: 2,
-                t_map_cord_z: 1,
-                t_note: "Tavolo normale, inclusa una consumazione da 500€",
-                t_type: {
-                    TABLE: {
-                        DISCOTECA: true
+                t_map_name: "Sala Superiore",
+                t_map_event_id: 1,
+                t_map_id: 1,
+                t_map_total_seat: 300,
+                t_object_maps: [
+                    {
+                        n_id: 1,
+                        n_id_event: 1,
+                        n_min_num_person: 8,
+                        n_max_num_person: 15,
+                        n_limit_buy_for_person: 1,
+                        n_object_price: 700,
+                        t_map_cord_x: 1,
+                        t_map_cord_y: 2,
+                        t_map_cord_z: 1,
+                        t_note: "Tavolo normale, inclusa una consumazione da 500€",
+                        t_type: {
+                            TABLE: {
+                                DISCOTECA: true
+                            }
+                        },
+                        t_seat_list: [
+                            {
+                                n_seat_num: 14,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: true
+                            },
+                            {
+                                n_seat_num: 15,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: true
+                            },
+                            {
+                                n_seat_num: 16,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: true
+                            },
+                            {
+                                n_seat_num: 17,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: true
+                            },
+                            {
+                                n_seat_num: 18,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: true
+                            },
+                            {
+                                n_seat_num: 19,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: true
+                            },
+                            {
+                                n_seat_num: 20,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: true
+                            },
+                            {
+                                n_seat_num: 21,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: false
+                            },
+                            {
+                                n_seat_num: 22,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: false
+                            },
+                            {
+                                n_seat_num: 23,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: false
+                            },
+                            {
+                                n_seat_num: 24,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: false
+                            },
+                            {
+                                n_seat_num: 25,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: false
+                            },
+                            {
+                                n_seat_num: 25,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: false
+                            },
+                            {
+                                n_seat_num: 26,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: false
+                            },
+                            {
+                                n_seat_num: 27,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: false
+                            },
+                        ]
+                    },
+                    {
+                        n_id: 2,
+                        n_id_event: 1,
+                        n_limit_buy_for_person: 5,
+                        n_object_price: 10,
+                        t_map_cord_x: 5,
+                        t_map_cord_y: 25,
+                        t_map_cord_z: 1,
+                        t_note: "Non inclusa consumazione",
+                        t_type: {
+                            SEAT: {
+                                TYPE: {
+                                    NO_CONSUMATION: true
+                                }
+                            }
+                        },
+                        t_seat_list: [
+                            {
+                                n_seat_num: 1,
+                                n_object_map_id: 2,
+                                n_id_event: 1,
+                                is_sell: false
+                            },
+                        ]
+                    },
+                    {
+                        n_id: 3,
+                        n_id_event: 1,
+                        n_limit_buy_for_person: 6,
+                        n_object_price: 20,
+                        t_map_cord_x: 6,
+                        t_map_cord_y: 26,
+                        t_map_cord_z: 1,
+                        t_note: "Consumazione di 2 cocktail inclusa",
+                        t_type: {
+                            SEAT: {
+                                TYPE: {
+                                    WITH_CONSUMATION: true
+                                }
+                            }
+                        },
+                        t_seat_list: [
+                            {
+                                n_seat_num: 2,
+                                n_object_map_id: 3,
+                                n_id_event: 1,
+                                is_sell: false
+                            },
+                        ]
                     }
-                },
-                t_seat_list: [
-                    {
-                        n_seat_num: 14,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: true
-                    },
-                    {
-                        n_seat_num: 15,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: true
-                    },
-                    {
-                        n_seat_num: 16,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: true
-                    },
-                    {
-                        n_seat_num: 17,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: true
-                    },
-                    {
-                        n_seat_num: 18,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: true
-                    },
-                    {
-                        n_seat_num: 19,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: true
-                    },
-                    {
-                        n_seat_num: 20,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: true
-                    },
-                    {
-                        n_seat_num: 21,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: false
-                    },
-                    {
-                        n_seat_num: 22,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: false
-                    },
-                    {
-                        n_seat_num: 23,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: false
-                    },
-                    {
-                        n_seat_num: 24,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: false
-                    },
-                    {
-                        n_seat_num: 25,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: false
-                    },
-                    {
-                        n_seat_num: 25,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: false
-                    },
-                    {
-                        n_seat_num: 26,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: false
-                    },
-                    {
-                        n_seat_num: 27,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: false
-                    },
                 ]
-            },
-            {
-                n_id: 2,
-                n_id_event: 1,
-                n_limit_buy_for_person: 5,
-                n_object_price: 10,
-                t_map_cord_x: 5,
-                t_map_cord_y: 25,
-                t_map_cord_z: 1,
-                t_note: "Non inclusa consumazione",
-                t_type: {
-                    SEAT: {
-                        TYPE: {
-                            NO_CONSUMATION: true
-                        }
-                    }
-                },
-                t_seat_list: [
-                    {
-                        n_seat_num: 1,
-                        n_object_map_id: 2,
-                        n_id_event: 1,
-                        is_sell: false
-                    },
-                ]
-            },
-            {
-                n_id: 3,
-                n_id_event: 1,
-                n_limit_buy_for_person: 6,
-                n_object_price: 20,
-                t_map_cord_x: 6,
-                t_map_cord_y: 26,
-                t_map_cord_z: 1,
-                t_note: "Consumazione di 2 cocktail inclusa",
-                t_type: {
-                    SEAT: {
-                        TYPE: {
-                            WITH_CONSUMATION: true
-                        }
-                    }
-                },
-                t_seat_list: [
-                    {
-                        n_seat_num: 2,
-                        n_object_map_id: 3,
-                        n_id_event: 1,
-                        is_sell: false
-                    },
-                ]
-            },
+            }
         ],
         t_reviews: [
             {
@@ -2840,166 +2929,174 @@ export const allEventList: Array<Event> = [
                 }
             }
         ],
-        t_map: [
+        t_map_list: [
             {
-                n_id: 1,
-                n_id_event: 1,
-                n_min_num_person: 8,
-                n_max_num_person: 15,
-                n_limit_buy_for_person: 1,
-                n_object_price: 700,
-                t_map_cord_x: 1,
-                t_map_cord_y: 2,
-                t_map_cord_z: 1,
-                t_note: "Tavolo normale, inclusa una consumazione da 500€",
-                t_type: {
-                    TABLE: {
-                        DISCOTECA: true
+                t_map_name: "Sala Superiore",
+                t_map_event_id: 1,
+                t_map_id: 1,
+                t_map_total_seat: 300,
+                t_object_maps: [
+                    {
+                        n_id: 1,
+                        n_id_event: 1,
+                        n_min_num_person: 8,
+                        n_max_num_person: 15,
+                        n_limit_buy_for_person: 1,
+                        n_object_price: 700,
+                        t_map_cord_x: 1,
+                        t_map_cord_y: 2,
+                        t_map_cord_z: 1,
+                        t_note: "Tavolo normale, inclusa una consumazione da 500€",
+                        t_type: {
+                            TABLE: {
+                                DISCOTECA: true
+                            }
+                        },
+                        t_seat_list: [
+                            {
+                                n_seat_num: 14,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: true
+                            },
+                            {
+                                n_seat_num: 15,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: true
+                            },
+                            {
+                                n_seat_num: 16,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: true
+                            },
+                            {
+                                n_seat_num: 17,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: true
+                            },
+                            {
+                                n_seat_num: 18,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: true
+                            },
+                            {
+                                n_seat_num: 19,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: true
+                            },
+                            {
+                                n_seat_num: 20,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: true
+                            },
+                            {
+                                n_seat_num: 21,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: false
+                            },
+                            {
+                                n_seat_num: 22,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: false
+                            },
+                            {
+                                n_seat_num: 23,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: false
+                            },
+                            {
+                                n_seat_num: 24,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: false
+                            },
+                            {
+                                n_seat_num: 25,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: false
+                            },
+                            {
+                                n_seat_num: 25,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: false
+                            },
+                            {
+                                n_seat_num: 26,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: false
+                            },
+                            {
+                                n_seat_num: 27,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: false
+                            },
+                        ]
+                    },
+                    {
+                        n_id: 2,
+                        n_id_event: 1,
+                        n_limit_buy_for_person: 5,
+                        n_object_price: 10,
+                        t_map_cord_x: 5,
+                        t_map_cord_y: 25,
+                        t_map_cord_z: 1,
+                        t_note: "Non inclusa consumazione",
+                        t_type: {
+                            SEAT: {
+                                TYPE: {
+                                    NO_CONSUMATION: true
+                                }
+                            }
+                        },
+                        t_seat_list: [
+                            {
+                                n_seat_num: 1,
+                                n_object_map_id: 2,
+                                n_id_event: 1,
+                                is_sell: false
+                            },
+                        ]
+                    },
+                    {
+                        n_id: 3,
+                        n_id_event: 1,
+                        n_limit_buy_for_person: 6,
+                        n_object_price: 20,
+                        t_map_cord_x: 6,
+                        t_map_cord_y: 26,
+                        t_map_cord_z: 1,
+                        t_note: "Consumazione di 2 cocktail inclusa",
+                        t_type: {
+                            SEAT: {
+                                TYPE: {
+                                    WITH_CONSUMATION: true
+                                }
+                            }
+                        },
+                        t_seat_list: [
+                            {
+                                n_seat_num: 2,
+                                n_object_map_id: 3,
+                                n_id_event: 1,
+                                is_sell: false
+                            },
+                        ]
                     }
-                },
-                t_seat_list: [
-                    {
-                        n_seat_num: 14,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: true
-                    },
-                    {
-                        n_seat_num: 15,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: true
-                    },
-                    {
-                        n_seat_num: 16,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: true
-                    },
-                    {
-                        n_seat_num: 17,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: true
-                    },
-                    {
-                        n_seat_num: 18,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: true
-                    },
-                    {
-                        n_seat_num: 19,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: true
-                    },
-                    {
-                        n_seat_num: 20,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: true
-                    },
-                    {
-                        n_seat_num: 21,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: false
-                    },
-                    {
-                        n_seat_num: 22,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: false
-                    },
-                    {
-                        n_seat_num: 23,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: false
-                    },
-                    {
-                        n_seat_num: 24,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: false
-                    },
-                    {
-                        n_seat_num: 25,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: false
-                    },
-                    {
-                        n_seat_num: 25,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: false
-                    },
-                    {
-                        n_seat_num: 26,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: false
-                    },
-                    {
-                        n_seat_num: 27,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: false
-                    },
                 ]
-            },
-            {
-                n_id: 2,
-                n_id_event: 1,
-                n_limit_buy_for_person: 5,
-                n_object_price: 10,
-                t_map_cord_x: 5,
-                t_map_cord_y: 25,
-                t_map_cord_z: 1,
-                t_note: "Non inclusa consumazione",
-                t_type: {
-                    SEAT: {
-                        TYPE: {
-                            NO_CONSUMATION: true
-                        }
-                    }
-                },
-                t_seat_list: [
-                    {
-                        n_seat_num: 1,
-                        n_object_map_id: 2,
-                        n_id_event: 1,
-                        is_sell: false
-                    },
-                ]
-            },
-            {
-                n_id: 3,
-                n_id_event: 1,
-                n_limit_buy_for_person: 6,
-                n_object_price: 20,
-                t_map_cord_x: 6,
-                t_map_cord_y: 26,
-                t_map_cord_z: 1,
-                t_note: "Consumazione di 2 cocktail inclusa",
-                t_type: {
-                    SEAT: {
-                        TYPE: {
-                            WITH_CONSUMATION: true
-                        }
-                    }
-                },
-                t_seat_list: [
-                    {
-                        n_seat_num: 2,
-                        n_object_map_id: 3,
-                        n_id_event: 1,
-                        is_sell: false
-                    },
-                ]
-            },
+            }
         ],
         t_reviews: [
             {
@@ -3095,166 +3192,174 @@ export const allEventList: Array<Event> = [
                 }
             }
         ],
-        t_map: [
+        t_map_list: [
             {
-                n_id: 1,
-                n_id_event: 1,
-                n_min_num_person: 8,
-                n_max_num_person: 15,
-                n_limit_buy_for_person: 1,
-                n_object_price: 700,
-                t_map_cord_x: 1,
-                t_map_cord_y: 2,
-                t_map_cord_z: 1,
-                t_note: "Tavolo normale, inclusa una consumazione da 500€",
-                t_type: {
-                    TABLE: {
-                        DISCOTECA: true
+                t_map_name: "Sala Superiore",
+                t_map_event_id: 1,
+                t_map_id: 1,
+                t_map_total_seat: 300,
+                t_object_maps: [
+                    {
+                        n_id: 1,
+                        n_id_event: 1,
+                        n_min_num_person: 8,
+                        n_max_num_person: 15,
+                        n_limit_buy_for_person: 1,
+                        n_object_price: 700,
+                        t_map_cord_x: 1,
+                        t_map_cord_y: 2,
+                        t_map_cord_z: 1,
+                        t_note: "Tavolo normale, inclusa una consumazione da 500€",
+                        t_type: {
+                            TABLE: {
+                                DISCOTECA: true
+                            }
+                        },
+                        t_seat_list: [
+                            {
+                                n_seat_num: 14,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: true
+                            },
+                            {
+                                n_seat_num: 15,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: true
+                            },
+                            {
+                                n_seat_num: 16,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: true
+                            },
+                            {
+                                n_seat_num: 17,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: true
+                            },
+                            {
+                                n_seat_num: 18,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: true
+                            },
+                            {
+                                n_seat_num: 19,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: true
+                            },
+                            {
+                                n_seat_num: 20,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: true
+                            },
+                            {
+                                n_seat_num: 21,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: false
+                            },
+                            {
+                                n_seat_num: 22,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: false
+                            },
+                            {
+                                n_seat_num: 23,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: false
+                            },
+                            {
+                                n_seat_num: 24,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: false
+                            },
+                            {
+                                n_seat_num: 25,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: false
+                            },
+                            {
+                                n_seat_num: 25,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: false
+                            },
+                            {
+                                n_seat_num: 26,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: false
+                            },
+                            {
+                                n_seat_num: 27,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: false
+                            },
+                        ]
+                    },
+                    {
+                        n_id: 2,
+                        n_id_event: 1,
+                        n_limit_buy_for_person: 5,
+                        n_object_price: 10,
+                        t_map_cord_x: 5,
+                        t_map_cord_y: 25,
+                        t_map_cord_z: 1,
+                        t_note: "Non inclusa consumazione",
+                        t_type: {
+                            SEAT: {
+                                TYPE: {
+                                    NO_CONSUMATION: true
+                                }
+                            }
+                        },
+                        t_seat_list: [
+                            {
+                                n_seat_num: 1,
+                                n_object_map_id: 2,
+                                n_id_event: 1,
+                                is_sell: false
+                            },
+                        ]
+                    },
+                    {
+                        n_id: 3,
+                        n_id_event: 1,
+                        n_limit_buy_for_person: 6,
+                        n_object_price: 20,
+                        t_map_cord_x: 6,
+                        t_map_cord_y: 26,
+                        t_map_cord_z: 1,
+                        t_note: "Consumazione di 2 cocktail inclusa",
+                        t_type: {
+                            SEAT: {
+                                TYPE: {
+                                    WITH_CONSUMATION: true
+                                }
+                            }
+                        },
+                        t_seat_list: [
+                            {
+                                n_seat_num: 2,
+                                n_object_map_id: 3,
+                                n_id_event: 1,
+                                is_sell: false
+                            },
+                        ]
                     }
-                },
-                t_seat_list: [
-                    {
-                        n_seat_num: 14,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: true
-                    },
-                    {
-                        n_seat_num: 15,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: true
-                    },
-                    {
-                        n_seat_num: 16,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: true
-                    },
-                    {
-                        n_seat_num: 17,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: true
-                    },
-                    {
-                        n_seat_num: 18,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: true
-                    },
-                    {
-                        n_seat_num: 19,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: true
-                    },
-                    {
-                        n_seat_num: 20,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: true
-                    },
-                    {
-                        n_seat_num: 21,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: false
-                    },
-                    {
-                        n_seat_num: 22,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: false
-                    },
-                    {
-                        n_seat_num: 23,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: false
-                    },
-                    {
-                        n_seat_num: 24,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: false
-                    },
-                    {
-                        n_seat_num: 25,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: false
-                    },
-                    {
-                        n_seat_num: 25,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: false
-                    },
-                    {
-                        n_seat_num: 26,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: false
-                    },
-                    {
-                        n_seat_num: 27,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: false
-                    },
                 ]
-            },
-            {
-                n_id: 2,
-                n_id_event: 1,
-                n_limit_buy_for_person: 5,
-                n_object_price: 10,
-                t_map_cord_x: 5,
-                t_map_cord_y: 25,
-                t_map_cord_z: 1,
-                t_note: "Non inclusa consumazione",
-                t_type: {
-                    SEAT: {
-                        TYPE: {
-                            NO_CONSUMATION: true
-                        }
-                    }
-                },
-                t_seat_list: [
-                    {
-                        n_seat_num: 1,
-                        n_object_map_id: 2,
-                        n_id_event: 1,
-                        is_sell: false
-                    },
-                ]
-            },
-            {
-                n_id: 3,
-                n_id_event: 1,
-                n_limit_buy_for_person: 6,
-                n_object_price: 20,
-                t_map_cord_x: 6,
-                t_map_cord_y: 26,
-                t_map_cord_z: 1,
-                t_note: "Consumazione di 2 cocktail inclusa",
-                t_type: {
-                    SEAT: {
-                        TYPE: {
-                            WITH_CONSUMATION: true
-                        }
-                    }
-                },
-                t_seat_list: [
-                    {
-                        n_seat_num: 2,
-                        n_object_map_id: 3,
-                        n_id_event: 1,
-                        is_sell: false
-                    },
-                ]
-            },
+            }
         ],
         t_reviews: [
             {
@@ -3293,7 +3398,7 @@ export const allEventList: Array<Event> = [
             }
         ],
         t_company: { t_name: "Disco Club S.R.L", t_surname: "", t_alias_generated: "disco-club-srl", t_type: USER_TYPE.COMPANY },
-        
+
         b_active: true,
         b_external_event: false,
     },
@@ -3342,166 +3447,174 @@ export const allEventList: Array<Event> = [
                 }
             }
         ],
-        t_map: [
+        t_map_list: [
             {
-                n_id: 1,
-                n_id_event: 1,
-                n_min_num_person: 8,
-                n_max_num_person: 15,
-                n_limit_buy_for_person: 1,
-                n_object_price: 700,
-                t_map_cord_x: 1,
-                t_map_cord_y: 2,
-                t_map_cord_z: 1,
-                t_note: "Tavolo normale, inclusa una consumazione da 500€",
-                t_type: {
-                    TABLE: {
-                        DISCOTECA: true
+                t_map_name: "Sala Superiore",
+                t_map_event_id: 1,
+                t_map_id: 1,
+                t_map_total_seat: 300,
+                t_object_maps: [
+                    {
+                        n_id: 1,
+                        n_id_event: 1,
+                        n_min_num_person: 8,
+                        n_max_num_person: 15,
+                        n_limit_buy_for_person: 1,
+                        n_object_price: 700,
+                        t_map_cord_x: 1,
+                        t_map_cord_y: 2,
+                        t_map_cord_z: 1,
+                        t_note: "Tavolo normale, inclusa una consumazione da 500€",
+                        t_type: {
+                            TABLE: {
+                                DISCOTECA: true
+                            }
+                        },
+                        t_seat_list: [
+                            {
+                                n_seat_num: 14,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: true
+                            },
+                            {
+                                n_seat_num: 15,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: true
+                            },
+                            {
+                                n_seat_num: 16,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: true
+                            },
+                            {
+                                n_seat_num: 17,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: true
+                            },
+                            {
+                                n_seat_num: 18,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: true
+                            },
+                            {
+                                n_seat_num: 19,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: true
+                            },
+                            {
+                                n_seat_num: 20,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: true
+                            },
+                            {
+                                n_seat_num: 21,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: false
+                            },
+                            {
+                                n_seat_num: 22,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: false
+                            },
+                            {
+                                n_seat_num: 23,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: false
+                            },
+                            {
+                                n_seat_num: 24,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: false
+                            },
+                            {
+                                n_seat_num: 25,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: false
+                            },
+                            {
+                                n_seat_num: 25,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: false
+                            },
+                            {
+                                n_seat_num: 26,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: false
+                            },
+                            {
+                                n_seat_num: 27,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: false
+                            },
+                        ]
+                    },
+                    {
+                        n_id: 2,
+                        n_id_event: 1,
+                        n_limit_buy_for_person: 5,
+                        n_object_price: 10,
+                        t_map_cord_x: 5,
+                        t_map_cord_y: 25,
+                        t_map_cord_z: 1,
+                        t_note: "Non inclusa consumazione",
+                        t_type: {
+                            SEAT: {
+                                TYPE: {
+                                    NO_CONSUMATION: true
+                                }
+                            }
+                        },
+                        t_seat_list: [
+                            {
+                                n_seat_num: 1,
+                                n_object_map_id: 2,
+                                n_id_event: 1,
+                                is_sell: false
+                            },
+                        ]
+                    },
+                    {
+                        n_id: 3,
+                        n_id_event: 1,
+                        n_limit_buy_for_person: 6,
+                        n_object_price: 20,
+                        t_map_cord_x: 6,
+                        t_map_cord_y: 26,
+                        t_map_cord_z: 1,
+                        t_note: "Consumazione di 2 cocktail inclusa",
+                        t_type: {
+                            SEAT: {
+                                TYPE: {
+                                    WITH_CONSUMATION: true
+                                }
+                            }
+                        },
+                        t_seat_list: [
+                            {
+                                n_seat_num: 2,
+                                n_object_map_id: 3,
+                                n_id_event: 1,
+                                is_sell: false
+                            },
+                        ]
                     }
-                },
-                t_seat_list: [
-                    {
-                        n_seat_num: 14,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: true
-                    },
-                    {
-                        n_seat_num: 15,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: true
-                    },
-                    {
-                        n_seat_num: 16,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: true
-                    },
-                    {
-                        n_seat_num: 17,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: true
-                    },
-                    {
-                        n_seat_num: 18,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: true
-                    },
-                    {
-                        n_seat_num: 19,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: true
-                    },
-                    {
-                        n_seat_num: 20,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: true
-                    },
-                    {
-                        n_seat_num: 21,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: false
-                    },
-                    {
-                        n_seat_num: 22,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: false
-                    },
-                    {
-                        n_seat_num: 23,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: false
-                    },
-                    {
-                        n_seat_num: 24,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: false
-                    },
-                    {
-                        n_seat_num: 25,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: false
-                    },
-                    {
-                        n_seat_num: 25,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: false
-                    },
-                    {
-                        n_seat_num: 26,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: false
-                    },
-                    {
-                        n_seat_num: 27,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: false
-                    },
                 ]
-            },
-            {
-                n_id: 2,
-                n_id_event: 1,
-                n_limit_buy_for_person: 5,
-                n_object_price: 10,
-                t_map_cord_x: 5,
-                t_map_cord_y: 25,
-                t_map_cord_z: 1,
-                t_note: "Non inclusa consumazione",
-                t_type: {
-                    SEAT: {
-                        TYPE: {
-                            NO_CONSUMATION: true
-                        }
-                    }
-                },
-                t_seat_list: [
-                    {
-                        n_seat_num: 1,
-                        n_object_map_id: 2,
-                        n_id_event: 1,
-                        is_sell: false
-                    },
-                ]
-            },
-            {
-                n_id: 3,
-                n_id_event: 1,
-                n_limit_buy_for_person: 6,
-                n_object_price: 20,
-                t_map_cord_x: 6,
-                t_map_cord_y: 26,
-                t_map_cord_z: 1,
-                t_note: "Consumazione di 2 cocktail inclusa",
-                t_type: {
-                    SEAT: {
-                        TYPE: {
-                            WITH_CONSUMATION: true
-                        }
-                    }
-                },
-                t_seat_list: [
-                    {
-                        n_seat_num: 2,
-                        n_object_map_id: 3,
-                        n_id_event: 1,
-                        is_sell: false
-                    },
-                ]
-            },
+            }
         ],
         t_reviews: [
             {
@@ -3588,166 +3701,174 @@ export const allEventList: Array<Event> = [
                 }
             }
         ],
-        t_map: [
+        t_map_list: [
             {
-                n_id: 1,
-                n_id_event: 1,
-                n_min_num_person: 8,
-                n_max_num_person: 15,
-                n_limit_buy_for_person: 1,
-                n_object_price: 700,
-                t_map_cord_x: 1,
-                t_map_cord_y: 2,
-                t_map_cord_z: 1,
-                t_note: "Tavolo normale, inclusa una consumazione da 500€",
-                t_type: {
-                    TABLE: {
-                        DISCOTECA: true
+                t_map_name: "Sala Superiore",
+                t_map_event_id: 1,
+                t_map_id: 1,
+                t_map_total_seat: 300,
+                t_object_maps: [
+                    {
+                        n_id: 1,
+                        n_id_event: 1,
+                        n_min_num_person: 8,
+                        n_max_num_person: 15,
+                        n_limit_buy_for_person: 1,
+                        n_object_price: 700,
+                        t_map_cord_x: 1,
+                        t_map_cord_y: 2,
+                        t_map_cord_z: 1,
+                        t_note: "Tavolo normale, inclusa una consumazione da 500€",
+                        t_type: {
+                            TABLE: {
+                                DISCOTECA: true
+                            }
+                        },
+                        t_seat_list: [
+                            {
+                                n_seat_num: 14,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: true
+                            },
+                            {
+                                n_seat_num: 15,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: true
+                            },
+                            {
+                                n_seat_num: 16,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: true
+                            },
+                            {
+                                n_seat_num: 17,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: true
+                            },
+                            {
+                                n_seat_num: 18,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: true
+                            },
+                            {
+                                n_seat_num: 19,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: true
+                            },
+                            {
+                                n_seat_num: 20,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: true
+                            },
+                            {
+                                n_seat_num: 21,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: false
+                            },
+                            {
+                                n_seat_num: 22,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: false
+                            },
+                            {
+                                n_seat_num: 23,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: false
+                            },
+                            {
+                                n_seat_num: 24,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: false
+                            },
+                            {
+                                n_seat_num: 25,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: false
+                            },
+                            {
+                                n_seat_num: 25,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: false
+                            },
+                            {
+                                n_seat_num: 26,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: false
+                            },
+                            {
+                                n_seat_num: 27,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: false
+                            },
+                        ]
+                    },
+                    {
+                        n_id: 2,
+                        n_id_event: 1,
+                        n_limit_buy_for_person: 5,
+                        n_object_price: 10,
+                        t_map_cord_x: 5,
+                        t_map_cord_y: 25,
+                        t_map_cord_z: 1,
+                        t_note: "Non inclusa consumazione",
+                        t_type: {
+                            SEAT: {
+                                TYPE: {
+                                    NO_CONSUMATION: true
+                                }
+                            }
+                        },
+                        t_seat_list: [
+                            {
+                                n_seat_num: 1,
+                                n_object_map_id: 2,
+                                n_id_event: 1,
+                                is_sell: false
+                            },
+                        ]
+                    },
+                    {
+                        n_id: 3,
+                        n_id_event: 1,
+                        n_limit_buy_for_person: 6,
+                        n_object_price: 20,
+                        t_map_cord_x: 6,
+                        t_map_cord_y: 26,
+                        t_map_cord_z: 1,
+                        t_note: "Consumazione di 2 cocktail inclusa",
+                        t_type: {
+                            SEAT: {
+                                TYPE: {
+                                    WITH_CONSUMATION: true
+                                }
+                            }
+                        },
+                        t_seat_list: [
+                            {
+                                n_seat_num: 2,
+                                n_object_map_id: 3,
+                                n_id_event: 1,
+                                is_sell: false
+                            },
+                        ]
                     }
-                },
-                t_seat_list: [
-                    {
-                        n_seat_num: 14,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: true
-                    },
-                    {
-                        n_seat_num: 15,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: true
-                    },
-                    {
-                        n_seat_num: 16,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: true
-                    },
-                    {
-                        n_seat_num: 17,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: true
-                    },
-                    {
-                        n_seat_num: 18,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: true
-                    },
-                    {
-                        n_seat_num: 19,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: true
-                    },
-                    {
-                        n_seat_num: 20,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: true
-                    },
-                    {
-                        n_seat_num: 21,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: false
-                    },
-                    {
-                        n_seat_num: 22,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: false
-                    },
-                    {
-                        n_seat_num: 23,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: false
-                    },
-                    {
-                        n_seat_num: 24,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: false
-                    },
-                    {
-                        n_seat_num: 25,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: false
-                    },
-                    {
-                        n_seat_num: 25,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: false
-                    },
-                    {
-                        n_seat_num: 26,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: false
-                    },
-                    {
-                        n_seat_num: 27,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: false
-                    },
                 ]
-            },
-            {
-                n_id: 2,
-                n_id_event: 1,
-                n_limit_buy_for_person: 5,
-                n_object_price: 10,
-                t_map_cord_x: 5,
-                t_map_cord_y: 25,
-                t_map_cord_z: 1,
-                t_note: "Non inclusa consumazione",
-                t_type: {
-                    SEAT: {
-                        TYPE: {
-                            NO_CONSUMATION: true
-                        }
-                    }
-                },
-                t_seat_list: [
-                    {
-                        n_seat_num: 1,
-                        n_object_map_id: 2,
-                        n_id_event: 1,
-                        is_sell: false
-                    },
-                ]
-            },
-            {
-                n_id: 3,
-                n_id_event: 1,
-                n_limit_buy_for_person: 6,
-                n_object_price: 20,
-                t_map_cord_x: 6,
-                t_map_cord_y: 26,
-                t_map_cord_z: 1,
-                t_note: "Consumazione di 2 cocktail inclusa",
-                t_type: {
-                    SEAT: {
-                        TYPE: {
-                            WITH_CONSUMATION: true
-                        }
-                    }
-                },
-                t_seat_list: [
-                    {
-                        n_seat_num: 2,
-                        n_object_map_id: 3,
-                        n_id_event: 1,
-                        is_sell: false
-                    },
-                ]
-            },
+            }
         ],
         t_reviews: [
             {
@@ -3786,7 +3907,7 @@ export const allEventList: Array<Event> = [
             }
         ],
         t_company: { t_name: "Disco Club S.R.L", t_surname: "", t_alias_generated: "disco-club-srl", t_type: USER_TYPE.COMPANY },
-       
+
         b_active: true,
         b_external_event: false,
     },
@@ -3806,7 +3927,7 @@ export const allEventList: Array<Event> = [
             t_location_name: "La Gazzella"
         },
         t_event_date: new Date("2023-12-30"),
-        
+
         t_type: EVENT_TYPE.PARTY,
         t_service_list: [
             {
@@ -3836,166 +3957,174 @@ export const allEventList: Array<Event> = [
                 }
             }
         ],
-        t_map: [
+        t_map_list: [
             {
-                n_id: 1,
-                n_id_event: 1,
-                n_min_num_person: 8,
-                n_max_num_person: 15,
-                n_limit_buy_for_person: 1,
-                n_object_price: 700,
-                t_map_cord_x: 1,
-                t_map_cord_y: 2,
-                t_map_cord_z: 1,
-                t_note: "Tavolo normale, inclusa una consumazione da 500€",
-                t_type: {
-                    TABLE: {
-                        DISCOTECA: true
+                t_map_name: "Sala Superiore",
+                t_map_event_id: 1,
+                t_map_id: 1,
+                t_map_total_seat: 300,
+                t_object_maps: [
+                    {
+                        n_id: 1,
+                        n_id_event: 1,
+                        n_min_num_person: 8,
+                        n_max_num_person: 15,
+                        n_limit_buy_for_person: 1,
+                        n_object_price: 700,
+                        t_map_cord_x: 1,
+                        t_map_cord_y: 2,
+                        t_map_cord_z: 1,
+                        t_note: "Tavolo normale, inclusa una consumazione da 500€",
+                        t_type: {
+                            TABLE: {
+                                DISCOTECA: true
+                            }
+                        },
+                        t_seat_list: [
+                            {
+                                n_seat_num: 14,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: true
+                            },
+                            {
+                                n_seat_num: 15,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: true
+                            },
+                            {
+                                n_seat_num: 16,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: true
+                            },
+                            {
+                                n_seat_num: 17,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: true
+                            },
+                            {
+                                n_seat_num: 18,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: true
+                            },
+                            {
+                                n_seat_num: 19,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: true
+                            },
+                            {
+                                n_seat_num: 20,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: true
+                            },
+                            {
+                                n_seat_num: 21,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: false
+                            },
+                            {
+                                n_seat_num: 22,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: false
+                            },
+                            {
+                                n_seat_num: 23,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: false
+                            },
+                            {
+                                n_seat_num: 24,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: false
+                            },
+                            {
+                                n_seat_num: 25,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: false
+                            },
+                            {
+                                n_seat_num: 25,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: false
+                            },
+                            {
+                                n_seat_num: 26,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: false
+                            },
+                            {
+                                n_seat_num: 27,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: false
+                            },
+                        ]
+                    },
+                    {
+                        n_id: 2,
+                        n_id_event: 1,
+                        n_limit_buy_for_person: 5,
+                        n_object_price: 10,
+                        t_map_cord_x: 5,
+                        t_map_cord_y: 25,
+                        t_map_cord_z: 1,
+                        t_note: "Non inclusa consumazione",
+                        t_type: {
+                            SEAT: {
+                                TYPE: {
+                                    NO_CONSUMATION: true
+                                }
+                            }
+                        },
+                        t_seat_list: [
+                            {
+                                n_seat_num: 1,
+                                n_object_map_id: 2,
+                                n_id_event: 1,
+                                is_sell: false
+                            },
+                        ]
+                    },
+                    {
+                        n_id: 3,
+                        n_id_event: 1,
+                        n_limit_buy_for_person: 6,
+                        n_object_price: 20,
+                        t_map_cord_x: 6,
+                        t_map_cord_y: 26,
+                        t_map_cord_z: 1,
+                        t_note: "Consumazione di 2 cocktail inclusa",
+                        t_type: {
+                            SEAT: {
+                                TYPE: {
+                                    WITH_CONSUMATION: true
+                                }
+                            }
+                        },
+                        t_seat_list: [
+                            {
+                                n_seat_num: 2,
+                                n_object_map_id: 3,
+                                n_id_event: 1,
+                                is_sell: false
+                            },
+                        ]
                     }
-                },
-                t_seat_list: [
-                    {
-                        n_seat_num: 14,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: true
-                    },
-                    {
-                        n_seat_num: 15,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: true
-                    },
-                    {
-                        n_seat_num: 16,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: true
-                    },
-                    {
-                        n_seat_num: 17,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: true
-                    },
-                    {
-                        n_seat_num: 18,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: true
-                    },
-                    {
-                        n_seat_num: 19,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: true
-                    },
-                    {
-                        n_seat_num: 20,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: true
-                    },
-                    {
-                        n_seat_num: 21,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: false
-                    },
-                    {
-                        n_seat_num: 22,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: false
-                    },
-                    {
-                        n_seat_num: 23,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: false
-                    },
-                    {
-                        n_seat_num: 24,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: false
-                    },
-                    {
-                        n_seat_num: 25,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: false
-                    },
-                    {
-                        n_seat_num: 25,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: false
-                    },
-                    {
-                        n_seat_num: 26,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: false
-                    },
-                    {
-                        n_seat_num: 27,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: false
-                    },
                 ]
-            },
-            {
-                n_id: 2,
-                n_id_event: 1,
-                n_limit_buy_for_person: 5,
-                n_object_price: 10,
-                t_map_cord_x: 5,
-                t_map_cord_y: 25,
-                t_map_cord_z: 1,
-                t_note: "Non inclusa consumazione",
-                t_type: {
-                    SEAT: {
-                        TYPE: {
-                            NO_CONSUMATION: true
-                        }
-                    }
-                },
-                t_seat_list: [
-                    {
-                        n_seat_num: 1,
-                        n_object_map_id: 2,
-                        n_id_event: 1,
-                        is_sell: false
-                    },
-                ]
-            },
-            {
-                n_id: 3,
-                n_id_event: 1,
-                n_limit_buy_for_person: 6,
-                n_object_price: 20,
-                t_map_cord_x: 6,
-                t_map_cord_y: 26,
-                t_map_cord_z: 1,
-                t_note: "Consumazione di 2 cocktail inclusa",
-                t_type: {
-                    SEAT: {
-                        TYPE: {
-                            WITH_CONSUMATION: true
-                        }
-                    }
-                },
-                t_seat_list: [
-                    {
-                        n_seat_num: 2,
-                        n_object_map_id: 3,
-                        n_id_event: 1,
-                        is_sell: false
-                    },
-                ]
-            },
+            }
         ],
         t_reviews: [
             {
@@ -4082,166 +4211,174 @@ export const allEventList: Array<Event> = [
                 }
             }
         ],
-        t_map: [
+        t_map_list: [
             {
-                n_id: 1,
-                n_id_event: 1,
-                n_min_num_person: 8,
-                n_max_num_person: 15,
-                n_limit_buy_for_person: 1,
-                n_object_price: 700,
-                t_map_cord_x: 1,
-                t_map_cord_y: 2,
-                t_map_cord_z: 1,
-                t_note: "Tavolo normale, inclusa una consumazione da 500€",
-                t_type: {
-                    TABLE: {
-                        DISCOTECA: true
+                t_map_name: "Sala Superiore",
+                t_map_event_id: 1,
+                t_map_id: 1,
+                t_map_total_seat: 300,
+                t_object_maps: [
+                    {
+                        n_id: 1,
+                        n_id_event: 1,
+                        n_min_num_person: 8,
+                        n_max_num_person: 15,
+                        n_limit_buy_for_person: 1,
+                        n_object_price: 700,
+                        t_map_cord_x: 1,
+                        t_map_cord_y: 2,
+                        t_map_cord_z: 1,
+                        t_note: "Tavolo normale, inclusa una consumazione da 500€",
+                        t_type: {
+                            TABLE: {
+                                DISCOTECA: true
+                            }
+                        },
+                        t_seat_list: [
+                            {
+                                n_seat_num: 14,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: true
+                            },
+                            {
+                                n_seat_num: 15,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: true
+                            },
+                            {
+                                n_seat_num: 16,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: true
+                            },
+                            {
+                                n_seat_num: 17,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: true
+                            },
+                            {
+                                n_seat_num: 18,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: true
+                            },
+                            {
+                                n_seat_num: 19,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: true
+                            },
+                            {
+                                n_seat_num: 20,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: true
+                            },
+                            {
+                                n_seat_num: 21,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: false
+                            },
+                            {
+                                n_seat_num: 22,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: false
+                            },
+                            {
+                                n_seat_num: 23,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: false
+                            },
+                            {
+                                n_seat_num: 24,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: false
+                            },
+                            {
+                                n_seat_num: 25,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: false
+                            },
+                            {
+                                n_seat_num: 25,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: false
+                            },
+                            {
+                                n_seat_num: 26,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: false
+                            },
+                            {
+                                n_seat_num: 27,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: false
+                            },
+                        ]
+                    },
+                    {
+                        n_id: 2,
+                        n_id_event: 1,
+                        n_limit_buy_for_person: 5,
+                        n_object_price: 10,
+                        t_map_cord_x: 5,
+                        t_map_cord_y: 25,
+                        t_map_cord_z: 1,
+                        t_note: "Non inclusa consumazione",
+                        t_type: {
+                            SEAT: {
+                                TYPE: {
+                                    NO_CONSUMATION: true
+                                }
+                            }
+                        },
+                        t_seat_list: [
+                            {
+                                n_seat_num: 1,
+                                n_object_map_id: 2,
+                                n_id_event: 1,
+                                is_sell: false
+                            },
+                        ]
+                    },
+                    {
+                        n_id: 3,
+                        n_id_event: 1,
+                        n_limit_buy_for_person: 6,
+                        n_object_price: 20,
+                        t_map_cord_x: 6,
+                        t_map_cord_y: 26,
+                        t_map_cord_z: 1,
+                        t_note: "Consumazione di 2 cocktail inclusa",
+                        t_type: {
+                            SEAT: {
+                                TYPE: {
+                                    WITH_CONSUMATION: true
+                                }
+                            }
+                        },
+                        t_seat_list: [
+                            {
+                                n_seat_num: 2,
+                                n_object_map_id: 3,
+                                n_id_event: 1,
+                                is_sell: false
+                            },
+                        ]
                     }
-                },
-                t_seat_list: [
-                    {
-                        n_seat_num: 14,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: true
-                    },
-                    {
-                        n_seat_num: 15,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: true
-                    },
-                    {
-                        n_seat_num: 16,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: true
-                    },
-                    {
-                        n_seat_num: 17,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: true
-                    },
-                    {
-                        n_seat_num: 18,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: true
-                    },
-                    {
-                        n_seat_num: 19,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: true
-                    },
-                    {
-                        n_seat_num: 20,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: true
-                    },
-                    {
-                        n_seat_num: 21,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: false
-                    },
-                    {
-                        n_seat_num: 22,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: false
-                    },
-                    {
-                        n_seat_num: 23,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: false
-                    },
-                    {
-                        n_seat_num: 24,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: false
-                    },
-                    {
-                        n_seat_num: 25,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: false
-                    },
-                    {
-                        n_seat_num: 25,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: false
-                    },
-                    {
-                        n_seat_num: 26,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: false
-                    },
-                    {
-                        n_seat_num: 27,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: false
-                    },
                 ]
-            },
-            {
-                n_id: 2,
-                n_id_event: 1,
-                n_limit_buy_for_person: 5,
-                n_object_price: 10,
-                t_map_cord_x: 5,
-                t_map_cord_y: 25,
-                t_map_cord_z: 1,
-                t_note: "Non inclusa consumazione",
-                t_type: {
-                    SEAT: {
-                        TYPE: {
-                            NO_CONSUMATION: true
-                        }
-                    }
-                },
-                t_seat_list: [
-                    {
-                        n_seat_num: 1,
-                        n_object_map_id: 2,
-                        n_id_event: 1,
-                        is_sell: false
-                    },
-                ]
-            },
-            {
-                n_id: 3,
-                n_id_event: 1,
-                n_limit_buy_for_person: 6,
-                n_object_price: 20,
-                t_map_cord_x: 6,
-                t_map_cord_y: 26,
-                t_map_cord_z: 1,
-                t_note: "Consumazione di 2 cocktail inclusa",
-                t_type: {
-                    SEAT: {
-                        TYPE: {
-                            WITH_CONSUMATION: true
-                        }
-                    }
-                },
-                t_seat_list: [
-                    {
-                        n_seat_num: 2,
-                        n_object_map_id: 3,
-                        n_id_event: 1,
-                        is_sell: false
-                    },
-                ]
-            },
+            }
         ],
         t_reviews: [
             {
@@ -4328,166 +4465,174 @@ export const allEventList: Array<Event> = [
                 }
             }
         ],
-        t_map: [
+        t_map_list: [
             {
-                n_id: 1,
-                n_id_event: 1,
-                n_min_num_person: 8,
-                n_max_num_person: 15,
-                n_limit_buy_for_person: 1,
-                n_object_price: 700,
-                t_map_cord_x: 1,
-                t_map_cord_y: 2,
-                t_map_cord_z: 1,
-                t_note: "Tavolo normale, inclusa una consumazione da 500€",
-                t_type: {
-                    TABLE: {
-                        DISCOTECA: true
+                t_map_name: "Sala Superiore",
+                t_map_event_id: 1,
+                t_map_id: 1,
+                t_map_total_seat: 300,
+                t_object_maps: [
+                    {
+                        n_id: 1,
+                        n_id_event: 1,
+                        n_min_num_person: 8,
+                        n_max_num_person: 15,
+                        n_limit_buy_for_person: 1,
+                        n_object_price: 700,
+                        t_map_cord_x: 1,
+                        t_map_cord_y: 2,
+                        t_map_cord_z: 1,
+                        t_note: "Tavolo normale, inclusa una consumazione da 500€",
+                        t_type: {
+                            TABLE: {
+                                DISCOTECA: true
+                            }
+                        },
+                        t_seat_list: [
+                            {
+                                n_seat_num: 14,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: true
+                            },
+                            {
+                                n_seat_num: 15,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: true
+                            },
+                            {
+                                n_seat_num: 16,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: true
+                            },
+                            {
+                                n_seat_num: 17,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: true
+                            },
+                            {
+                                n_seat_num: 18,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: true
+                            },
+                            {
+                                n_seat_num: 19,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: true
+                            },
+                            {
+                                n_seat_num: 20,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: true
+                            },
+                            {
+                                n_seat_num: 21,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: false
+                            },
+                            {
+                                n_seat_num: 22,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: false
+                            },
+                            {
+                                n_seat_num: 23,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: false
+                            },
+                            {
+                                n_seat_num: 24,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: false
+                            },
+                            {
+                                n_seat_num: 25,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: false
+                            },
+                            {
+                                n_seat_num: 25,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: false
+                            },
+                            {
+                                n_seat_num: 26,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: false
+                            },
+                            {
+                                n_seat_num: 27,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: false
+                            },
+                        ]
+                    },
+                    {
+                        n_id: 2,
+                        n_id_event: 1,
+                        n_limit_buy_for_person: 5,
+                        n_object_price: 10,
+                        t_map_cord_x: 5,
+                        t_map_cord_y: 25,
+                        t_map_cord_z: 1,
+                        t_note: "Non inclusa consumazione",
+                        t_type: {
+                            SEAT: {
+                                TYPE: {
+                                    NO_CONSUMATION: true
+                                }
+                            }
+                        },
+                        t_seat_list: [
+                            {
+                                n_seat_num: 1,
+                                n_object_map_id: 2,
+                                n_id_event: 1,
+                                is_sell: false
+                            },
+                        ]
+                    },
+                    {
+                        n_id: 3,
+                        n_id_event: 1,
+                        n_limit_buy_for_person: 6,
+                        n_object_price: 20,
+                        t_map_cord_x: 6,
+                        t_map_cord_y: 26,
+                        t_map_cord_z: 1,
+                        t_note: "Consumazione di 2 cocktail inclusa",
+                        t_type: {
+                            SEAT: {
+                                TYPE: {
+                                    WITH_CONSUMATION: true
+                                }
+                            }
+                        },
+                        t_seat_list: [
+                            {
+                                n_seat_num: 2,
+                                n_object_map_id: 3,
+                                n_id_event: 1,
+                                is_sell: false
+                            },
+                        ]
                     }
-                },
-                t_seat_list: [
-                    {
-                        n_seat_num: 14,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: true
-                    },
-                    {
-                        n_seat_num: 15,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: true
-                    },
-                    {
-                        n_seat_num: 16,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: true
-                    },
-                    {
-                        n_seat_num: 17,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: true
-                    },
-                    {
-                        n_seat_num: 18,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: true
-                    },
-                    {
-                        n_seat_num: 19,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: true
-                    },
-                    {
-                        n_seat_num: 20,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: true
-                    },
-                    {
-                        n_seat_num: 21,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: false
-                    },
-                    {
-                        n_seat_num: 22,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: false
-                    },
-                    {
-                        n_seat_num: 23,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: false
-                    },
-                    {
-                        n_seat_num: 24,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: false
-                    },
-                    {
-                        n_seat_num: 25,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: false
-                    },
-                    {
-                        n_seat_num: 25,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: false
-                    },
-                    {
-                        n_seat_num: 26,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: false
-                    },
-                    {
-                        n_seat_num: 27,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: false
-                    },
                 ]
-            },
-            {
-                n_id: 2,
-                n_id_event: 1,
-                n_limit_buy_for_person: 5,
-                n_object_price: 10,
-                t_map_cord_x: 5,
-                t_map_cord_y: 25,
-                t_map_cord_z: 1,
-                t_note: "Non inclusa consumazione",
-                t_type: {
-                    SEAT: {
-                        TYPE: {
-                            NO_CONSUMATION: true
-                        }
-                    }
-                },
-                t_seat_list: [
-                    {
-                        n_seat_num: 1,
-                        n_object_map_id: 2,
-                        n_id_event: 1,
-                        is_sell: false
-                    },
-                ]
-            },
-            {
-                n_id: 3,
-                n_id_event: 1,
-                n_limit_buy_for_person: 6,
-                n_object_price: 20,
-                t_map_cord_x: 6,
-                t_map_cord_y: 26,
-                t_map_cord_z: 1,
-                t_note: "Consumazione di 2 cocktail inclusa",
-                t_type: {
-                    SEAT: {
-                        TYPE: {
-                            WITH_CONSUMATION: true
-                        }
-                    }
-                },
-                t_seat_list: [
-                    {
-                        n_seat_num: 2,
-                        n_object_map_id: 3,
-                        n_id_event: 1,
-                        is_sell: false
-                    },
-                ]
-            },
+            }
         ],
         t_reviews: [
             {
@@ -4574,166 +4719,174 @@ export const allEventList: Array<Event> = [
                 }
             }
         ],
-        t_map: [
+        t_map_list: [
             {
-                n_id: 1,
-                n_id_event: 1,
-                n_min_num_person: 8,
-                n_max_num_person: 15,
-                n_limit_buy_for_person: 1,
-                n_object_price: 700,
-                t_map_cord_x: 1,
-                t_map_cord_y: 2,
-                t_map_cord_z: 1,
-                t_note: "Tavolo normale, inclusa una consumazione da 500€",
-                t_type: {
-                    TABLE: {
-                        DISCOTECA: true
+                t_map_name: "Sala Superiore",
+                t_map_event_id: 1,
+                t_map_id: 1,
+                t_map_total_seat: 300,
+                t_object_maps: [
+                    {
+                        n_id: 1,
+                        n_id_event: 1,
+                        n_min_num_person: 8,
+                        n_max_num_person: 15,
+                        n_limit_buy_for_person: 1,
+                        n_object_price: 700,
+                        t_map_cord_x: 1,
+                        t_map_cord_y: 2,
+                        t_map_cord_z: 1,
+                        t_note: "Tavolo normale, inclusa una consumazione da 500€",
+                        t_type: {
+                            TABLE: {
+                                DISCOTECA: true
+                            }
+                        },
+                        t_seat_list: [
+                            {
+                                n_seat_num: 14,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: true
+                            },
+                            {
+                                n_seat_num: 15,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: true
+                            },
+                            {
+                                n_seat_num: 16,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: true
+                            },
+                            {
+                                n_seat_num: 17,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: true
+                            },
+                            {
+                                n_seat_num: 18,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: true
+                            },
+                            {
+                                n_seat_num: 19,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: true
+                            },
+                            {
+                                n_seat_num: 20,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: true
+                            },
+                            {
+                                n_seat_num: 21,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: false
+                            },
+                            {
+                                n_seat_num: 22,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: false
+                            },
+                            {
+                                n_seat_num: 23,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: false
+                            },
+                            {
+                                n_seat_num: 24,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: false
+                            },
+                            {
+                                n_seat_num: 25,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: false
+                            },
+                            {
+                                n_seat_num: 25,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: false
+                            },
+                            {
+                                n_seat_num: 26,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: false
+                            },
+                            {
+                                n_seat_num: 27,
+                                n_object_map_id: 1,
+                                n_id_event: 1,
+                                is_sell: false
+                            },
+                        ]
+                    },
+                    {
+                        n_id: 2,
+                        n_id_event: 1,
+                        n_limit_buy_for_person: 5,
+                        n_object_price: 10,
+                        t_map_cord_x: 5,
+                        t_map_cord_y: 25,
+                        t_map_cord_z: 1,
+                        t_note: "Non inclusa consumazione",
+                        t_type: {
+                            SEAT: {
+                                TYPE: {
+                                    NO_CONSUMATION: true
+                                }
+                            }
+                        },
+                        t_seat_list: [
+                            {
+                                n_seat_num: 1,
+                                n_object_map_id: 2,
+                                n_id_event: 1,
+                                is_sell: false
+                            },
+                        ]
+                    },
+                    {
+                        n_id: 3,
+                        n_id_event: 1,
+                        n_limit_buy_for_person: 6,
+                        n_object_price: 20,
+                        t_map_cord_x: 6,
+                        t_map_cord_y: 26,
+                        t_map_cord_z: 1,
+                        t_note: "Consumazione di 2 cocktail inclusa",
+                        t_type: {
+                            SEAT: {
+                                TYPE: {
+                                    WITH_CONSUMATION: true
+                                }
+                            }
+                        },
+                        t_seat_list: [
+                            {
+                                n_seat_num: 2,
+                                n_object_map_id: 3,
+                                n_id_event: 1,
+                                is_sell: false
+                            },
+                        ]
                     }
-                },
-                t_seat_list: [
-                    {
-                        n_seat_num: 14,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: true
-                    },
-                    {
-                        n_seat_num: 15,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: true
-                    },
-                    {
-                        n_seat_num: 16,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: true
-                    },
-                    {
-                        n_seat_num: 17,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: true
-                    },
-                    {
-                        n_seat_num: 18,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: true
-                    },
-                    {
-                        n_seat_num: 19,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: true
-                    },
-                    {
-                        n_seat_num: 20,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: true
-                    },
-                    {
-                        n_seat_num: 21,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: false
-                    },
-                    {
-                        n_seat_num: 22,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: false
-                    },
-                    {
-                        n_seat_num: 23,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: false
-                    },
-                    {
-                        n_seat_num: 24,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: false
-                    },
-                    {
-                        n_seat_num: 25,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: false
-                    },
-                    {
-                        n_seat_num: 25,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: false
-                    },
-                    {
-                        n_seat_num: 26,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: false
-                    },
-                    {
-                        n_seat_num: 27,
-                        n_object_map_id: 1,
-                        n_id_event: 1,
-                        is_sell: false
-                    },
                 ]
-            },
-            {
-                n_id: 2,
-                n_id_event: 1,
-                n_limit_buy_for_person: 5,
-                n_object_price: 10,
-                t_map_cord_x: 5,
-                t_map_cord_y: 25,
-                t_map_cord_z: 1,
-                t_note: "Non inclusa consumazione",
-                t_type: {
-                    SEAT: {
-                        TYPE: {
-                            NO_CONSUMATION: true
-                        }
-                    }
-                },
-                t_seat_list: [
-                    {
-                        n_seat_num: 1,
-                        n_object_map_id: 2,
-                        n_id_event: 1,
-                        is_sell: false
-                    },
-                ]
-            },
-            {
-                n_id: 3,
-                n_id_event: 1,
-                n_limit_buy_for_person: 6,
-                n_object_price: 20,
-                t_map_cord_x: 6,
-                t_map_cord_y: 26,
-                t_map_cord_z: 1,
-                t_note: "Consumazione di 2 cocktail inclusa",
-                t_type: {
-                    SEAT: {
-                        TYPE: {
-                            WITH_CONSUMATION: true
-                        }
-                    }
-                },
-                t_seat_list: [
-                    {
-                        n_seat_num: 2,
-                        n_object_map_id: 3,
-                        n_id_event: 1,
-                        is_sell: false
-                    },
-                ]
-            },
+            }
         ],
         t_reviews: [
             {
@@ -4800,3 +4953,20 @@ export const COLORS: Record<string, EventColor> = {
     blue: { primary: '#1e90ff', secondary: '#D1E8FF' },
     yellow: { primary: '#e3bc08', secondary: '#FDF1BA' }
 };
+
+export function getTicketNameByType(etpType: OBJECT_MAP_TYPE) {
+    let case_0 = { TABLE: { DISCOTECA: true } };
+    console.log(etpType === case_0)
+    switch (true) {
+        case etpType.TABLE?.DISCOTECA === true:
+            return "Tavolo";
+        case etpType.SEAT?.TYPE.NO_CONSUMATION === true:
+            return "Standard";
+        case etpType.SEAT?.TYPE.WITH_CONSUMATION === true:
+            return "Consumazione";
+        case etpType.TABLE?.DISCOTECA_DJ === true:
+            return "Tavolo DJ";
+        default:
+            return "Standard";
+    }
+}

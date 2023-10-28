@@ -26,7 +26,7 @@ export class SlideshowComponent {
     } else {
       this.eventListFilter = this.eventListFilter.filter(el => el.b_active);
     }
-    this.eventListFilter = this.eventListFilter.filter(el => el.t_event_dates[el.t_event_dates.length-1] >= new Date());
+    this.eventListFilter = this.eventListFilter.filter(el => el.t_event_date >= new Date());
     for (let delCount = 0; (this.eventListFilter.length > MAX_NUM_SLIDE) && MAX_NUM_SLIDE >= 0; delCount++) {
       this.eventListFilter.pop();
     }

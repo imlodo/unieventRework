@@ -65,14 +65,17 @@ export class EventListComponent implements AfterViewInit {
 
   getMinPriceForEvent(eventData: Event) {
     let eventMinPrice = null;
-    if (eventData.t_price && eventData.t_price.length > 0) {
-      eventMinPrice = eventData.t_price[0].ticket_price;
-      eventData.t_price.forEach(price => {
-        if (eventMinPrice > price.ticket_price) {
-          eventMinPrice = price.ticket_price;
-        }
-      });
-    }
+    eventData.t_map_list.forEach(t_maps =>{
+      if (t_maps.t_object_maps && t_maps.t_object_maps.length > 0) {
+        eventMinPrice = t_maps.t_object_maps[0].n_object_price;
+        t_maps.t_object_maps.forEach(map => {
+          if (eventMinPrice > map.n_object_price) {
+            eventMinPrice = map.n_object_price;
+          }
+        });
+      }
+    });
+    
     return eventMinPrice;
   }
 
@@ -95,7 +98,7 @@ export class EventListComponent implements AfterViewInit {
   }
 
   setDefaultViewDate() {
-    this.viewDate = this.eventList[0].t_event_dates[0];
+    this.viewDate = this.eventList[0].t_event_date;
   }
 
   /* Gestione calendar */
@@ -113,8 +116,8 @@ export class EventListComponent implements AfterViewInit {
       let calendarEvent: CalendarEvent = {
         id: elEvent.n_id,
         title: elEvent.t_title,
-        start: startOfDay(elEvent.t_event_dates[0]),
-        end: startOfDay(elEvent.t_event_dates[0]),
+        start: startOfDay(elEvent.t_event_date),
+        end: startOfDay(elEvent.t_event_date),
         color: tmpColor,
         meta: {eventData: elEvent},
       };
@@ -124,7 +127,7 @@ export class EventListComponent implements AfterViewInit {
 
 
   getEventTicketAvailability(eventData:Event){
-    return eventData.t_event_dates[0] >= new Date() ? COLORS['green'] : COLORS['red'];
+    return eventData.t_event_date >= new Date() ? COLORS['green'] : COLORS['red'];
   }
 
   increment() {
