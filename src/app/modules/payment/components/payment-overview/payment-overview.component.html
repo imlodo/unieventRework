@@ -1,0 +1,81 @@
+<div class="container">
+    <div class="row my-4">
+        <div class="col-9 px-5">
+            <div class="d-flex align-item-center my-3 pointer" style="font-size:14px;">
+                <i class="gg-arrow-left"></i>
+                <span style="margin-top: 2px; margin-left:2px;" (click)="goBack()">Torna indietro </span>
+            </div>
+            <div class="d-flex justify-content-between align-item-center my-3" style="font-size: 18px;">
+                <span style="margin-top: 2px; margin-left:2px;">Carrello </span>
+                <div>
+                    <span class="" style="margin-top: 2px; margin-left:2px;">{{totalTicket}} {{totalTicket === 1 ?
+                        'Biglietto' :
+                        'Biglietti' }} - </span><span class="text-event-color-primary">€{{totalTicketPrice}}</span>
+                </div>
+
+            </div>
+            <div class="card">
+                <img [attr.src]="eventData?.t_image_link"
+                    style="max-height: 300px;width: -webkit-fill-available; object-fit: cover;" />
+                <div class="card-body">
+                    <div class="d-flex flex-column my-3 border p-3 rounded" *ngFor="let object of eventTicketList">
+                        <div class="d-flex justify-content-between">
+                            <span class="h5">1x {{eventData.t_title}}</span>
+                            <span>{{getTicketPriceString(object.n_object_price)}}</span>
+                        </div>
+                        <br>
+                        <span>{{eventData.t_location.t_city|uppercase}}, {{eventData.t_location.t_location_name}}</span>
+                        <span>{{getDate()}}</span>
+                        <br>
+                        <span>Organizzatore: {{eventData.t_company.t_name}}</span>
+                        <br>
+                        <span>{{getTicketName(object.t_type)}}, Intero</span>
+                        <div *ngIf="object.t_object_commissions" class="d-flex justify-content-between">
+                            <span>{{object.t_object_commissions.commission_type}}</span>
+                            <span>€ {{object.t_object_commissions.commission_price}}</span>
+                        </div>
+                        <br>
+                        <ng-container *ngIf="object.t_seat_list.length > 1">
+                            <div class="d-flex">
+                                <span>Numero posti: {{getNumeroPosti(object)}}</span>
+                            </div>
+                        </ng-container>
+                        <span *ngIf="object.t_seat_list.length === 1">Numero posto:
+                            {{object.t_seat_list[0].n_seat_num}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-3">
+            <span *ngIf="isAvailableTimeout" class="text-success">I tuoi biglietti sono ancora disponibili</span>
+            <span *ngIf="!isAvailableTimeout" class="text-danger">I tuoi biglietti non sono più disponibili</span>
+            <div class="alert alert-success d-flex justify-content-start align-item-center p-2"
+                [ngClass]="isAvailableTimeout ? 'alert-success' : 'alert-danger' ">
+                <span class="mx-2">Tempo Residuo:</span>
+                <div class="d-flex flex-row">
+                    <span #days></span> <span class="mx-1">g,</span>
+                    <span #hours></span> <span class="mx-1">h,</span>
+                    <span #minutes></span> <span class="mx-1">m,</span>
+                    <span #seconds></span> <span class="mx-1">s</span>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <h2 class="card-title">Riepilogo</h2>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                        card's content.</p>
+                    <div class="d-flex justify-content-between">
+                        <h5>Commissioni di servizio: </h5>
+                        <h5>€ {{serviceCommission}}</h5>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <span class="h6">Totale</span>
+                        <span class="h6">€{{totalTicketPrice}}</span>
+                    </div>
+                    <h5>incl. IVA, più costi di consegna</h5>
+                    <button class="my-2 btn btn-color-no-hover text-white rounded-1 w-100">Procedi all'acquisto</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

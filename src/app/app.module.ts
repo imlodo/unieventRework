@@ -32,7 +32,8 @@ export function momentAdapterFactory() {
   ],
   exports: [
   ],
-  providers: [],
+  providers: [
+	],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

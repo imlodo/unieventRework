@@ -43,21 +43,19 @@ export class GlobalService {
   public decodeParams(sparams: string): any {
     if (sparams) {
       let params;
-      if (ENCRYPT_PARAMETERS) {
-        params = JSON.parse(CryptoJS.AES.decrypt(sparams, this.paramsSecret).toString(CryptoJS.enc.Utf8));
-      } else if (URI_ENCODE_PARAMETERS) {
-        params = JSON.parse(decodeURI(sparams));
-      } else {
-        params = JSON.parse(atob(sparams));
-      }
-      /*const loggedDomainUser = this.authService.getDomainUser() || '';
-      const domainUser = params && params['  '] || ' ';
-      if (loggedDomainUser === domainUser) {
-        delete params[' '];
-        delete params['  '];
+      try{
+        if (ENCRYPT_PARAMETERS) {
+          params = JSON.parse(CryptoJS.AES.decrypt(sparams, this.paramsSecret).toString(CryptoJS.enc.Utf8));
+        } else if (URI_ENCODE_PARAMETERS) {
+          params = JSON.parse(decodeURI(sparams));
+        } else {
+          params = JSON.parse(atob(sparams));
+        }
         return params;
-      }*/
-      return params;
+      }
+      catch(error){
+        return {};
+      }
     }
     return {};
   }

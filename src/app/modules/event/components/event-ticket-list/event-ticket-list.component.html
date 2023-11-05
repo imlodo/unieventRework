@@ -19,6 +19,6 @@
         </div>
     </div>
 
-    <unievent-event-best-ticket-form *ngIf="isBest"></unievent-event-best-ticket-form>
-    <unievent-event-plan-seat-ticket-form *ngIf="!isBest"></unievent-event-plan-seat-ticket-form>
+    <unievent-event-best-ticket-form (onBuyTicket)="buyBestTickets($event)" *ngIf="isBest"></unievent-event-best-ticket-form>
+    <unievent-event-plan-seat-ticket-form  *ngIf="!isBest"></unievent-event-plan-seat-ticket-form> <!--(onBuyTicket)="buyTickets($event)"-->
 </div>

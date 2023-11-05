@@ -4,7 +4,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent, SignupComponent, SearchCollapseComponent, NavbarComponent, HomepageComponent, ModalComponent } from './components';
 import { LoginFormComponent, SignupFormComponent } from './forms';
 import { ToastrModule } from 'ngx-toastr';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { SearchFormComponent } from './forms/search-form/search-form.component';
@@ -40,7 +39,7 @@ import { InternalServerErrorComponent } from './components/internal-server-error
 		ModalComponent,
 		SearchCollapseComponent
 	],
-	providers:[
+	providers: [
 	]
 })
 export class CoreModule { }

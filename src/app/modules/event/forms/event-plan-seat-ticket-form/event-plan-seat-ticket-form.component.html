@@ -1,1 +1,36 @@
-<p>event-plan-seat-ticket-form works!</p>
+<div *ngIf="form" class="d-flex flex-column justify-content-center align-items-center py-4">
+    <div class="d-flex justify-content-center align-items-center my-4">
+        <span class="h5 mx-3">Mappa</span>
+        <ng-select [items]="[]" bindLabel="name" bindValue="id" [clearable]="false"
+            [(ngModel)]="selectedMapIndex" placeholder="Seleziona mappa">
+        </ng-select>
+    </div>
+    <div class="d-flex my-3 justify-content-start align-items-center">
+        <span class="fw-bolder">Legenda: </span>
+        <div class="d-flex">
+            <div class="mx-2">
+                <span [style]=" 'background-color: rgb(1, 98, 114);border: 1px solid #797979;'"
+                    style="width: 10px; height: 10px; border-radius: 50%; display: inline-block; margin-right: 4px;"></span>
+                <span>Disponibilità totale</span>
+            </div>
+            <div class="mx-2">
+                <span [style]=" 'background-color: #ebcf1c;border: 1px solid #797979;'"
+                    style="width: 10px; height: 10px; border-radius: 50%; display: inline-block; margin-right: 4px;"></span>
+                <span>Disponibilità bassa</span>
+            </div>
+            <div class="mx-2">
+                <span [style]="'background-color: #9b1717;border: 1px solid #797979;'"
+                    style="width: 10px; height: 10px; border-radius: 50%; display: inline-block; margin-right: 4px;"></span>
+                <span>Esaurito</span>
+            </div>
+        </div>
+    </div>
+    <div class="row border m-2">
+        <div class="d-flex justify-content-between align-items-center" *ngFor="let row of mapSeatList[0]">
+            <ng-container *ngFor="let object of row">
+                <div *ngIf="object.n_id" class="d-flex rounded justify-content-center align-items-center pointer border m-2" [style]="object.n_obj_map_width && object.n_obj_map_height ? 'width:'+object.n_obj_map_width+'px; height:'+object.n_obj_map_height+'px;background:'+object.n_obj_map_fill+';':'min-width:80px;height:40px;'">{{object.n_obj_map_text ? object.n_obj_map_text : object.t_seat_list[0].n_seat_num}}</div>
+                <div *ngIf="!object.n_id" class="" style="min-width:40px; height:40px"></div>
+            </ng-container>
+        </div>
+    </div>    
+</div>

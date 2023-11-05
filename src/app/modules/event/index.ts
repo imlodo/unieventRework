@@ -6,3 +6,5 @@ export { EventFilterFormComponent } from "./forms/event-filter-form/event-filter
 export { EventBestTicketFormComponent } from "./forms/event-best-ticket-form/event-best-ticket-form.component";
 export { EventPlanSeatTicketFormComponent } from "./forms/event-plan-seat-ticket-form/event-plan-seat-ticket-form.component";
 export { EventBestTicketFormModel } from "./forms/event-best-ticket-form/event-best-ticket-form.model";
+export { EventPlanSeatTicketFormModel } from "./forms/event-plan-seat-ticket-form/event-plan-seat-ticket-form.model";
+export { EventBuyTicketRequest } from "./models/eventBuyTicketRequest";

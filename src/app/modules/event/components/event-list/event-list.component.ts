@@ -6,8 +6,8 @@ import { ModalComponent } from '../../../../core/components';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { COLORS } from '../../../../core/utility/global-constant';
-import { startOfDay, subDays, addDays, endOfMonth, isSameDay, isSameMonth, addHours } from 'date-fns';
-import { CalendarEvent, CalendarEventAction, CalendarEventTimesChangedEvent, CalendarView, collapseAnimation } from 'angular-calendar';
+import { startOfDay, isSameDay, isSameMonth } from 'date-fns';
+import { CalendarEvent, CalendarEventAction, CalendarView, collapseAnimation } from 'angular-calendar';
 import { registerLocaleData } from '@angular/common';
 import localeIt from '@angular/common/locales/it';
 const displayNameMap = new Map([[Breakpoints.XSmall, 'xs'], [Breakpoints.Small, 'sm'], [Breakpoints.Medium, 'md'], [Breakpoints.Large, 'lg'], [Breakpoints.XLarge, 'xl']]);
@@ -65,17 +65,25 @@ export class EventListComponent implements AfterViewInit {
 
   getMinPriceForEvent(eventData: Event) {
     let eventMinPrice = null;
-    eventData.t_map_list.forEach(t_maps =>{
+    eventData.t_map_list.forEach(t_maps => {
       if (t_maps.t_object_maps && t_maps.t_object_maps.length > 0) {
-        eventMinPrice = t_maps.t_object_maps[0].n_object_price;
+        if (t_maps.t_object_maps[0].n_object_price) {
+          eventMinPrice = t_maps.t_object_maps[0].n_object_price;
+        }
         t_maps.t_object_maps.forEach(map => {
-          if (eventMinPrice > map.n_object_price) {
-            eventMinPrice = map.n_object_price;
+          if (!eventMinPrice) {
+            if (map.n_object_price) {
+              eventMinPrice = map.n_object_price;
+            }
+          } else {
+            if (eventMinPrice > map.n_object_price) {
+              eventMinPrice = map.n_object_price;
+            }
           }
         });
       }
     });
-    
+
     return eventMinPrice;
   }
 
@@ -119,14 +127,14 @@ export class EventListComponent implements AfterViewInit {
         start: startOfDay(elEvent.t_event_date),
         end: startOfDay(elEvent.t_event_date),
         color: tmpColor,
-        meta: {eventData: elEvent},
+        meta: { eventData: elEvent },
       };
       this.events.push(calendarEvent);
     });
   }
 
 
-  getEventTicketAvailability(eventData:Event){
+  getEventTicketAvailability(eventData: Event) {
     return eventData.t_event_date >= new Date() ? COLORS['green'] : COLORS['red'];
   }
 
