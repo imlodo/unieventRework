@@ -1,0 +1,28 @@
+::ng-deep .mat-stepper-vertical,
+.mat-stepper-horizontal {
+    background: white;
+}
+
+::ng-deep .mat-stepper-horizontal-line {
+    border-top-color: #0000001f !important;
+}
+
+::ng-deep .mat-step-label.mat-step-label-active {
+    color: black !important;
+}
+
+::ng-deep .mat-step-optional {
+    color: #636363 !important;
+}
+
+::ng-deep .mat-step-icon {
+    background: #7f7f7f !important;
+}
+
+::ng-deep .mat-step-icon-selected {
+    background: #d32e2a !important;
+}
+
+::ng-deep .mat-horizontal-content-container {
+    padding: 24px !important;
+}

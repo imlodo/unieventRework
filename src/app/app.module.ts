@@ -10,6 +10,7 @@ import { NgSelectModule } from '@ng-select/ng-select';
 import { adapterFactory } from 'angular-calendar/date-adapters/moment';
 import * as moment from 'moment';
 import { NgbModalModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { PaymentStep1FormComponent } from './payment-step1-form/payment-step1-form.component';
 
 export function momentAdapterFactory() {
   return adapterFactory(moment);
@@ -17,7 +18,8 @@ export function momentAdapterFactory() {
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    PaymentStep1FormComponent
   ],
   imports: [
     BrowserModule,

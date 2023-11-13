@@ -1,6 +1,6 @@
 <div class="container">
     <div class="row my-4">
-        <div class="col-9 px-5">
+        <div class="col-xl-9 col-12 px-5">
             <div class="d-flex align-item-center my-3 pointer" style="font-size:14px;">
                 <i class="gg-arrow-left"></i>
                 <span style="margin-top: 2px; margin-left:2px;" (click)="goBack()">Torna indietro </span>
@@ -46,7 +46,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-3">
+        <div class="col-xl-3 col-12 py-5">
             <span *ngIf="isAvailableTimeout" class="text-success">I tuoi biglietti sono ancora disponibili</span>
             <span *ngIf="!isAvailableTimeout" class="text-danger">I tuoi biglietti non sono più disponibili</span>
             <div class="alert alert-success d-flex justify-content-start align-item-center p-2"
@@ -62,19 +62,53 @@
             <div class="card">
                 <div class="card-body">
                     <h2 class="card-title">Riepilogo</h2>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                        card's content.</p>
+                    <div *ngFor="let object of eventTicketList" class="d-flex justify-content-between">
+                        <span>1x {{eventData.t_title}}, {{getTicketName(object.t_type)}}</span>
+                        <span>{{getTicketPriceString(object.n_object_price)}}</span>
+                    </div>
+                    <div class="d-flex justify-content-between border-top">
+                        <h4>Totale biglietti: </h4>
+                        <h4>€ {{totalTicketPriceWithoutCommission}}</h4>
+                    </div>
                     <div class="d-flex justify-content-between">
                         <h5>Commissioni di servizio: </h5>
                         <h5>€ {{serviceCommission}}</h5>
                     </div>
                     <div class="d-flex justify-content-between">
                         <span class="h6">Totale</span>
-                        <span class="h6">€{{totalTicketPrice}}</span>
+                        <span class="h6"
+                            [ngClass]="isCoupon ? 'text-decoration-line-through' : '' ">€{{totalTicketPrice}}</span>
                     </div>
-                    <h5>incl. IVA, più costi di consegna</h5>
-                    <button class="my-2 btn btn-color-no-hover text-white rounded-1 w-100">Procedi all'acquisto</button>
+                    <div *ngIf="isCoupon" class="d-flex justify-content-end" style="margin-top: -10px;">
+                        <h4>{{newCouponPrice}}</h4>
+                    </div>
+                    <div *ngIf="isCoupon" class="d-flex justify-content-between">
+                        <h5>Coupon applicato: </h5>
+                        <h5>{{applyedCoupon.code}}</h5>
+                    </div>
+                    <div *ngIf="isCoupon" class="d-flex justify-content-between">
+                        <h5>Sconto applicato: </h5>
+                        <h5>{{applyedCoupon.sconto}}%</h5>
+                    </div>
+                    <h5>incl. IVA, più costi di consegna/servizio</h5>
+                    <button class="my-2 btn btn-color-no-hover text-white rounded-1 w-100"
+                        (click)="goToBuyStepper()">Procedi all'acquisto</button>
                 </div>
+            </div>
+            <div class="d-flex flex-column w-100 my-2">
+                <span class="h6 py-2 border-bottom w-100">Codice sconto</span>
+            </div>
+            <div class="d-flex">
+                <input (focus)="dynamicClass='add-focus'" #couponCode (focusout)="dynamicClass=''" type="text"
+                    class="form-control border-end-0 rounded-0" aria-label="Amount (to the nearest dollar)">
+                <span (click)="applyCoupon()"
+                    class="input-group-text border-start-0 rounded-0 btn-color-no-hover text-white pointer"
+                    [ngClass]="dynamicClass"><i class="gg-arrow-long-right"></i></span>
+            </div>
+            <div class="d-flex my-2">
+                <span class="text-success" *ngIf="isCoupon && successApplyCoupon">Coupon applicato con successo</span>
+                <span class="text-danger" *ngIf="!isCoupon && getCouponValue() != '' && successApplyCoupon==false">Coupon
+                    non esistente</span>
             </div>
         </div>
     </div>

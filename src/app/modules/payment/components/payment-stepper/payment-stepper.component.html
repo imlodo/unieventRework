@@ -1,1 +1,33 @@
-<p>payment-stepper works!</p>
+<div class="container py-5">
+    <mat-stepper headerPosition="top" #stepper>
+        <mat-step [stepControl]="firstFormGroup">
+            <form [formGroup]="firstFormGroup">
+                <ng-template matStepLabel>Consegna</ng-template>
+                <unievent-payment-step1-form></unievent-payment-step1-form>
+                <div class="py-3">
+                    <button class="btn btn-primary btn-color-no-hover" mat-button matStepperNext>Avanti</button>
+                </div>
+            </form>
+        </mat-step>
+        <mat-step [stepControl]="secondFormGroup" optional>
+            <form [formGroup]="secondFormGroup">
+                <ng-template matStepLabel>Pagamento</ng-template>
+                <mat-form-field>
+                    <input matInput placeholder="Address" formControlName="secondCtrl" required>
+                </mat-form-field>
+                <div>
+                    <button mat-button matStepperPrevious>Back</button>
+                    <button mat-button matStepperNext>Next</button>
+                </div>
+            </form>
+        </mat-step>
+        <mat-step>
+            <ng-template matStepLabel>Verifica</ng-template>
+            You are now done.
+            <div>
+                <button mat-button matStepperPrevious>Back</button>
+                <button mat-button (click)="stepper.reset()">Reset</button>
+            </div>
+        </mat-step>
+    </mat-stepper>
+</div>

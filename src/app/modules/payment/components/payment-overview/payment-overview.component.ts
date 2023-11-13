@@ -15,6 +15,8 @@ export class PaymentOverviewComponent {
   eventTicketList: Array<ObjectMap>;
   imgLink: string;
   totalTicketPrice: string;
+  totalTicketPriceWithoutCommission: string;
+  newCouponPrice : string;
   totalTicket: number;
   currency: string = "€";
   commissionsOfService: number = 3.55; //5%
@@ -22,20 +24,27 @@ export class PaymentOverviewComponent {
   isAvailableTimeout: boolean = false;
   timeoutDate:Date= new Date(new Date().getTime() + 15*60000); //ho aggiunto 15 minuti
   serviceCommission: string;
+  dynamicClass: string;
+  applyedCoupon: {code:string, sconto:number} = {code:"TEST2023",sconto:30}
+  successApplyCoupon: boolean = null;
+  isCoupon: boolean = false;
+  interval: any;
   @ViewChild('days', { static: true }) days: ElementRef;
   @ViewChild('hours', { static: true }) hours: ElementRef;
   @ViewChild('minutes', { static: true }) minutes: ElementRef;
   @ViewChild('seconds', { static: true }) seconds: ElementRef;
+  @ViewChild('couponCode', { static: true }) couponCode: ElementRef;
 
   constructor(private cdr: ChangeDetectorRef, private globalService: GlobalService, private route: ActivatedRoute, private router: Router) {
   }
 
   ngAfterViewInit(): void {
     this.decodeParams();
-    setInterval(() => {
+    this.interval = setInterval(() => {
       this.timeoutDate.setSeconds(this.timeoutDate.getSeconds() - 1);
       this.updateTimeout();
     }, 1000);
+    
 
 
     this.cdr.detectChanges();
@@ -66,6 +75,7 @@ export class PaymentOverviewComponent {
     this.eventTicketList.forEach(el => {
       totalPrice += el.n_object_price;
     })
+    this.totalTicketPriceWithoutCommission = totalPrice.toFixed(2).replace(".", ",");
     let totalPriceCopy = totalPrice;
     totalPrice = totalPrice + (totalPrice*(this.commissionsOfService/100));
     this.serviceCommission = (totalPrice - totalPriceCopy).toFixed(2).replace(".",",");
@@ -106,6 +116,11 @@ export class PaymentOverviewComponent {
       seconds = Math.trunc(seconds) - (minutes*60 + hours*60*60 + days*24*60*60);
     } else{
       this.isAvailableTimeout = false;
+      const params = this.globalService.encodeParams({
+        n_id:this.eventData.n_id
+      });
+      clearInterval(this.interval);
+      this.router.navigate([ROUTE_LIST.event.ticket.list, params]);
     }
     this.days.nativeElement.innerText = days;
     this.hours.nativeElement.innerText = hours;
@@ -118,4 +133,29 @@ export class PaymentOverviewComponent {
     return object.t_seat_list.map(el=>el.n_seat_num).toString();
   }
 
+  applyCoupon(){
+    let couponCodeStr=this.couponCode.nativeElement.value;
+    if(couponCodeStr === this.applyedCoupon.code){
+      let ttwc = Number(this.totalTicketPrice.replace(",","."));
+      this.newCouponPrice = (ttwc - (ttwc / 100 * this.applyedCoupon.sconto)).toFixed(2).replace(".",",");
+      this.isCoupon = true;
+      this.successApplyCoupon = true;
+    } else {
+      this.newCouponPrice = null;
+      this.isCoupon = false;
+      this.successApplyCoupon = false;
+    }
+  }
+
+  goToBuyStepper(){
+    const params = this.globalService.encodeParams({
+      buyMapObjectList: this.eventTicketList,
+      applyedCoupon:this.applyedCoupon
+    });
+    this.router.navigate([ROUTE_LIST.payment.checkout, params]);
+  }
+
+  getCouponValue(){
+    return this.couponCode.nativeElement.value;
+  }
 }

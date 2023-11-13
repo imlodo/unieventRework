@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { pluck } from 'rxjs';
 import { GlobalService } from '../../../../core/services';
 import { EventBuyTicketRequest } from '../../../../modules/event';
+import { FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'unievent-payment-stepper',
@@ -12,8 +13,14 @@ import { EventBuyTicketRequest } from '../../../../modules/event';
 export class PaymentStepperComponent implements AfterViewInit {
   
   eventTicketList:Array<EventBuyTicketRequest>
-  
-  constructor(private cdr: ChangeDetectorRef, private globalService: GlobalService, private route: ActivatedRoute){
+  firstFormGroup = this._formBuilder.group({
+    firstCtrl: ['', Validators.required],
+  });
+  secondFormGroup = this._formBuilder.group({
+    secondCtrl: ['', Validators.required],
+  });
+
+  constructor(private cdr: ChangeDetectorRef, private globalService: GlobalService, private route: ActivatedRoute, private _formBuilder: FormBuilder){
 
   }
 
