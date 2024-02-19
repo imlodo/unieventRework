@@ -10,6 +10,12 @@ import { SearchFormComponent } from './forms/search-form/search-form.component';
 import { SlideshowComponent } from './components/slideshow/slideshow.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { InternalServerErrorComponent } from './components/internal-server-error/internal-server-error.component';
+import { EventFeaturedComponent } from '../modules/event/components/event-featured/event-featured.component';
+import { EventNearComponent } from '../modules/event/components/event-near/event-near.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { EventMostRatedComponent } from '../modules/event/components/event-most-rated/event-most-rated.component';
+import { ArtistFeaturedComponent } from '../modules/artist/components/artist-featured/artist-featured.component';
+import { FeaturedTopicComponent } from '../modules/topic/components/featured-topic/featured-topic.component';
 
 @NgModule({
 	declarations: [
@@ -24,7 +30,13 @@ import { InternalServerErrorComponent } from './components/internal-server-error
 		ModalComponent,
 		SearchCollapseComponent,
 		SearchFormComponent,
-		SlideshowComponent
+		EventFeaturedComponent,
+		EventNearComponent,
+		EventMostRatedComponent,
+		SlideshowComponent,
+		ArtistFeaturedComponent,
+		FeaturedTopicComponent,
+  		FooterComponent
 	],
 	imports: [
 		CommonModule,
@@ -37,7 +49,13 @@ import { InternalServerErrorComponent } from './components/internal-server-error
 	exports: [
 		NavbarComponent,
 		ModalComponent,
-		SearchCollapseComponent
+		SearchCollapseComponent,
+		EventFeaturedComponent,
+		EventNearComponent,
+		EventMostRatedComponent,
+		ArtistFeaturedComponent,
+		FeaturedTopicComponent,
+		FooterComponent
 	],
 	providers: [
 	]

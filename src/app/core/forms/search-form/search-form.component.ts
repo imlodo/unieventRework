@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import cityJson from "../../../../assets/json/city.json";
+import { Router } from '@angular/router';
+import { ROUTE_LIST } from '../../utility/global-constant';
 
 @Component({
   selector: 'unievent-search-form',
@@ -14,6 +16,9 @@ export class SearchFormComponent {
   tipoEventoArray = [];
   dynamicClass = [];
 
+  constructor(private router: Router) {
+  }
+
   getInitialCity(){
     let tmpCities= Object.values(cityJson).filter(el=> el["Flag Comune capoluogo di provincia"] === 1);
     tmpCities = tmpCities.sort((a,b)=>{
@@ -25,7 +30,7 @@ export class SearchFormComponent {
   }
 
   goToAdvancedSearch(){
-
+    this.router.navigate([ROUTE_LIST.search.advanced]);
   }
 
   addFocusClass(field:string){

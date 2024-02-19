@@ -346,7 +346,7 @@ export const eventOrderedBySell: Array<Event> = [
         t_title: "Ladies Night",
         t_description: "Le migliori donne sono qui!",
         t_image_link: "https://img.freepik.com/free-vector/gradient-girls-night-neon-poster-template_52683-86711.jpg?w=740&t=st=1696171997~exp=1696172597~hmac=ac486126a384bafb1ab62294d5643e6bea2b06338c7633dce9fd352d051c2027",
-        t_event_date: new Date("2023-11-30"),
+        t_event_date: new Date("2024-11-30"),
         t_service_list: [
             {
                 n_service_id: 1,
@@ -1798,7 +1798,7 @@ export const allEventList: Array<Event> = [
         t_title: "Ladies Night",
         t_description: "Le migliori donne sono qui!",
         t_image_link: "https://img.freepik.com/free-vector/gradient-girls-night-neon-poster-template_52683-86711.jpg?w=740&t=st=1696171997~exp=1696172597~hmac=ac486126a384bafb1ab62294d5643e6bea2b06338c7633dce9fd352d051c2027",
-        t_event_date: new Date("2023-11-30"),
+        t_event_date: new Date("2024-11-30"),
         t_service_list: [
             {
                 n_service_id: 1,
@@ -14099,15 +14099,61 @@ export const ROUTE_LIST =
         login: "/login",
         signup: "/signUp",
     },
+    artist: {
+        list: "/artist/list",
+        category:{
+            list: "/artist/category/list"
+        },
+    },
     event: {
+        category:{
+            list: "/event/category/list"
+        },
+        featured:
+        {
+            list: "/event/featured/list"
+        },
+        near:
+        {
+            list: "/event/near/list"
+        },
+        most_rated: {
+            list: "/event/most-rated/list"
+        },
+        list: "/event/list",
         detail: "/event/detail",
         ticket: {
             list: "/event/ticket/list"
         }
     },
+    topic: {
+        featured:{
+            list:"/topic/featured/list"
+        },
+        category:{
+            list: "/topic/category/list"
+        },
+        list:"/topic/list"
+    },
     payment: {
         overview: "/payment/overview",
         checkout: "/payment/checkout"
+    },
+    search: {
+        advanced: "/search/advanced",
+        result: "/search/result"
+    },
+    footer_page:{
+        help_e_faq:"/help-e-faq",
+        about: "/about",
+        il_nostro_impegno: "/our-commitment",
+        chat: "/chat",
+        ticket_system:"/ticket-system",
+        partner: "/partner",
+        privacy_policy: "/privacy-policy",
+        cookie_policy: "/cookie-policy",
+        term_of_use: "/term-of-use",
+        rules:"/rules"
     }
 };
 

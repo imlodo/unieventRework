@@ -1,8 +1,8 @@
-<div [ngClass]="isShow ? 'collapse show' : 'collapse'" class="pt-2" id="showSearch">
+<div [ngClass]="isShow ? 'collapse show' : 'collapse'" class="pt-2 bg-white" id="showSearch">
     <unievent-search-form></unievent-search-form>
 </div>
 <ng-container *ngIf="isShow">
-    <p class="text-end pt-1 px-3 m-0 pb-2">
+    <p class="text-end pt-1 px-3 m-0 pb-2 bg-white">
         <a class="text-decoration-none pointer" data-bs-toggle="collapse" href="#showSearch" role="button"
             aria-expanded="false" aria-controls="showSearch" (click)="isShow=!isShow; hideSearch()"><span
                 class="text-dark d-flex d-md-inline-flex justify-content-end align-items-end">Nascondi<i

@@ -20,7 +20,6 @@ import { NgSelectModule } from '@ng-select/ng-select';
 import { EventBestTicketFormComponent } from './forms/event-best-ticket-form/event-best-ticket-form.component';
 import { EventPlanSeatTicketFormComponent } from './forms/event-plan-seat-ticket-form/event-plan-seat-ticket-form.component';
 
-
 @NgModule({
   declarations: [
     EventCreateComponent,
@@ -32,7 +31,7 @@ import { EventPlanSeatTicketFormComponent } from './forms/event-plan-seat-ticket
     EventTicketListComponent,
     EventFilterFormComponent,
     EventBestTicketFormComponent,
-    EventPlanSeatTicketFormComponent
+    EventPlanSeatTicketFormComponent,
   ],
   imports: [
     CommonModule,
