@@ -1,7 +1,7 @@
 <div class="navbar-nav">
     <div class="nav-item text-nowrap">
-        <a matTooltip="Notifiche" class="nav-link px-2 link-icon-text no-padding pointer" (click)="openNotificationModal()"><i
-                class="gg-bell pointer"></i>
+        <a matTooltip="Notifiche" class="nav-link px-2 link-icon-text no-padding pointer"
+            (click)="openNotificationModal()"><i class="gg-bell pointer"></i>
             <span [ngClass]="notificationCount <= 99 ? '': 'bell-info-full'" class="bell-info">{{notificationCount > 99
                 ? '99+' : notificationCount}}</span>
         </a>
@@ -25,35 +25,29 @@
             <h2 class="m-0">Recenti</h2>
             <h3 class="m-0 notificationShowAll pointer" (click)="goToAllNotification()">Mostra tutte</h3>
         </div>
-        <div *ngIf="activeNotification[0]" class="d-flex flex-column">
-            <div [ngClass]="(notificationEl.type != NOTIFICATION_TYPE_CP.FRIEND_REQUEST_ACCEPTED) && (notificationEl.type != NOTIFICATION_TYPE_CP.FRIEND_REQUEST_REFUSED) && findElInNotRead(notificationEl) ? 'not-read' : ''" *ngFor="let notificationEl of notificationAllArray" class="d-flex flex-row mb-3 notificationElement p-2 pointer">
-                <img *ngIf="(notificationEl.type != NOTIFICATION_TYPE_CP.FRIEND_REQUEST_ACCEPTED) && (notificationEl.type != NOTIFICATION_TYPE_CP.FRIEND_REQUEST_REFUSED)" class="notificationImage" [attr.src]="notificationEl.image" width="70" height="70" style="border-radius: 100px;"/>
-                <div class="d-flex flex-column justify-content-center mx-2">
-                    <div class="d-flex flex-column justify-content-center">
-                        <span class="notificazionTitle">{{notificationEl.body}}</span>
-                        <span class="notificationHour">{{getHourStr(notificationEl.creationDateTime)}}</span>
-                    </div>
-                    <div *ngIf="notificationEl.type == NOTIFICATION_TYPE_CP.FRIEND_REQUEST" class="d-flex flex-row mt-2">
-                        <button (click)="actionFriendRequest(true,notificationEl.notification_id)" class="col-6 btn btn-primary text-white btn-rem-09">Accetta</button>
-                        <button (click)="actionFriendRequest(false,notificationEl.notification_id)" class="col-6 btn btn-secondary mx-2 btn-rem-09">Rifiuta</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div *ngIf="activeNotification[1]" class="d-flex flex-column">
-            <div [ngClass]="(notificationEl.type != NOTIFICATION_TYPE_CP.FRIEND_REQUEST_ACCEPTED) && (notificationEl.type != NOTIFICATION_TYPE_CP.FRIEND_REQUEST_REFUSED) && findElInNotRead(notificationEl) ? 'not-read' : ''" *ngFor="let notificationEl of notificationNotReadArray" class="d-flex flex-row mb-3 notificationElement p-2 pointer">
-                <img *ngIf="(notificationEl.type != NOTIFICATION_TYPE_CP.FRIEND_REQUEST_ACCEPTED) && (notificationEl.type != NOTIFICATION_TYPE_CP.FRIEND_REQUEST_REFUSED)" class="notificationImage" [attr.src]="notificationEl.image" width="70" height="70" style="border-radius: 100px;"/>
-                <div class="d-flex flex-column justify-content-center mx-2">
-                    <div class="d-flex flex-column justify-content-center">
-                        <span class="notificazionTitle">{{notificationEl.body}}</span>
-                        <span class="notificationHour">{{getHourStr(notificationEl.creationDateTime)}}</span>
-                    </div>
-                    <div *ngIf="notificationEl.type == NOTIFICATION_TYPE_CP.FRIEND_REQUEST" class="d-flex flex-row mt-2">
-                        <button (click)="actionFriendRequest(true,notificationEl.notification_id)" class="col-6 btn btn-primary text-white btn-rem-09">Accetta</button>
-                        <button (click)="actionFriendRequest(false,notificationEl.notification_id)" class="col-6 btn btn-secondary mx-2 btn-rem-09">Rifiuta</button>
+        <div class="d-flex flex-column">
+            <ng-container *ngFor="let notificationEl of notificationAllArray">
+                <div [ngClass]="(notificationEl.type != NOTIFICATION_TYPE_CP.FRIEND_REQUEST_ACCEPTED) && (notificationEl.type != NOTIFICATION_TYPE_CP.FRIEND_REQUEST_REFUSED) && notificationEl.not_read ? 'not-read' : ''"
+                    *ngIf="activeNotification[0] || (activeNotification[1] && notificationEl.not_read)"
+                    class="d-flex flex-row mb-3 notificationElement p-2 pointer">
+                    <img *ngIf="(notificationEl.type != NOTIFICATION_TYPE_CP.FRIEND_REQUEST_ACCEPTED) && (notificationEl.type != NOTIFICATION_TYPE_CP.FRIEND_REQUEST_REFUSED)"
+                        class="notificationImage" [attr.src]="notificationEl.image" width="70" height="70"
+                        style="border-radius: 100px;" />
+                    <div class="d-flex flex-column justify-content-center mx-2">
+                        <div class="d-flex flex-column justify-content-center">
+                            <span class="notificazionTitle">{{notificationEl.body}}</span>
+                            <span class="notificationHour">{{getHourStr(notificationEl.creationDateTime)}}</span>
+                        </div>
+                        <div *ngIf="notificationEl.type == NOTIFICATION_TYPE_CP.FRIEND_REQUEST"
+                            class="d-flex flex-row mt-2">
+                            <button (click)="actionFriendRequest(true,notificationEl.notification_id)"
+                                class="col-6 btn btn-primary text-white btn-rem-09">Accetta</button>
+                            <button (click)="actionFriendRequest(false,notificationEl.notification_id)"
+                                class="col-6 btn btn-secondary mx-2 btn-rem-09">Rifiuta</button>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </ng-container>
         </div>
     </div>
 </div>

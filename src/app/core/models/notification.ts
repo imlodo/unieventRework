@@ -8,5 +8,6 @@ export interface Notification {
     body: string;
     image: string;
     action_link: string;
+    not_read: boolean;
     creationDateTime: Moment;
 }
