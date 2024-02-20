@@ -14157,7 +14157,7 @@ export const ROUTE_LIST =
     },
     notification:{
         list:"/notification/list"
-        
+
     }
 };
 

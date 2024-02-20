@@ -14,9 +14,6 @@ export class NavbarComponent {
   @Output() onShowCollapse: EventEmitter<void> = new EventEmitter();
   isShowed = false;
 
-  constructor(private router: Router,private elementRef: ElementRef) {
-  }
-
   logout(){
     //Implementare Logout
   }
@@ -25,10 +22,6 @@ export class NavbarComponent {
     if(!this.isShowed)
       this.isShowed=!this.isShowed;
     this.onShowCollapse.emit();
-  }
-
-  goToNotificationList(){
-    this.router.navigate([ROUTE_LIST.notification.list]);
   }
 
 }
