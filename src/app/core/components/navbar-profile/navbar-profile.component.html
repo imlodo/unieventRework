@@ -1,0 +1,100 @@
+<div class="navbar-nav">
+    <div class="nav-item text-nowrap pointer">
+        <a matTooltip="Account" class="nav-link px-3 link-icon-text" (click)="openProfilePanel()">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+                class="bi bi-person-circle" viewBox="0 0 16 16">
+                <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0" />
+                <path fill-rule="evenodd"
+                    d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1" />
+            </svg>
+        </a>
+    </div>
+</div>
+
+<div *ngIf="showProfilePanel" class="position-absolute border-0 p-3 text-white profile">
+    <div class="d-flex flex-column">
+        <div class="d-flex flex-row justify-content-start mb-3 p-2 profile-menu-element pointer"
+            style="align-items: center;">
+            <img class="notificationImage" [attr.src]="user.t_profile_photo" width="50" height="50"
+                style="border-radius: 100px;" />
+            <h4 class="mx-3 my-0"><b>{{user.t_name}} {{user.t_surname}}</b></h4>
+        </div>
+        <div class="d-flex flex-row justify-content-start mb-3 p-2 profile-menu-element pointer"
+            style="align-items: center;" (click)="goTo('bookmark')">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+                class="bi bi-bookmark-star-fill" viewBox="0 0 16 16">
+                <path fill-rule="evenodd"
+                    d="M2 15.5V2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.74.439L8 13.069l-5.26 2.87A.5.5 0 0 1 2 15.5M8.16 4.1a.178.178 0 0 0-.32 0l-.634 1.285a.18.18 0 0 1-.134.098l-1.42.206a.178.178 0 0 0-.098.303L6.58 6.993c.042.041.061.1.051.158L6.39 8.565a.178.178 0 0 0 .258.187l1.27-.668a.18.18 0 0 1 .165 0l1.27.668a.178.178 0 0 0 .257-.187L9.368 7.15a.18.18 0 0 1 .05-.158l1.028-1.001a.178.178 0 0 0-.098-.303l-1.42-.206a.18.18 0 0 1-.134-.098z" />
+            </svg>
+            <h4 class="mx-2 my-0">Preferiti</h4>
+        </div>
+        <div class="d-flex flex-row justify-content-start mb-3 p-2 profile-menu-element pointer"
+            style="align-items: center;" (click)="goTo('settings')">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-gear-fill"
+                viewBox="0 0 16 16">
+                <path
+                    d="M9.405 1.05c-.413-1.4-2.397-1.4-2.81 0l-.1.34a1.464 1.464 0 0 1-2.105.872l-.31-.17c-1.283-.698-2.686.705-1.987 1.987l.169.311c.446.82.023 1.841-.872 2.105l-.34.1c-1.4.413-1.4 2.397 0 2.81l.34.1a1.464 1.464 0 0 1 .872 2.105l-.17.31c-.698 1.283.705 2.686 1.987 1.987l.311-.169a1.464 1.464 0 0 1 2.105.872l.1.34c.413 1.4 2.397 1.4 2.81 0l.1-.34a1.464 1.464 0 0 1 2.105-.872l.31.17c1.283.698 2.686-.705 1.987-1.987l-.169-.311a1.464 1.464 0 0 1 .872-2.105l.34-.1c1.4-.413 1.4-2.397 0-2.81l-.34-.1a1.464 1.464 0 0 1-.872-2.105l.17-.31c.698-1.283-.705-2.686-1.987-1.987l-.311.169a1.464 1.464 0 0 1-2.105-.872zM8 10.93a2.929 2.929 0 1 1 0-5.86 2.929 2.929 0 0 1 0 5.858z" />
+            </svg>
+            <h4 class="mx-2 my-0 mt-1">Impostazioni</h4>
+        </div>
+        <div class="d-flex flex-row justify-content-start mb-3 p-2 profile-menu-element pointer"
+            style="align-items: center;" (click)="goTo('ticket-system')">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+                class="bi bi-question-circle-fill" viewBox="0 0 16 16">
+                <path
+                    d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M5.496 6.033h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286a.237.237 0 0 0 .241.247m2.325 6.443c.61 0 1.029-.394 1.029-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94 0 .533.425.927 1.01.927z" />
+            </svg>
+            <h4 class="mx-2 my-0">Assistenza e supporto</h4>
+        </div>
+        <div class="d-flex flex-row justify-content-start mb-3 p-2 profile-menu-element pointer"
+            style="align-items: center;" (click)="changeMod()">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-moon-fill"
+                viewBox="0 0 16 16">
+                <path
+                    d="M6 .278a.77.77 0 0 1 .08.858 7.2 7.2 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277q.792-.001 1.533-.16a.79.79 0 0 1 .81.316.73.73 0 0 1-.031.893A8.35 8.35 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.75.75 0 0 1 6 .278" />
+            </svg>
+            <h4 class="mx-2 my-0 mt-1">Modalità scura</h4>
+            <svg *ngIf="activeMod" xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
+                class="bi bi-toggle-off" viewBox="0 0 16 16">
+                <path
+                    d="M11 4a4 4 0 0 1 0 8H8a5 5 0 0 0 2-4 5 5 0 0 0-2-4zm-6 8a4 4 0 1 1 0-8 4 4 0 0 1 0 8M0 8a5 5 0 0 0 5 5h6a5 5 0 0 0 0-10H5a5 5 0 0 0-5 5" />
+            </svg>
+            <svg *ngIf="!activeMod" xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
+                class="bi bi-toggle-on" viewBox="0 0 16 16">
+                <path d="M5 3a5 5 0 0 0 0 10h6a5 5 0 0 0 0-10zm6 9a4 4 0 1 1 0-8 4 4 0 0 1 0 8" />
+            </svg>
+        </div>
+        <div class="d-flex flex-row justify-content-start mb-3 p-2 profile-menu-element pointer"
+            style="align-items: center;" (click)="launchLogoutEvent()">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+                class="bi bi-arrow-left-square-fill" viewBox="0 0 16 16">
+                <path
+                    d="M16 14a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2zm-4.5-6.5H5.707l2.147-2.146a.5.5 0 1 0-.708-.708l-3 3a.5.5 0 0 0 0 .708l3 3a.5.5 0 0 0 .708-.708L5.707 8.5H11.5a.5.5 0 0 0 0-1" />
+            </svg>
+            <h4 class="mx-2 my-0 mt-1">Esci</h4>
+        </div>
+
+        <!-- <ng-container *ngFor="let notificationEl of notificationAllArray">
+            <div [ngClass]="(notificationEl.type != NOTIFICATION_TYPE_CP.FRIEND_REQUEST_ACCEPTED) && (notificationEl.type != NOTIFICATION_TYPE_CP.FRIEND_REQUEST_REFUSED) && notificationEl.not_read ? 'not-read' : ''"
+                *ngIf="activeNotification[0] || (activeNotification[1] && notificationEl.not_read)"
+                class="d-flex flex-row mb-3 notificationElement p-2 pointer">
+                <img *ngIf="(notificationEl.type != NOTIFICATION_TYPE_CP.FRIEND_REQUEST_ACCEPTED) && (notificationEl.type != NOTIFICATION_TYPE_CP.FRIEND_REQUEST_REFUSED)"
+                    class="notificationImage" [attr.src]="notificationEl.image" width="70" height="70"
+                    style="border-radius: 100px;" />
+                <div class="d-flex flex-column justify-content-center mx-2">
+                    <div class="d-flex flex-column justify-content-center">
+                        <span class="notificazionTitle">{{notificationEl.body}}</span>
+                        <span class="notificationHour">{{getHourStr(notificationEl.creationDateTime)}}</span>
+                    </div>
+                    <div *ngIf="notificationEl.type == NOTIFICATION_TYPE_CP.FRIEND_REQUEST"
+                        class="d-flex flex-row mt-2">
+                        <button (click)="actionFriendRequest(true,notificationEl.notification_id)"
+                            class="col-6 btn btn-primary text-white btn-rem-09">Accetta</button>
+                        <button (click)="actionFriendRequest(false,notificationEl.notification_id)"
+                            class="col-6 btn btn-secondary mx-2 btn-rem-09">Rifiuta</button>
+                    </div>
+                </div>
+            </div>
+        </ng-container> -->
+    </div>
+</div>

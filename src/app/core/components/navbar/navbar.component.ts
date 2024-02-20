@@ -15,7 +15,7 @@ export class NavbarComponent {
   isShowed = false;
 
   logout(){
-    //Implementare Logout
+    alert("Implementare logout")
   }
 
   showCollapse(){

@@ -1,0 +1,29 @@
+.profile {
+    overflow-y: auto;
+    z-index: 3;
+    min-width: 400px;
+    background: #242526;
+    max-height: 410px;
+    min-height: 410px;
+    min-width: 250px;
+    top: 78px;
+    right: 50px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.notificationImage {
+    min-width: 50px;
+    min-height: 50px;
+    object-fit: cover;
+}
+
+.profile-menu-element{
+    border-radius: 10px;
+    min-width: 230px;
+    color: #dbdbdb;
+}
+
+.profile-menu-element:hover{
+    background: #505355;
+}

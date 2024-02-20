@@ -1,6 +1,6 @@
 <div class="navbar-nav">
     <div class="nav-item text-nowrap">
-        <a matTooltip="Notifiche" class="nav-link px-2 link-icon-text no-padding pointer"
+        <a matTooltip="Notifiche" class="nav-link px-1 link-icon-text no-padding pointer"
             (click)="openNotificationModal()"><i class="gg-bell pointer"></i>
             <span [ngClass]="notificationCount <= 99 ? '': 'bell-info-full'" class="bell-info">{{notificationCount > 99
                 ? '99+' : notificationCount}}</span>
@@ -11,7 +11,7 @@
     <div class="d-flex flex-column">
         <div class="d-flex flex-row justify-content-between mb-3" style="align-items: center;">
             <h1 class="m-0"><b>Notifiche</b></h1>
-            <div class="more-div pointer"><i class="gg-more mr-3"></i></div>
+            <div class="more-div pointer" (click)="openNotificationSettingModal()"><i class="gg-more mr-3"></i></div>
         </div>
         <div class="d-flex flex-row justify-content-start mb-3" style="align-items: center;">
             <h3 (click)="changeNotificationMode(0)"
@@ -50,4 +50,5 @@
             </ng-container>
         </div>
     </div>
+    <unievent-notification-setting (setAllNotificationRead)="setAllNotificationRead()" (closeNotificationPanel)="closeNotifications()" (closeNotificationSetting)="closeNotificationSetting()" *ngIf="showNotificationSetting"></unievent-notification-setting>
 </div>

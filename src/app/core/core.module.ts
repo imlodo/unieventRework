@@ -17,6 +17,9 @@ import { EventMostRatedComponent } from '../modules/event/components/event-most-
 import { ArtistFeaturedComponent } from '../modules/artist/components/artist-featured/artist-featured.component';
 import { FeaturedTopicComponent } from '../modules/topic/components/featured-topic/featured-topic.component';
 import { NavbarNotificationComponent } from './components/navbar-notification/navbar-notification.component';
+import { NotificationSettingComponent } from './components/notification-setting/notification-setting.component';
+import { NavbarProfileComponent } from './components/navbar-profile/navbar-profile.component';
+import { NavbarChatComponent } from './components/navbar-chat/navbar-chat.component';
 
 @NgModule({
 	declarations: [
@@ -38,7 +41,10 @@ import { NavbarNotificationComponent } from './components/navbar-notification/na
 		ArtistFeaturedComponent,
 		FeaturedTopicComponent,
 		FooterComponent,
-		NavbarNotificationComponent
+		NavbarNotificationComponent,
+  NotificationSettingComponent,
+  NavbarProfileComponent,
+  NavbarChatComponent
 	],
 	imports: [
 		CommonModule,

@@ -14,6 +14,7 @@ export class NavbarNotificationComponent {
   NOTIFICATION_TYPE_CP = NOTIFICATION_TYPE;
   activeNotification = [true, false];
   showNotifications = false;
+  showNotificationSetting = false;
   notificationCount: number = 999;
   notificationAllArray: Array<Notification> = [
     {
@@ -193,7 +194,7 @@ export class NavbarNotificationComponent {
   }
 
   openNotificationModal() {
-    if(!window.location.href.includes("notification")){
+    if(!window.location.href.includes("notification") || window.location.href.includes("setting")){
       this.showNotifications = !this.showNotifications;
     }
   }
@@ -246,4 +247,16 @@ export class NavbarNotificationComponent {
     //Manca la chiamata al back-end per confermare / rifiutare
   }
 
+  openNotificationSettingModal(){
+    this.showNotificationSetting = !this.showNotificationSetting;
+  }
+
+  closeNotificationSetting(){
+    this.showNotificationSetting = false;
+  }
+
+  setAllNotificationRead(){
+    let notReadArray = this.notificationAllArray.filter(el=>el.not_read);
+    notReadArray.forEach(el=>el.not_read = false);
+  }
 }

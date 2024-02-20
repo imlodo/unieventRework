@@ -14158,6 +14158,9 @@ export const ROUTE_LIST =
     notification:{
         list:"/notification/list"
 
+    },
+    setting:{
+        notification:"/setting/notification"
     }
 };
 
