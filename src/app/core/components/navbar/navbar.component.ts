@@ -1,4 +1,7 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, ElementRef, EventEmitter, HostListener, Output, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
+import { ROUTE_LIST } from '../../utility/global-constant';
+import { NavbarNotificationComponent } from '../navbar-notification/navbar-notification.component';
 
 @Component({
   selector: 'unievent-navbar',
@@ -6,11 +9,13 @@ import { Component, EventEmitter, Output } from '@angular/core';
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent {
-  
-  online:boolean = false;
-  notificationCount:number = 999;
+  @ViewChild(NavbarNotificationComponent) notificationComponent: NavbarNotificationComponent;
+  online:boolean = true;
   @Output() onShowCollapse: EventEmitter<void> = new EventEmitter();
   isShowed = false;
+
+  constructor(private router: Router,private elementRef: ElementRef) {
+  }
 
   logout(){
     //Implementare Logout
@@ -20,6 +25,10 @@ export class NavbarComponent {
     if(!this.isShowed)
       this.isShowed=!this.isShowed;
     this.onShowCollapse.emit();
+  }
+
+  goToNotificationList(){
+    this.router.navigate([ROUTE_LIST.notification.list]);
   }
 
 }

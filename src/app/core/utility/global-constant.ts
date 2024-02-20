@@ -14154,6 +14154,10 @@ export const ROUTE_LIST =
         cookie_policy: "/cookie-policy",
         term_of_use: "/term-of-use",
         rules:"/rules"
+    },
+    notification:{
+        list:"/notification/list"
+        
     }
 };
 

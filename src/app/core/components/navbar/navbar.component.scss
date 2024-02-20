@@ -1,51 +1,3 @@
-.gg-bell,
-.gg-bell::before {
-    border-top-left-radius: 100px;
-    border-top-right-radius: 100px
-}
-
-.gg-bell {
-    box-sizing: border-box;
-    position: relative;
-    display: block;
-    transform: scale(var(--ggs, 1));
-    border: 2px solid;
-    border-bottom: 0;
-    width: 14px;
-    height: 14px
-}
-
-.gg-bell::after,
-.gg-bell::before {
-    content: "";
-    display: block;
-    box-sizing: border-box;
-    position: absolute
-}
-
-.gg-bell::before {
-    background: currentColor;
-    width: 4px;
-    height: 4px;
-    top: -4px;
-    left: 3px
-}
-
-.gg-bell::after {
-    border-radius: 3px;
-    width: 16px;
-    height: 10px;
-    border: 6px solid transparent;
-    border-top: 1px solid transparent;
-    box-shadow:
-        inset 0 0 0 4px,
-        0 -2px 0 0;
-    top: 14px;
-    left: -3px;
-    border-bottom-left-radius: 100px;
-    border-bottom-right-radius: 100px
-}
-
 .gg-profile,
 .gg-profile::after,
 .gg-profile::before {
@@ -92,7 +44,7 @@
 }
 
 .gg-log-out {
-    margin-right: 13px;
+    margin-right: 16px;
     box-sizing: border-box;
     position: relative;
     display: block;
@@ -171,28 +123,6 @@
     background: currentColor;
     left: -11px;
     bottom: 5px
-}
-
-.bell-info
-{
-    color: #fff;
-    font-family: Arial;
-    font-weight: bold;
-    text-align: center;
-    padding: 3px 5px;
-    line-height: 1;
-    background-color: #da3225;
-    border-radius: 49%;
-    z-index: 1;
-    top: -5px;
-    left: -9px;
-    font-size: 11px;
-    position: relative;
-}
-
-.bell-info-full{
-    padding: 4px 2px;
-    font-size: 10px;
 }
 
 .no-padding{

@@ -334,3 +334,35 @@
     border-left: 2px solid;
     border-right: 2px solid
 }
+
+.gg-more {
+    transform: scale(var(--ggs, 1))
+}
+
+.gg-more,
+.gg-more::after,
+.gg-more::before {
+    vertical-align: middle;
+    box-sizing: border-box;
+    position: initial;
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    border: 2px solid;
+    border-radius: 100%;
+}
+
+.gg-more::after,
+.gg-more::before {
+    content: "";
+    position: absolute;
+    top: -2px
+}
+
+.gg-more::after {
+    left: -9px
+}
+
+.gg-more::before {
+    right: -9px
+}

@@ -16,6 +16,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { EventMostRatedComponent } from '../modules/event/components/event-most-rated/event-most-rated.component';
 import { ArtistFeaturedComponent } from '../modules/artist/components/artist-featured/artist-featured.component';
 import { FeaturedTopicComponent } from '../modules/topic/components/featured-topic/featured-topic.component';
+import { NavbarNotificationComponent } from './components/navbar-notification/navbar-notification.component';
 
 @NgModule({
 	declarations: [
@@ -36,7 +37,8 @@ import { FeaturedTopicComponent } from '../modules/topic/components/featured-top
 		SlideshowComponent,
 		ArtistFeaturedComponent,
 		FeaturedTopicComponent,
-  		FooterComponent
+  		FooterComponent,
+    NavbarNotificationComponent
 	],
 	imports: [
 		CommonModule,

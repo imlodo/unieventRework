@@ -1,0 +1,149 @@
+<div class="navbar-nav">
+    <div class="nav-item text-nowrap">
+        <a class="nav-link px-3 link-icon-text no-padding" (click)="openNotificationModal()"><i
+                class="gg-bell pointer"></i>
+            <span [ngClass]="notificationCount <= 99 ? '': 'bell-info-full'" class="bell-info">{{notificationCount > 99
+                ? '99+' : notificationCount}}</span>
+        </a>
+    </div>
+</div>
+<div *ngIf="showNotifications" class="position-absolute border-0 p-3 text-white notification">
+    <div class="d-flex flex-column">
+        <div class="d-flex flex-row justify-content-between mb-3" style="align-items: center;">
+            <h1 class="m-0"><b>Notifiche</b></h1>
+            <div class="more-div pointer"><i class="gg-more mr-3"></i></div>
+        </div>
+        <div class="d-flex flex-row justify-content-start mb-3" style="align-items: center;">
+            <h3 (click)="changeNotificationMode(0)"
+                [ngClass]="activeNotification[0] ? 'activeNotification' : 'notActiveNotification' "
+                class="m-0 notificationAll pointer">Tutte</h3>
+            <h3 (click)="changeNotificationMode(1)"
+                [ngClass]="activeNotification[1] ? 'activeNotification' : 'notActiveNotification' "
+                class="m-0 mx-3 notificationNotRead pointer">Non lette</h3>
+        </div>
+        <div class="d-flex flex-row justify-content-between mb-3" style="align-items: center;">
+            <h2 class="m-0">Recenti</h2>
+            <h3 class="m-0 notificationShowAll pointer">Mostra tutte</h3>
+        </div>
+        <div class="d-flex flex-column">
+            <div class="d-flex flex-row mb-3 notificationElement p-1 pointer">
+                <img src="https://staff.polito.it/mario.baldi/images/Mario%20202004.jpg" width="70" height="70" style="border-radius: 100px;"/>
+                <div class="d-flex flex-column justify-content-center mx-2">
+                    <div class="d-flex flex-column justify-content-center">
+                        <span class="notificazionTitle">Mario Baldi ti ha inviato una richiesta di amicizia</span>
+                        <span class="notificationHour">2 ore fa</span>
+                    </div>
+                    <div class="d-flex flex-row mt-2">
+                        <button class="col-6 btn btn-primary text-white btn-rem-09">Accetta</button>
+                        <button class="col-6 btn btn-secondary mx-2 btn-rem-09">Rifiuta</button>
+                    </div>
+                </div>
+            </div>
+            <div class="d-flex flex-row mb-3 notificationElement p-1 pointer">
+                <img class="notificationImage" src="https://cdn.skuola.net/w1200h687/news_foto/image-grabber/image-64621625e9ba2.jpg" width="70" height="70" style="border-radius: 100px;"/>
+                <div class="d-flex flex-column justify-content-center mx-2">
+                    <span class="notificazionTitle">Hai un nuovo suggerimento di topic: Creazione di una Lega Fantacalcio: Consigli, Regole e Divertimento!</span>
+                    <span class="notificationHour">12 ore fa</span>
+                </div>
+            </div>
+            <div class="d-flex flex-row mb-3 notificationElement p-1 pointer">
+                <img class="notificationImage" src="https://scontent.fnap5-1.fna.fbcdn.net/v/t39.30808-6/222551259_4642039215854129_7061172115070197192_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=9c7eae&_nc_ohc=KQJokzmG800AX8ANkGW&_nc_ht=scontent.fnap5-1.fna&oh=00_AfAd168K40ldAPEOajj_9tRMVqLghtyd7oMgv7ezwHkMQg&oe=65D89E50" width="70" height="70" style="border-radius: 100px;"/>
+                <div class="d-flex flex-column justify-content-center mx-2">
+                    <span class="notificazionTitle">Bocconcino ha condiviso un topic: La Nuova Stagione de I Simpson: Aspettative, Anticipazioni e Discussioni!</span>
+                    <span class="notificationHour">14 ore fa</span>
+                </div>
+            </div>
+            <div class="d-flex flex-row mb-3 notificationElement p-1 pointer">
+                <img class="notificationImage" src="https://media.licdn.com/dms/image/C4D03AQGkLFUb5idDuQ/profile-displayphoto-shrink_200_200/0/1591343556730?e=2147483647&v=beta&t=SnstIQz9tYr3G6HIK7OcBRKKXtSn-0_J1bODPKlc5MM" width="70" height="70" style="border-radius: 100px;"/>
+                <div class="d-flex flex-column justify-content-center mx-2">
+                    <span class="notificazionTitle">Hai un nuovo suggerimento di amicizia: Puddi</span>
+                    <span class="notificationHour">16 ore fa</span>
+                </div>
+            </div>
+            <div class="d-flex flex-row mb-3 notificationElement p-1 pointer">
+                <img class="notificationImage" src="https://cdn.21buttons.com/posts/640x799/a4f98433206c47f3ac3b47039996f26f_1080x1349.jpg" width="70" height="70" style="border-radius: 100px;"/>
+                <div class="d-flex flex-column justify-content-center mx-2">
+                    <span class="notificazionTitle">Maria Politano ha condiviso un evento: Discoteca tropicale</span>
+                    <span class="notificationHour">21 ore fa</span>
+                </div>
+            </div>
+            <div class="d-flex flex-row mb-3 notificationElement p-1 pointer">
+                <img class="notificationImage" src="https://rivieraticket.it/wp-content/uploads/2023/08/Tropical-closing-party-Byblos-01-09-23.jpg" width="70" height="70" style="border-radius: 100px;"/>
+                <div class="d-flex flex-column justify-content-center mx-2">
+                    <span class="notificazionTitle">Hai un nuovo suggerimento di evento: Discoteca tropicale</span>
+                    <span class="notificationHour">1 giorno fa</span>
+                </div>
+            </div>
+            <div class="d-flex flex-row mb-3 notificationElement p-1 pointer">
+                <img class="notificationImage" src="/assets/img/systemnotificationLogo.svg" width="70" height="70" style="border-radius: 100px;"/>
+                <div class="d-flex flex-column justify-content-center mx-2">
+                    <span class="notificazionTitle">Nuovo Aggiornamento: Termini & Condizioni</span>
+                    <span class="notificationHour">1 giorno fa</span>
+                </div>
+            </div>
+            <div class="d-flex flex-row mb-3 notificationElement p-1 pointer">
+                <img class="notificationImage" src="/assets/img/systemnotificationLogo.svg" width="70" height="70" style="border-radius: 100px;"/>
+                <div class="d-flex flex-column justify-content-center mx-2">
+                    <span class="notificazionTitle">Ordine #39438: Pagamento rifiutato</span>
+                    <span class="notificationHour">1 giorno fa</span>
+                </div>
+            </div>
+            <div class="d-flex flex-row mb-3 notificationElement p-1 pointer">
+                <img class="notificationImage" src="https://th.bing.com/th/id/OIP.qPT3hh7i4iLVn1jUIpdaYAHaEK?rs=1&pid=ImgDetMain" width="70" height="70" style="border-radius: 100px;"/>
+                <div class="d-flex flex-column justify-content-center mx-2">
+                    <span class="notificazionTitle">Sei stato citato in un commento: Cosa ne pensi?</span>
+                    <span class="notificationHour">1 giorno fa</span>
+                </div>
+            </div>
+            <div class="d-flex flex-row mb-3 notificationElement p-1 pointer">
+                <img class="notificationImage" src="/assets/img/systemnotificationLogo.svg" width="70" height="70" style="border-radius: 100px;"/>
+                <div class="d-flex flex-column justify-content-center mx-2">
+                    <span class="notificazionTitle">Ticket #3938ab: C'è una nuova risposta</span>
+                    <span class="notificationHour">1 giorno fa</span>
+                </div>
+            </div>
+            <div class="d-flex flex-row mb-3 notificationElement p-1 pointer">
+                <img class="notificationImage" src="https://rivieraticket.it/wp-content/uploads/2023/08/Tropical-closing-party-Byblos-01-09-23.jpg" width="70" height="70" style="border-radius: 100px;"/>
+                <div class="d-flex flex-column justify-content-center mx-2">
+                    <span class="notificazionTitle">Hai una risposta al tuo commento: L'evento non è stato dei migliori</span>
+                    <span class="notificationHour">1 giorno fa</span>
+                </div>
+            </div>
+            <div class="d-flex flex-row mb-3 notificationElement p-1 pointer">
+                <img class="notificationImage" src="/assets/img/systemnotificationLogo.svg" width="70" height="70" style="border-radius: 100px;"/>
+                <div class="d-flex flex-column justify-content-center mx-2">
+                    <span class="notificazionTitle">Ti è stato assegnato un nuovo biglietto (Tavolo): Ladies Night Posto #300</span>
+                    <span class="notificationHour">1 giorno fa</span>
+                </div>
+            </div>
+            <div class="d-flex flex-row mb-3 notificationElement p-1 pointer">
+                <img class="notificationImage" src="https://rivieraticket.it/wp-content/uploads/2023/08/Tropical-closing-party-Byblos-01-09-23.jpg" width="70" height="70" style="border-radius: 100px;"/>
+                <div class="d-flex flex-column justify-content-center mx-2">
+                    <span class="notificazionTitle">Hai ricevuto un mi piace al tuo commento: L'evento non è stato dei migliori</span>
+                    <span class="notificationHour">1 giorno fa</span>
+                </div>
+            </div>
+            <div class="d-flex flex-row mb-3 notificationElement p-1 pointer">
+                <img class="notificationImage" src="https://rivieraticket.it/wp-content/uploads/2023/08/Tropical-closing-party-Byblos-01-09-23.jpg" width="70" height="70" style="border-radius: 100px;"/>
+                <div class="d-flex flex-column justify-content-center mx-2">
+                    <span class="notificazionTitle">Ci sono nuovi commmenti su un evento che segui</span>
+                    <span class="notificationHour">1 giorno fa</span>
+                </div>
+            </div>
+            <div class="d-flex flex-row mb-3 notificationElement p-1 pointer">
+                <img class="notificationImage" src="https://www.salernonews24.com/wp-content/uploads/2017/12/unisa2-1-1024x671.jpg" width="70" height="70" style="border-radius: 100px;"/>
+                <div class="d-flex flex-column justify-content-center mx-2">
+                    <span class="notificazionTitle">Ci sono nuovi commmenti su un topic che segui</span>
+                    <span class="notificationHour">1 giorno fa</span>
+                </div>
+            </div>
+            <div class="d-flex flex-row mb-3 notificationElement p-1 pointer">
+                <img class="notificationImage" src="https://rivieraticket.it/wp-content/uploads/2023/08/Tropical-closing-party-Byblos-01-09-23.jpg" width="70" height="70" style="border-radius: 100px;"/>
+                <div class="d-flex flex-column justify-content-center mx-2">
+                    <span class="notificazionTitle">Hai ricevuto un non mi piace al tuo commento: L'evento non è stato dei migliori</span>
+                    <span class="notificationHour">1 giorno fa</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
