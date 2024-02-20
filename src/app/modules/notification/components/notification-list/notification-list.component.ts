@@ -1,19 +1,18 @@
 import { Component, ElementRef, HostListener } from '@angular/core';
-import { Router } from '@angular/router';
-import { ROUTE_LIST } from '../../utility/global-constant';
-import { Notification } from '../../models/notification';
-import { NOTIFICATION_TYPE } from '../../utility/enum-constant';
+import { Notification } from '../../../../core/models/notification';
+import { NOTIFICATION_TYPE } from '../../../../core/utility/enum-constant';
 import moment, { Moment } from 'moment';
+import { Router } from '@angular/router';
+import { ROUTE_LIST } from 'src/app/core/utility/global-constant';
 
 @Component({
-  selector: 'unievent-navbar-notification',
-  templateUrl: './navbar-notification.component.html',
-  styleUrls: ['./navbar-notification.component.scss']
+  selector: 'unievent-notification-list',
+  templateUrl: './notification-list.component.html',
+  styleUrls: ['./notification-list.component.scss']
 })
-export class NavbarNotificationComponent {
+export class NotificationListComponent {
   NOTIFICATION_TYPE_CP = NOTIFICATION_TYPE;
   activeNotification = [true, false];
-  showNotifications = false;
   notificationCount: number = 999;
   notificationAllArray: Array<Notification> = [
     {
@@ -23,7 +22,7 @@ export class NavbarNotificationComponent {
       body: "Mario Baldi ti ha inviato una richiesta di amicizia",
       image: "https://staff.polito.it/mario.baldi/images/Mario%20202004.jpg",
       action_link: "/acceptRequest?user_id='3'",
-      not_read:true,
+      not_read: true,
       creationDateTime: moment().subtract(2, 'hours')
     },
     {
@@ -33,7 +32,7 @@ export class NavbarNotificationComponent {
       body: "Hai un nuovo suggerimento di topic: Creazione di una Lega Fantacalcio: Consigli, Regole e Divertimento!",
       image: "https://cdn.skuola.net/w1200h687/news_foto/image-grabber/image-64621625e9ba2.jpg",
       action_link: "/topic/detail?topic_id=3'",
-      not_read:false,
+      not_read: false,
       creationDateTime: moment().subtract(12, 'hours')
     },
     {
@@ -43,7 +42,7 @@ export class NavbarNotificationComponent {
       body: "Bocconcino ha condiviso un topic: La Nuova Stagione de I Simpson: Aspettative, Anticipazioni e Discussioni!",
       image: "https://scontent.fnap5-1.fna.fbcdn.net/v/t39.30808-6/222551259_4642039215854129_7061172115070197192_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=9c7eae&_nc_ohc=KQJokzmG800AX8ANkGW&_nc_ht=scontent.fnap5-1.fna&oh=00_AfAd168K40ldAPEOajj_9tRMVqLghtyd7oMgv7ezwHkMQg&oe=65D89E50",
       action_link: "/topic/detail?topic_id=3'",
-      not_read:false,
+      not_read: false,
       creationDateTime: moment().subtract(14, 'hours')
     },
     {
@@ -53,7 +52,7 @@ export class NavbarNotificationComponent {
       body: "Hai un nuovo suggerimento di amicizia: Puddi",
       image: "https://media.licdn.com/dms/image/C4D03AQGkLFUb5idDuQ/profile-displayphoto-shrink_200_200/0/1591343556730?e=2147483647&v=beta&t=SnstIQz9tYr3G6HIK7OcBRKKXtSn-0_J1bODPKlc5MM",
       action_link: "/user/detail?usernameHash=puddi.2'",
-      not_read:false,
+      not_read: false,
       creationDateTime: moment().subtract(16, 'hours')
     },
     {
@@ -63,7 +62,7 @@ export class NavbarNotificationComponent {
       body: "Maria Politano ha condiviso un evento: Discoteca tropicale",
       image: "https://cdn.21buttons.com/posts/640x799/a4f98433206c47f3ac3b47039996f26f_1080x1349.jpg",
       action_link: "/event/detail?event_id=3'",
-      not_read:false,
+      not_read: false,
       creationDateTime: moment().subtract(21, 'hours')
     },
     {
@@ -73,7 +72,7 @@ export class NavbarNotificationComponent {
       body: "Hai un nuovo suggerimento di evento: Discoteca tropicale",
       image: "https://rivieraticket.it/wp-content/uploads/2023/08/Tropical-closing-party-Byblos-01-09-23.jpg",
       action_link: "/event/detail?event_id=2'",
-      not_read:false,
+      not_read: false,
       creationDateTime: moment().subtract(25, 'hours')
     },
     {
@@ -83,7 +82,7 @@ export class NavbarNotificationComponent {
       body: "Nuovo Aggiornamento: Termini & Condizioni",
       image: "/assets/img/systemnotificationLogo.svg",
       action_link: "/terms-of-use'",
-      not_read:true,
+      not_read: true,
       creationDateTime: moment().subtract(25, 'hours')
     },
     {
@@ -93,7 +92,7 @@ export class NavbarNotificationComponent {
       body: "Ordine #39438: Pagamento rifiutato",
       image: "/assets/img/systemnotificationLogo.svg",
       action_link: "/ticket/order/detail?payment_id=asdasj3sxgjhs'",
-      not_read:false,
+      not_read: false,
       creationDateTime: moment().subtract(25, 'hours')
     },
     {
@@ -103,7 +102,7 @@ export class NavbarNotificationComponent {
       body: "Sei stato citato in un commento: Cosa ne pensi?",
       image: "https://th.bing.com/th/id/OIP.qPT3hh7i4iLVn1jUIpdaYAHaEK?rs=1&pid=ImgDetMain",
       action_link: "/topic/detail?topic_id=3&comment_id=3'",
-      not_read:false,
+      not_read: false,
       creationDateTime: moment().subtract(25, 'hours')
     },
     {
@@ -113,7 +112,7 @@ export class NavbarNotificationComponent {
       body: "Ticket #3938ab: C'è una nuova risposta",
       image: "/assets/img/systemnotificationLogo.svg",
       action_link: "/ticket_system/detail?ticket_id=3'",
-      not_read:false,
+      not_read: false,
       creationDateTime: moment().subtract(25, 'hours')
     },
     {
@@ -123,7 +122,7 @@ export class NavbarNotificationComponent {
       body: "Hai una risposta al tuo commento: L'evento non è stato dei migliori",
       image: "https://rivieraticket.it/wp-content/uploads/2023/08/Tropical-closing-party-Byblos-01-09-23.jpg",
       action_link: "/event/detail?event_id=3&comment_id=22'",
-      not_read:false,
+      not_read: false,
       creationDateTime: moment().subtract(25, 'hours')
     },
     {
@@ -133,7 +132,7 @@ export class NavbarNotificationComponent {
       body: "Ti è stato assegnato un nuovo biglietto (Tavolo): Ladies Night Posto #300",
       image: "/assets/img/systemnotificationLogo.svg",
       action_link: "/ticket/detail?ticket_id=3'",
-      not_read:false,
+      not_read: false,
       creationDateTime: moment().subtract(25, 'hours')
     },
     {
@@ -143,7 +142,7 @@ export class NavbarNotificationComponent {
       body: "Hai ricevuto un mi piace al tuo commento: L'evento non è stato dei migliori",
       image: "https://rivieraticket.it/wp-content/uploads/2023/08/Tropical-closing-party-Byblos-01-09-23.jpg",
       action_link: "/event/detail?event_id=3&comment_id=5'",
-      not_read:false,
+      not_read: false,
       creationDateTime: moment().subtract(25, 'hours')
     },
     {
@@ -153,7 +152,7 @@ export class NavbarNotificationComponent {
       body: "Ci sono nuovi commmenti su un evento che segui",
       image: "https://rivieraticket.it/wp-content/uploads/2023/08/Tropical-closing-party-Byblos-01-09-23.jpg",
       action_link: "/event/detail?event_id=1'",
-      not_read:false,
+      not_read: false,
       creationDateTime: moment().subtract(25, 'hours')
     },
     {
@@ -163,7 +162,7 @@ export class NavbarNotificationComponent {
       body: "Ci sono nuovi commmenti su un topic che segui",
       image: "https://www.salernonews24.com/wp-content/uploads/2017/12/unisa2-1-1024x671.jpg",
       action_link: "/topic/detail?topic_id=1'",
-      not_read:false,
+      not_read: false,
       creationDateTime: moment().subtract(25, 'hours')
     },
     {
@@ -173,29 +172,12 @@ export class NavbarNotificationComponent {
       body: "Hai ricevuto un non mi piace al tuo commento: L'evento non è stato dei migliori",
       image: "https://rivieraticket.it/wp-content/uploads/2023/08/Tropical-closing-party-Byblos-01-09-23.jpg",
       action_link: "/event/detail?event_id=1'",
-      not_read:false,
+      not_read: false,
       creationDateTime: moment().subtract(25, 'hours')
     }
   ];
 
-  constructor(private elementRef: ElementRef, private router: Router) {
-  }
-
-  @HostListener('document:click', ['$event'])
-  handleClickOutside(event: any) {
-    if (!this.elementRef.nativeElement.contains(event.target) && event.target.value === undefined) {
-      this.closeNotifications();
-    }
-  }
-
-  closeNotifications() {
-    this.showNotifications = false;
-  }
-
-  openNotificationModal() {
-    if(!window.location.href.includes("notification")){
-      this.showNotifications = !this.showNotifications;
-    }
+  constructor(private router: Router) {
   }
 
   changeNotificationMode(index: number) {
@@ -203,11 +185,6 @@ export class NavbarNotificationComponent {
       this.activeNotification = [false, true];
     else
       this.activeNotification = [true, false];
-  }
-
-  goToAllNotification() {
-    this.closeNotifications();
-    this.router.navigate([ROUTE_LIST.notification.list]);
   }
 
   getHourStr(data: Moment) {
@@ -245,5 +222,4 @@ export class NavbarNotificationComponent {
     }, 2000);
     //Manca la chiamata al back-end per confermare / rifiutare
   }
-
 }

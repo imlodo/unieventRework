@@ -37,8 +37,8 @@ import { NavbarNotificationComponent } from './components/navbar-notification/na
 		SlideshowComponent,
 		ArtistFeaturedComponent,
 		FeaturedTopicComponent,
-  		FooterComponent,
-    NavbarNotificationComponent
+		FooterComponent,
+		NavbarNotificationComponent
 	],
 	imports: [
 		CommonModule,

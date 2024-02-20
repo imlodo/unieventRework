@@ -27,6 +27,11 @@ const routes: Routes = [
 				path: 'event',
 				loadChildren: () => import('./modules/event/event.module').then((m) => m.EventModule),
 			},
+			{
+				path: 'notification',
+				loadChildren: () => import('./modules/notification/notification.module').then((m) => m.NotificationModule),
+
+			}
 		]
 	},
 	{
