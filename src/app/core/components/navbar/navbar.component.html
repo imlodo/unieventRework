@@ -10,9 +10,9 @@
         aria-label="Search" style="visibility:hidden;">
 
     <ng-container *ngIf="online" class="on-nav">
-        <unievent-navbar-notification></unievent-navbar-notification>
-        <unievent-navbar-chat></unievent-navbar-chat>
-        <unievent-navbar-profile (logoutEvent)="logout()"></unievent-navbar-profile>
+        <unievent-navbar-notification (closeOtherNavbarPanelEvent)="closeOtherNavbarPanel('notification')"></unievent-navbar-notification>
+        <unievent-navbar-chat (closeOtherNavbarPanelEvent)="closeOtherNavbarPanel('message')"></unievent-navbar-chat>
+        <unievent-navbar-profile (closeOtherNavbarPanelEvent)="closeOtherNavbarPanel('profile')" (logoutEvent)="logout()"></unievent-navbar-profile>
     </ng-container>
     <ng-container *ngIf="!online" class="off-nav">
         <div class="navbar-nav">

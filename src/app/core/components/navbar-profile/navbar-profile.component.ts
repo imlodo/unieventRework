@@ -1,6 +1,7 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Output } from '@angular/core';
 import { User } from '../../models/user';
-import { USER_TYPE } from '../../utility/global-constant';
+import { ROUTE_LIST, USER_TYPE } from '../../utility/global-constant';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'unievent-navbar-profile',
@@ -8,9 +9,13 @@ import { USER_TYPE } from '../../utility/global-constant';
   styleUrls: ['./navbar-profile.component.scss']
 })
 export class NavbarProfileComponent {
+  constructor(private elementRef: ElementRef, private router: Router) {
+  }
+
   @Output() logoutEvent = new EventEmitter<void>();
-  showProfilePanel:boolean = false;
-  activeMod:boolean = false;
+  @Output() closeOtherNavbarPanelEvent = new EventEmitter<void>();
+  showProfilePanel: boolean = false;
+  activeMod: boolean = false;
   user: User = {
     t_username: "lodo",
     t_password: "lodo",
@@ -18,23 +23,45 @@ export class NavbarProfileComponent {
     t_surname: "Lodato",
     t_alias_generated: "lodo32",
     t_description: "Sono un bel ragazzo",
-    t_profile_photo: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Hertha_BSC_vs._West_Ham_United_20190731_%28186%29.jpg/800px-Hertha_BSC_vs._West_Ham_United_20190731_%28186%29.jpg",
+    t_profile_photo: "https://scontent.fnap5-1.fna.fbcdn.net/v/t39.30808-6/336655652_1366549564142836_6189179333211279215_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=efb6e6&_nc_ohc=MMspqbZpIoEAX8SJzKR&_nc_ht=scontent.fnap5-1.fna&oh=00_AfCxMQHUITv5n3ssutheEupX0QdJ4fcrGeR0ACM3DoT_9w&oe=65DB9102",
     t_type: USER_TYPE.CUSTOMER
   };
 
-  launchLogoutEvent(){
+  launchLogoutEvent() {
     this.logoutEvent.emit();
   }
 
-  openProfilePanel(){
+  openProfilePanel() {
+    this.closeOtherNavbarPanelEvent.emit
     this.showProfilePanel = !this.showProfilePanel;
   }
 
-  goTo(type:string){
-
+  closeProfilePanel() {
+    this.showProfilePanel = false;
   }
 
-  changeMod(){
+  goTo(type: string) {
+    this.closeProfilePanel();
+    switch (type) {
+      case "profile":
+        this.router.navigate([ROUTE_LIST.profile,]);
+        break;
+      case "bookmarks":
+        this.router.navigate([ROUTE_LIST.bookmarks]);
+        break;
+      case "settings":
+        this.router.navigate([ROUTE_LIST.settings.account]);
+        break;
+      case "supports":
+        this.router.navigate([ROUTE_LIST.supports]);
+        break;
+      case "tickets":
+        this.router.navigate([ROUTE_LIST.tickets]);
+        break;
+    }
+  }
+
+  changeMod() {
     this.activeMod = !this.activeMod;
   }
 }

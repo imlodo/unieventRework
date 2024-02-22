@@ -1,4 +1,4 @@
-import { Component, ElementRef, HostListener } from '@angular/core';
+import { Component, ElementRef, EventEmitter, HostListener, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { ROUTE_LIST } from '../../utility/global-constant';
 import { Notification } from '../../models/notification';
@@ -11,6 +11,7 @@ import moment, { Moment } from 'moment';
   styleUrls: ['./navbar-notification.component.scss']
 })
 export class NavbarNotificationComponent {
+  @Output() closeOtherNavbarPanelEvent = new EventEmitter<void>();
   NOTIFICATION_TYPE_CP = NOTIFICATION_TYPE;
   activeNotification = [true, false];
   showNotifications = false;
@@ -178,6 +179,7 @@ export class NavbarNotificationComponent {
       creationDateTime: moment().subtract(25, 'hours')
     }
   ];
+  protected countNotRead = this.notificationAllArray.filter(el=>el.not_read).length;
 
   constructor(private elementRef: ElementRef, private router: Router) {
   }
@@ -197,6 +199,7 @@ export class NavbarNotificationComponent {
     if(!window.location.href.includes("notification") || window.location.href.includes("setting")){
       this.showNotifications = !this.showNotifications;
     }
+    this.closeOtherNavbarPanelEvent.emit();
   }
 
   changeNotificationMode(index: number) {

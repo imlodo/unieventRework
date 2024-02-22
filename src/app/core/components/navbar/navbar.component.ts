@@ -2,6 +2,7 @@ import { Component, ElementRef, EventEmitter, HostListener, Output, ViewChild } 
 import { Router } from '@angular/router';
 import { ROUTE_LIST } from '../../utility/global-constant';
 import { NavbarNotificationComponent } from '../navbar-notification/navbar-notification.component';
+import { NavbarProfileComponent } from '../navbar-profile/navbar-profile.component';
 
 @Component({
   selector: 'unievent-navbar',
@@ -10,18 +11,35 @@ import { NavbarNotificationComponent } from '../navbar-notification/navbar-notif
 })
 export class NavbarComponent {
   @ViewChild(NavbarNotificationComponent) notificationComponent: NavbarNotificationComponent;
-  online:boolean = true;
+  @ViewChild(NavbarProfileComponent) profileComponent: NavbarProfileComponent;
+  online: boolean = true;
   @Output() onShowCollapse: EventEmitter<void> = new EventEmitter();
   isShowed = false;
 
-  logout(){
+  logout() {
     alert("Implementare logout")
   }
 
-  showCollapse(){
-    if(!this.isShowed)
-      this.isShowed=!this.isShowed;
+  showCollapse() {
+    if (!this.isShowed)
+      this.isShowed = !this.isShowed;
+    this.closeOtherNavbarPanel("search");
     this.onShowCollapse.emit();
+  }
+
+  closeOtherNavbarPanel(type: string) {
+    switch (type) {
+      case "profile":
+        this.notificationComponent.closeNotifications();
+        break;
+      case "notification":
+        this.profileComponent.closeProfilePanel();
+        break;
+      default:
+        this.notificationComponent.closeNotifications();
+        this.profileComponent.closeProfilePanel();
+        break;
+    }
   }
 
 }

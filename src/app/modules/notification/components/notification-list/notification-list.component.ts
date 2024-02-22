@@ -176,7 +176,8 @@ export class NotificationListComponent {
       creationDateTime: moment().subtract(25, 'hours')
     }
   ];
-
+  protected countNotRead = this.notificationAllArray.filter(el=>el.not_read).length;
+  
   constructor(private router: Router) {
   }
 

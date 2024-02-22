@@ -14,13 +14,13 @@
 <div *ngIf="showProfilePanel" class="position-absolute border-0 p-3 text-white profile">
     <div class="d-flex flex-column align-items-center, justify-content-center" style="vertical-align: center;">
         <div class="d-flex flex-row justify-content-start mb-3 p-2 profile-menu-element pointer"
-            style="align-items: center;">
+            style="align-items: center;" (click)="goTo('profile')">
             <img class="notificationImage" [attr.src]="user.t_profile_photo" width="50" height="50"
                 style="border-radius: 100px;" />
             <h4 class="mx-3 my-0"><b>{{user.t_name}} {{user.t_surname}}</b></h4>
         </div>
         <div class="d-flex flex-row justify-content-start mb-3 p-2 profile-menu-element pointer"
-            style="align-items: center;" (click)="goTo('bookmark')">
+            style="align-items: center;" (click)="goTo('bookmarks')">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
                 class="bi bi-bookmark-star-fill" viewBox="0 0 16 16">
                 <path fill-rule="evenodd"
@@ -38,13 +38,22 @@
             <h4 class="mx-2 my-0 mt-1">Impostazioni</h4>
         </div>
         <div class="d-flex flex-row justify-content-start mb-3 p-2 profile-menu-element pointer"
-            style="align-items: center;" (click)="goTo('ticket-system')">
+            style="align-items: center;" (click)="goTo('supports')">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
                 class="bi bi-question-circle-fill" viewBox="0 0 16 16">
                 <path
                     d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M5.496 6.033h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286a.237.237 0 0 0 .241.247m2.325 6.443c.61 0 1.029-.394 1.029-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94 0 .533.425.927 1.01.927z" />
             </svg>
             <h4 class="mx-2 my-0">Assistenza e supporto</h4>
+        </div>
+        <div class="d-flex flex-row justify-content-start mb-3 p-2 profile-menu-element pointer"
+            style="align-items: center;" (click)="goTo('tickets')">
+            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
+                class="bi bi-ticket-perforated-fill" viewBox="0 0 16 16">
+                <path
+                    d="M0 4.5A1.5 1.5 0 0 1 1.5 3h13A1.5 1.5 0 0 1 16 4.5V6a.5.5 0 0 1-.5.5 1.5 1.5 0 0 0 0 3 .5.5 0 0 1 .5.5v1.5a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 11.5V10a.5.5 0 0 1 .5-.5 1.5 1.5 0 1 0 0-3A.5.5 0 0 1 0 6zm4-1v1h1v-1zm1 3v-1H4v1zm7 0v-1h-1v1zm-1-2h1v-1h-1zm-6 3H4v1h1zm7 1v-1h-1v1zm-7 1H4v1h1zm7 1v-1h-1v1zm-8 1v1h1v-1zm7 1h1v-1h-1z" />
+            </svg>
+            <h4 class="mx-2 my-0">I miei biglietti</h4>
         </div>
         <div class="d-flex flex-row justify-content-start mb-3 p-2 profile-menu-element pointer"
             style="align-items: center;" (click)="changeMod()">
@@ -65,16 +74,6 @@
             </svg>
         </div>
         <div class="d-flex flex-row justify-content-start mb-3 p-2 profile-menu-element pointer"
-            style="align-items: center;" (click)="goTo('my_ticket')">
-            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
-                class="bi bi-ticket-perforated-fill" viewBox="0 0 16 16">
-                <path
-                    d="M0 4.5A1.5 1.5 0 0 1 1.5 3h13A1.5 1.5 0 0 1 16 4.5V6a.5.5 0 0 1-.5.5 1.5 1.5 0 0 0 0 3 .5.5 0 0 1 .5.5v1.5a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 11.5V10a.5.5 0 0 1 .5-.5 1.5 1.5 0 1 0 0-3A.5.5 0 0 1 0 6zm4-1v1h1v-1zm1 3v-1H4v1zm7 0v-1h-1v1zm-1-2h1v-1h-1zm-6 3H4v1h1zm7 1v-1h-1v1zm-7 1H4v1h1zm7 1v-1h-1v1zm-8 1v1h1v-1zm7 1h1v-1h-1z" />
-            </svg>
-            <h4 class="mx-2 my-0">I miei biglietti</h4>
-
-        </div>
-        <div class="d-flex flex-row justify-content-start mb-3 p-2 profile-menu-element pointer"
             style="align-items: center;" (click)="launchLogoutEvent()">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
                 class="bi bi-arrow-left-square-fill" viewBox="0 0 16 16">
@@ -83,28 +82,5 @@
             </svg>
             <h4 class="mx-2 my-0 mt-1">Esci</h4>
         </div>
-
-        <!-- <ng-container *ngFor="let notificationEl of notificationAllArray">
-            <div [ngClass]="(notificationEl.type != NOTIFICATION_TYPE_CP.FRIEND_REQUEST_ACCEPTED) && (notificationEl.type != NOTIFICATION_TYPE_CP.FRIEND_REQUEST_REFUSED) && notificationEl.not_read ? 'not-read' : ''"
-                *ngIf="activeNotification[0] || (activeNotification[1] && notificationEl.not_read)"
-                class="d-flex flex-row mb-3 notificationElement p-2 pointer">
-                <img *ngIf="(notificationEl.type != NOTIFICATION_TYPE_CP.FRIEND_REQUEST_ACCEPTED) && (notificationEl.type != NOTIFICATION_TYPE_CP.FRIEND_REQUEST_REFUSED)"
-                    class="notificationImage" [attr.src]="notificationEl.image" width="70" height="70"
-                    style="border-radius: 100px;" />
-                <div class="d-flex flex-column justify-content-center mx-2">
-                    <div class="d-flex flex-column justify-content-center">
-                        <span class="notificazionTitle">{{notificationEl.body}}</span>
-                        <span class="notificationHour">{{getHourStr(notificationEl.creationDateTime)}}</span>
-                    </div>
-                    <div *ngIf="notificationEl.type == NOTIFICATION_TYPE_CP.FRIEND_REQUEST"
-                        class="d-flex flex-row mt-2">
-                        <button (click)="actionFriendRequest(true,notificationEl.notification_id)"
-                            class="col-6 btn btn-primary text-white btn-rem-09">Accetta</button>
-                        <button (click)="actionFriendRequest(false,notificationEl.notification_id)"
-                            class="col-6 btn btn-secondary mx-2 btn-rem-09">Rifiuta</button>
-                    </div>
-                </div>
-            </div>
-        </ng-container> -->
     </div>
 </div>

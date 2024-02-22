@@ -14159,9 +14159,15 @@ export const ROUTE_LIST =
         list:"/notification/list"
 
     },
-    setting:{
-        notification:"/setting/notification"
-    }
+    settings:{
+        notification:"/settings/notification",
+        account: "/settings/account"
+    },
+    tickets: "/tickets",
+    supports: "/supports",
+    profile: "/profile",
+    bookmarks: "/bookmark",
+    messages: "/messages"
 };
 
 export const COLORS: Record<string, EventColor> = {
