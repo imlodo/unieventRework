@@ -77,11 +77,6 @@
     align-items: center;
 }
 
-.notificationHour {
-    font-size: 0.8rem;
-    color: #999999;
-}
-
 .more-div {
     width: 40px;
     height: 40px;
@@ -99,14 +94,8 @@
 }
 
 .activeNotification {
-    color: #ff9b00;
-    background: #502c23;
-}
-
-.notActiveNotification:hover,
-.notificationShowAll:hover {
-    color: #ffffff;
-    background: #3b3b3b;
+    color: white;
+    background: #b11e12;
 }
 
 .notificationNotRead {
@@ -125,18 +114,9 @@
     line-height: 40px;
 }
 
-.more-div:hover {
-    background-color: #3a3b3c;
-}
-
 .notificationElement {
     border-radius: 10px;
     max-width: 420px;
-}
-
-.notificazionTitle {
-    text-align: justify;
-    color: #999999;
 }
 
 .notificationImage {
@@ -145,53 +125,97 @@
     object-fit: cover;
 }
 
-.notificationElement:hover {
-    background-color: rgb(54, 54, 54);
-}
-
 .btn-rem-09 {
     font-size: 0.9rem;
 }
 
 .btn-primary {
-    background: #955815;
-    border-color: #955815;
+    background: #b11e12;
+    border-color: #b11e12;
 }
 
 .btn-primary:hover {
-    background: #c0701a;
-    border-color: #c0701a;
+    background: #d42818;;
+    border-color: #d42818;;
 }
 
 .notification {
     overflow-y: auto;
     z-index: 4;
     min-width: 400px;
-    background: #242526;
-    max-height: 700px;
-    min-height: 700px;
+    max-height: calc(-90px + 100vh);
+    min-height: calc(-90px + 100vh);
     min-width: 472px;
-    top: 78px;
+    top: 79px;
     right: 50px;
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
 }
 
-
-
-/*::-webkit-scrollbar-thumb {
-    border-radius: 10px;
-    background-color: #888 !important;
-    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
+.notification-dark-mode {
+    background: rgb(37, 37, 37);
 }
 
-::-webkit-scrollbar-track {
-    background-color: #242526 !important;
-    width: 15px;
-    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-    border-bottom-right-radius: 10px;
+.notification-light-mode{
+    background: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
-*/
+
+.notification-dark-mode .notActiveNotification:hover,
+.notification-dark-mode .notificationShowAll:hover {
+    color: #ffffff;
+    background: #3b3b3b;
+}
+
+.notification-light-mode .notActiveNotification:hover,
+.notification-light-mode .notificationShowAll:hover {
+    color: black;
+    background: #e4e4e4;
+}
+
+.notification-dark-mode .more-div:hover {
+    background-color: #3a3b3c;
+}
+
+.notification-light-mode .more-div:hover {
+    background-color: #e4e4e4;
+}
+
+.notification-dark-mode .notificationElement:hover {
+    background-color: rgb(54, 54, 54);
+}
+
+.notification-dark-mode .notificazionTitle {
+    text-align: justify;
+    color: #999999;
+}
+
+.notification-dark-mode .notificationHour {
+    font-size: 0.8rem;
+    color: #999999;
+}
+
+.notification-light-mode .notificationElement:hover {
+    background: #e4e4e4;
+}
+
+.notification-light-mode .notificazionTitle {
+    text-align: justify;
+    color: #000000;
+}
+
+.notification-light-mode .notificationHour {
+    font-size: 0.8rem;
+    color: #000000;
+}
+
+.notification-dark-mode .not-read{
+    background-color: #1d1d1d;
+}
+
+.notification-light-mode .not-read{
+    background-color: #c9c9c9;
+}
 
 ::-webkit-scrollbar {
     width: 20px;
@@ -206,7 +230,7 @@
     visibility: visible;
 }
 
-.notification::-webkit-scrollbar-thumb {
+.notification-dark-mode::-webkit-scrollbar-thumb {
     border-radius: 10px;
     background-color: #888 !important;
     box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
@@ -214,13 +238,24 @@
     visibility: hidden;
 }
 
-.notification::-webkit-scrollbar-track {
+.notification-dark-mode::-webkit-scrollbar-track {
     visibility: hidden;
     background-color: #3b3c3d !important;
     box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
     border-bottom-right-radius: 10px;
 }
 
-.not-read{
-    background-color: #502c23;
+.notification-light-mode::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: #a8a8a8 !important;
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
+    border: 5px solid #e4e4e4;
+    visibility: hidden;
+}
+
+.notification-light-mode::-webkit-scrollbar-track {
+    visibility: hidden;
+    background-color: #e4e4e4 !important;
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    border-bottom-right-radius: 10px;
 }

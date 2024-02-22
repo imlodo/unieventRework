@@ -1,12 +1,11 @@
 .profile {
-    overflow-y: auto;
+    overflow-y: hidden;
     z-index: 3;
     min-width: 400px;
-    background: #242526;
     max-height: 470px;
     min-height: 470px;
     min-width: 250px;
-    top: 78px;
+    top: 79px;
     right: 50px;
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
@@ -18,12 +17,30 @@
     object-fit: cover;
 }
 
-.profile-menu-element{
+.profile-dark-mode {
+    background: rgb(37, 37, 37);
+}
+.profile-light-mode{
+    background: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.profile-dark-mode .profile-menu-element{
     border-radius: 10px;
     min-width: 230px;
     color: #dbdbdb;
 }
 
-.profile-menu-element:hover{
+.profile-dark-mode .profile-menu-element:hover{
     background: #505355;
+}
+
+.profile-light-mode .profile-menu-element{
+    border-radius: 10px;
+    min-width: 230px;
+    color: #000000;
+}
+
+.profile-light-mode .profile-menu-element:hover{
+    background: #e4e4e4;
 }

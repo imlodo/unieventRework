@@ -1,4 +1,4 @@
-import { Component, ElementRef, EventEmitter, HostListener, Output, ViewChild } from '@angular/core';
+import { Component, ElementRef, EventEmitter, HostListener, Input, Output, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { ROUTE_LIST } from '../../utility/global-constant';
 import { NavbarNotificationComponent } from '../navbar-notification/navbar-notification.component';
@@ -14,7 +14,10 @@ export class NavbarComponent {
   @ViewChild(NavbarProfileComponent) profileComponent: NavbarProfileComponent;
   online: boolean = true;
   @Output() onShowCollapse: EventEmitter<void> = new EventEmitter();
+  @Output() updateThemeEvent: EventEmitter<void> = new EventEmitter();
   isShowed = false;
+  @Input() darkMode = false;
+
 
   logout() {
     alert("Implementare logout")
@@ -40,6 +43,10 @@ export class NavbarComponent {
         this.profileComponent.closeProfilePanel();
         break;
     }
+  }
+
+  updateTheme(){
+    this.updateThemeEvent.emit();
   }
 
 }

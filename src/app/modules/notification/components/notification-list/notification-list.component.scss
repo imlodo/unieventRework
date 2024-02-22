@@ -166,7 +166,7 @@
 .notification {
     overflow-y: auto;
     min-width: 400px;
-    min-height: 900px;
+    min-height: calc(-60px + 100vh);
     background: #333639;
     min-width: 520px;
     border-radius: 10px;

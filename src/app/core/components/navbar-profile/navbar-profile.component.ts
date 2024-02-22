@@ -1,4 +1,4 @@
-import { Component, ElementRef, EventEmitter, Output } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, Output } from '@angular/core';
 import { User } from '../../models/user';
 import { ROUTE_LIST, USER_TYPE } from '../../utility/global-constant';
 import { Router } from '@angular/router';
@@ -9,13 +9,13 @@ import { Router } from '@angular/router';
   styleUrls: ['./navbar-profile.component.scss']
 })
 export class NavbarProfileComponent {
-  constructor(private elementRef: ElementRef, private router: Router) {
-  }
 
   @Output() logoutEvent = new EventEmitter<void>();
   @Output() closeOtherNavbarPanelEvent = new EventEmitter<void>();
+  @Output() updateThemeEvent = new EventEmitter<void>();
   showProfilePanel: boolean = false;
   activeMod: boolean = false;
+  @Input() darkMode:boolean;
   user: User = {
     t_username: "lodo",
     t_password: "lodo",
@@ -26,6 +26,15 @@ export class NavbarProfileComponent {
     t_profile_photo: "https://scontent.fnap5-1.fna.fbcdn.net/v/t39.30808-6/336655652_1366549564142836_6189179333211279215_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=efb6e6&_nc_ohc=MMspqbZpIoEAX8SJzKR&_nc_ht=scontent.fnap5-1.fna&oh=00_AfCxMQHUITv5n3ssutheEupX0QdJ4fcrGeR0ACM3DoT_9w&oe=65DB9102",
     t_type: USER_TYPE.CUSTOMER
   };
+
+  constructor(private router: Router) {
+    let darkModeChoice = localStorage.getItem("darkModeChoice");
+    if(darkModeChoice === "0"){
+      this.activeMod = false;
+    } else{
+      this.activeMod = true;
+    }
+  }
 
   launchLogoutEvent() {
     this.logoutEvent.emit();
@@ -63,5 +72,7 @@ export class NavbarProfileComponent {
 
   changeMod() {
     this.activeMod = !this.activeMod;
+    localStorage.setItem("darkModeChoice", this.activeMod ? "1" : "0");
+    this.updateThemeEvent.emit();
   }
 }

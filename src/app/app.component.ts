@@ -10,32 +10,54 @@ import { NavigationStart, Router } from '@angular/router';
 export class AppComponent {
   title = 'UniEvent';
 
-  @ViewChild(SearchCollapseComponent) searchCollapse:SearchCollapseComponent;
+  @ViewChild(SearchCollapseComponent) searchCollapse: SearchCollapseComponent;
   @ViewChild(NavbarComponent) navbar: NavbarComponent;
 
-  showMenu:boolean = true;
+  showMenu: boolean = true;
+  darkMode: boolean = false;
 
-  constructor(private router:Router,private cdr:ChangeDetectorRef){
-    router.events.forEach(route=>{
-      if(route instanceof NavigationStart){
+  constructor(private router: Router, private cdr: ChangeDetectorRef) {
+    router.events.forEach(route => {
+      if (route instanceof NavigationStart) {
         this.showMenu = route.url !== '/login' && route.url !== '/signup';
       }
     })
+
+    let darkModeChoice = localStorage.getItem("darkModeChoice");
+    if(darkModeChoice === null){
+      localStorage.setItem("darkModeChoice", "1");
+      this.darkMode = true;
+    } else{
+      if(darkModeChoice === "0"){
+        this.darkMode = false;
+      } else{
+        this.darkMode = true;
+      }
+    }
   }
-  
+
   ngAfterViewInit(): void {
     this.cdr.detectChanges();
   }
 
-  showCollapse(){
+  showCollapse() {
     var elements = document.getElementById("nav");
     elements.scrollIntoView();
-    if(!this.searchCollapse.isShow)
+    if (!this.searchCollapse.isShow)
       this.searchCollapse.isShow = true;
   }
 
-  updateSearchButton(){
+  updateSearchButton() {
     this.navbar.isShowed = false;
+  }
+
+  updateTheme(){
+    let darkModeChoice = localStorage.getItem("darkModeChoice");
+    if(darkModeChoice === "0"){
+      this.darkMode = false;
+    } else{
+      this.darkMode = true;
+    }
   }
 
 }

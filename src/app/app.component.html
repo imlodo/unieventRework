@@ -1,6 +1,9 @@
-<unievent-navbar *ngIf="showMenu" id="nav" (onShowCollapse)="showCollapse()"></unievent-navbar>
-<unievent-search-collapse (onHideSearch)="updateSearchButton()"></unievent-search-collapse>
-<router-outlet></router-outlet>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
-<unievent-footer *ngIf="showMenu"></unievent-footer>
+<div [ngClass]="darkMode ? 'bg-dark-mode text-white' : 'bg-white text-black'">
+    <unievent-navbar id="nav" [darkMode]="darkMode" (updateThemeEvent)="updateTheme()" *ngIf="showMenu"
+        (onShowCollapse)="showCollapse()"></unievent-navbar>
+    <unievent-search-collapse (onHideSearch)="updateSearchButton()"></unievent-search-collapse>
+    <router-outlet></router-outlet>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+    <unievent-footer *ngIf="showMenu"></unievent-footer>
+</div>

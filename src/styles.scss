@@ -237,6 +237,17 @@ body {
     overflow: hidden;
 }
 
+.bg-dark-mode{
+    background: rgb(18, 18, 18);
+}
+
+.card-dark-mode{
+    background: rgb(37, 37, 37);
+}
+
+.dark-mode-bg{
+    background: rgb(18, 18, 18);
+}
 
 /* Importing Bootstrap SCSS file. */
 @import 'bootstrap/scss/bootstrap';

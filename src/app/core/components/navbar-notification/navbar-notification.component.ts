@@ -1,4 +1,4 @@
-import { Component, ElementRef, EventEmitter, HostListener, Output } from '@angular/core';
+import { Component, ElementRef, EventEmitter, HostListener, Input, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { ROUTE_LIST } from '../../utility/global-constant';
 import { Notification } from '../../models/notification';
@@ -180,6 +180,7 @@ export class NavbarNotificationComponent {
     }
   ];
   protected countNotRead = this.notificationAllArray.filter(el=>el.not_read).length;
+  @Input() darkMode:boolean;
 
   constructor(private elementRef: ElementRef, private router: Router) {
   }
