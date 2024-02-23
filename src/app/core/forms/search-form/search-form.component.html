@@ -1,4 +1,4 @@
-<div class="card card-body border-0">
+<div [ngClass]="darkMode ? 'bg-dark-mode' : ''" class="card card-body border-0">
     <div class="form-group has-search">
         <div class="d-flex px-xl-5">
             <span [ngClass]="dynamicClass['t_search_input']" class="d-flex align-items-center border-end-0" style="border: 1px solid #dee2e6; font-family: Arial,FontAwesome;padding-left:0.75rem!important;padding-bottom: 4px;">
@@ -9,12 +9,12 @@
         </div>
     </div>
     <div class="mx-8 mt-4">
-        <span>Filtri di ricerca</span>
-        <div class="card card-body">
+        <span [ngClass]="darkMode ? 'text-white' : 'text-dark' ">Filtri di ricerca</span>
+        <div [ngClass]="darkMode ? 'bg-filter text-white' : 'text-dark' " class="card card-body">
             <div class="row">
                 <div class="col-xl-4">
                     <div class="form-group">
-                        <span class="text-secondary">Dove?</span>
+                        <span>Dove?</span>
                         <ng-select [items]="city" bindLabel="Denominazione in italiano"
                             bindValue="Codice Comune formato numerico" [(ngModel)]="selectedCity"
                             placeholder="Seleziona Città">
@@ -23,14 +23,14 @@
                 </div>
                 <div class="col-xl-2 col-sm-2_5">
                     <div class="form-group">
-                        <span class="text-secondary">Quando?</span>
+                        <span>Quando?</span>
                         <input type="date" min="1923-01-01" class="form-control" name="t_birthday"
                             formControlName="t_birthday" id="t_birthday">
                     </div>
                 </div>
                 <div class="col-xl-4">
                     <div class="form-group">
-                        <span class="text-secondary">Tipo Evento?</span>
+                        <span>Tipo Evento?</span>
                         <ng-select [items]="tipoEventoArray" bindLabel="name" bindValue="id"
                             [(ngModel)]="selectedEventType" placeholder="Seleziona tipo">
                         </ng-select>

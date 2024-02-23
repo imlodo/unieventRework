@@ -1,16 +1,15 @@
-import { Component, ElementRef, HostListener } from '@angular/core';
+import { AfterViewChecked, AfterViewInit, Component, ElementRef, HostListener } from '@angular/core';
 import { Notification } from '../../../../core/models/notification';
 import { NOTIFICATION_TYPE } from '../../../../core/utility/enum-constant';
 import moment, { Moment } from 'moment';
 import { Router } from '@angular/router';
-import { ROUTE_LIST } from 'src/app/core/utility/global-constant';
 
 @Component({
   selector: 'unievent-notification-list',
   templateUrl: './notification-list.component.html',
   styleUrls: ['./notification-list.component.scss']
 })
-export class NotificationListComponent {
+export class NotificationListComponent implements AfterViewChecked {
   NOTIFICATION_TYPE_CP = NOTIFICATION_TYPE;
   activeNotification = [true, false];
   notificationCount: number = 999;
@@ -176,9 +175,19 @@ export class NotificationListComponent {
       creationDateTime: moment().subtract(25, 'hours')
     }
   ];
-  protected countNotRead = this.notificationAllArray.filter(el=>el.not_read).length;
-  
+  protected countNotRead = this.notificationAllArray.filter(el => el.not_read).length;
+  protected darkMode = false;
+
   constructor(private router: Router) {
+  }
+  
+  ngAfterViewChecked(): void {
+    let darkModeChoice = localStorage.getItem("darkModeChoice");
+    if (darkModeChoice === "0") {
+      this.darkMode = false;
+    } else {
+      this.darkMode = true;
+    }
   }
 
   changeNotificationMode(index: number) {

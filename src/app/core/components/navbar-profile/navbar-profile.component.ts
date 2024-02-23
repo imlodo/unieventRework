@@ -1,4 +1,4 @@
-import { Component, ElementRef, EventEmitter, Input, Output } from '@angular/core';
+import { Component, ElementRef, EventEmitter, HostListener, Input, Output } from '@angular/core';
 import { User } from '../../models/user';
 import { ROUTE_LIST, USER_TYPE } from '../../utility/global-constant';
 import { Router } from '@angular/router';
@@ -27,7 +27,16 @@ export class NavbarProfileComponent {
     t_type: USER_TYPE.CUSTOMER
   };
 
-  constructor(private router: Router) {
+  @HostListener('document:click', ['$event'])
+  handleClickOutside(event: Event) {
+    let eventTarget: any = event;
+    console.log()
+    if (!this.elementRef.nativeElement.contains(event.target) && !eventTarget.target.toString().includes("SVG")) {
+      this.closeProfilePanel();
+    }
+  }
+
+  constructor(private elementRef: ElementRef, private router: Router) {
     let darkModeChoice = localStorage.getItem("darkModeChoice");
     if(darkModeChoice === "0"){
       this.activeMod = false;
@@ -41,7 +50,7 @@ export class NavbarProfileComponent {
   }
 
   openProfilePanel() {
-    this.closeOtherNavbarPanelEvent.emit
+    this.closeOtherNavbarPanelEvent.emit();
     this.showProfilePanel = !this.showProfilePanel;
   }
 

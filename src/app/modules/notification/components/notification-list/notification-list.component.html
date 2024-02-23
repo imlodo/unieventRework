@@ -1,4 +1,4 @@
-<div class="border-0 text-white d-flex justify-content-center p-0">
+<div [ngClass]="darkMode ? 'bg-black notification-dark text-white' : 'bg-light notification-light text-black' " class="border-0 d-flex justify-content-center p-0">
     <div class="d-flex flex-column notification p-4 m-4">
         <div class="d-flex flex-row justify-content-between mb-3" style="align-items: center;">
             <h1 class="m-0"><b>Notifiche</b></h1>

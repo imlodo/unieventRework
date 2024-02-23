@@ -5,3 +5,25 @@
 .text-event-color-primary-i {
     color: #d32e2a !important;
 }
+
+.text-limit-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    /* Limita il numero di righe a 3 */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.text-limit-3::after {
+    content: "...";
+    /* Aggiungi i puntini finali */
+    display: inline-block;
+}
+
+.text-card-fixed{
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    /* Limita il numero di righe a 3 */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}

@@ -5,14 +5,20 @@
 @import "../node_modules/angular-calendar/css/angular-calendar.css";
 @import "./assets/css/gg.css";
 @import "~@ng-select/ng-select/themes/default.theme.css";
+@import 'bootstrap/scss/bootstrap';
 
-/* You can add global styles to this file, and also import other style files */
+*:focus {
+    outline: none;
+    box-shadow: none !important;
+}
+
 html,
 body {
-    margin: 0px;
     height: 100%;
     min-height: 100%;
     width: 100%;
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
     -webkit-background-size: cover;
     -o-background-size: cover;
     -moz-background-size: cover;
@@ -32,61 +38,13 @@ h2 {
     font-family: "Segoe UI", Arial, sans-serif;
 }
 
-.w3-display-middle {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
-}
-
-.form-control:focus {
-    box-shadow: 0 0 0 0.1rem #d32e2a !important;
-    border-color: #d32e2a !important;
-}
-
-.form-search:focus {
-    box-shadow: none !important;
-    border-color: #d32e2a !important;
-    border: 3px solid #d32e2a !important;
-    border-left: 0px !important;
-}
-
-.form-newsletter:focus {
-    box-shadow: none !important;
-    border-color: #d32e2a !important;
-    border: 3px solid #d32e2a !important;
-}
-
-.form-select:focus {
-    box-shadow: 0 0 0 0.1rem #d32e2a !important;
-    border-color: #d32e2a !important;
-}
-
 .float-right {
     float: right !important;
-}
-
-.input-w-icon {
-    background-color: #d32e2a !important;
-    color: white !important;
-    width: 50px;
-    text-align: center;
-    justify-content: center;
 }
 
 .explode-span {
     box-shadow: 0 0 0 0.1rem #d32e2a !important;
     border-color: #d32e2a !important;
-}
-
-.explode-icon-search {
-    border: 3px solid #d32e2a !important;
-    border-right: 0px !important;
-}
-
-.border-search-left {
-    border-left: 2px solid #a8aaac;
 }
 
 .btn-color,
@@ -116,20 +74,40 @@ h2 {
     border: 1px solid rgb(206, 206, 206) !important;
 }
 
+.btn-color-dark-mode {
+    background-color: #d32e2a !important;
+    border-color: #d32e2a !important;
+    color: #d32e2a !important;
+    font-weight: 500;
+}
+
+.btn-color-dark-mode:hover{
+    background-color: #ff00001f !important;
+    border-color: #d32e2a !important;
+}
+
+.btn-color-light-mode{
+    color: #000;
+    border-color: #ff0400 !important;
+    color: #ff0400 !important;
+    font-weight: 500;
+}
+
+.btn-color-light-mode:hover{
+    background-color: #ff00001f !important;
+    border-color: #ff0400 !important;
+}
+    
 .btn-color-no-hover {
     background-color: #d32e2a !important;
     border-color: #d32e2a !important;
     color: white;
 }
 
-html,
-body {
-    height: 100%;
-}
-
-body {
-    margin: 0;
-    font-family: Roboto, "Helvetica Neue", sans-serif;
+.btn-color-no-hover {
+    background-color: #da423f !important;
+    border-color: #da423f !important;
+    color: white;
 }
 
 .col-only-text {
@@ -215,39 +193,14 @@ body {
     object-position: top;
 }
 
-.text-limit-3 {
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    /* Limita il numero di righe a 3 */
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-}
-
-.text-limit-3::after {
-    content: "...";
-    /* Aggiungi i puntini finali */
-    display: inline-block;
-}
-
-.text-card-fixed{
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    /* Limita il numero di righe a 3 */
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-}
-
 .bg-dark-mode{
-    background: rgb(18, 18, 18);
+    background: rgb(18, 18, 18) !important;
 }
 
 .card-dark-mode{
     background: rgb(37, 37, 37);
 }
 
-.dark-mode-bg{
-    background: rgb(18, 18, 18);
+.bgcolor-transparent{
+    background-color: transparent !important;
 }
-
-/* Importing Bootstrap SCSS file. */
-@import 'bootstrap/scss/bootstrap';

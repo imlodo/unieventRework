@@ -1,6 +1,6 @@
 <div [ngClass]="darkMode ? 'bg-dark-mode text-white' : 'bg-white text-black'">
     <unievent-navbar id="nav" [darkMode]="darkMode" (updateThemeEvent)="updateTheme()" *ngIf="showMenu"
-        (onShowCollapse)="showCollapse()"></unievent-navbar>
+        (onShowCollapse)="showCollapse()" (onCloseCollapse)="closeCollapse()"></unievent-navbar>
     <unievent-search-collapse (onHideSearch)="updateSearchButton()"></unievent-search-collapse>
     <router-outlet></router-outlet>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">

@@ -1,7 +1,61 @@
-<header [ngClass]="darkMode ? 'dark-mode-bg navbar-dark' : 'navbar-light' " class="navbar sticky-top flex-md-nowrap p-0 shadow" style=" z-index: 3; border-bottom:1px solid rgb(56, 56, 56)">
+<nav style=" position: sticky; z-index: 3; border-bottom:1px solid rgb(56, 56, 56)" [ngClass]="darkMode ? 'bg-dark-mode navbar-dark' : 'navbar-light' " class="navbar navbar-expand-lg">
+    <div class="container-fluid p-0">
+        <a class="" href="/">
+            <div class="m-3"><img [attr.src]="darkMode ? '/assets/img/logo_unievent_white.svg' : '/assets/img/logo_unievent_black.svg' " width="150px" /></div>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0 align-items-center nav-action-link">
+                <li class="nav-item">
+                    <span class="pointer mx-3">Eventi</span>
+                </li>
+                <li class="nav-item">
+                    <span class="pointer mx-3">Topic</span>
+                </li>
+            </ul>
+            <ng-container *ngIf="online" class="on-nav">
+                <unievent-navbar-notification [darkMode]="darkMode"
+                    (closeOtherNavbarPanelEvent)="closeOtherNavbarPanel('notification')"></unievent-navbar-notification>
+                <unievent-navbar-chat (closeOtherNavbarPanelEvent)="closeOtherNavbarPanel('message')"></unievent-navbar-chat>
+                <unievent-navbar-profile [darkMode]="darkMode" (updateThemeEvent)="updateTheme()"
+                    (closeOtherNavbarPanelEvent)="closeOtherNavbarPanel('profile')"
+                    (logoutEvent)="logout()"></unievent-navbar-profile>
+            </ng-container>
+            <ng-container *ngIf="!online" class="off-nav">
+                <div class="navbar-nav">
+                    <div class="nav-item text-nowrap">
+                        <a class="nav-link px-3 link-icon-text" href="/login"><i class="gg-log-in"></i><span>Accedi</span></a>
+                    </div>
+                </div>
+                <div class="navbar-nav">
+                    <div class="nav-item text-nowrap">
+                        <a class="nav-link px-3" href="/signup">Registrati</a>
+                    </div>
+                </div>
+            </ng-container>
+            <div class="navbar-nav border-search-left mx-3">
+                <div class="nav-item text-nowrap nav-link" data-bs-toggle="collapse"
+                    [attr.href]="isShowed ?  '' : '#showSearch' " role="button" aria-expanded="false" aria-controls="showSearch"
+                    (click)="showCollapse()">
+                    <i #tooltip="matTooltip" matTooltip="Cerca" matTooltipPosition="left" matTooltipHideDelay="100"
+                        class="gg-search"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+
+
+<!-- <header [ngClass]="darkMode ? ' navbar-dark' : 'navbar-light' "
+    class="navbar sticky-top flex-md-nowrap p-0 shadow" style=" z-index: 3; border-bottom:1px solid rgb(56, 56, 56)">
     <a class="" href="/">
         <div class="m-3"><img src="/assets/img/logo_unievent_white.svg" width="150px" /></div>
     </a>
+    <span class="pointer mx-3">Eventi</span>
+    <span class="pointer mx-3">Topic</span>
     <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse"
         data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -10,9 +64,12 @@
         aria-label="Search" style="visibility:hidden;">
 
     <ng-container *ngIf="online" class="on-nav">
-        <unievent-navbar-notification [darkMode]="darkMode" (closeOtherNavbarPanelEvent)="closeOtherNavbarPanel('notification')"></unievent-navbar-notification>
+        <unievent-navbar-notification [darkMode]="darkMode"
+            (closeOtherNavbarPanelEvent)="closeOtherNavbarPanel('notification')"></unievent-navbar-notification>
         <unievent-navbar-chat (closeOtherNavbarPanelEvent)="closeOtherNavbarPanel('message')"></unievent-navbar-chat>
-        <unievent-navbar-profile [darkMode]="darkMode" (updateThemeEvent)="updateTheme()" (closeOtherNavbarPanelEvent)="closeOtherNavbarPanel('profile')" (logoutEvent)="logout()"></unievent-navbar-profile>
+        <unievent-navbar-profile [darkMode]="darkMode" (updateThemeEvent)="updateTheme()"
+            (closeOtherNavbarPanelEvent)="closeOtherNavbarPanel('profile')"
+            (logoutEvent)="logout()"></unievent-navbar-profile>
     </ng-container>
     <ng-container *ngIf="!online" class="off-nav">
         <div class="navbar-nav">
@@ -34,4 +91,4 @@
                 class="gg-search"></i>
         </div>
     </div>
-</header>
+</header> -->

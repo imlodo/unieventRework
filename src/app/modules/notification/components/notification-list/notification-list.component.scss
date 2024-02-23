@@ -99,8 +99,8 @@
 }
 
 .activeNotification {
-    color: #ff9b00;
-    background: #502c23;
+    color: white;
+    background: #b11e12;
 }
 
 .notActiveNotification:hover,
@@ -145,8 +145,29 @@
     object-fit: cover;
 }
 
-.notificationElement:hover {
-    background-color: #292929;
+
+.notification-dark .notificationElement:hover {
+    background-color: rgb(54, 54, 54);
+}
+
+.notification-dark .notificazionTitle {
+    color: #999999;
+}
+
+.notification-dark .notificationHour {
+    color: #999999;
+}
+
+.notification-light .notificazionTitle {
+    color: black;
+}
+
+.notification-light .notificationHour {
+    color: black;
+}
+
+.notification-light .notificationElement:hover {
+    background: #e4e4e4;
 }
 
 .btn-rem-09 {
@@ -154,52 +175,36 @@
 }
 
 .btn-primary {
-    background: #955815;
-    border-color: #955815;
+    background: #b11e12;
+    border-color: #b11e12;
 }
 
 .btn-primary:hover {
-    background: #c0701a;
-    border-color: #c0701a;
+    background: #d42818;;
+    border-color: #d42818;;
 }
 
 .notification {
     overflow-y: auto;
     min-width: 400px;
     min-height: calc(-60px + 100vh);
-    background: #333639;
     min-width: 520px;
     border-radius: 10px;
 }
 
-::-webkit-scrollbar {
-    width: 20px;
+.notification-dark .notification{
+    background: rgb(37, 37, 37);
 }
 
-.notification:active::-webkit-scrollbar-thumb,
-.notification:focus::-webkit-scrollbar-thumb,
-.notification:hover::-webkit-scrollbar-thumb,
-.notification:hover::-webkit-scrollbar-track,
-.notification:active::-webkit-scrollbar-track,
-.notification:focus::-webkit-scrollbar-track {
-    visibility: visible;
+.notification-light .notification{
+    background: rgb(255, 255, 255);
+    box-shadow: inset 0 0 6px rgba(167, 166, 166, 0.3);
 }
 
-.notification::-webkit-scrollbar-thumb {
-    border-radius: 10px;
-    background-color: #888 !important;
-    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
-    border: 5px solid #3b3c3d;
-    visibility: hidden;
+.notification-dark .not-read{
+    background-color: #1d1d1d;
 }
 
-.notification::-webkit-scrollbar-track {
-    visibility: hidden;
-    background-color: #3b3c3d !important;
-    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-    border-bottom-right-radius: 10px;
-}
-
-.not-read{
-    background-color: #502c23;
+.notification-light .not-read{
+    background-color: #c9c9c9;
 }

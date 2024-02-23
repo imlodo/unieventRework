@@ -2,11 +2,24 @@
     position: absolute;
     top: 60px;
     right: 10px;
-    background: #363739;
     border-radius: 10px;
 }
 
-.notification-setting-el:hover{
+.notification-setting-dark .notification-setting-el:hover{
     background: #4d4f52;
     border-radius: 10px;
+}
+
+.notification-setting-light .notification-setting-el:hover{
+    background: #e4e4e4;
+    border-radius: 10px;
+}
+
+.notification-setting-light{
+    background: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.notification-setting-dark{
+    background: #363739;
 }

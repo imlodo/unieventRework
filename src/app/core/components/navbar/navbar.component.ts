@@ -14,6 +14,7 @@ export class NavbarComponent {
   @ViewChild(NavbarProfileComponent) profileComponent: NavbarProfileComponent;
   online: boolean = true;
   @Output() onShowCollapse: EventEmitter<void> = new EventEmitter();
+  @Output() onCloseCollapse: EventEmitter<void> = new EventEmitter();
   @Output() updateThemeEvent: EventEmitter<void> = new EventEmitter();
   isShowed = false;
   @Input() darkMode = false;
@@ -33,9 +34,16 @@ export class NavbarComponent {
   closeOtherNavbarPanel(type: string) {
     switch (type) {
       case "profile":
+        this.onCloseCollapse.emit();
         this.notificationComponent.closeNotifications();
         break;
       case "notification":
+        this.onCloseCollapse.emit();
+        this.profileComponent.closeProfilePanel();
+        break;
+      case "message":
+        this.onCloseCollapse.emit();
+        this.notificationComponent.closeNotifications();
         this.profileComponent.closeProfilePanel();
         break;
       default:
@@ -45,7 +53,7 @@ export class NavbarComponent {
     }
   }
 
-  updateTheme(){
+  updateTheme() {
     this.updateThemeEvent.emit();
   }
 

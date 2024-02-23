@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import cityJson from "../../../../assets/json/city.json";
 import { Router } from '@angular/router';
 import { ROUTE_LIST } from '../../utility/global-constant';
@@ -15,6 +15,7 @@ export class SearchFormComponent {
   city = this.getInitialCity();
   tipoEventoArray = [];
   dynamicClass = [];
+  @Input() darkMode: boolean;
 
   constructor(private router: Router) {
   }

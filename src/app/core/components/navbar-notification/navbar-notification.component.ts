@@ -262,5 +262,6 @@ export class NavbarNotificationComponent {
   setAllNotificationRead(){
     let notReadArray = this.notificationAllArray.filter(el=>el.not_read);
     notReadArray.forEach(el=>el.not_read = false);
+    this.countNotRead = this.notificationAllArray.filter(el=>el.not_read).length;
   }
 }

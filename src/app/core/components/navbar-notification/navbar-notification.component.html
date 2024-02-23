@@ -68,7 +68,7 @@
             <h3 class="my-2">Non ci sono nuove notifiche da leggere</h3>
         </div>
     </div>
-    <unievent-notification-setting (setAllNotificationRead)="setAllNotificationRead()"
+    <unievent-notification-setting [darkMode]="darkMode" (setAllNotificationRead)="setAllNotificationRead()"
         (closeNotificationPanel)="closeNotifications()" (closeNotificationSetting)="closeNotificationSetting()"
         *ngIf="showNotificationSetting"></unievent-notification-setting>
 </div>

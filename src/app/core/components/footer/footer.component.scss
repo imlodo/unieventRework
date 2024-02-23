@@ -9,7 +9,7 @@
     display: inline;
     height: 40px;
     width: 40px;
-    background: #fff;
+    background: #000;
     border-radius: 50%;
     float: left;
     margin: 15px 8px;
@@ -36,24 +36,24 @@
 }
 
 .btn-facebook a {
-    color: #3b5998;
+    color: white;
     padding: 8px 13px;
 }
 
 .btn-linkedin a {
-    color: #007bb6;
+    color: white;
 }
 
 .btn-twitter a {
-    color: #1c9deb;
+    color: white;
 }
 
 .btn-instagram a {
-    color: #dd3f5c;
+    color: white;
 }
 
 .btn-whatsapp a {
-    color: #155E54;
+    color: white;
 }
 
 .btn-envelop a {
@@ -109,6 +109,10 @@
     text-decoration: none;
 }
 
+.footer-links li a:hover{
+    text-decoration: underline;
+}
+
 
 .footer-links li:before {
     content: "\f105";
@@ -123,6 +127,11 @@
     color: #ccc;
     text-decoration: none;
 }
+
+.footer-category li a:hover {
+    text-decoration: underline;
+}
+
 
 .footer-category li:before {
     content: "\f105";
@@ -199,7 +208,8 @@ footer .first_class h3 {
 }
 
 footer {
-    background: #242526;
+    background: #121212;
+    border-top: 1px solid #383838;
 }
 
 footer .newsletter input[type="text"] {
@@ -219,9 +229,9 @@ footer .second_class_bdr {
     border-top: 1px solid #222;
 }
 
-footer .btn-facebook a, 
+footer .btn-facebook a,
 footer .btn-instagram a,
-footer .btn-tiktok a{
+footer .btn-tiktok a {
     margin-top: 2px;
     margin-right: 3px;
 }
@@ -268,4 +278,29 @@ footer li {
     .copyright {
         font-size: 13px;
     }
+}
+
+.form-newsletter:focus {
+    border: 1px solid #ff0400 !important;
+    border-right: 0px !important
+}
+
+.bg-dark-mode input::placeholder, .bg-dark-mode input {
+    color: rgb(255, 255, 255) !important;
+}
+
+.bg-light-mode .color-06 a,  .bg-light-mode .color-06 p, .bg-light-mode p.color-06 {
+    color: rgba(22, 24, 35, 0.6) !important;
+}
+
+.bg-light-mode .color-06 a:hover {
+    color: rgba(22, 24, 35, 1) !important;
+}
+
+.bg-light-mode .color-08{
+    color: rgba(22, 24, 35, 0.8) !important;
+}
+
+.bg-light-mode{
+    background: white;
 }

@@ -1,4 +1,4 @@
-import { Component, ElementRef, EventEmitter, HostListener, Output } from '@angular/core';
+import { Component, ElementRef, EventEmitter, HostListener, Input, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { ROUTE_LIST } from '../../utility/global-constant';
 
@@ -11,6 +11,7 @@ export class NotificationSettingComponent {
   @Output() closeNotificationSetting = new EventEmitter<void>();
   @Output() closeNotificationPanel = new EventEmitter<void>();
   @Output() setAllNotificationRead = new EventEmitter<void>();
+  @Input() darkMode:boolean;
 
   constructor(private elementRef: ElementRef, private router: Router) {
   }

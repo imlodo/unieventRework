@@ -47,6 +47,11 @@ export class AppComponent {
       this.searchCollapse.isShow = true;
   }
 
+  closeCollapse(){
+    this.searchCollapse.isShow = false;
+    this.navbar.isShowed = false;
+  }
+
   updateSearchButton() {
     this.navbar.isShowed = false;
   }
