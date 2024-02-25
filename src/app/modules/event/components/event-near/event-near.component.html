@@ -1,24 +1,25 @@
 <div [ngClass]="darkMode ? 'bg-dark' : 'bg-light' " class="p-4">
     <div class="px-5 pt-3 container rounded">
         <div class="px-4  d-flex justify-content-between align-items-stretch">
-            <div class="">
+            <div class="d-flex w-100 justify-content-between align-items-center">
                 <span class="h6 font-weight-500 m-0 text-center my-2 text-event-color-primary-i d-flex">EVENTI VICINO A TE</span>
+                <button [ngClass]="darkMode ? 'text-white' : 'text-dark text-hover-white' "(click)="goToNearEvent()" style="cursor: pointer!important;font-size: 0.85rem;" class="btn btn-outline-secondary rounded-0">Vedi tutti</button>
             </div>
-            <div class="d-flex flex-column align-items-center text-center text-secondary">
-                <span style="font-size: 10px;">Gli eventi sono basati sulla tua posizione
-                    attuale</span>
-                <span class="d-flex align-items-center" style="font-size: 10px;"><svg xmlns="http://www.w3.org/2000/svg"
-                        width="30" height="30" fill="currentColor" class="bi bi-geo-fill" viewBox="0 0 16 16">
-                        <path fill-rule="evenodd"
-                            d="M4 4a4 4 0 1 1 4.5 3.969V13.5a.5.5 0 0 1-1 0V7.97A4 4 0 0 1 4 3.999zm2.493 8.574a.5.5 0 0 1-.411.575c-.712.118-1.28.295-1.655.493a1.3 1.3 0 0 0-.37.265.3.3 0 0 0-.057.09V14l.002.008.016.033a.6.6 0 0 0 .145.15c.165.13.435.27.813.395.751.25 1.82.414 3.024.414s2.273-.163 3.024-.414c.378-.126.648-.265.813-.395a.6.6 0 0 0 .146-.15l.015-.033L12 14v-.004a.3.3 0 0 0-.057-.09 1.3 1.3 0 0 0-.37-.264c-.376-.198-.943-.375-1.655-.493a.5.5 0 1 1 .164-.986c.77.127 1.452.328 1.957.594C12.5 13 13 13.4 13 14c0 .426-.26.752-.544.977-.29.228-.68.413-1.116.558-.878.293-2.059.465-3.34.465s-2.462-.172-3.34-.465c-.436-.145-.826-.33-1.116-.558C3.26 14.752 3 14.426 3 14c0-.599.5-1 .961-1.243.505-.266 1.187-.467 1.957-.594a.5.5 0 0 1 .575.411" />
-                    </svg>
-                    <label style="margin-top:4px"> Via San Clemente 15, Nocera Superiore, 84015</label>
-                </span>
-            </div>
+        </div>
+        <div [ngClass]="darkMode ? 'text-white' : '' " class="px-4 d-flex flex-column justify-content-center align-items-start text-center text-secondary">
+            <span style="font-size: 9px; margin-left: 8px;">Gli eventi sono basati sulla tua posizione
+                attuale</span>
+            <span class="d-flex align-items-center" style="font-size: 9px;"><svg xmlns="http://www.w3.org/2000/svg"
+                    width="20" height="20" fill="currentColor" class="bi bi-geo-fill" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd"
+                        d="M4 4a4 4 0 1 1 4.5 3.969V13.5a.5.5 0 0 1-1 0V7.97A4 4 0 0 1 4 3.999zm2.493 8.574a.5.5 0 0 1-.411.575c-.712.118-1.28.295-1.655.493a1.3 1.3 0 0 0-.37.265.3.3 0 0 0-.057.09V14l.002.008.016.033a.6.6 0 0 0 .145.15c.165.13.435.27.813.395.751.25 1.82.414 3.024.414s2.273-.163 3.024-.414c.378-.126.648-.265.813-.395a.6.6 0 0 0 .146-.15l.015-.033L12 14v-.004a.3.3 0 0 0-.057-.09 1.3 1.3 0 0 0-.37-.264c-.376-.198-.943-.375-1.655-.493a.5.5 0 1 1 .164-.986c.77.127 1.452.328 1.957.594C12.5 13 13 13.4 13 14c0 .426-.26.752-.544.977-.29.228-.68.413-1.116.558-.878.293-2.059.465-3.34.465s-2.462-.172-3.34-.465c-.436-.145-.826-.33-1.116-.558C3.26 14.752 3 14.426 3 14c0-.599.5-1 .961-1.243.505-.266 1.187-.467 1.957-.594a.5.5 0 0 1 .575.411" />
+                </svg>
+                <label style="margin-top:4px"> Via San Clemente 15, Nocera Superiore, 84015</label>
+            </span>
         </div>
         <div class="row px-4 py-3 justify-content-center">
             <div class="col-xl-3 col-lg-6 col-12 mb-3">
-                <div class="card">
+                <div [ngClass]="darkMode ? 'border-0 bg-dark-mode text-white' : ''" class="card">
                     <img class="card-img-top card-featured"
                         src="https://rivieraticket.it/wp-content/uploads/2023/08/Tropical-closing-party-Byblos-01-09-23.jpg"
                         alt="Card image">
@@ -66,7 +67,7 @@
                 </div>
             </div>
             <div class="col-xl-3 col-lg-6 col-12 mb-3">
-                <div class="card">
+                <div [ngClass]="darkMode ? 'border-0 bg-dark-mode text-white' : ''" class="card">
                     <img class="card-img-top card-featured"
                         src="https://rivieraticket.it/wp-content/uploads/2023/08/Tropical-closing-party-Byblos-01-09-23.jpg"
                         alt="Card image">
@@ -114,7 +115,7 @@
                 </div>
             </div>
             <div class="col-xl-3 col-lg-6 col-12 mb-3">
-                <div class="card">
+                <div [ngClass]="darkMode ? 'border-0 bg-dark-mode text-white' : ''" class="card">
                     <img class="card-img-top card-featured"
                         src="https://rivieraticket.it/wp-content/uploads/2023/08/Tropical-closing-party-Byblos-01-09-23.jpg"
                         alt="Card image">
@@ -162,7 +163,7 @@
                 </div>
             </div>
             <div class="col-xl-3 col-lg-6 col-12">
-                <div class="card">
+                <div [ngClass]="darkMode ? 'border-0 bg-dark-mode text-white' : ''" class="card">
                     <img class="card-img-top card-featured"
                         src="https://rivieraticket.it/wp-content/uploads/2023/08/Tropical-closing-party-Byblos-01-09-23.jpg"
                         alt="Card image">
@@ -210,8 +211,8 @@
                 </div>
             </div>
         </div>
-        <div class="d-flex justify-content-center mb-3 p-2">
+        <!--<div class="d-flex justify-content-center mb-3 p-2">
             <button (click)="goToNearEvent()" style="cursor: pointer!important;margin: 0px 14px 0 14px;font-size: 0.85rem;" class="btn w-100 btn-secondary text-white">Vedi tutti</button>
-        </div>
+        </div>-->
     </div>
 </div>

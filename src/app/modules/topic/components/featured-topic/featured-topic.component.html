@@ -1,7 +1,7 @@
 <div class="p-4">
     <div class="px-5 pt-3 container rounded">
         <div class="px-4  d-flex justify-content-between align-items-stretch">
-            <div class="">
+            <div class="d-flex w-100 justify-content-between align-items-center">
                 <span class="h6 font-weight-500 m-0 text-center my-2 text-event-color-primary-i d-flex">TOPIC IN PRIMO
                     PIANO <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                         class="bi bi-star-fill mx-1" viewBox="0 0 16 16">
@@ -9,12 +9,15 @@
                             d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
                     </svg>
                 </span>
+                <button [ngClass]="darkMode ? 'text-white' : 'text-dark text-hover-white' " (click)="goToTopicList()"
+                    style="cursor: pointer!important;font-size: 0.85rem;"
+                    class="btn btn-outline-secondary rounded-0">Vedi tutti</button>
             </div>
         </div>
         <!-- <hr class="mx-4 my-2"> -->
         <div class="row px-4 py-3 justify-content-center">
             <div class="col-xl-3 col-lg-6 col-12 mb-3">
-                <div class="card border-0">
+                <div [ngClass]="darkMode ? 'border-0 bg-dark text-white' : ''" class="card">
                     <img class="card-img-top card-featured"
                         src="https://th.bing.com/th/id/OIP.qPT3hh7i4iLVn1jUIpdaYAHaEK?rs=1&pid=ImgDetMain"
                         alt="Card image">
@@ -85,7 +88,7 @@
                 </div>
             </div>
             <div class="col-xl-3 col-lg-6 col-12 mb-3">
-                <div class="card border-0">
+                <div [ngClass]="darkMode ? 'border-0 bg-dark text-white' : ''" class="card">
                     <img class="card-img-top card-featured"
                         src="https://cdn.skuola.net/w1200h687/news_foto/image-grabber/image-64621625e9ba2.jpg"
                         alt="Card image">
@@ -173,7 +176,7 @@
                 </div>
             </div>
             <div class="col-xl-3 col-lg-6 col-12 mb-3">
-                <div class="card border-0">
+                <div [ngClass]="darkMode ? 'border-0 bg-dark text-white' : ''" class="card">
                     <img class="card-img-top card-featured"
                         src="https://getmeyellow.com/cdn/shop/articles/I-Simpson-1024x576.jpg?v=1677668462&width=1000"
                         alt="Card image">
@@ -262,7 +265,7 @@
                 </div>
             </div>
             <div class="col-xl-3 col-lg-6 col-12">
-                <div class="card border-0">
+                <div [ngClass]="darkMode ? 'border-0 bg-dark text-white' : ''" class="card">
                     <img class="card-img-top card-featured"
                         src="https://www.salernonews24.com/wp-content/uploads/2017/12/unisa2-1-1024x671.jpg"
                         alt="Card image">
@@ -352,9 +355,10 @@
                 </div>
             </div>
         </div>
-        <div class="d-flex justify-content-center mb-3 p-2">
-            <button (click)="goToTopicList()" style="cursor: pointer!important;margin: 0px 14px 0 14px;font-size: 0.85rem;"
+        <!-- <div class="d-flex justify-content-center mb-3 p-2">
+            <button (click)="goToTopicList()"
+                style="cursor: pointer!important;margin: 0px 14px 0 14px;font-size: 0.85rem;"
                 class="btn w-100 btn-secondary text-white">Vedi tutti</button>
-        </div>
+        </div> -->
     </div>
 </div>

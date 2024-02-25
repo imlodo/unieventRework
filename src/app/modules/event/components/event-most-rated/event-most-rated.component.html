@@ -1,13 +1,18 @@
 <div class="p-4">
     <div class="px-5 pt-3 container rounded">
         <div class="px-4  d-flex justify-content-between align-items-stretch">
-            <div class="">
-                <span class="h6 font-weight-500 m-0 text-center my-2 text-event-color-primary-i d-flex">EVENTI PIU' VOTATI</span>
+            <div class="d-flex w-100 justify-content-between align-items-center">
+                <span class="h6 font-weight-500 m-0 text-center my-2 text-event-color-primary-i d-flex">EVENTI PIU'
+                    VOTATI</span>
+                <button [ngClass]="darkMode ? 'text-white' : 'text-dark text-hover-white' "
+                    (click)="goToMostRatedEvent()"
+                    style="cursor: pointer!important;font-size: 0.85rem;"
+                    class="btn btn-outline-secondary rounded-0">Vedi tutti</button>
             </div>
         </div>
         <div class="row px-4 py-3 justify-content-center">
             <div class="col-xl-3 col-lg-6 col-12 mb-3">
-                <div class="card border-0">
+                <div class="card" [ngClass]="darkMode ? 'border-0 bg-dark text-white' : ''">
                     <img class="card-img-top card-featured"
                         src="https://rivieraticket.it/wp-content/uploads/2023/08/Tropical-closing-party-Byblos-01-09-23.jpg"
                         alt="Card image">
@@ -55,7 +60,7 @@
                 </div>
             </div>
             <div class="col-xl-3 col-lg-6 col-12 mb-3">
-                <div class="card border-0">
+                <div class="card" [ngClass]="darkMode ? 'border-0 bg-dark text-white' : ''">
                     <img class="card-img-top card-featured"
                         src="https://rivieraticket.it/wp-content/uploads/2023/08/Tropical-closing-party-Byblos-01-09-23.jpg"
                         alt="Card image">
@@ -103,7 +108,7 @@
                 </div>
             </div>
             <div class="col-xl-3 col-lg-6 col-12 mb-3">
-                <div class="card border-0">
+                <div class="card" [ngClass]="darkMode ? 'border-0 bg-dark text-white' : ''">
                     <img class="card-img-top card-featured"
                         src="https://rivieraticket.it/wp-content/uploads/2023/08/Tropical-closing-party-Byblos-01-09-23.jpg"
                         alt="Card image">
@@ -151,7 +156,7 @@
                 </div>
             </div>
             <div class="col-xl-3 col-lg-6 col-12 mb-3">
-                <div class="card border-0">
+                <div class="card" [ngClass]="darkMode ? 'border-0 bg-dark text-white' : ''">
                     <img class="card-img-top card-featured"
                         src="https://rivieraticket.it/wp-content/uploads/2023/08/Tropical-closing-party-Byblos-01-09-23.jpg"
                         alt="Card image">
@@ -199,8 +204,8 @@
                 </div>
             </div>
         </div>
-        <div (click)="goToMostRatedEvent()" class="d-flex justify-content-center mb-3 p-2">
+        <!--<div (click)="goToMostRatedEvent()" class="d-flex justify-content-center mb-3 p-2">
             <button style="cursor: pointer!important;margin: 0px 14px 0 14px;font-size: 0.85rem;" class="btn w-100 btn-secondary text-white">Vedi tutti</button>
-        </div>
+        </div>-->
     </div>
 </div>
