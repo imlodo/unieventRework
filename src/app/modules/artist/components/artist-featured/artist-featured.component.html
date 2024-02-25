@@ -1,17 +1,18 @@
-<div class="bg-white p-4">
+<div [ngClass]="darkMode ? 'bg-dark' : 'bg-light' " class="p-4">
     <div class="px-5 pt-3 container rounded">
-        <div class="px-4  d-flex justify-content-between align-items-stretch">
-            <div class="">
+        <div class="px-4 d-flex justify-content-between align-items-stretch">
+            <div class="d-flex w-100 justify-content-between align-items-center">
                 <span class="h6 font-weight-500 m-0 text-center my-2 text-event-color-primary-i d-flex">ARTISTI</span>
+                <button [ngClass]="darkMode ? 'text-white' : 'text-dark text-hover-white' "(click)="goToAristList()" style="cursor: pointer!important;margin: 0px 14px 0 14px;font-size: 0.85rem;" class="btn btn-outline-secondary rounded-0">Vedi tutti</button>
             </div>
         </div>
         <div class="row px-4 py-3 justify-content-center">
             <div class="col-xl-3 col-lg-6 col-12 mb-3">
-                <div class="card">
+                <div [ngClass]="darkMode ? 'border-0 bg-dark-mode text-white' : ''" class="card">
                     <img class="card-img-top card-featured"
                         src="https://res.cloudinary.com/vivaticket/image/fetch/q_auto:eco,f_auto/https://cdn.vivaticket.com/images/WebTool/Editorial/Artist/SquareImage/68186_it_2022_12_05_16_51_17_302.JPEG"
                         alt="Card image">
-                    <div class="card-body text-center">
+                    <div class="card-body text-center border-top">
                         <span class="card-title"><b>Renato Zero</b></span>
                         <br>
                         <a class="text-event-color-primary" style="cursor:pointer!important">Scopri di più</a>
@@ -20,11 +21,11 @@
                 </div>
             </div>
             <div class="col-xl-3 col-lg-6 col-12 mb-3">
-                <div class="card">
+                <div [ngClass]="darkMode ? 'border-0 bg-dark-mode text-white' : ''" class="card">
                     <img class="card-img-top card-featured"
                         src="https://res.cloudinary.com/vivaticket/image/fetch/q_auto:eco,f_auto/https://cdn.vivaticket.com/images/WebTool/Editorial/Artist/SquareImage/62277_it_2023_10_02_10_12_11_644.PNG"
                         alt="Card image">
-                    <div class="card-body text-center">
+                    <div class="card-body text-center border-top">
                         <span class="card-title"><b>Vasco rossi</b></span>
                         <br>
                         <a class="text-event-color-primary" style="cursor:pointer!important">Scopri di più</a>
@@ -32,11 +33,11 @@
                 </div>
             </div>
             <div class="col-xl-3 col-lg-6 col-12 mb-3">
-                <div class="card">
+                <div [ngClass]="darkMode ? 'border-0 bg-dark-mode text-white' : ''" class="card">
                     <img class="card-img-top card-featured"
                         src="https://res.cloudinary.com/vivaticket/image/fetch/q_auto:eco,f_auto/https://cdn.vivaticket.com/images/WebTool/Editorial/Artist/SquareImage/66967_it_2023_02_22_12_20_46_552.JPEG"
                         alt="Card image">
-                    <div class="card-body text-center">
+                    <div class="card-body text-center border-top">
                         <span class="card-title"><b>Marco Mengoni</b></span>
                         <br>
                         <a class="text-event-color-primary" style="cursor:pointer!important">Scopri di più</a>
@@ -44,11 +45,11 @@
                 </div>
             </div>
             <div class="col-xl-3 col-lg-6 col-12">
-                <div class="card">
+                <div class="card" [ngClass]="darkMode ? 'border-0 bg-dark-mode text-white' : ''">
                     <img class="card-img-top card-featured"
                         src="https://res.cloudinary.com/vivaticket/image/fetch/q_auto:eco,f_auto/https://cdn.vivaticket.com/images/WebTool/Editorial/Artist/SquareImage/100191_it_2024_02_01_10_09_03_228.PNG"
                         alt="Card image">
-                    <div class="card-body text-center">
+                    <div class="card-body text-center border-top">
                         <span class="card-title"><b>Negrita</b></span>
                         <br>
                         <a class="text-event-color-primary" style="cursor:pointer!important">Scopri di più</a>
@@ -56,8 +57,8 @@
                 </div>
             </div>
         </div>
-        <div (click)="goToAristList()" class="d-flex justify-content-center mb-3 p-2">
+        <!-- <div (click)="goToAristList()" class="d-flex justify-content-center mb-3 p-2">
             <button style="cursor: pointer!important;margin: 0px 14px 0 14px;font-size: 0.85rem;" class="btn w-100 btn-secondary text-white">Vedi tutti</button>
-        </div>
+        </div> -->
     </div>
 </div>
