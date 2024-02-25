@@ -1,5 +1,5 @@
-<div class="d-flex flex-row text-white p-3 container">
-    <div class="d-flex flex-column p-3 friends-list col-4">
+<div class="d-flex flex-row p-3 container">
+    <div [ngClass]="darkMode ? 'friends-list-bg-dark text-white' : 'bg-light text-dark shadow-sm' " class="d-flex flex-column p-3 friends-list col-4">
         <div class="d-flex flex-row ">
             <h1><b>Messaggi</b></h1>
             
