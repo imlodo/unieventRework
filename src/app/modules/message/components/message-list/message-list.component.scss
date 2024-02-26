@@ -1,8 +1,65 @@
-.friends-list{
+.friends-list {
     height: calc(-128px + 100vh);
     border-radius: 10px;
 }
 
-.friends-list-bg-dark{
+.friends-list-bg-dark {
     background: rgb(37, 37, 37);
+}
+
+.lastMessageHour {
+    font-size: 0.6rem;
+}
+
+.previewMessage {
+    max-width: 130px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.chatElement {
+    border-radius: 10px;
+}
+
+.friends-list-bg-dark .chatElement:hover {
+    background: #505355;
+}
+
+.friends-list-bg-dark .chatElementActive {
+    background: #505355;
+}
+
+.bg-light .chatElement:hover {
+    background: #e4e4e4;
+}
+
+.bg-light .chatElementActive {
+    background: #e4e4e4;
+}
+
+.chatImage {
+    object-fit: cover;
+}
+
+.activeUserMessage {
+    background: #b11e12;
+    border-radius: 15px;
+    padding: 12px;
+    color:white !important;
+    max-width: 430px;
+    margin-right: 8px;
+}
+
+.activeChatUserMessage {
+    margin-left: 8px;
+    background: #585858;
+    color:white !important;
+    border-radius: 15px;
+    padding: 12px;
+    max-width: 430px;
+}
+
+.messageDate{
+    font-size: 0.8rem;
 }
