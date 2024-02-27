@@ -118,6 +118,7 @@ export class MessageListComponent implements AfterViewChecked {
       ]
     }
   ];
+  protected showEmoticonPanel = false;
 
   constructor(private router: Router) {
   }
@@ -163,5 +164,9 @@ export class MessageListComponent implements AfterViewChecked {
 
   removeActiveUser(){
     this.activeChatUser = null;
+  }
+  
+  openEmoticonPanel(){
+    this.showEmoticonPanel = !this.showEmoticonPanel;
   }
 }

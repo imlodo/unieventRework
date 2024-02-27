@@ -10,12 +10,14 @@ import { FlatpickrModule } from 'angularx-flatpickr';
 import { CoreModule } from 'src/app/core/core.module';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { MessageListComponent } from './components/message-list/message-list.component';
+import { MessageEmoticonPanelComponent } from './components/message-emoticon-panel/message-emoticon-panel.component';
 
 @NgModule({
   declarations: [
     
   
-    MessageListComponent
+    MessageListComponent,
+              MessageEmoticonPanelComponent
   ],
   imports: [
     CommonModule,

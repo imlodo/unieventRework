@@ -1,0 +1,29 @@
+.emoji-container {
+  bottom: -60px;
+  position: relative;
+}
+
+.emoji-container-flex {
+  flex-wrap: wrap;
+  width: 360px;
+  max-height: 200px;
+  overflow: hidden;
+  overflow-y: scroll;
+  padding: 1rem;
+  position: absolute;
+  bottom: 85px;
+  border-radius: 10px;
+  margin: 0;
+  right: 0;
+}
+
+.emoji {
+  cursor: pointer;
+  font-size: 1.6rem;
+  margin: 8px;
+  transition: transform 0.2s;
+}
+
+.emoji:hover {
+  transform: scale(1.2);
+}

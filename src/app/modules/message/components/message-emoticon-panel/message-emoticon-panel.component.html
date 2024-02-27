@@ -1,0 +1,7 @@
+<div class="emoji-container">
+    <div [ngClass]="darkMode ? 'bg-dark-mode' : 'bg-light' " class="emoji-container-flex d-flex">
+        <div *ngFor="let emoji of emojis" (click)="selectEmoji(emoji)" class="emoji">
+            {{ emoji }}
+        </div>
+    </div>
+</div>

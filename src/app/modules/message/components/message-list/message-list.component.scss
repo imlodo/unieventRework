@@ -39,14 +39,23 @@
 }
 
 .chatImage {
+    min-height: 70px;
+    min-width: 70px;
     object-fit: cover;
 }
+
+.chatMinImage {
+    min-height: 42px;
+    min-width: 42px;
+    object-fit: cover;
+}
+
 
 .activeUserMessage {
     background: #b11e12;
     border-radius: 15px;
     padding: 12px;
-    color:white !important;
+    color: white !important;
     max-width: 430px;
     margin-right: 8px;
 }
@@ -54,12 +63,37 @@
 .activeChatUserMessage {
     margin-left: 8px;
     background: #585858;
-    color:white !important;
+    color: white !important;
     border-radius: 15px;
     padding: 12px;
     max-width: 430px;
 }
 
-.messageDate{
+.messageDate {
     font-size: 0.8rem;
+}
+
+.message-container {
+    border-radius: 7px;
+    padding: 7px;
+}
+
+.chat-container {
+    height: calc(-325px + 100vh);
+}
+
+.friends-list-bg-dark .message-container {
+    background: #585858;
+}
+
+.bg-light .message-container {
+    background: #e4e4e4;
+}
+
+.friends-list-bg-dark .message-container>input {
+    color: white !important;
+}
+
+.bi-send {
+    fill: #b11e12;
 }
