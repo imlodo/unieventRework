@@ -54,16 +54,16 @@
                         </div>
                         <div [ngClass]=" message.user_to.t_alias_generated === currentUser.t_alias_generated ? 'justify-content-end' : 'justify-content-start' "
                             class="px-4 pt-4 pb-1 d-flex flex-row">
-                            <span class="activeUserMessage"
+                            <div class="activeUserMessage"
                                 *ngIf="message.user_to.t_alias_generated === currentUser.t_alias_generated">
                                 {{message.message}}
-                            </span>
+                            </div>
                             <img width="42" height="42" class="chatMinImage" style="border-radius: 100px;"
                                 [attr.src]="message.user_to.t_profile_photo">
-                            <span class="activeChatUserMessage"
+                            <div class="activeChatUserMessage"
                                 *ngIf="message.user_to.t_alias_generated !== currentUser.t_alias_generated">
                                 {{message.message}}
-                            </span>
+                            </div>
                         </div>
                     </ng-container>
                 </div>

@@ -58,6 +58,8 @@
     color: white !important;
     max-width: 430px;
     margin-right: 8px;
+    word-wrap: break-word;
+    text-align: left; /* Aggiunto per allineare il testo a sinistra */
 }
 
 .activeChatUserMessage {
@@ -67,6 +69,7 @@
     border-radius: 15px;
     padding: 12px;
     max-width: 430px;
+    word-wrap: break-word; /* o overflow-wrap: break-word; */
 }
 
 .messageDate {
@@ -101,6 +104,7 @@
     fill: #b11e12;
 }
 
+/*Non lo prende verificare perchè*/
 .emoji {
-    font-size: 1.6rem;
+    font-size: 1.6rem !important;
 }

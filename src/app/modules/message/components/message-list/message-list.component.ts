@@ -1,10 +1,11 @@
-import { AfterViewChecked, Component } from '@angular/core';
+import { AfterViewChecked, Component, ElementRef, Renderer2, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { Message } from '../../models/message';
 import { USER_TYPE } from 'src/app/core/utility/global-constant';
 import moment, { Moment } from 'moment';
 import { Chat } from '../../models/chat';
 import { User } from 'src/app/core/models/user';
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 
 @Component({
   selector: 'unievent-message-list',
@@ -121,6 +122,7 @@ export class MessageListComponent implements AfterViewChecked {
   ];
   protected showEmoticonPanel = false;
 
+
   constructor(private router: Router) {
   }
 
@@ -195,5 +197,4 @@ export class MessageListComponent implements AfterViewChecked {
       this.messageValue = '';
     }
   }
-
 }
