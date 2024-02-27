@@ -13,6 +13,7 @@ import { User } from 'src/app/core/models/user';
 })
 export class MessageListComponent implements AfterViewChecked {
   protected darkMode = false;
+  protected messageValue: string = '';
   protected filteredListByActiveChat: Chat;
   protected currentUser = {
     t_username: null,
@@ -132,6 +133,10 @@ export class MessageListComponent implements AfterViewChecked {
     }
   }
 
+  onInputChange(): void {
+    console.log('Input changed:', this.messageValue);
+  }
+
   getMessageStatus(date: moment.Moment): string {
     const now = moment(); // Data e ora correnti
     const diffInHours = now.diff(date, 'hours'); // Differenza in ore tra la data fornita e adesso
@@ -168,5 +173,13 @@ export class MessageListComponent implements AfterViewChecked {
   
   openEmoticonPanel(){
     this.showEmoticonPanel = !this.showEmoticonPanel;
+  }
+
+  closeEmoticonPanel(){
+    this.showEmoticonPanel = false;
+  }
+
+  addEmoticonToChat(emoji:string){
+    this.messageValue+=emoji
   }
 }

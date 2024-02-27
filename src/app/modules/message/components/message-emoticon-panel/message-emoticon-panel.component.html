@@ -1,7 +1,35 @@
 <div class="emoji-container">
-    <div [ngClass]="darkMode ? 'bg-dark-mode' : 'bg-light' " class="emoji-container-flex d-flex">
-        <div *ngFor="let emoji of emojis" (click)="selectEmoji(emoji)" class="emoji">
+    <div [ngClass]="darkMode ? 'bg-dark-mode shadow-sm' : 'bg-light-mode shadow-sm' "
+        class="emoji-container-flex d-flex">
+        <div *ngFor="let emoji of emojis[selectedCategory]" (click)="selectEmoji(emoji)"
+            [attr.title]="getEmojiDescription(emoji)" class="emoji">
             {{ emoji }}
         </div>
     </div>
+    <div [ngClass]="darkMode ? 'bg-dark-mode' : 'bg-light-mode'" class="emoji-category-container-flex d-flex">
+        <div class="btn-group py-1 px-1">
+            <button [matTooltip]="getEmojiDescription(category)" *ngFor="let category of categories" type="button"
+                class="btn bg-transparent border-0 btn-emoji-category mx-1"
+                [ngClass]="{ 'active': selectedCategory === category }" (click)="changeCategory(category)">
+                {{ category }}
+            </button>
+        </div>
+    </div>
 </div>
+
+
+
+<!-- <div class="emoji-panel">
+    <div class="btn-group mb-3">
+        <button *ngFor="let category of categories" type="button" class="btn btn-secondary"
+            [ngClass]="{ 'active': selectedCategory === category }" (click)="changeCategory(category)">
+            {{ category }}
+        </button>
+    </div>
+
+    <div class="emoji-container">
+        <div *ngFor="let emoji of emojis2[selectedCategory]" class="emoji" (click)="selectEmoji(emoji)">
+            {{ emoji }}
+        </div>
+    </div>
+</div> -->
