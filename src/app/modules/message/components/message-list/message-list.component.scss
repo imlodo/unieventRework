@@ -80,6 +80,9 @@
 
 .chat-container {
     height: calc(-325px + 100vh);
+    max-height: calc(-325px + 100vh);
+    overflow: hidden;
+    overflow-y: auto;
 }
 
 .friends-list-bg-dark .message-container {
@@ -96,4 +99,8 @@
 
 .bi-send {
     fill: #b11e12;
+}
+
+.emoji {
+    font-size: 1.6rem;
 }

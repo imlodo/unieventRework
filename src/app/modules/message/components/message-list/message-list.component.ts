@@ -162,24 +162,38 @@ export class MessageListComponent implements AfterViewChecked {
     return tmpStr;
   }
 
-  setActiveUser(el:User){
+  setActiveUser(el: User) {
     this.activeChatUser = el;
     this.filteredListByActiveChat = this.chatList.filter(chatEl => chatEl.userChat.t_alias_generated === el.t_alias_generated)[0];
   }
 
-  removeActiveUser(){
+  removeActiveUser() {
     this.activeChatUser = null;
   }
-  
-  openEmoticonPanel(){
+
+  openEmoticonPanel() {
     this.showEmoticonPanel = !this.showEmoticonPanel;
   }
 
-  closeEmoticonPanel(){
+  closeEmoticonPanel() {
     this.showEmoticonPanel = false;
   }
 
-  addEmoticonToChat(emoji:string){
-    this.messageValue+=emoji
+  addEmoticonToChat(emoji: string) {
+    this.messageValue += emoji
   }
+
+  sendMessage() {
+    if (this.messageValue.length > 0) {
+      let chat = this.chatList.filter(el => el.userChat.t_alias_generated === this.activeChatUser.t_alias_generated)[0];
+      chat.messages.push({
+        user_to: this.currentUser,
+        user_at: this.activeChatUser,
+        message: this.messageValue,
+        dateTime: moment(moment(), "DD/MM/YYYY HH:MM:SS")
+      });
+      this.messageValue = '';
+    }
+  }
+
 }
