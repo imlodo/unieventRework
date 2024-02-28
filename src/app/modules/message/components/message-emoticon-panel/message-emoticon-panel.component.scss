@@ -51,6 +51,27 @@
   background: #f1f1f1;
 }
 
+.btn-emoji-category {
+  font-size: 0.75rem;
+  border-radius: 10px !important;
+}
+
+.bg-dark-mode .btn-emoji-category.active {
+  background: #252525 !important;
+}
+
+.bg-dark-mode .btn-emoji-category:hover {
+  background: #252525 !important;
+}
+
+.bg-light-mode .btn-emoji-category.active {
+  background: #e4e4e4 !important;
+}
+
+.bg-light-mode .btn-emoji-category:hover {
+  background: #e4e4e4 !important;
+}
+
 .bg-dark-mode.emoji-container-flex::-webkit-scrollbar {
   -webkit-appearance: none;
   //width: 20px;
@@ -73,26 +94,6 @@
 /* Handle on hover */
 .bg-dark-mode.emoji-container-flex::-webkit-scrollbar-thumb:hover {
   background-color: #bdbdbd;
-}
-
-.btn-emoji-category{
-  font-size: 0.75rem;
-  border-radius: 10px !important;
-}
-.bg-dark-mode .btn-emoji-category.active {
-  background:#252525 !important;
-}
-
-.bg-dark-mode .btn-emoji-category:hover {
-  background:#252525 !important;
-}
-
-.bg-light-mode .btn-emoji-category.active {
-  background:#e4e4e4 !important;
-}
-
-.bg-light-mode .btn-emoji-category:hover {
-  background:#e4e4e4 !important;
 }
 
 .bg-light-mode.emoji-container-flex::-webkit-scrollbar {
@@ -120,5 +121,6 @@
 }
 
 .emoji-container-flex::-webkit-scrollbar-thumb {
-  cursor: pointer !important; /* Aggiunta della proprietà cursor: pointer */
+  cursor: pointer !important;
+  /* Aggiunta della proprietà cursor: pointer */
 }

@@ -11,8 +11,8 @@
                 </svg>
             </div>
         </div>
-        <div *ngIf="chatList.length > 0" class="d-flex flex-column">
-            <ng-container *ngFor="let chat of chatList">
+        <div *ngIf="chatListGroupedByDate.length > 0" class="d-flex flex-column">
+            <ng-container *ngFor="let chat of chatListGroupedByDate">
                 <div (click)="setActiveUser(chat.userChat)"
                     [ngClass]="activeChatUser === chat.userChat ? 'chatElementActive' : '' "
                     class="d-flex flex-row mb-3 chatElement p-2 pointer">
@@ -23,18 +23,19 @@
                             <h2 class="m-0">@{{chat.userChat.t_alias_generated}}</h2>
                         </div>
                         <div class="d-flex flex-row">
-                            <span class="previewMessage">{{chat.messages[chat.messages.length-1].message}}</span>
-                            <span class="lastMessageHour mx-2">{{getMessageStatus(chat.messages[0].dateTime)}}</span>
+                            <span class="previewMessage">{{getLatestMessageElement(chat).message}}</span>
+                            <span
+                                class="lastMessageHour mx-2">{{getMessageStatus(getLatestMessageElement(chat).dateTime)}}</span>
                         </div>
                     </div>
                 </div>
             </ng-container>
         </div>
-        <span class="my-3" *ngIf="chatList.length <= 0">Ancora nessun messaggio</span>
+        <span class="my-3" *ngIf="chatListGroupedByDate.length <= 0">Ancora nessun messaggio</span>
     </div>
     <div [ngClass]="darkMode ? 'friends-list-bg-dark text-white' : 'bg-light text-dark shadow-sm' "
         class="col-8 friends-list mx-3">
-        <div *ngIf="activeChatUser != null" class="d-flex flex-column">
+        <div *ngIf="activeChatUser != null && groupedByDateActiveChatUser != null" class="d-flex flex-column">
             <div class="px-4 pt-4 pb-1 d-flex flex-row">
                 <img width="70" height="70" class="chatImage" style="border-radius: 100px;"
                     [attr.src]="activeChatUser?.t_profile_photo">
@@ -45,32 +46,34 @@
                     </div>
                 </div>
             </div>
-            <hr>
+            <hr class="mb-1">
             <div class="flex-column">
                 <div class="chat-container">
-                    <ng-container *ngFor="let message of filteredListByActiveChat.messages">
+                    <ng-container *ngFor="let key of getObjectKeys(groupedByDateActiveChatUser.messages)">
                         <div class="px-4 pt-4 pb-1 d-flex flex-row justify-content-center">
-                            <span class="messageDate">{{getMessageStatus(message.dateTime)}}</span>
+                            <span class="messageDate">{{getMessageStatus(groupedByDateActiveChatUser.messages[key][0].dateTime)}}</span>
                         </div>
-                        <div [ngClass]=" message.user_to.t_alias_generated === currentUser.t_alias_generated ? 'justify-content-end' : 'justify-content-start' "
-                            class="px-4 pt-4 pb-1 d-flex flex-row">
-                            <div class="activeUserMessage"
-                                *ngIf="message.user_to.t_alias_generated === currentUser.t_alias_generated">
-                                {{message.message}}
+                        <ng-container *ngFor="let message of groupedByDateActiveChatUser.messages[key]">
+                            <div [ngClass]=" message.user_to.t_alias_generated === currentUser.t_alias_generated ? 'justify-content-end' : 'justify-content-start' "
+                                class="px-4 pt-4 pb-1 d-flex flex-row">
+                                <div class="activeUserMessage"
+                                    *ngIf="message.user_to.t_alias_generated === currentUser.t_alias_generated">
+                                    {{message.message}}
+                                </div>
+                                <img width="42" height="42" class="chatMinImage" style="border-radius: 100px;"
+                                    [attr.src]="message.user_to.t_profile_photo">
+                                <div class="activeChatUserMessage"
+                                    *ngIf="message.user_to.t_alias_generated !== currentUser.t_alias_generated">
+                                    {{message.message}}
+                                </div>
                             </div>
-                            <img width="42" height="42" class="chatMinImage" style="border-radius: 100px;"
-                                [attr.src]="message.user_to.t_profile_photo">
-                            <div class="activeChatUserMessage"
-                                *ngIf="message.user_to.t_alias_generated !== currentUser.t_alias_generated">
-                                {{message.message}}
-                            </div>
-                        </div>
+                        </ng-container>
                     </ng-container>
                 </div>
                 <div class="d-flex flex-row p-3">
                     <div class="d-flex w-100 message-container">
                         <!-- (input)="onInputChange()" -->
-                        <input (keyup.enter)="sendMessage()" [(ngModel)]="messageValue" type="text"
+                        <input #messageInput (keyup.enter)="sendMessage()" [(ngModel)]="messageValue" type="text"
                             class="message-input w-100 bg-transparent border-0" placeholder="Scrivi un messaggio...">
                         <button (click)="openEmoticonPanel()" class="emoji-button bg-transparent border-0">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"

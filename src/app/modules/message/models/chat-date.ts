@@ -1,7 +1,7 @@
 import { User } from "src/app/core/models/user";
 import { Message } from "./message";
 
-export interface Chat{
+export interface ChatDate{
     userChat : User;
-    messages: Array<Message>
+    messages: { [date: string]: Message[]; }
 }

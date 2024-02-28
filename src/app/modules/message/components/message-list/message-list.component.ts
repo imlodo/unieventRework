@@ -2,10 +2,10 @@ import { AfterViewChecked, Component, ElementRef, Renderer2, ViewChild } from '@
 import { Router } from '@angular/router';
 import { Message } from '../../models/message';
 import { USER_TYPE } from 'src/app/core/utility/global-constant';
-import moment, { Moment } from 'moment';
+import moment from 'moment';
 import { Chat } from '../../models/chat';
 import { User } from 'src/app/core/models/user';
-import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
+import { ChatDate } from '../../models/chat-date';
 
 @Component({
   selector: 'unievent-message-list',
@@ -13,6 +13,7 @@ import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
   styleUrls: ['./message-list.component.scss']
 })
 export class MessageListComponent implements AfterViewChecked {
+  @ViewChild('messageInput') protected messageInput: ElementRef;
   protected darkMode = false;
   protected messageValue: string = '';
   protected filteredListByActiveChat: Chat;
@@ -120,10 +121,65 @@ export class MessageListComponent implements AfterViewChecked {
       ]
     }
   ];
+  protected chatListGroupedByDate: Array<ChatDate> = [];
+  protected groupedByDateActiveChatUser: ChatDate = null;
   protected showEmoticonPanel = false;
 
 
   constructor(private router: Router) {
+    this.groupMessagesByDate();
+  }
+
+  getLatestMessageElement(chat: ChatDate): Message {
+    let keysArray = Object.keys(chat.messages);
+    const messages = chat.messages[keysArray[keysArray.length -1]];
+    return messages && messages.length > 0 ? messages[messages.length - 1] : null;
+  }
+
+  groupMessagesByDate() {
+    this.chatListGroupedByDate = [];
+    this.chatList.forEach(chat => {
+      const groupedMessages: { [date: string]: Message[] } = {};
+
+      chat.messages.forEach(message => {
+        const dateKey = message.dateTime.format("D/M/YYYY HH:mm");
+
+        if (!groupedMessages[dateKey]) {
+          groupedMessages[dateKey] = [];
+        }
+
+        groupedMessages[dateKey].push(message);
+      });
+      this.chatListGroupedByDate.push({
+        userChat: chat.userChat,
+        messages: groupedMessages
+      })
+    });
+  }
+
+  groupMessagesByActiveChatUserByDate() {
+    this.groupedByDateActiveChatUser = null;
+    const groupedMessagesByActiveUser: { [date: string]: Message[] } = {};
+
+    this.filteredListByActiveChat.messages.forEach(message => {
+
+      const dateKey = message.dateTime.format("D/M/YYYY HH:mm");
+
+      if (!groupedMessagesByActiveUser[dateKey]) {
+        groupedMessagesByActiveUser[dateKey] = [];
+      }
+
+      groupedMessagesByActiveUser[dateKey].push(message);
+    });
+
+    this.groupedByDateActiveChatUser = {
+      userChat: this.filteredListByActiveChat.userChat,
+      messages: groupedMessagesByActiveUser
+    }
+  }
+
+  getObjectKeys(obj: any): string[] {
+    return Object.keys(obj);
   }
 
   ngAfterViewChecked(): void {
@@ -167,6 +223,7 @@ export class MessageListComponent implements AfterViewChecked {
   setActiveUser(el: User) {
     this.activeChatUser = el;
     this.filteredListByActiveChat = this.chatList.filter(chatEl => chatEl.userChat.t_alias_generated === el.t_alias_generated)[0];
+    this.groupMessagesByActiveChatUserByDate();
   }
 
   removeActiveUser() {
@@ -182,7 +239,11 @@ export class MessageListComponent implements AfterViewChecked {
   }
 
   addEmoticonToChat(emoji: string) {
-    this.messageValue += emoji
+    const inputElement = this.messageInput.nativeElement;
+    const currentCursorPosition = inputElement.selectionStart;
+    this.messageValue = this.messageValue.slice(0, currentCursorPosition) + emoji + this.messageValue.slice(currentCursorPosition);
+    inputElement.setSelectionRange(this.messageValue.length, this.messageValue.length);
+    inputElement.focus();
   }
 
   sendMessage() {
@@ -194,6 +255,8 @@ export class MessageListComponent implements AfterViewChecked {
         message: this.messageValue,
         dateTime: moment(moment(), "DD/MM/YYYY HH:MM:SS")
       });
+      this.groupMessagesByDate();
+      this.groupMessagesByActiveChatUserByDate();
       this.messageValue = '';
     }
   }
