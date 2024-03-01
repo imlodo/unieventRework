@@ -11,6 +11,7 @@ import { adapterFactory } from 'angular-calendar/date-adapters/moment';
 import * as moment from 'moment';
 import { NgbModalModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { PaymentStep1FormComponent } from './payment-step1-form/payment-step1-form.component';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
 export function momentAdapterFactory() {
   return adapterFactory(moment);
@@ -30,7 +31,8 @@ export function momentAdapterFactory() {
     BrowserAnimationsModule,
     NgSelectModule,
     NgbModule,
-    NgbModalModule
+    NgbModalModule,
+    InfiniteScrollModule
   ],
   exports: [
   ],

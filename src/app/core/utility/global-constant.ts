@@ -13,10 +13,24 @@ export enum USER_TYPE {
     COMPANY
 }
 export enum EVENT_TYPE {
-    PARTY,
-    CINEMA,
-    STADIO
+    PARTY = "PARTY",
+    CINEMA = "CINEMA",
+    STADIO = "STADIO"
 }
+export enum ItemType {
+    Tutte = 'Tutte',
+    Eventi = 'Eventi',
+    Topic = 'Topic',
+    Artisti = 'Artisti',
+    Account = 'Account',
+}
+
+export const EVENT_TYPE_ARRAY = [
+    { id: EVENT_TYPE.PARTY, value: EVENT_TYPE.PARTY },
+    { id: EVENT_TYPE.CINEMA, value: EVENT_TYPE.CINEMA },
+    { id: EVENT_TYPE.STADIO, value: EVENT_TYPE.STADIO },
+];
+
 export enum EVENT_TICKET_TYPE {
     STANDARD_TICKET_PRICE,
     CONSUPTION_TICKET_PRICE,
@@ -14101,12 +14115,12 @@ export const ROUTE_LIST =
     },
     artist: {
         list: "/artist/list",
-        category:{
+        category: {
             list: "/artist/category/list"
         },
     },
     event: {
-        category:{
+        category: {
             list: "/event/category/list"
         },
         featured:
@@ -14127,13 +14141,13 @@ export const ROUTE_LIST =
         }
     },
     topic: {
-        featured:{
-            list:"/topic/featured/list"
+        featured: {
+            list: "/topic/featured/list"
         },
-        category:{
+        category: {
             list: "/topic/category/list"
         },
-        list:"/topic/list"
+        list: "/topic/list"
     },
     payment: {
         overview: "/payment/overview",
@@ -14143,24 +14157,24 @@ export const ROUTE_LIST =
         advanced: "/search/advanced",
         result: "/search/result"
     },
-    footer_page:{
-        help_e_faq:"/help-e-faq",
+    footer_page: {
+        help_e_faq: "/help-e-faq",
         about: "/about",
         il_nostro_impegno: "/our-commitment",
         chat: "/chat",
-        ticket_system:"/ticket-system",
+        ticket_system: "/ticket-system",
         partner: "/partner",
         privacy_policy: "/privacy-policy",
         cookie_policy: "/cookie-policy",
         term_of_use: "/term-of-use",
-        rules:"/rules"
+        rules: "/rules"
     },
-    notification:{
-        list:"/notification/list"
+    notification: {
+        list: "/notification/list"
 
     },
-    settings:{
-        notification:"/settings/notification",
+    settings: {
+        notification: "/settings/notification",
         account: "/settings/account"
     },
     tickets: "/tickets",

@@ -20,6 +20,7 @@ import { NavbarNotificationComponent } from './components/navbar-notification/na
 import { NotificationSettingComponent } from './components/notification-setting/notification-setting.component';
 import { NavbarProfileComponent } from './components/navbar-profile/navbar-profile.component';
 import { NavbarChatComponent } from './components/navbar-chat/navbar-chat.component';
+import { FilterByTypePipe } from './pipe/filter-by-type.pipe';
 
 @NgModule({
 	declarations: [
@@ -42,9 +43,10 @@ import { NavbarChatComponent } from './components/navbar-chat/navbar-chat.compon
 		FeaturedTopicComponent,
 		FooterComponent,
 		NavbarNotificationComponent,
-  NotificationSettingComponent,
-  NavbarProfileComponent,
-  NavbarChatComponent
+		NotificationSettingComponent,
+		NavbarProfileComponent,
+		NavbarChatComponent,
+		FilterByTypePipe
 	],
 	imports: [
 		CommonModule,
@@ -63,7 +65,8 @@ import { NavbarChatComponent } from './components/navbar-chat/navbar-chat.compon
 		EventMostRatedComponent,
 		ArtistFeaturedComponent,
 		FeaturedTopicComponent,
-		FooterComponent
+		FooterComponent,
+		FilterByTypePipe 
 	],
 	providers: [
 	]

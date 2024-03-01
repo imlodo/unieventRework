@@ -1,7 +1,9 @@
 import { Component, Input } from '@angular/core';
 import cityJson from "../../../../assets/json/city.json";
 import { Router } from '@angular/router';
-import { ROUTE_LIST } from '../../utility/global-constant';
+import { EVENT_TYPE, EVENT_TYPE_ARRAY, ROUTE_LIST } from '../../utility/global-constant';
+import { GlobalService } from '../../services';
+import moment from 'moment';
 
 @Component({
   selector: 'unievent-search-form',
@@ -9,40 +11,63 @@ import { ROUTE_LIST } from '../../utility/global-constant';
   styleUrls: ['./search-form.component.scss']
 })
 export class SearchFormComponent {
-  
+
   selectedCity: number;
+  whenFilter: string = null;
+  searchInputValue: string = '';
   selectedEventType: number;
   city = this.getInitialCity();
-  tipoEventoArray = [];
+  tipoEventoArray = EVENT_TYPE_ARRAY;
   dynamicClass = [];
   @Input() darkMode: boolean;
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private globalService: GlobalService) {
   }
 
-  getInitialCity(){
-    let tmpCities= Object.values(cityJson).filter(el=> el["Flag Comune capoluogo di provincia"] === 1);
-    tmpCities = tmpCities.sort((a,b)=>{
-      if(a["Denominazione in italiano"].toLowerCase() < b["Denominazione in italiano"].toLowerCase()) { return -1; }
-      if(a["Denominazione in italiano"].toLowerCase() > b["Denominazione in italiano"].toLowerCase()) { return 1; }
+  getInitialCity() {
+    let tmpCities = Object.values(cityJson).filter(el => el["Flag Comune capoluogo di provincia"] === 1);
+    tmpCities = tmpCities.sort((a, b) => {
+      if (a["Denominazione in italiano"].toLowerCase() < b["Denominazione in italiano"].toLowerCase()) { return -1; }
+      if (a["Denominazione in italiano"].toLowerCase() > b["Denominazione in italiano"].toLowerCase()) { return 1; }
       return 0;
     });
     return tmpCities;
   }
 
-  goToAdvancedSearch(){
-    this.router.navigate([ROUTE_LIST.search.advanced]);
-  }
-
-  addFocusClass(field:string){
-    if(field === 't_search_input'){
-      this.dynamicClass[field] = "explode-icon-search";
-    } else{
-      this.dynamicClass[field] = "explode-span";
+  onDateChange(event: any) {
+    // Assicurati che la data sia valida prima di assegnarla a whenFilter
+    if (event.target.value) {
+      const selectedDate = new Date(event.target.value);
+      this.whenFilter = selectedDate.toISOString().split('T')[0]; // Converti in stringa con formato "yyyy-MM-dd"
+    } else {
+      this.whenFilter = null;
     }
   }
 
-  removeFocusClass(field:string){
+  navigateToSearch() {
+    const params = this.globalService.encodeParams({
+      searchInput: this.searchInputValue,
+      filter: {
+        selectedCity: this.selectedCity,
+        whenFilter: this.whenFilter ? moment(this.whenFilter).format("DD/MM/YYYY") : null,
+        eventType: this.selectedEventType
+      }
+    });
+    this.router.navigate([ROUTE_LIST.search.result, params]);
+  }
+
+  goToAdvancedSearch() {
+    this.router.navigate([ROUTE_LIST.search.advanced]);
+  }
+
+  addFocusClass(field: string) {
+    if (field === 't_search_input') {
+      this.dynamicClass[field] = "explode-icon-search";
+    } else {
+      this.dynamicClass[field] = "explode-span";
+    }
+  }
+  removeFocusClass(field: string) {
     this.dynamicClass[field] = "";
   }
 }

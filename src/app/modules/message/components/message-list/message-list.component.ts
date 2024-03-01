@@ -14,6 +14,7 @@ import { ChatDate } from '../../models/chat-date';
 })
 export class MessageListComponent implements AfterViewChecked {
   @ViewChild('messageInput') messageInput: ElementRef;
+  @ViewChild('chatContainer') chatContainer: ElementRef;
   darkMode = false;
   messageValue = '';
   activeChatUser: User = null;
@@ -83,6 +84,12 @@ export class MessageListComponent implements AfterViewChecked {
 
   ngAfterViewChecked(): void {
     this.darkMode = localStorage.getItem("darkModeChoice") === "1";
+  }
+
+  scrollChatToBottom() {
+    if (this.chatContainer.nativeElement) {
+      this.chatContainer.nativeElement.scrollTop = this.chatContainer.nativeElement.scrollHeight;
+    }
   }
 
   onInputChange(): void {
@@ -202,6 +209,9 @@ export class MessageListComponent implements AfterViewChecked {
       this.groupMessagesByDate();
       this.groupMessagesByActiveChatUserByDate();
       this.messageValue = '';
+      setTimeout(()=>{
+        this.scrollChatToBottom();
+      },1)
     }
   }
 }

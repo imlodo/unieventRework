@@ -33,6 +33,10 @@ const routes: Routes = [
 
 			},
 			{
+				path:'search',
+				loadChildren: () => import('./modules/search/search.module').then((m) => m.SearchModule),
+			},
+			{
 				path: 'messages',
 				loadChildren: () => import('./modules/message/message.module').then((m) => m.MessageModule),
 

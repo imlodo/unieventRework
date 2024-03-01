@@ -1,0 +1,76 @@
+<div class="search-result container d-flex flex-column">
+    <div class="type-buttons">
+        <button [class.active]="selectedType === ItemType.Tutte" (click)="changeType(ItemType.Tutte)">Tutte</button>
+        <button [class.active]="selectedType === ItemType.Eventi" (click)="changeType(ItemType.Eventi)">Eventi</button>
+        <button [class.active]="selectedType === ItemType.Topic" (click)="changeType(ItemType.Topic)">Topic</button>
+        <button [class.active]="selectedType === ItemType.Artisti"
+            (click)="changeType(ItemType.Artisti)">Artisti</button>
+        <button [class.active]="selectedType === ItemType.Account"
+            (click)="changeType(ItemType.Account)">Account</button>
+    </div>
+
+    <!-- Categoria Eventi -->
+    <div *ngIf="selectedType === ItemType.Eventi">
+        <div class="card mb-3" *ngFor="let item of filteredItems | filterByType: ItemType.Eventi; trackBy: trackByFn">
+            <div class="card-body">
+                {{ item.content }}
+            </div>
+        </div>
+    </div>
+
+    <!-- Categoria Topic -->
+    <div *ngIf="selectedType === ItemType.Topic">
+        <div class="card mb-3" *ngFor="let item of filteredItems | filterByType: ItemType.Topic; trackBy: trackByFn">
+            <div class="card-body">
+                {{ item.content }}
+            </div>
+        </div>
+    </div>
+
+    <!-- Categoria Artisti -->
+    <div *ngIf="selectedType === ItemType.Artisti">
+        <div class="card mb-3" *ngFor="let item of filteredItems | filterByType: ItemType.Artisti; trackBy: trackByFn">
+            <div class="card-body">
+                {{ item.content }}
+            </div>
+        </div>
+    </div>
+
+    <!-- Categoria Account -->
+    <div *ngIf="selectedType === ItemType.Account">
+        <div class="card mb-3" *ngFor="let item of filteredItems | filterByType: ItemType.Account; trackBy: trackByFn">
+            <div class="card-body">
+                {{ item.content }}
+            </div>
+        </div>
+    </div>
+
+    <!-- Categoria Tutte (Mostra solo il primo elemento per Account) -->
+    <div *ngIf="selectedType === ItemType.Tutte">
+        <ng-container
+            *ngFor="let item of getFirstAccount(filteredItems, selectedType); trackBy: trackByFn">
+            <div class="card mb-3">
+                <div class="card-body">
+                    <p>{{ item.type }}</p>
+                    {{ item.content }}
+                </div>
+            </div>
+        </ng-container>
+
+        <ng-container *ngFor="let item of filteredItems; trackBy: trackByFn; let first = first">
+            <div *ngIf="item.type !== ItemType.Account" class="card mb-3">
+                <div class="card-body">
+                    <p>{{ item.type }}</p> <!-- Aggiungi questa riga per mostrare la categoria -->
+                    {{ item.content }}
+                </div>
+            </div>
+        </ng-container>
+    </div>
+
+    <div *ngIf="isLoading" class="loading-indicator">
+        Loading...
+    </div>
+
+    <div infinite-scroll [infiniteScrollDistance]="scrollDistance" [infiniteScrollUpDistance]="scrollUpDistance"
+        (scrolled)="onScroll()"></div>
+</div>

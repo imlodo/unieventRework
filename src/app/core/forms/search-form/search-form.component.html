@@ -1,11 +1,16 @@
-<div [ngClass]="darkMode ? 'bg-dark-mode' : ''" class="card card-body border-0 search-form-container">
+<div [ngClass]="darkMode ? 'bg-dark-mode' : 'bg-white'" class="card card-body border-0 search-form-container">
     <div class="form-group has-search">
         <div class="d-flex px-xl-5">
-            <span [ngClass]="dynamicClass['t_search_input']" class="d-flex align-items-center border-end-0" style="border: 1px solid #dee2e6; font-family: Arial,FontAwesome;padding-left:0.75rem!important;padding-bottom: 4px;">
+            <span [ngClass]="dynamicClass['t_search_input']" class="d-flex align-items-center border-end-0"
+                style="border: 1px solid #dee2e6; font-family: Arial,FontAwesome;padding-left:0.75rem!important;padding-bottom: 4px;">
                 &#xF002;
             </span>
-            <input type="text" class="form-control form-search rounded-0 border-start-0 border-end-0 bgcolor-transparent" (focus)="addFocusClass('t_search_input')" (focusout)="removeFocusClass('t_search_input')" placeholder="Ricerca eventi e topic..." >
-            <button [ngClass]="darkMode ? 'btn-color-dark-mode' : 'btn-color-light-mode'"  class="btn btn-primary bgcolor-transparent rounded-0">Cerca</button>
+            <input [(ngModel)]="searchInputValue" type="text"
+                class="form-control form-search rounded-0 border-start-0 border-end-0 bgcolor-transparent"
+                (focus)="addFocusClass('t_search_input')" (focusout)="removeFocusClass('t_search_input')"
+                placeholder="Cerca">
+            <button (click)="navigateToSearch()" [ngClass]="darkMode ? 'btn-color-dark-mode' : 'btn-color-light-mode'"
+                class="btn btn-primary bgcolor-transparent rounded-0">Cerca</button>
         </div>
     </div>
     <div class="mx-8 mt-4">
@@ -15,8 +20,7 @@
                 <div class="col-xl-4">
                     <div class="form-group">
                         <span>Dove?</span>
-                        <ng-select class="bgcolor-transparent" 
-                            [items]="city" bindLabel="Denominazione in italiano"
+                        <ng-select class="bgcolor-transparent" [items]="city" bindLabel="Denominazione in italiano"
                             bindValue="Codice Comune formato numerico" [(ngModel)]="selectedCity"
                             placeholder="Seleziona Città">
                         </ng-select>
@@ -25,14 +29,15 @@
                 <div class="col-xl-2 col-sm-2_5">
                     <div class="form-group">
                         <span>Quando?</span>
-                        <input class="date bgcolor-transparent form-control" type="date" min="1923-01-01" name="t_birthday"
-                            formControlName="t_birthday" id="t_birthday">
+                        <input [(ngModel)]="whenFilter" (change)="onDateChange($event)"
+                            class="date bgcolor-transparent form-control" type="date" min="1923-01-01" name="t_date"
+                            id="t_date">
                     </div>
                 </div>
                 <div class="col-xl-4">
                     <div class="form-group">
                         <span>Tipo Evento?</span>
-                        <ng-select class="bgcolor-transparent" [items]="tipoEventoArray" bindLabel="name" bindValue="id"
+                        <ng-select class="bgcolor-transparent" [items]="tipoEventoArray" bindLabel="value" bindValue="id"
                             [(ngModel)]="selectedEventType" placeholder="Seleziona tipo">
                         </ng-select>
                     </div>
