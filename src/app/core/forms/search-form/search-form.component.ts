@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import cityJson from "../../../../assets/json/city.json";
 import { Router } from '@angular/router';
-import { EVENT_TYPE, EVENT_TYPE_ARRAY, ROUTE_LIST } from '../../utility/global-constant';
+import { EVENT_TYPE, EVENT_TYPE_ARRAY, ROUTE_LIST, TOPIC_TYPE_ARRAY } from '../../utility/global-constant';
 import { GlobalService } from '../../services';
 import moment from 'moment';
 
@@ -16,9 +16,12 @@ export class SearchFormComponent {
   whenFilter: string = null;
   searchInputValue: string = '';
   selectedEventType: number;
+  selectedTopicType: number;
   city = this.getInitialCity();
   tipoEventoArray = EVENT_TYPE_ARRAY;
+  tipoTopicArray = TOPIC_TYPE_ARRAY;
   dynamicClass = [];
+  searchType: string = "Tutti";
   @Input() darkMode: boolean;
 
   constructor(private router: Router, private globalService: GlobalService) {
@@ -45,13 +48,23 @@ export class SearchFormComponent {
   }
 
   navigateToSearch() {
-    const params = this.globalService.encodeParams({
-      searchInput: this.searchInputValue,
-      filter: {
+    let filter = null;
+    if(this.searchType === 'Eventi'){
+      filter = {
         selectedCity: this.selectedCity,
         whenFilter: this.whenFilter ? moment(this.whenFilter).format("DD/MM/YYYY") : null,
         eventType: this.selectedEventType
       }
+    } else if(this.searchType === 'Topics'){
+      filter = {
+        whenFilter: this.whenFilter ? moment(this.whenFilter).format("DD/MM/YYYY") : null,
+        topicType: this.selectedTopicType
+      }
+    }
+    const params = this.globalService.encodeParams({
+      searchInput: this.searchInputValue,
+      filter: filter,
+      searchType: this.searchType
     });
     this.router.navigate([ROUTE_LIST.search.result, params]);
   }

@@ -1,3 +1,45 @@
-.search-result{
+.search-result {
     min-height: calc(-128px + 100vh);
+}
+
+.search-dark .type-buttons .active {
+    border-bottom: 3px solid rgb(194, 194, 194);
+    color: rgb(194, 194, 194) !important;
+}
+
+.search-dark .type-buttons span:hover {
+    border-bottom: 3px solid rgb(194, 194, 194);
+}
+
+.search-light .type-buttons .active {
+    font-weight: 900 !important;
+    border-bottom: 3px solid rgb(31, 31, 31);
+    color: rgb(0, 0, 0) !important;
+}
+
+.search-light .type-buttons span:hover {
+    border-bottom: 3px solid rgb(31, 31, 31);
+}
+
+.type-buttons {
+    font-size: 1rem;
+    border-bottom: 1px solid #242424;
+}
+
+.type-buttons span {
+    position: relative;
+    top: 2px;
+}
+
+.lookedElement:hover{
+    background-color: #424242;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+.lookedElement{
+    padding:10px;
+    padding-top: 6px;
+    font-weight: 500;
+    padding-bottom: 6px;
 }

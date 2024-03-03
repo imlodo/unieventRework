@@ -17,12 +17,19 @@ export enum EVENT_TYPE {
     CINEMA = "CINEMA",
     STADIO = "STADIO"
 }
+
+export enum TOPIC_TYPE {
+    ESAMI = "ESAMI",
+    SERIE_TV = "SERIE TV",
+    FANTACALCIO = "FANTACALCIO"
+}
+
 export enum ItemType {
-    Tutte = 'Tutte',
+    Tutti = 'Tutti',
     Eventi = 'Eventi',
     Topic = 'Topic',
     Artisti = 'Artisti',
-    Account = 'Account',
+    Utenti = 'Utenti',
 }
 
 export const EVENT_TYPE_ARRAY = [
@@ -30,6 +37,13 @@ export const EVENT_TYPE_ARRAY = [
     { id: EVENT_TYPE.CINEMA, value: EVENT_TYPE.CINEMA },
     { id: EVENT_TYPE.STADIO, value: EVENT_TYPE.STADIO },
 ];
+
+export const TOPIC_TYPE_ARRAY = [
+    { id: TOPIC_TYPE.ESAMI, value: TOPIC_TYPE.ESAMI },
+    { id: TOPIC_TYPE.SERIE_TV, value: TOPIC_TYPE.SERIE_TV },
+    { id: TOPIC_TYPE.FANTACALCIO, value: TOPIC_TYPE.FANTACALCIO },
+];
+
 
 export enum EVENT_TICKET_TYPE {
     STANDARD_TICKET_PRICE,
