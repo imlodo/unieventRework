@@ -1,8 +1,10 @@
 <div [ngClass]="darkMode ? 'bg-dark-mode text-white' : 'bg-light-mode text-black'">
     <unievent-navbar id="nav" [darkMode]="darkMode" (updateThemeEvent)="updateTheme()" *ngIf="showMenu"
         (onShowCollapse)="showCollapse()" (onCloseCollapse)="closeCollapse()"></unievent-navbar>
-    <unievent-search-collapse (onHideSearch)="updateSearchButton()"></unievent-search-collapse>
-    <router-outlet></router-outlet>
+    <div style="margin-top:95px" class="d-flex flex-row justify-content-between">
+        <!--<unievent-search-collapse (onHideSearch)="updateSearchButton()"></unievent-search-collapse>-->
+        <router-outlet></router-outlet>
+    </div>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
     <unievent-footer *ngIf="showMenu"></unievent-footer>

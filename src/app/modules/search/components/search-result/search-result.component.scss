@@ -22,7 +22,7 @@
 }
 
 .type-buttons {
-    font-size: 1rem;
+    font-size: 1.2rem;
     border-bottom: 1px solid #242424;
 }
 
@@ -31,15 +31,89 @@
     top: 2px;
 }
 
-.lookedElement:hover{
+.search-dark .lookedElement:hover {
     background-color: #424242;
     cursor: pointer;
     border-radius: 10px;
 }
 
-.lookedElement{
-    padding:10px;
+.search-light .lookedElement:hover {
+    background-color: #d1d1d1;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+
+.lookedElement {
+    padding: 10px;
     padding-top: 6px;
     font-weight: 500;
     padding-bottom: 6px;
+}
+
+.profile-photo {
+    border-radius: 68px;
+    object-fit: cover;
+    min-width: 80px;
+}
+
+.card-image {
+    padding-top: 129%;
+    overflow: hidden;
+    border-radius: 5px
+}
+
+.picture-preview {
+    object-fit: cover;
+}
+
+.video-info {
+    position: absolute;
+    width: 100%;
+    bottom: 0px;
+    height: 100px;
+    background: linear-gradient(rgba(22, 24, 35, 0) 2.92%, rgba(22, 24, 35, 0.5) 98.99%);
+    padding: 67px 13px 17px;
+}
+
+.date-tag {
+    color: rgb(255, 255, 255);
+    font-family: Arial, sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 21px;
+    width: 88px;
+    height: 20px;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+}
+
+.search-title {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 2;
+    text-align: justify;
+    margin-bottom: 10px;
+}
+
+.user-profile-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.user-profile-photo-container  {
+    width: 24px;
+    height: 24px;
+    position: relative;
+    overflow: hidden;
+    white-space: nowrap;
+    border-radius: 50%;
+}
+
+.viewProfile:hover span{
+    text-decoration: underline;
 }

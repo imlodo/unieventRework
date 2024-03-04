@@ -11,11 +11,13 @@ import { SearchRoutingModule } from './search-routing.module';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { FilterByTypePipe } from 'src/app/core/pipe/filter-by-type.pipe';
 import { CoreModule } from 'src/app/core/core.module';
+import { ApproximateNumberPipe } from 'src/app/core/pipe/approximate-number.pipe';
 
 @NgModule({
   declarations: [
     SearchResultComponent,
-    SearchAdvancedComponent
+    SearchAdvancedComponent,
+    ApproximateNumberPipe
   ],
   imports: [
     CommonModule,
@@ -27,7 +29,8 @@ import { CoreModule } from 'src/app/core/core.module';
     MatInputModule,
     InfiniteScrollModule,
     SearchRoutingModule,
-    CoreModule
+    CoreModule,
+    
   ],
   exports: [
   ],

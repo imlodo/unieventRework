@@ -1,4 +1,4 @@
-<nav style=" position: sticky; z-index: 3; border-bottom:1px solid rgb(56, 56, 56)" [ngClass]="darkMode ? 'bg-dark-mode navbar-dark' : 'bg-white' " class="navbar navbar-expand-lg">
+<nav style=" position: fixed; left:0; right:0; top: 0; z-index: 3; border-bottom:1px solid rgb(56, 56, 56)" [ngClass]="darkMode ? 'bg-dark-mode navbar-dark' : 'bg-white' " class="navbar navbar-expand-lg">
     <div class="container-fluid p-0">
         <a class="" href="/">
             <div class="m-3"><img [attr.src]="darkMode ? '/assets/img/logo_unievent_white.svg' : '/assets/img/logo_unievent_black.svg' " width="150px" /></div>
@@ -7,15 +7,7 @@
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0 align-items-center nav-action-link">
-                <li class="nav-item">
-                    <span class="pointer mx-3">Eventi</span>
-                </li>
-                <li class="nav-item">
-                    <span class="pointer mx-3">Topic</span> 
-                </li>
-            </ul>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
             <ng-container *ngIf="online" class="on-nav">
                 <unievent-navbar-notification [darkMode]="darkMode"
                     (closeOtherNavbarPanelEvent)="closeOtherNavbarPanel('notification')"></unievent-navbar-notification>
