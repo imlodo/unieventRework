@@ -81,23 +81,23 @@ h2 {
     font-weight: 500;
 }
 
-.btn-color-dark-mode:hover{
+.btn-color-dark-mode:hover {
     background-color: #ff00001f !important;
     border-color: #d32e2a !important;
 }
 
-.btn-color-light-mode{
+.btn-color-light-mode {
     color: #000;
     border-color: #ff0400 !important;
     color: #ff0400 !important;
     font-weight: 500;
 }
 
-.btn-color-light-mode:hover{
+.btn-color-light-mode:hover {
     background-color: #ff00001f !important;
     border-color: #ff0400 !important;
 }
-    
+
 .btn-color-no-hover {
     background-color: #d32e2a !important;
     border-color: #d32e2a !important;
@@ -193,20 +193,20 @@ h2 {
     object-position: top;
 }
 
-.bg-dark-mode{
+.bg-dark-mode {
     background: rgb(18, 18, 18) !important;
 }
 
-.card-dark-mode{
+.card-dark-mode {
     background: rgb(37, 37, 37);
 }
 
-.bgcolor-transparent{
+.bgcolor-transparent {
     background-color: transparent !important;
     background: transparent !important;
 }
 
-.text-hover-white:hover{
+.text-hover-white:hover {
     color: white !important;
 }
 
@@ -214,10 +214,31 @@ h2 {
     font-size: 1.6rem !important;
 }
 
-.ml-0{
-    margin-left:0px!important;
+.ml-0 {
+    margin-left: 0px !important;
 }
 
-.mr-4{
+.mr-4 {
     margin-right: 1.5rem !important;
+}
+
+/* Global scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+    /* Imposta la larghezza desiderata della scrollbar */
+}
+
+/* Stili per la scrollbar thumb */
+::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: #222324;
+}
+
+/* Stili per la scrollbar track */
+::-webkit-scrollbar-track {
+    visibility: hidden;
+}
+
+body.bg-light-mode::-webkit-scrollbar-thumb {
+    background-color: #a8a8a8 !important;
 }

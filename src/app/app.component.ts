@@ -34,6 +34,7 @@ export class AppComponent {
         this.darkMode = true;
       }
     }
+    this.setMode();
   }
 
   ngAfterViewInit(): void {
@@ -62,6 +63,17 @@ export class AppComponent {
       this.darkMode = false;
     } else{
       this.darkMode = true;
+    }
+    this.setMode();
+  }
+
+  setMode() {
+    if(this.darkMode){
+      document.body.classList.add('bg-dark-mode');
+      document.body.classList.remove('bg-light-mode');
+    } else{
+      document.body.classList.add('bg-light-mode');
+      document.body.classList.remove('bg-dark-mode');
     }
   }
 
