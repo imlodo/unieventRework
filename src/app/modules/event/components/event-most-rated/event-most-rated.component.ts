@@ -1,5 +1,6 @@
 import { AfterViewChecked, Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { GlobalService } from 'src/app/core/services';
 import { ROUTE_LIST } from 'src/app/core/utility/global-constant';
 
 @Component({
@@ -8,7 +9,7 @@ import { ROUTE_LIST } from 'src/app/core/utility/global-constant';
   styleUrls: ['./event-most-rated.component.scss']
 })
 export class EventMostRatedComponent implements AfterViewChecked {
-  constructor(private router: Router) {
+  constructor(private router: Router, private globalService: GlobalService) {
   }
 
   protected darkMode = false;
@@ -23,6 +24,10 @@ export class EventMostRatedComponent implements AfterViewChecked {
   }
 
   goToMostRatedEvent() {
-    this.router.navigate([ROUTE_LIST.event.most_rated.list]);
+    const params = this.globalService.encodeParams({
+      filter: { actionType: 'most_rated_event' },
+      searchType: "Eventi"
+    });
+    this.router.navigate([ROUTE_LIST.search.result, params]);
   }
 }

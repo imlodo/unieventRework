@@ -1,5 +1,6 @@
 import { AfterViewChecked, Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { GlobalService } from 'src/app/core/services';
 import { ROUTE_LIST } from 'src/app/core/utility/global-constant';
 
 @Component({
@@ -8,7 +9,7 @@ import { ROUTE_LIST } from 'src/app/core/utility/global-constant';
   styleUrls: ['./featured-topic.component.scss']
 })
 export class FeaturedTopicComponent implements AfterViewChecked {
-  constructor(private router: Router) {
+  constructor(private router: Router, private globalService: GlobalService) {
   }
 
   protected darkMode = false;
@@ -23,6 +24,9 @@ export class FeaturedTopicComponent implements AfterViewChecked {
   }
 
   goToTopicList() {
-    this.router.navigate([ROUTE_LIST.topic.featured.list]);
+    const params = this.globalService.encodeParams({
+      searchType: "Topics"
+    });
+    this.router.navigate([ROUTE_LIST.search.result, params]);
   }
 }

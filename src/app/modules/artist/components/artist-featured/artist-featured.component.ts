@@ -1,5 +1,6 @@
 import { AfterViewChecked, Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { GlobalService } from 'src/app/core/services';
 import { ROUTE_LIST } from 'src/app/core/utility/global-constant';
 
 @Component({
@@ -11,7 +12,7 @@ export class ArtistFeaturedComponent implements AfterViewChecked {
   currentYear: number = new Date().getFullYear();
   protected darkMode = false;
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private globalService: GlobalService) {
   }
 
   ngAfterViewChecked(): void {
@@ -24,7 +25,10 @@ export class ArtistFeaturedComponent implements AfterViewChecked {
   }
 
   goToAristList() {
-    this.router.navigate([ROUTE_LIST.artist.list]);
+    const params = this.globalService.encodeParams({
+      searchType: "Artisti"
+    });
+    this.router.navigate([ROUTE_LIST.search.result, params]);
   }
 
 }
