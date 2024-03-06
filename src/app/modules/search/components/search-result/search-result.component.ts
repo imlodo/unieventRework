@@ -1,11 +1,11 @@
-// ... importi rimanenti ...
-
-import { AfterViewChecked, AfterViewInit, ChangeDetectorRef, Component, ElementRef, QueryList, ViewChildren } from "@angular/core";
+import { AfterContentChecked, AfterViewChecked, AfterViewInit, ChangeDetectorRef, Component, ElementRef, QueryList, ViewChildren } from "@angular/core";
 import { ItemType, USER_TYPE } from "../../../../core/utility/global-constant";
 import { GlobalService } from "src/app/core/services";
 import { ActivatedRoute, Router } from "@angular/router";
 import { pluck } from "rxjs";
 import { randomIntFromInterval } from "src/app/core/utility/functions-constants";
+import moment from "moment";
+import 'moment/locale/it'; // Importa la localizzazione italiana di moment
 
 @Component({
   selector: 'unievent-search-result',
@@ -13,13 +13,6 @@ import { randomIntFromInterval } from "src/app/core/utility/functions-constants"
   styleUrls: ['./search-result.component.scss'],
 })
 export class SearchResultComponent implements AfterViewInit, AfterViewChecked {
-  private isViewInitialized = false;
-  @ViewChildren('canvasImage') canvasImages: QueryList<ElementRef>;
-  @ViewChildren('canvasImage') set contentChildrenQueryList(contentChildren: QueryList<ElementRef>) {
-    if (!this.isViewInitialized) { return; }
-    this.canvasImages = contentChildren;
-    this.updateCanvasImages();
-  }
   scrollDistance = 2;
   scrollUpDistance = 1;
   items: any[] = [];
@@ -51,10 +44,23 @@ export class SearchResultComponent implements AfterViewInit, AfterViewChecked {
   }
 
   ngAfterViewInit(): void {
-    this.isViewInitialized = true;
     this.decodeParams();
     this.loadMoreItems();
     this.cdr.detectChanges();
+  }
+
+  onContextMenu(event: MouseEvent): void {
+    //event.preventDefault();
+  }
+
+  navigateToBuyTicket(){
+    alert("xd")
+  }
+
+  simulateClickOnBody() {
+    const bodyElement = document.querySelector('body');
+    const clickEvent = new Event('click');
+    bodyElement.dispatchEvent(clickEvent);
   }
 
   protected getFirstAccount(items: any[], selectedType: ItemType): any[] {
@@ -74,9 +80,9 @@ export class SearchResultComponent implements AfterViewInit, AfterViewChecked {
     }
   }
 
-  onScroll(type:ItemType) {
+  onScroll(type: ItemType) {
     //Bisogna parametrizzare la funziona perchè in base a dove si scrolla carica solo elementi di un dato tipo (questo devi farlo anche per il resto del codice)
-    
+
     this.loadMoreItems();
   }
 
@@ -94,92 +100,99 @@ export class SearchResultComponent implements AfterViewInit, AfterViewChecked {
             return this.generateRandomAccount(index);
           case ItemType.Eventi:
             return this.generateRandomEvent(index);
-          case ItemType.Topic:
-            return this.generateRandomTopic(index);
-          case ItemType.Artisti:
-            return this.generateRandomArtist(index);
+          case ItemType.Topics:
+            return this.generateRandomTopics(index);
           default:
             break;
         }
       });
       this.items = [...this.items, ...newItems];
-      console.log(this.items)
       this.filterItemsByType();
       this.isLoading = false;
     }, 1);
   }
 
   private generateRandomAccount(index: number): any { //Account
+    const randomAccountType = randomIntFromInterval(1, 3) === 1 ? USER_TYPE.ARTIST : randomIntFromInterval(1, 3) === 2 ? USER_TYPE.COMPANY : USER_TYPE.CREATOR;
     return {
       id: this.items.length + index,
       t_name: `Name ${index + 1}`,
       t_follower_number: 1705,
       t_alias_generated: `Alias${index + 1}`,
       t_description: "Ti aiutiamo a diventare la versione migliore di TE STESSO! Seguici su Instagram.",
-      t_profile_photo: `https://p16-sign-va.tiktokcdn.com/tos-maliva-avt-0068/ed421b60e29f4c55293ba224762e93a3~c5_100x100.jpeg?lk3s=30310797&x-expires=1709539200&x-signature=CdvtqZQWZGU0Ob9ufwu0fF7HjH4%3D`,
-      t_type: USER_TYPE.CUSTOMER || USER_TYPE.COMPANY,
+      t_profile_photo: randomAccountType === 0 ? '/assets/img/example_artist_image.jpg' : "/assets/img/userExampleImg.jpeg",
+      t_type: randomAccountType,
+      is_verified: randomIntFromInterval(0,5) > 3 ? true : false,
       type: ItemType.Utenti
     };
   }
 
+  generateRandomDate(): Date {
+    const today = new Date();
+    const randomNumberOfDays = Math.floor(Math.random() * 30); // Puoi regolare il numero di giorni come preferisci
+    const randomDate = new Date(today);
+    randomDate.setDate(today.getDate() - randomNumberOfDays);
+    return randomDate;
+  }
+
+  generateRandomNextTodayDate(): Date {
+    const today = new Date();
+    const randomNumberOfDays = Math.floor(Math.random() * 30); // Puoi regolare il numero di giorni come preferisci
+    const randomDate = new Date(today);
+    randomDate.setDate(today.getDate() + randomNumberOfDays);
+    return randomDate;
+  }
+
   private generateRandomEvent(index: number): any { //Event
+    const randomIntValue =  randomIntFromInterval(0, 1);
     return {
       id: this.items.length + index,
       t_title: `Event Title ${index + 1}`,
-      t_image_link: `/assets/img/event-image-placeholder.jpg`,
+      t_image_link: randomIntValue === 0 ? '/assets/img/exampleEventFirstFrame.png' : '/assets/img/event-image-placeholder.jpg',
+      t_video_link: randomIntValue === 0 ? '/assets/videos/exampleEventVideo.mp4' : null,
       t_event_date: new Date(), // Imposta la data dell'evento secondo le tue esigenze
-      t_user:{
-        id: this.items.length + index,
-        t_name: `Name ${index + 1}`,
-        t_follower_number: 1705,
-        t_alias_generated: `Alias${index + 1}`,
-        t_description: "Ti aiutiamo a diventare la versione migliore di TE STESSO! Seguici su Instagram.",
-        t_profile_photo: `https://p16-sign-va.tiktokcdn.com/tos-maliva-avt-0068/ed421b60e29f4c55293ba224762e93a3~c5_100x100.jpeg?lk3s=30310797&x-expires=1709539200&x-signature=CdvtqZQWZGU0Ob9ufwu0fF7HjH4%3D`,
-        t_type: USER_TYPE.COMPANY
-      },
-      n_click: randomIntFromInterval(1,10000000),
-      type: ItemType.Eventi
+      t_user: this.generateRandomAccount(index),
+      n_click: randomIntFromInterval(1, 10000000),
+      type: ItemType.Eventi,
+      created_date: this.generateRandomDate(),
+      event_first_date: this.generateRandomNextTodayDate(),
+      event_last_date: this.generateRandomNextTodayDate()
     };
   }
 
-  private generateRandomTopic(index: number): any { //Topic
-
+  formatDateString(dateString: string): string {
+    moment.locale('it'); // Imposta la lingua italiana
+  
+    const currentDate = moment();
+    const formattedDate = moment(dateString);
+    
+    if (formattedDate.isBefore(currentDate, 'day')) {
+      return formattedDate.format('DD MMMM YYYY [alle] HH:mm');
+    } else {
+      return formattedDate.format('DD MMMM YYYY');
+    }
+  }
+  private generateRandomTopics(index: number): any { //Topic
+    const randomIntValue =  randomIntFromInterval(0, 1);
     return {
       id: this.items.length + index,
       t_title: `Topic Title ${index + 1}`,
-      t_image_link: `/assets/img/topic-image-placeholder.jpg`,
+      t_image_link: randomIntValue === 0 ? '/assets/img/exampleTopicImageFristFrame.png' : '/assets/img/topic-image-placeholder.jpg',
+      t_video_link: randomIntValue === 0 ? '/assets/videos/exampleTopicsVideo.mp4' : null,
       t_topic_date: new Date(), // Imposta la data del topic secondo le tue esigenze
-      t_user:{
-        id: this.items.length + index,
-        t_name: `Name ${index + 1}`,
-        t_follower_number: 1705,
-        t_alias_generated: `Alias${index + 1}`,
-        t_description: "Ti aiutiamo a diventare la versione migliore di TE STESSO! Seguici su Instagram.",
-        t_profile_photo: `https://p16-sign-va.tiktokcdn.com/tos-maliva-avt-0068/ed421b60e29f4c55293ba224762e93a3~c5_100x100.jpeg?lk3s=30310797&x-expires=1709539200&x-signature=CdvtqZQWZGU0Ob9ufwu0fF7HjH4%3D`,
-        t_type: USER_TYPE.COMPANY || USER_TYPE.CUSTOMER
-      },
-      n_click: randomIntFromInterval(1,10000000),
-      type: ItemType.Topic
-    };
-  }
-
-  private generateRandomArtist(index: number): any { //EventArtist
-    return {
-      id: this.items.length + index,
-      t_name: `Artist Name ${index + 1}`,
-      t_image_link: `/assets/img/artist-image-placeholder.jpg`,
-      t_alias: `Alias${index + 1}`,
-      t_desc: `Description for Artist ${index + 1}`,
-      n_click: randomIntFromInterval(1,10000000),
-      type: ItemType.Artisti
+      t_user: this.generateRandomAccount(index),
+      n_click: randomIntFromInterval(1, 10000000),
+      type: ItemType.Topics,
+      created_date: this.generateRandomDate()
     };
   }
 
   private filterItemsByType() {
     this.filteredItems = this.selectedType === ItemType.Tutti
       ? this.items
+      : this.selectedType === ItemType.Artisti ? this.items.filter(item => item.t_type === 0) 
+      : this.selectedType === ItemType.Utenti ? this.items.filter(item => item.t_type > 0 ) 
       : this.items.filter(item => item.type === this.selectedType);
-    this.updateCanvasImages();
   }
 
   changeType(type: ItemType) {
@@ -187,12 +200,12 @@ export class SearchResultComponent implements AfterViewInit, AfterViewChecked {
     this.filterItemsByType();
   }
 
-  getLinkNavigateToItem(item: any){
+  getLinkNavigateToItem(item: any) {
     return window.location.href;
   }
 
   private getRandomType(): ItemType {
-    const types = Object.values(ItemType).filter(type => type !== ItemType.Tutti);
+    const types = Object.values(ItemType).filter(type => type !== ItemType.Tutti && type !== ItemType.Artisti);
     const randomIndex = Math.floor(Math.random() * types.length);
     return types[randomIndex] as ItemType;
   }
@@ -222,55 +235,79 @@ export class SearchResultComponent implements AfterViewInit, AfterViewChecked {
         this.selectedType = ItemType.Eventi;
         break;
       case "Topics":
-        this.selectedType = ItemType.Topic;
-        break;
-      case "Artisti":
-        this.selectedType = ItemType.Artisti;
+        this.selectedType = ItemType.Topics;
         break;
       case "Utenti":
         this.selectedType = ItemType.Utenti;
         break;
     }
-    if (this.decodedParams.searchType === "Evento") {
-
-    } else if (this.decodedParams.searchType === "Topic") {
-
-    }
-  }
-
-  private updateCanvasImages() {
-    if (!this.canvasImages) {
-      return;
-    }
-  
-    this.filteredItems.forEach(item => {
-      if (item.t_image_link) {
-        const canvasId = `canvasImage_${item.id}`;
-        const canvasElement = this.canvasImages.toArray().find(c => c.nativeElement.id === canvasId)?.nativeElement;
-        if (canvasElement) {
-          this.loadImage(item.t_image_link, canvasElement);
-        }
-      }
-    });
-  }
-
-  private loadImage(imageUrl: string, canvas: HTMLCanvasElement) {
-    const context: CanvasRenderingContext2D = canvas.getContext('2d');
-  
-    const image = new Image();
-    image.src = imageUrl;
-  
-    image.onload = () => {
-      context.drawImage(image, 0, 0, canvas.width, canvas.height);
-    };
-  
-    // Impedisci il menu contestuale quando si fa clic destro sul canvas
-    /*canvas.addEventListener('contextmenu', (event) => {
-      event.preventDefault();
-    });*/
   }
 
   searchByLookedFor(lookedValue: string) {
+  }
+
+
+  onMouseEnter(item: any) {
+    if (item.t_video_link) {
+      this.startVideo(item, item.id, item.t_video_link);
+    }
+  }
+
+  onMouseLeave(item: any) {
+    if (item.t_video_link) {
+      const canvas = document.getElementById(`canvas_${item.id}`) as HTMLCanvasElement;
+      this.stopVideo(canvas, item.t_image_link);
+    }
+  }
+
+  private startVideo(item: any, itemId: number, videoLink: string) {
+    this.simulateClickOnBody();
+    const canvas = document.getElementById(`canvas_${itemId}`) as HTMLCanvasElement;
+    if (canvas) {
+      const video = document.createElement('video');
+      video.id = `video_${itemId}`;
+      video.src = videoLink;
+      video.autoplay = true;
+      video.muted = true;
+      video.loop = true;
+
+      // Aggiungi il video e il canvas come attributi dei dati
+      canvas['videoElement'] = video;
+      canvas['videoId'] = `video_${itemId}`;
+
+      const ctx = canvas.getContext('2d');
+      if (ctx) {
+        const drawFrame = () => {
+          if (!video.paused && !video.ended) {
+            ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+            requestAnimationFrame(drawFrame);
+          }
+        };
+
+        video.addEventListener('loadedmetadata', () => {
+          canvas.width = video.videoWidth;
+          canvas.height = video.videoHeight;
+          drawFrame();
+        });
+      }
+      video.play();
+    }
+  }
+
+  private stopVideo(canvas: HTMLCanvasElement, imageLink: string) {
+    const video = canvas['videoElement'] as HTMLVideoElement;
+    if (video) {
+      video.pause();
+      video.currentTime = 0;
+      video.remove();
+    }
+
+    const ctx = canvas.getContext('2d');
+    if (ctx) {
+      const defaultImage = new Image();
+      defaultImage.src = imageLink; // Assicurati che t_image_link contenga l'URL dell'immagine di default
+      ctx.drawImage(defaultImage, 0, 0, canvas.width, canvas.height);
+    }
   }
 
 }

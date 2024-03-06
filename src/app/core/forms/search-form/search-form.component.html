@@ -60,7 +60,7 @@
                 </div>
                 <div class="col-xl-4 mb-2 mb-md-0">
                     <div class="form-group">
-                        <span>{{searchType === 'Eventi' ? 'Tipo Eventi?' : 'Tipo Topic?'}}</span>
+                        <span>{{searchType === 'Eventi' ? 'Tipo Evento?' : 'Tipo Topic?'}}</span>
                         <ng-select class="bgcolor-transparent" [items]="searchType === 'Eventi' ? tipoEventoArray : tipoTopicArray " bindLabel="value"
                             bindValue="id" [(ngModel)]="searchType === 'Eventi' ? selectedEventType : selectedTopicType" placeholder="Seleziona tipo">
                         </ng-select>

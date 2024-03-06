@@ -6,17 +6,15 @@ import { MatStepperModule } from '@angular/material/stepper';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { SearchResultComponent } from './components/search-result/search-result.component';
-import { SearchAdvancedComponent } from './components/search-advanced/search-advanced.component';
 import { SearchRoutingModule } from './search-routing.module';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
-import { FilterByTypePipe } from 'src/app/core/pipe/filter-by-type.pipe';
 import { CoreModule } from 'src/app/core/core.module';
 import { ApproximateNumberPipe } from 'src/app/core/pipe/approximate-number.pipe';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @NgModule({
   declarations: [
     SearchResultComponent,
-    SearchAdvancedComponent,
     ApproximateNumberPipe
   ],
   imports: [
@@ -26,6 +24,7 @@ import { ApproximateNumberPipe } from 'src/app/core/pipe/approximate-number.pipe
     RxReactiveFormsModule,
     MatStepperModule,
     MatFormFieldModule,
+    MatTooltipModule,
     MatInputModule,
     InfiniteScrollModule,
     SearchRoutingModule,

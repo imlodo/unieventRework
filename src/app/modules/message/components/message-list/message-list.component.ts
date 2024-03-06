@@ -25,7 +25,7 @@ export class MessageListComponent implements AfterViewChecked {
     t_surname: "Lodato",
     t_alias_generated: "lodo",
     t_profile_photo: "https://scontent.fnap5-1.fna.fbcdn.net/v/t39.30808-6/336655652_1366549564142836_6189179333211279215_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=efb6e6&_nc_ohc=MMspqbZpIoEAX8SJzKR&_nc_ht=scontent.fnap5-1.fna&oh=00_AfCxMQHUITv5n3ssutheEupX0QdJ4fcrGeR0ACM3DoT_9w&oe=65DB9102",
-    t_type: USER_TYPE.CUSTOMER
+    t_type: USER_TYPE.CREATOR
   };
   chatList: Chat[] = [
     {
@@ -36,18 +36,18 @@ export class MessageListComponent implements AfterViewChecked {
         t_surname: "Baldi",
         t_alias_generated: "baldilodo",
         t_profile_photo: "https://staff.polito.it/mario.baldi/images/Mario%20202004.jpg",
-        t_type: USER_TYPE.CUSTOMER
+        t_type: USER_TYPE.CREATOR
       },
       messages: [
         {
-          user_to: { t_username: null, t_password: null, t_name: "Antonio", t_surname: "Baldi", t_alias_generated: "baldilodo", t_profile_photo: "https://staff.polito.it/mario.baldi/images/Mario%20202004.jpg", t_type: USER_TYPE.CUSTOMER },
-          user_at: { t_username: null, t_password: null, t_name: "Antonio", t_surname: "Lodato", t_alias_generated: "lodo", t_profile_photo: "https://scontent.fnap5-1.fna.fbcdn.net/v/t39.30808-6/336655652_1366549564142836_6189179333211279215_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=efb6e6&_nc_ohc=MMspqbZpIoEAX8SJzKR&_nc_ht=scontent.fnap5-1.fna&oh=00_AfCxMQHUITv5n3ssutheEupX0QdJ4fcrGeR0ACM3DoT_9w&oe=65DB9102", t_type: USER_TYPE.CUSTOMER },
+          user_to: { t_username: null, t_password: null, t_name: "Antonio", t_surname: "Baldi", t_alias_generated: "baldilodo", t_profile_photo: "https://staff.polito.it/mario.baldi/images/Mario%20202004.jpg", t_type: USER_TYPE.CREATOR },
+          user_at: { t_username: null, t_password: null, t_name: "Antonio", t_surname: "Lodato", t_alias_generated: "lodo", t_profile_photo: "https://scontent.fnap5-1.fna.fbcdn.net/v/t39.30808-6/336655652_1366549564142836_6189179333211279215_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=efb6e6&_nc_ohc=MMspqbZpIoEAX8SJzKR&_nc_ht=scontent.fnap5-1.fna&oh=00_AfCxMQHUITv5n3ssutheEupX0QdJ4fcrGeR0ACM3DoT_9w&oe=65DB9102", t_type: USER_TYPE.CREATOR },
           message: "Ciao, come stai?",
           dateTime: moment("15/02/2024 12:40PM", "D/M/YYYY HH:mm:ss")
         },
         {
-          user_to: { t_username: null, t_password: null, t_name: "Antonio", t_surname: "Lodato", t_alias_generated: "lodo", t_profile_photo: "https://scontent.fnap5-1.fna.fbcdn.net/v/t39.30808-6/336655652_1366549564142836_6189179333211279215_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=efb6e6&_nc_ohc=MMspqbZpIoEAX8SJzKR&_nc_ht=scontent.fnap5-1.fna&oh=00_AfCxMQHUITv5n3ssutheEupX0QdJ4fcrGeR0ACM3DoT_9w&oe=65DB9102", t_type: USER_TYPE.CUSTOMER },
-          user_at: { t_username: null, t_password: null, t_name: "Antonio", t_surname: "Baldi", t_alias_generated: "baldilodo", t_profile_photo: "https://staff.polito.it/mario.baldi/images/Mario%20202004.jpg", t_type: USER_TYPE.CUSTOMER },
+          user_to: { t_username: null, t_password: null, t_name: "Antonio", t_surname: "Lodato", t_alias_generated: "lodo", t_profile_photo: "https://scontent.fnap5-1.fna.fbcdn.net/v/t39.30808-6/336655652_1366549564142836_6189179333211279215_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=efb6e6&_nc_ohc=MMspqbZpIoEAX8SJzKR&_nc_ht=scontent.fnap5-1.fna&oh=00_AfCxMQHUITv5n3ssutheEupX0QdJ4fcrGeR0ACM3DoT_9w&oe=65DB9102", t_type: USER_TYPE.CREATOR },
+          user_at: { t_username: null, t_password: null, t_name: "Antonio", t_surname: "Baldi", t_alias_generated: "baldilodo", t_profile_photo: "https://staff.polito.it/mario.baldi/images/Mario%20202004.jpg", t_type: USER_TYPE.CREATOR },
           message: "Bene e tu?",
           dateTime: moment("15/02/2024 12:42PM", "D/M/YYYY HH:mm:ss")
         }
@@ -61,12 +61,12 @@ export class MessageListComponent implements AfterViewChecked {
         t_surname: "Politano",
         t_alias_generated: "mariapolitano1",
         t_profile_photo: "https://cdn.21buttons.com/posts/640x799/a4f98433206c47f3ac3b47039996f26f_1080x1349.jpg",
-        t_type: USER_TYPE.CUSTOMER
+        t_type: USER_TYPE.CREATOR
       },
       messages: [
         {
-          user_to: { t_username: null, t_password: null, t_name: "Maria", t_surname: "Politano", t_alias_generated: "mariapolitano1", t_profile_photo: "https://cdn.21buttons.com/posts/640x799/a4f98433206c47f3ac3b47039996f26f_1080x1349.jpg", t_type: USER_TYPE.CUSTOMER },
-          user_at: { t_username: null, t_password: null, t_name: "Antonio", t_surname: "Lodato", t_alias_generated: "lodo", t_profile_photo: "https://scontent.fnap5-1.fna.fbcdn.net/v/t39.30808-6/336655652_1366549564142836_6189179333211279215_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=efb6e6&_nc_ohc=MMspqbZpIoEAX8SJzKR&_nc_ht=scontent.fnap5-1.fna&oh=00_AfCxMQHUITv5n3ssutheEupX0QdJ4fcrGeR0ACM3DoT_9w&oe=65DB9102", t_type: USER_TYPE.CUSTOMER },
+          user_to: { t_username: null, t_password: null, t_name: "Maria", t_surname: "Politano", t_alias_generated: "mariapolitano1", t_profile_photo: "https://cdn.21buttons.com/posts/640x799/a4f98433206c47f3ac3b47039996f26f_1080x1349.jpg", t_type: USER_TYPE.CREATOR },
+          user_at: { t_username: null, t_password: null, t_name: "Antonio", t_surname: "Lodato", t_alias_generated: "lodo", t_profile_photo: "https://scontent.fnap5-1.fna.fbcdn.net/v/t39.30808-6/336655652_1366549564142836_6189179333211279215_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=efb6e6&_nc_ohc=MMspqbZpIoEAX8SJzKR&_nc_ht=scontent.fnap5-1.fna&oh=00_AfCxMQHUITv5n3ssutheEupX0QdJ4fcrGeR0ACM3DoT_9w&oe=65DB9102", t_type: USER_TYPE.CREATOR },
           message: "Sei un bel ragazzo, lo sai? Blbllb",
           dateTime: moment("26/02/2024 12:40PM", "D/M/YYYY HH:mm:ss")
         }

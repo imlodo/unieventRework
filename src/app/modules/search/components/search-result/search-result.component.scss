@@ -74,6 +74,11 @@
     height: 100px;
     background: linear-gradient(rgba(22, 24, 35, 0) 2.92%, rgba(22, 24, 35, 0.5) 98.99%);
     padding: 67px 13px 17px;
+    z-index: 3;
+}
+
+.video-info-with-action {
+    padding: 68px 13px 17px
 }
 
 .date-tag {
@@ -105,15 +110,25 @@
     object-fit: cover;
 }
 
-.user-profile-photo-container  {
-    width: 24px;
-    height: 24px;
+.user-profile-photo-container {
+    width: 34px;
+    height: 34px;
     position: relative;
     overflow: hidden;
     white-space: nowrap;
     border-radius: 50%;
 }
 
-.viewProfile:hover span{
+.viewProfile:hover span {
     text-decoration: underline;
+}
+
+.video-canvas {
+    object-fit: cover;
+    z-index: 2;
+}
+
+.bi-check2-circle {
+    margin-bottom: 4px;
+    fill: aqua
 }

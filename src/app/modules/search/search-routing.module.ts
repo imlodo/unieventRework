@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { SearchResultComponent } from './components/search-result/search-result.component';
-import { SearchAdvancedComponent } from './components/search-advanced/search-advanced.component';
 
 const routes: Routes = [
   {
@@ -15,13 +14,6 @@ const routes: Routes = [
         component: SearchResultComponent,
         data: {
           title: 'Ricerca avanzata'
-        }
-      },
-      {
-        path: 'advanced',
-        component: SearchAdvancedComponent,
-        data: {
-          title: 'Risultati ricerca'
         }
       }
     ]

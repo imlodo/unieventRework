@@ -8,8 +8,8 @@ export enum MAP_TYPE {
     DISCOTECA
 }
 export enum USER_TYPE {
-    ADMIN,
-    CUSTOMER,
+    ARTIST,
+    CREATOR,
     COMPANY
 }
 export enum EVENT_TYPE {
@@ -27,7 +27,7 @@ export enum TOPIC_TYPE {
 export enum ItemType {
     Tutti = 'Tutti',
     Eventi = 'Eventi',
-    Topic = 'Topic',
+    Topics = 'Topics',
     Artisti = 'Artisti',
     Utenti = 'Utenti',
 }
@@ -325,7 +325,7 @@ export const eventOrderedBySell: Array<Event> = [
                 t_object: "Discoteca fantastica!",
                 t_body: "Siamo stati alla discoteca 31-12-2022, non vediamo l'ora di tornarci con questo fantastico evento.",
                 t_image_link: ["/gbpr?hash=3jsadksdkhh3sadjkbmnsa3%sgdaska"],
-                t_user: { t_name: "Pasquale", t_surname: "Schettino", t_alias_generated: "passchet2308abgd", t_type: USER_TYPE.CUSTOMER }
+                t_user: { t_name: "Pasquale", t_surname: "Schettino", t_alias_generated: "passchet2308abgd", t_type: USER_TYPE.CREATOR }
             },
             {
                 n_id: 2,
@@ -334,7 +334,7 @@ export const eventOrderedBySell: Array<Event> = [
                 t_object: "Discoteca mediocre!",
                 t_body: "Personale scortese, e cocktail senza giacchio, non ci torneremo mai più! Da chiudere...",
                 t_image_link: ["/gpbr?hash=ffdassdasd3jads325r79hfdzafhk"], //get photo by review
-                t_user: { t_name: "Antonio", t_surname: "Lodato", t_alias_generated: "alod323453asd", t_type: USER_TYPE.CUSTOMER }
+                t_user: { t_name: "Antonio", t_surname: "Lodato", t_alias_generated: "alod323453asd", t_type: USER_TYPE.CREATOR }
             }
         ],
         t_discussions: [
@@ -343,7 +343,7 @@ export const eventOrderedBySell: Array<Event> = [
                 t_object: "Organizziamo una festa in questo locale il prossimo Halloween?",
                 t_body: "Ragazzi la mia idea è quella di organizzare una super festa di halloween in questo locale,\n come ben sapete da circa 10 anni,\n questo locale ha i drink migliori, la ragazze sono sempre bellissime.",
                 t_image_link: ["/gpbd?hash=ffdassdasd3jads325r79hfdzafhk"], //get photo by discussion
-                t_user: { t_name: "Pasquale", t_surname: "Schettino", t_alias_generated: "passchet2308abgd", t_type: USER_TYPE.CUSTOMER }
+                t_user: { t_name: "Pasquale", t_surname: "Schettino", t_alias_generated: "passchet2308abgd", t_type: USER_TYPE.CREATOR }
             }
         ],
         t_artist_list: [
@@ -611,7 +611,7 @@ export const eventOrderedBySell: Array<Event> = [
                 t_object: "Discoteca fantastica!",
                 t_body: "Siamo stati alla discoteca 31-12-2022, non vediamo l'ora di tornarci con questo fantastico evento.",
                 t_image_link: ["/gbpr?hash=3jsadksdkhh3sadjkbmnsa3%sgdaska"],
-                t_user: { t_name: "Pasquale", t_surname: "Schettino", t_alias_generated: "passchet2308abgd", t_type: USER_TYPE.CUSTOMER }
+                t_user: { t_name: "Pasquale", t_surname: "Schettino", t_alias_generated: "passchet2308abgd", t_type: USER_TYPE.CREATOR }
             },
             {
                 n_id: 2,
@@ -620,7 +620,7 @@ export const eventOrderedBySell: Array<Event> = [
                 t_object: "Discoteca mediocre!",
                 t_body: "Personale scortese, e cocktail senza giacchio, non ci torneremo mai più! Da chiudere...",
                 t_image_link: ["/gpbr?hash=ffdassdasd3jads325r79hfdzafhk"], //get photo by review
-                t_user: { t_name: "Antonio", t_surname: "Lodato", t_alias_generated: "alod323453asd", t_type: USER_TYPE.CUSTOMER }
+                t_user: { t_name: "Antonio", t_surname: "Lodato", t_alias_generated: "alod323453asd", t_type: USER_TYPE.CREATOR }
             }
         ],
         t_discussions: [
@@ -629,7 +629,7 @@ export const eventOrderedBySell: Array<Event> = [
                 t_object: "Organizziamo una festa in questo locale il prossimo Halloween?",
                 t_body: "Ragazzi la mia idea è quella di organizzare una super festa di halloween in questo locale,\n come ben sapete da circa 10 anni,\n questo locale ha i drink migliori, la ragazze sono sempre bellissime.",
                 t_image_link: ["/gpbd?hash=ffdassdasd3jads325r79hfdzafhk"], //get photo by discussion
-                t_user: { t_name: "Pasquale", t_surname: "Schettino", t_alias_generated: "passchet2308abgd", t_type: USER_TYPE.CUSTOMER }
+                t_user: { t_name: "Pasquale", t_surname: "Schettino", t_alias_generated: "passchet2308abgd", t_type: USER_TYPE.CREATOR }
             }
         ],
         t_artist_list: [
@@ -896,7 +896,7 @@ export const eventOrderedBySell: Array<Event> = [
                 t_object: "Discoteca fantastica!",
                 t_body: "Siamo stati alla discoteca 31-12-2022, non vediamo l'ora di tornarci con questo fantastico evento.",
                 t_image_link: ["/gbpr?hash=3jsadksdkhh3sadjkbmnsa3%sgdaska"],
-                t_user: { t_name: "Pasquale", t_surname: "Schettino", t_alias_generated: "passchet2308abgd", t_type: USER_TYPE.CUSTOMER }
+                t_user: { t_name: "Pasquale", t_surname: "Schettino", t_alias_generated: "passchet2308abgd", t_type: USER_TYPE.CREATOR }
             },
             {
                 n_id: 2,
@@ -905,7 +905,7 @@ export const eventOrderedBySell: Array<Event> = [
                 t_object: "Discoteca mediocre!",
                 t_body: "Personale scortese, e cocktail senza giacchio, non ci torneremo mai più! Da chiudere...",
                 t_image_link: ["/gpbr?hash=ffdassdasd3jads325r79hfdzafhk"], //get photo by review
-                t_user: { t_name: "Antonio", t_surname: "Lodato", t_alias_generated: "alod323453asd", t_type: USER_TYPE.CUSTOMER }
+                t_user: { t_name: "Antonio", t_surname: "Lodato", t_alias_generated: "alod323453asd", t_type: USER_TYPE.CREATOR }
             }
         ],
         t_discussions: [
@@ -914,7 +914,7 @@ export const eventOrderedBySell: Array<Event> = [
                 t_object: "Organizziamo una festa in questo locale il prossimo Halloween?",
                 t_body: "Ragazzi la mia idea è quella di organizzare una super festa di halloween in questo locale,\n come ben sapete da circa 10 anni,\n questo locale ha i drink migliori, la ragazze sono sempre bellissime.",
                 t_image_link: ["/gpbd?hash=ffdassdasd3jads325r79hfdzafhk"], //get photo by discussion
-                t_user: { t_name: "Pasquale", t_surname: "Schettino", t_alias_generated: "passchet2308abgd", t_type: USER_TYPE.CUSTOMER }
+                t_user: { t_name: "Pasquale", t_surname: "Schettino", t_alias_generated: "passchet2308abgd", t_type: USER_TYPE.CREATOR }
             }
         ],
         t_artist_list: [
@@ -1212,7 +1212,7 @@ export const eventOrderedBySell: Array<Event> = [
                 t_object: "Discoteca fantastica!",
                 t_body: "Siamo stati alla discoteca 31-12-2022, non vediamo l'ora di tornarci con questo fantastico evento.",
                 t_image_link: ["/gbpr?hash=3jsadksdkhh3sadjkbmnsa3%sgdaska"],
-                t_user: { t_name: "Pasquale", t_surname: "Schettino", t_alias_generated: "passchet2308abgd", t_type: USER_TYPE.CUSTOMER }
+                t_user: { t_name: "Pasquale", t_surname: "Schettino", t_alias_generated: "passchet2308abgd", t_type: USER_TYPE.CREATOR }
             },
             {
                 n_id: 2,
@@ -1221,7 +1221,7 @@ export const eventOrderedBySell: Array<Event> = [
                 t_object: "Discoteca mediocre!",
                 t_body: "Personale scortese, e cocktail senza giacchio, non ci torneremo mai più! Da chiudere...",
                 t_image_link: ["/gpbr?hash=ffdassdasd3jads325r79hfdzafhk"], //get photo by review
-                t_user: { t_name: "Antonio", t_surname: "Lodato", t_alias_generated: "alod323453asd", t_type: USER_TYPE.CUSTOMER }
+                t_user: { t_name: "Antonio", t_surname: "Lodato", t_alias_generated: "alod323453asd", t_type: USER_TYPE.CREATOR }
             }
         ],
         t_discussions: [
@@ -1230,7 +1230,7 @@ export const eventOrderedBySell: Array<Event> = [
                 t_object: "Organizziamo una festa in questo locale il prossimo Halloween?",
                 t_body: "Ragazzi la mia idea è quella di organizzare una super festa di halloween in questo locale,\n come ben sapete da circa 10 anni,\n questo locale ha i drink migliori, la ragazze sono sempre bellissime.",
                 t_image_link: ["/gpbd?hash=ffdassdasd3jads325r79hfdzafhk"], //get photo by discussion
-                t_user: { t_name: "Pasquale", t_surname: "Schettino", t_alias_generated: "passchet2308abgd", t_type: USER_TYPE.CUSTOMER }
+                t_user: { t_name: "Pasquale", t_surname: "Schettino", t_alias_generated: "passchet2308abgd", t_type: USER_TYPE.CREATOR }
             }
         ],
         t_artist_list: [
@@ -1497,7 +1497,7 @@ export const eventOrderedBySell: Array<Event> = [
                 t_object: "Discoteca fantastica!",
                 t_body: "Siamo stati alla discoteca 31-12-2022, non vediamo l'ora di tornarci con questo fantastico evento.",
                 t_image_link: ["/gbpr?hash=3jsadksdkhh3sadjkbmnsa3%sgdaska"],
-                t_user: { t_name: "Pasquale", t_surname: "Schettino", t_alias_generated: "passchet2308abgd", t_type: USER_TYPE.CUSTOMER }
+                t_user: { t_name: "Pasquale", t_surname: "Schettino", t_alias_generated: "passchet2308abgd", t_type: USER_TYPE.CREATOR }
             },
             {
                 n_id: 2,
@@ -1506,7 +1506,7 @@ export const eventOrderedBySell: Array<Event> = [
                 t_object: "Discoteca mediocre!",
                 t_body: "Personale scortese, e cocktail senza giacchio, non ci torneremo mai più! Da chiudere...",
                 t_image_link: ["/gpbr?hash=ffdassdasd3jads325r79hfdzafhk"], //get photo by review
-                t_user: { t_name: "Antonio", t_surname: "Lodato", t_alias_generated: "alod323453asd", t_type: USER_TYPE.CUSTOMER }
+                t_user: { t_name: "Antonio", t_surname: "Lodato", t_alias_generated: "alod323453asd", t_type: USER_TYPE.CREATOR }
             }
         ],
         t_discussions: [
@@ -1515,7 +1515,7 @@ export const eventOrderedBySell: Array<Event> = [
                 t_object: "Organizziamo una festa in questo locale il prossimo Halloween?",
                 t_body: "Ragazzi la mia idea è quella di organizzare una super festa di halloween in questo locale,\n come ben sapete da circa 10 anni,\n questo locale ha i drink migliori, la ragazze sono sempre bellissime.",
                 t_image_link: ["/gpbd?hash=ffdassdasd3jads325r79hfdzafhk"], //get photo by discussion
-                t_user: { t_name: "Pasquale", t_surname: "Schettino", t_alias_generated: "passchet2308abgd", t_type: USER_TYPE.CUSTOMER }
+                t_user: { t_name: "Pasquale", t_surname: "Schettino", t_alias_generated: "passchet2308abgd", t_type: USER_TYPE.CREATOR }
             }
         ],
         t_artist_list: [
@@ -1777,7 +1777,7 @@ export const allEventList: Array<Event> = [
                 t_object: "Discoteca fantastica!",
                 t_body: "Siamo stati alla discoteca 31-12-2022, non vediamo l'ora di tornarci con questo fantastico evento.",
                 t_image_link: ["/gbpr?hash=3jsadksdkhh3sadjkbmnsa3%sgdaska"],
-                t_user: { t_name: "Pasquale", t_surname: "Schettino", t_alias_generated: "passchet2308abgd", t_type: USER_TYPE.CUSTOMER }
+                t_user: { t_name: "Pasquale", t_surname: "Schettino", t_alias_generated: "passchet2308abgd", t_type: USER_TYPE.CREATOR }
             },
             {
                 n_id: 2,
@@ -1786,7 +1786,7 @@ export const allEventList: Array<Event> = [
                 t_object: "Discoteca mediocre!",
                 t_body: "Personale scortese, e cocktail senza giacchio, non ci torneremo mai più! Da chiudere...",
                 t_image_link: ["/gpbr?hash=ffdassdasd3jads325r79hfdzafhk"], //get photo by review
-                t_user: { t_name: "Antonio", t_surname: "Lodato", t_alias_generated: "alod323453asd", t_type: USER_TYPE.CUSTOMER }
+                t_user: { t_name: "Antonio", t_surname: "Lodato", t_alias_generated: "alod323453asd", t_type: USER_TYPE.CREATOR }
             }
         ],
         t_discussions: [
@@ -1795,7 +1795,7 @@ export const allEventList: Array<Event> = [
                 t_object: "Organizziamo una festa in questo locale il prossimo Halloween?",
                 t_body: "Ragazzi la mia idea è quella di organizzare una super festa di halloween in questo locale,\n come ben sapete da circa 10 anni,\n questo locale ha i drink migliori, la ragazze sono sempre bellissime.",
                 t_image_link: ["/gpbd?hash=ffdassdasd3jads325r79hfdzafhk"], //get photo by discussion
-                t_user: { t_name: "Pasquale", t_surname: "Schettino", t_alias_generated: "passchet2308abgd", t_type: USER_TYPE.CUSTOMER }
+                t_user: { t_name: "Pasquale", t_surname: "Schettino", t_alias_generated: "passchet2308abgd", t_type: USER_TYPE.CREATOR }
             }
         ],
         t_artist_list: [
@@ -10634,7 +10634,7 @@ export const allEventList: Array<Event> = [
                 t_object: "Discoteca fantastica!",
                 t_body: "Siamo stati alla discoteca 31-12-2022, non vediamo l'ora di tornarci con questo fantastico evento.",
                 t_image_link: ["/gbpr?hash=3jsadksdkhh3sadjkbmnsa3%sgdaska"],
-                t_user: { t_name: "Pasquale", t_surname: "Schettino", t_alias_generated: "passchet2308abgd", t_type: USER_TYPE.CUSTOMER }
+                t_user: { t_name: "Pasquale", t_surname: "Schettino", t_alias_generated: "passchet2308abgd", t_type: USER_TYPE.CREATOR }
             },
             {
                 n_id: 2,
@@ -10643,7 +10643,7 @@ export const allEventList: Array<Event> = [
                 t_object: "Discoteca mediocre!",
                 t_body: "Personale scortese, e cocktail senza giacchio, non ci torneremo mai più! Da chiudere...",
                 t_image_link: ["/gpbr?hash=ffdassdasd3jads325r79hfdzafhk"], //get photo by review
-                t_user: { t_name: "Antonio", t_surname: "Lodato", t_alias_generated: "alod323453asd", t_type: USER_TYPE.CUSTOMER }
+                t_user: { t_name: "Antonio", t_surname: "Lodato", t_alias_generated: "alod323453asd", t_type: USER_TYPE.CREATOR }
             }
         ],
         t_discussions: [
@@ -10652,7 +10652,7 @@ export const allEventList: Array<Event> = [
                 t_object: "Organizziamo una festa in questo locale il prossimo Halloween?",
                 t_body: "Ragazzi la mia idea è quella di organizzare una super festa di halloween in questo locale,\n come ben sapete da circa 10 anni,\n questo locale ha i drink migliori, la ragazze sono sempre bellissime.",
                 t_image_link: ["/gpbd?hash=ffdassdasd3jads325r79hfdzafhk"], //get photo by discussion
-                t_user: { t_name: "Pasquale", t_surname: "Schettino", t_alias_generated: "passchet2308abgd", t_type: USER_TYPE.CUSTOMER }
+                t_user: { t_name: "Pasquale", t_surname: "Schettino", t_alias_generated: "passchet2308abgd", t_type: USER_TYPE.CREATOR }
             }
         ],
         t_artist_list: [
@@ -10919,7 +10919,7 @@ export const allEventList: Array<Event> = [
                 t_object: "Discoteca fantastica!",
                 t_body: "Siamo stati alla discoteca 31-12-2022, non vediamo l'ora di tornarci con questo fantastico evento.",
                 t_image_link: ["/gbpr?hash=3jsadksdkhh3sadjkbmnsa3%sgdaska"],
-                t_user: { t_name: "Pasquale", t_surname: "Schettino", t_alias_generated: "passchet2308abgd", t_type: USER_TYPE.CUSTOMER }
+                t_user: { t_name: "Pasquale", t_surname: "Schettino", t_alias_generated: "passchet2308abgd", t_type: USER_TYPE.CREATOR }
             },
             {
                 n_id: 2,
@@ -10928,7 +10928,7 @@ export const allEventList: Array<Event> = [
                 t_object: "Discoteca mediocre!",
                 t_body: "Personale scortese, e cocktail senza giacchio, non ci torneremo mai più! Da chiudere...",
                 t_image_link: ["/gpbr?hash=ffdassdasd3jads325r79hfdzafhk"], //get photo by review
-                t_user: { t_name: "Antonio", t_surname: "Lodato", t_alias_generated: "alod323453asd", t_type: USER_TYPE.CUSTOMER }
+                t_user: { t_name: "Antonio", t_surname: "Lodato", t_alias_generated: "alod323453asd", t_type: USER_TYPE.CREATOR }
             }
         ],
         t_discussions: [
@@ -10937,7 +10937,7 @@ export const allEventList: Array<Event> = [
                 t_object: "Organizziamo una festa in questo locale il prossimo Halloween?",
                 t_body: "Ragazzi la mia idea è quella di organizzare una super festa di halloween in questo locale,\n come ben sapete da circa 10 anni,\n questo locale ha i drink migliori, la ragazze sono sempre bellissime.",
                 t_image_link: ["/gpbd?hash=ffdassdasd3jads325r79hfdzafhk"], //get photo by discussion
-                t_user: { t_name: "Pasquale", t_surname: "Schettino", t_alias_generated: "passchet2308abgd", t_type: USER_TYPE.CUSTOMER }
+                t_user: { t_name: "Pasquale", t_surname: "Schettino", t_alias_generated: "passchet2308abgd", t_type: USER_TYPE.CREATOR }
             }
         ],
         t_artist_list: [
@@ -11235,7 +11235,7 @@ export const allEventList: Array<Event> = [
                 t_object: "Discoteca fantastica!",
                 t_body: "Siamo stati alla discoteca 31-12-2022, non vediamo l'ora di tornarci con questo fantastico evento.",
                 t_image_link: ["/gbpr?hash=3jsadksdkhh3sadjkbmnsa3%sgdaska"],
-                t_user: { t_name: "Pasquale", t_surname: "Schettino", t_alias_generated: "passchet2308abgd", t_type: USER_TYPE.CUSTOMER }
+                t_user: { t_name: "Pasquale", t_surname: "Schettino", t_alias_generated: "passchet2308abgd", t_type: USER_TYPE.CREATOR }
             },
             {
                 n_id: 2,
@@ -11244,7 +11244,7 @@ export const allEventList: Array<Event> = [
                 t_object: "Discoteca mediocre!",
                 t_body: "Personale scortese, e cocktail senza giacchio, non ci torneremo mai più! Da chiudere...",
                 t_image_link: ["/gpbr?hash=ffdassdasd3jads325r79hfdzafhk"], //get photo by review
-                t_user: { t_name: "Antonio", t_surname: "Lodato", t_alias_generated: "alod323453asd", t_type: USER_TYPE.CUSTOMER }
+                t_user: { t_name: "Antonio", t_surname: "Lodato", t_alias_generated: "alod323453asd", t_type: USER_TYPE.CREATOR }
             }
         ],
         t_discussions: [
@@ -11253,7 +11253,7 @@ export const allEventList: Array<Event> = [
                 t_object: "Organizziamo una festa in questo locale il prossimo Halloween?",
                 t_body: "Ragazzi la mia idea è quella di organizzare una super festa di halloween in questo locale,\n come ben sapete da circa 10 anni,\n questo locale ha i drink migliori, la ragazze sono sempre bellissime.",
                 t_image_link: ["/gpbd?hash=ffdassdasd3jads325r79hfdzafhk"], //get photo by discussion
-                t_user: { t_name: "Pasquale", t_surname: "Schettino", t_alias_generated: "passchet2308abgd", t_type: USER_TYPE.CUSTOMER }
+                t_user: { t_name: "Pasquale", t_surname: "Schettino", t_alias_generated: "passchet2308abgd", t_type: USER_TYPE.CREATOR }
             }
         ],
         t_artist_list: [
@@ -11520,7 +11520,7 @@ export const allEventList: Array<Event> = [
                 t_object: "Discoteca fantastica!",
                 t_body: "Siamo stati alla discoteca 31-12-2022, non vediamo l'ora di tornarci con questo fantastico evento.",
                 t_image_link: ["/gbpr?hash=3jsadksdkhh3sadjkbmnsa3%sgdaska"],
-                t_user: { t_name: "Pasquale", t_surname: "Schettino", t_alias_generated: "passchet2308abgd", t_type: USER_TYPE.CUSTOMER }
+                t_user: { t_name: "Pasquale", t_surname: "Schettino", t_alias_generated: "passchet2308abgd", t_type: USER_TYPE.CREATOR }
             },
             {
                 n_id: 2,
@@ -11529,7 +11529,7 @@ export const allEventList: Array<Event> = [
                 t_object: "Discoteca mediocre!",
                 t_body: "Personale scortese, e cocktail senza giacchio, non ci torneremo mai più! Da chiudere...",
                 t_image_link: ["/gpbr?hash=ffdassdasd3jads325r79hfdzafhk"], //get photo by review
-                t_user: { t_name: "Antonio", t_surname: "Lodato", t_alias_generated: "alod323453asd", t_type: USER_TYPE.CUSTOMER }
+                t_user: { t_name: "Antonio", t_surname: "Lodato", t_alias_generated: "alod323453asd", t_type: USER_TYPE.CREATOR }
             }
         ],
         t_discussions: [
@@ -11538,7 +11538,7 @@ export const allEventList: Array<Event> = [
                 t_object: "Organizziamo una festa in questo locale il prossimo Halloween?",
                 t_body: "Ragazzi la mia idea è quella di organizzare una super festa di halloween in questo locale,\n come ben sapete da circa 10 anni,\n questo locale ha i drink migliori, la ragazze sono sempre bellissime.",
                 t_image_link: ["/gpbd?hash=ffdassdasd3jads325r79hfdzafhk"], //get photo by discussion
-                t_user: { t_name: "Pasquale", t_surname: "Schettino", t_alias_generated: "passchet2308abgd", t_type: USER_TYPE.CUSTOMER }
+                t_user: { t_name: "Pasquale", t_surname: "Schettino", t_alias_generated: "passchet2308abgd", t_type: USER_TYPE.CREATOR }
             }
         ],
         t_artist_list: [
@@ -11796,7 +11796,7 @@ export const allEventList: Array<Event> = [
                 t_object: "Discoteca fantastica!",
                 t_body: "Siamo stati alla discoteca 31-12-2022, non vediamo l'ora di tornarci con questo fantastico evento.",
                 t_image_link: ["/gbpr?hash=3jsadksdkhh3sadjkbmnsa3%sgdaska"],
-                t_user: { t_name: "Pasquale", t_surname: "Schettino", t_alias_generated: "passchet2308abgd", t_type: USER_TYPE.CUSTOMER }
+                t_user: { t_name: "Pasquale", t_surname: "Schettino", t_alias_generated: "passchet2308abgd", t_type: USER_TYPE.CREATOR }
             },
             {
                 n_id: 2,
@@ -11805,7 +11805,7 @@ export const allEventList: Array<Event> = [
                 t_object: "Discoteca mediocre!",
                 t_body: "Personale scortese, e cocktail senza giacchio, non ci torneremo mai più! Da chiudere...",
                 t_image_link: ["/gpbr?hash=ffdassdasd3jads325r79hfdzafhk"], //get photo by review
-                t_user: { t_name: "Antonio", t_surname: "Lodato", t_alias_generated: "alod323453asd", t_type: USER_TYPE.CUSTOMER }
+                t_user: { t_name: "Antonio", t_surname: "Lodato", t_alias_generated: "alod323453asd", t_type: USER_TYPE.CREATOR }
             }
         ],
         t_discussions: [
@@ -11814,7 +11814,7 @@ export const allEventList: Array<Event> = [
                 t_object: "Organizziamo una festa in questo locale il prossimo Halloween?",
                 t_body: "Ragazzi la mia idea è quella di organizzare una super festa di halloween in questo locale,\n come ben sapete da circa 10 anni,\n questo locale ha i drink migliori, la ragazze sono sempre bellissime.",
                 t_image_link: ["/gpbd?hash=ffdassdasd3jads325r79hfdzafhk"], //get photo by discussion
-                t_user: { t_name: "Pasquale", t_surname: "Schettino", t_alias_generated: "passchet2308abgd", t_type: USER_TYPE.CUSTOMER }
+                t_user: { t_name: "Pasquale", t_surname: "Schettino", t_alias_generated: "passchet2308abgd", t_type: USER_TYPE.CREATOR }
             }
         ],
         t_artist_list: [
@@ -12081,7 +12081,7 @@ export const allEventList: Array<Event> = [
                 t_object: "Discoteca fantastica!",
                 t_body: "Siamo stati alla discoteca 31-12-2022, non vediamo l'ora di tornarci con questo fantastico evento.",
                 t_image_link: ["/gbpr?hash=3jsadksdkhh3sadjkbmnsa3%sgdaska"],
-                t_user: { t_name: "Pasquale", t_surname: "Schettino", t_alias_generated: "passchet2308abgd", t_type: USER_TYPE.CUSTOMER }
+                t_user: { t_name: "Pasquale", t_surname: "Schettino", t_alias_generated: "passchet2308abgd", t_type: USER_TYPE.CREATOR }
             },
             {
                 n_id: 2,
@@ -12090,7 +12090,7 @@ export const allEventList: Array<Event> = [
                 t_object: "Discoteca mediocre!",
                 t_body: "Personale scortese, e cocktail senza giacchio, non ci torneremo mai più! Da chiudere...",
                 t_image_link: ["/gpbr?hash=ffdassdasd3jads325r79hfdzafhk"], //get photo by review
-                t_user: { t_name: "Antonio", t_surname: "Lodato", t_alias_generated: "alod323453asd", t_type: USER_TYPE.CUSTOMER }
+                t_user: { t_name: "Antonio", t_surname: "Lodato", t_alias_generated: "alod323453asd", t_type: USER_TYPE.CREATOR }
             }
         ],
         t_discussions: [
@@ -12099,7 +12099,7 @@ export const allEventList: Array<Event> = [
                 t_object: "Organizziamo una festa in questo locale il prossimo Halloween?",
                 t_body: "Ragazzi la mia idea è quella di organizzare una super festa di halloween in questo locale,\n come ben sapete da circa 10 anni,\n questo locale ha i drink migliori, la ragazze sono sempre bellissime.",
                 t_image_link: ["/gpbd?hash=ffdassdasd3jads325r79hfdzafhk"], //get photo by discussion
-                t_user: { t_name: "Pasquale", t_surname: "Schettino", t_alias_generated: "passchet2308abgd", t_type: USER_TYPE.CUSTOMER }
+                t_user: { t_name: "Pasquale", t_surname: "Schettino", t_alias_generated: "passchet2308abgd", t_type: USER_TYPE.CREATOR }
             }
         ],
         t_artist_list: [
@@ -12375,7 +12375,7 @@ export const allEventList: Array<Event> = [
                 t_object: "Discoteca fantastica!",
                 t_body: "Siamo stati alla discoteca 31-12-2022, non vediamo l'ora di tornarci con questo fantastico evento.",
                 t_image_link: ["/gbpr?hash=3jsadksdkhh3sadjkbmnsa3%sgdaska"],
-                t_user: { t_name: "Pasquale", t_surname: "Schettino", t_alias_generated: "passchet2308abgd", t_type: USER_TYPE.CUSTOMER }
+                t_user: { t_name: "Pasquale", t_surname: "Schettino", t_alias_generated: "passchet2308abgd", t_type: USER_TYPE.CREATOR }
             },
             {
                 n_id: 2,
@@ -12384,7 +12384,7 @@ export const allEventList: Array<Event> = [
                 t_object: "Discoteca mediocre!",
                 t_body: "Personale scortese, e cocktail senza giacchio, non ci torneremo mai più! Da chiudere...",
                 t_image_link: ["/gpbr?hash=ffdassdasd3jads325r79hfdzafhk"], //get photo by review
-                t_user: { t_name: "Antonio", t_surname: "Lodato", t_alias_generated: "alod323453asd", t_type: USER_TYPE.CUSTOMER }
+                t_user: { t_name: "Antonio", t_surname: "Lodato", t_alias_generated: "alod323453asd", t_type: USER_TYPE.CREATOR }
             }
         ],
         t_discussions: [
@@ -12393,7 +12393,7 @@ export const allEventList: Array<Event> = [
                 t_object: "Organizziamo una festa in questo locale il prossimo Halloween?",
                 t_body: "Ragazzi la mia idea è quella di organizzare una super festa di halloween in questo locale,\n come ben sapete da circa 10 anni,\n questo locale ha i drink migliori, la ragazze sono sempre bellissime.",
                 t_image_link: ["/gpbd?hash=ffdassdasd3jads325r79hfdzafhk"], //get photo by discussion
-                t_user: { t_name: "Pasquale", t_surname: "Schettino", t_alias_generated: "passchet2308abgd", t_type: USER_TYPE.CUSTOMER }
+                t_user: { t_name: "Pasquale", t_surname: "Schettino", t_alias_generated: "passchet2308abgd", t_type: USER_TYPE.CREATOR }
             }
         ],
         t_artist_list: [
@@ -12661,7 +12661,7 @@ export const allEventList: Array<Event> = [
                 t_object: "Discoteca fantastica!",
                 t_body: "Siamo stati alla discoteca 31-12-2022, non vediamo l'ora di tornarci con questo fantastico evento.",
                 t_image_link: ["/gbpr?hash=3jsadksdkhh3sadjkbmnsa3%sgdaska"],
-                t_user: { t_name: "Pasquale", t_surname: "Schettino", t_alias_generated: "passchet2308abgd", t_type: USER_TYPE.CUSTOMER }
+                t_user: { t_name: "Pasquale", t_surname: "Schettino", t_alias_generated: "passchet2308abgd", t_type: USER_TYPE.CREATOR }
             },
             {
                 n_id: 2,
@@ -12670,7 +12670,7 @@ export const allEventList: Array<Event> = [
                 t_object: "Discoteca mediocre!",
                 t_body: "Personale scortese, e cocktail senza giacchio, non ci torneremo mai più! Da chiudere...",
                 t_image_link: ["/gpbr?hash=ffdassdasd3jads325r79hfdzafhk"], //get photo by review
-                t_user: { t_name: "Antonio", t_surname: "Lodato", t_alias_generated: "alod323453asd", t_type: USER_TYPE.CUSTOMER }
+                t_user: { t_name: "Antonio", t_surname: "Lodato", t_alias_generated: "alod323453asd", t_type: USER_TYPE.CREATOR }
             }
         ],
         t_discussions: [
@@ -12679,7 +12679,7 @@ export const allEventList: Array<Event> = [
                 t_object: "Organizziamo una festa in questo locale il prossimo Halloween?",
                 t_body: "Ragazzi la mia idea è quella di organizzare una super festa di halloween in questo locale,\n come ben sapete da circa 10 anni,\n questo locale ha i drink migliori, la ragazze sono sempre bellissime.",
                 t_image_link: ["/gpbd?hash=ffdassdasd3jads325r79hfdzafhk"], //get photo by discussion
-                t_user: { t_name: "Pasquale", t_surname: "Schettino", t_alias_generated: "passchet2308abgd", t_type: USER_TYPE.CUSTOMER }
+                t_user: { t_name: "Pasquale", t_surname: "Schettino", t_alias_generated: "passchet2308abgd", t_type: USER_TYPE.CREATOR }
             }
         ],
         t_artist_list: [
@@ -12946,7 +12946,7 @@ export const allEventList: Array<Event> = [
                 t_object: "Discoteca fantastica!",
                 t_body: "Siamo stati alla discoteca 31-12-2022, non vediamo l'ora di tornarci con questo fantastico evento.",
                 t_image_link: ["/gbpr?hash=3jsadksdkhh3sadjkbmnsa3%sgdaska"],
-                t_user: { t_name: "Pasquale", t_surname: "Schettino", t_alias_generated: "passchet2308abgd", t_type: USER_TYPE.CUSTOMER }
+                t_user: { t_name: "Pasquale", t_surname: "Schettino", t_alias_generated: "passchet2308abgd", t_type: USER_TYPE.CREATOR }
             },
             {
                 n_id: 2,
@@ -12955,7 +12955,7 @@ export const allEventList: Array<Event> = [
                 t_object: "Discoteca mediocre!",
                 t_body: "Personale scortese, e cocktail senza giacchio, non ci torneremo mai più! Da chiudere...",
                 t_image_link: ["/gpbr?hash=ffdassdasd3jads325r79hfdzafhk"], //get photo by review
-                t_user: { t_name: "Antonio", t_surname: "Lodato", t_alias_generated: "alod323453asd", t_type: USER_TYPE.CUSTOMER }
+                t_user: { t_name: "Antonio", t_surname: "Lodato", t_alias_generated: "alod323453asd", t_type: USER_TYPE.CREATOR }
             }
         ],
         t_discussions: [
@@ -12964,7 +12964,7 @@ export const allEventList: Array<Event> = [
                 t_object: "Organizziamo una festa in questo locale il prossimo Halloween?",
                 t_body: "Ragazzi la mia idea è quella di organizzare una super festa di halloween in questo locale,\n come ben sapete da circa 10 anni,\n questo locale ha i drink migliori, la ragazze sono sempre bellissime.",
                 t_image_link: ["/gpbd?hash=ffdassdasd3jads325r79hfdzafhk"], //get photo by discussion
-                t_user: { t_name: "Pasquale", t_surname: "Schettino", t_alias_generated: "passchet2308abgd", t_type: USER_TYPE.CUSTOMER }
+                t_user: { t_name: "Pasquale", t_surname: "Schettino", t_alias_generated: "passchet2308abgd", t_type: USER_TYPE.CREATOR }
             }
         ],
         t_artist_list: [
@@ -13233,7 +13233,7 @@ export const allEventList: Array<Event> = [
                 t_object: "Discoteca fantastica!",
                 t_body: "Siamo stati alla discoteca 31-12-2022, non vediamo l'ora di tornarci con questo fantastico evento.",
                 t_image_link: ["/gbpr?hash=3jsadksdkhh3sadjkbmnsa3%sgdaska"],
-                t_user: { t_name: "Pasquale", t_surname: "Schettino", t_alias_generated: "passchet2308abgd", t_type: USER_TYPE.CUSTOMER }
+                t_user: { t_name: "Pasquale", t_surname: "Schettino", t_alias_generated: "passchet2308abgd", t_type: USER_TYPE.CREATOR }
             },
             {
                 n_id: 2,
@@ -13242,7 +13242,7 @@ export const allEventList: Array<Event> = [
                 t_object: "Discoteca mediocre!",
                 t_body: "Personale scortese, e cocktail senza giacchio, non ci torneremo mai più! Da chiudere...",
                 t_image_link: ["/gpbr?hash=ffdassdasd3jads325r79hfdzafhk"], //get photo by review
-                t_user: { t_name: "Antonio", t_surname: "Lodato", t_alias_generated: "alod323453asd", t_type: USER_TYPE.CUSTOMER }
+                t_user: { t_name: "Antonio", t_surname: "Lodato", t_alias_generated: "alod323453asd", t_type: USER_TYPE.CREATOR }
             }
         ],
         t_discussions: [
@@ -13251,7 +13251,7 @@ export const allEventList: Array<Event> = [
                 t_object: "Organizziamo una festa in questo locale il prossimo Halloween?",
                 t_body: "Ragazzi la mia idea è quella di organizzare una super festa di halloween in questo locale,\n come ben sapete da circa 10 anni,\n questo locale ha i drink migliori, la ragazze sono sempre bellissime.",
                 t_image_link: ["/gpbd?hash=ffdassdasd3jads325r79hfdzafhk"], //get photo by discussion
-                t_user: { t_name: "Pasquale", t_surname: "Schettino", t_alias_generated: "passchet2308abgd", t_type: USER_TYPE.CUSTOMER }
+                t_user: { t_name: "Pasquale", t_surname: "Schettino", t_alias_generated: "passchet2308abgd", t_type: USER_TYPE.CREATOR }
             }
         ],
         t_artist_list: [
@@ -13518,7 +13518,7 @@ export const allEventList: Array<Event> = [
                 t_object: "Discoteca fantastica!",
                 t_body: "Siamo stati alla discoteca 31-12-2022, non vediamo l'ora di tornarci con questo fantastico evento.",
                 t_image_link: ["/gbpr?hash=3jsadksdkhh3sadjkbmnsa3%sgdaska"],
-                t_user: { t_name: "Pasquale", t_surname: "Schettino", t_alias_generated: "passchet2308abgd", t_type: USER_TYPE.CUSTOMER }
+                t_user: { t_name: "Pasquale", t_surname: "Schettino", t_alias_generated: "passchet2308abgd", t_type: USER_TYPE.CREATOR }
             },
             {
                 n_id: 2,
@@ -13527,7 +13527,7 @@ export const allEventList: Array<Event> = [
                 t_object: "Discoteca mediocre!",
                 t_body: "Personale scortese, e cocktail senza giacchio, non ci torneremo mai più! Da chiudere...",
                 t_image_link: ["/gpbr?hash=ffdassdasd3jads325r79hfdzafhk"], //get photo by review
-                t_user: { t_name: "Antonio", t_surname: "Lodato", t_alias_generated: "alod323453asd", t_type: USER_TYPE.CUSTOMER }
+                t_user: { t_name: "Antonio", t_surname: "Lodato", t_alias_generated: "alod323453asd", t_type: USER_TYPE.CREATOR }
             }
         ],
         t_discussions: [
@@ -13536,7 +13536,7 @@ export const allEventList: Array<Event> = [
                 t_object: "Organizziamo una festa in questo locale il prossimo Halloween?",
                 t_body: "Ragazzi la mia idea è quella di organizzare una super festa di halloween in questo locale,\n come ben sapete da circa 10 anni,\n questo locale ha i drink migliori, la ragazze sono sempre bellissime.",
                 t_image_link: ["/gpbd?hash=ffdassdasd3jads325r79hfdzafhk"], //get photo by discussion
-                t_user: { t_name: "Pasquale", t_surname: "Schettino", t_alias_generated: "passchet2308abgd", t_type: USER_TYPE.CUSTOMER }
+                t_user: { t_name: "Pasquale", t_surname: "Schettino", t_alias_generated: "passchet2308abgd", t_type: USER_TYPE.CREATOR }
             }
         ],
         t_artist_list: [
@@ -13803,7 +13803,7 @@ export const allEventList: Array<Event> = [
                 t_object: "Discoteca fantastica!",
                 t_body: "Siamo stati alla discoteca 31-12-2022, non vediamo l'ora di tornarci con questo fantastico evento.",
                 t_image_link: ["/gbpr?hash=3jsadksdkhh3sadjkbmnsa3%sgdaska"],
-                t_user: { t_name: "Pasquale", t_surname: "Schettino", t_alias_generated: "passchet2308abgd", t_type: USER_TYPE.CUSTOMER }
+                t_user: { t_name: "Pasquale", t_surname: "Schettino", t_alias_generated: "passchet2308abgd", t_type: USER_TYPE.CREATOR }
             },
             {
                 n_id: 2,
@@ -13812,7 +13812,7 @@ export const allEventList: Array<Event> = [
                 t_object: "Discoteca mediocre!",
                 t_body: "Personale scortese, e cocktail senza giacchio, non ci torneremo mai più! Da chiudere...",
                 t_image_link: ["/gpbr?hash=ffdassdasd3jads325r79hfdzafhk"], //get photo by review
-                t_user: { t_name: "Antonio", t_surname: "Lodato", t_alias_generated: "alod323453asd", t_type: USER_TYPE.CUSTOMER }
+                t_user: { t_name: "Antonio", t_surname: "Lodato", t_alias_generated: "alod323453asd", t_type: USER_TYPE.CREATOR }
             }
         ],
         t_discussions: [
@@ -13821,7 +13821,7 @@ export const allEventList: Array<Event> = [
                 t_object: "Organizziamo una festa in questo locale il prossimo Halloween?",
                 t_body: "Ragazzi la mia idea è quella di organizzare una super festa di halloween in questo locale,\n come ben sapete da circa 10 anni,\n questo locale ha i drink migliori, la ragazze sono sempre bellissime.",
                 t_image_link: ["/gpbd?hash=ffdassdasd3jads325r79hfdzafhk"], //get photo by discussion
-                t_user: { t_name: "Pasquale", t_surname: "Schettino", t_alias_generated: "passchet2308abgd", t_type: USER_TYPE.CUSTOMER }
+                t_user: { t_name: "Pasquale", t_surname: "Schettino", t_alias_generated: "passchet2308abgd", t_type: USER_TYPE.CREATOR }
             }
         ],
         t_artist_list: [
@@ -14087,7 +14087,7 @@ export const allEventList: Array<Event> = [
                 t_object: "Discoteca fantastica!",
                 t_body: "Siamo stati alla discoteca 31-12-2022, non vediamo l'ora di tornarci con questo fantastico evento.",
                 t_image_link: ["/gbpr?hash=3jsadksdkhh3sadjkbmnsa3%sgdaska"],
-                t_user: { t_name: "Pasquale", t_surname: "Schettino", t_alias_generated: "passchet2308abgd", t_type: USER_TYPE.CUSTOMER }
+                t_user: { t_name: "Pasquale", t_surname: "Schettino", t_alias_generated: "passchet2308abgd", t_type: USER_TYPE.CREATOR }
             },
             {
                 n_id: 2,
@@ -14096,7 +14096,7 @@ export const allEventList: Array<Event> = [
                 t_object: "Discoteca mediocre!",
                 t_body: "Personale scortese, e cocktail senza giacchio, non ci torneremo mai più! Da chiudere...",
                 t_image_link: ["/gpbr?hash=ffdassdasd3jads325r79hfdzafhk"], //get photo by review
-                t_user: { t_name: "Antonio", t_surname: "Lodato", t_alias_generated: "alod323453asd", t_type: USER_TYPE.CUSTOMER }
+                t_user: { t_name: "Antonio", t_surname: "Lodato", t_alias_generated: "alod323453asd", t_type: USER_TYPE.CREATOR }
             }
         ],
         t_discussions: [
@@ -14105,7 +14105,7 @@ export const allEventList: Array<Event> = [
                 t_object: "Organizziamo una festa in questo locale il prossimo Halloween?",
                 t_body: "Ragazzi la mia idea è quella di organizzare una super festa di halloween in questo locale,\n come ben sapete da circa 10 anni,\n questo locale ha i drink migliori, la ragazze sono sempre bellissime.",
                 t_image_link: ["/gpbd?hash=ffdassdasd3jads325r79hfdzafhk"], //get photo by discussion
-                t_user: { t_name: "Pasquale", t_surname: "Schettino", t_alias_generated: "passchet2308abgd", t_type: USER_TYPE.CUSTOMER }
+                t_user: { t_name: "Pasquale", t_surname: "Schettino", t_alias_generated: "passchet2308abgd", t_type: USER_TYPE.CREATOR }
             }
         ],
         t_artist_list: [
