@@ -97,7 +97,7 @@
             <div class="row row-cols-1 row-cols-lg-2 row-cols-xl-3 g-4 justify-content-start p-4">
                 <ng-container *ngFor="let item of filteredItems; trackBy: trackByFn;">
                     <div *ngIf="item.type != ItemType.Utenti"
-                        class="card d-flex flex-column mb-3 bg-transparent card-element border-0 pointer">
+                        class="card d-flex flex-column mb-3 bg-transparent card-element border-0 pointer px-4">
                         <div [ngClass]="darkMode ? 'text-white' : 'text-secondary'" class="card-top flex-column">
                             <div *ngIf="item.t_user" class="d-flex flex-row align-items-center">
                                 <span shape="circle" class="user-profile-photo-container"><img
@@ -106,7 +106,7 @@
                                     <div class="d-flex flex-row">
                                         <p class="m-0 mx-1 mt-1">{{ item.t_user.t_alias_generated }}
                                             <svg *ngIf="item.t_user.is_verified" xmlns="http://www.w3.org/2000/svg"
-                                                width="16" height="16" fill="currentColor" #tooltip="matTooltip"
+                                                width="16" height="16" fill="currentColor" #tooltip="matTooltip" matTooltipPosition="right"
                                                 matTooltip="Account verificato" class="bi bi-check2-circle pointer"
                                                 viewBox="0 0 16 16">
                                                 <path
@@ -176,7 +176,7 @@
                             <ng-container *ngIf="item.t_user" class="d-flex flex-row justify-content-between align-items-center">
 
                                 <div class="mt-1 d-flex align-item-center justify-content-center"
-                                    style="font-size:0.8rem">
+                                    style="font-size:0.8rem; border-bottom: 1px solid; padding-bottom:15px">
                                     <div class="d-flex"><svg xmlns="http://www.w3.org/2000/svg" width="16"
                                             height="16" fill="currentColor" viewBox="0 0 16 16" class="bi bi-heart"
                                             style="margin-top: 1px;">
