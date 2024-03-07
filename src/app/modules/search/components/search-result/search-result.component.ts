@@ -21,14 +21,21 @@ export class SearchResultComponent implements AfterViewInit, AfterViewChecked {
   selectedType: ItemType = ItemType.Tutti;
   ItemType: any = ItemType;
   searchInput: string = null;
-  lookedForArray = [
-    "Esame De Prisco",
-    "Discoteca tropicale",
-    "Superamento esame Cloud",
-    "Wine Music",
-    "Ladies Night"
+  didascalie = [
+    'Evento emozionante', 'Esperienza indimenticabile', 'Avventura entusiasmante', 'Momenti avvincenti',
+    'Una serata da ricordare', 'Raduno magico', 'Spettacolo spettacolare', 'Celebrazione della comunità',
+    'Simposio ispiratore', 'Estravaganza culturale', 'Performance mozzafiato', 'Vetrina artistica',
+    'Laboratorio interattivo', 'Concerto epico', 'Forum educativo', 'Festività all\'aperto',
+    'Mostra innovativa', 'Simposio creativo', 'Esposizione divertente', 'Occasione speciale',
+    'Conferenza dinamica', 'Incontro sociale', 'Esperienza di realtà virtuale', 'Presentazione unica',
+    'Vertice tecnologico', 'Estravaganza di moda', 'Ritiro benessere', 'Scoperta di nuovi orizzonti',
+    'Viaggio musicale', 'Vetrina artigianale', 'Evento di networking globale', 'Intrattenimento sbalorditivo',
+    'Seminario impattante', 'Festival gastronomico', 'Iniziativa eco-friendly', 'Delizie epicuree',
+    'Esplorazione di nuovi fronti', 'Campionamento del cambiamento', 'Performance teatrale', 'Gemme nascoste rivelate',
+    'Celebrare la diversità', 'Avventura gastronomica', 'Simposio futuristico', 'Delizie culinarie',
+    'Esperienza interattiva', 'Idee rivoluzionarie', 'Sotto i riflettori dei talenti emergenti'
   ];
-  protected darkMode = false;
+  currentGifLoading = 'assets/img/loader_white.gif';
   protected decodedParams: {
     searchInput: string;
     filter: {
@@ -53,7 +60,7 @@ export class SearchResultComponent implements AfterViewInit, AfterViewChecked {
     //event.preventDefault();
   }
 
-  navigateToBuyTicket(){
+  navigateToBuyTicket() {
     alert("xd")
   }
 
@@ -63,20 +70,19 @@ export class SearchResultComponent implements AfterViewInit, AfterViewChecked {
     bodyElement.dispatchEvent(clickEvent);
   }
 
-  protected getFirstAccount(items: any[], selectedType: ItemType): any[] {
-    if (selectedType === ItemType.Tutti) {
-      const UtentiItem = items.find(item => item.type === ItemType.Utenti);
-      return UtentiItem ? [UtentiItem] : [];
-    }
-    return [];
+  protected getLastTwoAccounts(items: any[], type: ItemType.Artisti | ItemType.Utenti): any[] {
+    const utentiAccounts = items
+      .filter(item => item.type === ItemType.Utenti && (type === ItemType.Artisti ? item.t_type === 0 : item.t_type > 0))
+      .slice(-2);
+    return utentiAccounts;
   }
 
   ngAfterViewChecked(): void {
     let darkModeChoice = localStorage.getItem("darkModeChoice");
     if (darkModeChoice === "0") {
-      this.darkMode = false;
+      this.currentGifLoading = 'assets/img/loader_black.gif';
     } else {
-      this.darkMode = true;
+      this.currentGifLoading = 'assets/img/loader_white.gif';
     }
   }
 
@@ -112,6 +118,10 @@ export class SearchResultComponent implements AfterViewInit, AfterViewChecked {
     }, 1);
   }
 
+  navigateToUserProfile(id:number){
+    
+  }
+
   private generateRandomAccount(index: number): any { //Account
     const randomAccountType = randomIntFromInterval(1, 3) === 1 ? USER_TYPE.ARTIST : randomIntFromInterval(1, 3) === 2 ? USER_TYPE.COMPANY : USER_TYPE.CREATOR;
     return {
@@ -122,7 +132,7 @@ export class SearchResultComponent implements AfterViewInit, AfterViewChecked {
       t_description: "Ti aiutiamo a diventare la versione migliore di TE STESSO! Seguici su Instagram.",
       t_profile_photo: randomAccountType === 0 ? '/assets/img/example_artist_image.jpg' : "/assets/img/userExampleImg.jpeg",
       t_type: randomAccountType,
-      is_verified: randomIntFromInterval(0,5) > 3 ? true : false,
+      is_verified: randomIntFromInterval(0, 5) > 3 ? true : false,
       type: ItemType.Utenti
     };
   }
@@ -144,10 +154,10 @@ export class SearchResultComponent implements AfterViewInit, AfterViewChecked {
   }
 
   private generateRandomEvent(index: number): any { //Event
-    const randomIntValue =  randomIntFromInterval(0, 1);
+    const randomIntValue = randomIntFromInterval(0, 1);
     return {
       id: this.items.length + index,
-      t_title: `Event Title ${index + 1}`,
+      t_caption: this.didascalie[Math.floor(Math.random() * this.didascalie.length)],
       t_image_link: randomIntValue === 0 ? '/assets/img/exampleEventFirstFrame.png' : '/assets/img/event-image-placeholder.jpg',
       t_video_link: randomIntValue === 0 ? '/assets/videos/exampleEventVideo.mp4' : null,
       t_event_date: new Date(), // Imposta la data dell'evento secondo le tue esigenze
@@ -162,21 +172,22 @@ export class SearchResultComponent implements AfterViewInit, AfterViewChecked {
 
   formatDateString(dateString: string): string {
     moment.locale('it'); // Imposta la lingua italiana
-  
+
     const currentDate = moment();
     const formattedDate = moment(dateString);
-    
+
     if (formattedDate.isBefore(currentDate, 'day')) {
       return formattedDate.format('DD MMMM YYYY [alle] HH:mm');
     } else {
       return formattedDate.format('DD MMMM YYYY');
     }
   }
+
   private generateRandomTopics(index: number): any { //Topic
-    const randomIntValue =  randomIntFromInterval(0, 1);
+    const randomIntValue = randomIntFromInterval(0, 1);
     return {
       id: this.items.length + index,
-      t_title: `Topic Title ${index + 1}`,
+      t_caption: this.didascalie[Math.floor(Math.random() * this.didascalie.length)],
       t_image_link: randomIntValue === 0 ? '/assets/img/exampleTopicImageFristFrame.png' : '/assets/img/topic-image-placeholder.jpg',
       t_video_link: randomIntValue === 0 ? '/assets/videos/exampleTopicsVideo.mp4' : null,
       t_topic_date: new Date(), // Imposta la data del topic secondo le tue esigenze
@@ -190,9 +201,9 @@ export class SearchResultComponent implements AfterViewInit, AfterViewChecked {
   private filterItemsByType() {
     this.filteredItems = this.selectedType === ItemType.Tutti
       ? this.items
-      : this.selectedType === ItemType.Artisti ? this.items.filter(item => item.t_type === 0) 
-      : this.selectedType === ItemType.Utenti ? this.items.filter(item => item.t_type > 0 ) 
-      : this.items.filter(item => item.type === this.selectedType);
+      : this.selectedType === ItemType.Artisti ? this.items.filter(item => item.t_type === 0)
+        : this.selectedType === ItemType.Utenti ? this.items.filter(item => item.t_type > 0)
+          : this.items.filter(item => item.type === this.selectedType);
   }
 
   changeType(type: ItemType) {

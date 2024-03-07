@@ -1,4 +1,4 @@
-<div [ngClass]="darkMode ? 'text-white' : 'text-black'">
+<div [ngClass]="darkMode ? 'text-white' : 'text-dark'">
     <unievent-navbar id="nav" [darkMode]="darkMode" (updateThemeEvent)="updateTheme()" *ngIf="showMenu"
         (onShowCollapse)="showCollapse()" (onCloseCollapse)="closeCollapse()"></unievent-navbar>
     <!--Se navbar è fixed e si vuole menu left fixed-->

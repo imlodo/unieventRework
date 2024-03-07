@@ -30,7 +30,6 @@ export class AppComponent implements OnInit, AfterViewInit {
     ).subscribe((event: NavigationEnd) => {
       const rootRoute = this.findRootRoute(this.router.routerState.snapshot.root);
       this.showMenu = rootRoute && rootRoute.routeConfig?.component !== LoginComponent && rootRoute.routeConfig?.component !== SignupComponent;
-      console.log(rootRoute);
       this.showMenuLeft = this.showMenu && rootRoute && rootRoute.routeConfig?.component === HomepageComponent;
     });
 
