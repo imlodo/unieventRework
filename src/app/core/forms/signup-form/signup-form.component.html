@@ -37,11 +37,11 @@
         </div>
 
         <div class="col-sm-6">
-            <label for="t_password" class="form-label">Corso di studi</label>
+            <label for="t_type" class="form-label">Tipo *</label>
             <div class="input-group form-group mb-3">
-                <select class="form-select" name="t_course" formControlName="t_course" id="t_course" aria-label="--Seleziona un corso--">
-                    <option value="" disabled selected>-- Seleziona un corso --</option>
-                    <option *ngFor="let el of COURSES_OBJECT" value="{{el}}">{{COURSES[el]}}</option>
+                <select class="form-select" name="t_type" formControlName="t_type" id="t_type" aria-label="--Seleziona un tipo--">
+                    <option value="" disabled selected>-- Seleziona un tipo --</option>
+                    <option *ngFor="let el of USER_TYPE_OBJECT" value="{{el}}">{{USER_TYPE_CONST[el]}}</option>
                 </select>
             </div>
         </div>

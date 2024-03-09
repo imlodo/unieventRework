@@ -61,6 +61,14 @@
     border-bottom: 3px solid rgb(31, 31, 31);
 }
 
+::ng-deep .bg-dark-mode .menuEl{
+    color: var(--bs-secondary);
+}
+
+::ng-deep .bg-light-mode .menuEl{
+    color: var(--bs-dark);
+}
+
 .type-buttons {
     font-size: 1.2rem;
     border-bottom: 1px solid #242424;

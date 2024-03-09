@@ -3,7 +3,7 @@ import { FormGroup } from '@angular/forms';
 import { RxFormBuilder } from '@rxweb/reactive-form-validators';
 import { SignUpFormDataModel } from './signup-form.model';
 import { ToastrService } from 'ngx-toastr';
-import { COURSES_ENUM } from '../../utility/enum-constant';
+import { USER_TYPE } from '../../utility/global-constant';
 
 @Component({
   selector: 'unievent-signup-form',
@@ -15,12 +15,14 @@ export class SignupFormComponent {
   form: FormGroup;
   isNew: boolean;
   isEdit: boolean;
-  COURSES_OBJECT = Object.keys(COURSES_ENUM);
-  COURSES = COURSES_ENUM;
+  USER_TYPE_OBJECT = Object.values(USER_TYPE).slice(-3).filter(el=> el != USER_TYPE.ARTIST);
+  USER_TYPE_CONST = USER_TYPE;
   dynamicClass = [];
 
   //constructor(private formBuilder: RxFormBuilder, private localeService: BsLocaleService, public ls: LocaleService) { }
-  constructor(private formBuilder: RxFormBuilder, private toastr: ToastrService) { }
+  constructor(private formBuilder: RxFormBuilder, private toastr: ToastrService) {
+    console.log(this.USER_TYPE_OBJECT)
+   }
 
   ngOnInit() {
     //defineLocale("it", itLocale);
@@ -36,14 +38,14 @@ export class SignupFormComponent {
   get t_name() { return this.form.get('t_name').value; }
   get t_surname() { return this.form.get('t_surname').value; }
   get t_birthday() { return this.form.get('t_birthday').value; }
-  get t_course() { return this.form.get('t_course').value; }
+  get t_type() { return this.form.get('t_type').value; }
   
   set t_username(t_username: string) { this.form.get('t_username').setValue(t_username); }
   set t_password(t_password: string) { this.form.get('t_password').setValue(t_password); }
   set t_name(t_name: string) { this.form.get('t_name').setValue(t_name); }
   set t_surname(t_surname: string) { this.form.get('t_surname').setValue(t_surname); }
   set t_birthday(t_birthday: Date) { this.form.get('t_birthday').setValue(t_birthday); }
-  set t_course(t_course: string) { this.form.get('t_course').setValue(t_course); }
+  set t_type(t_type: string) { this.form.get('t_type').setValue(t_type); }
 
   signUp() {
     this.toastr.clear();

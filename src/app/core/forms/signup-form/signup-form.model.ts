@@ -23,7 +23,7 @@ export class SignUpFormDataModel {
     t_birthday: Date;
 
     @prop()
-    t_course: String;
+    t_type: String;
 
     constructor() {
         this.t_name = null;
@@ -31,6 +31,6 @@ export class SignUpFormDataModel {
         this.t_username = null;
         this.t_password = null;
         this.t_birthday = null;
-        this.t_course = "";
+        this.t_type = "";
     }
 }

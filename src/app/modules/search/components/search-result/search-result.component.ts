@@ -21,6 +21,8 @@ export class SearchResultComponent implements AfterViewInit, AfterViewChecked {
   selectedType: ItemType = ItemType.Tutti;
   ItemType: any = ItemType;
   searchInput: string = null;
+  countAccounts: number = 1; //questi devono essere precaricati dal back-end che ci dice quanti account sono stati trovati
+  countArtists: number = 1;  //questi devono essere precaricati dal back-end che ci dice quanti artisti sono stati trovati
   didascalie = [
     'Evento emozionante', 'Esperienza indimenticabile', 'Avventura entusiasmante', 'Momenti avvincenti',
     'Una serata da ricordare', 'Raduno magico', 'Spettacolo spettacolare', 'Celebrazione della comunità',
@@ -120,6 +122,18 @@ export class SearchResultComponent implements AfterViewInit, AfterViewChecked {
 
   navigateToUserProfile(id:number){
     
+  }
+
+  addLike(item:any){
+
+  }
+
+  addComment(item:any){
+
+  }
+  
+  share(item:any){
+
   }
 
   private generateRandomAccount(index: number): any { //Account
