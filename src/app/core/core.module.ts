@@ -22,6 +22,8 @@ import { NavbarProfileComponent } from './components/navbar-profile/navbar-profi
 import { NavbarChatComponent } from './components/navbar-chat/navbar-chat.component';
 import { FilterByTypePipe } from './pipe/filter-by-type.pipe';
 import { NavbarLeftMenuComponent } from './components/navbar-left-menu/navbar-left-menu.component';
+import { NavbarCreateComponent } from './components/navbar-create/navbar-create.component';
+import { NavbarSearchComponent } from './components/navbar-search/navbar-search.component';
 
 @NgModule({
 	declarations: [
@@ -48,7 +50,9 @@ import { NavbarLeftMenuComponent } from './components/navbar-left-menu/navbar-le
 		NavbarProfileComponent,
 		NavbarChatComponent,
 		FilterByTypePipe,
-		NavbarLeftMenuComponent
+		NavbarLeftMenuComponent,
+  NavbarCreateComponent,
+  NavbarSearchComponent
 	],
 	imports: [
 		CommonModule,

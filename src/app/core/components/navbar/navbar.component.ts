@@ -17,8 +17,12 @@ export class NavbarComponent {
   @Output() onCloseCollapse: EventEmitter<void> = new EventEmitter();
   @Output() updateThemeEvent: EventEmitter<void> = new EventEmitter();
   isShowed = false;
+  isMobileSearch = false;
   @Input() darkMode = false;
 
+  showMobileLeftPanel(){
+    alert("Implementare pannello menu sx in modalità mobile")
+  }
 
   logout() {
     alert("Implementare logout")

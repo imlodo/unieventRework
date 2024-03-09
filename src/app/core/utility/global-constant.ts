@@ -14133,6 +14133,7 @@ export const ROUTE_LIST =
             list: "/artist/category/list"
         },
     },
+    create:"/create",
     event: {
         category: {
             list: "/event/category/list"
