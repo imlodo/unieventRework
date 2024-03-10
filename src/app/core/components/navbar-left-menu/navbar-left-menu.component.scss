@@ -1,7 +1,17 @@
 .left-nav {
-    width: 240px;
     position: fixed;
+    height: calc(100vh - 80px);
+    width: 240px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    background-color: #333;
 }
+
+
+::ng-deep .bg-light-mode .left-nav::-webkit-scrollbar-thumb {
+    background-color: #a8a8a8;
+}
+
 
 ::ng-deep .bg-dark-mode .left-nav {
     background: rgb(18, 18, 18);
@@ -9,4 +19,17 @@
 
 ::ng-deep .bg-light-mode .left-nav {
     background: var(--bs-white);
+}
+
+.icon-sx-margin {
+    margin-right: 5px;
+}
+
+.nav-item:hover {
+    background-color: #3a3a3a;
+    border-radius: 5px;
+}
+
+.nav-item {
+    padding: 3px 7px;
 }
