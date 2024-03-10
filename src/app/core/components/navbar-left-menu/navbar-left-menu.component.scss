@@ -12,6 +12,13 @@
     background-color: #a8a8a8;
 }
 
+.left-nav::-webkit-scrollbar-thumb{
+    visibility: hidden;
+}
+
+.left-nav:hover::-webkit-scrollbar-thumb{
+    visibility: visible;
+}
 
 ::ng-deep .bg-dark-mode .left-nav {
     background: rgb(18, 18, 18);
