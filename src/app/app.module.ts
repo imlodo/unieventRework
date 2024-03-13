@@ -10,9 +10,7 @@ import { NgSelectModule } from '@ng-select/ng-select';
 import { adapterFactory } from 'angular-calendar/date-adapters/moment';
 import * as moment from 'moment';
 import { NgbModalModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { PaymentStep1FormComponent } from './payment-step1-form/payment-step1-form.component';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
-import { NavbarSearchComponent } from './navbar-search/navbar-search.component';
 
 export function momentAdapterFactory() {
   return adapterFactory(moment);
@@ -20,9 +18,7 @@ export function momentAdapterFactory() {
 
 @NgModule({
   declarations: [
-    AppComponent,
-    PaymentStep1FormComponent,
-    NavbarSearchComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,

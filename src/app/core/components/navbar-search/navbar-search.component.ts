@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'unievent-navbar-search',
@@ -7,7 +7,9 @@ import { Component } from '@angular/core';
 })
 export class NavbarSearchComponent {
 
-  showSearch(){
-    alert("implementare show search")
+  @Output() showMobileSearchEvent: EventEmitter<void> = new EventEmitter<void>();
+
+  showSearch() {
+    this.showMobileSearchEvent.emit();
   }
 }

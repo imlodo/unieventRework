@@ -1,8 +1,9 @@
 import { Component, ElementRef, EventEmitter, HostListener, Input, Output, ViewChild } from '@angular/core';
-import { Router } from '@angular/router';
-import { ROUTE_LIST } from '../../utility/global-constant';
 import { NavbarNotificationComponent } from '../navbar-notification/navbar-notification.component';
 import { NavbarProfileComponent } from '../navbar-profile/navbar-profile.component';
+import { GlobalService } from '../../services';
+import { Router } from '@angular/router';
+import { ROUTE_LIST } from '../../utility/global-constant';
 
 @Component({
   selector: 'unievent-navbar',
@@ -20,8 +21,28 @@ export class NavbarComponent {
   isMobileSearch = false;
   @Input() darkMode = false;
 
-  showMobileLeftPanel(){
-    alert("Implementare pannello menu sx in modalità mobile")
+  @HostListener('document:click', ['$event'])
+  handleDocumentClick(event: MouseEvent) {
+    const clickedInsideComponent = this.elementRef.nativeElement.contains(event.target);
+    const targetElement = event.target as HTMLElement;
+    const hasSearchClasses = targetElement.classList.contains('bi-search') ||
+      targetElement.classList.contains('path-bi-search') ||
+      targetElement.classList.contains('link-search-text');
+    if (!clickedInsideComponent && !hasSearchClasses) {
+      this.isMobileSearch = false;
+    }
+  }
+
+  @HostListener('window:resize', ['$event'])
+  handleWindowResize(event: Event) {
+    this.isMobileSearch = false;
+  }
+
+  constructor(private elementRef: ElementRef, private router: Router, private globalService: GlobalService) {
+  }
+
+  showMobileLeftPanel() {
+    alert("Implementare show menu")
   }
 
   logout() {
@@ -55,6 +76,15 @@ export class NavbarComponent {
         this.profileComponent.closeProfilePanel();
         break;
     }
+  }
+
+  navigateToSearch(searchInput:string) {
+    
+    const params = this.globalService.encodeParams({
+      searchInput: searchInput,
+      searchType: "Tutti"
+    });
+    this.router.navigate([ROUTE_LIST.search.result, params]);
   }
 
   updateTheme() {

@@ -32,12 +32,12 @@
     margin-right: 5px;
 }
 
-::ng-deep .bg-dark-mode .nav-item:hover {
+::ng-deep .bg-dark-mode .left-nav .nav-item:hover {
     background-color: #3a3a3a;
     border-radius: 5px;
 }
 
-::ng-deep .bg-light-mode .nav-item:hover {
+::ng-deep .bg-light-mode .left-nav .nav-item:hover {
     background-color: #e1e1e1;
     border-radius: 5px;
 }

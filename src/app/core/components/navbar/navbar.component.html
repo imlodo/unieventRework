@@ -1,23 +1,26 @@
-<nav style="position: fixed; left:0; right:0; top: 0; z-index: 3; border-bottom:1px solid rgb(56, 56, 56)"
+<nav style="position: fixed; left:0; right:0; top: 0; z-index: 4; border-bottom:1px solid rgb(56, 56, 56)"
     [ngClass]="darkMode ? 'bg-dark-mode navbar-dark' : 'bg-white' " class="navbar navbar-expand-lg">
     <div *ngIf="!isMobileSearch" class="container-fluid">
-        <button (click)="showMobileLeftPanel()" class="navbar-toggler" type="button" data-bs-toggle="collapse"
-            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-            aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <a class="navbar-brand" href="/">
-            <div class="mt-2">
-                <img [attr.src]="darkMode ? '/assets/img/logo_unievent_white.svg' : '/assets/img/logo_unievent_black.svg' "
-                    width="150px" />
-            </div>
-        </a>
+        <div class="d-flex flex-row align-items-center" style="gap:10px">
+            <button (click)="showMobileLeftPanel()" class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <a class="navbar-brand" href="/">
+                <div class="mt-2">
+                    <img [attr.src]="darkMode ? '/assets/img/logo_unievent_white.svg' : '/assets/img/logo_unievent_black.svg' "
+                        width="150px" />
+                </div>
+            </a>
+        </div>
         <div class="d-lg-flex mx-auto w-100 justify-content-center d-none">
             <ng-container *ngTemplateOutlet="search"></ng-container>
         </div>
         <div class="d-flex justify-content-end align-items-center">
             <ng-container *ngIf="online" class="on-nav">
-                <unievent-navbar-search class="d-lg-none"></unievent-navbar-search>
+                <unievent-navbar-search (showMobileSearchEvent)="isMobileSearch = true"
+                    class="d-lg-none"></unievent-navbar-search>
                 <unievent-navbar-create></unievent-navbar-create>
                 <unievent-navbar-notification [darkMode]="darkMode"
                     (closeOtherNavbarPanelEvent)="closeOtherNavbarPanel('notification')"></unievent-navbar-notification>
@@ -51,11 +54,22 @@
                 </div>
             </div> -->
     </div>
-    <div *ngIf="isMobileSearch" class="container-fluid">Ricerca mobile</div>
+    <div class="container-fluid" style="padding:12px" *ngIf="isMobileSearch">
+        <ng-container *ngTemplateOutlet="searchMobile"></ng-container>
+    </div>
 </nav>
 
 <ng-template #search>
-    <input class="w-auto form-control me-2" type="search" placeholder="Cerca" aria-label="Search">
-    <button class="btn btn-outline-success" type="submit">Cerca</button>
+    <unievent-navbar-searchbar (searchEvent)="navigateToSearch($event)"></unievent-navbar-searchbar>
 </ng-template>
-<ng-template #searchMobile></ng-template>
+<ng-template #searchMobile>
+    <div class="d-flex flex-row w-100 justify-content-center align-items-center gap-3">
+        <svg (click)="isMobileSearch=false" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-arrow-left pointer"
+            viewBox="0 0 16 16">
+            <path fill-rule="evenodd"
+                d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8" />
+        </svg>
+        <unievent-navbar-searchbar (searchEvent)="navigateToSearch($event)" [isMobile]="true"></unievent-navbar-searchbar>
+        
+    </div>
+</ng-template>
