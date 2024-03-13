@@ -1,14 +1,22 @@
 import { AfterViewInit, Component, ElementRef, HostListener, Input, Renderer2 } from '@angular/core';
+import { NavigationEnd, Router } from '@angular/router';
 
 @Component({
   selector: 'unievent-navbar-left-menu',
   templateUrl: './navbar-left-menu.component.html',
   styleUrls: ['./navbar-left-menu.component.scss']
 })
-export class NavbarLeftMenuComponent implements AfterViewInit{
+export class NavbarLeftMenuComponent implements AfterViewInit {
   isDNone: boolean;
+  activePath: string;
 
-  constructor(private renderer: Renderer2, private el: ElementRef) {}
+  constructor(private renderer: Renderer2, private el: ElementRef, private router: Router) {
+    this.router.events.subscribe((event) => {
+      if (event instanceof NavigationEnd) {
+        this.activePath = event.url;
+      }
+    });
+  }
 
   ngAfterViewInit(): void {
     this.updateIsDNone();
@@ -31,5 +39,8 @@ export class NavbarLeftMenuComponent implements AfterViewInit{
       this.renderer.removeStyle(this.el.nativeElement, 'margin-right');
     }
   }
- 
+
+  isLinkActive(link: string): boolean {
+    return this.activePath === link;
+  }
 }

@@ -42,6 +42,16 @@
     border-radius: 5px;
 }
 
+::ng-deep .bg-dark-mode .left-nav .nav-item.active{
+    background-color: #3a3a3a;
+    border-radius: 5px;
+}
+
+::ng-deep .bg-light-mode .left-nav .nav-item.active {
+    background-color: #e1e1e1;
+    border-radius: 5px;
+}
+
 .nav-item {
     padding: 3px 7px;
 }

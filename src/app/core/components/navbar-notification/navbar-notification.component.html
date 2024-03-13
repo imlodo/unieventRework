@@ -1,4 +1,4 @@
-<div class="navbar-nav ">
+<div class="navbar-nav">
     <div class="nav-item text-nowrap">
         <a matTooltip="Notifiche" class="nav-link px-1 link-icon-text no-padding pointer"
             (click)="openNotificationModal()"><i class="gg-bell pointer"></i>
@@ -7,7 +7,7 @@
         </a>
     </div>
 </div>
-<div [ngClass]="darkMode ? 'notification-dark-mode text-white' : 'notification-light-mode text-black' "  *ngIf="showNotifications" class="position-absolute border-0 p-3 notification">
+<div [ngClass]="darkMode ? 'notification-dark-mode text-white' : 'notification-light-mode text-black' "  *ngIf="showNotifications" class="position-absolute border-0 p-3 notification shadow">
     <div class="d-flex flex-column">
         <div class="d-flex flex-row justify-content-between mb-3" style="align-items: center;">
             <h1 class="m-0"><b>Notifiche</b></h1>
