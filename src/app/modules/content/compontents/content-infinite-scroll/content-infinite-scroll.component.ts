@@ -1,5 +1,5 @@
 import { AfterContentChecked, AfterViewChecked, AfterViewInit, ChangeDetectorRef, Component, ElementRef, QueryList, ViewChildren } from "@angular/core";
-import { ItemType, USER_TYPE } from "../../../../core/utility/global-constant";
+import { ItemType, ROUTE_LIST, USER_TYPE } from "../../../../core/utility/global-constant";
 import { GlobalService } from "src/app/core/services";
 import { ActivatedRoute, Router } from "@angular/router";
 import { pluck } from "rxjs";
@@ -120,20 +120,21 @@ export class ContentInfiniteScrollComponent implements AfterViewInit, AfterViewC
     }, 1);
   }
 
-  navigateToUserProfile(id:number){
-    
+  navigateToUserProfile(item: any) {
+    const link = "/@/" + item.t_user.t_alias_generated;
+    this.router.navigate([link]);
   }
 
-  addLike(item:any){
-
+  addLike(item: any) {
+    alert("LIKE")
   }
 
-  addComment(item:any){
-
+  addComment(item: any) {
+    alert("COMMENT")
   }
-  
-  share(item:any){
 
+  share(item: any) {
+    alert("SHARE")
   }
 
   private generateRandomAccount(index: number): any { //Account
@@ -225,8 +226,12 @@ export class ContentInfiniteScrollComponent implements AfterViewInit, AfterViewC
     this.filterItemsByType();
   }
 
-  getLinkNavigateToItem(item: any) {
-    return window.location.href;
+  navigateToContent(item: any) {
+    const link = "/@/" + item.t_user.t_alias_generated + "/content";
+    const params = this.globalService.encodeParams({
+      id: item.id,
+    });
+    this.router.navigate([link, params]);
   }
 
   private getRandomType(): ItemType {
