@@ -219,12 +219,12 @@
 /* Stile del pulsante play/pausa */
 .custom-video-player::-webkit-media-controls-play-button,
 .custom-video-player::-webkit-media-controls-pause-button {
-    color: #fff;
+    color: #ff0000 !important;
 }
 
 /* Stile della barra del tempo di riproduzione */
 .custom-video-player::-webkit-media-controls-timeline {
-    color: #fff;
+    color: #858585;
 }
 
 /* Stile del pulsante del volume */
@@ -245,9 +245,4 @@
 /* Stile del pulsante del tempo rimanente */
 .custom-video-player::-webkit-media-controls-time-remaining-display {
     color: #fff;
-}
-
-/* Nascondi il pulsante "Altre Opzioni" */
-.custom-video-player::-webkit-media-controls-overflow-button {
-    display: none !important;
 }
