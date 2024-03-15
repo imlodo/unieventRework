@@ -197,3 +197,57 @@
 .mt-bottom-btn{
     margin-top: 0.15rem;
 }
+
+.custom-video-player {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    background-color: #000;
+}
+
+/* Nascondi il pulsante del full screen */
+.custom-video-player::-webkit-media-controls-fullscreen-button {
+    display: none !important;
+}
+
+/* Personalizzazione dei controlli */
+.custom-video-player::-webkit-media-controls {
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 8px;
+}
+
+/* Stile del pulsante play/pausa */
+.custom-video-player::-webkit-media-controls-play-button,
+.custom-video-player::-webkit-media-controls-pause-button {
+    color: #fff;
+}
+
+/* Stile della barra del tempo di riproduzione */
+.custom-video-player::-webkit-media-controls-timeline {
+    color: #fff;
+}
+
+/* Stile del pulsante del volume */
+.custom-video-player::-webkit-media-controls-volume-slider {
+    color: #fff;
+}
+
+/* Stile del pulsante di mute */
+.custom-video-player::-webkit-media-controls-mute-button {
+    color: #fff;
+}
+
+/* Stile del pulsante del tempo trascorso */
+.custom-video-player::-webkit-media-controls-current-time-display {
+    color: #fff;
+}
+
+/* Stile del pulsante del tempo rimanente */
+.custom-video-player::-webkit-media-controls-time-remaining-display {
+    color: #fff;
+}
+
+/* Nascondi il pulsante "Altre Opzioni" */
+.custom-video-player::-webkit-media-controls-overflow-button {
+    display: none !important;
+}

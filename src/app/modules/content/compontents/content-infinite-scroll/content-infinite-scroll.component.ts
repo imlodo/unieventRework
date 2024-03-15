@@ -1,4 +1,4 @@
-import { AfterContentChecked, AfterViewChecked, AfterViewInit, ChangeDetectorRef, Component, ElementRef, QueryList, ViewChildren } from "@angular/core";
+import { AfterContentChecked, AfterViewChecked, AfterViewInit, ChangeDetectorRef, Component, ElementRef, OnDestroy, OnInit, QueryList, ViewChild, ViewChildren } from "@angular/core";
 import { ItemType, ROUTE_LIST, USER_TYPE } from "../../../../core/utility/global-constant";
 import { GlobalService } from "src/app/core/services";
 import { ActivatedRoute, Router } from "@angular/router";
@@ -12,7 +12,10 @@ import 'moment/locale/it'; // Importa la localizzazione italiana di moment
   templateUrl: './content-infinite-scroll.component.html',
   styleUrls: ['./content-infinite-scroll.component.scss']
 })
-export class ContentInfiniteScrollComponent implements AfterViewInit, AfterViewChecked {
+export class ContentInfiniteScrollComponent implements AfterViewInit, AfterViewChecked, OnDestroy {
+  @ViewChild('cardElement', { static: false }) cardElement!: ElementRef<HTMLDivElement>;
+  currentPlayingVideo: HTMLVideoElement = null;
+  intersectionObserver: IntersectionObserver;
   scrollDistance = 2;
   scrollUpDistance = 1;
   items: any[] = [];
@@ -21,6 +24,8 @@ export class ContentInfiniteScrollComponent implements AfterViewInit, AfterViewC
   selectedType: ItemType = ItemType.Tutti;
   ItemType: any = ItemType;
   searchInput: string = null;
+  isMuted: boolean = true;
+  volumeLevel: number = 0.5; // livello predefinito del volume
   countAccounts: number = 1; //questi devono essere precaricati dal back-end che ci dice quanti account sono stati trovati
   countArtists: number = 1;  //questi devono essere precaricati dal back-end che ci dice quanti artisti sono stati trovati
   didascalie = [
@@ -55,7 +60,72 @@ export class ContentInfiniteScrollComponent implements AfterViewInit, AfterViewC
   ngAfterViewInit(): void {
     this.decodeParams();
     this.loadMoreItems();
+    this.intersectionObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          this.startVideo(entry.target as HTMLElement);
+        } else {
+          this.stopVideo(entry.target as HTMLElement);
+        }
+      });
+    });
+    // Seleziona tutti gli elementi card e osserva ognuno di essi
+    setTimeout(() => {
+      const cardElements = document.querySelectorAll('.picture-container');
+      console.log(cardElements)
+      cardElements.forEach(cardElement => {
+        this.intersectionObserver.observe(cardElement);
+      });
+    }, 1);
+
     this.cdr.detectChanges();
+  }
+
+  private startVideo(target: HTMLElement) {
+    const video = target.querySelector('video') as HTMLVideoElement;
+    if (video) {
+      video.autoplay = true;
+      video.muted = this.isMuted; // Assicura che tutti i video siano inizialmente muted
+      video.volume = this.volumeLevel;
+      video.addEventListener('volumechange', () => {
+        // Quando viene rimosso il muted, applica questa modifica a tutti i video successivi
+        if (!video.muted) {
+          this.applyUnmuteToSubsequentVideos();
+          this.volumeLevel = video.volume; // salva il livello del volume quando viene modificato
+        }
+      });
+      if (this.currentPlayingVideo && this.currentPlayingVideo !== video) {
+        // Ferma il video attualmente in riproduzione
+        this.stopVideo(this.currentPlayingVideo.parentElement);
+      }
+      // Avvia il nuovo video con un piccolo ritardo per assicurarsi che sia visibile completamente
+      setTimeout(() => {
+        if (this.currentPlayingVideo === video) {
+          this.simulateClickOnBody();
+          video.play();
+        }
+      }, 1); // Regola il ritardo a seconda delle tue esigenze
+      this.currentPlayingVideo = video as HTMLVideoElement;
+    }
+}
+
+private applyUnmuteToSubsequentVideos() {
+  this.isMuted = false;
+}
+  // Modifica il metodo stopVideo
+  private stopVideo(target: HTMLElement) {
+    const video = target.querySelector('video');
+    if (video) {
+      (video as HTMLVideoElement).pause();
+      // Resetta la variabile currentPlayingVideo se il video in pausa è quello attualmente in riproduzione
+      if (this.currentPlayingVideo === video) {
+        this.currentPlayingVideo = null;
+      }
+    }
+  }
+
+  ngOnDestroy(): void {
+    throw new Error("Method not implemented.");
   }
 
   onContextMenu(event: MouseEvent): void {
@@ -174,7 +244,7 @@ export class ContentInfiniteScrollComponent implements AfterViewInit, AfterViewC
       id: this.items.length + index,
       t_caption: this.didascalie[Math.floor(Math.random() * this.didascalie.length)],
       t_image_link: randomIntValue === 0 ? '/assets/img/exampleEventFirstFrame.png' : '/assets/img/event-image-placeholder.jpg',
-      t_video_link: randomIntValue === 0 ? '/assets/videos/exampleEventVideo.mp4' : null,
+      t_video_link: randomIntValue === 0 ? 'https://media.istockphoto.com/id/1144640568/it/video/loperaio-spinge-bottiglie-di-plastica-con-una-pala-per-il-riciclaggio-lavorare-in-una.mp4?s=mp4-640x640-is&k=20&c=zeB2A9MHShH9jFSThzmTm3tCnBOFSahY7OEai63HQDM=' : null,
       t_event_date: new Date(), // Imposta la data dell'evento secondo le tue esigenze
       t_user: this.generateRandomAccount(index),
       n_click: randomIntFromInterval(1, 10000000),
@@ -276,68 +346,5 @@ export class ContentInfiniteScrollComponent implements AfterViewInit, AfterViewC
   searchByLookedFor(lookedValue: string) {
   }
 
-
-  onMouseEnter(item: any) {
-    if (item.t_video_link) {
-      this.startVideo(item, item.id, item.t_video_link);
-    }
-  }
-
-  onMouseLeave(item: any) {
-    if (item.t_video_link) {
-      const canvas = document.getElementById(`canvas_${item.id}`) as HTMLCanvasElement;
-      this.stopVideo(canvas, item.t_image_link);
-    }
-  }
-
-  private startVideo(item: any, itemId: number, videoLink: string) {
-    this.simulateClickOnBody();
-    const canvas = document.getElementById(`canvas_${itemId}`) as HTMLCanvasElement;
-    if (canvas) {
-      const video = document.createElement('video');
-      video.id = `video_${itemId}`;
-      video.src = videoLink;
-      video.autoplay = true;
-      video.muted = true;
-      video.loop = true;
-
-      // Aggiungi il video e il canvas come attributi dei dati
-      canvas['videoElement'] = video;
-      canvas['videoId'] = `video_${itemId}`;
-
-      const ctx = canvas.getContext('2d');
-      if (ctx) {
-        const drawFrame = () => {
-          if (!video.paused && !video.ended) {
-            ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
-            requestAnimationFrame(drawFrame);
-          }
-        };
-
-        video.addEventListener('loadedmetadata', () => {
-          canvas.width = video.videoWidth;
-          canvas.height = video.videoHeight;
-          drawFrame();
-        });
-      }
-      video.play();
-    }
-  }
-
-  private stopVideo(canvas: HTMLCanvasElement, imageLink: string) {
-    const video = canvas['videoElement'] as HTMLVideoElement;
-    if (video) {
-      video.pause();
-      video.currentTime = 0;
-      video.remove();
-    }
-
-    const ctx = canvas.getContext('2d');
-    if (ctx) {
-      const defaultImage = new Image();
-      defaultImage.src = imageLink; // Assicurati che t_image_link contenga l'URL dell'immagine di default
-      ctx.drawImage(defaultImage, 0, 0, canvas.width, canvas.height);
-    }
-  }
 
 }
