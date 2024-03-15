@@ -33,13 +33,21 @@ const routes: Routes = [
 
 			},
 			{
-				path:'search',
+				path: 'search',
 				loadChildren: () => import('./modules/search/search.module').then((m) => m.SearchModule),
 			},
 			{
 				path: 'messages',
 				loadChildren: () => import('./modules/message/message.module').then((m) => m.MessageModule),
 
+			},
+			{
+				path: '@/:subpath/content',
+				loadChildren: () => import('./modules/content/content.module').then((m) => m.ContentModule),
+			},
+			{
+				path: '@/:subpath',
+				loadChildren: () => import('./modules/user/user.module').then((m) => m.UserModule),
 			}
 		]
 	},
@@ -80,7 +88,7 @@ const routes: Routes = [
 @NgModule({
 	imports: [RouterModule.forRoot(routes, {
 		scrollPositionRestoration: 'enabled'
-	  })],
+	})],
 	exports: [RouterModule]
 })
 export class AppRoutingModule { }

@@ -2,40 +2,39 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RxReactiveFormsModule } from '@rxweb/reactive-form-validators';
-import { MatStepperModule } from '@angular/material/stepper';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
-import { SearchResultComponent } from './components/search-result/search-result.component';
-import { SearchRoutingModule } from './search-routing.module';
-import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { CoreModule } from 'src/app/core/core.module';
+import { ContentRoutingModule } from './content-routing.module';
+import { MatInputModule } from '@angular/material/input';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { ContentDetailComponent } from './compontents/content-detail/content-detail.component';
 
 @NgModule({
   declarations: [
-    SearchResultComponent,
+  
+    ContentDetailComponent
   ],
   imports: [
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
     RxReactiveFormsModule,
-    MatStepperModule,
     MatFormFieldModule,
     MatTooltipModule,
     MatInputModule,
-    InfiniteScrollModule,
-    SearchRoutingModule,
+    ContentRoutingModule,
     CoreModule
   ],
   exports: [
   ],
-  id: 'Payment'
+  providers: [
+  ],
+  id: 'Event'
 })
-export class SearchModule {
+export class ContentModule {
   static forRoot() {
     return {
-      ngModule: SearchModule,
+      ngModule: ContentModule,
       providers: [],
     };
   }

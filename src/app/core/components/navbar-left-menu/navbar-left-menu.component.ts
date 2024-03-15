@@ -34,7 +34,7 @@ export class NavbarLeftMenuComponent implements AfterViewInit {
 
   private updateMargin(): void {
     if (!this.isDNone) {
-      this.renderer.setStyle(this.el.nativeElement, 'margin-right', '240px');
+      //this.renderer.setStyle(this.el.nativeElement, 'margin-right', '240px');
     } else {
       this.renderer.removeStyle(this.el.nativeElement, 'margin-right');
     }

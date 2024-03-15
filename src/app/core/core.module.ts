@@ -25,6 +25,10 @@ import { NavbarLeftMenuComponent } from './components/navbar-left-menu/navbar-le
 import { NavbarCreateComponent } from './components/navbar-create/navbar-create.component';
 import { NavbarSearchComponent } from './components/navbar-search/navbar-search.component';
 import { NavbarSearchbarComponent } from './components/navbar-searchbar/navbar-searchbar.component';
+import { ContentModule } from '../modules/content/content.module';
+import { ContentInfiniteScrollComponent } from '../modules/content/compontents/content-infinite-scroll/content-infinite-scroll.component';
+import { ApproximateNumberPipe } from './pipe/approximate-number.pipe';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
 @NgModule({
 	declarations: [
@@ -52,20 +56,24 @@ import { NavbarSearchbarComponent } from './components/navbar-searchbar/navbar-s
 		NavbarChatComponent,
 		FilterByTypePipe,
 		NavbarLeftMenuComponent,
-  NavbarCreateComponent,
-  NavbarSearchComponent,
-  NavbarSearchbarComponent
+		NavbarCreateComponent,
+		NavbarSearchComponent,
+		NavbarSearchbarComponent,
+		ContentInfiniteScrollComponent,
+		ApproximateNumberPipe
 	],
 	imports: [
 		CommonModule,
 		FormsModule,
 		MatTooltipModule,
 		ReactiveFormsModule,
+		InfiniteScrollModule,
 		NgSelectModule,
 		ToastrModule.forRoot(), // ToastrModule added
 	],
 	exports: [
 		NavbarComponent,
+		ContentInfiniteScrollComponent,
 		ModalComponent,
 		SearchCollapseComponent,
 		EventFeaturedComponent,
@@ -75,7 +83,8 @@ import { NavbarSearchbarComponent } from './components/navbar-searchbar/navbar-s
 		FeaturedTopicComponent,
 		FooterComponent,
 		FilterByTypePipe,
-		NavbarLeftMenuComponent
+		NavbarLeftMenuComponent,
+		ApproximateNumberPipe
 	],
 	providers: [
 	]
