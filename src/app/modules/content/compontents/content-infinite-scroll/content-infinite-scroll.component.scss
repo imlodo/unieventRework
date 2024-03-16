@@ -212,37 +212,5 @@
 
 /* Personalizzazione dei controlli */
 .custom-video-player::-webkit-media-controls {
-    background-color: rgba(0, 0, 0, 0.5);
-    border-radius: 8px;
-}
-
-/* Stile del pulsante play/pausa */
-.custom-video-player::-webkit-media-controls-play-button,
-.custom-video-player::-webkit-media-controls-pause-button {
-    color: #ff0000 !important;
-}
-
-/* Stile della barra del tempo di riproduzione */
-.custom-video-player::-webkit-media-controls-timeline {
-    color: #858585;
-}
-
-/* Stile del pulsante del volume */
-.custom-video-player::-webkit-media-controls-volume-slider {
-    color: #fff;
-}
-
-/* Stile del pulsante di mute */
-.custom-video-player::-webkit-media-controls-mute-button {
-    color: #fff;
-}
-
-/* Stile del pulsante del tempo trascorso */
-.custom-video-player::-webkit-media-controls-current-time-display {
-    color: #fff;
-}
-
-/* Stile del pulsante del tempo rimanente */
-.custom-video-player::-webkit-media-controls-time-remaining-display {
-    color: #fff;
+    background-color: rgba(0, 0, 0, 0.2);
 }

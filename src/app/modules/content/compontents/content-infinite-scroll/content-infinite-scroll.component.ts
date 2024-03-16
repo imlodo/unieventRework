@@ -84,6 +84,7 @@ export class ContentInfiniteScrollComponent implements AfterViewInit, AfterViewC
   private startVideo(target: HTMLElement) {
     const video = target.querySelector('video') as HTMLVideoElement;
     if (video) {
+      video.currentTime = 0;
       video.autoplay = true;
       video.muted = this.isMuted; // Assicura che tutti i video siano inizialmente muted
       video.volume = this.volumeLevel;
@@ -125,7 +126,7 @@ private applyUnmuteToSubsequentVideos() {
   }
 
   ngOnDestroy(): void {
-    throw new Error("Method not implemented.");
+    //throw new Error("Method not implemented.");
   }
 
   onContextMenu(event: MouseEvent): void {
@@ -299,7 +300,7 @@ private applyUnmuteToSubsequentVideos() {
   navigateToContent(item: any) {
     const link = "/@/" + item.t_user.t_alias_generated + "/content";
     const params = this.globalService.encodeParams({
-      id: item.id,
+      item: item
     });
     this.router.navigate([link, params]);
   }

@@ -2,6 +2,7 @@ import { AfterViewInit, ChangeDetectorRef, Component, OnInit, ViewChild } from '
 import { HomepageComponent, LoginComponent, NavbarComponent, NotFoundComponent, SearchCollapseComponent, SignupComponent } from './core/components';
 import { ActivatedRouteSnapshot, NavigationEnd, NavigationStart, Router, RoutesRecognized } from '@angular/router';
 import { filter } from 'rxjs';
+import { ContentDetailComponent } from './modules/content/compontents/content-detail/content-detail.component';
 
 @Component({
   selector: 'app-root',
@@ -29,7 +30,7 @@ export class AppComponent implements OnInit, AfterViewInit {
       filter((event) => event instanceof NavigationEnd)
     ).subscribe((event: NavigationEnd) => {
       const rootRoute = this.findRootRoute(this.router.routerState.snapshot.root);
-      this.showMenu = rootRoute && rootRoute.routeConfig?.component !== LoginComponent && rootRoute.routeConfig?.component !== SignupComponent;
+      this.showMenu = rootRoute && rootRoute.routeConfig?.component !== LoginComponent && rootRoute.routeConfig?.component !== SignupComponent && rootRoute.routeConfig?.component !== ContentDetailComponent;
       this.showMenuLeft = this.showMenu && rootRoute && rootRoute.routeConfig?.component === HomepageComponent;
     });
 
