@@ -1,7 +1,9 @@
 import { AfterViewInit, ChangeDetectorRef, Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import moment from 'moment';
 import { pluck } from 'rxjs';
 import { GlobalService } from 'src/app/core/services';
+import { ItemType } from 'src/app/core/utility/global-constant';
 
 @Component({
   selector: 'unievent-content-detail',
@@ -11,6 +13,7 @@ import { GlobalService } from 'src/app/core/services';
 export class ContentDetailComponent implements AfterViewInit {
   protected item: any = null;
   bgLeftPanel: string = null;
+  ItemType: any = ItemType;
 
   constructor(private cdr: ChangeDetectorRef, private globalService: GlobalService,
     private route: ActivatedRoute, private router: Router) {
@@ -105,6 +108,8 @@ export class ContentDetailComponent implements AfterViewInit {
       img.alt = 'Fallback Image';
       img.style.width = '100%'; // Imposta la larghezza al 100% del contenitore
       img.style.height = '100%'; // Imposta l'altezza al 100% del contenitore
+      img.style.maxWidth = "600px";
+      img.style.minWidth = "600px";
       img.style.objectFit = 'cover'; // Copre l'intero contenitore mantenendo le proporzioni
       contentElContainer.appendChild(img);
     }
@@ -112,5 +117,61 @@ export class ContentDetailComponent implements AfterViewInit {
 
   navigateToBack(){
     window.history.back();
+  }
+
+  navigateToUserProfile(item: any) {
+    const link = "/@/" + item.t_user.t_alias_generated;
+    this.router.navigate([link]);
+  }
+
+  formatDateString(dateString: string): string {
+    moment.locale('it'); // Imposta la lingua italiana
+
+    const currentDate = moment();
+    const formattedDate = moment(dateString);
+
+    if (formattedDate.isBefore(currentDate, 'day')) {
+      return formattedDate.format('DD MMMM YYYY [alle] HH:mm');
+    } else {
+      return formattedDate.format('DD MMMM YYYY');
+    }
+  }
+
+  navigateToBuyTicket() {
+    alert("xd")
+  }
+
+  addLike(item: any) {
+    alert("LIKE")
+  }
+
+  book(item: any) {
+    alert("SHARE")
+  }
+
+  addComment() {
+    /*if (this.messageValue.length === 0) {
+      return;
+    }
+
+    const activeChatAlias = this.activeChatUser.t_alias_generated;
+    const chat = this.chatList.find(el => el.userChat.t_alias_generated === activeChatAlias);
+
+    if (chat) {
+      const newMessage = {
+        user_to: this.currentUser,
+        user_at: this.activeChatUser,
+        message: this.messageValue,
+        dateTime: moment(moment(), "DD/MM/YYYY HH:MM:SS")
+      };
+
+      chat.messages.push(newMessage);
+      this.groupMessagesByDate();
+      this.groupMessagesByActiveChatUserByDate();
+      this.messageValue = '';
+      setTimeout(()=>{
+        this.scrollChatToBottom();
+      },1)
+    }*/
   }
 }

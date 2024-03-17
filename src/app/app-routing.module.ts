@@ -46,7 +46,7 @@ const routes: Routes = [
 				loadChildren: () => import('./modules/content/content.module').then((m) => m.ContentModule),
 			},
 			{
-				path: '@/:subpath',
+				path: '@/:userAliasGenerated',
 				loadChildren: () => import('./modules/user/user.module').then((m) => m.UserModule),
 			}
 		]
