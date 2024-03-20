@@ -1,0 +1,15 @@
+.event-detail-container{
+    background: #e5e5e5;
+}
+
+::ng-deep .bg-dark-mode .event-detail-container{
+    background: rgb(18, 18, 18) !important;
+}
+
+.event-detail-container > .container{
+    background:#f9fafb;
+}
+
+::ng-deep .bg-dark-mode .event-detail-container > .container{
+    background-color: var(--bs-dark) !important;
+}

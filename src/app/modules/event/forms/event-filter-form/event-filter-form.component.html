@@ -2,10 +2,10 @@
     <div class="d-flex">
         <div class="col-4"><ng-select [placeholder]="'Città'"></ng-select></div>
         <div class="col-2 mx-1">
-            <input type="text" min="1923-01-01" class="form-control" placeholder="da" onfocus="(this.type='date')" onblur="(this.type='text')">
+            <input type="text" min="1923-01-01" class="form-control date" placeholder="dal" onfocus="(this.type='date')" onblur="(this.value ? this.type='date' : this.type='text')">
         </div>
         <div class="col-2 mx-1">
-            <input type="text"  min="1923-01-01" class="form-control" placeholder="a" onfocus="(this.type='date')" onblur="(this.type='text')">
+            <input type="text"  min="1923-01-01" class="form-control date" placeholder="al" onfocus="(this.type='date')" onblur="(this.value ? this.type='date' : this.type='text')">
         </div>
     </div>
 </div>

@@ -1,19 +1,19 @@
 <div class="m-3 d-flex justify-content-between align-items-center">
     <p class="m-0">{{eventList?.length}} Eventi</p>
     <div class="m-0">
-        <button *ngIf="!isCalendar" type="button" class="btn btn-light border margin-right-10"
+        <button *ngIf="!isCalendar" type="button" class="btn-action-color btn margin-right-10"
             (click)="setDefaultViewDate(); isCalendar=!isCalendar; scrollToBottom();">
             <p class="d-flex m-0 align-items-center justify-content-center"><i
-                    class="gg-calendar-dates text-event-color-primary margin-right-5"></i> Calendario</p>
+                    class="gg-calendar-dates  margin-right-5"></i> Calendario</p>
         </button>
-        <button *ngIf="isCalendar" type="button" class="btn btn-light border margin-right-10"
+        <button *ngIf="isCalendar" type="button" class="btn-action-color btn margin-right-10"
             (click)="setDefaultViewDate(); isCalendar=!isCalendar; scrollToBottom();">
             <p class="d-flex m-0 align-items-center justify-content-center"><i
-                    class="gg-layout-list text-event-color-primary margin-right-5"></i> Elenco date</p>
+                    class="gg-layout-list margin-right-5"></i> Elenco date</p>
         </button>
-        <button type="button" class="btn btn-light border" (click)="isFilter=!isFilter;">
+        <button type="button" class="btn btn-action-color" (click)="isFilter=!isFilter;">
             <p class="d-flex m-0 align-items-center justify-content-center"><i
-                    class="gg-layout-list text-event-color-primary margin-right-5"></i> Filtri</p>
+                    class="gg-layout-list margin-right-5"></i> Filtri</p>
         </button>
     </div>
 </div>
@@ -28,7 +28,7 @@
                     <div [ngClass]="currentScreenSize != 'xl' && currentScreenSize != 'lg' ? 'col-xs-12 border-bottom' : 'border-end p-3' "
                         class=" text-center d-grid align-items-center justify-content-center p-2"
                         style="justify-items: center; min-width: 110px;">
-                        <h1 class="text-event-color-primary m-0">{{el.t_event_date.toLocaleDateString('it-it',
+                        <h1 class="primary-event-color m-0">{{el.t_event_date.toLocaleDateString('it-it',
                             {day:"numeric"})}}</h1>
                         <h4 class="m-0">{{el.t_event_date.toLocaleDateString('it-it', {month:"short",
                             year:"numeric"})}}</h4>
@@ -56,7 +56,7 @@
                                 <span>Biglietti Disponibili</span>
                             </div>
                             <div class="h6 m-0 pb-2">da {{getMinPriceForEvent(el)}} €</div>
-                            <button class="btn btn-primary btn-color-hover-border"
+                            <button style="background-color:rgb(255 87 37) !important; color:white" class="btn rounded-0"
                                 (click)="goToBuyTicket(el.n_id)">Acquista</button>
                         </div>
                     </div>
@@ -87,7 +87,7 @@
             <span class="col-12" *ngIf="day.events.length > 0">{{day.events[0].title|uppercase}}</span>
             <span style="font-size:0.75rem" class="col-12" *ngIf="day.events.length > 0">{{day.events[0].meta.eventData.t_location.t_location_name}}</span>
             <span style="font-size:0.75rem" class="col-12" *ngIf="day.events.length > 0">{{day.events[0].meta.eventData.t_event_date?.toLocaleDateString('it-it',{weekday:"short",hour:'2-digit', minute: '2-digit'})}}</span>
-            <span style="font-size:0.75rem" class="col-12 text-event-color-primary" *ngIf="day.events.length > 0">da {{getMinPriceForEvent(day.events[0].meta.eventData)}} €</span>
+            <span style="font-size:0.75rem" class="col-12 primary-event-color" *ngIf="day.events.length > 0">da {{getMinPriceForEvent(day.events[0].meta.eventData)}} €</span>
         </div>
         <div class="cal-cell-top" *ngIf="currentScreenSize != 'xl' && currentScreenSize != 'lg'">
             <span class="cal-day-number">{{ day.date | calendarDate:'monthViewDayNumber':locale }}</span>
@@ -117,7 +117,7 @@
                     <div [ngClass]="currentScreenSize != 'xl' && currentScreenSize != 'lg' ? 'col-xs-12 border-bottom' : 'border-end p-3' "
                         class=" text-center d-grid align-items-center justify-content-center p-2"
                         style="justify-items: center; min-width: 110px;">
-                        <h1 class="text-event-color-primary m-0">
+                        <h1 class="primary-event-color m-0">
                             {{event.meta.eventData.t_event_date?.toLocaleDateString('it-it',
                             {day:"numeric"})}}</h1>
                         <h4 class="m-0">{{event.meta.eventData.t_event_date?.toLocaleDateString('it-it',
@@ -142,7 +142,7 @@
                                 <span>Biglietti Disponibili</span>
                             </div>
                             <div class="h6 m-0 pb-2">da {{getMinPriceForEvent(event.meta.eventData)}} €</div>
-                            <button class="btn btn-primary btn-color-hover-border"
+                            <button style="background-color:rgb(255 87 37) !important; color:white" class="btn rounded-0"
                                 (click)="goToBuyTicket(event.meta.eventData.n_id)">Acquista</button>
                         </div>
                     </div>

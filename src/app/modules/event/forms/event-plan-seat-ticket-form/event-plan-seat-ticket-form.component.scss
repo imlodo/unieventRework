@@ -1,3 +1,19 @@
 .seat-row{
     zoom:0.75;
 }
+
+.not-buy{
+    background-color: #9b1717;
+}
+
+::ng-deep .bg-dark-mode .event-plan-container{
+    background: var(--bs-dark) !important;
+}
+
+.event-plan-container{
+    background: var(--bs-light);
+}
+
+::ng-deep .bg-dark-mode .event-plan-list-container{
+    background: rgba(80, 80, 80, 0.2705882353);
+}

@@ -2,3 +2,85 @@
     box-shadow: 0 0 0 0.1rem #d32e2a !important;
     border-color: #d32e2a !important;
 }
+
+::ng-deep .bg-dark-mode .event-filter {
+    background: #444f5b;
+}
+
+/* Sovrascrivi lo stile di default di ng-select */
+::ng-deep .bg-dark-mode .ng-select {
+    background-color: transparent !important;
+}
+
+::ng-deep .bg-dark-mode .ng-select-container {
+    background-color: transparent !important;
+    background: transparent !important;
+    color: white !important;
+}
+
+::ng-deep .bg-dark-mode .date {
+    color-scheme: dark;
+    font-size: 0.9rem;
+    background:#ffffff00;
+    color:white;
+}
+
+::ng-deep .bg-dark-mode .date::placeholder {
+    color:white;
+}
+
+::ng-deep .date::-webkit-datetime-edit-day-field:focus,
+::ng-deep .date::-webkit-datetime-edit-month-field:focus,
+::ng-deep .date::-webkit-datetime-edit-year-field:focus {
+    background-color: red;
+    color: white;
+    outline: none;
+}
+
+
+::ng-deep .bg-dark-mode .ng-placeholder {
+    color: white !important;
+}
+
+::ng-deep .bg-dark-mode .ng-select-container .ng-value-container .ng-input>input::placeholder {
+    color: white !important;
+}
+
+::ng-deep .ng-select .ng-select-container .ng-value-container .ng-input>input {
+    color: white !important;
+}
+
+::ng-deep .bg-dark-mode .ng-dropdown-panel .ng-dropdown-panel-items .ng-option {
+    color: white;
+    border-radius: 0px;
+}
+
+::ng-deep .bg-dark-mode  .ng-dropdown-panel.ng-select-bottom .ng-dropdown-panel-items .ng-option{
+    background-color: #444f5b!important;
+}
+
+.bg-dark-mode ::ng-deep .ng-dropdown-panel .ng-dropdown-panel-items .ng-option:hover {
+    background-color: #505355 !important;
+}
+
+/* Opzionale: Imposta il background dell'opzione selezionata */
+.bg-dark-mode ::ng-deep .ng-option-marked {
+    background-color: rgba(0, 0, 0, 0.1) !important;
+    /* Cambia il colore di sfondo selezionato */
+}
+
+
+::ng-deep .bg-dark-mode .ng-select-container {
+    background: #ffffff00 !important;
+    color: white !important;
+}
+
+::ng-deep .bg-dark-mode .ng-select-container input::placeholder,
+::ng-deep .bg-dark-mode .ng-select-container input {
+    color: white !important;
+}
+
+
+::ng-deep .bg-dark-mode .ng-option.ng-option-disabled.ng-star-inserted {
+    background: #ffffff00 !important;
+}

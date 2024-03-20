@@ -8,10 +8,11 @@ import { MatInputModule } from '@angular/material/input';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { ContentDetailComponent } from './compontents/content-detail/content-detail.component';
+import { MessageEmoticonPanelComponent } from '../message/components/message-emoticon-panel/message-emoticon-panel.component';
+import { MessageModule } from '../message/message.module';
 
 @NgModule({
   declarations: [
-  
     ContentDetailComponent
   ],
   imports: [
@@ -22,6 +23,7 @@ import { ContentDetailComponent } from './compontents/content-detail/content-det
     MatFormFieldModule,
     MatTooltipModule,
     MatInputModule,
+    MessageModule,
     ContentRoutingModule,
     CoreModule
   ],

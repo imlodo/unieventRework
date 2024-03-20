@@ -1,7 +1,38 @@
 ::ng-deep .cal-out-month {
-    color: #80808073!important;
+    color: #80808073 !important;
 }
 
-::ng-deep .cal-out-month .text-event-color-primary{
-    color: #80808073!important;
+::ng-deep .cal-out-month .text-event-color-primary {
+    color: #80808073 !important;
+}
+
+::ng-deep .bg-dark-mode #eventCalendarList .card {
+    background-color: #444f5b;
+    color: white;
+}
+
+::ng-deep .bg-dark-mode .btn-action-color {
+    background: #444f5b !important;
+    color: white;
+}
+
+.btn-action-color{
+    background: #e4e4e4;
+}
+
+::ng-deep .bg-dark-mode .cal-month-view {
+    background-color: #212529 !important;
+}
+
+::ng-deep .bg-dark-mode .cal-month-view .cal-cell-row:hover {
+    background-color: #617181 !important;
+}
+
+::ng-deep .bg-dark-mode .cal-month-view .cal-cell-row .cal-cell:hover,
+::ng-deep .bg-dark-mode .cal-month-view .cal-cell.cal-has-events.cal-open {
+    background-color: #444f5b !important;
+}
+
+::ng-deep .bg-dark-mode .cal-month-view .cal-day-cell.cal-today{
+    background-color: #7a8da1 !important;
 }

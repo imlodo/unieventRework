@@ -1,4 +1,4 @@
-import { Component, AfterViewInit, ViewChild, ElementRef, ChangeDetectorRef } from '@angular/core';
+import { Component, AfterViewInit, ViewChild, ElementRef, ChangeDetectorRef, AfterContentChecked } from '@angular/core';
 import { FormArray, FormGroup } from '@angular/forms';
 import { RxFormBuilder } from '@rxweb/reactive-form-validators';
 import { EventPlanSeatTicketFormModel } from './event-plan-seat-ticket-form.model';
@@ -18,9 +18,10 @@ export class EventPlanSeatTicketFormComponent implements AfterViewInit {
   //@ViewChild('eventMap') canvas: ElementRef;
 
   form: FormGroup;
-  selectedMapIndex: number;
+  selectedMapIndex: number = 0;
   eventTitle: string;
   mapList: Array<Map>;
+  mapSelectItems: Array<{id:number, name:string}> = new Array();
   map_rows: number;
   map_columns: number;
   ctx: CanvasRenderingContext2D;
@@ -29,6 +30,7 @@ export class EventPlanSeatTicketFormComponent implements AfterViewInit {
   constructor(private formBuilder: RxFormBuilder, private cdr: ChangeDetectorRef) { }
 
   ngAfterViewInit(): void {
+    this.cdr.detectChanges();
   }
 
   createForm() {
@@ -128,8 +130,6 @@ export class EventPlanSeatTicketFormComponent implements AfterViewInit {
 
     return objectMapDraw;
   }*/
-
-  
 
   getNumOfRowAndColByTotalSeat(maxSeat:number) {
     let num = 1;

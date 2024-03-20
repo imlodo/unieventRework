@@ -56,19 +56,21 @@
 }
 
 ::ng-deep .bg-dark-mode .content-user-container-panel {
-    background: #181818 !important;
-}
-
-.content-user-container-panel{
-    background: rgb(168, 168, 168);
-}
-
-::ng-deep .bg-dark-mode .right-panel-container{
     background-color: var(--bs-dark) !important;
 }
 
-.right-panel-container{
+.content-user-container-panel {
+    background: rgb(168, 168, 168);
+}
+
+::ng-deep .bg-dark-mode .right-panel-container {
+    background-color: #181818 !important;
+}
+
+.right-panel-container {
     background-color: rgb(199, 199, 199);
+    overflow: auto;
+    max-height: calc(100vh);
 }
 
 .top-container {
@@ -153,7 +155,7 @@
 }
 
 ::ng-deep .bg-dark-mode .icon-btn {
-    background: #181818;
+    background: var(--bs-dark) !important;
 }
 
 .bi-heart {
@@ -175,4 +177,72 @@
     font-size: 0.9rem;
     font-weight: 400;
     margin-top: 4px;
+}
+
+.btn-copy-link {
+    width: 140px;
+    text-align: center;
+    padding: 4px;
+    background-color: rgb(158, 158, 158);
+}
+
+.copy-link-container {
+    background: rgb(158, 158, 158);
+}
+
+::ng-deep .bg-dark-mode .btn-copy-link {
+    background-color: var(--bs-dark) !important;
+}
+
+::ng-deep .bg-dark-mode .copy-link-container {
+    background-color: var(--bs-dark) !important;
+}
+
+.copy-link-container input {
+    box-shadow: none !important;
+    outline: none;
+    border: none;
+    padding: 8px;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    color: var(--bs-secondary);
+}
+
+::ng-deep .bg-dark-mode .copy-link-container input {
+    background-color: #2f3030;
+    color: var(--bs-white) !important;
+}
+
+.other-disc-action:hover, .reply:hover {
+    text-decoration: underline;
+}
+
+.message-container {
+    border-radius: 7px;
+    padding: 7px;
+}
+
+::ng-deep .bg-dark-mode .message-container {
+    background: var(--bs-dark);
+    color: var(--bs-white);
+}
+
+::ng-deep .bg-dark-mode .message-container > input {
+    color: var(--bs-white);
+}
+
+::ng-deep .bg-light-mode .message-container {
+    background: #e4e4e4;
+}
+
+::ng-deep .bg-dark-mode .bi-emoji-smile{
+    fill: var(--bs-white);
+}
+
+.comment-add-container{
+    position: sticky;
+    right: 0;
+    bottom: 0;
+    background: #181818;
+    border-top: 1px solid #525252;
 }

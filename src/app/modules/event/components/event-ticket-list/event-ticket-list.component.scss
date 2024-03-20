@@ -5,3 +5,17 @@
 .text-event-color-primary-i {
     color: #d32e2a !important;
 }
+
+::ng-deep .bg-dark-mode .option-card{
+    background: var(--bs-dark) !important;
+    color:white;
+}
+
+.option-card{
+    background: var(--bs-light);
+}
+
+
+::ng-deep .bg-dark-mode .option-card svg:not(.active){
+    fill: white !important;
+}

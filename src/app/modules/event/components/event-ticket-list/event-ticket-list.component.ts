@@ -105,6 +105,9 @@ export class EventTicketListComponent implements AfterViewInit {
     this.cdr.detectChanges();
     if (this.epstfc) {
       this.epstfc.mapList = this.eventData.t_map_list;
+      this.epstfc.mapList?.forEach((el,index)=>{
+        this.epstfc.mapSelectItems.push({id:index,name:el.t_map_name});
+      })
       this.epstfc.createForm();
     }
   }

@@ -2026,13 +2026,13 @@ export const allEventList: Array<Event> = [
                                 }
                             }
                         },
-                        is_acquistabile: true,
+                        is_acquistabile: false,
                         t_seat_list: [
                             {
                                 n_seat_num: 1,
                                 n_object_map_id: 3,
                                 n_id_event: 2,
-                                is_sell: false,
+                                is_sell: true,
                                 is_acquistabile: true
                             },
                         ]
@@ -2120,6 +2120,17544 @@ export const allEventList: Array<Event> = [
                                 n_object_map_id: 2,
                                 n_id_event: 1,
                                 is_sell: false,
+                                is_acquistabile: true
+                            },
+                        ]
+                    },
+                    {
+                        n_id: 7,
+                        n_id_map: 1,
+                        n_limit_buy_for_person: 5,
+                        n_object_price: 10,
+                        n_obj_map_cord_x: 5,
+                        n_obj_map_cord_y: 0,
+                        n_obj_map_cord_z: 1,
+                        n_obj_map_width: 50,
+                        n_obj_map_height: 35,
+                        t_note: "Non inclusa consumazione",
+                        t_type: {
+                            SEAT: {
+                                TYPE: {
+                                    NO_CONSUMATION: true
+                                }
+                            }
+                        },
+                        is_acquistabile: true,
+                        t_seat_list: [
+                            {
+                                n_seat_num: 6,
+                                n_object_map_id: 7,
+                                n_id_event: 2,
+                                is_sell: false,
+                                is_acquistabile: true
+                            },
+                        ]
+                    },
+                    {
+                        n_id: 8,
+                        n_id_map: 1,
+                        n_limit_buy_for_person: 5,
+                        n_object_price: 10,
+                        n_obj_map_cord_x: 6,
+                        n_obj_map_cord_y: 0,
+                        n_obj_map_cord_z: 1,
+                        n_obj_map_width: 50,
+                        n_obj_map_height: 35,
+                        t_note: "Non inclusa consumazione",
+                        t_type: {
+                            SEAT: {
+                                TYPE: {
+                                    NO_CONSUMATION: true
+                                }
+                            }
+                        },
+                        is_acquistabile: true,
+                        t_seat_list: [
+                            {
+                                n_seat_num: 7,
+                                n_object_map_id: 8,
+                                n_id_event: 2,
+                                is_sell: false,
+                                is_acquistabile: true
+                            },
+                        ]
+                    },
+                    {
+                        n_id: 9,
+                        n_id_map: 1,
+                        n_limit_buy_for_person: 5,
+                        n_object_price: 10,
+                        n_obj_map_cord_x: 7,
+                        n_obj_map_cord_y: 0,
+                        n_obj_map_cord_z: 1,
+                        n_obj_map_width: 50,
+                        n_obj_map_height: 35,
+                        t_note: "Non inclusa consumazione",
+                        t_type: {
+                            SEAT: {
+                                TYPE: {
+                                    NO_CONSUMATION: true
+                                }
+                            }
+                        },
+                        is_acquistabile: true,
+                        t_seat_list: [
+                            {
+                                n_seat_num: 8,
+                                n_object_map_id: 9,
+                                n_id_event: 2,
+                                is_sell: false,
+                                is_acquistabile: true
+                            },
+                        ]
+                    },
+                    {
+                        n_id: 10,
+                        n_id_map: 1,
+                        n_limit_buy_for_person: 5,
+                        n_object_price: 10,
+                        n_obj_map_cord_x: 2,
+                        n_obj_map_cord_y: 0,
+                        n_obj_map_cord_z: 1,
+                        n_obj_map_width: 50,
+                        n_obj_map_height: 35,
+                        t_note: "Non inclusa consumazione",
+                        t_type: {
+                            SEAT: {
+                                TYPE: {
+                                    NO_CONSUMATION: true
+                                }
+                            }
+                        },
+                        is_acquistabile: true,
+                        t_seat_list: [
+                            {
+                                n_seat_num: 3,
+                                n_object_map_id: 10,
+                                n_id_event: 2,
+                                is_sell: false,
+                                is_acquistabile: true
+                            },
+                        ]
+                    },
+                    {
+                        n_id: 11,
+                        n_id_map: 1,
+                        n_limit_buy_for_person: 5,
+                        n_object_price: 10,
+                        n_obj_map_cord_x: 8,
+                        n_obj_map_cord_y: 0,
+                        n_obj_map_cord_z: 1,
+                        n_obj_map_width: 50,
+                        n_obj_map_height: 35,
+                        t_note: "Non inclusa consumazione",
+                        t_type: {
+                            SEAT: {
+                                TYPE: {
+                                    NO_CONSUMATION: true
+                                }
+                            }
+                        },
+                        is_acquistabile: true,
+                        t_seat_list: [
+                            {
+                                n_seat_num: 9,
+                                n_object_map_id: 11,
+                                n_id_event: 2,
+                                is_sell: false,
+                                is_acquistabile: true
+                            },
+                        ]
+                    },
+                    {
+                        n_id: 12,
+                        n_id_map: 1,
+                        n_limit_buy_for_person: 5,
+                        n_object_price: 10,
+                        n_obj_map_cord_x: 10,
+                        n_obj_map_cord_y: 0,
+                        n_obj_map_cord_z: 1,
+                        n_obj_map_width: 50,
+                        n_obj_map_height: 35,
+                        t_note: "Non inclusa consumazione",
+                        t_type: {
+                            SEAT: {
+                                TYPE: {
+                                    NO_CONSUMATION: true
+                                }
+                            }
+                        },
+                        is_acquistabile: true,
+                        t_seat_list: [
+                            {
+                                n_seat_num: 10,
+                                n_object_map_id: 12,
+                                n_id_event: 2,
+                                is_sell: false,
+                                is_acquistabile: true
+                            },
+                        ]
+                    },
+                    {
+                        n_id: 13,
+                        n_id_map: 1,
+                        n_limit_buy_for_person: 5,
+                        n_object_price: 10,
+                        n_obj_map_cord_x: 11,
+                        n_obj_map_cord_y: 0,
+                        n_obj_map_cord_z: 1,
+                        n_obj_map_width: 50,
+                        n_obj_map_height: 35,
+                        t_note: "Non inclusa consumazione",
+                        t_type: {
+                            SEAT: {
+                                TYPE: {
+                                    NO_CONSUMATION: true
+                                }
+                            }
+                        },
+                        is_acquistabile: true,
+                        t_seat_list: [
+                            {
+                                n_seat_num: 11,
+                                n_object_map_id: 13,
+                                n_id_event: 2,
+                                is_sell: false,
+                                is_acquistabile: true
+                            },
+                        ]
+                    },
+                    {
+                        n_id: 14,
+                        n_id_map: 1,
+                        n_limit_buy_for_person: 5,
+                        n_object_price: 10,
+                        n_obj_map_cord_x: 12,
+                        n_obj_map_cord_y: 0,
+                        n_obj_map_cord_z: 1,
+                        n_obj_map_width: 50,
+                        n_obj_map_height: 35,
+                        t_note: "Non inclusa consumazione",
+                        t_type: {
+                            SEAT: {
+                                TYPE: {
+                                    NO_CONSUMATION: true
+                                }
+                            }
+                        },
+                        is_acquistabile: true,
+                        t_seat_list: [
+                            {
+                                n_seat_num: 12,
+                                n_object_map_id: 14,
+                                n_id_event: 2,
+                                is_sell: false,
+                                is_acquistabile: true
+                            },
+                        ]
+                    },
+                    {
+                        n_id: 15,
+                        n_id_map: 1,
+                        n_limit_buy_for_person: 5,
+                        n_object_price: 10,
+                        n_obj_map_cord_x: 13,
+                        n_obj_map_cord_y: 0,
+                        n_obj_map_cord_z: 1,
+                        n_obj_map_width: 50,
+                        n_obj_map_height: 35,
+                        t_note: "Non inclusa consumazione",
+                        t_type: {
+                            SEAT: {
+                                TYPE: {
+                                    NO_CONSUMATION: true
+                                }
+                            }
+                        },
+                        is_acquistabile: true,
+                        t_seat_list: [
+                            {
+                                n_seat_num: 13,
+                                n_object_map_id: 15,
+                                n_id_event: 2,
+                                is_sell: false,
+                                is_acquistabile: true
+                            },
+                        ]
+                    },
+                    {
+                        n_id: 16,
+                        n_id_map: 1,
+                        n_limit_buy_for_person: 5,
+                        n_object_price: 10,
+                        n_obj_map_cord_x: 14,
+                        n_obj_map_cord_y: 0,
+                        n_obj_map_cord_z: 1,
+                        n_obj_map_width: 50,
+                        n_obj_map_height: 35,
+                        t_note: "Non inclusa consumazione",
+                        t_type: {
+                            SEAT: {
+                                TYPE: {
+                                    NO_CONSUMATION: true
+                                }
+                            }
+                        },
+                        is_acquistabile: true,
+                        t_seat_list: [
+                            {
+                                n_seat_num: 14,
+                                n_object_map_id: 16,
+                                n_id_event: 2,
+                                is_sell: false,
+                                is_acquistabile: true
+                            },
+                        ]
+                    },
+                    {
+                        n_id: 17,
+                        n_id_map: 1,
+                        n_limit_buy_for_person: 5,
+                        n_object_price: 10,
+                        n_obj_map_cord_x: 15,
+                        n_obj_map_cord_y: 0,
+                        n_obj_map_cord_z: 1,
+                        n_obj_map_width: 50,
+                        n_obj_map_height: 35,
+                        t_note: "Non inclusa consumazione",
+                        t_type: {
+                            SEAT: {
+                                TYPE: {
+                                    NO_CONSUMATION: true
+                                }
+                            }
+                        },
+                        is_acquistabile: true,
+                        t_seat_list: [
+                            {
+                                n_seat_num: 15,
+                                n_object_map_id: 17,
+                                n_id_event: 2,
+                                is_sell: false,
+                                is_acquistabile: true
+                            },
+                        ]
+                    },
+                    {
+                        n_id: 18,
+                        n_id_map: 1,
+                        n_limit_buy_for_person: 5,
+                        n_object_price: 10,
+                        n_obj_map_cord_x: 16,
+                        n_obj_map_cord_y: 0,
+                        n_obj_map_cord_z: 1,
+                        n_obj_map_width: 50,
+                        n_obj_map_height: 35,
+                        t_note: "Non inclusa consumazione",
+                        t_type: {
+                            SEAT: {
+                                TYPE: {
+                                    NO_CONSUMATION: true
+                                }
+                            }
+                        },
+                        is_acquistabile: true,
+                        t_seat_list: [
+                            {
+                                n_seat_num: 16,
+                                n_object_map_id: 18,
+                                n_id_event: 2,
+                                is_sell: false,
+                                is_acquistabile: true
+                            },
+                        ]
+                    },
+                    {
+                        n_id: 19,
+                        n_id_map: 1,
+                        n_limit_buy_for_person: 5,
+                        n_object_price: 10,
+                        n_obj_map_cord_x: 17,
+                        n_obj_map_cord_y: 0,
+                        n_obj_map_cord_z: 1,
+                        n_obj_map_width: 50,
+                        n_obj_map_height: 35,
+                        t_note: "Non inclusa consumazione",
+                        t_type: {
+                            SEAT: {
+                                TYPE: {
+                                    NO_CONSUMATION: true
+                                }
+                            }
+                        },
+                        is_acquistabile: true,
+                        t_seat_list: [
+                            {
+                                n_seat_num: 17,
+                                n_object_map_id: 19,
+                                n_id_event: 2,
+                                is_sell: false,
+                                is_acquistabile: true
+                            },
+                        ]
+                    },
+                    {
+                        n_id: 20,
+                        n_id_map: 1,
+                        n_limit_buy_for_person: 6,
+                        n_object_price: 20,
+                        n_obj_map_cord_x: 1,
+                        n_obj_map_cord_y: 1,
+                        n_obj_map_cord_z: 1,
+                        n_obj_map_width: 50,
+                        n_obj_map_height: 35,
+                        t_note: "Consumazione di 2 cocktail inclusa",
+                        t_type: {
+                            SEAT: {
+                                TYPE: {
+                                    WITH_CONSUMATION: true
+                                }
+                            }
+                        },
+                        is_acquistabile: true,
+                        t_seat_list: [
+                            {
+                                n_seat_num: 18,
+                                n_object_map_id: 20,
+                                n_id_event: 2,
+                                is_sell: false,
+                                is_acquistabile: true
+                            },
+                        ]
+                    },
+                    {
+                        n_id: 21,
+                        n_id_map: 1,
+                        n_limit_buy_for_person: 6,
+                        n_object_price: 20,
+                        n_obj_map_cord_x: 2,
+                        n_obj_map_cord_y: 1,
+                        n_obj_map_cord_z: 1,
+                        n_obj_map_width: 50,
+                        n_obj_map_height: 35,
+                        t_note: "Consumazione di 2 cocktail inclusa",
+                        t_type: {
+                            SEAT: {
+                                TYPE: {
+                                    WITH_CONSUMATION: true
+                                }
+                            }
+                        },
+                        is_acquistabile: true,
+                        t_seat_list: [
+                            {
+                                n_seat_num: 19,
+                                n_object_map_id: 21,
+                                n_id_event: 2,
+                                is_sell: false,
+                                is_acquistabile: true
+                            },
+                        ]
+                    },
+                    {
+                        n_id: 22,
+                        n_id_map: 1,
+                        n_limit_buy_for_person: 6,
+                        n_object_price: 20,
+                        n_obj_map_cord_x: 3,
+                        n_obj_map_cord_y: 1,
+                        n_obj_map_cord_z: 1,
+                        n_obj_map_width: 50,
+                        n_obj_map_height: 35,
+                        t_note: "Consumazione di 2 cocktail inclusa",
+                        t_type: {
+                            SEAT: {
+                                TYPE: {
+                                    WITH_CONSUMATION: true
+                                }
+                            }
+                        },
+                        is_acquistabile: true,
+                        t_seat_list: [
+                            {
+                                n_seat_num: 20,
+                                n_object_map_id: 22,
+                                n_id_event: 2,
+                                is_sell: false,
+                                is_acquistabile: true
+                            },
+                        ]
+                    },
+                    {
+                        n_id: 23,
+                        n_id_map: 1,
+                        n_limit_buy_for_person: 6,
+                        n_object_price: 20,
+                        n_obj_map_cord_x: 4,
+                        n_obj_map_cord_y: 1,
+                        n_obj_map_cord_z: 1,
+                        n_obj_map_width: 50,
+                        n_obj_map_height: 35,
+                        t_note: "Consumazione di 2 cocktail inclusa",
+                        t_type: {
+                            SEAT: {
+                                TYPE: {
+                                    WITH_CONSUMATION: true
+                                }
+                            }
+                        },
+                        is_acquistabile: true,
+                        t_seat_list: [
+                            {
+                                n_seat_num: 21,
+                                n_object_map_id: 23,
+                                n_id_event: 2,
+                                is_sell: false,
+                                is_acquistabile: true
+                            },
+                        ]
+                    },
+                    {
+                        n_id: 24,
+                        n_id_map: 1,
+                        n_limit_buy_for_person: 5,
+                        n_object_price: 10,
+                        n_obj_map_cord_x: 5,
+                        n_obj_map_cord_y: 1,
+                        n_obj_map_cord_z: 1,
+                        n_obj_map_width: 50,
+                        n_obj_map_height: 35,
+                        t_note: "Non inclusa consumazione",
+                        t_type: {
+                            SEAT: {
+                                TYPE: {
+                                    NO_CONSUMATION: true
+                                }
+                            }
+                        },
+                        is_acquistabile: true,
+                        t_seat_list: [
+                            {
+                                n_seat_num: 22,
+                                n_object_map_id: 24,
+                                n_id_event: 2,
+                                is_sell: false,
+                                is_acquistabile: true
+                            },
+                        ]
+                    },
+                    {
+                        n_id: 25,
+                        n_id_map: 1,
+                        n_limit_buy_for_person: 5,
+                        n_object_price: 10,
+                        n_obj_map_cord_x: 6,
+                        n_obj_map_cord_y: 1,
+                        n_obj_map_cord_z: 1,
+                        n_obj_map_width: 50,
+                        n_obj_map_height: 35,
+                        t_note: "Non inclusa consumazione",
+                        t_type: {
+                            SEAT: {
+                                TYPE: {
+                                    NO_CONSUMATION: true
+                                }
+                            }
+                        },
+                        is_acquistabile: true,
+                        t_seat_list: [
+                            {
+                                n_seat_num: 23,
+                                n_object_map_id: 25,
+                                n_id_event: 2,
+                                is_sell: false,
+                                is_acquistabile: true
+                            },
+                        ]
+                    },
+                    {
+                        "n_id": 26,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 7,
+                        "n_obj_map_cord_y": 1,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 24,
+                                "n_object_map_id": 26,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 27,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 8,
+                        "n_obj_map_cord_y": 1,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 25,
+                                "n_object_map_id": 27,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 28,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 9,
+                        "n_obj_map_cord_y": 1,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 26,
+                                "n_object_map_id": 28,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 29,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 10,
+                        "n_obj_map_cord_y": 1,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 27,
+                                "n_object_map_id": 29,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 30,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 11,
+                        "n_obj_map_cord_y": 1,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 28,
+                                "n_object_map_id": 30,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 31,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 12,
+                        "n_obj_map_cord_y": 1,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 29,
+                                "n_object_map_id": 31,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 32,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 13,
+                        "n_obj_map_cord_y": 1,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 30,
+                                "n_object_map_id": 32,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 33,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 14,
+                        "n_obj_map_cord_y": 1,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 31,
+                                "n_object_map_id": 33,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 34,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 15,
+                        "n_obj_map_cord_y": 1,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 32,
+                                "n_object_map_id": 34,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 35,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 16,
+                        "n_obj_map_cord_y": 1,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 33,
+                                "n_object_map_id": 35,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 36,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 17,
+                        "n_obj_map_cord_y": 1,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 34,
+                                "n_object_map_id": 36,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 37,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 0,
+                        "n_obj_map_cord_y": 2,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 35,
+                                "n_object_map_id": 37,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 38,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 1,
+                        "n_obj_map_cord_y": 2,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 36,
+                                "n_object_map_id": 38,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 39,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 2,
+                        "n_obj_map_cord_y": 2,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 37,
+                                "n_object_map_id": 39,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 40,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 3,
+                        "n_obj_map_cord_y": 2,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 38,
+                                "n_object_map_id": 40,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 41,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 4,
+                        "n_obj_map_cord_y": 2,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 39,
+                                "n_object_map_id": 41,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 42,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 5,
+                        "n_obj_map_cord_y": 2,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 40,
+                                "n_object_map_id": 42,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 43,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 6,
+                        "n_obj_map_cord_y": 2,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 41,
+                                "n_object_map_id": 43,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 44,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 7,
+                        "n_obj_map_cord_y": 2,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 42,
+                                "n_object_map_id": 44,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 45,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 8,
+                        "n_obj_map_cord_y": 2,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 43,
+                                "n_object_map_id": 45,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 46,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 9,
+                        "n_obj_map_cord_y": 2,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 44,
+                                "n_object_map_id": 46,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 47,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 10,
+                        "n_obj_map_cord_y": 2,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 45,
+                                "n_object_map_id": 47,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 48,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 11,
+                        "n_obj_map_cord_y": 2,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 46,
+                                "n_object_map_id": 48,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 49,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 12,
+                        "n_obj_map_cord_y": 2,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 47,
+                                "n_object_map_id": 49,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 50,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 13,
+                        "n_obj_map_cord_y": 2,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 48,
+                                "n_object_map_id": 50,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 51,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 14,
+                        "n_obj_map_cord_y": 2,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 49,
+                                "n_object_map_id": 51,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 52,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 15,
+                        "n_obj_map_cord_y": 2,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 50,
+                                "n_object_map_id": 52,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 53,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 16,
+                        "n_obj_map_cord_y": 2,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 51,
+                                "n_object_map_id": 53,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 54,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 17,
+                        "n_obj_map_cord_y": 2,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 52,
+                                "n_object_map_id": 54,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 55,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 0,
+                        "n_obj_map_cord_y": 3,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 53,
+                                "n_object_map_id": 55,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 56,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 1,
+                        "n_obj_map_cord_y": 3,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 54,
+                                "n_object_map_id": 56,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 57,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 2,
+                        "n_obj_map_cord_y": 3,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 55,
+                                "n_object_map_id": 57,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 58,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 3,
+                        "n_obj_map_cord_y": 3,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 56,
+                                "n_object_map_id": 58,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 59,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 4,
+                        "n_obj_map_cord_y": 3,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 57,
+                                "n_object_map_id": 59,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 60,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 5,
+                        "n_obj_map_cord_y": 3,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 58,
+                                "n_object_map_id": 60,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 61,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 6,
+                        "n_obj_map_cord_y": 3,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 59,
+                                "n_object_map_id": 61,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 62,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 7,
+                        "n_obj_map_cord_y": 3,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 60,
+                                "n_object_map_id": 62,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 63,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 8,
+                        "n_obj_map_cord_y": 3,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 61,
+                                "n_object_map_id": 63,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 64,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 9,
+                        "n_obj_map_cord_y": 3,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 62,
+                                "n_object_map_id": 64,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 65,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 10,
+                        "n_obj_map_cord_y": 3,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 63,
+                                "n_object_map_id": 65,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 66,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 11,
+                        "n_obj_map_cord_y": 3,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 64,
+                                "n_object_map_id": 66,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 67,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 12,
+                        "n_obj_map_cord_y": 3,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 65,
+                                "n_object_map_id": 67,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 68,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 13,
+                        "n_obj_map_cord_y": 3,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 66,
+                                "n_object_map_id": 68,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 69,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 14,
+                        "n_obj_map_cord_y": 3,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 67,
+                                "n_object_map_id": 69,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 70,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 15,
+                        "n_obj_map_cord_y": 3,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 68,
+                                "n_object_map_id": 70,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 71,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 16,
+                        "n_obj_map_cord_y": 3,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 69,
+                                "n_object_map_id": 71,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 72,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 17,
+                        "n_obj_map_cord_y": 3,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 70,
+                                "n_object_map_id": 72,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 73,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 0,
+                        "n_obj_map_cord_y": 4,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 71,
+                                "n_object_map_id": 73,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 74,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 1,
+                        "n_obj_map_cord_y": 4,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 72,
+                                "n_object_map_id": 74,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 75,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 2,
+                        "n_obj_map_cord_y": 4,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 73,
+                                "n_object_map_id": 75,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 76,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 3,
+                        "n_obj_map_cord_y": 4,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 74,
+                                "n_object_map_id": 76,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 77,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 4,
+                        "n_obj_map_cord_y": 4,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 75,
+                                "n_object_map_id": 77,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 78,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 5,
+                        "n_obj_map_cord_y": 4,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 76,
+                                "n_object_map_id": 78,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 79,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 6,
+                        "n_obj_map_cord_y": 4,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 77,
+                                "n_object_map_id": 79,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 80,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 7,
+                        "n_obj_map_cord_y": 4,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 78,
+                                "n_object_map_id": 80,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 81,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 8,
+                        "n_obj_map_cord_y": 4,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 79,
+                                "n_object_map_id": 81,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 82,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 9,
+                        "n_obj_map_cord_y": 4,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 80,
+                                "n_object_map_id": 82,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 83,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 10,
+                        "n_obj_map_cord_y": 4,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 81,
+                                "n_object_map_id": 83,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 84,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 11,
+                        "n_obj_map_cord_y": 4,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 82,
+                                "n_object_map_id": 84,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 85,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 12,
+                        "n_obj_map_cord_y": 4,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 83,
+                                "n_object_map_id": 85,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 86,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 13,
+                        "n_obj_map_cord_y": 4,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 84,
+                                "n_object_map_id": 86,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 87,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 14,
+                        "n_obj_map_cord_y": 4,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 85,
+                                "n_object_map_id": 87,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 88,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 15,
+                        "n_obj_map_cord_y": 4,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 86,
+                                "n_object_map_id": 88,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 89,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 16,
+                        "n_obj_map_cord_y": 4,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 87,
+                                "n_object_map_id": 89,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 90,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 17,
+                        "n_obj_map_cord_y": 4,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 88,
+                                "n_object_map_id": 90,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 91,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 0,
+                        "n_obj_map_cord_y": 5,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 89,
+                                "n_object_map_id": 91,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 92,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 1,
+                        "n_obj_map_cord_y": 5,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 90,
+                                "n_object_map_id": 92,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 93,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 2,
+                        "n_obj_map_cord_y": 5,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 91,
+                                "n_object_map_id": 93,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 94,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 3,
+                        "n_obj_map_cord_y": 5,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 92,
+                                "n_object_map_id": 94,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 95,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 4,
+                        "n_obj_map_cord_y": 5,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 93,
+                                "n_object_map_id": 95,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 96,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 5,
+                        "n_obj_map_cord_y": 5,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 94,
+                                "n_object_map_id": 96,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 97,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 6,
+                        "n_obj_map_cord_y": 5,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 95,
+                                "n_object_map_id": 97,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 98,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 7,
+                        "n_obj_map_cord_y": 5,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 96,
+                                "n_object_map_id": 98,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 99,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 8,
+                        "n_obj_map_cord_y": 5,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 97,
+                                "n_object_map_id": 99,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 100,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 9,
+                        "n_obj_map_cord_y": 5,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 98,
+                                "n_object_map_id": 100,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 101,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 10,
+                        "n_obj_map_cord_y": 5,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 99,
+                                "n_object_map_id": 101,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 102,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 11,
+                        "n_obj_map_cord_y": 5,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 100,
+                                "n_object_map_id": 102,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 103,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 12,
+                        "n_obj_map_cord_y": 5,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 101,
+                                "n_object_map_id": 103,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 104,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 13,
+                        "n_obj_map_cord_y": 5,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 102,
+                                "n_object_map_id": 104,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 105,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 14,
+                        "n_obj_map_cord_y": 5,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 103,
+                                "n_object_map_id": 105,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 106,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 15,
+                        "n_obj_map_cord_y": 5,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 104,
+                                "n_object_map_id": 106,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 107,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 16,
+                        "n_obj_map_cord_y": 5,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 105,
+                                "n_object_map_id": 107,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 108,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 17,
+                        "n_obj_map_cord_y": 5,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 106,
+                                "n_object_map_id": 108,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 109,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 0,
+                        "n_obj_map_cord_y": 6,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 107,
+                                "n_object_map_id": 109,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 110,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 1,
+                        "n_obj_map_cord_y": 6,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 108,
+                                "n_object_map_id": 110,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 111,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 2,
+                        "n_obj_map_cord_y": 6,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 109,
+                                "n_object_map_id": 111,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 112,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 3,
+                        "n_obj_map_cord_y": 6,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 110,
+                                "n_object_map_id": 112,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 113,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 4,
+                        "n_obj_map_cord_y": 6,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 111,
+                                "n_object_map_id": 113,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 114,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 5,
+                        "n_obj_map_cord_y": 6,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 112,
+                                "n_object_map_id": 114,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 115,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 6,
+                        "n_obj_map_cord_y": 6,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 113,
+                                "n_object_map_id": 115,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 116,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 7,
+                        "n_obj_map_cord_y": 6,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 114,
+                                "n_object_map_id": 116,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 117,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 8,
+                        "n_obj_map_cord_y": 6,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 115,
+                                "n_object_map_id": 117,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 118,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 9,
+                        "n_obj_map_cord_y": 6,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 116,
+                                "n_object_map_id": 118,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 119,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 10,
+                        "n_obj_map_cord_y": 6,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 117,
+                                "n_object_map_id": 119,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 120,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 11,
+                        "n_obj_map_cord_y": 6,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 118,
+                                "n_object_map_id": 120,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 121,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 12,
+                        "n_obj_map_cord_y": 6,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 119,
+                                "n_object_map_id": 121,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 122,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 13,
+                        "n_obj_map_cord_y": 6,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 120,
+                                "n_object_map_id": 122,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 123,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 14,
+                        "n_obj_map_cord_y": 6,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 121,
+                                "n_object_map_id": 123,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 124,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 15,
+                        "n_obj_map_cord_y": 6,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 122,
+                                "n_object_map_id": 124,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 125,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 16,
+                        "n_obj_map_cord_y": 6,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 123,
+                                "n_object_map_id": 125,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 126,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 17,
+                        "n_obj_map_cord_y": 6,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 124,
+                                "n_object_map_id": 126,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 127,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 0,
+                        "n_obj_map_cord_y": 7,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 125,
+                                "n_object_map_id": 127,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 128,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 1,
+                        "n_obj_map_cord_y": 7,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 126,
+                                "n_object_map_id": 128,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 129,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 2,
+                        "n_obj_map_cord_y": 7,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 127,
+                                "n_object_map_id": 129,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 130,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 3,
+                        "n_obj_map_cord_y": 7,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 128,
+                                "n_object_map_id": 130,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 131,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 4,
+                        "n_obj_map_cord_y": 7,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 129,
+                                "n_object_map_id": 131,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 132,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 5,
+                        "n_obj_map_cord_y": 7,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 130,
+                                "n_object_map_id": 132,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 133,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 6,
+                        "n_obj_map_cord_y": 7,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 131,
+                                "n_object_map_id": 133,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 134,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 7,
+                        "n_obj_map_cord_y": 7,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 132,
+                                "n_object_map_id": 134,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 135,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 8,
+                        "n_obj_map_cord_y": 7,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 133,
+                                "n_object_map_id": 135,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 136,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 9,
+                        "n_obj_map_cord_y": 7,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 134,
+                                "n_object_map_id": 136,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 137,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 10,
+                        "n_obj_map_cord_y": 7,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 135,
+                                "n_object_map_id": 137,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 138,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 11,
+                        "n_obj_map_cord_y": 7,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 136,
+                                "n_object_map_id": 138,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 139,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 12,
+                        "n_obj_map_cord_y": 7,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 137,
+                                "n_object_map_id": 139,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 140,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 13,
+                        "n_obj_map_cord_y": 7,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 138,
+                                "n_object_map_id": 140,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 141,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 14,
+                        "n_obj_map_cord_y": 7,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 139,
+                                "n_object_map_id": 141,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 142,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 15,
+                        "n_obj_map_cord_y": 7,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 140,
+                                "n_object_map_id": 142,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 143,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 16,
+                        "n_obj_map_cord_y": 7,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 141,
+                                "n_object_map_id": 143,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 144,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 17,
+                        "n_obj_map_cord_y": 7,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 142,
+                                "n_object_map_id": 144,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 145,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 0,
+                        "n_obj_map_cord_y": 8,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 143,
+                                "n_object_map_id": 145,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 146,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 1,
+                        "n_obj_map_cord_y": 8,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 144,
+                                "n_object_map_id": 146,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 147,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 2,
+                        "n_obj_map_cord_y": 8,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 145,
+                                "n_object_map_id": 147,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 148,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 3,
+                        "n_obj_map_cord_y": 8,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 146,
+                                "n_object_map_id": 148,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 149,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 4,
+                        "n_obj_map_cord_y": 8,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 147,
+                                "n_object_map_id": 149,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 150,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 5,
+                        "n_obj_map_cord_y": 8,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 148,
+                                "n_object_map_id": 150,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 151,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 6,
+                        "n_obj_map_cord_y": 8,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 149,
+                                "n_object_map_id": 151,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 152,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 7,
+                        "n_obj_map_cord_y": 8,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 150,
+                                "n_object_map_id": 152,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 153,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 8,
+                        "n_obj_map_cord_y": 8,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 151,
+                                "n_object_map_id": 153,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 154,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 9,
+                        "n_obj_map_cord_y": 8,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 152,
+                                "n_object_map_id": 154,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 155,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 10,
+                        "n_obj_map_cord_y": 8,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 153,
+                                "n_object_map_id": 155,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 156,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 11,
+                        "n_obj_map_cord_y": 8,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 154,
+                                "n_object_map_id": 156,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 157,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 12,
+                        "n_obj_map_cord_y": 8,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 155,
+                                "n_object_map_id": 157,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 158,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 13,
+                        "n_obj_map_cord_y": 8,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 156,
+                                "n_object_map_id": 158,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 159,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 14,
+                        "n_obj_map_cord_y": 8,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 157,
+                                "n_object_map_id": 159,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 160,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 15,
+                        "n_obj_map_cord_y": 8,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 158,
+                                "n_object_map_id": 160,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 161,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 16,
+                        "n_obj_map_cord_y": 8,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 159,
+                                "n_object_map_id": 161,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 162,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 17,
+                        "n_obj_map_cord_y": 8,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 160,
+                                "n_object_map_id": 162,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 163,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 0,
+                        "n_obj_map_cord_y": 9,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 161,
+                                "n_object_map_id": 163,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 164,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 1,
+                        "n_obj_map_cord_y": 9,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 162,
+                                "n_object_map_id": 164,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 165,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 2,
+                        "n_obj_map_cord_y": 9,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 163,
+                                "n_object_map_id": 165,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 166,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 3,
+                        "n_obj_map_cord_y": 9,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 164,
+                                "n_object_map_id": 166,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 167,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 4,
+                        "n_obj_map_cord_y": 9,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 165,
+                                "n_object_map_id": 167,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 168,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 5,
+                        "n_obj_map_cord_y": 9,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 166,
+                                "n_object_map_id": 168,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 169,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 6,
+                        "n_obj_map_cord_y": 9,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 167,
+                                "n_object_map_id": 169,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 170,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 7,
+                        "n_obj_map_cord_y": 9,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 168,
+                                "n_object_map_id": 170,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 171,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 8,
+                        "n_obj_map_cord_y": 9,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 169,
+                                "n_object_map_id": 171,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 172,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 9,
+                        "n_obj_map_cord_y": 9,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 170,
+                                "n_object_map_id": 172,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 173,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 10,
+                        "n_obj_map_cord_y": 9,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 171,
+                                "n_object_map_id": 173,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 174,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 11,
+                        "n_obj_map_cord_y": 9,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 172,
+                                "n_object_map_id": 174,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 175,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 12,
+                        "n_obj_map_cord_y": 9,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 173,
+                                "n_object_map_id": 175,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 176,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 13,
+                        "n_obj_map_cord_y": 9,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 174,
+                                "n_object_map_id": 176,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 177,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 14,
+                        "n_obj_map_cord_y": 9,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 175,
+                                "n_object_map_id": 177,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 178,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 15,
+                        "n_obj_map_cord_y": 9,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 176,
+                                "n_object_map_id": 178,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 179,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 16,
+                        "n_obj_map_cord_y": 9,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 177,
+                                "n_object_map_id": 179,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 180,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 17,
+                        "n_obj_map_cord_y": 9,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 178,
+                                "n_object_map_id": 180,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 181,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 0,
+                        "n_obj_map_cord_y": 10,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 179,
+                                "n_object_map_id": 181,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 182,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 1,
+                        "n_obj_map_cord_y": 10,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 180,
+                                "n_object_map_id": 182,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 183,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 2,
+                        "n_obj_map_cord_y": 10,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 181,
+                                "n_object_map_id": 183,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 184,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 3,
+                        "n_obj_map_cord_y": 10,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 182,
+                                "n_object_map_id": 184,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 185,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 4,
+                        "n_obj_map_cord_y": 10,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 183,
+                                "n_object_map_id": 185,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 186,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 5,
+                        "n_obj_map_cord_y": 10,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 184,
+                                "n_object_map_id": 186,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 187,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 6,
+                        "n_obj_map_cord_y": 10,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 185,
+                                "n_object_map_id": 187,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 188,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 7,
+                        "n_obj_map_cord_y": 10,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 186,
+                                "n_object_map_id": 188,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 189,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 8,
+                        "n_obj_map_cord_y": 10,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 187,
+                                "n_object_map_id": 189,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 190,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 9,
+                        "n_obj_map_cord_y": 10,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 188,
+                                "n_object_map_id": 190,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 191,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 10,
+                        "n_obj_map_cord_y": 10,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 189,
+                                "n_object_map_id": 191,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 192,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 11,
+                        "n_obj_map_cord_y": 10,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 190,
+                                "n_object_map_id": 192,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 193,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 12,
+                        "n_obj_map_cord_y": 10,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 191,
+                                "n_object_map_id": 193,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 194,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 13,
+                        "n_obj_map_cord_y": 10,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 192,
+                                "n_object_map_id": 194,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 195,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 14,
+                        "n_obj_map_cord_y": 10,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 193,
+                                "n_object_map_id": 195,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 196,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 15,
+                        "n_obj_map_cord_y": 10,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 194,
+                                "n_object_map_id": 196,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 197,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 16,
+                        "n_obj_map_cord_y": 10,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 195,
+                                "n_object_map_id": 197,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 198,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 17,
+                        "n_obj_map_cord_y": 10,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 196,
+                                "n_object_map_id": 198,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 199,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 0,
+                        "n_obj_map_cord_y": 11,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 197,
+                                "n_object_map_id": 199,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 200,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 1,
+                        "n_obj_map_cord_y": 11,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 198,
+                                "n_object_map_id": 200,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 201,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 2,
+                        "n_obj_map_cord_y": 11,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 199,
+                                "n_object_map_id": 201,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 202,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 3,
+                        "n_obj_map_cord_y": 11,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 200,
+                                "n_object_map_id": 202,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 203,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 4,
+                        "n_obj_map_cord_y": 11,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 201,
+                                "n_object_map_id": 203,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 204,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 5,
+                        "n_obj_map_cord_y": 11,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 202,
+                                "n_object_map_id": 204,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 205,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 6,
+                        "n_obj_map_cord_y": 11,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 203,
+                                "n_object_map_id": 205,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 206,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 7,
+                        "n_obj_map_cord_y": 11,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 204,
+                                "n_object_map_id": 206,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 207,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 8,
+                        "n_obj_map_cord_y": 11,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 205,
+                                "n_object_map_id": 207,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 208,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 9,
+                        "n_obj_map_cord_y": 11,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 206,
+                                "n_object_map_id": 208,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 209,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 10,
+                        "n_obj_map_cord_y": 11,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 207,
+                                "n_object_map_id": 209,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 210,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 11,
+                        "n_obj_map_cord_y": 11,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 208,
+                                "n_object_map_id": 210,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 211,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 12,
+                        "n_obj_map_cord_y": 11,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 209,
+                                "n_object_map_id": 211,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 212,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 13,
+                        "n_obj_map_cord_y": 11,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 210,
+                                "n_object_map_id": 212,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 213,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 14,
+                        "n_obj_map_cord_y": 11,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 211,
+                                "n_object_map_id": 213,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 214,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 15,
+                        "n_obj_map_cord_y": 11,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 212,
+                                "n_object_map_id": 214,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 215,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 16,
+                        "n_obj_map_cord_y": 11,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 213,
+                                "n_object_map_id": 215,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 216,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 17,
+                        "n_obj_map_cord_y": 11,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 214,
+                                "n_object_map_id": 216,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 217,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 0,
+                        "n_obj_map_cord_y": 12,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 215,
+                                "n_object_map_id": 217,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 218,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 1,
+                        "n_obj_map_cord_y": 12,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 216,
+                                "n_object_map_id": 218,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 219,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 2,
+                        "n_obj_map_cord_y": 12,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 217,
+                                "n_object_map_id": 219,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 220,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 3,
+                        "n_obj_map_cord_y": 12,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 218,
+                                "n_object_map_id": 220,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 221,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 4,
+                        "n_obj_map_cord_y": 12,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 219,
+                                "n_object_map_id": 221,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 222,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 5,
+                        "n_obj_map_cord_y": 12,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 220,
+                                "n_object_map_id": 222,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 223,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 6,
+                        "n_obj_map_cord_y": 12,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 221,
+                                "n_object_map_id": 223,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 224,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 7,
+                        "n_obj_map_cord_y": 12,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 222,
+                                "n_object_map_id": 224,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 225,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 8,
+                        "n_obj_map_cord_y": 12,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 223,
+                                "n_object_map_id": 225,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 226,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 9,
+                        "n_obj_map_cord_y": 12,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 224,
+                                "n_object_map_id": 226,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 227,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 10,
+                        "n_obj_map_cord_y": 12,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 225,
+                                "n_object_map_id": 227,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 228,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 11,
+                        "n_obj_map_cord_y": 12,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 226,
+                                "n_object_map_id": 228,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 229,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 12,
+                        "n_obj_map_cord_y": 12,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 227,
+                                "n_object_map_id": 229,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 230,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 13,
+                        "n_obj_map_cord_y": 12,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 228,
+                                "n_object_map_id": 230,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 231,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 14,
+                        "n_obj_map_cord_y": 12,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 229,
+                                "n_object_map_id": 231,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 232,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 15,
+                        "n_obj_map_cord_y": 12,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 230,
+                                "n_object_map_id": 232,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 233,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 16,
+                        "n_obj_map_cord_y": 12,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 231,
+                                "n_object_map_id": 233,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 234,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 17,
+                        "n_obj_map_cord_y": 12,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 232,
+                                "n_object_map_id": 234,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 235,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 0,
+                        "n_obj_map_cord_y": 13,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 233,
+                                "n_object_map_id": 235,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 236,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 1,
+                        "n_obj_map_cord_y": 13,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 234,
+                                "n_object_map_id": 236,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 237,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 2,
+                        "n_obj_map_cord_y": 13,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 235,
+                                "n_object_map_id": 237,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 238,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 3,
+                        "n_obj_map_cord_y": 13,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 236,
+                                "n_object_map_id": 238,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 239,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 4,
+                        "n_obj_map_cord_y": 13,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 237,
+                                "n_object_map_id": 239,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 240,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 5,
+                        "n_obj_map_cord_y": 13,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 238,
+                                "n_object_map_id": 240,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 241,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 6,
+                        "n_obj_map_cord_y": 13,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 239,
+                                "n_object_map_id": 241,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 242,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 7,
+                        "n_obj_map_cord_y": 13,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 240,
+                                "n_object_map_id": 242,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 243,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 8,
+                        "n_obj_map_cord_y": 13,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 241,
+                                "n_object_map_id": 243,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 244,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 9,
+                        "n_obj_map_cord_y": 13,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 242,
+                                "n_object_map_id": 244,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 245,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 10,
+                        "n_obj_map_cord_y": 13,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 243,
+                                "n_object_map_id": 245,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 246,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 11,
+                        "n_obj_map_cord_y": 13,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 244,
+                                "n_object_map_id": 246,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 247,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 12,
+                        "n_obj_map_cord_y": 13,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 245,
+                                "n_object_map_id": 247,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 248,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 13,
+                        "n_obj_map_cord_y": 13,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 246,
+                                "n_object_map_id": 248,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 249,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 14,
+                        "n_obj_map_cord_y": 13,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 247,
+                                "n_object_map_id": 249,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 250,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 15,
+                        "n_obj_map_cord_y": 13,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 248,
+                                "n_object_map_id": 250,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 251,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 16,
+                        "n_obj_map_cord_y": 13,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 249,
+                                "n_object_map_id": 251,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 252,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 17,
+                        "n_obj_map_cord_y": 13,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 250,
+                                "n_object_map_id": 252,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 253,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 0,
+                        "n_obj_map_cord_y": 14,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 251,
+                                "n_object_map_id": 253,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 254,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 1,
+                        "n_obj_map_cord_y": 14,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 252,
+                                "n_object_map_id": 254,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 255,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 2,
+                        "n_obj_map_cord_y": 14,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 253,
+                                "n_object_map_id": 255,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 256,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 3,
+                        "n_obj_map_cord_y": 14,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 254,
+                                "n_object_map_id": 256,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 257,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 4,
+                        "n_obj_map_cord_y": 14,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 255,
+                                "n_object_map_id": 257,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 258,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 5,
+                        "n_obj_map_cord_y": 14,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 256,
+                                "n_object_map_id": 258,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 259,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 6,
+                        "n_obj_map_cord_y": 14,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 257,
+                                "n_object_map_id": 259,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 260,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 7,
+                        "n_obj_map_cord_y": 14,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 258,
+                                "n_object_map_id": 260,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 261,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 8,
+                        "n_obj_map_cord_y": 14,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 259,
+                                "n_object_map_id": 261,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 262,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 9,
+                        "n_obj_map_cord_y": 14,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 260,
+                                "n_object_map_id": 262,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 263,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 10,
+                        "n_obj_map_cord_y": 14,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 261,
+                                "n_object_map_id": 263,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 264,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 11,
+                        "n_obj_map_cord_y": 14,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 262,
+                                "n_object_map_id": 264,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 265,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 12,
+                        "n_obj_map_cord_y": 14,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 263,
+                                "n_object_map_id": 265,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 266,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 13,
+                        "n_obj_map_cord_y": 14,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 264,
+                                "n_object_map_id": 266,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 267,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 14,
+                        "n_obj_map_cord_y": 14,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 265,
+                                "n_object_map_id": 267,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 268,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 15,
+                        "n_obj_map_cord_y": 14,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 266,
+                                "n_object_map_id": 268,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 269,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 16,
+                        "n_obj_map_cord_y": 14,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 267,
+                                "n_object_map_id": 269,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 270,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 17,
+                        "n_obj_map_cord_y": 14,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 268,
+                                "n_object_map_id": 270,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 271,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 0,
+                        "n_obj_map_cord_y": 15,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 269,
+                                "n_object_map_id": 271,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 272,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 1,
+                        "n_obj_map_cord_y": 15,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 270,
+                                "n_object_map_id": 272,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 273,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 2,
+                        "n_obj_map_cord_y": 15,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 271,
+                                "n_object_map_id": 273,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 274,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 3,
+                        "n_obj_map_cord_y": 15,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 272,
+                                "n_object_map_id": 274,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 275,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 4,
+                        "n_obj_map_cord_y": 15,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 273,
+                                "n_object_map_id": 275,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 276,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 5,
+                        "n_obj_map_cord_y": 15,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 274,
+                                "n_object_map_id": 276,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 277,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 6,
+                        "n_obj_map_cord_y": 15,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 275,
+                                "n_object_map_id": 277,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 278,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 7,
+                        "n_obj_map_cord_y": 15,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 276,
+                                "n_object_map_id": 278,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 279,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 8,
+                        "n_obj_map_cord_y": 15,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 277,
+                                "n_object_map_id": 279,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 280,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 9,
+                        "n_obj_map_cord_y": 15,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 278,
+                                "n_object_map_id": 280,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 281,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 10,
+                        "n_obj_map_cord_y": 15,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 279,
+                                "n_object_map_id": 281,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 282,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 11,
+                        "n_obj_map_cord_y": 15,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 280,
+                                "n_object_map_id": 282,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 283,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 12,
+                        "n_obj_map_cord_y": 15,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 281,
+                                "n_object_map_id": 283,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 284,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 13,
+                        "n_obj_map_cord_y": 15,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 282,
+                                "n_object_map_id": 284,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 285,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 14,
+                        "n_obj_map_cord_y": 15,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 283,
+                                "n_object_map_id": 285,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 286,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 15,
+                        "n_obj_map_cord_y": 15,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 284,
+                                "n_object_map_id": 286,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 287,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 16,
+                        "n_obj_map_cord_y": 15,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 285,
+                                "n_object_map_id": 287,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 288,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 17,
+                        "n_obj_map_cord_y": 15,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 286,
+                                "n_object_map_id": 288,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 289,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 3,
+                        "n_obj_map_cord_y": 16,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 287,
+                                "n_object_map_id": 289,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 290,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 4,
+                        "n_obj_map_cord_y": 16,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 288,
+                                "n_object_map_id": 290,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 291,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 5,
+                        "n_obj_map_cord_y": 16,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 289,
+                                "n_object_map_id": 291,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 292,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 6,
+                        "n_obj_map_cord_y": 16,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 290,
+                                "n_object_map_id": 292,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 293,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 7,
+                        "n_obj_map_cord_y": 16,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 291,
+                                "n_object_map_id": 293,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 294,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 8,
+                        "n_obj_map_cord_y": 16,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 292,
+                                "n_object_map_id": 294,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 295,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 9,
+                        "n_obj_map_cord_y": 16,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 293,
+                                "n_object_map_id": 295,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 296,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 10,
+                        "n_obj_map_cord_y": 16,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 294,
+                                "n_object_map_id": 296,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 297,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 11,
+                        "n_obj_map_cord_y": 16,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 295,
+                                "n_object_map_id": 297,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 298,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 12,
+                        "n_obj_map_cord_y": 16,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 296,
+                                "n_object_map_id": 298,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 299,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 13,
+                        "n_obj_map_cord_y": 16,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 297,
+                                "n_object_map_id": 299,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    }
+
+                ],
+                t_map_type: MAP_TYPE.DISCOTECA
+            },
+            {
+                t_map_name: "Sala Inferiore",
+                t_map_event_id: 1,
+                t_map_id: 1,
+                t_map_total_seat: 315,
+                t_object_maps: [
+                    {
+                        n_id: 1,
+                        n_id_map: 2,
+                        n_obj_map_cord_x: 9, //Per metterlo al centro il canvas è di 1920, per cui 960, ma ha una width di 300, quindi 960 - (300/2)
+                        n_obj_map_cord_y: 0,
+                        n_obj_map_cord_z: 1,
+                        n_obj_map_width: 200,
+                        n_obj_map_height: 100,
+                        n_obj_map_fill: "grey",
+                        n_obj_map_text: "Console",
+                        t_type: {
+                            TABLE: {
+                                DISCOTECA_DJ: true
+                            }
+                        },
+                        is_acquistabile: false,
+                        t_seat_list: []
+                    },
+                    {
+                        n_id: 2,
+                        n_id_map: 1,
+                        n_min_num_person: 8,
+                        n_max_num_person: 15,
+                        n_limit_buy_for_person: 1,
+                        n_object_price: 700,
+                        n_obj_map_cord_x: 0,
+                        n_obj_map_cord_y: 1,
+                        n_obj_map_cord_z: 1,
+                        n_obj_map_width: 80,
+                        n_obj_map_height: 120,
+                        n_obj_map_text: "Tavolo",
+                        t_note: "Tavolo normale, inclusa una consumazione da 500€",
+                        t_type: {
+                            TABLE: {
+                                DISCOTECA: true
+                            }
+                        },
+                        is_acquistabile: false,
+                        t_seat_list: [
+                            {
+                                n_seat_num: 300,
+                                n_object_map_id: 2,
+                                n_id_event: 2,
+                                is_sell: true,
+                                is_acquistabile: true
+                            },
+                            {
+                                n_seat_num: 301,
+                                n_object_map_id: 2,
+                                n_id_event: 2,
+                                is_sell: true,
+                                is_acquistabile: true
+                            },
+                            {
+                                n_seat_num: 302,
+                                n_object_map_id: 2,
+                                n_id_event: 2,
+                                is_sell: true,
+                                is_acquistabile: true
+                            },
+                            {
+                                n_seat_num: 303,
+                                n_object_map_id: 2,
+                                n_id_event: 2,
+                                is_sell: true,
+                                is_acquistabile: true
+                            },
+                            {
+                                n_seat_num: 304,
+                                n_object_map_id: 2,
+                                n_id_event: 2,
+                                is_sell: true,
+                                is_acquistabile: true
+                            },
+                            {
+                                n_seat_num: 305,
+                                n_object_map_id: 2,
+                                n_id_event: 2,
+                                is_sell: true,
+                                is_acquistabile: true
+                            },
+                            {
+                                n_seat_num: 306,
+                                n_object_map_id: 2,
+                                n_id_event: 2,
+                                is_sell: true,
+                                is_acquistabile: true
+                            },
+                            {
+                                n_seat_num: 307,
+                                n_object_map_id: 2,
+                                n_id_event: 2,
+                                is_sell: false,
+                                is_acquistabile: true
+                            },
+                            {
+                                n_seat_num: 308,
+                                n_object_map_id: 2,
+                                n_id_event: 2,
+                                is_sell: false,
+                                is_acquistabile: true
+                            },
+                            {
+                                n_seat_num: 309,
+                                n_object_map_id: 2,
+                                n_id_event: 2,
+                                is_sell: false,
+                                is_acquistabile: true
+                            },
+                            {
+                                n_seat_num: 310,
+                                n_object_map_id: 2,
+                                n_id_event: 2,
+                                is_sell: false,
+                                is_acquistabile: true
+                            },
+                            {
+                                n_seat_num: 311,
+                                n_object_map_id: 2,
+                                n_id_event: 2,
+                                is_sell: false,
+                                is_acquistabile: true
+                            },
+                            {
+                                n_seat_num: 312,
+                                n_object_map_id: 2,
+                                n_id_event: 2,
+                                is_sell: false,
+                                is_acquistabile: true
+                            },
+                            {
+                                n_seat_num: 313,
+                                n_object_map_id: 2,
+                                n_id_event: 2,
+                                is_sell: false,
+                                is_acquistabile: true
+                            },
+                            {
+                                n_seat_num: 314,
+                                n_object_map_id: 2,
+                                n_id_event: 2,
+                                is_sell: false,
+                                is_acquistabile: true
+                            },
+                        ]
+                    },
+                    {
+                        n_id: 3,
+                        n_id_map: 1,
+                        n_limit_buy_for_person: 5,
+                        n_object_price: 10,
+                        n_obj_map_cord_x: 0,
+                        n_obj_map_cord_y: 0,
+                        n_obj_map_cord_z: 1,
+                        n_obj_map_width: 50,
+                        n_obj_map_height: 35,
+                        t_note: "Non inclusa consumazione",
+                        t_type: {
+                            SEAT: {
+                                TYPE: {
+                                    NO_CONSUMATION: true
+                                }
+                            }
+                        },
+                        is_acquistabile: false,
+                        t_seat_list: [
+                            {
+                                n_seat_num: 1,
+                                n_object_map_id: 3,
+                                n_id_event: 2,
+                                is_sell: true,
+                                is_acquistabile: true
+                            },
+                        ]
+                    },
+                    {
+                        n_id: 4,
+                        n_id_map: 1,
+                        n_limit_buy_for_person: 5,
+                        n_object_price: 10,
+                        n_obj_map_cord_x: 1,
+                        n_obj_map_cord_y: 0,
+                        n_obj_map_cord_z: 1,
+                        n_obj_map_width: 50,
+                        n_obj_map_height: 35,
+                        t_note: "Non inclusa consumazione",
+                        t_type: {
+                            SEAT: {
+                                TYPE: {
+                                    NO_CONSUMATION: true
+                                }
+                            }
+                        },
+                        is_acquistabile: true,
+                        t_seat_list: [
+                            {
+                                n_seat_num: 2,
+                                n_object_map_id: 2,
+                                n_id_event: 2,
+                                is_sell: false,
+                                is_acquistabile: true
+                            },
+                        ]
+                    },
+                    {
+                        n_id: 5,
+                        n_id_map: 1,
+                        n_limit_buy_for_person: 5,
+                        n_object_price: 10,
+                        n_obj_map_cord_x: 3,
+                        n_obj_map_cord_y: 0,
+                        n_obj_map_cord_z: 1,
+                        n_obj_map_width: 50,
+                        n_obj_map_height: 35,
+                        t_note: "Non inclusa consumazione",
+                        t_type: {
+                            SEAT: {
+                                TYPE: {
+                                    NO_CONSUMATION: true
+                                }
+                            }
+                        },
+                        is_acquistabile: true,
+                        t_seat_list: [
+                            {
+                                n_seat_num: 4,
+                                n_object_map_id: 5,
+                                n_id_event: 2,
+                                is_sell: false,
+                                is_acquistabile: true
+                            },
+                        ]
+                    },
+                    {
+                        n_id: 6,
+                        n_id_map: 1,
+                        n_limit_buy_for_person: 5,
+                        n_object_price: 10,
+                        n_obj_map_cord_x: 4,
+                        n_obj_map_cord_y: 0,
+                        n_obj_map_cord_z: 1,
+                        n_obj_map_width: 50,
+                        n_obj_map_height: 35,
+                        t_note: "Non inclusa consumazione",
+                        t_type: {
+                            SEAT: {
+                                TYPE: {
+                                    NO_CONSUMATION: true
+                                }
+                            }
+                        },
+                        is_acquistabile: true,
+                        t_seat_list: [
+                            {
+                                n_seat_num: 5,
+                                n_object_map_id: 2,
+                                n_id_event: 1,
+                                is_sell: false,
+                                is_acquistabile: true
+                            },
+                        ]
+                    },
+                    {
+                        n_id: 7,
+                        n_id_map: 1,
+                        n_limit_buy_for_person: 5,
+                        n_object_price: 10,
+                        n_obj_map_cord_x: 5,
+                        n_obj_map_cord_y: 0,
+                        n_obj_map_cord_z: 1,
+                        n_obj_map_width: 50,
+                        n_obj_map_height: 35,
+                        t_note: "Non inclusa consumazione",
+                        t_type: {
+                            SEAT: {
+                                TYPE: {
+                                    NO_CONSUMATION: true
+                                }
+                            }
+                        },
+                        is_acquistabile: true,
+                        t_seat_list: [
+                            {
+                                n_seat_num: 6,
+                                n_object_map_id: 7,
+                                n_id_event: 2,
+                                is_sell: false,
+                                is_acquistabile: true
+                            },
+                        ]
+                    },
+                    {
+                        n_id: 8,
+                        n_id_map: 1,
+                        n_limit_buy_for_person: 5,
+                        n_object_price: 10,
+                        n_obj_map_cord_x: 6,
+                        n_obj_map_cord_y: 0,
+                        n_obj_map_cord_z: 1,
+                        n_obj_map_width: 50,
+                        n_obj_map_height: 35,
+                        t_note: "Non inclusa consumazione",
+                        t_type: {
+                            SEAT: {
+                                TYPE: {
+                                    NO_CONSUMATION: true
+                                }
+                            }
+                        },
+                        is_acquistabile: true,
+                        t_seat_list: [
+                            {
+                                n_seat_num: 7,
+                                n_object_map_id: 8,
+                                n_id_event: 2,
+                                is_sell: false,
+                                is_acquistabile: true
+                            },
+                        ]
+                    },
+                    {
+                        n_id: 9,
+                        n_id_map: 1,
+                        n_limit_buy_for_person: 5,
+                        n_object_price: 10,
+                        n_obj_map_cord_x: 7,
+                        n_obj_map_cord_y: 0,
+                        n_obj_map_cord_z: 1,
+                        n_obj_map_width: 50,
+                        n_obj_map_height: 35,
+                        t_note: "Non inclusa consumazione",
+                        t_type: {
+                            SEAT: {
+                                TYPE: {
+                                    NO_CONSUMATION: true
+                                }
+                            }
+                        },
+                        is_acquistabile: true,
+                        t_seat_list: [
+                            {
+                                n_seat_num: 8,
+                                n_object_map_id: 9,
+                                n_id_event: 2,
+                                is_sell: false,
+                                is_acquistabile: true
+                            },
+                        ]
+                    },
+                    {
+                        n_id: 10,
+                        n_id_map: 1,
+                        n_limit_buy_for_person: 5,
+                        n_object_price: 10,
+                        n_obj_map_cord_x: 2,
+                        n_obj_map_cord_y: 0,
+                        n_obj_map_cord_z: 1,
+                        n_obj_map_width: 50,
+                        n_obj_map_height: 35,
+                        t_note: "Non inclusa consumazione",
+                        t_type: {
+                            SEAT: {
+                                TYPE: {
+                                    NO_CONSUMATION: true
+                                }
+                            }
+                        },
+                        is_acquistabile: true,
+                        t_seat_list: [
+                            {
+                                n_seat_num: 3,
+                                n_object_map_id: 10,
+                                n_id_event: 2,
+                                is_sell: false,
+                                is_acquistabile: true
+                            },
+                        ]
+                    },
+                    {
+                        n_id: 11,
+                        n_id_map: 1,
+                        n_limit_buy_for_person: 5,
+                        n_object_price: 10,
+                        n_obj_map_cord_x: 8,
+                        n_obj_map_cord_y: 0,
+                        n_obj_map_cord_z: 1,
+                        n_obj_map_width: 50,
+                        n_obj_map_height: 35,
+                        t_note: "Non inclusa consumazione",
+                        t_type: {
+                            SEAT: {
+                                TYPE: {
+                                    NO_CONSUMATION: true
+                                }
+                            }
+                        },
+                        is_acquistabile: true,
+                        t_seat_list: [
+                            {
+                                n_seat_num: 9,
+                                n_object_map_id: 11,
+                                n_id_event: 2,
+                                is_sell: false,
+                                is_acquistabile: true
+                            },
+                        ]
+                    },
+                    {
+                        n_id: 12,
+                        n_id_map: 1,
+                        n_limit_buy_for_person: 5,
+                        n_object_price: 10,
+                        n_obj_map_cord_x: 10,
+                        n_obj_map_cord_y: 0,
+                        n_obj_map_cord_z: 1,
+                        n_obj_map_width: 50,
+                        n_obj_map_height: 35,
+                        t_note: "Non inclusa consumazione",
+                        t_type: {
+                            SEAT: {
+                                TYPE: {
+                                    NO_CONSUMATION: true
+                                }
+                            }
+                        },
+                        is_acquistabile: true,
+                        t_seat_list: [
+                            {
+                                n_seat_num: 10,
+                                n_object_map_id: 12,
+                                n_id_event: 2,
+                                is_sell: false,
+                                is_acquistabile: true
+                            },
+                        ]
+                    },
+                    {
+                        n_id: 13,
+                        n_id_map: 1,
+                        n_limit_buy_for_person: 5,
+                        n_object_price: 10,
+                        n_obj_map_cord_x: 11,
+                        n_obj_map_cord_y: 0,
+                        n_obj_map_cord_z: 1,
+                        n_obj_map_width: 50,
+                        n_obj_map_height: 35,
+                        t_note: "Non inclusa consumazione",
+                        t_type: {
+                            SEAT: {
+                                TYPE: {
+                                    NO_CONSUMATION: true
+                                }
+                            }
+                        },
+                        is_acquistabile: true,
+                        t_seat_list: [
+                            {
+                                n_seat_num: 11,
+                                n_object_map_id: 13,
+                                n_id_event: 2,
+                                is_sell: false,
+                                is_acquistabile: true
+                            },
+                        ]
+                    },
+                    {
+                        n_id: 14,
+                        n_id_map: 1,
+                        n_limit_buy_for_person: 5,
+                        n_object_price: 10,
+                        n_obj_map_cord_x: 12,
+                        n_obj_map_cord_y: 0,
+                        n_obj_map_cord_z: 1,
+                        n_obj_map_width: 50,
+                        n_obj_map_height: 35,
+                        t_note: "Non inclusa consumazione",
+                        t_type: {
+                            SEAT: {
+                                TYPE: {
+                                    NO_CONSUMATION: true
+                                }
+                            }
+                        },
+                        is_acquistabile: true,
+                        t_seat_list: [
+                            {
+                                n_seat_num: 12,
+                                n_object_map_id: 14,
+                                n_id_event: 2,
+                                is_sell: false,
+                                is_acquistabile: true
+                            },
+                        ]
+                    },
+                    {
+                        n_id: 15,
+                        n_id_map: 1,
+                        n_limit_buy_for_person: 5,
+                        n_object_price: 10,
+                        n_obj_map_cord_x: 13,
+                        n_obj_map_cord_y: 0,
+                        n_obj_map_cord_z: 1,
+                        n_obj_map_width: 50,
+                        n_obj_map_height: 35,
+                        t_note: "Non inclusa consumazione",
+                        t_type: {
+                            SEAT: {
+                                TYPE: {
+                                    NO_CONSUMATION: true
+                                }
+                            }
+                        },
+                        is_acquistabile: true,
+                        t_seat_list: [
+                            {
+                                n_seat_num: 13,
+                                n_object_map_id: 15,
+                                n_id_event: 2,
+                                is_sell: false,
+                                is_acquistabile: true
+                            },
+                        ]
+                    },
+                    {
+                        n_id: 16,
+                        n_id_map: 1,
+                        n_limit_buy_for_person: 5,
+                        n_object_price: 10,
+                        n_obj_map_cord_x: 14,
+                        n_obj_map_cord_y: 0,
+                        n_obj_map_cord_z: 1,
+                        n_obj_map_width: 50,
+                        n_obj_map_height: 35,
+                        t_note: "Non inclusa consumazione",
+                        t_type: {
+                            SEAT: {
+                                TYPE: {
+                                    NO_CONSUMATION: true
+                                }
+                            }
+                        },
+                        is_acquistabile: true,
+                        t_seat_list: [
+                            {
+                                n_seat_num: 14,
+                                n_object_map_id: 16,
+                                n_id_event: 2,
+                                is_sell: false,
+                                is_acquistabile: true
+                            },
+                        ]
+                    },
+                    {
+                        n_id: 17,
+                        n_id_map: 1,
+                        n_limit_buy_for_person: 5,
+                        n_object_price: 10,
+                        n_obj_map_cord_x: 15,
+                        n_obj_map_cord_y: 0,
+                        n_obj_map_cord_z: 1,
+                        n_obj_map_width: 50,
+                        n_obj_map_height: 35,
+                        t_note: "Non inclusa consumazione",
+                        t_type: {
+                            SEAT: {
+                                TYPE: {
+                                    NO_CONSUMATION: true
+                                }
+                            }
+                        },
+                        is_acquistabile: true,
+                        t_seat_list: [
+                            {
+                                n_seat_num: 15,
+                                n_object_map_id: 17,
+                                n_id_event: 2,
+                                is_sell: false,
+                                is_acquistabile: true
+                            },
+                        ]
+                    },
+                    {
+                        n_id: 18,
+                        n_id_map: 1,
+                        n_limit_buy_for_person: 5,
+                        n_object_price: 10,
+                        n_obj_map_cord_x: 16,
+                        n_obj_map_cord_y: 0,
+                        n_obj_map_cord_z: 1,
+                        n_obj_map_width: 50,
+                        n_obj_map_height: 35,
+                        t_note: "Non inclusa consumazione",
+                        t_type: {
+                            SEAT: {
+                                TYPE: {
+                                    NO_CONSUMATION: true
+                                }
+                            }
+                        },
+                        is_acquistabile: true,
+                        t_seat_list: [
+                            {
+                                n_seat_num: 16,
+                                n_object_map_id: 18,
+                                n_id_event: 2,
+                                is_sell: false,
+                                is_acquistabile: true
+                            },
+                        ]
+                    },
+                    {
+                        n_id: 19,
+                        n_id_map: 1,
+                        n_limit_buy_for_person: 5,
+                        n_object_price: 10,
+                        n_obj_map_cord_x: 17,
+                        n_obj_map_cord_y: 0,
+                        n_obj_map_cord_z: 1,
+                        n_obj_map_width: 50,
+                        n_obj_map_height: 35,
+                        t_note: "Non inclusa consumazione",
+                        t_type: {
+                            SEAT: {
+                                TYPE: {
+                                    NO_CONSUMATION: true
+                                }
+                            }
+                        },
+                        is_acquistabile: true,
+                        t_seat_list: [
+                            {
+                                n_seat_num: 17,
+                                n_object_map_id: 19,
+                                n_id_event: 2,
+                                is_sell: false,
+                                is_acquistabile: true
+                            },
+                        ]
+                    },
+                    {
+                        n_id: 20,
+                        n_id_map: 1,
+                        n_limit_buy_for_person: 6,
+                        n_object_price: 20,
+                        n_obj_map_cord_x: 1,
+                        n_obj_map_cord_y: 1,
+                        n_obj_map_cord_z: 1,
+                        n_obj_map_width: 50,
+                        n_obj_map_height: 35,
+                        t_note: "Consumazione di 2 cocktail inclusa",
+                        t_type: {
+                            SEAT: {
+                                TYPE: {
+                                    WITH_CONSUMATION: true
+                                }
+                            }
+                        },
+                        is_acquistabile: true,
+                        t_seat_list: [
+                            {
+                                n_seat_num: 18,
+                                n_object_map_id: 20,
+                                n_id_event: 2,
+                                is_sell: false,
+                                is_acquistabile: true
+                            },
+                        ]
+                    },
+                    {
+                        n_id: 21,
+                        n_id_map: 1,
+                        n_limit_buy_for_person: 6,
+                        n_object_price: 20,
+                        n_obj_map_cord_x: 2,
+                        n_obj_map_cord_y: 1,
+                        n_obj_map_cord_z: 1,
+                        n_obj_map_width: 50,
+                        n_obj_map_height: 35,
+                        t_note: "Consumazione di 2 cocktail inclusa",
+                        t_type: {
+                            SEAT: {
+                                TYPE: {
+                                    WITH_CONSUMATION: true
+                                }
+                            }
+                        },
+                        is_acquistabile: true,
+                        t_seat_list: [
+                            {
+                                n_seat_num: 19,
+                                n_object_map_id: 21,
+                                n_id_event: 2,
+                                is_sell: false,
+                                is_acquistabile: true
+                            },
+                        ]
+                    },
+                    {
+                        n_id: 22,
+                        n_id_map: 1,
+                        n_limit_buy_for_person: 6,
+                        n_object_price: 20,
+                        n_obj_map_cord_x: 3,
+                        n_obj_map_cord_y: 1,
+                        n_obj_map_cord_z: 1,
+                        n_obj_map_width: 50,
+                        n_obj_map_height: 35,
+                        t_note: "Consumazione di 2 cocktail inclusa",
+                        t_type: {
+                            SEAT: {
+                                TYPE: {
+                                    WITH_CONSUMATION: true
+                                }
+                            }
+                        },
+                        is_acquistabile: true,
+                        t_seat_list: [
+                            {
+                                n_seat_num: 20,
+                                n_object_map_id: 22,
+                                n_id_event: 2,
+                                is_sell: false,
+                                is_acquistabile: true
+                            },
+                        ]
+                    },
+                    {
+                        n_id: 23,
+                        n_id_map: 1,
+                        n_limit_buy_for_person: 6,
+                        n_object_price: 20,
+                        n_obj_map_cord_x: 4,
+                        n_obj_map_cord_y: 1,
+                        n_obj_map_cord_z: 1,
+                        n_obj_map_width: 50,
+                        n_obj_map_height: 35,
+                        t_note: "Consumazione di 2 cocktail inclusa",
+                        t_type: {
+                            SEAT: {
+                                TYPE: {
+                                    WITH_CONSUMATION: true
+                                }
+                            }
+                        },
+                        is_acquistabile: true,
+                        t_seat_list: [
+                            {
+                                n_seat_num: 21,
+                                n_object_map_id: 23,
+                                n_id_event: 2,
+                                is_sell: false,
+                                is_acquistabile: true
+                            },
+                        ]
+                    },
+                    {
+                        n_id: 24,
+                        n_id_map: 1,
+                        n_limit_buy_for_person: 5,
+                        n_object_price: 10,
+                        n_obj_map_cord_x: 5,
+                        n_obj_map_cord_y: 1,
+                        n_obj_map_cord_z: 1,
+                        n_obj_map_width: 50,
+                        n_obj_map_height: 35,
+                        t_note: "Non inclusa consumazione",
+                        t_type: {
+                            SEAT: {
+                                TYPE: {
+                                    NO_CONSUMATION: true
+                                }
+                            }
+                        },
+                        is_acquistabile: true,
+                        t_seat_list: [
+                            {
+                                n_seat_num: 22,
+                                n_object_map_id: 24,
+                                n_id_event: 2,
+                                is_sell: false,
+                                is_acquistabile: true
+                            },
+                        ]
+                    },
+                    {
+                        n_id: 25,
+                        n_id_map: 1,
+                        n_limit_buy_for_person: 5,
+                        n_object_price: 10,
+                        n_obj_map_cord_x: 6,
+                        n_obj_map_cord_y: 1,
+                        n_obj_map_cord_z: 1,
+                        n_obj_map_width: 50,
+                        n_obj_map_height: 35,
+                        t_note: "Non inclusa consumazione",
+                        t_type: {
+                            SEAT: {
+                                TYPE: {
+                                    NO_CONSUMATION: true
+                                }
+                            }
+                        },
+                        is_acquistabile: true,
+                        t_seat_list: [
+                            {
+                                n_seat_num: 23,
+                                n_object_map_id: 25,
+                                n_id_event: 2,
+                                is_sell: false,
+                                is_acquistabile: true
+                            },
+                        ]
+                    },
+                    {
+                        "n_id": 26,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 7,
+                        "n_obj_map_cord_y": 1,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 24,
+                                "n_object_map_id": 26,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 27,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 8,
+                        "n_obj_map_cord_y": 1,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 25,
+                                "n_object_map_id": 27,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 28,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 9,
+                        "n_obj_map_cord_y": 1,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 26,
+                                "n_object_map_id": 28,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 29,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 10,
+                        "n_obj_map_cord_y": 1,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 27,
+                                "n_object_map_id": 29,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 30,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 11,
+                        "n_obj_map_cord_y": 1,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 28,
+                                "n_object_map_id": 30,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 31,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 12,
+                        "n_obj_map_cord_y": 1,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 29,
+                                "n_object_map_id": 31,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 32,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 13,
+                        "n_obj_map_cord_y": 1,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 30,
+                                "n_object_map_id": 32,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 33,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 14,
+                        "n_obj_map_cord_y": 1,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 31,
+                                "n_object_map_id": 33,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 34,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 15,
+                        "n_obj_map_cord_y": 1,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 32,
+                                "n_object_map_id": 34,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 35,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 16,
+                        "n_obj_map_cord_y": 1,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 33,
+                                "n_object_map_id": 35,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 36,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 17,
+                        "n_obj_map_cord_y": 1,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 34,
+                                "n_object_map_id": 36,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 37,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 0,
+                        "n_obj_map_cord_y": 2,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 35,
+                                "n_object_map_id": 37,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 38,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 1,
+                        "n_obj_map_cord_y": 2,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 36,
+                                "n_object_map_id": 38,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 39,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 2,
+                        "n_obj_map_cord_y": 2,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 37,
+                                "n_object_map_id": 39,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 40,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 3,
+                        "n_obj_map_cord_y": 2,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 38,
+                                "n_object_map_id": 40,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 41,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 4,
+                        "n_obj_map_cord_y": 2,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 39,
+                                "n_object_map_id": 41,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 42,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 5,
+                        "n_obj_map_cord_y": 2,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 40,
+                                "n_object_map_id": 42,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 43,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 6,
+                        "n_obj_map_cord_y": 2,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 41,
+                                "n_object_map_id": 43,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 44,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 7,
+                        "n_obj_map_cord_y": 2,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 42,
+                                "n_object_map_id": 44,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 45,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 8,
+                        "n_obj_map_cord_y": 2,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 43,
+                                "n_object_map_id": 45,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 46,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 9,
+                        "n_obj_map_cord_y": 2,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 44,
+                                "n_object_map_id": 46,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 47,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 10,
+                        "n_obj_map_cord_y": 2,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 45,
+                                "n_object_map_id": 47,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 48,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 11,
+                        "n_obj_map_cord_y": 2,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 46,
+                                "n_object_map_id": 48,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 49,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 12,
+                        "n_obj_map_cord_y": 2,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 47,
+                                "n_object_map_id": 49,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 50,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 13,
+                        "n_obj_map_cord_y": 2,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 48,
+                                "n_object_map_id": 50,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 51,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 14,
+                        "n_obj_map_cord_y": 2,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 49,
+                                "n_object_map_id": 51,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 52,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 15,
+                        "n_obj_map_cord_y": 2,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 50,
+                                "n_object_map_id": 52,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 53,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 16,
+                        "n_obj_map_cord_y": 2,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 51,
+                                "n_object_map_id": 53,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 54,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 17,
+                        "n_obj_map_cord_y": 2,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 52,
+                                "n_object_map_id": 54,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 55,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 0,
+                        "n_obj_map_cord_y": 3,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 53,
+                                "n_object_map_id": 55,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 56,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 1,
+                        "n_obj_map_cord_y": 3,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 54,
+                                "n_object_map_id": 56,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 57,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 2,
+                        "n_obj_map_cord_y": 3,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 55,
+                                "n_object_map_id": 57,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 58,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 3,
+                        "n_obj_map_cord_y": 3,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 56,
+                                "n_object_map_id": 58,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 59,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 4,
+                        "n_obj_map_cord_y": 3,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 57,
+                                "n_object_map_id": 59,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 60,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 5,
+                        "n_obj_map_cord_y": 3,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 58,
+                                "n_object_map_id": 60,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 61,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 6,
+                        "n_obj_map_cord_y": 3,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 59,
+                                "n_object_map_id": 61,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 62,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 7,
+                        "n_obj_map_cord_y": 3,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 60,
+                                "n_object_map_id": 62,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 63,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 8,
+                        "n_obj_map_cord_y": 3,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 61,
+                                "n_object_map_id": 63,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 64,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 9,
+                        "n_obj_map_cord_y": 3,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 62,
+                                "n_object_map_id": 64,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 65,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 10,
+                        "n_obj_map_cord_y": 3,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 63,
+                                "n_object_map_id": 65,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 66,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 11,
+                        "n_obj_map_cord_y": 3,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 64,
+                                "n_object_map_id": 66,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 67,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 12,
+                        "n_obj_map_cord_y": 3,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 65,
+                                "n_object_map_id": 67,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 68,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 13,
+                        "n_obj_map_cord_y": 3,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 66,
+                                "n_object_map_id": 68,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 69,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 14,
+                        "n_obj_map_cord_y": 3,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 67,
+                                "n_object_map_id": 69,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 70,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 15,
+                        "n_obj_map_cord_y": 3,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 68,
+                                "n_object_map_id": 70,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 71,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 16,
+                        "n_obj_map_cord_y": 3,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 69,
+                                "n_object_map_id": 71,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 72,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 17,
+                        "n_obj_map_cord_y": 3,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 70,
+                                "n_object_map_id": 72,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 73,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 0,
+                        "n_obj_map_cord_y": 4,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 71,
+                                "n_object_map_id": 73,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 74,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 1,
+                        "n_obj_map_cord_y": 4,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 72,
+                                "n_object_map_id": 74,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 75,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 2,
+                        "n_obj_map_cord_y": 4,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 73,
+                                "n_object_map_id": 75,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 76,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 3,
+                        "n_obj_map_cord_y": 4,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 74,
+                                "n_object_map_id": 76,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 77,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 4,
+                        "n_obj_map_cord_y": 4,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 75,
+                                "n_object_map_id": 77,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 78,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 5,
+                        "n_obj_map_cord_y": 4,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 76,
+                                "n_object_map_id": 78,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 79,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 6,
+                        "n_obj_map_cord_y": 4,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 77,
+                                "n_object_map_id": 79,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 80,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 7,
+                        "n_obj_map_cord_y": 4,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 78,
+                                "n_object_map_id": 80,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 81,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 8,
+                        "n_obj_map_cord_y": 4,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 79,
+                                "n_object_map_id": 81,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 82,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 9,
+                        "n_obj_map_cord_y": 4,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 80,
+                                "n_object_map_id": 82,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 83,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 10,
+                        "n_obj_map_cord_y": 4,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 81,
+                                "n_object_map_id": 83,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 84,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 11,
+                        "n_obj_map_cord_y": 4,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 82,
+                                "n_object_map_id": 84,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 85,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 12,
+                        "n_obj_map_cord_y": 4,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 83,
+                                "n_object_map_id": 85,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 86,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 13,
+                        "n_obj_map_cord_y": 4,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 84,
+                                "n_object_map_id": 86,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 87,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 14,
+                        "n_obj_map_cord_y": 4,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 85,
+                                "n_object_map_id": 87,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 88,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 15,
+                        "n_obj_map_cord_y": 4,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 86,
+                                "n_object_map_id": 88,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 89,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 16,
+                        "n_obj_map_cord_y": 4,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 87,
+                                "n_object_map_id": 89,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 90,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 17,
+                        "n_obj_map_cord_y": 4,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 88,
+                                "n_object_map_id": 90,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 91,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 0,
+                        "n_obj_map_cord_y": 5,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 89,
+                                "n_object_map_id": 91,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 92,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 1,
+                        "n_obj_map_cord_y": 5,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 90,
+                                "n_object_map_id": 92,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 93,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 2,
+                        "n_obj_map_cord_y": 5,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 91,
+                                "n_object_map_id": 93,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 94,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 3,
+                        "n_obj_map_cord_y": 5,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 92,
+                                "n_object_map_id": 94,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 95,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 4,
+                        "n_obj_map_cord_y": 5,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 93,
+                                "n_object_map_id": 95,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 96,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 5,
+                        "n_obj_map_cord_y": 5,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 94,
+                                "n_object_map_id": 96,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 97,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 6,
+                        "n_obj_map_cord_y": 5,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 95,
+                                "n_object_map_id": 97,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 98,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 7,
+                        "n_obj_map_cord_y": 5,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 96,
+                                "n_object_map_id": 98,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 99,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 8,
+                        "n_obj_map_cord_y": 5,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 97,
+                                "n_object_map_id": 99,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 100,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 9,
+                        "n_obj_map_cord_y": 5,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 98,
+                                "n_object_map_id": 100,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 101,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 10,
+                        "n_obj_map_cord_y": 5,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 99,
+                                "n_object_map_id": 101,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 102,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 11,
+                        "n_obj_map_cord_y": 5,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 100,
+                                "n_object_map_id": 102,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 103,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 12,
+                        "n_obj_map_cord_y": 5,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 101,
+                                "n_object_map_id": 103,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 104,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 13,
+                        "n_obj_map_cord_y": 5,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 102,
+                                "n_object_map_id": 104,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 105,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 14,
+                        "n_obj_map_cord_y": 5,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 103,
+                                "n_object_map_id": 105,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 106,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 15,
+                        "n_obj_map_cord_y": 5,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 104,
+                                "n_object_map_id": 106,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 107,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 16,
+                        "n_obj_map_cord_y": 5,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 105,
+                                "n_object_map_id": 107,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 108,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 17,
+                        "n_obj_map_cord_y": 5,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 106,
+                                "n_object_map_id": 108,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 109,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 0,
+                        "n_obj_map_cord_y": 6,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 107,
+                                "n_object_map_id": 109,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 110,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 1,
+                        "n_obj_map_cord_y": 6,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 108,
+                                "n_object_map_id": 110,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 111,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 2,
+                        "n_obj_map_cord_y": 6,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 109,
+                                "n_object_map_id": 111,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 112,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 3,
+                        "n_obj_map_cord_y": 6,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 110,
+                                "n_object_map_id": 112,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 113,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 4,
+                        "n_obj_map_cord_y": 6,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 111,
+                                "n_object_map_id": 113,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 114,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 5,
+                        "n_obj_map_cord_y": 6,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 112,
+                                "n_object_map_id": 114,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 115,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 6,
+                        "n_obj_map_cord_y": 6,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 113,
+                                "n_object_map_id": 115,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 116,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 7,
+                        "n_obj_map_cord_y": 6,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 114,
+                                "n_object_map_id": 116,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 117,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 8,
+                        "n_obj_map_cord_y": 6,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 115,
+                                "n_object_map_id": 117,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 118,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 9,
+                        "n_obj_map_cord_y": 6,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 116,
+                                "n_object_map_id": 118,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 119,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 10,
+                        "n_obj_map_cord_y": 6,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 117,
+                                "n_object_map_id": 119,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 120,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 11,
+                        "n_obj_map_cord_y": 6,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 118,
+                                "n_object_map_id": 120,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 121,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 12,
+                        "n_obj_map_cord_y": 6,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 119,
+                                "n_object_map_id": 121,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 122,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 13,
+                        "n_obj_map_cord_y": 6,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 120,
+                                "n_object_map_id": 122,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 123,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 14,
+                        "n_obj_map_cord_y": 6,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 121,
+                                "n_object_map_id": 123,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 124,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 15,
+                        "n_obj_map_cord_y": 6,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 122,
+                                "n_object_map_id": 124,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 125,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 16,
+                        "n_obj_map_cord_y": 6,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 123,
+                                "n_object_map_id": 125,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 126,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 17,
+                        "n_obj_map_cord_y": 6,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 124,
+                                "n_object_map_id": 126,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 127,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 0,
+                        "n_obj_map_cord_y": 7,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 125,
+                                "n_object_map_id": 127,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 128,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 1,
+                        "n_obj_map_cord_y": 7,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 126,
+                                "n_object_map_id": 128,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 129,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 2,
+                        "n_obj_map_cord_y": 7,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 127,
+                                "n_object_map_id": 129,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 130,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 3,
+                        "n_obj_map_cord_y": 7,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 128,
+                                "n_object_map_id": 130,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 131,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 4,
+                        "n_obj_map_cord_y": 7,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 129,
+                                "n_object_map_id": 131,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 132,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 5,
+                        "n_obj_map_cord_y": 7,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 130,
+                                "n_object_map_id": 132,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 133,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 6,
+                        "n_obj_map_cord_y": 7,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 131,
+                                "n_object_map_id": 133,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 134,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 7,
+                        "n_obj_map_cord_y": 7,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 132,
+                                "n_object_map_id": 134,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 135,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 8,
+                        "n_obj_map_cord_y": 7,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 133,
+                                "n_object_map_id": 135,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 136,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 9,
+                        "n_obj_map_cord_y": 7,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 134,
+                                "n_object_map_id": 136,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 137,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 10,
+                        "n_obj_map_cord_y": 7,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 135,
+                                "n_object_map_id": 137,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 138,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 11,
+                        "n_obj_map_cord_y": 7,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 136,
+                                "n_object_map_id": 138,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 139,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 12,
+                        "n_obj_map_cord_y": 7,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 137,
+                                "n_object_map_id": 139,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 140,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 13,
+                        "n_obj_map_cord_y": 7,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 138,
+                                "n_object_map_id": 140,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 141,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 14,
+                        "n_obj_map_cord_y": 7,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 139,
+                                "n_object_map_id": 141,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 142,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 15,
+                        "n_obj_map_cord_y": 7,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 140,
+                                "n_object_map_id": 142,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 143,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 16,
+                        "n_obj_map_cord_y": 7,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 141,
+                                "n_object_map_id": 143,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 144,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 17,
+                        "n_obj_map_cord_y": 7,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 142,
+                                "n_object_map_id": 144,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 145,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 0,
+                        "n_obj_map_cord_y": 8,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 143,
+                                "n_object_map_id": 145,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 146,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 1,
+                        "n_obj_map_cord_y": 8,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 144,
+                                "n_object_map_id": 146,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 147,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 2,
+                        "n_obj_map_cord_y": 8,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 145,
+                                "n_object_map_id": 147,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 148,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 3,
+                        "n_obj_map_cord_y": 8,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 146,
+                                "n_object_map_id": 148,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 149,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 4,
+                        "n_obj_map_cord_y": 8,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 147,
+                                "n_object_map_id": 149,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 150,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 5,
+                        "n_obj_map_cord_y": 8,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 148,
+                                "n_object_map_id": 150,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 151,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 6,
+                        "n_obj_map_cord_y": 8,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 149,
+                                "n_object_map_id": 151,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 152,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 7,
+                        "n_obj_map_cord_y": 8,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 150,
+                                "n_object_map_id": 152,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 153,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 8,
+                        "n_obj_map_cord_y": 8,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 151,
+                                "n_object_map_id": 153,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 154,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 9,
+                        "n_obj_map_cord_y": 8,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 152,
+                                "n_object_map_id": 154,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 155,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 10,
+                        "n_obj_map_cord_y": 8,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 153,
+                                "n_object_map_id": 155,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 156,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 11,
+                        "n_obj_map_cord_y": 8,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 154,
+                                "n_object_map_id": 156,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 157,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 12,
+                        "n_obj_map_cord_y": 8,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 155,
+                                "n_object_map_id": 157,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 158,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 13,
+                        "n_obj_map_cord_y": 8,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 156,
+                                "n_object_map_id": 158,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 159,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 14,
+                        "n_obj_map_cord_y": 8,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 157,
+                                "n_object_map_id": 159,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 160,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 15,
+                        "n_obj_map_cord_y": 8,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 158,
+                                "n_object_map_id": 160,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 161,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 16,
+                        "n_obj_map_cord_y": 8,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 159,
+                                "n_object_map_id": 161,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 162,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 17,
+                        "n_obj_map_cord_y": 8,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 160,
+                                "n_object_map_id": 162,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 163,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 0,
+                        "n_obj_map_cord_y": 9,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 161,
+                                "n_object_map_id": 163,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 164,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 1,
+                        "n_obj_map_cord_y": 9,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 162,
+                                "n_object_map_id": 164,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 165,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 2,
+                        "n_obj_map_cord_y": 9,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 163,
+                                "n_object_map_id": 165,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 166,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 3,
+                        "n_obj_map_cord_y": 9,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 164,
+                                "n_object_map_id": 166,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 167,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 4,
+                        "n_obj_map_cord_y": 9,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 165,
+                                "n_object_map_id": 167,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 168,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 5,
+                        "n_obj_map_cord_y": 9,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 166,
+                                "n_object_map_id": 168,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 169,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 6,
+                        "n_obj_map_cord_y": 9,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 167,
+                                "n_object_map_id": 169,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 170,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 7,
+                        "n_obj_map_cord_y": 9,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 168,
+                                "n_object_map_id": 170,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 171,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 8,
+                        "n_obj_map_cord_y": 9,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 169,
+                                "n_object_map_id": 171,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 172,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 9,
+                        "n_obj_map_cord_y": 9,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 170,
+                                "n_object_map_id": 172,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 173,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 10,
+                        "n_obj_map_cord_y": 9,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 171,
+                                "n_object_map_id": 173,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 174,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 11,
+                        "n_obj_map_cord_y": 9,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 172,
+                                "n_object_map_id": 174,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 175,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 12,
+                        "n_obj_map_cord_y": 9,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 173,
+                                "n_object_map_id": 175,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 176,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 13,
+                        "n_obj_map_cord_y": 9,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 174,
+                                "n_object_map_id": 176,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 177,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 14,
+                        "n_obj_map_cord_y": 9,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 175,
+                                "n_object_map_id": 177,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 178,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 15,
+                        "n_obj_map_cord_y": 9,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 176,
+                                "n_object_map_id": 178,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 179,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 16,
+                        "n_obj_map_cord_y": 9,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 177,
+                                "n_object_map_id": 179,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 180,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 17,
+                        "n_obj_map_cord_y": 9,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 178,
+                                "n_object_map_id": 180,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 181,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 0,
+                        "n_obj_map_cord_y": 10,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 179,
+                                "n_object_map_id": 181,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 182,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 1,
+                        "n_obj_map_cord_y": 10,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 180,
+                                "n_object_map_id": 182,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 183,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 2,
+                        "n_obj_map_cord_y": 10,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 181,
+                                "n_object_map_id": 183,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 184,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 3,
+                        "n_obj_map_cord_y": 10,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 182,
+                                "n_object_map_id": 184,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 185,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 4,
+                        "n_obj_map_cord_y": 10,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 183,
+                                "n_object_map_id": 185,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 186,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 5,
+                        "n_obj_map_cord_y": 10,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 184,
+                                "n_object_map_id": 186,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 187,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 6,
+                        "n_obj_map_cord_y": 10,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 185,
+                                "n_object_map_id": 187,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 188,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 7,
+                        "n_obj_map_cord_y": 10,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 186,
+                                "n_object_map_id": 188,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 189,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 8,
+                        "n_obj_map_cord_y": 10,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 187,
+                                "n_object_map_id": 189,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 190,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 9,
+                        "n_obj_map_cord_y": 10,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 188,
+                                "n_object_map_id": 190,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 191,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 10,
+                        "n_obj_map_cord_y": 10,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 189,
+                                "n_object_map_id": 191,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 192,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 11,
+                        "n_obj_map_cord_y": 10,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 190,
+                                "n_object_map_id": 192,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 193,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 12,
+                        "n_obj_map_cord_y": 10,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 191,
+                                "n_object_map_id": 193,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 194,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 13,
+                        "n_obj_map_cord_y": 10,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 192,
+                                "n_object_map_id": 194,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 195,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 14,
+                        "n_obj_map_cord_y": 10,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 193,
+                                "n_object_map_id": 195,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 196,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 15,
+                        "n_obj_map_cord_y": 10,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 194,
+                                "n_object_map_id": 196,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 197,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 16,
+                        "n_obj_map_cord_y": 10,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 195,
+                                "n_object_map_id": 197,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 198,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 17,
+                        "n_obj_map_cord_y": 10,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 196,
+                                "n_object_map_id": 198,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 199,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 0,
+                        "n_obj_map_cord_y": 11,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 197,
+                                "n_object_map_id": 199,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 200,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 1,
+                        "n_obj_map_cord_y": 11,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 198,
+                                "n_object_map_id": 200,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 201,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 2,
+                        "n_obj_map_cord_y": 11,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 199,
+                                "n_object_map_id": 201,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 202,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 3,
+                        "n_obj_map_cord_y": 11,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 200,
+                                "n_object_map_id": 202,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 203,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 4,
+                        "n_obj_map_cord_y": 11,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 201,
+                                "n_object_map_id": 203,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 204,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 5,
+                        "n_obj_map_cord_y": 11,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 202,
+                                "n_object_map_id": 204,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 205,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 6,
+                        "n_obj_map_cord_y": 11,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 203,
+                                "n_object_map_id": 205,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 206,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 7,
+                        "n_obj_map_cord_y": 11,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 204,
+                                "n_object_map_id": 206,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 207,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 8,
+                        "n_obj_map_cord_y": 11,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 205,
+                                "n_object_map_id": 207,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 208,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 9,
+                        "n_obj_map_cord_y": 11,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 206,
+                                "n_object_map_id": 208,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 209,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 10,
+                        "n_obj_map_cord_y": 11,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 207,
+                                "n_object_map_id": 209,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 210,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 11,
+                        "n_obj_map_cord_y": 11,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 208,
+                                "n_object_map_id": 210,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 211,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 12,
+                        "n_obj_map_cord_y": 11,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 209,
+                                "n_object_map_id": 211,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 212,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 13,
+                        "n_obj_map_cord_y": 11,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 210,
+                                "n_object_map_id": 212,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 213,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 14,
+                        "n_obj_map_cord_y": 11,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 211,
+                                "n_object_map_id": 213,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 214,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 15,
+                        "n_obj_map_cord_y": 11,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 212,
+                                "n_object_map_id": 214,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 215,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 16,
+                        "n_obj_map_cord_y": 11,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 213,
+                                "n_object_map_id": 215,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 216,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 17,
+                        "n_obj_map_cord_y": 11,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 214,
+                                "n_object_map_id": 216,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 217,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 0,
+                        "n_obj_map_cord_y": 12,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 215,
+                                "n_object_map_id": 217,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 218,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 1,
+                        "n_obj_map_cord_y": 12,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 216,
+                                "n_object_map_id": 218,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 219,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 2,
+                        "n_obj_map_cord_y": 12,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 217,
+                                "n_object_map_id": 219,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 220,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 3,
+                        "n_obj_map_cord_y": 12,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 218,
+                                "n_object_map_id": 220,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 221,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 4,
+                        "n_obj_map_cord_y": 12,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 219,
+                                "n_object_map_id": 221,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 222,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 5,
+                        "n_obj_map_cord_y": 12,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 220,
+                                "n_object_map_id": 222,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 223,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 6,
+                        "n_obj_map_cord_y": 12,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 221,
+                                "n_object_map_id": 223,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 224,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 7,
+                        "n_obj_map_cord_y": 12,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 222,
+                                "n_object_map_id": 224,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 225,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 8,
+                        "n_obj_map_cord_y": 12,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 223,
+                                "n_object_map_id": 225,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 226,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 9,
+                        "n_obj_map_cord_y": 12,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 224,
+                                "n_object_map_id": 226,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 227,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 10,
+                        "n_obj_map_cord_y": 12,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 225,
+                                "n_object_map_id": 227,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 228,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 11,
+                        "n_obj_map_cord_y": 12,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 226,
+                                "n_object_map_id": 228,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 229,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 12,
+                        "n_obj_map_cord_y": 12,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 227,
+                                "n_object_map_id": 229,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 230,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 13,
+                        "n_obj_map_cord_y": 12,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 228,
+                                "n_object_map_id": 230,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 231,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 14,
+                        "n_obj_map_cord_y": 12,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 229,
+                                "n_object_map_id": 231,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 232,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 15,
+                        "n_obj_map_cord_y": 12,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 230,
+                                "n_object_map_id": 232,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 233,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 16,
+                        "n_obj_map_cord_y": 12,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 231,
+                                "n_object_map_id": 233,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 234,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 17,
+                        "n_obj_map_cord_y": 12,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 232,
+                                "n_object_map_id": 234,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 235,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 0,
+                        "n_obj_map_cord_y": 13,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 233,
+                                "n_object_map_id": 235,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 236,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 1,
+                        "n_obj_map_cord_y": 13,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 234,
+                                "n_object_map_id": 236,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 237,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 2,
+                        "n_obj_map_cord_y": 13,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 235,
+                                "n_object_map_id": 237,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 238,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 3,
+                        "n_obj_map_cord_y": 13,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 236,
+                                "n_object_map_id": 238,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 239,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 4,
+                        "n_obj_map_cord_y": 13,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 237,
+                                "n_object_map_id": 239,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 240,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 5,
+                        "n_obj_map_cord_y": 13,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 238,
+                                "n_object_map_id": 240,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 241,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 6,
+                        "n_obj_map_cord_y": 13,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 239,
+                                "n_object_map_id": 241,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 242,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 7,
+                        "n_obj_map_cord_y": 13,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 240,
+                                "n_object_map_id": 242,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 243,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 8,
+                        "n_obj_map_cord_y": 13,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 241,
+                                "n_object_map_id": 243,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 244,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 9,
+                        "n_obj_map_cord_y": 13,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 242,
+                                "n_object_map_id": 244,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 245,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 10,
+                        "n_obj_map_cord_y": 13,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 243,
+                                "n_object_map_id": 245,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 246,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 11,
+                        "n_obj_map_cord_y": 13,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 244,
+                                "n_object_map_id": 246,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 247,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 12,
+                        "n_obj_map_cord_y": 13,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 245,
+                                "n_object_map_id": 247,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 248,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 13,
+                        "n_obj_map_cord_y": 13,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 246,
+                                "n_object_map_id": 248,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 249,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 14,
+                        "n_obj_map_cord_y": 13,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 247,
+                                "n_object_map_id": 249,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 250,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 15,
+                        "n_obj_map_cord_y": 13,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 248,
+                                "n_object_map_id": 250,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 251,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 16,
+                        "n_obj_map_cord_y": 13,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 249,
+                                "n_object_map_id": 251,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 252,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 17,
+                        "n_obj_map_cord_y": 13,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 250,
+                                "n_object_map_id": 252,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 253,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 0,
+                        "n_obj_map_cord_y": 14,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 251,
+                                "n_object_map_id": 253,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 254,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 1,
+                        "n_obj_map_cord_y": 14,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 252,
+                                "n_object_map_id": 254,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 255,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 2,
+                        "n_obj_map_cord_y": 14,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 253,
+                                "n_object_map_id": 255,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 256,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 3,
+                        "n_obj_map_cord_y": 14,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 254,
+                                "n_object_map_id": 256,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 257,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 4,
+                        "n_obj_map_cord_y": 14,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 255,
+                                "n_object_map_id": 257,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 258,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 5,
+                        "n_obj_map_cord_y": 14,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 256,
+                                "n_object_map_id": 258,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 259,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 6,
+                        "n_obj_map_cord_y": 14,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 257,
+                                "n_object_map_id": 259,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 260,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 7,
+                        "n_obj_map_cord_y": 14,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 258,
+                                "n_object_map_id": 260,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 261,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 8,
+                        "n_obj_map_cord_y": 14,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 259,
+                                "n_object_map_id": 261,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 262,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 9,
+                        "n_obj_map_cord_y": 14,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 260,
+                                "n_object_map_id": 262,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 263,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 10,
+                        "n_obj_map_cord_y": 14,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 261,
+                                "n_object_map_id": 263,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 264,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 11,
+                        "n_obj_map_cord_y": 14,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 262,
+                                "n_object_map_id": 264,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 265,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 12,
+                        "n_obj_map_cord_y": 14,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 263,
+                                "n_object_map_id": 265,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 266,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 13,
+                        "n_obj_map_cord_y": 14,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 264,
+                                "n_object_map_id": 266,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 267,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 14,
+                        "n_obj_map_cord_y": 14,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 265,
+                                "n_object_map_id": 267,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 268,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 15,
+                        "n_obj_map_cord_y": 14,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 266,
+                                "n_object_map_id": 268,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 269,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 16,
+                        "n_obj_map_cord_y": 14,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 267,
+                                "n_object_map_id": 269,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 270,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 17,
+                        "n_obj_map_cord_y": 14,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 268,
+                                "n_object_map_id": 270,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 271,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 0,
+                        "n_obj_map_cord_y": 15,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 269,
+                                "n_object_map_id": 271,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 272,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 1,
+                        "n_obj_map_cord_y": 15,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 270,
+                                "n_object_map_id": 272,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 273,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 2,
+                        "n_obj_map_cord_y": 15,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 271,
+                                "n_object_map_id": 273,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 274,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 3,
+                        "n_obj_map_cord_y": 15,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 272,
+                                "n_object_map_id": 274,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 275,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 4,
+                        "n_obj_map_cord_y": 15,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 273,
+                                "n_object_map_id": 275,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 276,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 5,
+                        "n_obj_map_cord_y": 15,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 274,
+                                "n_object_map_id": 276,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 277,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 6,
+                        "n_obj_map_cord_y": 15,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 275,
+                                "n_object_map_id": 277,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 278,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 7,
+                        "n_obj_map_cord_y": 15,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 276,
+                                "n_object_map_id": 278,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 279,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 8,
+                        "n_obj_map_cord_y": 15,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 277,
+                                "n_object_map_id": 279,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 280,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 9,
+                        "n_obj_map_cord_y": 15,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 278,
+                                "n_object_map_id": 280,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 281,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 10,
+                        "n_obj_map_cord_y": 15,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 279,
+                                "n_object_map_id": 281,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 282,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 11,
+                        "n_obj_map_cord_y": 15,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 280,
+                                "n_object_map_id": 282,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 283,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 12,
+                        "n_obj_map_cord_y": 15,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 281,
+                                "n_object_map_id": 283,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 284,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 13,
+                        "n_obj_map_cord_y": 15,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 282,
+                                "n_object_map_id": 284,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 285,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 14,
+                        "n_obj_map_cord_y": 15,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 283,
+                                "n_object_map_id": 285,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 286,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 15,
+                        "n_obj_map_cord_y": 15,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 284,
+                                "n_object_map_id": 286,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 287,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 16,
+                        "n_obj_map_cord_y": 15,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 285,
+                                "n_object_map_id": 287,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 288,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 17,
+                        "n_obj_map_cord_y": 15,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 286,
+                                "n_object_map_id": 288,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 289,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 3,
+                        "n_obj_map_cord_y": 16,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 287,
+                                "n_object_map_id": 289,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 290,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 4,
+                        "n_obj_map_cord_y": 16,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 288,
+                                "n_object_map_id": 290,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 291,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 5,
+                        "n_obj_map_cord_y": 16,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 289,
+                                "n_object_map_id": 291,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 292,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 6,
+                        "n_obj_map_cord_y": 16,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 290,
+                                "n_object_map_id": 292,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 293,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 7,
+                        "n_obj_map_cord_y": 16,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 291,
+                                "n_object_map_id": 293,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 294,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 8,
+                        "n_obj_map_cord_y": 16,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 292,
+                                "n_object_map_id": 294,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 295,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 9,
+                        "n_obj_map_cord_y": 16,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 293,
+                                "n_object_map_id": 295,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 296,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 10,
+                        "n_obj_map_cord_y": 16,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 294,
+                                "n_object_map_id": 296,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 297,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 11,
+                        "n_obj_map_cord_y": 16,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 295,
+                                "n_object_map_id": 297,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 298,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 12,
+                        "n_obj_map_cord_y": 16,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 296,
+                                "n_object_map_id": 298,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    },
+                    {
+                        "n_id": 299,
+                        "n_id_map": 1,
+                        "n_limit_buy_for_person": 5,
+                        "n_object_price": 10,
+                        "n_obj_map_cord_x": 13,
+                        "n_obj_map_cord_y": 16,
+                        "n_obj_map_cord_z": 1,
+                        "n_obj_map_width": 50,
+                        "n_obj_map_height": 35,
+                        "t_note": "Non inclusa consumazione",
+                        "t_type": {
+                            "SEAT": {
+                                "TYPE": {
+                                    "NO_CONSUMATION": true
+                                }
+                            }
+                        },
+                        "is_acquistabile": true,
+                        "t_seat_list": [
+                            {
+                                "n_seat_num": 297,
+                                "n_object_map_id": 299,
+                                "n_id_event": 2,
+                                "is_sell": false,
+                                "is_acquistabile": true
+                            }
+                        ]
+                    }
+
+                ],
+                t_map_type: MAP_TYPE.DISCOTECA
+            },
+            {
+                t_map_name: "Sala VIP",
+                t_map_event_id: 1,
+                t_map_id: 1,
+                t_map_total_seat: 315,
+                t_object_maps: [
+                    {
+                        n_id: 1,
+                        n_id_map: 2,
+                        n_obj_map_cord_x: 9, //Per metterlo al centro il canvas è di 1920, per cui 960, ma ha una width di 300, quindi 960 - (300/2)
+                        n_obj_map_cord_y: 0,
+                        n_obj_map_cord_z: 1,
+                        n_obj_map_width: 200,
+                        n_obj_map_height: 100,
+                        n_obj_map_fill: "grey",
+                        n_obj_map_text: "Console",
+                        t_type: {
+                            TABLE: {
+                                DISCOTECA_DJ: true
+                            }
+                        },
+                        is_acquistabile: false,
+                        t_seat_list: []
+                    },
+                    {
+                        n_id: 2,
+                        n_id_map: 1,
+                        n_min_num_person: 8,
+                        n_max_num_person: 15,
+                        n_limit_buy_for_person: 1,
+                        n_object_price: 700,
+                        n_obj_map_cord_x: 0,
+                        n_obj_map_cord_y: 1,
+                        n_obj_map_cord_z: 1,
+                        n_obj_map_width: 80,
+                        n_obj_map_height: 120,
+                        n_obj_map_text: "Tavolo",
+                        t_note: "Tavolo normale, inclusa una consumazione da 500€",
+                        t_type: {
+                            TABLE: {
+                                DISCOTECA: true
+                            }
+                        },
+                        is_acquistabile: true,
+                        t_seat_list: [
+                            {
+                                n_seat_num: 300,
+                                n_object_map_id: 2,
+                                n_id_event: 2,
+                                is_sell: true,
+                                is_acquistabile: true
+                            },
+                            {
+                                n_seat_num: 301,
+                                n_object_map_id: 2,
+                                n_id_event: 2,
+                                is_sell: true,
+                                is_acquistabile: true
+                            },
+                            {
+                                n_seat_num: 302,
+                                n_object_map_id: 2,
+                                n_id_event: 2,
+                                is_sell: true,
+                                is_acquistabile: true
+                            },
+                            {
+                                n_seat_num: 303,
+                                n_object_map_id: 2,
+                                n_id_event: 2,
+                                is_sell: true,
+                                is_acquistabile: true
+                            },
+                            {
+                                n_seat_num: 304,
+                                n_object_map_id: 2,
+                                n_id_event: 2,
+                                is_sell: true,
+                                is_acquistabile: true
+                            },
+                            {
+                                n_seat_num: 305,
+                                n_object_map_id: 2,
+                                n_id_event: 2,
+                                is_sell: true,
+                                is_acquistabile: true
+                            },
+                            {
+                                n_seat_num: 306,
+                                n_object_map_id: 2,
+                                n_id_event: 2,
+                                is_sell: true,
+                                is_acquistabile: true
+                            },
+                            {
+                                n_seat_num: 307,
+                                n_object_map_id: 2,
+                                n_id_event: 2,
+                                is_sell: false,
+                                is_acquistabile: true
+                            },
+                            {
+                                n_seat_num: 308,
+                                n_object_map_id: 2,
+                                n_id_event: 2,
+                                is_sell: false,
+                                is_acquistabile: true
+                            },
+                            {
+                                n_seat_num: 309,
+                                n_object_map_id: 2,
+                                n_id_event: 2,
+                                is_sell: false,
+                                is_acquistabile: true
+                            },
+                            {
+                                n_seat_num: 310,
+                                n_object_map_id: 2,
+                                n_id_event: 2,
+                                is_sell: false,
+                                is_acquistabile: true
+                            },
+                            {
+                                n_seat_num: 311,
+                                n_object_map_id: 2,
+                                n_id_event: 2,
+                                is_sell: false,
+                                is_acquistabile: true
+                            },
+                            {
+                                n_seat_num: 312,
+                                n_object_map_id: 2,
+                                n_id_event: 2,
+                                is_sell: false,
+                                is_acquistabile: true
+                            },
+                            {
+                                n_seat_num: 313,
+                                n_object_map_id: 2,
+                                n_id_event: 2,
+                                is_sell: false,
+                                is_acquistabile: true
+                            },
+                            {
+                                n_seat_num: 314,
+                                n_object_map_id: 2,
+                                n_id_event: 2,
+                                is_sell: false,
+                                is_acquistabile: true
+                            },
+                        ]
+                    },
+                    {
+                        n_id: 3,
+                        n_id_map: 1,
+                        n_limit_buy_for_person: 5,
+                        n_object_price: 10,
+                        n_obj_map_cord_x: 0,
+                        n_obj_map_cord_y: 0,
+                        n_obj_map_cord_z: 1,
+                        n_obj_map_width: 50,
+                        n_obj_map_height: 35,
+                        t_note: "Non inclusa consumazione",
+                        t_type: {
+                            SEAT: {
+                                TYPE: {
+                                    NO_CONSUMATION: true
+                                }
+                            }
+                        },
+                        is_acquistabile: true,
+                        t_seat_list: [
+                            {
+                                n_seat_num: 1,
+                                n_object_map_id: 3,
+                                n_id_event: 2,
+                                is_sell: false,
+                                is_acquistabile: true
+                            },
+                        ]
+                    },
+                    {
+                        n_id: 4,
+                        n_id_map: 1,
+                        n_limit_buy_for_person: 5,
+                        n_object_price: 10,
+                        n_obj_map_cord_x: 1,
+                        n_obj_map_cord_y: 0,
+                        n_obj_map_cord_z: 1,
+                        n_obj_map_width: 50,
+                        n_obj_map_height: 35,
+                        t_note: "Non inclusa consumazione",
+                        t_type: {
+                            SEAT: {
+                                TYPE: {
+                                    NO_CONSUMATION: true
+                                }
+                            }
+                        },
+                        is_acquistabile: false,
+                        t_seat_list: [
+                            {
+                                n_seat_num: 2,
+                                n_object_map_id: 2,
+                                n_id_event: 2,
+                                is_sell: true,
+                                is_acquistabile: true
+                            },
+                        ]
+                    },
+                    {
+                        n_id: 5,
+                        n_id_map: 1,
+                        n_limit_buy_for_person: 5,
+                        n_object_price: 10,
+                        n_obj_map_cord_x: 3,
+                        n_obj_map_cord_y: 0,
+                        n_obj_map_cord_z: 1,
+                        n_obj_map_width: 50,
+                        n_obj_map_height: 35,
+                        t_note: "Non inclusa consumazione",
+                        t_type: {
+                            SEAT: {
+                                TYPE: {
+                                    NO_CONSUMATION: true
+                                }
+                            }
+                        },
+                        is_acquistabile: true,
+                        t_seat_list: [
+                            {
+                                n_seat_num: 4,
+                                n_object_map_id: 5,
+                                n_id_event: 2,
+                                is_sell: false,
+                                is_acquistabile: true
+                            },
+                        ]
+                    },
+                    {
+                        n_id: 6,
+                        n_id_map: 1,
+                        n_limit_buy_for_person: 5,
+                        n_object_price: 10,
+                        n_obj_map_cord_x: 4,
+                        n_obj_map_cord_y: 0,
+                        n_obj_map_cord_z: 1,
+                        n_obj_map_width: 50,
+                        n_obj_map_height: 35,
+                        t_note: "Non inclusa consumazione",
+                        t_type: {
+                            SEAT: {
+                                TYPE: {
+                                    NO_CONSUMATION: true
+                                }
+                            }
+                        },
+                        is_acquistabile: false,
+                        t_seat_list: [
+                            {
+                                n_seat_num: 5,
+                                n_object_map_id: 2,
+                                n_id_event: 1,
+                                is_sell: true,
                                 is_acquistabile: true
                             },
                         ]
@@ -14201,7 +31739,7 @@ export const ROUTE_LIST =
 
 export const COLORS: Record<string, EventColor> = {
     red: { primary: '#ad2121', secondary: '#FAE3E3' },
-    green: { primary: '#016272', secondary: '#016272' },
+    green: { primary: '#398d64', secondary: '#398d64' },
     blue: { primary: '#1e90ff', secondary: '#D1E8FF' },
     yellow: { primary: '#e3bc08', secondary: '#FDF1BA' }
 };

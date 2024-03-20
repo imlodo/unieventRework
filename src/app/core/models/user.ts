@@ -8,5 +8,6 @@ export interface User {
     t_alias_generated: string;
     t_description?: string;
     t_profile_photo: string;
+    is_verified?: boolean; // Rendere obbligatorio
     t_type: USER_TYPE;
 }

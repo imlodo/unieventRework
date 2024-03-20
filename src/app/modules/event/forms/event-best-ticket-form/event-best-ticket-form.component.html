@@ -1,59 +1,73 @@
-<div *ngIf="formRows" class="row justify-content-center align-items-center py-4">
-    <span class="h5 text-center">Lista biglietti</span>
-    <div class="col-xl-8 col-12">
-        <div *ngFor="let eventBestTicket of formRows.controls; let i = index"
-            class="border-bottom d-flex justify-content-between align-items-center">
-            <span>{{eventBestTicket.get('ticket_title').value}}</span>
-            <form [formGroup]="eventBestTicket" class="class-form d-flex align-items-center justify-content-start">
-                <span class="mx-3" style="font-size:13px; min-width: 35px;">{{' € ' +
-                    eventBestTicket.get('ticket_price').value }}</span>
-                <button [disabled]='disableDecrement(i)'
-                    class="btn btn-primary btn-color-hover-border button-padding-margin"
-                    (click)="decrementTicket(i)">-</button>
-                <span class="px-3 m-3" style="font-size:20px;">{{eventBestTicket.get('n_ticket').value}}</span>
-                <button [disabled]='disableIncrement(i)'
-                    class="btn btn-primary btn-color-hover-border button-padding-margin"
-                    (click)="incrementTicket(i)">+</button>
-                <div *ngIf="eventBestTicket.get('ticket_avilable_seat').value > 0"
-                    class="d-flex mb-2 mx-3 my-2 justify-content-center align-items-center">
-                    <span
-                        [style]="eventBestTicket.get('ticket_avilable_seat').value > 5 ? 'background-color: rgb(1, 98, 114);border: 1px solid #797979;' : 'background-color: #ebcf1c;border: 1px solid #797979;'"
-                        style="width: 10px; height: 10px; border-radius: 50%; display: inline-block; margin: 2px;"></span>
-                    <span>Disponibile</span>
-                </div>
-                <div *ngIf="eventBestTicket.get('ticket_avilable_seat').value < 0"
-                    class="d-flex mb-2 mx-3 my-2 justify-content-center align-items-center">
-                    <span [style]="'background-color: #9b1717;border: 1px solid #797979;'"
-                        style="width: 10px; height: 10px; border-radius: 50%; display: inline-block; margin: 2px;"></span>
-                    <span>Esaurito</span>
-                </div>
-            </form>
-        </div>
-        <div class="d-flex my-3 justify-content-start align-items-center">
-            <span class="fw-bolder">Legenda: </span>
-            <div class="d-flex">
-                <div class="mx-2">
-                    <span [style]=" 'background-color: rgb(1, 98, 114);border: 1px solid #797979;'"
-                        style="width: 10px; height: 10px; border-radius: 50%; display: inline-block; margin-right: 4px;"></span>
-                    <span>Disponibilità totale</span>
-                </div>
-                <div class="mx-2">
-                    <span [style]=" 'background-color: #ebcf1c;border: 1px solid #797979;'"
-                        style="width: 10px; height: 10px; border-radius: 50%; display: inline-block; margin-right: 4px;"></span>
-                    <span>Disponibilità bassa</span>
-                </div>
-                <div class="mx-2">
-                    <span [style]="'background-color: #9b1717;border: 1px solid #797979;'"
-                        style="width: 10px; height: 10px; border-radius: 50%; display: inline-block; margin-right: 4px;"></span>
-                    <span>Esaurito</span>
+<div *ngIf="formRows" class="row justify-content-center align-items-center py-4 ticket-list-container rounded shadow">
+    <div class="d-flex flex-column col-xl-8 col-12">
+        <span class="h5 text-center">Lista biglietti</span>
+        <div class="">
+            <div *ngFor="let eventBestTicket of formRows.controls; let i = index"
+                class="ticket-element my-3 d-flex justify-content-between align-items-center rounded p-1 px-3 shadow">
+                <span>{{eventBestTicket.get('ticket_title').value}}</span>
+                <form [formGroup]="eventBestTicket" class="class-form d-flex align-items-center justify-content-start">
+                    <span class="mx-3" style="font-size:13px; min-width: 35px;">{{' € ' +
+                        eventBestTicket.get('ticket_price').value }}</span>
+                    <svg [attr.fill]="disableDecrement(i) ? 'gray' : '#ff5725'" (click)="decrementTicket(i)"
+                        xmlns="http://www.w3.org/2000/svg" width="26" height="26" class="bi bi-dash-square pointer"
+                        viewBox="0 0 16 16">
+                        <path
+                            d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z" />
+                        <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8" />
+                    </svg>
+                    <span class="px-3 m-3" style="font-size:20px;">{{eventBestTicket.get('n_ticket').value}}</span>
+                    <svg (click)="incrementTicket(i)" xmlns="http://www.w3.org/2000/svg" width="26" height="26"
+                        [attr.fill]="disableIncrement(i) ? 'gray' : '#ff5725'" class="bi bi-plus-square pointer"
+                        viewBox="0 0 16 16">
+                        <path
+                            d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z" />
+                        <path
+                            d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4" />
+                    </svg>
+                    <div *ngIf="eventBestTicket.get('ticket_avilable_seat').value > 0"
+                        class="d-flex mb-2 mx-3 my-2 justify-content-center align-items-center">
+                        <span
+                            [style]="eventBestTicket.get('ticket_avilable_seat').value > 5 ? 'background-color: #398d64;border: 1px solid #797979;' : 'background-color: #ebcf1c;border: 1px solid #797979;'"
+                            style="width: 10px; height: 10px; border-radius: 50%; display: inline-block; margin: 2px;"></span>
+                        <span>Disponibile</span>
+                    </div>
+                    <div *ngIf="eventBestTicket.get('ticket_avilable_seat').value < 0"
+                        class="d-flex mb-2 mx-3 my-2 justify-content-center align-items-center">
+                        <span [style]="'background-color: #9b1717;border: 1px solid #797979;'"
+                            style="width: 10px; height: 10px; border-radius: 50%; display: inline-block; margin: 2px;"></span>
+                        <span>Esaurito</span>
+                    </div>
+                </form>
+            </div>
+            <div class="d-flex my-3 justify-content-start align-items-center">
+                <span class="fw-bolder">Legenda: </span>
+                <div class="d-flex">
+                    <div class="mx-2">
+                        <span [style]=" 'background-color: #398d64;border: 1px solid #797979;'"
+                            style="width: 10px; height: 10px; border-radius: 50%; display: inline-block; margin-right: 4px;"></span>
+                        <span>Disponibilità totale</span>
+                    </div>
+                    <div class="mx-2">
+                        <span [style]=" 'background-color: #ebcf1c;border: 1px solid #797979;'"
+                            style="width: 10px; height: 10px; border-radius: 50%; display: inline-block; margin-right: 4px;"></span>
+                        <span>Disponibilità bassa</span>
+                    </div>
+                    <div class="mx-2">
+                        <span [style]="'background-color: #9b1717;border: 1px solid #797979;'"
+                            style="width: 10px; height: 10px; border-radius: 50%; display: inline-block; margin-right: 4px;"></span>
+                        <span>Esaurito</span>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="col-xl-2 d-flex flex-column col-12 text-center border border-rounded p-3 m-3">
+    <div class="shadow col-xl-2 d-flex flex-column col-12 text-center rounded p-3 m-3 overview-container">
         <span class="h4 border-bottom pb-2">Riepilogo</span>
         <span class="m-2">{{'Numero biglietti: ' + getTicketCount() }}</span>
         <span class="h6 m-2">{{'Prezzo totale: ' + getTicketAmount() + '€'}}</span>
-        <button [disabled]="getTicketCount() > 0 ? false : true" class="btn btn-primary btn-color-hover-border m-2" (click)="buyTicket()">Acquista</button>
+        <button [disabled]="getTicketCount() > 0 ? false : true" class="btn btn-primary btn-color-hover-border m-2"
+            class="btn m-2 border-0 rounded-0"
+            [attr.style]="getTicketCount() > 0 ? 'background-color: rgb(255 87 37) !important; color: white;' : 'background-color: gray; color: white;' "
+            (click)="buyTicket()">Acquista</button>
     </div>
 </div>
