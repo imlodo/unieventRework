@@ -34,3 +34,18 @@
 ::ng-deep .bg-dark-mode .overview-container{
     background: #50505045;
 }
+
+::ng-deep .bg-dark-mode .ng-select-container {
+    background-color: transparent !important;
+    background: transparent !important;
+    color: white !important;
+}
+
+::ng-deep .bg-dark-mode .ng-option {
+    background: var(--bs-dark) !important;
+    color: white !important;
+}
+
+::ng-deep .bg-dark-mode .ng-dropdown-panel .ng-dropdown-panel-items .ng-option.ng-option-selected, .ng-dropdown-panel .ng-dropdown-panel-items .ng-option.ng-option-selected.ng-option-marked{
+    background: #2d3033 !important;
+}

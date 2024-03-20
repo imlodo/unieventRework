@@ -1,8 +1,9 @@
-<div *ngIf="form" class="container justify-content-center align-items-center py-4 my-3 event-plan-container shadow rounded">
+<div *ngIf="form"
+    class="container justify-content-center align-items-center py-4 my-3 event-plan-container shadow rounded">
     <div class="d-flex justify-content-center align-items-center my-4">
         <span class="h5 mx-3">Mappa</span>
-        <ng-select [items]="mapSelectItems" bindLabel="name" bindValue="id" [clearable]="false" [(ngModel)]="selectedMapIndex"
-            placeholder="Seleziona mappa">
+        <ng-select [items]="mapSelectItems" bindLabel="name" bindValue="id" [searchable]="false" [clearable]="false"
+            [(ngModel)]="selectedMapIndex" placeholder="Seleziona mappa">
         </ng-select>
     </div>
     <div class="d-flex my-3 justify-content-center align-items-center">
@@ -21,15 +22,21 @@
         </div>
     </div>
     <div class="row shadow m-2 rounded p-3 event-plan-list-container">
-        <div class="d-flex justify-content-between align-items-center" *ngFor="let row of mapSeatList[selectedMapIndex]">
+        <div class="d-flex justify-content-between align-items-center p-0"
+            *ngFor="let row of mapSeatList[selectedMapIndex]">
             <ng-container *ngFor="let object of row">
-                <div *ngIf="object.n_id"
-                    [ngClass]="object.is_acquistabile ? '' : 'not-buy'"
-                    class="d-flex rounded justify-content-center align-items-center pointer border m-2"
+                <div (click)="buyTicket(object)" *ngIf="object.n_id" [ngClass]="object.is_acquistabile ? '' : 'not-buy'"
+                    class="d-none d-xl-flex rounded justify-content-center align-items-center pointer border m-2"
+                    [matTooltip]="!object.is_acquistabile ? null : object.n_obj_map_text ? 'Acquista : ' + object.n_obj_map_text : 'Acquista posto numero: ' + object.t_seat_list[0].n_seat_num + '' " matTooltipPosition="above"
                     [style]="object.n_obj_map_width && object.n_obj_map_height ? 
                     'width:'+object.n_obj_map_width+'px; height:'+object.n_obj_map_height+'px;background:'+object.n_obj_map_fill+';':'min-width:80px;height:40px;'">
                     {{object.n_obj_map_text ? object.n_obj_map_text : object.t_seat_list[0].n_seat_num}}</div>
-                <div *ngIf="!object.n_id" class="" style="min-width:40px; height:40px"></div>
+                <div (click)="buyTicket(object)" *ngIf="object.n_id" [ngClass]="object.is_acquistabile ? '' : 'not-buy'"
+                    [matTooltip]="!object.is_acquistabile ? null : object.n_obj_map_text ? 'Acquista : ' + object.n_obj_map_text : 'Acquista posto numero: ' + object.t_seat_list[0].n_seat_num + '' " matTooltipPosition="above"
+                    class="d-flex d-xl-none rounded justify-content-center align-items-center pointer border"
+                    [style]="'background:'+object.n_obj_map_fill+';'"
+                    style="min-width: 15px;min-height: 15px;border-radius: 56px !important; margin-bottom: 10px; margin-right: 5px; font-size:8px"><span class="d-none d-lg-block mx-2">{{object.n_obj_map_text ? object.n_obj_map_text : object.t_seat_list[0].n_seat_num}}</span></div>
+                <div *ngIf="!object.n_id" style="width: 40px;height: 20px;border-radius: 56px !important;"></div>
             </ng-container>
         </div>
     </div>

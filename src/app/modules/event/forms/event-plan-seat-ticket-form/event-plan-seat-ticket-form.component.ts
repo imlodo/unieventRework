@@ -140,4 +140,11 @@ export class EventPlanSeatTicketFormComponent implements AfterViewInit {
     }
   }
 
+  buyTicket(object:ObjectMap){
+    if(object.is_acquistabile){
+      //Devi mostrare la modal con dettaglio del posto (o tavolo)
+      console.log(object);
+    }
+  }
+
 }

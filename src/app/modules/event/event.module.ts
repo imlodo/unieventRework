@@ -19,6 +19,7 @@ import { EventFilterFormComponent } from './forms/event-filter-form/event-filter
 import { NgSelectModule } from '@ng-select/ng-select';
 import { EventBestTicketFormComponent } from './forms/event-best-ticket-form/event-best-ticket-form.component';
 import { EventPlanSeatTicketFormComponent } from './forms/event-plan-seat-ticket-form/event-plan-seat-ticket-form.component';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { EventPlanSeatTicketFormComponent } from './forms/event-plan-seat-ticket
     FormsModule,
     CoreModule,
     MatIconModule,
+    MatTooltipModule,
     ReactiveFormsModule,
     RxReactiveFormsModule,
     EventRoutingModule,
