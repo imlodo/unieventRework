@@ -1,0 +1,14 @@
+<div *ngIf="data.type === 'TICKET_MODAL'" class="d-flex flex-column justify-content-center align-items-center p-3">
+    <h1 mat-dialog-title>Riepilogo</h1>
+    <div mat-dialog-content>
+        <p>Sei sicuro di voler acquistare il biglietto seguente?</p>
+        <p>Biglietto {{getTicketNameByType(data.object.t_type)}}, <b>{{data.object.n_object_price}}€</b></p>
+        <p>Fila {{data.object.n_obj_map_cord_y + 1}}, Posto {{data.object.n_obj_map_cord_x + 1}}</p>
+        <p *ngIf="data.object.t_note"><b>NB</b>: {{data.object.t_note}}</p>
+    </div>
+    <div mat-dialog-actions>
+        <button class="btn btn-secondary rounded-0 mx-3" mat-button [mat-dialog-close]="false">Annulla</button>
+        <button style="background-color:rgb(255 87 37) !important; color:white" class="btn rounded-0"
+        [mat-dialog-close]="true">Acquista</button>
+    </div>
+</div>

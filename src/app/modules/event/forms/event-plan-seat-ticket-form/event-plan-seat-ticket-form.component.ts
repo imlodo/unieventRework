@@ -1,9 +1,12 @@
-import { Component, AfterViewInit, ViewChild, ElementRef, ChangeDetectorRef, AfterContentChecked } from '@angular/core';
+import { Component, AfterViewInit, ViewChild, ElementRef, ChangeDetectorRef, AfterContentChecked, Output, EventEmitter } from '@angular/core';
 import { FormArray, FormGroup } from '@angular/forms';
 import { RxFormBuilder } from '@rxweb/reactive-form-validators';
 import { EventPlanSeatTicketFormModel } from './event-plan-seat-ticket-form.model';
 import { ObjectMap } from 'src/app/core/models/objectMap';
 import { Map } from 'src/app/core/models/map';
+import { MatDialog } from '@angular/material/dialog';
+import { ParametricModalComponent } from 'src/app/core/components/parametric-modal/parametric-modal.component';
+import { EventBuyTicketRequest } from '../../models/eventBuyTicketRequest';
 
 @Component({
   selector: 'unievent-event-plan-seat-ticket-form',
@@ -21,13 +24,14 @@ export class EventPlanSeatTicketFormComponent implements AfterViewInit {
   selectedMapIndex: number = 0;
   eventTitle: string;
   mapList: Array<Map>;
-  mapSelectItems: Array<{id:number, name:string}> = new Array();
+  mapSelectItems: Array<{ id: number, name: string }> = new Array();
   map_rows: number;
   map_columns: number;
   ctx: CanvasRenderingContext2D;
   mapSeatList: Array<ObjectMap[][]> = [];
+  @Output() onBuyTicket: EventEmitter<Array<EventBuyTicketRequest>> = new EventEmitter<Array<EventBuyTicketRequest>>();
 
-  constructor(private formBuilder: RxFormBuilder, private cdr: ChangeDetectorRef) { }
+  constructor(private formBuilder: RxFormBuilder, private cdr: ChangeDetectorRef, public dialog: MatDialog) { }
 
   ngAfterViewInit(): void {
     this.cdr.detectChanges();
@@ -65,17 +69,17 @@ export class EventPlanSeatTicketFormComponent implements AfterViewInit {
       let row = Array(this.getNumOfRowAndColByTotalSeat(el.t_map_total_seat)).fill(0).map((x, i) => i);
       let column = row;
       let seatMap: ObjectMap[][] | any[][] = [];
-      row.forEach(rowIndex=>{
+      row.forEach(rowIndex => {
         seatMap[rowIndex] = [];
-        column.forEach(columnIndex =>{
+        column.forEach(columnIndex => {
           seatMap[rowIndex][columnIndex] = [];
         });
       })
-      el.t_object_maps.forEach(object =>{
-        if(seatMap[object.n_obj_map_cord_y] && seatMap[object.n_obj_map_cord_y][object.n_obj_map_cord_x])
+      el.t_object_maps.forEach(object => {
+        if (seatMap[object.n_obj_map_cord_y] && seatMap[object.n_obj_map_cord_y][object.n_obj_map_cord_x])
           seatMap[object.n_obj_map_cord_y][object.n_obj_map_cord_x] = object;
       });
-      this.mapSeatList.push(seatMap);  
+      this.mapSeatList.push(seatMap);
     });
   }
 
@@ -131,7 +135,7 @@ export class EventPlanSeatTicketFormComponent implements AfterViewInit {
     return objectMapDraw;
   }*/
 
-  getNumOfRowAndColByTotalSeat(maxSeat:number) {
+  getNumOfRowAndColByTotalSeat(maxSeat: number) {
     let num = 1;
     while (true) {
       if ((num * num) >= maxSeat)
@@ -140,10 +144,29 @@ export class EventPlanSeatTicketFormComponent implements AfterViewInit {
     }
   }
 
-  buyTicket(object:ObjectMap){
-    if(object.is_acquistabile){
-      //Devi mostrare la modal con dettaglio del posto (o tavolo)
-      console.log(object);
+
+  buyTicket(object: ObjectMap): void {
+    //Verificare se l'utente corrente può acquistare tale biglietto perchè c'è un campo n_limit_buy_for_person (vedi quanti biglietti ha acquistato fin ora)
+    if (object.is_acquistabile) {
+      const dialogRef = this.dialog.open(ParametricModalComponent, {
+        data: {
+          object: object,
+          type: "TICKET_MODAL"
+        }
+      });
+
+      dialogRef.afterClosed().subscribe(result => {
+        if (result) {
+          let eventBuyTicketRequest: EventBuyTicketRequest = {
+            n_event_id: -1,
+            n_object_id: object.n_id,
+            n_quantity: 1
+          }
+          this.onBuyTicket.emit([eventBuyTicketRequest]);
+        } else {
+          console.log("Acquisto annullato.");
+        }
+      });
     }
   }
 

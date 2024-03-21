@@ -25,10 +25,11 @@ import { NavbarLeftMenuComponent } from './components/navbar-left-menu/navbar-le
 import { NavbarCreateComponent } from './components/navbar-create/navbar-create.component';
 import { NavbarSearchComponent } from './components/navbar-search/navbar-search.component';
 import { NavbarSearchbarComponent } from './components/navbar-searchbar/navbar-searchbar.component';
-import { ContentModule } from '../modules/content/content.module';
 import { ContentInfiniteScrollComponent } from '../modules/content/compontents/content-infinite-scroll/content-infinite-scroll.component';
 import { ApproximateNumberPipe } from './pipe/approximate-number.pipe';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+import { ParametricModalComponent } from './components/parametric-modal/parametric-modal.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
 	declarations: [
@@ -60,12 +61,14 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 		NavbarSearchComponent,
 		NavbarSearchbarComponent,
 		ContentInfiniteScrollComponent,
-		ApproximateNumberPipe
+		ApproximateNumberPipe,
+		ParametricModalComponent
 	],
 	imports: [
 		CommonModule,
 		FormsModule,
 		MatTooltipModule,
+		MatDialogModule,
 		ReactiveFormsModule,
 		InfiniteScrollModule,
 		NgSelectModule,
