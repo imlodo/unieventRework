@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
@@ -8,7 +8,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class PaymentStep2PaymentAddressFormComponent {
   addressForm: FormGroup;
-
+  @Output() clearAddressEvent = new EventEmitter<void>();
+  
   constructor(private fb: FormBuilder) { }
 
   ngOnInit(): void {
@@ -20,6 +21,10 @@ export class PaymentStep2PaymentAddressFormComponent {
       state: ['', Validators.required],
       zip: ['', [Validators.required, Validators.pattern(/^\d{5}$/)]], // Esempio di pattern per un CAP a 5 cifre
     });
+  }
+
+  clearAddress() {
+    this.clearAddressEvent.emit();
   }
 
   onSubmit(): void {

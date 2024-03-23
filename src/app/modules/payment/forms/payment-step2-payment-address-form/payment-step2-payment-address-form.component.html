@@ -1,27 +1,40 @@
-<form [formGroup]="addressForm" (ngSubmit)="onSubmit()">
-    <div class="mb-3">
-        <label for="firstName" class="form-label">Nome</label>
-        <input type="text" class="form-control address-input border-0" id="firstName" formControlName="firstName">
-    </div>
-    <div class="mb-3">
-        <label for="lastName" class="form-label">Cognome</label>
-        <input type="text" class="form-control address-input border-0" id="lastName" formControlName="lastName">
+<form [formGroup]="addressForm" (ngSubmit)="onSubmit()" class="mt-3 p-3 card-form">
+    <div class="row mb-3">
+        <div class="col">
+            <label for="firstName" class="form-label">Nome</label>
+            <input type="text" class="form-control address-input border-0" id="firstName" formControlName="firstName">
+        </div>
+        <div class="col">
+            <label for="lastName" class="form-label">Cognome</label>
+            <input type="text" class="form-control address-input border-0" id="lastName" formControlName="lastName">
+        </div>
     </div>
     <div class="mb-3">
         <label for="street" class="form-label">Indirizzo</label>
         <input type="text" class="form-control address-input border-0" id="street" formControlName="street">
     </div>
-    <div class="mb-3">
-        <label for="city" class="form-label">Città</label>
-        <input type="text" class="form-control address-input border-0" id="city" formControlName="city">
+    <div class="row mb-3">
+        <div class="col">
+            <label for="city" class="form-label">Città</label>
+            <input type="text" class="form-control address-input border-0" id="city" formControlName="city">
+        </div>
+        <div class="col">
+            <label for="state" class="form-label">Stato</label>
+            <input type="text" class="form-control address-input border-0" id="state" formControlName="state">
+        </div>
+        <div class="col">
+            <label for="zip" class="form-label">CAP</label>
+            <input type="text" class="form-control address-input border-0" id="zip" formControlName="zip">
+        </div>
     </div>
-    <div class="mb-3">
-        <label for="state" class="form-label">Stato</label>
-        <input type="text" class="form-control address-input border-0" id="state" formControlName="state">
+    <div class="mt-4 d-flex flex-row" style="gap:60px">
+        <button type="button" (click)="clearAddress()" style="
+        width: -webkit-fill-available;
+        height: -webkit-fill-available;" class="btn btn-secondary"
+            >Annulla</button>
+        <button style="
+        width: -webkit-fill-available;
+        height: -webkit-fill-available;" type="submit"
+            class="btn btn-color-no-hover text-white">Salva</button>
     </div>
-    <div class="mb-3">
-        <label for="zip" class="form-label">CAP</label>
-        <input type="text" class="form-control address-input border-0" id="zip" formControlName="zip">
-    </div>
-    <button type="submit" class="btn btn-color-no-hover text-white" [disabled]="!addressForm.valid">Salva indirizzo</button>
 </form>

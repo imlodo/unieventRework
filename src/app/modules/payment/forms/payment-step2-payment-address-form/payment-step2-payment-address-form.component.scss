@@ -16,3 +16,11 @@
     border: none !important;
     -webkit-text-fill-color: white !important;
 }
+
+.card-form{
+    background: #ebebeb;
+}
+
+::ng-deep .bg-dark-mode .card-form{
+    background: var(--bs-dark);
+}
