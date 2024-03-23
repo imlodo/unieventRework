@@ -10628,7 +10628,7 @@ export const allEventList: Array<Event> = [
             {
                 t_map_name: "Sala Inferiore",
                 t_map_event_id: 1,
-                t_map_id: 1,
+                t_map_id: 2,
                 t_map_total_seat: 315,
                 t_object_maps: [
                     {
@@ -19397,7 +19397,7 @@ export const allEventList: Array<Event> = [
             {
                 t_map_name: "Sala VIP",
                 t_map_event_id: 1,
-                t_map_id: 1,
+                t_map_id: 3,
                 t_map_total_seat: 315,
                 t_object_maps: [
                     {

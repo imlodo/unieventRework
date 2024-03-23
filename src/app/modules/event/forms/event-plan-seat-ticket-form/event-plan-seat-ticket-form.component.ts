@@ -160,7 +160,8 @@ export class EventPlanSeatTicketFormComponent implements AfterViewInit {
           let eventBuyTicketRequest: EventBuyTicketRequest = {
             n_event_id: -1,
             n_object_id: object.n_id,
-            n_quantity: 1
+            n_quantity: 1,
+            n_id_map: object.n_id_map
           }
           this.onBuyTicket.emit([eventBuyTicketRequest]);
         } else {

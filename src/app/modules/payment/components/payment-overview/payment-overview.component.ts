@@ -12,6 +12,7 @@ import { Event } from 'src/app/core/models/event';
   styleUrls: ['./payment-overview.component.scss']
 })
 export class PaymentOverviewComponent {
+  mapId: number;
   eventTicketList: Array<ObjectMap>;
   imgLink: string;
   totalTicketPrice: string;
@@ -150,7 +151,8 @@ export class PaymentOverviewComponent {
   goToBuyStepper(){
     const params = this.globalService.encodeParams({
       buyMapObjectList: this.eventTicketList,
-      applyedCoupon:this.applyedCoupon
+      applyedCoupon:this.applyedCoupon,
+      idEvent: this.eventData.n_id
     });
     this.router.navigate([ROUTE_LIST.payment.checkout, params]);
   }

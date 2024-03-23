@@ -2,7 +2,7 @@
     <div class="row my-4">
         <div class="col-xl-9 col-12 px-5">
             <div class="d-flex align-item-center my-3 pointer" style="font-size:14px;">
-                <i class="gg-arrow-left"></i>
+                <i (click)="goBack()" class="gg-arrow-left"></i>
                 <span style="margin-top: 2px; margin-left:2px;" (click)="goBack()">Torna indietro </span>
             </div>
             <div class="d-flex justify-content-between align-item-center my-3" style="font-size: 18px;">
@@ -14,11 +14,11 @@
                 </div>
 
             </div>
-            <div class="card">
+            <div class="card border-0 cart-container shadow">
                 <img [attr.src]="eventData?.t_image_link"
                     style="max-height: 300px;width: -webkit-fill-available; object-fit: cover;" />
                 <div class="card-body">
-                    <div class="d-flex flex-column my-3 border p-3 rounded" *ngFor="let object of eventTicketList">
+                    <div class="d-flex flex-column my-3 p-3 rounded" *ngFor="let object of eventTicketList">
                         <div class="d-flex justify-content-between">
                             <span class="h5">1x {{eventData.t_title}}</span>
                             <span>{{getTicketPriceString(object.n_object_price)}}</span>
@@ -59,7 +59,7 @@
                     <span #seconds></span> <span class="mx-1">s</span>
                 </div>
             </div>
-            <div class="card">
+            <div class="card overview-container">
                 <div class="card-body">
                     <h2 class="card-title">Riepilogo</h2>
                     <div *ngFor="let object of eventTicketList" class="d-flex justify-content-between">
@@ -100,8 +100,8 @@
             </div>
             <div class="d-flex coupon-code">
                 <input (focus)="dynamicClass='add-focus'" #couponCode (focusout)="dynamicClass=''" type="text"
-                    class="form-control border-end-0 rounded-0" aria-label="Amount (to the nearest dollar)">
-                <span (click)="applyCoupon()"
+                    class="form-control border-0 rounded-0 coupon-input" aria-label="Coupon">
+                <span (keyup.enter)="applyCoupon()" (click)="applyCoupon()"
                     class="input-group-text border-start-0 rounded-0 btn-color-no-hover text-white pointer"
                     [ngClass]="dynamicClass"><i class="gg-arrow-long-right"></i></span>
             </div>

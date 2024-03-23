@@ -1,0 +1,18 @@
+::ng-deep .bg-dark-mode .address-input {
+    background: #2e363e;
+    color: white;
+}
+
+::ng-deep .bg-dark-mode .address-input::placeholder {
+    color: white;
+}
+
+::ng-deep .bg-dark-mode .address-input:-webkit-autofill,
+::ng-deep .bg-dark-mode .address-input:-webkit-autofill:hover,
+::ng-deep .bg-dark-mode .address-input:-webkit-autofill:focus,
+::ng-deep .bg-dark-mode .address-input:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 300px #55575a inset !important;
+    color: white !important;
+    border: none !important;
+    -webkit-text-fill-color: white !important;
+}

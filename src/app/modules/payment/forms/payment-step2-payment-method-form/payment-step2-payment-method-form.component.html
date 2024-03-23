@@ -1,0 +1,18 @@
+<div class="shadow container-fluid card p-3 form-step-1-container border-0">
+    <div class="py-2 form-check d-flex justify-content-between align-item-center">
+        <div>
+            <input [(ngModel)]="contrassegnoSelected" class="pointer form-check-input" type="radio" name="paymentMethod" id="paymentMethod1" value="Carta di credito">
+            <label class="pointer form-check-label" style="margin-top:6px; margin-left:6px;" for="paymentMethod1">Carta di credito</label>
+        </div>
+    </div>
+    <hr class="my-2">
+    <div class="py-2 form-check d-flex justify-content-between align-item-center">
+        <div>
+            <input  [(ngModel)]="contrassegnoSelected" class="pointer form-check-input" type="radio" name="paymentMethod" id="paymentMethod2" value="Contrassegno">
+            <label class="pointer form-check-label" style="margin-top:6px; margin-left:6px;" for="paymentMethod2">Contrassegno</label>
+        </div>
+        <div>
+            <label style="margin-top:6px;">€ 4,99</label>
+        </div>
+    </div>
+</div>

@@ -113,8 +113,9 @@ export class EventTicketListComponent implements AfterViewInit {
   }
 
   buyTickets(eventBuyTicketRequestList: Array<EventBuyTicketRequest>) {
+    console.log(eventBuyTicketRequestList)
     eventBuyTicketRequestList.forEach(el => {
-      el.n_event_id = this.eventData.n_id;
+      el.n_event_id = this.n_id
     })
     this.getTicketListByBestTicketType(eventBuyTicketRequestList);
   }

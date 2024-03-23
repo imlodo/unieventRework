@@ -1,10 +1,24 @@
 ::ng-deep .mat-stepper-vertical,
 .mat-stepper-horizontal {
-    background: white;
+    background: var(--bs-light);
+}
+
+::ng-deep .bg-dark-mode .mat-stepper-vertical,
+::ng-deep .bg-dark-mode .mat-stepper-horizontal {
+    background: var(--bs-dark);
+    color: var(--bs-white);
+}
+
+::ng-deep .bg-dark-mode .mat-step-label.mat-step-label-active {
+    color: var(--bs-white) !important;
 }
 
 ::ng-deep .mat-stepper-horizontal-line {
     border-top-color: #0000001f !important;
+}
+
+::ng-deep .mat-stepper-horizontal-line {
+    border-top-color: #ffffff1f !important;
 }
 
 ::ng-deep .mat-step-label.mat-step-label-active {
@@ -25,4 +39,29 @@
 
 ::ng-deep .mat-horizontal-content-container {
     padding: 24px !important;
+}
+
+.add-card:hover{
+    text-decoration: underline;
+}
+
+::ng-deep .bg-dark-mode .card-input{
+    background: #2e363e; 
+    color: white;
+}
+
+::ng-deep .bg-dark-mode .card-input::placeholder{
+    color: white;
+}
+
+.card-form{
+    background: #ebebeb;
+}
+
+::ng-deep .bg-dark-mode .card-form{
+    background: var(--bs-dark);
+}
+
+::ng-deep .mat-horizontal-stepper-header{
+    pointer-events: none !important;
 }

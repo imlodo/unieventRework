@@ -133,7 +133,8 @@ export class EventBestTicketFormComponent {
         let eventBuyTicketRequest: EventBuyTicketRequest = {
           n_event_id: -1,
           n_object_id: el.get("n_id_ticket").value,
-          n_quantity: el.get("n_ticket").value
+          n_quantity: el.get("n_ticket").value,
+          n_id_map: -1
         }
         eventBuyTicketRequestList.push(eventBuyTicketRequest);
       }

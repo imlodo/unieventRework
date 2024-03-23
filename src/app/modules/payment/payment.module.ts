@@ -10,6 +10,9 @@ import { MatStepperModule } from '@angular/material/stepper';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { PaymentStep1FormComponent } from './forms/payment-step1-form/payment-step1-form.component';
+import { PaymentMethodStep2FormComponent } from './forms/payment-step2-payment-method-form/payment-step2-payment-method-form.component';
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { PaymentStep2PaymentAddressFormComponent } from './forms/payment-step2-payment-address-form/payment-step2-payment-address-form.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +20,8 @@ import { PaymentStep1FormComponent } from './forms/payment-step1-form/payment-st
     PaymentDetailComponent,
     PaymentOverviewComponent,
     PaymentStep1FormComponent,
+    PaymentMethodStep2FormComponent,
+    PaymentStep2PaymentAddressFormComponent,
   ],
   imports: [
     CommonModule,
@@ -26,6 +31,7 @@ import { PaymentStep1FormComponent } from './forms/payment-step1-form/payment-st
     MatStepperModule,
     MatFormFieldModule,
     MatInputModule,
+    BsDatepickerModule.forRoot(),
     PaymentRoutingModule
   ],
   exports: [
