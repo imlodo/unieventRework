@@ -41,27 +41,166 @@
     padding: 24px !important;
 }
 
-.add-card:hover{
+.add-card:hover {
     text-decoration: underline;
 }
 
-::ng-deep .bg-dark-mode .card-input{
-    background: #2e363e; 
+::ng-deep .bg-dark-mode .card-input {
+    background: #2e363e;
     color: white;
 }
 
-::ng-deep .bg-dark-mode .card-input::placeholder{
+::ng-deep .bg-dark-mode .card-input::placeholder {
     color: white;
 }
 
-.card-form{
+.card-form {
     background: #ebebeb;
 }
 
-::ng-deep .bg-dark-mode .card-form{
+::ng-deep .bg-dark-mode .card-form {
     background: var(--bs-dark);
 }
 
-::ng-deep .mat-horizontal-stepper-header{
+::ng-deep .mat-horizontal-stepper-header {
     pointer-events: none !important;
+}
+
+
+::ng-deep .bg-dark-mode .card-input:-webkit-autofill,
+::ng-deep .bg-dark-mode .card-input:-webkit-autofill:hover,
+::ng-deep .bg-dark-mode .card-input:-webkit-autofill:focus,
+::ng-deep .bg-dark-mode .card-input:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 300px #55575a inset !important;
+    color: white !important;
+    border: none !important;
+    -webkit-text-fill-color: white !important;
+}
+
+
+.credit-card {
+    height: 200px;
+    background-color: #f0f0f0;
+    border-radius: 15px;
+    position: relative;
+}
+
+::ng-deep .bg-dark-mode .credit-card {
+    background-color: #2e363e;
+    color: white;
+}
+
+.credit-card__front {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
+.credit-card__logo {
+    margin-bottom: 20px;
+}
+
+.card_logo_img {
+    background: white;
+    border-radius: 20px;
+}
+
+.view_cvv {
+    text-align: right;
+    margin-top: 15px;
+}
+
+.view_cvv:hover {
+    text-decoration: underline;
+}
+
+.credit-card__number {
+    font-size: 22px;
+    margin-bottom: 20px;
+}
+
+.credit-card__info {
+    display: flex;
+    justify-content: space-between;
+}
+
+.credit-card__info--name,
+.credit-card__info--expiry {
+    font-size: 16px;
+}
+
+.credit-card__back {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #f0f0f0;
+    border-radius: 15px;
+}
+
+.credit-card__strip {
+    color: white !important;
+    height: 50px;
+    background-color: #363636;
+}
+
+.credit-card__cvv {
+    font-size: 18px;
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    background: #cfcfcf;
+    padding: 10px;
+    border-radius: 7px;
+}
+
+::ng-deep .bg-dark-mode .credit-card__back {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #2e363e;
+    border-radius: 15px;
+}
+
+::ng-deep .bg-dark-mode .credit-card__strip {
+    height: 50px;
+    background-color: #1a1e22;
+}
+
+::ng-deep .bg-dark-mode .credit-card__cvv {
+    font-size: 18px;
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    background: #1f2428;
+    padding: 10px;
+    border-radius: 7px;
+}
+
+.credit-card-show-action {
+    font-size: 18px;
+    position: absolute;
+    bottom: 32px;
+    right: 75px;
+    border-radius: 7px;
+}
+
+.success-icon {
+    font-size: 5rem;
+    color: green;
+    margin-bottom: 20px;
+}
+
+.message {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.redirect-message {
+    font-size: 1rem;
+    margin-bottom: 20px;
 }

@@ -6,20 +6,21 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   templateUrl: './payment-step2-payment-address-form.component.html',
   styleUrls: ['./payment-step2-payment-address-form.component.scss']
 })
-export class PaymentStep2PaymentAddressFormComponent {
+export class PaymentStep2PaymentAddressFormComponent implements OnInit {
   addressForm: FormGroup;
   @Output() clearAddressEvent = new EventEmitter<void>();
-  
+  @Output() addAddressEvent = new EventEmitter<{ firstName: string, lastName: string, street: string, city: string, state: string, zip: string }>();
+
   constructor(private fb: FormBuilder) { }
 
   ngOnInit(): void {
     this.addressForm = this.fb.group({
-      firstName: ['', Validators.required],
-      lastName: ['', Validators.required],
-      street: ['', Validators.required],
-      city: ['', Validators.required],
-      state: ['', Validators.required],
-      zip: ['', [Validators.required, Validators.pattern(/^\d{5}$/)]], // Esempio di pattern per un CAP a 5 cifre
+      firstName: ['', [Validators.required, Validators.maxLength(50)]],
+      lastName: ['', [Validators.required, Validators.maxLength(50)]],
+      street: ['', [Validators.required, Validators.maxLength(100)]],
+      city: ['', [Validators.required, Validators.maxLength(50)]],
+      state: ['', [Validators.required, Validators.maxLength(50)]],
+      zip: ['', [Validators.required, Validators.pattern(/^\d{5}$/)]],
     });
   }
 
@@ -29,10 +30,9 @@ export class PaymentStep2PaymentAddressFormComponent {
 
   onSubmit(): void {
     if (this.addressForm.valid) {
-      console.log('Dati dell\'indirizzo salvati:', this.addressForm.value);
-      // Puoi inviare i dati del form al backend o fare altre operazioni qui
+      this.addAddressEvent.emit(this.addressForm.value);
     } else {
-      console.log('Il form non è valido. Per favore, correggi gli errori.');
+      this.addressForm.markAllAsTouched(); 
     }
   }
 }
