@@ -1,0 +1,23 @@
+.ticket-img {
+    height: 150px;
+    width: -webkit-fill-available;
+    object-fit: cover
+}
+
+.ticket-img-container {
+    width: 300px;
+}
+
+.barcodeimg {
+    height: 100px;
+    width: -webkit-fill-available;
+    object-fit: cover;
+}
+
+.ticket-container{
+    background: var(--bs-light);
+}
+
+::ng-deep .bg-dark-mode .ticket-container{
+    background: var(--bs-dark);
+}

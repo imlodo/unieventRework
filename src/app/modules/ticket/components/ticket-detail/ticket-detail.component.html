@@ -2,20 +2,25 @@
     <div class="d-flex flex-column">
         <div class="d-flex flex-row justify-content-end">
             <button class="btn btn-color-no-hover text-white rounded-0 mx-3">Richiesta supporto</button>
-            <button class="btn btn-secondary rounded-0">Stampa</button>
+            <button class="btn btn-secondary rounded-0" (click)="printTicket()">Stampa</button>
         </div>
-        <div class="d-flex flex-row">
-            <div class="event-image-container">
-
-            </div>
-            <div class="d-flex flex-column w-100">
-                <div class="ticket-title"></div>
-                <div class="event-title"></div>
-                <div class="date"></div>
-                <div class="ticket-code w-100 justify-content-center d-flex flex-row">
-                    <div class="ticket-code-qr">
-                        <img #barcodeImage>
-                    </div>                    
+        <div #ticketPrint class="d-flex justify-content-center w-100 p-3">
+            <div style="width: fit-content;" class="ticket-container d-flex flex-row mt-3 p-3 align-items-center rounded">
+                <div class="event-image-container ticket-img-container">
+                    <img class="ticket-img rounded" [attr.src]="event?.image_url">
+                </div>
+                <div class="d-flex flex-column align-items-center justify-content-center w-100">
+                    <div class="ticket-title my-3">1 x Biglietto {{getTicketNameByType()}}</div>
+                    <div class="event-title">{{event.title}}</div>
+                    <div class="date my-3">{{event.date}}</div>
+                    <div class="ticket-code w-100 justify-content-center d-flex flex-row">
+                        <div class="ticket-code-qr">
+                            <img class="rounded barcodeimg" #barcodeImage>
+                        </div>
+                    </div>
+                </div>
+                <div class="d-flex justify-content-center">
+                    <h2 class="rounded ticket-price p-2">€{{ticket.price}}</h2>
                 </div>
             </div>
         </div>
