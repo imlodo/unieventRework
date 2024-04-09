@@ -16,7 +16,7 @@ export class TicketListComponent {
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   @ViewChild(MatSort, { static: true }) sort: MatSort;
   ticketData: MatTableDataSource<any>;
-  displayedColumns: string[] = ['numeroTicket', 'titolo', 'stato', 'dataCreazione', 'azione'];
+  displayedColumns: string[] = ['numeroTicket', 'titolo', 'stato', 'dataCreazione', 'azioni'];
 
   constructor(private router: Router, private globalService: GlobalService) { }
 
@@ -28,6 +28,7 @@ export class TicketListComponent {
         titolo: `Titolo ${i}`,
         stato: Math.random() < 0.5 ? 'Confermato ✅' : 'Annullato ❌',
         dataCreazione: this.randomDate(new Date(2022, 0, 1), new Date()),
+        isScaduto: new Date(this.randomDate(new Date(2022, 0, 1), new Date())) < new Date()
       });
     }
     this.ticketData = new MatTableDataSource(data);
@@ -44,5 +45,9 @@ export class TicketListComponent {
       ticket: ticket
     });
     this.router.navigate([ROUTE_LIST.tickets, params]);
+  }
+
+  openReviewsPanel(){
+    
   }
 }

@@ -4,6 +4,12 @@
     color: #d32e2a;
 }
 
+.form-control:focus {
+    box-shadow: 0.1rem 0 0.1rem 0.1rem #d32e2a !important; 
+    border-color: #d32e2a !important;
+    border-right: 0px !important;
+}
+
 .input-group-prepend span {
     width: 50px;
     background-color: #d32e2a;
