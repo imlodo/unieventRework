@@ -56,6 +56,20 @@ h2 {
     color: white;
 }
 
+.btn-color-primary,
+.btn-color-primary:active {
+    background-color: #d32e2a !important;
+    border-color: #d32e2a !important;
+    color: white;
+}
+
+.btn-color-primary:hover{
+    background-color: #ff5452 !important;
+    border-color: #ff5452 !important;
+    color: white;
+}
+
+
 .btn-color:hover {
     background-color: white !important;
     border-color: white !important;

@@ -1,8 +1,8 @@
 import { USER_TYPE } from "../utility/global-constant";
 
 export interface User {
-    t_username: string;
-    t_password: string;
+    t_username?: string;
+    t_password?: string;
     t_name: string;
     t_surname?: string;
     t_alias_generated: string;
