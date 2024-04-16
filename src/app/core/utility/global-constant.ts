@@ -32,6 +32,12 @@ export enum ItemType {
     Utenti = 'Utenti',
 }
 
+export enum ProfileItemType {
+    Content = "Content",
+    Liked = "Liked",
+    Booked = "Booked"
+}
+
 export const EVENT_TYPE_ARRAY = [
     { id: EVENT_TYPE.PARTY, value: EVENT_TYPE.PARTY },
     { id: EVENT_TYPE.CINEMA, value: EVENT_TYPE.CINEMA },
@@ -31671,7 +31677,7 @@ export const ROUTE_LIST =
             list: "/artist/category/list"
         },
     },
-    create:"/create",
+    create: "/create",
     event: {
         category: {
             list: "/event/category/list"

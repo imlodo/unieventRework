@@ -95,5 +95,4 @@ export class AppComponent implements OnInit, AfterViewInit {
       document.body.classList.remove('bg-dark-mode');
     }
   }
-
 }

@@ -8,6 +8,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
 import { UserRoutingModule } from './user-routing.module';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { UserRoutingModule } from './user-routing.module';
     MatTooltipModule,
     MatInputModule,
     UserRoutingModule,
+    InfiniteScrollModule,
     CoreModule
   ],
   exports: [
