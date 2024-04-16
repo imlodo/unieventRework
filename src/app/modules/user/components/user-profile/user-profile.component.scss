@@ -1,4 +1,20 @@
 .user-profile-photo-container {
+    width: 34px;
+    min-width: 34px;
+    height: 34px;
+    position: relative;
+    overflow: hidden;
+    white-space: nowrap;
+    border-radius: 50%;
+}
+
+.user-profile-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.user-profile-photo-container-main {
     width: 134px;
     min-width: 134px;
     height: 134px;
@@ -8,7 +24,7 @@
     border-radius: 50%;
 }
 
-.user-profile-photo {
+.user-profile-photo-main {
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -45,4 +61,69 @@
 .type-buttons span {
     position: relative;
     top: 2px;
+}
+
+.alias:hover{
+    text-decoration: underline;
+}
+
+.bi-check2-circle {
+    margin-bottom: 4px;
+    fill: aqua
+}
+
+
+.video-canvas {
+    object-fit: cover;
+    z-index: 2;
+}
+
+.search-title {
+    margin-top: 5px;
+    margin-bottom: 10px;
+    display: -webkit-box;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    word-break: break-word;
+    font-size: 16px;
+}
+
+.video-info {
+    position: absolute;
+    width: 100%;
+    bottom: 0px;
+    height: 100px;
+    background: linear-gradient(rgba(22, 24, 35, 0) 2.92%, rgba(22, 24, 35, 0.5) 98.99%);
+    padding: 67px 13px 17px;
+    z-index: 3;
+}
+
+.card-image {
+    padding-top: 129%;
+    overflow: hidden;
+    border-radius: 5px
+}
+
+.picture-preview {
+    object-fit: cover;
+}
+
+::ng-deep .bg-dark-mode .menuEl{
+    color: var(--bs-secondary);
+}
+
+::ng-deep .bg-light-mode .menuEl{
+    color: var(--bs-dark);
+}
+
+::ng-deep .bg-dark-mode .post-card-container {
+    background: var(--bs-dark);
+    color: var(--bs-white)
+}
+
+::ng-deep .bg-light-mode .post-card-container {
+    background: var(--bs-light);
+    color: var(--bs-dark)
 }

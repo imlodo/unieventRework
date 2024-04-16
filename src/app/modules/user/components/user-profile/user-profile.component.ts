@@ -137,7 +137,7 @@ export class UserProfileComponent implements AfterViewInit {
       });
       this.items = [...this.items, ...newItems];
       this.isLoading = false;
-    }, 3000);
+    }, 1);
   }
 
   private getRandomType(): ItemType {
