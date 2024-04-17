@@ -1,6 +1,8 @@
 import { AfterViewInit, ChangeDetectorRef, Component, ElementRef, HostListener, Renderer2, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
 import moment from 'moment';
 import { User } from 'src/app/core/models/user';
+import { GlobalService } from 'src/app/core/services';
 import { randomIntFromInterval } from 'src/app/core/utility/functions-constants';
 import { ItemType, ProfileItemType, USER_TYPE } from 'src/app/core/utility/global-constant';
 
@@ -44,10 +46,14 @@ export class UserProfileComponent implements AfterViewInit {
   ];
   userInfo: any;
   selectedType: ProfileItemType = ProfileItemType.Content;
-  constructor(private cdr: ChangeDetectorRef, private elementRef: ElementRef, private renderer: Renderer2) {
+  constructor(private cdr: ChangeDetectorRef, private elementRef: ElementRef, private renderer: Renderer2, private globalService: GlobalService, private router: Router) {
     this.userInfo = this.getUserInfoById();
     this.bodyElement = this.elementRef.nativeElement.ownerDocument.body;
-    this.loadMoreItems();
+    this.loadMoreItems(ProfileItemType.Content);
+    this.isLoading = false;
+    this.loadMoreItems(ProfileItemType.Liked);
+    this.isLoading = false;
+    this.loadMoreItems(ProfileItemType.Booked);
   }
 
   ngAfterViewInit(): void {
@@ -61,7 +67,7 @@ export class UserProfileComponent implements AfterViewInit {
 
   getUserInfoById() {
     return {
-      contentList: new Array(),
+      contentList: [],
       countFollowed: 5312,
       countFollower: 3452,
       countLike: 13891,
@@ -119,7 +125,7 @@ export class UserProfileComponent implements AfterViewInit {
     };
   }
 
-  private loadMoreItems() {
+  private loadMoreItems(profileItemType:ProfileItemType) {
     if (this.isLoading) {
       return;
     }
@@ -135,7 +141,15 @@ export class UserProfileComponent implements AfterViewInit {
             return this.generateRandomTopics(index);
         }
       });
-      this.items = [...this.items, ...newItems];
+      if(profileItemType === ProfileItemType.Content){
+        this.userInfo.contentList = [...this.userInfo.contentList, ...newItems];
+      }
+      if(profileItemType === ProfileItemType.Liked){
+        this.userInfo.likedList = [...this.userInfo.likedList, ...newItems];
+      }
+      if(profileItemType === ProfileItemType.Booked){
+        this.userInfo.bookedList = [...this.userInfo.bookedList, ...newItems];
+      }
       this.isLoading = false;
     }, 1);
   }
@@ -162,8 +176,16 @@ export class UserProfileComponent implements AfterViewInit {
     return randomDate;
   }
 
-  onScroll() {
-    this.loadMoreItems();
+  navigateToContent(item: any) {
+    const link = "/@/" + item.t_user.t_alias_generated + "/content";
+    const params = this.globalService.encodeParams({
+      item: item
+    });
+    this.router.navigate([link, params]);
+  }
+
+  onScroll(profileItemType:ProfileItemType) {
+    this.loadMoreItems(profileItemType);
   }
 
   trackByFn(index: number, item: any): number {
