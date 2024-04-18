@@ -154,6 +154,19 @@ export class UserProfileComponent implements AfterViewInit {
     }, 1);
   }
 
+  navigateToUserProfile(item: any) {
+    const link = "/@/" + item.t_user.t_alias_generated;
+    this.router.navigate([link]);
+  }
+
+  followThisUserByCurrentUser(){
+
+  }
+
+  openEditProfilePanel(){
+    
+  }
+  
   private getRandomType(): ItemType {
     const types = Object.values(ItemType).filter(type => type !== ItemType.Tutti && type !== ItemType.Artisti);
     const randomIndex = Math.floor(Math.random() * types.length);
