@@ -15,6 +15,11 @@ export class UserProfileComponent implements AfterViewInit {
   ProfileItemType: any = ProfileItemType;
   @ViewChild('scrollableContent') scrollableContent: ElementRef;
   bodyElement: ElementRef;
+  showEditPanel: boolean = false;
+  username: string = ""; // assuming this is fetched from somewhere
+  firstName: string = ""; // initial values for editing
+  lastName: string = ""; // initial values for editing
+  biography: string = ""; // initial values for editing
   user: User = {
     t_name: "Mario",
     t_surname: "Baldi",
@@ -54,6 +59,10 @@ export class UserProfileComponent implements AfterViewInit {
     this.loadMoreItems(ProfileItemType.Liked);
     this.isLoading = false;
     this.loadMoreItems(ProfileItemType.Booked);
+    this.username = this.user.t_alias_generated;
+    this.firstName = this.user.t_name;
+    this.lastName = this.user.t_surname;
+    this.biography = this.user.t_description;
   }
 
   ngAfterViewInit(): void {
@@ -80,17 +89,6 @@ export class UserProfileComponent implements AfterViewInit {
   changeType(type: ProfileItemType) {
     this.selectedType = type;
     //this.filterItemsByType();
-  }
-
-  addLike(item: any) {
-
-  }
-
-  addComment(item: any) {
-
-  }
-
-  share(item: any) {
   }
 
   private generateRandomEvent(index: number): any { //Event
@@ -125,7 +123,7 @@ export class UserProfileComponent implements AfterViewInit {
     };
   }
 
-  private loadMoreItems(profileItemType:ProfileItemType) {
+  private loadMoreItems(profileItemType: ProfileItemType) {
     if (this.isLoading) {
       return;
     }
@@ -141,13 +139,13 @@ export class UserProfileComponent implements AfterViewInit {
             return this.generateRandomTopics(index);
         }
       });
-      if(profileItemType === ProfileItemType.Content){
+      if (profileItemType === ProfileItemType.Content) {
         this.userInfo.contentList = [...this.userInfo.contentList, ...newItems];
       }
-      if(profileItemType === ProfileItemType.Liked){
+      if (profileItemType === ProfileItemType.Liked) {
         this.userInfo.likedList = [...this.userInfo.likedList, ...newItems];
       }
-      if(profileItemType === ProfileItemType.Booked){
+      if (profileItemType === ProfileItemType.Booked) {
         this.userInfo.bookedList = [...this.userInfo.bookedList, ...newItems];
       }
       this.isLoading = false;
@@ -159,14 +157,41 @@ export class UserProfileComponent implements AfterViewInit {
     this.router.navigate([link]);
   }
 
-  followThisUserByCurrentUser(){
+  followThisUserByCurrentUser() {
 
   }
 
-  openEditProfilePanel(){
-    
+  openEditProfilePanel() {
+    this.showEditPanel = true;
   }
-  
+
+
+
+  cancelEdit(): void {
+    this.showEditPanel = false;
+    // Reset form fields if needed
+    this.resetFormFields();
+  }
+
+  saveChanges(): void {
+    // Handle saving changes here, e.g., send data to backend
+    // After saving, hide the edit panel and reset form fields
+    this.showEditPanel = false;
+    this.resetFormFields();
+  }
+
+  resetFormFields(): void {
+    // Reset form fields to their initial values
+    this.username = this.user.t_alias_generated;
+    this.firstName = this.user.t_name;
+    this.lastName = this.user.t_surname;
+    this.biography = this.user.t_description;
+  }
+
+  onFileSelected(event): void {
+    const selectedFile = event.target.files[0];
+  }
+
   private getRandomType(): ItemType {
     const types = Object.values(ItemType).filter(type => type !== ItemType.Tutti && type !== ItemType.Artisti);
     const randomIndex = Math.floor(Math.random() * types.length);
@@ -197,13 +222,13 @@ export class UserProfileComponent implements AfterViewInit {
     this.router.navigate([link, params]);
   }
 
-  onScroll(profileItemType:ProfileItemType) {
+  onScroll(profileItemType: ProfileItemType) {
     this.loadMoreItems(profileItemType);
   }
 
   trackByFn(index: number, item: any): number {
-     return item.id;
-   }
+    return item.id;
+  }
 
   formatDateString(dateString: string): string {
     moment.locale('it');

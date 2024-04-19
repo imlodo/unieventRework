@@ -343,3 +343,38 @@
         <h1>Nessun contenuto presente</h1>
     </div>
 </ng-template>
+
+<div *ngIf="showEditPanel" class="modal-overlay" style="z-index:10">
+    <div class="modal-content container p-3 m-3">
+        <div class="d-flex justify-content-between border-bottom mb-3">
+            <h2 class="mb-2">Modifica Profilo</h2>
+            <span style="font-size:38px;" class="pointer" (click)="cancelEdit()" aria-hidden="true">&times;</span>
+        </div>
+        <form (submit)="saveChanges()">
+            <div class="form-group">
+                <label for="profile-image">Profile Image</label>
+                <input type="file" id="profile-image" name="profile-image" (change)="onFileSelected($event)">
+            </div>
+            <div class="form-group">
+                <label>Nome utente</label>
+                <input type="text" value="{{ username }}" readonly>
+            </div>
+            <div class="form-group">
+                <label>Nome</label>
+                <input type="text" [(ngModel)]="firstName">
+            </div>
+            <div class="form-group">
+                <label>Cognome</label>
+                <input type="text" [(ngModel)]="lastName">
+            </div>
+            <div class="form-group">
+                <label for="biography">Biografia</label>
+                <textarea [(ngModel)]="biography" id="biography" name="biography"></textarea>
+            </div>
+            <div class="form-group">
+                <button type="button" (click)="cancelEdit()">Annulla</button>
+                <button type="submit">Salva</button>
+            </div>
+        </form>
+    </div>
+</div>
