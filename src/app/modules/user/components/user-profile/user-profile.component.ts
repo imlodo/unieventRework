@@ -20,6 +20,7 @@ export class UserProfileComponent implements AfterViewInit {
   firstName: string = ""; // initial values for editing
   lastName: string = ""; // initial values for editing
   biography: string = ""; // initial values for editing
+  profile_photo: string = "";
   user: User = {
     t_name: "Mario",
     t_surname: "Baldi",
@@ -63,6 +64,7 @@ export class UserProfileComponent implements AfterViewInit {
     this.firstName = this.user.t_name;
     this.lastName = this.user.t_surname;
     this.biography = this.user.t_description;
+    this.profile_photo = this.user.t_profile_photo;
   }
 
   ngAfterViewInit(): void {
@@ -86,9 +88,21 @@ export class UserProfileComponent implements AfterViewInit {
     }
   }
 
+  sanitizeFirstName(): void {
+    this.firstName = this.sanitizeInput(this.firstName);
+  }
+
+  sanitizeLastName(): void {
+    this.lastName = this.sanitizeInput(this.lastName);
+  }
+
+  sanitizeInput(input: string): string {
+    return input.replace(/[^a-zA-ZàáâäèéêëìíîïòóôöùúûüçÀÁÂÄÈÉÊËÌÍÎÏÒÓÔÖÙÚÛÜÇ\s]/g, '');
+  }
+
+
   changeType(type: ProfileItemType) {
     this.selectedType = type;
-    //this.filterItemsByType();
   }
 
   private generateRandomEvent(index: number): any { //Event
@@ -165,31 +179,34 @@ export class UserProfileComponent implements AfterViewInit {
     this.showEditPanel = true;
   }
 
-
-
   cancelEdit(): void {
     this.showEditPanel = false;
-    // Reset form fields if needed
     this.resetFormFields();
   }
 
   saveChanges(): void {
-    // Handle saving changes here, e.g., send data to backend
-    // After saving, hide the edit panel and reset form fields
     this.showEditPanel = false;
     this.resetFormFields();
   }
 
   resetFormFields(): void {
-    // Reset form fields to their initial values
     this.username = this.user.t_alias_generated;
     this.firstName = this.user.t_name;
     this.lastName = this.user.t_surname;
     this.biography = this.user.t_description;
+    this.profile_photo = this.user.t_profile_photo;
   }
 
-  onFileSelected(event): void {
+  onFileSelected(event: any): void {
     const selectedFile = event.target.files[0];
+    if (selectedFile) {
+      const reader = new FileReader();
+      reader.onload = (e: any) => {
+        const base64Image = e.target.result;
+        this.profile_photo = base64Image;
+      };
+      reader.readAsDataURL(selectedFile);
+    }
   }
 
   private getRandomType(): ItemType {

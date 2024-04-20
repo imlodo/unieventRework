@@ -25,7 +25,8 @@
                 </div>
             </div>
             <div>
-                <button class="btn btn-color-primary rounded-0 text-white" (click)="followThisUserByCurrentUser()">Segui</button>
+                <button class="btn btn-color-primary rounded-0 text-white"
+                    (click)="followThisUserByCurrentUser()">Segui</button>
             </div>
         </div>
         <div class="d-flex flex-row mt-4 mx-4" style="gap: 25px;">
@@ -351,30 +352,44 @@
             <span style="font-size:38px;" class="pointer" (click)="cancelEdit()" aria-hidden="true">&times;</span>
         </div>
         <form (submit)="saveChanges()">
-            <div class="form-group">
-                <label for="profile-image">Profile Image</label>
-                <input type="file" id="profile-image" name="profile-image" (change)="onFileSelected($event)">
+            <div class="d-flex flex-row justify-content-center position-relative">
+                <!-- Immagine del profilo -->
+                <label for="profile-image" class="edit-profile-icon m-0">
+                    <i class="fa fa-pencil"></i>
+                </label>
+                <span shape="circle" class="user-profile-photo-container-main pointer mx-3">
+                    <img class="user-profile-photo-main" [attr.src]="profile_photo" />
+                </span>
+                <input type="file" id="profile-image" name="profile-image" class="invisible"
+                    (change)="onFileSelected($event)">
+
             </div>
             <div class="form-group">
                 <label>Nome utente</label>
-                <input type="text" value="{{ username }}" readonly>
+                <input type="text" value="{{ username }}" readonly disabled>
             </div>
             <div class="form-group">
                 <label>Nome</label>
-                <input type="text" [(ngModel)]="firstName">
+                <input required minlength="3" type="text" id="firstname" name="firstname" [(ngModel)]="firstName"
+                    (keyup)="sanitizeFirstName()">
             </div>
             <div class="form-group">
                 <label>Cognome</label>
-                <input type="text" [(ngModel)]="lastName">
+                <input required minlength="3" type="text" id="lastname" name="lastname" [(ngModel)]="lastName"
+                    (keyup)="sanitizeLastName()">
             </div>
             <div class="form-group">
                 <label for="biography">Biografia</label>
-                <textarea [(ngModel)]="biography" id="biography" name="biography"></textarea>
+                <textarea required [(ngModel)]="biography" id="biography" name="biography"></textarea>
             </div>
             <div class="form-group">
-                <button type="button" (click)="cancelEdit()">Annulla</button>
-                <button type="submit">Salva</button>
+                <div class="d-flex flex-row justify-content-end">
+                    <button class="btn btn-secondary" type="button" (click)="cancelEdit()">Annulla</button>
+                    <button type="submit"
+                        [disabled]="!firstName || !lastName || !biography || firstName.length < 3 || lastName.length < 3">Salva</button>
+                </div>
             </div>
+
         </form>
     </div>
 </div>

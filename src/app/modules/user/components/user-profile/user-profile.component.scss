@@ -187,3 +187,45 @@
     background: var(--bs-dark);
     color: var(--bs-white)
 }
+
+.edit-profile-icon {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+    cursor: pointer;
+    width: 134px;
+    min-width: 134px;
+    height: 134px;
+    z-index: 1;
+}
+
+.invisible {
+    position: absolute;
+    top: 0;
+    opacity: 0;
+    cursor: pointer;
+    width: 134px;
+    min-width: 134px;
+    height: 134px;
+}
+
+.edit-profile-icon i {
+    font-size: 15px;
+    position: absolute;
+    right: 0px;
+    bottom: 10px;
+    background: #3b3b3b;
+    padding: 10px;
+    border-radius: 30px;
+    border: 1px solid;
+}
+
+::ng-deep .bg-dark-mode .form-group input:disabled{
+    color:white;
+}
