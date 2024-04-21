@@ -1,6 +1,7 @@
-import { AfterViewInit, ChangeDetectorRef, Component, ElementRef, HostListener, Renderer2, ViewChild } from '@angular/core';
-import { Router } from '@angular/router';
+import { AfterViewInit, ChangeDetectorRef, Component, ElementRef, HostListener, Input, Renderer2, ViewChild } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import moment from 'moment';
+import { pluck } from 'rxjs';
 import { User } from 'src/app/core/models/user';
 import { GlobalService } from 'src/app/core/services';
 import { randomIntFromInterval } from 'src/app/core/utility/functions-constants';
@@ -54,7 +55,8 @@ export class UserProfileComponent implements AfterViewInit {
   ];
   userInfo: any;
   selectedType: ProfileItemType = ProfileItemType.Content;
-  constructor(private cdr: ChangeDetectorRef, private elementRef: ElementRef, private renderer: Renderer2, private globalService: GlobalService, private router: Router) {
+
+  constructor(private cdr: ChangeDetectorRef, private elementRef: ElementRef, private renderer: Renderer2, private globalService: GlobalService, private route: ActivatedRoute, private router: Router) {
     this.userInfo = this.getUserInfoById();
     this.bodyElement = this.elementRef.nativeElement.ownerDocument.body;
     this.loadMoreItems(ProfileItemType.Content);
@@ -67,6 +69,21 @@ export class UserProfileComponent implements AfterViewInit {
     this.lastName = this.user.t_surname;
     this.biography = this.user.t_description;
     this.profile_photo = this.user.t_profile_photo;
+    this.decodeParams();
+  }
+
+  decodeParams() {
+    this.route.params
+      .pipe(pluck('params'))
+      .subscribe((result) => {
+        if(result){
+          const decode = this.globalService.decodeParams(result);
+          if(decode.profileItemType === "Booked"){
+            this.selectedType = ProfileItemType.Booked;
+          }
+        }
+      }
+      );
   }
 
   ngAfterViewInit(): void {

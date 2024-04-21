@@ -1,7 +1,8 @@
 import { Component, ElementRef, EventEmitter, HostListener, Input, Output } from '@angular/core';
 import { User } from '../../models/user';
-import { ROUTE_LIST, USER_TYPE } from '../../utility/global-constant';
+import { ProfileItemType, ROUTE_LIST, USER_TYPE } from '../../utility/global-constant';
 import { Router } from '@angular/router';
+import { GlobalService } from '../../services';
 
 @Component({
   selector: 'unievent-navbar-profile',
@@ -36,7 +37,7 @@ export class NavbarProfileComponent {
     }
   }
 
-  constructor(private elementRef: ElementRef, private router: Router) {
+  constructor(private elementRef: ElementRef, private router: Router, private globalService: GlobalService) {
     let darkModeChoice = localStorage.getItem("darkModeChoice");
     if(darkModeChoice === "0"){
       this.activeMod = false;
@@ -62,10 +63,15 @@ export class NavbarProfileComponent {
     this.closeProfilePanel();
     switch (type) {
       case "profile":
-        this.router.navigate([ROUTE_LIST.profile,]);
+        const pathProfile = "@/"+this.user.t_alias_generated;
+        this.router.navigate([pathProfile]);
         break;
       case "bookmarks":
-        this.router.navigate([ROUTE_LIST.bookmarks]);
+        const params = this.globalService.encodeParams({
+          profileItemType: ProfileItemType.Booked
+        });
+        const path = "@/"+this.user.t_alias_generated;
+        this.router.navigate([path, params]);
         break;
       case "settings":
         this.router.navigate([ROUTE_LIST.settings.account]);
