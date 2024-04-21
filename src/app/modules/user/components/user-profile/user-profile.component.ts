@@ -21,6 +21,8 @@ export class UserProfileComponent implements AfterViewInit {
   lastName: string = ""; // initial values for editing
   biography: string = ""; // initial values for editing
   profile_photo: string = "";
+  isFollowed: boolean = false; //Vale per l'utente corrente che visita il profilo
+  currentUserAliasGenerated: string = "mariobaldi2";
   user: User = {
     t_name: "Mario",
     t_surname: "Baldi",
@@ -172,7 +174,8 @@ export class UserProfileComponent implements AfterViewInit {
   }
 
   followThisUserByCurrentUser() {
-
+    this.userInfo.countFollower += 1;
+    this.isFollowed = true;
   }
 
   openEditProfilePanel() {
