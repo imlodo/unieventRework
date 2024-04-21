@@ -186,7 +186,10 @@ export class UserProfileComponent implements AfterViewInit {
 
   saveChanges(): void {
     this.showEditPanel = false;
-    this.resetFormFields();
+    this.user.t_name = this.firstName;
+    this.user.t_surname = this.lastName;
+    this.user.t_description = this.biography;
+    this.user.t_profile_photo = this.profile_photo;
   }
 
   resetFormFields(): void {
@@ -195,6 +198,12 @@ export class UserProfileComponent implements AfterViewInit {
     this.lastName = this.user.t_surname;
     this.biography = this.user.t_description;
     this.profile_photo = this.user.t_profile_photo;
+  }
+
+  onBiographyInput(event: any): void {
+    if (this.biography.length > 250) {
+      this.biography = this.biography.slice(0, 250);
+    }
   }
 
   onFileSelected(event: any): void {

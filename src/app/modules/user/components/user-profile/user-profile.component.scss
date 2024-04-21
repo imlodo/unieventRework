@@ -226,6 +226,15 @@
     border: 1px solid;
 }
 
+::ng-deep .bg-dark-mode .form-group input:not(:disabled), ::ng-deep .bg-dark-mode .form-group textarea{
+    color:white;
+    background:#0000000d;
+}
+
 ::ng-deep .bg-dark-mode .form-group input:disabled{
     color:white;
+}
+
+.form-group input:disabled{
+    cursor: not-allowed;
 }

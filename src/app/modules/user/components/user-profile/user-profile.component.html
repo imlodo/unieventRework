@@ -380,12 +380,14 @@
             </div>
             <div class="form-group">
                 <label for="biography">Biografia</label>
-                <textarea required [(ngModel)]="biography" id="biography" name="biography"></textarea>
+                <textarea required [(ngModel)]="biography" id="biography" name="biography" 
+                          (input)="onBiographyInput($event)" maxlength="250" rows="3" style="resize: none;"></textarea>
+                <div class="text-secondary">{{ biography.length }}/250</div>
             </div>
             <div class="form-group">
                 <div class="d-flex flex-row justify-content-end">
-                    <button class="btn btn-secondary" type="button" (click)="cancelEdit()">Annulla</button>
-                    <button type="submit"
+                    <button class="btn btn-secondary btn-sm" type="button" (click)="cancelEdit()">Annulla</button>
+                    <button class="btn btn-color-primary text-white btn-sm" type="submit"
                         [disabled]="!firstName || !lastName || !biography || firstName.length < 3 || lastName.length < 3">Salva</button>
                 </div>
             </div>
