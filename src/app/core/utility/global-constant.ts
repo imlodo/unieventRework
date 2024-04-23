@@ -31732,10 +31732,6 @@ export const ROUTE_LIST =
         list: "/notification/list"
 
     },
-    settings: {
-        notification: "/settings/notification",
-        account: "/settings/account"
-    },
     tickets: "/tickets",
     supports: "/supports",
     profile: "/profile",

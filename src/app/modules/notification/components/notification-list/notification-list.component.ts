@@ -18,7 +18,7 @@ export class NotificationListComponent implements AfterViewChecked {
       notification_id: 1,
       user_id: 1,
       type: NOTIFICATION_TYPE.FRIEND_REQUEST,
-      body: "Mario Baldi ti ha inviato una richiesta di amicizia",
+      body: "Mario Baldi vorebbe seguirti",
       image: "https://staff.polito.it/mario.baldi/images/Mario%20202004.jpg",
       action_link: "/acceptRequest?user_id='3'",
       not_read: true,
@@ -219,11 +219,11 @@ export class NotificationListComponent implements AfterViewChecked {
     let elFound = this.notificationAllArray.find(el => el.notification_id === notification_id);
     if (state && elFound) {
       elFound.creationDateTime = null;
-      elFound.body = "Hai accettato la richiesta di amicizia";
+      elFound.body = "Hai accettato la richiesta";
       elFound.type = NOTIFICATION_TYPE.FRIEND_REQUEST_ACCEPTED;
     } else {
       elFound.creationDateTime = null;
-      elFound.body = "Hai rifiutato la richiesta di amicizia";
+      elFound.body = "Hai rifiutato la richiesta";
       elFound.type = NOTIFICATION_TYPE.FRIEND_REQUEST_REFUSED;
     }
     let $this = this;

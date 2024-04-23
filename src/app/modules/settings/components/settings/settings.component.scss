@@ -1,0 +1,25 @@
+.sidebar{
+    background: var(--bs-light);
+    color: var(--bs-dark);
+    position: fixed;
+}
+
+::ng-deep .bg-dark-mode .sidebar{
+    background: var(--bs-dark);
+    color: var(--bs-white);
+}
+
+.settings-content{
+    background: var(--bs-light);
+    color: var(--bs-dark);
+    overflow-y: scroll;
+}
+
+::ng-deep .bg-dark-mode .settings-content{
+    background: var(--bs-dark);
+    color: var(--bs-white);
+}
+
+::ng-deep body{
+    overflow-y: hidden;
+}

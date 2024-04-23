@@ -28,7 +28,7 @@ export class NotificationSettingComponent {
     switch (type) {
       case "notificationSetting":
         this.closeNotificationPanel.emit();
-        this.router.navigate([ROUTE_LIST.settings.notification]);
+        this.router.navigate(['settings'], { fragment: 'notification' });
         break;
       case "notificationList":
         this.closeNotificationPanel.emit();

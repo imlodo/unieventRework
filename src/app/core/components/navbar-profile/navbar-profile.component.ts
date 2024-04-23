@@ -16,7 +16,7 @@ export class NavbarProfileComponent {
   @Output() updateThemeEvent = new EventEmitter<void>();
   showProfilePanel: boolean = false;
   activeMod: boolean = false;
-  @Input() darkMode:boolean;
+  @Input() darkMode: boolean;
   user: User = {
     t_username: "lodo",
     t_password: "lodo",
@@ -39,9 +39,9 @@ export class NavbarProfileComponent {
 
   constructor(private elementRef: ElementRef, private router: Router, private globalService: GlobalService) {
     let darkModeChoice = localStorage.getItem("darkModeChoice");
-    if(darkModeChoice === "0"){
+    if (darkModeChoice === "0") {
       this.activeMod = false;
-    } else{
+    } else {
       this.activeMod = true;
     }
   }
@@ -63,18 +63,18 @@ export class NavbarProfileComponent {
     this.closeProfilePanel();
     switch (type) {
       case "profile":
-        const pathProfile = "@/"+this.user.t_alias_generated;
+        const pathProfile = "@/" + this.user.t_alias_generated;
         this.router.navigate([pathProfile]);
         break;
       case "bookmarks":
         const params = this.globalService.encodeParams({
           profileItemType: ProfileItemType.Booked
         });
-        const path = "@/"+this.user.t_alias_generated;
+        const path = "@/" + this.user.t_alias_generated;
         this.router.navigate([path, params]);
         break;
       case "settings":
-        this.router.navigate([ROUTE_LIST.settings.account]);
+        this.router.navigate(['settings'], { fragment: 'account' });
         break;
       case "supports":
         this.router.navigate([ROUTE_LIST.supports]);
