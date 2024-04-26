@@ -1,7 +1,7 @@
 .sidebar{
     background: var(--bs-light);
     color: var(--bs-dark);
-    position: fixed;
+    //position: fixed;
 }
 
 ::ng-deep .bg-dark-mode .sidebar{
@@ -13,6 +13,7 @@
     background: var(--bs-light);
     color: var(--bs-dark);
     overflow-y: scroll;
+    height: calc(100vh - 80px) !important;
 }
 
 ::ng-deep .bg-dark-mode .settings-content{
@@ -22,4 +23,8 @@
 
 ::ng-deep body{
     overflow-y: hidden;
+}
+
+::-webkit-scrollbar {
+    display: none;
 }

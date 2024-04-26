@@ -1,19 +1,26 @@
-<div #scrollContainer class="container p-3">
+<div class="container p-3">
     <div class="d-flex flex-row" style="gap:10px">
-        <div class="sidebar-container rounded col-3 d-none d-lg-block" >
+        <div class="sidebar-container rounded col-4 d-none d-lg-block">
             <ul class="sidebar vh-100 list-unstyled p-3 rounded">
-                <h2 [ngClass]="activeMenu === 'account' ? 'text-danger' : null " class="pointer" (click)="scrollTo('account')">Gestione Account</h2>
-                <h2 [ngClass]="activeMenu === 'privacy' ? 'text-danger' : null " class="pointer" (click)="scrollTo('privacy')">Privacy</h2>
-                <h2 [ngClass]="activeMenu === 'notification' ? 'text-danger' : null " class="pointer" (click)="scrollTo('notification')">Notifiche e notifiche push</h2>
+                <h2 [ngClass]="activeMenu === 'account' ? 'text-danger' : null " class="pointer"
+                    (click)="scrollTo('account')">Gestione Account</h2>
+                <h2 [ngClass]="activeMenu === 'privacy' ? 'text-danger' : null " class="pointer"
+                    (click)="scrollTo('privacy')">Privacy</h2>
+                <h2 [ngClass]="activeMenu === 'notification' ? 'text-danger' : null " class="pointer"
+                    (click)="scrollTo('notification')">Notifiche e notifiche push</h2>
+                <h2 [ngClass]="activeMenu === 'artist' ? 'text-danger' : null " class="pointer"
+                    (click)="scrollTo('artist')">Account Artista</h2>
+                <h2 [ngClass]="activeMenu === 'help' ? 'text-danger' : null " class="pointer"
+                    (click)="scrollTo('help')">Aiuto e Risorse</h2>
             </ul>
         </div>
-        <div class="settings-content vh-100 rounded d-block col-12 col-lg-9 p-3">
+        <div #scrollContainer class="settings-content rounded d-block col-12 col-lg-8 p-4">
             <div id="account">
                 <h2>Gestione Account</h2>
                 <div class="container">
                     <div class="d-flex flex-row justify-content-between">
-                        <h3 class="text-secondary">Elimina l'account</h3>
-                        <h3 class="text-danger pointer">Elimina</h3>
+                        <h3>Elimina l'account</h3>
+                        <h3 class="text-danger pointer" (click)="executeAction('delete')">Elimina</h3>
                     </div>
                 </div>
             </div>
@@ -21,28 +28,69 @@
             <div id="privacy">
                 <h2>Privacy</h2>
                 <div class="container">
-                    <h3>Visibilità</h3>
                     <div class="d-flex flex-row justify-content-between">
-                        <h3 class="text-secondary">Account privato</h3>
-
+                        <div class="d-flex flex-column">
+                            <h3 class="m-0 mb-2">Account privato</h3>
+                            <h5 class="text-secondary">Con un account privato, solo gli utenti che approvi possono
+                                seguirti e vedere i tuoi video. La modifica non avrà impatto sui follower già esistenti.
+                            </h5>
+                        </div>
+                        <div class="pointer"
+                            (click)="settings.privacy.visibility.private_account = !settings.privacy.visibility.private_account">
+                            <ng-container *ngIf="!settings.privacy.visibility.private_account">
+                                <ng-container *ngTemplateOutlet="toggle_off"></ng-container>
+                            </ng-container>
+                            <ng-container *ngIf="settings.privacy.visibility.private_account">
+                                <ng-container *ngTemplateOutlet="toggle_on"></ng-container>
+                            </ng-container>
+                        </div>
                     </div>
-                    <div class="d-flex flex-row justify-content-between">
-                        <h3 class="text-secondary">Mostra preferiti</h3>
 
+                    <div class="d-flex flex-row justify-content-between">
+                        <div class="d-flex flex-column">
+                            <h3 class="m-0 mb-2">Mostra preferiti</h3>
+                            <h5 class="text-secondary">Abilitando la funzionalità, tutti gli utenti potranno
+                                visualizzare i tuoi contenuti preferiti</h5>
+                        </div>
+                        <div class="pointer"
+                            (click)="settings.privacy.visibility.show_booked = !settings.privacy.visibility.show_booked">
+                            <ng-container *ngIf="!settings.privacy.visibility.show_booked">
+                                <ng-container *ngTemplateOutlet="toggle_off"></ng-container>
+                            </ng-container>
+                            <ng-container *ngIf="settings.privacy.visibility.show_booked">
+                                <ng-container *ngTemplateOutlet="toggle_on"></ng-container>
+                            </ng-container>
+                        </div>
                     </div>
                 </div>
                 <div class="container">
-                    <h3>Dati</h3>
                     <div class="d-flex flex-row justify-content-between">
-                        <h3 class="text-secondary">Scarica i tuoi dati</h3>
-
+                        <div class="d-flex flex-column">
+                            <h3 class="m-0 mb-2">Messaggi</h3>
+                            <h5 class="text-secondary">Tutti gli utenti possono mandarti messaggi</h5>
+                        </div>
+                        <div class="pointer"
+                            (click)="settings.privacy.messages.all_user_send_message = !settings.privacy.messages.all_user_send_message">
+                            <ng-container *ngIf="!settings.privacy.messages.all_user_send_message">
+                                <ng-container *ngTemplateOutlet="toggle_off"></ng-container>
+                            </ng-container>
+                            <ng-container *ngIf="settings.privacy.messages.all_user_send_message">
+                                <ng-container *ngTemplateOutlet="toggle_on"></ng-container>
+                            </ng-container>
+                        </div>
                     </div>
                 </div>
                 <div class="container">
-                    <h3>Messaggi</h3>
                     <div class="d-flex flex-row justify-content-between">
-                        <h3 class="text-secondary">Tutti gli utenti possono mandare messaggi</h3>
-
+                        <div class="d-flex flex-column">
+                            <h3 class="m-0 mb-2">Dati</h3>
+                            <h5 class="text-secondary">Scarica i tuoi dati</h5>
+                        </div>
+                        <svg (click)="executeAction('data')" xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="gray"
+                            class="bi bi-chevron-right pointer" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd"
+                                d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708" />
+                        </svg>
                     </div>
                 </div>
             </div>
@@ -50,43 +98,201 @@
             <div id="notification">
                 <h2>Notifiche e notifiche push</h2>
                 <div class="container">
-                    <h3>Notifiche desktop</h3>
                     <div class="d-flex flex-row justify-content-between">
-                        <h3 class="text-secondary">Consenti nel browser</h3>
-
+                        <div class="d-flex flex-column">
+                            <h3 class="m-0 mb-2">Notifiche desktop</h3>
+                            <h5 class="text-secondary">Consenti nel browser</h5>
+                        </div>
+                        <div class="pointer"
+                            (click)="settings.notification.desktop.browser_consent = !settings.notification.desktop.browser_consent">
+                            <ng-container *ngIf="!settings.notification.desktop.browser_consent">
+                                <ng-container *ngTemplateOutlet="toggle_off"></ng-container>
+                            </ng-container>
+                            <ng-container *ngIf="settings.notification.desktop.browser_consent">
+                                <ng-container *ngTemplateOutlet="toggle_on"></ng-container>
+                            </ng-container>
+                        </div>
                     </div>
                 </div>
                 <div class="container">
                     <h3>Interazioni</h3>
-                    <div class="d-flex flex-row justify-content-between">
-                        <h3 class="text-secondary">Mi piace</h3>
+                    <div class="container">
+                        <div class="d-flex flex-row justify-content-between">
+                            <div class="d-flex flex-column">
+                                <h3 class="m-0 mb-2">Mi piace</h3>
+                            </div>
+                            <div class="pointer"
+                                (click)="settings.notification.interaction.like = !settings.notification.interaction.like">
+                                <ng-container *ngIf="!settings.notification.interaction.like">
+                                    <ng-container *ngTemplateOutlet="toggle_off"></ng-container>
+                                </ng-container>
+                                <ng-container *ngIf="settings.notification.interaction.like">
+                                    <ng-container *ngTemplateOutlet="toggle_on"></ng-container>
+                                </ng-container>
+                            </div>
+                        </div>
                     </div>
-                    <div class="d-flex flex-row justify-content-between">
-                        <h3 class="text-secondary">Commenti</h3>
+                    <div class="container">
+                        <div class="d-flex flex-row justify-content-between">
+                            <div class="d-flex flex-column">
+                                <h3 class="m-0 mb-2">Commenti</h3>
+                            </div>
+                            <div class="pointer"
+                                (click)="settings.notification.interaction.comments = !settings.notification.interaction.comments">
+                                <ng-container *ngIf="!settings.notification.interaction.comments">
+                                    <ng-container *ngTemplateOutlet="toggle_off"></ng-container>
+                                </ng-container>
+                                <ng-container *ngIf="settings.notification.interaction.comments">
+                                    <ng-container *ngTemplateOutlet="toggle_on"></ng-container>
+                                </ng-container>
+                            </div>
+                        </div>
                     </div>
-                    <div class="d-flex flex-row justify-content-between">
-                        <h3 class="text-secondary">Menzioni e tag</h3>
+                    <div class="container">
+                        <div class="d-flex flex-row justify-content-between">
+                            <div class="d-flex flex-column">
+                                <h3 class="m-0 mb-2">Menzioni e tag</h3>
+                            </div>
+                            <div class="pointer"
+                                (click)="settings.notification.desktop.browser_consent = !settings.notification.desktop.browser_consent">
+                                <ng-container *ngIf="!settings.notification.desktop.browser_consent">
+                                    <ng-container *ngTemplateOutlet="toggle_off"></ng-container>
+                                </ng-container>
+                                <ng-container *ngIf="settings.notification.desktop.browser_consent">
+                                    <ng-container *ngTemplateOutlet="toggle_on"></ng-container>
+                                </ng-container>
+                            </div>
+                        </div>
                     </div>
-                    <div class="d-flex flex-row justify-content-between">
-                        <h3 class="text-secondary">Rcihieste di nuovi Follower</h3>
+                    <div class="container">
+                        <div class="d-flex flex-row justify-content-between">
+                            <div class="d-flex flex-column">
+                                <h3 class="m-0 mb-2">Richieste di nuovi follower</h3>
+                                
+                            </div>
+                            <div class="pointer"
+                                (click)="settings.notification.desktop.browser_consent = !settings.notification.desktop.browser_consent">
+                                <ng-container *ngIf="!settings.notification.desktop.browser_consent">
+                                    <ng-container *ngTemplateOutlet="toggle_off"></ng-container>
+                                </ng-container>
+                                <ng-container *ngIf="settings.notification.desktop.browser_consent">
+                                    <ng-container *ngTemplateOutlet="toggle_on"></ng-container>
+                                </ng-container>
+                            </div>
+                        </div>
                     </div>
-                    <div class="d-flex flex-row justify-content-between">
-                        <h3 class="text-secondary">Suggerimenti follower</h3>
+                    <div class="container">
+                        <div class="d-flex flex-row justify-content-between">
+                            <div class="d-flex flex-column">
+                                <h3 class="m-0 mb-2">Suggerimenti follower</h3>
+                                
+                            </div>
+                            <div class="pointer"
+                                (click)="settings.notification.desktop.browser_consent = !settings.notification.desktop.browser_consent">
+                                <ng-container *ngIf="!settings.notification.desktop.browser_consent">
+                                    <ng-container *ngTemplateOutlet="toggle_off"></ng-container>
+                                </ng-container>
+                                <ng-container *ngIf="settings.notification.desktop.browser_consent">
+                                    <ng-container *ngTemplateOutlet="toggle_on"></ng-container>
+                                </ng-container>
+                            </div>
+                        </div>
                     </div>
-                    <div class="d-flex flex-row justify-content-between">
-                        <h3 class="text-secondary">Termini e Condizioni</h3>
+                    <div class="container">
+                        <div class="d-flex flex-row justify-content-between">
+                            <div class="d-flex flex-column">
+                                <h3 class="m-0 mb-2">Termini e condizioni</h3>
+                                
+                            </div>
+                            <div class="pointer"
+                                (click)="settings.notification.desktop.browser_consent = !settings.notification.desktop.browser_consent">
+                                <ng-container *ngIf="!settings.notification.desktop.browser_consent">
+                                    <ng-container *ngTemplateOutlet="toggle_off"></ng-container>
+                                </ng-container>
+                                <ng-container *ngIf="settings.notification.desktop.browser_consent">
+                                    <ng-container *ngTemplateOutlet="toggle_on"></ng-container>
+                                </ng-container>
+                            </div>
+                        </div>
                     </div>
-                    <div class="d-flex flex-row justify-content-between">
-                        <h3 class="text-secondary">Pagamenti</h3>
+                    <div class="container">
+                        <div class="d-flex flex-row justify-content-between">
+                            <div class="d-flex flex-column">
+                                <h3 class="m-0 mb-2">Pagamenti</h3>
+                                
+                            </div>
+                            <div class="pointer"
+                                (click)="settings.notification.desktop.browser_consent = !settings.notification.desktop.browser_consent">
+                                <ng-container *ngIf="!settings.notification.desktop.browser_consent">
+                                    <ng-container *ngTemplateOutlet="toggle_off"></ng-container>
+                                </ng-container>
+                                <ng-container *ngIf="settings.notification.desktop.browser_consent">
+                                    <ng-container *ngTemplateOutlet="toggle_on"></ng-container>
+                                </ng-container>
+                            </div>
+                        </div>
                     </div>
-                    <div class="d-flex flex-row justify-content-between">
-                        <h3 class="text-secondary">Ticket</h3>
+                    <div class="container">
+                        <div class="d-flex flex-row justify-content-between">
+                            <div class="d-flex flex-column">
+                                <h3 class="m-0 mb-2">Ticket</h3>
+                                
+                            </div>
+                            <div class="pointer"
+                                (click)="settings.notification.desktop.browser_consent = !settings.notification.desktop.browser_consent">
+                                <ng-container *ngIf="!settings.notification.desktop.browser_consent">
+                                    <ng-container *ngTemplateOutlet="toggle_off"></ng-container>
+                                </ng-container>
+                                <ng-container *ngIf="settings.notification.desktop.browser_consent">
+                                    <ng-container *ngTemplateOutlet="toggle_on"></ng-container>
+                                </ng-container>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
             <hr class="m-0 mb-3">
-
+            <div id="artist">
+                <h2>Account Artista</h2>
+                <div class="container">
+                    <div class="d-flex flex-row justify-content-between">
+                        <h3 class="text-secondary m-0">Fai richiesta</h3>
+                        <button (click)="executeAction('artist')" class="btn btn-sm btn-danger mb-2">Verifica</button>
+                    </div>
+                    <h5 class="text-secondary">Accedi agli strumenti e alle funzionalità esclusive tramite il tuo
+                        account artista per connetterti meglio con gli spettatori.</h5>
+                </div>
+            </div>
+            <hr class="m-0 mb-3">
+            <div id="help">
+                <h2>Aiuto e Risorse</h2>
+                <div class="container">
+                    <div class="d-flex flex-row justify-content-between">
+                        <h3 class="text-secondary">Tutto il supporto di cui hai bisogno</h3>
+                        <svg (click)="executeAction('help')" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                            fill="currentColor" class="bi bi-box-arrow-up-right pointer" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd"
+                                d="M8.636 3.5a.5.5 0 0 0-.5-.5H1.5A1.5 1.5 0 0 0 0 4.5v10A1.5 1.5 0 0 0 1.5 16h10a1.5 1.5 0 0 0 1.5-1.5V7.864a.5.5 0 0 0-1 0V14.5a.5.5 0 0 1-.5.5h-10a.5.5 0 0 1-.5-.5v-10a.5.5 0 0 1 .5-.5h6.636a.5.5 0 0 0 .5-.5" />
+                            <path fill-rule="evenodd"
+                                d="M16 .5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h3.793L6.146 9.146a.5.5 0 1 0 .708.708L15 1.707V5.5a.5.5 0 0 0 1 0z" />
+                        </svg>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
+    <ng-template #toggle_off>
+        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="gray" class="bi bi-toggle-off"
+            viewBox="0 0 16 16">
+            <path
+                d="M11 4a4 4 0 0 1 0 8H8a5 5 0 0 0 2-4 5 5 0 0 0-2-4zm-6 8a4 4 0 1 1 0-8 4 4 0 0 1 0 8M0 8a5 5 0 0 0 5 5h6a5 5 0 0 0 0-10H5a5 5 0 0 0-5 5" />
+        </svg>
+    </ng-template>
+    <ng-template #toggle_on>
+        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="green" class="bi bi-toggle-on"
+            viewBox="0 0 16 16">
+            <path d="M5 3a5 5 0 0 0 0 10h6a5 5 0 0 0 0-10zm6 9a4 4 0 1 1 0-8 4 4 0 0 1 0 8" />
+        </svg>
+    </ng-template>
 </div>

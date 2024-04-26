@@ -31676,6 +31676,7 @@ export const ROUTE_LIST =
         category: {
             list: "/artist/category/list"
         },
+        verify: "/artist/verify"
     },
     create: "/create",
     event: {

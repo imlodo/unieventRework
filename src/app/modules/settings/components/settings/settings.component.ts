@@ -1,5 +1,6 @@
 import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
+import { ROUTE_LIST } from 'src/app/core/utility/global-constant';
 
 @Component({
   selector: 'unievent-settings',
@@ -9,10 +10,37 @@ import { Router } from '@angular/router';
 export class SettingsComponent implements AfterViewInit {
   activeMenu: string = 'account';
   marginTopOffset: number = 80;
+  settings = {
+    privacy:{
+      visibility: {
+        private_account: false,
+        show_booked: false
+      },
+      messages: {
+        all_user_send_message: false
+      }
+    },
+    notification:
+    {
+      desktop:{
+        browser_consent: false,
+      },
+      interaction:{
+        like: false,
+        comments: false,
+        tag: false,
+        new_follower_request: false,
+        follower_suggest: false,
+        terms_and_condition: false,
+        payments: false,
+        tickets: false
+      }
+    }
+  }
 
   @ViewChild('scrollContainer') scrollContainer: ElementRef;
 
-  constructor(private router : Router) { }
+  constructor(private router: Router) { }
 
   ngAfterViewInit() {
     this.activeMenu = window.location.href.split("#")[1] || 'account'; // Utilizzo '||' per impostare 'account' se il frammento è vuoto
@@ -20,16 +48,31 @@ export class SettingsComponent implements AfterViewInit {
   }
 
   scrollTo(section: string): void {
-    const element = document.getElementById(section);
-    if (element) {
-      this.router.navigate([], { fragment: section });
-      element.scrollIntoView({
-        behavior: "smooth",
-        block: "start",
-        inline: "nearest"
-      });
-    }
     this.activeMenu = section;
+    const element = document.getElementById(section);
+    if (element && this.scrollContainer.nativeElement) {
+      const rect = element.getBoundingClientRect();
+      const scrollTop = this.scrollContainer.nativeElement.scrollTop;
+      const targetPosition = rect.top + (scrollTop - this.marginTopOffset - 40);
+      this.scrollContainer.nativeElement.scrollTo({ top: targetPosition, behavior: 'smooth' });
+    }
   }
 
+  executeAction(action: string) {
+    switch (action) {
+      case "data":
+        //Open download data panel
+        break;
+      case "delete":
+        //Open delete account panel
+        break;
+      case "artist":
+        this.router.navigate([ROUTE_LIST.artist.verify]);
+        break;
+      case "help":
+        const newTabUrl = this.router.createUrlTree([ROUTE_LIST.supports]);
+        window.open(newTabUrl.toString(), '_blank');
+        break;
+    }
+  }
 }
