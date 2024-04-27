@@ -8,8 +8,10 @@ import { ROUTE_LIST } from 'src/app/core/utility/global-constant';
   styleUrls: ['./settings.component.scss']
 })
 export class SettingsComponent implements AfterViewInit {
+  @ViewChild('scrollContainer') scrollContainer: ElementRef;
   activeMenu: string = 'account';
   marginTopOffset: number = 80;
+  //Current user settings (vanno prese dal back-end)
   settings = {
     privacy:{
       visibility: {
@@ -37,8 +39,6 @@ export class SettingsComponent implements AfterViewInit {
       }
     }
   }
-
-  @ViewChild('scrollContainer') scrollContainer: ElementRef;
 
   constructor(private router: Router) { }
 
