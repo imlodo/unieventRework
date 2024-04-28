@@ -10,10 +10,11 @@ import { ROUTE_LIST } from 'src/app/core/utility/global-constant';
 export class SettingsComponent implements AfterViewInit {
   @ViewChild('scrollContainer') scrollContainer: ElementRef;
   activeMenu: string = 'account';
+  showDeleteAccountPanel: boolean = false;
   marginTopOffset: number = 80;
   //Current user settings (vanno prese dal back-end)
   settings = {
-    privacy:{
+    privacy: {
       visibility: {
         private_account: false,
         show_booked: false
@@ -24,10 +25,10 @@ export class SettingsComponent implements AfterViewInit {
     },
     notification:
     {
-      desktop:{
+      desktop: {
         browser_consent: false,
       },
-      interaction:{
+      interaction: {
         like: false,
         comments: false,
         tag: false,
@@ -64,7 +65,7 @@ export class SettingsComponent implements AfterViewInit {
         //Open download data panel
         break;
       case "delete":
-        //Open delete account panel
+        this.showDeleteAccountPanel = true;
         break;
       case "artist":
         this.router.navigate([ROUTE_LIST.artist.verify]);
@@ -75,4 +76,14 @@ export class SettingsComponent implements AfterViewInit {
         break;
     }
   }
+
+  cancelDeleteAccount() {
+    this.showDeleteAccountPanel = false;
+  }
+
+  deleteAccount(){
+    this.showDeleteAccountPanel = false;
+    //Logica per cancellare l'account, dopo effettuare il logout dell'utente
+  }
+
 }

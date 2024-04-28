@@ -330,3 +330,45 @@
         </svg>
     </ng-template>
 </div>
+
+<div *ngIf="showDeleteAccountPanel" class="modal-overlay" style="z-index:10">
+    <div class="modal-content container p-3 m-3">
+        <div class="d-flex justify-content-between border-bottom mb-3">
+            <h2 class="mb-2">Eliminazione account</h2>
+            <span style="font-size:38px;" class="pointer" (click)="cancelDeleteAccount()"
+                aria-hidden="true">&times;</span>
+        </div>
+        <div class="flex-1 px-32 pt-24 mb-56" style="overflow-y: auto;">
+            <div class="mb-3">
+                <span>Il tuo account verrà disattivato per</span>
+                <b> 30 giorni</b>
+                <span> e non sarà visibile al pubblico. Durante la disattivazione, puoi riattivare il tuo account in qualsiasi momento. </span>
+                <span>Dopo </span>
+                <b> 30 giorni</b>
+                <span>, il tuo account e i tuoi dati verranno eliminati definitivamente.</span>
+            </div>
+            <div>Se elimini il tuo account:</div>
+            <ul style="list-style: outside none disc;">
+                <li>Non potrai più accedere e utilizzare alcun servizio Unievent con quell'account</li>
+                <li>Perderai l'accesso a tutti i tuoi contenuti</li>
+                <li>Le informazioni che non sono memorizzate nel tuo account, come i messaggi diretti,
+                    potrebbero essere ancora visibili agli altri</li>
+                <li>Le informazioni che non sono archiviate sui server Unievent, come le bozze, verranno
+                    rimosse. Non sarai in grado di scaricare tali informazioni dopo aver eliminato il tuo account.
+                </li>
+                <li>Non potrai ottenere un rimborso per gli articoli acquistati o ricevuti.</li>
+            </ul>
+            <div class="mb-4">Vuoi continuare?</div>
+        </div>
+        <form (submit)="deleteAccount()">
+            <div class="form-group">
+                <div class="d-flex flex-row justify-content-end">
+                    <button class="btn btn-secondary btn-sm" type="button"
+                        (click)="cancelDeleteAccount()">Annulla</button>
+                    <button class="btn btn-color-primary text-white btn-sm" type="submit">Conferma</button>
+                </div>
+            </div>
+
+        </form>
+    </div>
+</div>
