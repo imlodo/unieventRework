@@ -11,7 +11,12 @@ export class SettingsComponent implements AfterViewInit {
   @ViewChild('scrollContainer') scrollContainer: ElementRef;
   activeMenu: string = 'account';
   showDeleteAccountPanel: boolean = false;
+  showDataDownloadPanel: boolean = false;
+  selectedOption: string = 'Request';
   marginTopOffset: number = 80;
+  isRequested: boolean = false;
+  isDataAvailable: boolean = false;
+
   //Current user settings (vanno prese dal back-end)
   settings = {
     privacy: {
@@ -62,7 +67,7 @@ export class SettingsComponent implements AfterViewInit {
   executeAction(action: string) {
     switch (action) {
       case "data":
-        //Open download data panel
+        this.showDataDownloadPanel = true;
         break;
       case "delete":
         this.showDeleteAccountPanel = true;
@@ -85,5 +90,18 @@ export class SettingsComponent implements AfterViewInit {
     this.showDeleteAccountPanel = false;
     //Logica per cancellare l'account, dopo effettuare il logout dell'utente
   }
+  
+  closeDownloadPanel(){
+    this.showDataDownloadPanel = false;
+  }
 
+  sendDownloadDataRequest(){
+    this.isRequested = true;
+    //Qui va aggiunto toast per confermare che la richiesta è presa in carico
+    this.showDataDownloadPanel = false;
+  }
+
+  changeOption(option:string){
+    this.selectedOption = option;
+  }
 }

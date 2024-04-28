@@ -139,3 +139,54 @@
 .form-group input:disabled{
     cursor: not-allowed;
 }
+
+/* MODALE DOWNLOAD PANEL */
+::ng-deep .bg-dark-mode .menuEl{
+    color: var(--bs-secondary);
+}
+
+::ng-deep .bg-light-mode .menuEl{
+    color: var(--bs-dark);
+}
+
+::ng-deep .bg-dark-mode .type-buttons .active {
+    border-bottom: 3px solid rgb(194, 194, 194);
+    color: rgb(194, 194, 194) !important;
+}
+
+::ng-deep .bg-light-mode .type-buttons .active {
+    font-weight: 900 !important;
+    border-bottom: 3px solid rgb(31, 31, 31);
+    color: var(--bs-dark);
+}
+
+::ng-deep .bg-light-mode .type-buttons span:hover {
+    border-bottom: 3px solid rgb(31, 31, 31);
+}
+
+.type-buttons {
+    font-size: 1.2rem;
+    border-bottom: 1px solid gray;
+    text-align: center;
+}
+
+.type-buttons span {
+    position: relative;
+    top: 2px;
+}
+
+::ng-deep input[type="radio"] {
+    accent-color:#d32e2a !important;
+}
+
+::ng-deep .bg-dark-mode input[type="radio"]:checked:disabled {
+    -webkit-appearance: none;
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    padding: 0px;
+    background-clip: content-box;
+    border: 2px solid #bbbbbb;
+    background-color: rgb(117 117 117);
+    border-radius: 50%;
+}
