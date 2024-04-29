@@ -175,9 +175,10 @@
     top: 2px;
 }
 
-::ng-deep input[type="radio"] {
+::ng-deep input[type="radio"], ::ng-deep input[type="checkbox"]  {
     accent-color:#d32e2a !important;
 }
+
 
 ::ng-deep .bg-dark-mode input[type="radio"]:checked:disabled {
     -webkit-appearance: none;
@@ -186,7 +187,7 @@
     height: 12px;
     padding: 0px;
     background-clip: content-box;
-    border: 2px solid #bbbbbb;
+    border: 3px solid #bbbbbb;
     background-color: rgb(117 117 117);
     border-radius: 50%;
 }

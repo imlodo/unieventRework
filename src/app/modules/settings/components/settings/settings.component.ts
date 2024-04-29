@@ -16,6 +16,12 @@ export class SettingsComponent implements AfterViewInit {
   marginTopOffset: number = 80;
   isRequested: boolean = false;
   isDataAvailable: boolean = false;
+  optionValue: string = "all";
+  formatValue: string = "JSON";
+  interactionsChecked: boolean = false;
+  favoritesChecked: boolean = false;
+  contentChecked: boolean = false;
+  chatChecked: boolean = false;
 
   //Current user settings (vanno prese dal back-end)
   settings = {
@@ -86,22 +92,27 @@ export class SettingsComponent implements AfterViewInit {
     this.showDeleteAccountPanel = false;
   }
 
-  deleteAccount(){
+  deleteAccount() {
     this.showDeleteAccountPanel = false;
     //Logica per cancellare l'account, dopo effettuare il logout dell'utente
   }
-  
-  closeDownloadPanel(){
+
+  closeDownloadPanel() {
     this.showDataDownloadPanel = false;
   }
 
-  sendDownloadDataRequest(){
+  sendDownloadDataRequest() {
     this.isRequested = true;
     //Qui va aggiunto toast per confermare che la richiesta è presa in carico
     this.showDataDownloadPanel = false;
   }
 
-  changeOption(option:string){
+  sendDownloadData() {
+
+  }
+
+  changeOption(option: string) {
     this.selectedOption = option;
   }
+
 }
