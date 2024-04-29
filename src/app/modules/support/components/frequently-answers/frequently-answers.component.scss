@@ -1,0 +1,35 @@
+h4.active{
+    font-weight: bold;
+    border-left: 2px solid var(--bs-danger);
+    color:var(--bs-black) !important;
+}
+
+::ng-deep .bg-dark-mode h4.active{
+    color:var(--bs-white) !important;
+}
+
+::ng-deep body{
+    overflow-y: hidden;
+}
+
+/*::-webkit-scrollbar {
+    display: none;
+}*/
+
+::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: rgb(184, 184, 184);
+}
+
+::ng-deep .bg-dark-mode ::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: #222324;
+}
+
+.content-container, .sidebar-container{
+    background: var(--bs-light);
+}
+
+::ng-deep .bg-dark-mode .content-container, ::ng-deep .bg-dark-mode .sidebar-container{
+    background: var(--bs-dark);
+}

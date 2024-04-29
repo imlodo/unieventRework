@@ -1,0 +1,15 @@
+<div class="container d-flex flex-row p-4 gap-3">
+    <div class="sidebar-container col-lg-4 d-none d-lg-flex flex-column rounded p-3"> 
+        <ng-container *ngFor="let el of siderbarList">
+            <h4 (click)="changeSidebarElement(el.id)" [ngClass]="el.id === selectedCaptionID ? 'active' : '' " class="text-secondary pointer p-1">{{el.captionTitle}}</h4>
+        </ng-container>
+    </div>
+    <div class="content-container col-lg-8 col-12 d-flex justify-content-center shadow vh-100 rounded p-3" style="overflow-y: scroll; height: calc(100vh - 400px) !important;">
+        <ng-container *ngFor="let el of siderbarList">
+            <div *ngIf="el.id === selectedCaptionID">
+                <h1>{{el.contentItem.title}}</h1>
+                <div [innerHTML]="el.contentItem.bodyHtml"></div>
+            </div>
+        </ng-container>
+    </div>
+</div>

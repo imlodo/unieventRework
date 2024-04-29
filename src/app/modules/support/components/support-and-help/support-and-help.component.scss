@@ -1,0 +1,33 @@
+::ng-deep .bg-dark-mode .menuEl{
+    color: var(--bs-secondary);
+}
+
+::ng-deep .bg-light-mode .menuEl{
+    color: var(--bs-dark);
+}
+
+::ng-deep .bg-dark-mode .type-buttons .active {
+    border-bottom: 3px solid rgb(194, 194, 194);
+    color: rgb(194, 194, 194) !important;
+}
+
+::ng-deep .bg-light-mode .type-buttons .active {
+    font-weight: 900 !important;
+    border-bottom: 3px solid rgb(31, 31, 31);
+    color: var(--bs-dark);
+}
+
+::ng-deep .bg-light-mode .type-buttons span:hover {
+    border-bottom: 3px solid rgb(31, 31, 31);
+}
+
+.type-buttons {
+    font-size: 1.2rem;
+    border-bottom: 1px solid gray;
+    text-align: center;
+}
+
+.type-buttons span {
+    position: relative;
+    top: 2px;
+}

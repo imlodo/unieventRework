@@ -50,6 +50,11 @@ const routes: Routes = [
 				loadChildren: () => import('./modules/settings/settings.module').then((m) => m.SettingsModule)
 			},
 			{
+				path: 'supports',
+				loadChildren: () => import('./modules/support/support.module').then((m) => m.SupportModule)
+
+			},
+			{
 				path: '@/:subpath/content',
 				loadChildren: () => import('./modules/content/content.module').then((m) => m.ContentModule),
 			},
