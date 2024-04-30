@@ -16,6 +16,7 @@ import { SupportRoutingModule } from './support-routing.module';
 import { CoreModule } from '../../core/core.module';
 import { FrequentlyAnswersComponent } from './components/frequently-answers/frequently-answers.component';
 import { TicketsComponent } from './components/tickets/tickets.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { TicketsComponent } from './components/tickets/tickets.component';
     MatInputModule,
     InfiniteScrollModule,
     SupportRoutingModule,
-    CoreModule
+    CoreModule,
+    HttpClientModule
   ],
   exports: [
   ],

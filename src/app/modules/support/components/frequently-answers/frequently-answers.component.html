@@ -1,14 +1,41 @@
 <div class="container d-flex flex-row p-4 gap-3">
-    <div class="sidebar-container col-lg-4 d-none d-lg-flex flex-column rounded p-3"> 
+    <div class="sidebar-container col-lg-4 d-none d-lg-flex flex-column rounded p-3">
         <ng-container *ngFor="let el of siderbarList">
-            <h4 (click)="changeSidebarElement(el.id)" [ngClass]="el.id === selectedCaptionID ? 'active' : '' " class="text-secondary pointer p-1">{{el.captionTitle}}</h4>
+            <h4 (click)="changeSidebarElement(el.id)" [ngClass]="el.id === selectedCaptionID ? 'active' : '' "
+                class="text-secondary pointer p-1">{{el.captionTitle}}</h4>
         </ng-container>
     </div>
-    <div class="content-container col-lg-8 col-12 d-flex justify-content-center shadow vh-100 rounded p-3" style="overflow-y: scroll; height: calc(100vh - 400px) !important;">
+    <div class="content-container col-lg-8 col-12 d-flex justify-content-center shadow vh-100 rounded p-3"
+        style="overflow-y: scroll; height: calc(100vh - 400px) !important;">
         <ng-container *ngFor="let el of siderbarList">
-            <div *ngIf="el.id === selectedCaptionID">
-                <h1>{{el.contentItem.title}}</h1>
-                <div [innerHTML]="el.contentItem.bodyHtml"></div>
+            <div *ngIf="el.id === selectedCaptionID" class="d-flex flex-column px-4 pb-4 w-100">
+                <h1 style="align-self: center;">{{el.contentItem.title}}</h1>
+                <ng-container *ngFor="let paragraph of el.contentItem?.body?.paragraphList">
+                    <ng-container *ngIf="paragraph.html">
+                        <div class="py-3" [innerHTML]="bypassHtml(paragraph.html)"></div>
+                        <img class="rounded" style="cursor:zoom-in" (click)="openImage(paragraph.image.url)"
+                            [width]="paragraph.image.width" *ngIf="paragraph.image" [src]="paragraph.image.url">
+                    </ng-container>
+                    <ng-container *ngIf="paragraph.collapse">
+                        <div class="d-flex flex-row justify-content-between py-3">
+                            <a style="text-decoration: none;" class="collapse-link" data-bs-toggle="collapse"
+                                [attr.href]="'#'+paragraph.collapse.id" role="button" aria-expanded="false"
+                                [attr.aria-controls]="'#'+paragraph.collapse.id">
+                                <b>{{paragraph.collapse.collapseTitle}}</b>
+                            </a>
+                            <svg data-bs-toggle="collapse" [attr.href]="'#'+paragraph.collapse.id" role="button"
+                                aria-expanded="false" [attr.aria-controls]="'#'+paragraph.collapse.id"
+                                xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor"
+                                class="bi bi-chevron-down collapse-link" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd"
+                                    d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708" />
+                            </svg>
+                        </div>
+                        <div class="collapse pb-3 px-3" [attr.id]="paragraph.collapse.id">
+                            <div [innerHTML]="bypassHtml(paragraph.collapse.collapseBodyHTML)"></div>
+                        </div>
+                    </ng-container>
+                </ng-container>
             </div>
         </ng-container>
     </div>

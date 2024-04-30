@@ -1,14 +1,17 @@
-h4.active{
-    font-weight: bold;
-    border-left: 2px solid var(--bs-danger);
-    color:var(--bs-black) !important;
+h4.active {
+    color: var(--bs-white) !important;
+    padding-left: 12px !important;
+    background: var(--bs-gray-800);
+    border-left: 3px solid var(--bs-danger);
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
 }
 
-::ng-deep .bg-dark-mode h4.active{
-    color:var(--bs-white) !important;
+::ng-deep .bg-dark-mode h4.active {
+    color: var(--bs-white) !important;
 }
 
-::ng-deep body{
+::ng-deep body {
     overflow-y: hidden;
 }
 
@@ -23,13 +26,23 @@ h4.active{
 
 ::ng-deep .bg-dark-mode ::-webkit-scrollbar-thumb {
     border-radius: 10px;
-    background-color: #222324;
+    background-color: var(--bs-gray-800);
 }
 
-.content-container, .sidebar-container{
+.content-container,
+.sidebar-container {
     background: var(--bs-light);
 }
 
-::ng-deep .bg-dark-mode .content-container, ::ng-deep .bg-dark-mode .sidebar-container{
+::ng-deep .bg-dark-mode .content-container,
+::ng-deep .bg-dark-mode .sidebar-container {
     background: var(--bs-dark);
+}
+
+.collapse-link{
+    color: var(--bs-dark);
+}
+
+::ng-deep .bg-dark-mode .collapse-link{
+    color: var(--bs-white);
 }
