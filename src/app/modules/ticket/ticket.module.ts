@@ -40,7 +40,7 @@ import { MatSortModule } from '@angular/material/sort';
   ],
   exports: [
   ],
-  id: 'Payment'
+  id: 'Ticket'
 })
 export class TicketModule {
   static forRoot() {

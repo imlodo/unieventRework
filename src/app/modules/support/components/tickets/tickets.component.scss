@@ -1,5 +1,5 @@
-.new-ticket-panel{
-    height: calc(100vh - 400px) !important;
+.new-ticket-panel, .ticket-list-container{
+    height: calc(100vh - 450px) !important;
     overflow-y: scroll;
 }
 
@@ -26,5 +26,124 @@
 
 ::ng-deep .bg-dark-mode .new-ticket-panel textarea, ::ng-deep .bg-dark-mode .new-ticket-multimedial{
     background-color: var(--bs-gray-800) !important;
+    color: var(--bs-white) !important;
+}
+
+/*TABELLA*/
+td, th {
+    text-align: center !important;
+    vertical-align: middle !important;
+}
+
+::ng-deep .mat-sort-header-container {
+    justify-content: center !important;
+}
+
+.mat-mdc-table,
+.mat-mdc-paginator {
+    background-color: var(--bs-light);
+    color: var(--bs-dark) !important;
+}
+
+.mat-mdc-header-row,
+.mat-mdc-cell {
+    color: var(--bs-dark) !important;
+}
+
+::ng-deep .mdc-notched-outline__trailing,
+::ng-deep .mdc-notched-outline__notch,
+::ng-deep .mdc-notched-outline__leading,
+::ng-deep .mat-mdc-form-field.mat-primary .mdc-text-field--outlined:not(.mdc-text-field--disabled).mdc-text-field--focused .mdc-notched-outline__leading,
+::ng-deep .mat-mdc-form-field.mat-primary .mdc-text-field--outlined:not(.mdc-text-field--disabled).mdc-text-field--focused .mdc-notched-outline__notch,
+::ng-deep .mat-mdc-form-field.mat-primary .mdc-text-field--outlined:not(.mdc-text-field--disabled).mdc-text-field--focused .mdc-notched-outline__trailing,
+::ng-deep .mat-mdc-select-arrow svg {
+    border-color: var(--bs-dark) !important;
+    color: var(--bs-dark) !important;
+}
+
+::ng-deep .mat-mdc-paginator .mat-mdc-select {
+    color: var(--bs-dark) !important;
+    fill: var(--bs-dark) !important;
+}
+
+::ng-deep .mat-mdc-option.mdc-list-item,
+::ng-deep div.mat-mdc-select-panel {
+    background-color: var(--bs-light) !important;
+    color: var(--bs-dark) !important;
+}
+
+::ng-deep .mat-mdc-option.mdc-list-item:hover {
+    background-color: #dddddd !important;
+}
+
+::ng-deep .mat-mdc-option.mdc-list-item--selected:not(.mdc-list-item--disabled):not(.mat-mdc-option-multiple) {
+    background-color: #dddddd !important;
+    color: var(--bs-dark) !important;
+}
+
+::ng-deep .mat-mdc-icon-button.mat-mdc-button-base:hover {
+    background-color: #e8e9eb !important;
+}
+
+::ng-deep .mat-mdc-paginator-icon {
+    fill: var(--bs-dark) !important;
+}
+
+::ng-deep .mat-mdc-icon-button[disabled] .mat-mdc-paginator-icon {
+    fill: #c5c5c5 !important;
+}
+
+::ng-deep .bg-dark-mode .mdc-notched-outline__trailing,
+::ng-deep .bg-dark-mode .mdc-notched-outline__notch,
+::ng-deep .bg-dark-mode .mdc-notched-outline__leading,
+::ng-deep .bg-dark-mode .mat-mdc-form-field.mat-primary .mdc-text-field--outlined:not(.mdc-text-field--disabled).mdc-text-field--focused .mdc-notched-outline__leading,
+::ng-deep .bg-dark-mode .mat-mdc-form-field.mat-primary .mdc-text-field--outlined:not(.mdc-text-field--disabled).mdc-text-field--focused .mdc-notched-outline__notch,
+::ng-deep .bg-dark-mode .mat-mdc-form-field.mat-primary .mdc-text-field--outlined:not(.mdc-text-field--disabled).mdc-text-field--focused .mdc-notched-outline__trailing,
+::ng-deep .bg-dark-mode .mat-mdc-select-arrow svg {
+    border-color: var(--bs-white) !important;
+    color: var(--bs-white) !important;
+}
+
+::ng-deep .bg-dark-mode .mat-mdc-paginator .mat-mdc-select {
+    color: var(--bs-white) !important;
+    fill: var(--bs-white) !important;
+}
+
+::ng-deep .bg-dark-mode .mat-mdc-option.mdc-list-item,
+::ng-deep .bg-dark-mode div.mat-mdc-select-panel {
+    background-color: var(--bs-dark) !important;
+    color: var(--bs-white) !important;
+}
+
+::ng-deep .bg-dark-mode .mat-mdc-option.mdc-list-item:hover {
+    background-color: #323539 !important;
+}
+
+::ng-deep .bg-dark-mode .mat-mdc-option.mdc-list-item--selected:not(.mdc-list-item--disabled):not(.mat-mdc-option-multiple) {
+    background-color: #323539 !important;
+    color: var(--bs-white) !important;
+}
+
+::ng-deep .bg-dark-mode .mat-mdc-icon-button.mat-mdc-button-base:hover {
+    background-color: #323539 !important;
+}
+
+
+::ng-deep .bg-dark-mode .mat-mdc-icon-button[disabled] .mat-mdc-paginator-icon {
+    fill: #606060 !important;
+}
+
+::ng-deep .bg-dark-mode .mat-mdc-paginator-icon {
+    fill: var(--bs-white) !important;
+}
+
+::ng-deep .bg-dark-mode .mat-mdc-header-row,
+::ng-deep .bg-dark-mode .mat-mdc-cell {
+    color: var(--bs-white) !important;
+}
+
+::ng-deep .bg-dark-mode .mat-mdc-table,
+::ng-deep .bg-dark-mode .mat-mdc-paginator {
+    background-color: var(--bs-dark) !important;
     color: var(--bs-white) !important;
 }

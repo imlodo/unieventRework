@@ -17,12 +17,14 @@ import { CoreModule } from '../../core/core.module';
 import { FrequentlyAnswersComponent } from './components/frequently-answers/frequently-answers.component';
 import { TicketsComponent } from './components/tickets/tickets.component';
 import { HttpClientModule } from '@angular/common/http';
+import { SupportTicketDetailComponent } from './components/support-ticket-detail/support-ticket-detail.component';
 
 @NgModule({
   declarations: [
     SupportAndHelpComponent,
     FrequentlyAnswersComponent,
-    TicketsComponent
+    TicketsComponent,
+    SupportTicketDetailComponent
   ],
   imports: [
     CommonModule,
@@ -44,7 +46,7 @@ import { HttpClientModule } from '@angular/common/http';
   ],
   exports: [
   ],
-  id: 'Payment'
+  id: 'Support'
 })
 export class SupportModule {
   static forRoot() {

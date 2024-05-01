@@ -1,0 +1,35 @@
+::ng-deep body{
+    overflow: hidden;
+}
+
+.detail-ticket-container{
+    background-color: var(--bs-border-color);
+    height: calc(100vh - 80px);
+    overflow: hidden;
+    overflow-y: scroll;
+}
+
+::ng-deep .bg-dark-mode .detail-ticket-container{
+    background-color:  var(--bs-dark);
+}
+
+
+.reply-user-container{
+    background-color: #efefef;
+    color: var(--bs-dark);
+}
+
+::ng-deep .bg-dark-mode .reply-user-container{
+    background-color: var(--bs-gray-800);
+    color: var(--bs-white);
+}
+
+.reply-operator-container{
+    background-color: #bfbfbf;
+    color: var(--bs-dark);
+}
+
+::ng-deep .bg-dark-mode .reply-operator-container{
+    background-color: #454e57;
+    color: var(--bs-white);
+}

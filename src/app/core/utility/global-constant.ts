@@ -31734,7 +31734,10 @@ export const ROUTE_LIST =
 
     },
     tickets: "/tickets",
-    supports: "/supports",
+    supports: {
+        basepath: "/supports",
+        detail: "/supports/detail"
+    },
     profile: "/profile",
     bookmarks: "/bookmark",
     messages: "/messages"

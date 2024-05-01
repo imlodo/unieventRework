@@ -24,7 +24,7 @@ export class NavbarProfileComponent {
     t_surname: "Lodato",
     t_alias_generated: "lodo32",
     t_description: "Sono un bel ragazzo",
-    t_profile_photo: "https://scontent.fnap5-1.fna.fbcdn.net/v/t39.30808-6/336655652_1366549564142836_6189179333211279215_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=efb6e6&_nc_ohc=MMspqbZpIoEAX8SJzKR&_nc_ht=scontent.fnap5-1.fna&oh=00_AfCxMQHUITv5n3ssutheEupX0QdJ4fcrGeR0ACM3DoT_9w&oe=65DB9102",
+    t_profile_photo: "/assets/img/userExampleImg.jpeg",
     t_type: USER_TYPE.CREATOR
   };
 
@@ -77,7 +77,7 @@ export class NavbarProfileComponent {
         this.router.navigate(['settings'], { fragment: 'account' });
         break;
       case "supports":
-        this.router.navigate([ROUTE_LIST.supports]);
+        this.router.navigate([ROUTE_LIST.supports.basepath]);
         break;
       case "tickets":
         this.router.navigate([ROUTE_LIST.tickets]);

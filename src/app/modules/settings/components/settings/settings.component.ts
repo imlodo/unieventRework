@@ -82,7 +82,7 @@ export class SettingsComponent implements AfterViewInit {
         this.router.navigate([ROUTE_LIST.artist.verify]);
         break;
       case "help":
-        const newTabUrl = this.router.createUrlTree([ROUTE_LIST.supports]);
+        const newTabUrl = this.router.createUrlTree([ROUTE_LIST.supports.basepath]);
         window.open(newTabUrl.toString(), '_blank');
         break;
     }

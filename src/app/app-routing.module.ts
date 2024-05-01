@@ -52,7 +52,6 @@ const routes: Routes = [
 			{
 				path: 'supports',
 				loadChildren: () => import('./modules/support/support.module').then((m) => m.SupportModule)
-
 			},
 			{
 				path: '@/:subpath/content',

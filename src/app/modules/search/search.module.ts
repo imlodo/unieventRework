@@ -30,7 +30,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
   ],
   exports: [
   ],
-  id: 'Payment'
+  id: 'Search'
 })
 export class SearchModule {
   static forRoot() {

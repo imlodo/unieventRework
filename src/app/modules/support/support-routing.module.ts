@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { SupportAndHelpComponent } from './components/support-and-help/support-and-help.component';
+import { SupportTicketDetailComponent } from './components/support-ticket-detail/support-ticket-detail.component';
 
 const routes: Routes = [
   {
@@ -8,8 +9,16 @@ const routes: Routes = [
     data: {
       title: 'Impostazioni'
     },
-    pathMatch: "prefix",
-    component: SupportAndHelpComponent
+    children: [
+      {
+        path: '',
+        component: SupportAndHelpComponent
+      },
+      {
+        path: "detail/:params",
+        component: SupportTicketDetailComponent
+      }
+    ]
   }
 ];
 

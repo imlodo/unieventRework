@@ -68,8 +68,12 @@ export class AppComponent implements OnInit, AfterViewInit {
   }
 
   closeCollapse() {
-    this.searchCollapse.isShow = false;
-    this.navbar.isShowed = false;
+    if(this.searchCollapse){
+      this.searchCollapse.isShow = false;
+    }
+    if(this.navbar){
+      this.navbar.isShowed = false;
+    }
   }
 
   updateSearchButton() {

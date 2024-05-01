@@ -1,0 +1,31 @@
+<div class="d-flex flex-column container align-items-center vh-100 w-100 pt-4">
+    <h1>Dettaglio Ticket #{{ticket?.id}}</h1>
+    <h3><span class="text-secondary">Stato ticket: </span><span [attr.style]="ticket?.status === 'Chiuso' ? 'color:red;' : 
+                          ticket?.status === 'Aperto' ? 'color:green;' : 
+                          'color:orange;'">{{ticket?.status}}</span>
+    </h3>
+    <div class="d-flex flex-column detail-ticket-container w-100 p-3 rounded">
+        <div *ngIf="ticket?.status==='Chiuso'" class="bg-danger text-white p-2 mb-3 rounded">
+            <span>ATTENZIONE: Il ticket è contrassegnato come chiuso, non puoi inviare altre risposte. Non sei
+                d'accordo?</span>
+            <button class="btn btn-danger btn-sm border pointer mx-2 mb-1" (click)="openPanelForReOpeningReminder()">
+                Sollecita riapertura</button>
+        </div>
+        <ng-container *ngFor="let discussion of discussionData">
+            <div class="reply-outer-container">
+                <h3 *ngIf="discussion.id_user === currentUserId" class="text-start"><span class="text-secondary">Hai
+                        scritto:</span></h3>
+                <h3 *ngIf="discussion.id_user !== currentUserId" class="text-end"><span class="text-secondary">Risposta
+                        da:</span> {{discussion.alias}} ({{discussion.role}}) </h3>
+                <div class="d-flex flex-row mb-4"
+                    [ngClass]="discussion.id_user != currentUserId ? 'justify-content-end' : 'justify-content-start'">
+                    <div [ngClass]="discussion.id_user != currentUserId ? 'reply-operator-container' : 'reply-user-container'"
+                        class="p-3 rounded d-flex flex-column">
+                        <h3 class="m-0">{{discussion.body}}</h3>
+                        <h5 class="text-secondary m-0 text-end">{{discussion.replyDateHour}}</h5>
+                    </div>
+                </div>
+            </div>
+        </ng-container>
+    </div>
+</div>

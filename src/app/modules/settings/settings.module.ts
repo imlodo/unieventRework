@@ -39,13 +39,7 @@ import { SettingsComponent } from './components/settings/settings.component';
   ],
   exports: [
   ],
-  id: 'Payment'
+  id: 'Setting'
 })
 export class SettingsModule {
-  static forRoot() {
-    return {
-      ngModule: SettingsModule,
-      providers: [],
-    };
-  }
 }
