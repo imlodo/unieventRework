@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild, AfterViewInit } from '@angular/core';
+import { TicketsComponent } from '../tickets/tickets.component';
 
 @Component({
   selector: 'unievent-support-and-help',
@@ -7,8 +8,19 @@ import { Component } from '@angular/core';
 })
 export class SupportAndHelpComponent {
   selectedSection: string = "FrequentlyAnswers";
+  @ViewChild('ticketsComponent', { static: false }) ticketsComponent: TicketsComponent;
 
   changeSection(section: string) {
     this.selectedSection = section;
+  }
+  
+  navigateToNewTicket() {
+    this.selectedSection = "Tickets";
+    setTimeout(() => {
+      if (this.ticketsComponent) {
+        this.ticketsComponent.currentTicketPanel = "ticket-new";
+      }
+    }, 1)
+
   }
 }

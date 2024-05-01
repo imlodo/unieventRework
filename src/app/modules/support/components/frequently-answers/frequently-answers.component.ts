@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, SecurityContext } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 
 @Component({
@@ -8,6 +8,8 @@ import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
   styleUrls: ['./frequently-answers.component.scss']
 })
 export class FrequentlyAnswersComponent {
+  @Output() navigateToOpenTicketEvent: EventEmitter<void> = new EventEmitter<void>();
+
   constructor(private sanitizer: DomSanitizer, private http: HttpClient) {
   }
 
@@ -147,5 +149,9 @@ export class FrequentlyAnswersComponent {
 
   bypassHtml(html: string): SafeUrl {
     return this.sanitizer.bypassSecurityTrustHtml(html);
+  }
+
+  navigateToOpenTicket(){
+    this.navigateToOpenTicketEvent.emit();
   }
 }

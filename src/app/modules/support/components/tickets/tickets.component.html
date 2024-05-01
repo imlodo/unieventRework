@@ -1,1 +1,40 @@
-<p>tickets works!</p>
+<div class="p-4 d-flex flex-column align-items-center" *ngIf="currentTicketPanel === 'ticket-list' ">
+    <h1>Lista ticket</h1>
+</div>
+<div class="p-4 new-ticket-container" *ngIf="currentTicketPanel === 'ticket-new' ">
+    <div class="new-ticket-panel rounded d-flex flex-column p-3">
+        <h1>Nuovo Ticket</h1>
+        <h4>Descrivi il tuo problema</h4>
+        <textarea rows="10" style="resize: none;" [(ngModel)]="ticketDescription"
+            (keyup)="updateCharacterCount()"></textarea>
+        <div class="character-count mr-auto mt-2 text-secondary">Caratteri: {{ characterCount }} / 1000</div>
+        <div class="mt-4">Carica dei file multimediali per descrivere il tuo problema (Opzionale)</div>
+
+        <input type="file" #fileInput style="display: none" (change)="handleFileInput(fileInput)">
+        <div class="d-flex flex-column new-ticket-multimedial pointer justify-content-center align-items-center mt-2"
+            style="max-width: 70px;" (click)="openImageUploadPanel()">
+            <svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" fill="currentColor" class="bi bi-card-image"
+                viewBox="0 0 16 16">
+                <path d="M6.002 5.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0" />
+                <path
+                    d="M1.5 2A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2zm13 1a.5.5 0 0 1 .5.5v6l-3.775-1.947a.5.5 0 0 0-.577.093l-3.71 3.71-2.66-1.772a.5.5 0 0 0-.63.062L1.002 12v.54L1 12.5v-9a.5.5 0 0 1 .5-.5z" />
+            </svg>
+            <span class="text-secondary">{{ uploadedFiles.length }} / 4</span>
+        </div>
+
+        <div *ngIf="uploadedFiles.length > 0" class="uploaded-files d-flex flex-row">
+            <div *ngFor="let file of uploadedFiles" class="uploaded-file d-flex flex-column">
+                <img width="125" class="rounded" *ngIf="file.type.startsWith('image')" [src]="getFileObjectURL(file)" alt="Anteprima immagine">
+                <span *ngIf="!file.type.startsWith('image')">{{ file.name }}</span>
+                <button (click)="removeUploadedFile(file)">Elimina</button>
+            </div>
+        </div>
+
+
+        <div class="d-flex justify-content-end align-items-center">
+            <button (click)="openTicket()" class="btn btn-danger mt-4"
+                [disabled]="ticketDescription.length < 10 || ticketDescription.length > 1000"
+                style="min-width: 200px; max-width: 200px;">Invia</button>
+        </div>
+    </div>
+</div>

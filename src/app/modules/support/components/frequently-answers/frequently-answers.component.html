@@ -5,7 +5,7 @@
                 class="text-secondary pointer p-1">{{el.captionTitle}}</h4>
         </ng-container>
     </div>
-    <div class="content-container col-lg-8 col-12 d-flex justify-content-center shadow vh-100 rounded p-3"
+    <div class="content-container col-lg-8 col-12 d-flex flex-column shadow vh-100 rounded p-3"
         style="overflow-y: scroll; height: calc(100vh - 400px) !important;">
         <ng-container *ngFor="let el of siderbarList">
             <div *ngIf="el.id === selectedCaptionID" class="d-flex flex-column px-4 pb-4 w-100">
@@ -38,5 +38,9 @@
                 </ng-container>
             </div>
         </ng-container>
+        <div class="d-flex justify-content-center gap-2">
+            <span>Non hai trovato quello che cercavi?</span>
+            <a class="text-danger pointer" (click)="navigateToOpenTicket()">Apri un ticket</a>
+        </div>
     </div>
 </div>

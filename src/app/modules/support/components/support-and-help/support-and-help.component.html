@@ -16,9 +16,9 @@
         </div>
     </div>
     <ng-container *ngIf="selectedSection === 'FrequentlyAnswers'">
-        <unievent-frequently-answers></unievent-frequently-answers>
+        <unievent-frequently-answers (navigateToOpenTicketEvent)="navigateToNewTicket()"></unievent-frequently-answers>
     </ng-container>
     <ng-container *ngIf="selectedSection === 'Tickets'">
-        <unievent-tickets></unievent-tickets>
+        <unievent-tickets #ticketsComponent></unievent-tickets>
     </ng-container>
 </div>

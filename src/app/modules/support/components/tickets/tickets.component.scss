@@ -1,0 +1,24 @@
+.new-ticket-panel{
+    height: calc(100vh - 400px) !important;
+    overflow-y: scroll;
+}
+
+.new-ticket-panel textarea{
+    min-height: 220px;
+}
+
+.new-ticket-panel, .new-ticket-panel textarea, .new-ticket-multimedial{
+    background-color: var(--bs-light);
+}
+
+::ng-deep .bg-dark-mode .new-ticket-panel{
+    background-color: var(--bs-dark) !important;
+    color: var(--bs-white)
+}
+::ng-deep .bg-dark-mode .new-ticket-panel textarea, .new-ticket-multimedial{
+    background-color: var(--bs-gray-800) !important;
+    color: var(--bs-white);
+    padding: 10px;
+    border:none !important;
+    border-radius: 5px;
+}
