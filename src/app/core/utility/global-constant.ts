@@ -31761,3 +31761,7 @@ export function getTicketNameByType(etpType: OBJECT_MAP_TYPE) {
             return "Standard";
     }
 }
+
+export interface ExtendedFile extends File {
+    preview?: string; // La proprietà preview è opzionale e sarà un URL base64 dell'anteprima dell'immagine
+}

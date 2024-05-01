@@ -13,7 +13,7 @@
                 <ng-container *ngFor="let paragraph of el.contentItem?.body?.paragraphList">
                     <ng-container *ngIf="paragraph.html">
                         <div class="py-3" [innerHTML]="bypassHtml(paragraph.html)"></div>
-                        <img class="rounded" style="cursor:zoom-in" (click)="openImage(paragraph.image.url)"
+                        <img [ngClass]="paragraph.image.width ? '' : 'frequently-answers-img' "  class="rounded" style="cursor:zoom-in" (click)="openImage(paragraph.image.url)"
                             [width]="paragraph.image.width" *ngIf="paragraph.image" [src]="paragraph.image.url">
                     </ng-container>
                     <ng-container *ngIf="paragraph.collapse">

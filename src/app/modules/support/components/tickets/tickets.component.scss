@@ -15,10 +15,16 @@
     background-color: var(--bs-dark) !important;
     color: var(--bs-white)
 }
-::ng-deep .bg-dark-mode .new-ticket-panel textarea, .new-ticket-multimedial{
-    background-color: var(--bs-gray-800) !important;
-    color: var(--bs-white);
+
+.new-ticket-panel textarea, .new-ticket-multimedial{
+    background-color: var(--bs-border-color);
+    color: var(--bs-dark);
     padding: 10px;
     border:none !important;
     border-radius: 5px;
+}
+
+::ng-deep .bg-dark-mode .new-ticket-panel textarea, ::ng-deep .bg-dark-mode .new-ticket-multimedial{
+    background-color: var(--bs-gray-800) !important;
+    color: var(--bs-white) !important;
 }

@@ -1,10 +1,16 @@
 h4.active {
-    color: var(--bs-white) !important;
+    color: var(--bs-dark) !important;
     padding-left: 12px !important;
-    background: var(--bs-gray-800);
+    background: var(--bs-border-color);
     border-left: 3px solid var(--bs-danger);
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
+}
+
+::ng-deep .bg-dark-mode h4.active {
+    color: var(--bs-white) !important;
+    background: var(--bs-gray-800);
+    border-left: 3px solid var(--bs-danger);
 }
 
 ::ng-deep .bg-dark-mode h4.active {
@@ -45,4 +51,8 @@ h4.active {
 
 ::ng-deep .bg-dark-mode .collapse-link{
     color: var(--bs-white);
+}
+
+.frequently-answers-img{
+    width: -webkit-fill-available !important;
 }

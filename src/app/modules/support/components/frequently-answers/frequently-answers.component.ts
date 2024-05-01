@@ -23,7 +23,7 @@ export class FrequentlyAnswersComponent {
         body?: {
           paragraphList: Array<{
             html?: string,
-            image?: { url: string, width: number },
+            image?: { url: string, width?: number },
             collapse?: { id: string, collapseTitle: string, collapseBodyHTML: string }
           }>
         }
@@ -42,11 +42,11 @@ export class FrequentlyAnswersComponent {
               },
               {
                 html: `<span>Oppure dalla pagina di login fare click sul pulsante "Registrati"</span> `,
-                image: { url: "/assets/img/reg1.jpg", width: 500 }
+                image: { url: "/assets/img/reg1.jpg" }
               },
               {
                 html: `<span>Nella schermata successiva compilare tutti i campi obbligatori (1) e successivamente fare click sul pulsante "Crea Account" (2)</span>`,
-                image: { url: "/assets/img/reg2.jpg", width: 500 }
+                image: { url: "/assets/img/reg2.jpg" }
               },
               {
                 html: `<span>A questo punto memorizza i dati usati nella registrazione e utilizzali per effettuare l'accesso.</span>`,
@@ -68,7 +68,7 @@ export class FrequentlyAnswersComponent {
               },
               {
                 html: `<span>Nella schermata successiva inserire username e password fare click sul pulsante "Accedi" (2).</span>`,
-                image: { url: "/assets/img/login2.jpg", width: 500 }
+                image: { url: "/assets/img/login2.jpg"}
               },
               {
                 html: `Puoi scegliere anche di ricordare l'username, spuntando la casella corrispondente.`

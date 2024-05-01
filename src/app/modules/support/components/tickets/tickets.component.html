@@ -5,9 +5,11 @@
     <div class="new-ticket-panel rounded d-flex flex-column p-3">
         <h1>Nuovo Ticket</h1>
         <h4>Descrivi il tuo problema</h4>
-        <textarea rows="10" style="resize: none;" [(ngModel)]="ticketDescription"
-            (keyup)="updateCharacterCount()"></textarea>
-        <div class="character-count mr-auto mt-2 text-secondary">Caratteri: {{ characterCount }} / 1000</div>
+        <textarea placeholder="Inserisci quanti più dettagli possibili" rows="10" style="resize: none;"
+            [(ngModel)]="ticketDescription" (keyup)="updateCharacterCount()"></textarea>
+        <div class="character-count mr-auto mt-2 text-secondary">Caratteri: <span
+                [ngClass]="characterCount > 0 && characterCount < 10 ? 'text-danger' : '' ">{{ characterCount }}</span>
+            / 1000 (Minimo 10 caratteri)</div>
         <div class="mt-4">Carica dei file multimediali per descrivere il tuo problema (Opzionale)</div>
 
         <input type="file" #fileInput style="display: none" (change)="handleFileInput(fileInput)">
@@ -22,11 +24,25 @@
             <span class="text-secondary">{{ uploadedFiles.length }} / 4</span>
         </div>
 
-        <div *ngIf="uploadedFiles.length > 0" class="uploaded-files d-flex flex-row">
-            <div *ngFor="let file of uploadedFiles" class="uploaded-file d-flex flex-column">
-                <img width="125" class="rounded" *ngIf="file.type.startsWith('image')" [src]="getFileObjectURL(file)" alt="Anteprima immagine">
+        <div *ngIf="uploadedFiles.length > 0" class="uploaded-files d-flex flex-row gap-3">
+            <div *ngFor="let file of uploadedFiles" class="uploaded-file d-flex flex-column mt-3">
+                <img (click)="openImage(getFileObjectURL(file))" style="cursor:zoom-in" class="rounded" width="125" *ngIf="file.type.startsWith('image')" [src]="getFileObjectURL(file)"
+                    alt="Anteprima immagine">
                 <span *ngIf="!file.type.startsWith('image')">{{ file.name }}</span>
-                <button (click)="removeUploadedFile(file)">Elimina</button>
+                <div class="d-flex flex-row gap-3 justify-content-center mt-2">
+                    <svg (click)="downloadFile(getFileObjectURL(file))" matTooltip="Scarica" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+                        class="bi bi-download pointer" viewBox="0 0 16 16">
+                        <path
+                            d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5" />
+                        <path
+                            d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708z" />
+                    </svg>
+                    <svg matTooltip="Elimina" (click)="removeUploadedFile(file)" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+                        class="bi bi-trash3 pointer" viewBox="0 0 16 16">
+                        <path
+                            d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5M11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47M8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5" />
+                    </svg>
+                </div>
             </div>
         </div>
 
