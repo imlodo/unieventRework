@@ -5,9 +5,25 @@
 .detail-ticket-container{
     background-color: var(--bs-border-color);
     height: calc(100vh - 80px);
+}
+
+.reply-list-container{
     overflow: hidden;
     overflow-y: scroll;
+    height: 450px;
+    border: 1px dashed var(--bs-dark-text-emphasis);
 }
+
+::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: rgb(184, 184, 184);
+}
+
+::ng-deep .bg-dark-mode ::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: var(--bs-gray-800);
+}
+
 
 ::ng-deep .bg-dark-mode .detail-ticket-container{
     background-color:  var(--bs-dark);
@@ -32,4 +48,10 @@
 ::ng-deep .bg-dark-mode .reply-operator-container{
     background-color: #454e57;
     color: var(--bs-white);
+}
+
+.attachment{
+    max-width: 120px;
+    max-height: 120px;
+    object-fit: none;
 }

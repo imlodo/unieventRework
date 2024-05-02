@@ -61,8 +61,19 @@ export class SupportTicketDetailComponent implements AfterViewInit {
   getTicketDiscussionById(id: number) {
     //Questo va recuperato dopo aver caricato il ticket
     this.discussionData = [
-      { id_user: 1, alias: "mariobaldi", role: "Utente", replyDateHour: moment().format("DD/MM/YYYY hh:mm"), body: "Primo messaggio", attachments: [] },
-      { id_user: 2, alias: "operatore1", role: "Moderatore", replyDateHour: moment().format("DD/MM/YYYY hh:mm"), body: "Risposta al primo messaggio", attachments: [] },
+      {
+        id_user: 1, alias: "mariobaldi", role: "Utente", replyDateHour: moment().format("DD/MM/YYYY hh:mm"), body: "Primo messaggio", attachments: [
+          this.createRandomImageFile(1000, 1000, 'random_image.png'),
+          this.createRandomImageFile(1000, 1000, 'random_image2.png'),
+          this.createRandomImageFile(1000, 1000, 'random_image3.png')
+        ]
+      },
+      {
+        id_user: 2, alias: "operatore1", role: "Moderatore", replyDateHour: moment().format("DD/MM/YYYY hh:mm"), body: "Risposta al primo messaggio", attachments: [
+          this.createRandomImageFile(1000, 1000, 'random_image4.png'),
+          this.createRandomImageFile(1000, 1000, 'random_image5.png')
+        ]
+      },
       { id_user: 3, alias: "operatore2", role: "Super Moderatore", replyDateHour: moment().format("DD/MM/YYYY hh:mm"), body: "Attenzione ho provveduto a chiudere il ticket poichè non hai risposto per 48h", attachments: [] }
     ];
   }
@@ -74,8 +85,47 @@ export class SupportTicketDetailComponent implements AfterViewInit {
     };
   }
 
-  openPanelForReOpeningReminder(){
-    
+  openPanelForReOpeningReminder() {
+
+  }
+
+  generateRandomImageData(width: number, height: number): string {
+    const canvas = document.createElement('canvas');
+    canvas.width = width;
+    canvas.height = height;
+    const ctx = canvas.getContext('2d');
+
+    const imageData = ctx.createImageData(width, height);
+    for (let i = 0; i < imageData.data.length; i += 4) {
+      imageData.data[i] = Math.floor(Math.random() * 256); // Red
+      imageData.data[i + 1] = Math.floor(Math.random() * 256); // Green
+      imageData.data[i + 2] = Math.floor(Math.random() * 256); // Blue
+      imageData.data[i + 3] = 255; // Alpha
+    }
+    ctx.putImageData(imageData, 0, 0);
+
+    return canvas.toDataURL();
+  }
+
+  createRandomImageFile(width: number, height: number, fileName: string): File {
+    const imageData = this.generateRandomImageData(width, height);
+    const blob = this.dataURItoBlob(imageData);
+    return new File([blob], fileName, { type: 'image/png' });
+  }
+
+  dataURItoBlob(dataURI: string): Blob {
+    const byteString = atob(dataURI.split(',')[1]);
+    const mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0];
+    const ab = new ArrayBuffer(byteString.length);
+    const ia = new Uint8Array(ab);
+    for (let i = 0; i < byteString.length; i++) {
+      ia[i] = byteString.charCodeAt(i);
+    }
+    return new Blob([ab], { type: mimeString });
+  }
+
+  getUrlImage(file:File){
+    return URL.createObjectURL(file);
   }
 
 }
