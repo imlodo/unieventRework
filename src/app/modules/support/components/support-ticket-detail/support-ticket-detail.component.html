@@ -11,7 +11,7 @@
             <button class="btn btn-danger btn-sm border pointer mx-2 mb-1" (click)="openPanelForReOpeningReminder()">
                 Sollecita riapertura</button>
         </div>
-        <div class="reply-list-container p-3 rounded">
+        <div class="reply-list-container container p-3 rounded">
             <ng-container *ngFor="let discussion of discussionData">
                 <div class="reply-outer-container">
                     <h3 *ngIf="discussion.id_user === currentUserId" class="text-start"><span class="text-secondary">Hai
@@ -30,11 +30,70 @@
                     <div [ngClass]="discussion.id_user != currentUserId ? 'justify-content-end' : 'justify-content-start'"
                         class="d-flex flex-row mb-4 gap-3">
                         <ng-container *ngFor="let attachment of discussion.attachments">
-                            <img class="rounded attachment" [src]="getUrlImage(attachment)">
+                            <img (click)="openImage(attachment)" style="cursor: zoom-in" class="rounded attachment" width="125"
+                            *ngIf="attachment.type.startsWith('image')" [src]="setBlobUrl(attachment)"
+                            alt="Anteprima immagine">
                         </ng-container>
                     </div>
                 </div>
             </ng-container>
+        </div>
+        <div class="p-4 reply-ticket-container rounded" *ngIf="ticket?.status!=='Chiuso'">
+            <h1>Invia nuova risposta</h1>
+            <div class="reply-ticket-panel rounded d-flex flex-column p-3">
+                <textarea placeholder="Inserisci quanti più dettagli possibili" rows="10" style="resize: none;"
+                    [(ngModel)]="ticketReplyCaption" (keyup)="updateCharacterCount()"></textarea>
+                <div class="character-count mr-auto mt-2 text-secondary">Caratteri: <span
+                        [ngClass]="countReplyCharacter> 0 && countReplyCharacter < 10 ? 'text-danger' : '' ">{{
+                        countReplyCharacter
+                        }}</span>
+                    / 1000 (Minimo 10 caratteri)</div>
+                <div class="mt-4">Carica dei file multimediali per descrivere il tuo problema (Opzionale)</div>
+
+                <input type="file" #fileInput style="display: none" (change)="handleFileInput(fileInput)">
+                <div class="d-flex flex-column new-ticket-multimedial pointer justify-content-center align-items-center mt-2"
+                    style="max-width: 70px;" (click)="openImageUploadPanel()">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" fill="currentColor"
+                        class="bi bi-card-image" viewBox="0 0 16 16">
+                        <path d="M6.002 5.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0" />
+                        <path
+                            d="M1.5 2A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2zm13 1a.5.5 0 0 1 .5.5v6l-3.775-1.947a.5.5 0 0 0-.577.093l-3.71 3.71-2.66-1.772a.5.5 0 0 0-.63.062L1.002 12v.54L1 12.5v-9a.5.5 0 0 1 .5-.5z" />
+                    </svg>
+                    <span class="text-secondary">{{ uploadedFiles.length }} / 4</span>
+                </div>
+
+                <div *ngIf="uploadedFiles.length > 0" class="uploaded-files d-flex flex-row gap-3">
+                    <div *ngFor="let file of uploadedFiles" class="uploaded-file d-flex flex-column mt-3">
+                        <img (click)="openImage(file)" style="cursor: zoom-in" class="rounded" width="125"
+                            *ngIf="file.type.startsWith('image')" [src]="setBlobUrl(file)" alt="Anteprima immagine">
+                        <span *ngIf="!file.type.startsWith('image')">{{ file.name }}</span>
+                        <div class="d-flex flex-row gap-3 justify-content-center mt-2">
+                            <svg (click)="downloadFile(getFileObjectURL(file))" matTooltip="Scarica"
+                                xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+                                class="bi bi-download pointer" viewBox="0 0 16 16">
+                                <path
+                                    d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5" />
+                                <path
+                                    d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708z" />
+                            </svg>
+                            <svg matTooltip="Elimina" (click)="removeUploadedFile(file)"
+                                xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+                                class="bi bi-trash3 pointer" viewBox="0 0 16 16">
+                                <path
+                                    d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5M11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47M8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5" />
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="d-flex justify-content-end align-items-center">
+                    <button (click)="sendReply()" class="btn btn-danger mt-4"
+                        [disabled]="ticketReplyCaption.length < 10 || ticketReplyCaption.length > 1000"
+                        style="min-width: 200px; max-width: 200px;">Invia</button>
+                </div>
+            </div>
+
         </div>
     </div>
 </div>

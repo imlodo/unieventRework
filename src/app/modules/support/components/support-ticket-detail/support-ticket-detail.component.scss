@@ -1,19 +1,6 @@
-::ng-deep body{
+/* ::ng-deep body{
     overflow: hidden;
-}
-
-.detail-ticket-container{
-    background-color: var(--bs-border-color);
-    height: calc(100vh - 80px);
-}
-
-.reply-list-container{
-    overflow: hidden;
-    overflow-y: scroll;
-    height: 450px;
-    border: 1px dashed var(--bs-dark-text-emphasis);
-}
-
+} */
 ::-webkit-scrollbar-thumb {
     border-radius: 10px;
     background-color: rgb(184, 184, 184);
@@ -24,34 +11,78 @@
     background-color: var(--bs-gray-800);
 }
 
-
-::ng-deep .bg-dark-mode .detail-ticket-container{
-    background-color:  var(--bs-dark);
+.reply-list-container {
+    background: var(--bs-light);
+    overflow: hidden;
+    overflow-y: scroll;
+    max-height: 550px;
 }
 
+::ng-deep .bg-dark-mode .reply-list-container {
+    background: var(--bs-dark) !important;
+}
 
-.reply-user-container{
+.reply-ticket-container {
+    background: var(--bs-light);
+    margin-top: 20px;
+}
+
+::ng-deep .bg-dark-mode .reply-ticket-container {
+    background: var(--bs-dark) !important;
+}
+
+.reply-user-container {
     background-color: #efefef;
     color: var(--bs-dark);
 }
 
-::ng-deep .bg-dark-mode .reply-user-container{
+::ng-deep .bg-dark-mode .reply-user-container {
     background-color: var(--bs-gray-800);
     color: var(--bs-white);
 }
 
-.reply-operator-container{
+.reply-operator-container {
     background-color: #bfbfbf;
     color: var(--bs-dark);
 }
 
-::ng-deep .bg-dark-mode .reply-operator-container{
+::ng-deep .bg-dark-mode .reply-operator-container {
     background-color: #454e57;
     color: var(--bs-white);
 }
 
-.attachment{
+.attachment {
     max-width: 120px;
     max-height: 120px;
     object-fit: none;
+}
+
+.reply-ticket-panel textarea {
+    min-height: 220px;
+}
+
+.reply-ticket-panel,
+.reply-ticket-panel textarea,
+.new-ticket-multimedial {
+    background-color: var(--bs-light);
+}
+
+::ng-deep .bg-dark-mode .reply-ticket-panel {
+    background-color: var(--bs-dark) !important;
+    color: var(--bs-white)
+}
+
+.reply-ticket-panel textarea,
+.new-ticket-multimedial {
+    background-color: var(--bs-border-color);
+    color: var(--bs-dark);
+    padding: 10px;
+    border: none !important;
+    border-radius: 5px;
+}
+
+::ng-deep .bg-dark-mode .reply-ticket-panel textarea,
+::ng-deep .bg-dark-mode .new-ticket-multimedial {
+    background-color: var(--bs-gray-800) !important;
+    color: var(--bs-white) !important;
 }

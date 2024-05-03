@@ -1,8 +1,10 @@
 .new-ticket-panel, .ticket-list-container{
-    height: calc(100vh - 450px) !important;
+    height: calc(100vh - 500px) !important;
     overflow-y: scroll;
 }
-
+.new-ticket-panel{
+    height: calc(100vh - 400px) !important;
+}
 .new-ticket-panel textarea{
     min-height: 220px;
 }
