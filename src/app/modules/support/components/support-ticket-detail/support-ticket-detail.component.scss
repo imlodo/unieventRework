@@ -1,6 +1,7 @@
-/* ::ng-deep body{
-    overflow: hidden;
-} */
+::ng-deep body.overflow-y-scroll-force {
+    overflow-y: scroll !important;
+}
+
 ::-webkit-scrollbar-thumb {
     border-radius: 10px;
     background-color: rgb(184, 184, 184);
@@ -54,7 +55,7 @@
 .attachment {
     max-width: 120px;
     max-height: 120px;
-    object-fit: none;
+    object-fit: contain;
 }
 
 .reply-ticket-panel textarea {

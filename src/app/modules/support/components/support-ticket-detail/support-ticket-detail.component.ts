@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { AfterViewInit, ChangeDetectorRef, Component, ElementRef, ViewChild } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, ElementRef, Renderer2, ViewChild } from '@angular/core';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import moment from 'moment';
@@ -13,7 +13,7 @@ interface TicketDiscussion {
   body: string;
   replyDateHour: string;
   role: string;
-  attachments: File[];
+  attachments: string[];
 }
 
 interface TicketDetail {
@@ -39,13 +39,20 @@ export class SupportTicketDetailComponent implements AfterViewInit {
   discussionData: TicketDiscussion[];
   currentUserId: number = 1;
   ticketReplyCaption: string = '';
+  randomImage = this.createRandomImageFile(1000, 1000, 'random_image.png');
+  @ViewChild('replyTicketContainer') replyTicketContainer: ElementRef;
 
-  constructor(private cdr: ChangeDetectorRef, private http: HttpClient, private globalService: GlobalService, private route: ActivatedRoute, private router: Router, private sanitizer: DomSanitizer) {
-
+  constructor(private cdr: ChangeDetectorRef, private renderer: Renderer2, private http: HttpClient, private globalService: GlobalService, private route: ActivatedRoute, private router: Router, private sanitizer: DomSanitizer) {
   }
 
   ngAfterViewInit(): void {
     this.decodeParams();
+    console.log(this.ticket.status)
+    if (this.ticket.status != 'Chiuso') {
+      document.body.classList.add('overflow-y-scroll-force');
+    } else{
+      document.body.classList.remove('overflow-y-scroll-force');
+    }
     this.cdr.detectChanges();
   }
 
@@ -68,15 +75,15 @@ export class SupportTicketDetailComponent implements AfterViewInit {
     this.discussionData = [
       {
         id_user: 1, alias: "mariobaldi", role: "Utente", replyDateHour: moment().format("DD/MM/YYYY hh:mm"), body: "Primo messaggio", attachments: [
-          this.createRandomImageFile(1000, 1000, 'random_image.png'),
-          this.createRandomImageFile(1000, 1000, 'random_image2.png'),
-          this.createRandomImageFile(1000, 1000, 'random_image3.png')
+          this.getFileObjectURL(this.randomImage),
+          this.getFileObjectURL(this.randomImage),
+          this.getFileObjectURL(this.randomImage)
         ]
       },
       {
         id_user: 2, alias: "operatore1", role: "Moderatore", replyDateHour: moment().format("DD/MM/YYYY hh:mm"), body: "Risposta al primo messaggio", attachments: [
-          this.createRandomImageFile(1000, 1000, 'random_image4.png'),
-          this.createRandomImageFile(1000, 1000, 'random_image5.png')
+          this.getFileObjectURL(this.randomImage),
+          this.getFileObjectURL(this.randomImage)
         ]
       },
       { id_user: 3, alias: "operatore2", role: "Super Moderatore", replyDateHour: moment().format("DD/MM/YYYY hh:mm"), body: "Attenzione ho provveduto a chiudere il ticket poichè non hai risposto per 48h", attachments: [] }
@@ -88,10 +95,6 @@ export class SupportTicketDetailComponent implements AfterViewInit {
       id: ticket.id,
       discussion_list: discussionList
     };
-  }
-
-  openPanelForReOpeningReminder() {
-
   }
 
   generateRandomImageData(width: number, height: number): string {
@@ -130,7 +133,7 @@ export class SupportTicketDetailComponent implements AfterViewInit {
   }
 
   getUrlImage(file: File) {
-    if(file)
+    if (file)
       return URL.createObjectURL(file);
     return '';
   }
@@ -138,12 +141,15 @@ export class SupportTicketDetailComponent implements AfterViewInit {
   /*REPLY*/
   @ViewChild('fileInput') fileInput: ElementRef<HTMLInputElement>;
   uploadedFiles: File[] = [];
-  countReplyCharacter:number = 0;
+  countReplyCharacter: number = 0;
 
-  updateCharacterCount() {
+  changeTicketCaptionControl() {
     if (this.ticketReplyCaption.length > 1000) {
       this.ticketReplyCaption = this.ticketReplyCaption.slice(0, 1000);
     }
+  }
+
+  updateCharacterCount() {
     this.countReplyCharacter = this.ticketReplyCaption.length;
   }
 
@@ -182,8 +188,8 @@ export class SupportTicketDetailComponent implements AfterViewInit {
     return '';
   }
 
-  openImage(file: File): void {
-    this.getImageBase64(this.getFileObjectURL(file)).then(base64 => {
+  openImage(fileString: string): void {
+    this.getImageBase64(fileString).then(base64 => {
       const win = window.open();
       if (win) {
         const img = new Image();
@@ -271,7 +277,35 @@ export class SupportTicketDetailComponent implements AfterViewInit {
     URL.revokeObjectURL((event.target as any).src);
   }
 
-  sendReply(){
+  sendReply() {
+    let uploadedFilesString = this.uploadedFiles.map(el => this.getUrlImage(el));
+    this.discussionData.push({
+      //alias da cambiare con current_user_alias (anche role con current_user_role)
+      id_user: 1, alias: "mariobaldi", role: "Utente", replyDateHour: moment().format("DD/MM/YYYY hh:mm"), body: this.ticketReplyCaption, attachments: uploadedFilesString
+    });
+    this.resetReplyFields();
+  }
+
+  resetReplyFields() {
+    this.uploadedFiles = [];
+    this.ticketReplyCaption = "";
+    this.countReplyCharacter = 0;
+    this.scrollToBottom();
+  }
+
+  @ViewChild('replyListContainer') replyListContainer: ElementRef;
+
+  scrollToBottom(): void {
+    try {
+      setTimeout(() => {
+        const container = this.replyListContainer.nativeElement;
+        this.renderer.setProperty(container, 'scrollTop', container.scrollHeight);
+      }, 100)
+    } catch (err) { }
+  }
+
+  openPanelForReOpeningReminder() {
 
   }
+
 }
