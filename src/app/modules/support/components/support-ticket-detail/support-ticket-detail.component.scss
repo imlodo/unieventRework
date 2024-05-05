@@ -2,6 +2,11 @@
     overflow-y: scroll !important;
 }
 
+::ng-deep body.overflow-y-scroll-none {
+    overflow: hidden !important;
+}
+
+
 ::-webkit-scrollbar-thumb {
     border-radius: 10px;
     background-color: rgb(184, 184, 184);
@@ -86,4 +91,8 @@
 ::ng-deep .bg-dark-mode .new-ticket-multimedial {
     background-color: var(--bs-gray-800) !important;
     color: var(--bs-white) !important;
+}
+
+.reminder{
+    background: cadetblue;
 }

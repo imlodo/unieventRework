@@ -20,6 +20,10 @@ const routes: Routes = [
 		path: '',
 		children: [
 			{
+				path: 'artist',
+				loadChildren: () => import('./modules/artist/artist.module').then((m) => m.ArtistModule),
+			},
+			{
 				path: 'payment',
 				loadChildren: () => import('./modules/payment/payment.module').then((m) => m.PaymentModule),
 			},

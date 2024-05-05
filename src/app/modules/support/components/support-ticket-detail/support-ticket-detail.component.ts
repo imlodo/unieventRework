@@ -50,8 +50,10 @@ export class SupportTicketDetailComponent implements AfterViewInit {
     console.log(this.ticket.status)
     if (this.ticket.status != 'Chiuso') {
       document.body.classList.add('overflow-y-scroll-force');
-    } else{
+      document.body.classList.remove('overflow-y-scroll-none');
+    } else {
       document.body.classList.remove('overflow-y-scroll-force');
+      document.body.classList.add('overflow-y-scroll-none');
     }
     this.cdr.detectChanges();
   }
@@ -68,6 +70,19 @@ export class SupportTicketDetailComponent implements AfterViewInit {
         }
       }
       );
+  }
+
+  getColorByStatus(status: string) {
+    switch (status) {
+      case "Chiuso":
+        return 'color:red;'
+      case "Aperto":
+        return 'color:green;'
+      case "Sollecito Riapertura" || "Necessaria Risposta":
+        return 'color:orange;'
+      default:
+        return '';
+    }
   }
 
   getTicketDiscussionById(id: number) {
@@ -304,8 +319,10 @@ export class SupportTicketDetailComponent implements AfterViewInit {
     } catch (err) { }
   }
 
-  openPanelForReOpeningReminder() {
-
+  sendReOpeningReminder() {
+    this.ticket.status = "Sollecito Riapertura";
+    this.discussionData.push({id_user: this.currentUserId, alias: "mariobaldi", role:"Utente", replyDateHour: moment().format("DD/MM/YYYY hh:mm"), body: "Sollecito la riapertura di questo ticket", attachments:[]})
+    this.scrollToBottom();
   }
 
 }

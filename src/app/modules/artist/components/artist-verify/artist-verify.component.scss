@@ -1,0 +1,7 @@
+.verify-container{
+    background:var(--bs-light);
+}
+
+::ng-deep .bg-dark-mode .verify-container{
+    background:var(--bs-dark);
+}

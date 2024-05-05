@@ -1,0 +1,39 @@
+<div class="container p-3">
+    <div class="rounded verify-container p-3">
+        <h1>Verifica Artista</h1>
+        <form class="row px-4" (submit)="sendVerifyAccount()">
+            <div class="col-12 col-lg-4 p-2">
+                <label>Nome</label>
+                <input type="text" class="w-100">
+            </div>
+            <div class="col-12 col-lg-4 p-2">
+                <label>Cognome</label>
+                <input type="text" class="w-100">
+            </div>
+            <div class="col-12 col-lg-4 p-2">
+                <label>Data di nascita</label>
+                <input min="1900" max="2024" type="date" class="w-100">
+            </div>
+            <div class="col-12 col-lg-4 p-2">
+                <label>P.IVA</label>
+                <input type="text" class="w-100">
+            </div>
+            <div class="col-12 col-lg-4 p-2">
+                <label>Ragione Sociale (Nome) </label>
+                <input type="text" class="w-100">
+            </div>
+            <div class="col-12 col-lg-4 p-2">
+                <label>Indirizzo Legale </label>
+                <input type="text" class="w-100">
+            </div>
+            <div class="col-12 col-lg-4 p-2">
+                <label>PEC</label>
+                <input type="text" class="w-100">
+            </div>
+            <h2 class="mt-3">Documento di identità</h2>
+            <div class="col-12 text-end">
+                <button type="submit" class="btn btn-danger rounded-0">Invia richiesta</button>
+            </div>
+        </form>
+    </div>
+</div>

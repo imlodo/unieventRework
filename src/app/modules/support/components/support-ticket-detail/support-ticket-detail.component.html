@@ -1,17 +1,18 @@
 <div class="d-flex flex-column container align-items-center vh-100 w-100 pt-4">
     <h1>Dettaglio Ticket #{{ticket?.id}}</h1>
-    <h3><span class="text-secondary">Stato ticket: </span><span [attr.style]="ticket?.status === 'Chiuso' ? 'color:red;' : 
-                          ticket?.status === 'Aperto' ? 'color:green;' : 
-                          'color:orange;'">{{ticket?.status}}</span>
+    <h3><span class="text-secondary">Stato ticket: </span><span [attr.style]="getColorByStatus(ticket?.status)">{{ticket?.status}}</span>
     </h3>
     <div class="d-flex flex-column detail-ticket-container w-100 p-3 rounded">
-        <div *ngIf="ticket?.status==='Chiuso'" class="bg-danger text-white p-2 mb-3 rounded">
+        <div *ngIf="ticket?.status==='Chiuso'" class="bg-danger text-white p-2 mb-3 rounded shadow">
             <span>ATTENZIONE: Il ticket è contrassegnato come chiuso, non puoi inviare altre risposte. Non sei
                 d'accordo?</span>
-            <button class="btn btn-danger btn-sm border pointer mx-2 mb-1" (click)="openPanelForReOpeningReminder()">
+            <button class="btn btn-danger btn-sm border pointer mx-2 mb-1" (click)="sendReOpeningReminder()">
                 Sollecita riapertura</button>
         </div>
-        <div #replyListContainer class="reply-list-container container p-3 rounded">
+        <div *ngIf="ticket?.status === 'Sollecito Riapertura'" class="reminder p-2 rounded mb-3 shadow">
+            <span class="text-white">Per questo ticket hai inviato un sollecito di riapertura, stiamo analizzando i dati in nostro possesso, nei prossimi giorni riceverai una notifica con l'esito dell'analisi.</span>
+        </div>
+        <div #replyListContainer class="reply-list-container container p-3 rounded shadow">
             <ng-container *ngFor="let discussion of discussionData">
                 <div class="reply-outer-container">
                     <h3 *ngIf="discussion.id_user === currentUserId" class="text-start"><span class="text-secondary">Hai
@@ -38,8 +39,8 @@
                 </div>
             </ng-container>
         </div>
-        <ng-container *ngIf="ticket?.status!=='Chiuso'">
-            <div #replyTicketContainer class="p-4 reply-ticket-container rounded">
+        <ng-container *ngIf="ticket?.status!=='Chiuso' && ticket?.status !== 'Sollecito Riapertura'">
+            <div #replyTicketContainer class="p-4 reply-ticket-container rounded shadow">
                 <h1>Invia nuova risposta</h1>
                 <div class="reply-ticket-panel rounded d-flex flex-column p-3">
                     <textarea placeholder="Inserisci quanti più dettagli possibili" rows="10" style="resize: none;"
