@@ -5,3 +5,11 @@
 ::ng-deep .bg-dark-mode .verify-container{
     background:var(--bs-dark);
 }
+
+.uploadActionContainer{
+    background: var(--bs-gray-200);
+}
+
+::ng-deep .bg-dark-mode .uploadActionContainer{
+    background: var(--bs-gray-dark);
+}

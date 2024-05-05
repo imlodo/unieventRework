@@ -7,6 +7,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { ArtistRoutingModule } from './artist-routing.module';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { ArtistRoutingModule } from './artist-routing.module';
     MatFormFieldModule,
     MatInputModule,
     BsDatepickerModule.forRoot(),
-    ArtistRoutingModule
+    ArtistRoutingModule,
+    HttpClientModule
   ],
   exports: [
   ],
