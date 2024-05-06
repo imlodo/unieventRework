@@ -14,7 +14,7 @@
                         <input style="width: 22px; height: 22px;" [(ngModel)]="selectedContentType" type="radio" name="selectedContentType" value="Event">
                         <span style="font-size: 20px; margin-top: 1px;" class="mx-1">Evento</span>
                     </div>
-                    <span style="text-align: justify;" class="text-secondary mt-3">Crea un nuovo evento e raggiungi il tuo pubblico velocemente, grazie agli strumenti messi a dispozione dalla piattaforma, come la scelta della mappa, il layout dei posti e il prezzo del biglietto.</span>
+                    <span style="text-align: justify;" class="caption text-secondary mt-3">Crea un nuovo evento e raggiungi il tuo pubblico velocemente, grazie agli strumenti messi a dispozione dalla piattaforma, come la scelta della mappa, il layout dei posti e il prezzo del biglietto.</span>
                 </div>
                 <div [ngClass]="selectedContentType === 'Topic' ? 'active' : '' " class="p-5 col-6 rounded topic-option-container pointer d-flex flex-column justify-content-center align-items-center" (click)="selectedContentType = 'Topic'">
                     <svg xmlns="http://www.w3.org/2000/svg" width="78" height="78" fill="currentColor"
@@ -28,7 +28,7 @@
                         <input style="width: 22px; height: 22px;" [(ngModel)]="selectedContentType" type="radio" name="selectedContentType" value="Topic">
                         <span style="font-size: 20px; margin-top: 1px;" class="mx-1">Topic</span>
                     </div>
-                    <span style="text-align: justify;" class="text-secondary mt-3">Crea un nuovo topic (argomento) e discuti con altre persone di tutti gli argomenti che ti interessano. I topic possono essere foto oppure video.</span>
+                    <span style="text-align: justify;" class="caption text-secondary mt-3">Crea un nuovo topic (argomento) e discuti con altre persone di tutti gli argomenti che ti interessano. I topic possono essere foto oppure video.</span>
                 </div>
             </div>
         </div>
@@ -39,8 +39,8 @@
             Topic
         </div>
         <div class="p-5 text-end">
-            <button class="btn btn-danger" *ngIf="step == 1" (click)="incrementStep()">Avanti</button>
-            <button class="btn btn-secondary" *ngIf="step == 2" (click)="decrementStep()">Indietro</button>
+            <button class="btn btn-danger rounded-0" *ngIf="step == 1" (click)="incrementStep()">Avanti</button>
+            <button class="btn btn-secondary rounded-0" *ngIf="step == 2" (click)="decrementStep()">Indietro</button>
         </div>
         
     </div>

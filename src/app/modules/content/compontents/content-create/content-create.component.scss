@@ -1,14 +1,22 @@
 .event-option-container{
     background: var(--bs-gray-200);
     color: var(--bs-dark);
-    min-height: 288px;
+    min-height: 300px;
 }
 
 .topic-option-container{
     background: var(--bs-gray-200);
     color: var(--bs-dark);
-    min-height: 288px;
+    min-height: 300px;
+}
 
+.event-option-container .caption,
+.topic-option-container .caption {
+    text-align: justify;
+    max-height: 140px;
+    min-height: 140px;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 ::ng-deep .bg-dark-mode .event-option-container{
