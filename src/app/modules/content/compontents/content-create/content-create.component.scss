@@ -1,11 +1,14 @@
 .event-option-container{
     background: var(--bs-gray-200);
     color: var(--bs-dark);
+    min-height: 288px;
 }
 
 .topic-option-container{
     background: var(--bs-gray-200);
     color: var(--bs-dark);
+    min-height: 288px;
+
 }
 
 ::ng-deep .bg-dark-mode .event-option-container{
