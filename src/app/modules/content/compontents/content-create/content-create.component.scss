@@ -1,0 +1,35 @@
+.event-option-container{
+    background: var(--bs-gray-200);
+    color: var(--bs-dark);
+}
+
+.topic-option-container{
+    background: var(--bs-gray-200);
+    color: var(--bs-dark);
+}
+
+::ng-deep .bg-dark-mode .event-option-container{
+    background: var(--bs-gray-800);
+    color: var(--bs-white);
+}
+
+::ng-deep .bg-dark-mode .topic-option-container{
+    background: var(--bs-gray-800);
+    color: var(--bs-white);
+}
+
+.content-step1-container{
+    background: var(--bs-light);
+}
+
+::ng-deep .bg-dark-mode .content-step1-container{
+    background: var(--bs-dark);
+}
+
+::ng-deep .content-step1-container input[type="radio"] {
+    accent-color:#d32e2a !important;
+}
+
+.active{
+    color:#d32e2a !important;
+}

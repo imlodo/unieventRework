@@ -6,14 +6,14 @@ const routes: Routes = [
   {
     path: '',
     data: {
-      title: 'Pagamenti'
+      title: 'Artista'
     },
     children: [
       {
         path: 'verify',
         component: ArtistVerifyComponent,
         data: {
-          title: 'Pagamento'
+          title: 'Verifica Artista'
         }
       }
     ]

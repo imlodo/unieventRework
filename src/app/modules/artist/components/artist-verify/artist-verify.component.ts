@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import { ExtendedFile } from 'src/app/core/utility/global-constant';
 
@@ -8,15 +8,42 @@ import { ExtendedFile } from 'src/app/core/utility/global-constant';
   templateUrl: './artist-verify.component.html',
   styleUrls: ['./artist-verify.component.scss']
 })
-export class ArtistVerifyComponent {
+export class ArtistVerifyComponent implements AfterViewInit {
   @ViewChild('fileInput') fileInput: ElementRef<HTMLInputElement>;
   uploadedFiles: Array<{ key: string, file: File }> = new Array();
+  requestStatus:'not-verified'|'verified'|'requested'|'refused';
+  formData: {
+    name: string;
+    surname: string;
+    birthdate: Date;
+    pIva: string;
+    companyName: string;
+    companyAddress: string
+    pec: string;
+    consentClauses: boolean
+  } = {
+      name: '',
+      surname: '',
+      birthdate: new Date(),
+      pIva: '',
+      companyName: '',
+      companyAddress: '',
+      pec: '',
+      consentClauses: false
+    }
 
-  constructor(private http: HttpClient, private sanitizer: DomSanitizer){
+  constructor(private http: HttpClient, private sanitizer: DomSanitizer) {
 
   }
-  
+
+  ngAfterViewInit(): void {
+    //Qui recuperare lo stato della verifica artista
+    this.requestStatus = 'not-verified';
+  }
+
   sendVerifyAccount() {
+    //Fare chiamata back-end
+    this.requestStatus = "requested";
     return false;
   }
 
@@ -37,7 +64,7 @@ export class ArtistVerifyComponent {
       }
     }
   }
-  
+
 
   createFilePreview(file: ExtendedFile): string {
     const reader = new FileReader();
@@ -142,5 +169,20 @@ export class ArtistVerifyComponent {
 
   removeUploadedFile(object: { key: string, file: File }) {
     this.uploadedFiles = this.uploadedFiles.filter(f => f !== object);
+  }
+
+  isValidForm() {
+    //Ovviamente cambiare alcuni controlli con regex (tipo la pec);
+    let valid = this.formData.name.length > 3 &&
+    this.formData.surname.length > 3 &&
+    this.formData.birthdate && 
+    this.formData.pIva.length >= 11 && 
+    this.formData.pIva.length <= 13 &&
+    this.formData.companyName.length > 3 &&
+    this.formData.companyAddress.length > 3 &&
+    this.formData.pec.length > 3 &&
+    this.uploadedFiles.length === 2 &&
+    this.formData.consentClauses
+    return valid; 
   }
 }

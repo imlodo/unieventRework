@@ -7,14 +7,16 @@ import { MatStepperModule } from '@angular/material/stepper';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
-import { ArtistRoutingModule } from './artist-routing.module';
+import { LegalRoutingModule } from './legal-routing.module';
 import { HttpClientModule } from '@angular/common/http';
-import { ArtistVerifyComponent } from './components/artist-verify/artist-verify.component';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { PrivacyPolicyComponent } from './components/privacy-policy/privacy-policy.component';
+import { DataProcessingComponent } from './components/data-processing/data-processing.component';
 
 @NgModule({
   declarations: [
-    ArtistVerifyComponent
+    PrivacyPolicyComponent,
+    DataProcessingComponent
   ],
   imports: [
     CommonModule,
@@ -26,17 +28,17 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     MatFormFieldModule,
     MatInputModule,
     BsDatepickerModule.forRoot(),
-    ArtistRoutingModule,
+    LegalRoutingModule,
     HttpClientModule
   ],
   exports: [
   ],
-  id: 'Artist'
+  id: 'Legal'
 })
-export class ArtistModule {
+export class LegalModule {
   static forRoot() {
     return {
-      ngModule: ArtistModule,
+      ngModule: LegalModule,
       providers: [],
     };
   }

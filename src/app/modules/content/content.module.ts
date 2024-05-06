@@ -10,10 +10,12 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { ContentDetailComponent } from './compontents/content-detail/content-detail.component';
 import { MessageEmoticonPanelComponent } from '../message/components/message-emoticon-panel/message-emoticon-panel.component';
 import { MessageModule } from '../message/message.module';
+import { ContentCreateComponent } from './compontents/content-create/content-create.component';
 
 @NgModule({
   declarations: [
-    ContentDetailComponent
+    ContentDetailComponent,
+    ContentCreateComponent
   ],
   imports: [
     CommonModule,

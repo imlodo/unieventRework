@@ -11,7 +11,6 @@ import { adapterFactory } from 'angular-calendar/date-adapters/moment';
 import * as moment from 'moment';
 import { NgbModalModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
-import { ArtistVerifyComponent } from './modules/artist/components/artist-verify/artist-verify.component';
 
 export function momentAdapterFactory() {
   return adapterFactory(moment);
@@ -19,8 +18,7 @@ export function momentAdapterFactory() {
 
 @NgModule({
   declarations: [
-    AppComponent,
-    ArtistVerifyComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,

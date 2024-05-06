@@ -1,0 +1,7 @@
+.data-processing-container{
+    background:var(--bs-light);
+}
+
+::ng-deep .bg-dark-mode .data-processing-container{
+    background:var(--bs-dark);
+}

@@ -88,7 +88,31 @@ export class FrequentlyAnswersComponent {
         id: 4,
         captionTitle: "Come creo un Account Artista?",
         contentItem: {
-          title: "Verificare il proprio account come Artista"
+          title: "Verificare il proprio account come Artista",
+          body: {
+            paragraphList: [
+              {
+                html: `<span>Dalla schermata principale, nel menù di sinistra fare click sul pulsante "Verifica Account" </span> `,
+                image: { url: "/assets/img/artist-verify-0.jpg", width: 200 }
+              },
+              {
+                html: `<span>Nella schermata successiva inserire tutti i dati obbligatori, compreso il documento di identità e fare click sul tasto "Invia Richiesta".</span>`,
+                image: { url: "/assets/img/artist-verify-1.png"}
+              },
+              {
+                html: `Verrà così avviata la procedura di verifica dell'account.`,
+                image: { url: "/assets/img/artist-verify-2.png"}
+              },
+              {
+                html: `Una volta terminata la procedura ci sono due possibili esiti. Il primo nel quale la richiesta viene accettata e l'account è verificato con successo.`,
+                image: { url: "/assets/img/artist-verify-3.png"}
+              },
+              {
+                html: `Il secondo nel quale la richiesta è rifiutata. Dal giorno del rifiuto puoi riprovare la verifica trascorsi 90 giorni.`,
+                image: { url: "/assets/img/artist-verify-4.png"}
+              }
+            ]
+          }
         }
       },
       {

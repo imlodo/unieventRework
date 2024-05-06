@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomepageComponent, InternalServerErrorComponent, LoginComponent, NotFoundComponent, SignupComponent } from './core/components';
+import { ContentCreateComponent } from './modules/content/compontents/content-create/content-create.component';
 
 const routes: Routes = [
 	{
@@ -64,6 +65,17 @@ const routes: Routes = [
 			{
 				path: '@/:userAliasGenerated',
 				loadChildren: () => import('./modules/user/user.module').then((m) => m.UserModule),
+			},
+			{
+				path: 'legal',
+				loadChildren: () => import('./modules/legal/legal.module').then((m) => m.LegalModule),
+			},
+			{
+				path: 'create',
+				component: ContentCreateComponent,
+				data: {
+					title: 'Crea Contenuto',
+				},
 			}
 		]
 	},

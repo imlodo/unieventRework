@@ -13,3 +13,17 @@
 ::ng-deep .bg-dark-mode .uploadActionContainer{
     background: var(--bs-gray-dark);
 }
+
+::ng-deep .verify-container input[type="checkbox"] {
+    accent-color:#d32e2a !important;
+}
+ 
+::ng-deep .bg-dark-mode .verify-container input, ::ng-deep .bg-dark-mode .verify-container input:focus, ::ng-deep .bg-dark-mode .verify-container input:-internal-autofill-selected {
+    background-color: var(--bs-gray-dark) !important;
+    color:white !important;
+    border: none !important;
+}
+
+::ng-deep .bg-dark-mode .verify-container ::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+}

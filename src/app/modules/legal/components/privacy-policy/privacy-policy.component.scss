@@ -1,0 +1,7 @@
+.privacy-policy-container{
+    background:var(--bs-light);
+}
+
+::ng-deep .bg-dark-mode .privacy-policy-container{
+    background:var(--bs-dark);
+}
