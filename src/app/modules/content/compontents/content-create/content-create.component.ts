@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { USER_TYPE } from 'src/app/core/utility/global-constant';
 
 @Component({
   selector: 'unievent-content-create',
@@ -7,13 +8,21 @@ import { Component } from '@angular/core';
 })
 export class ContentCreateComponent {
   step:number = 1;
-  selectedContentType:"Event"|"Topic"="Event";
+  selectedContentType:"Event"|"Topic";
   selectedFile: File | null = null;
-  isArtist: boolean = true;
+  userType: USER_TYPE = USER_TYPE.ARTIST;
   isDraggedOver: boolean = false;
 
   constructor(){
-    this.step = this.isArtist ? 1 : 2;
+    this.step = this.userType === USER_TYPE.ARTIST ? 1 : 2;
+    switch(this.userType){
+      case USER_TYPE.CREATOR:
+        this.selectedContentType = "Topic";
+        break;
+      default:
+        this.selectedContentType = "Event";
+        break;
+    }
   }
 
   incrementStep(){
