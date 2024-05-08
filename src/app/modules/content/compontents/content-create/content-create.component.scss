@@ -34,7 +34,11 @@
     height: calc(100vh - 120px);
 }
 
-::ng-deep .bg-dark-mode .content-container{
+.upload-esit-container{
+    background: var(--bs-light);
+}
+
+::ng-deep .bg-dark-mode .content-container, ::ng-deep .bg-dark-mode .upload-esit-container{
     background: var(--bs-dark);
 }
 

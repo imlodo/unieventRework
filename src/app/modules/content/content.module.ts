@@ -8,9 +8,11 @@ import { MatInputModule } from '@angular/material/input';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { ContentDetailComponent } from './compontents/content-detail/content-detail.component';
-import { MessageEmoticonPanelComponent } from '../message/components/message-emoticon-panel/message-emoticon-panel.component';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MessageModule } from '../message/message.module';
 import { ContentCreateComponent } from './compontents/content-create/content-create.component';
+import { HttpClientModule } from '@angular/common/http';
+import { FileUploadService } from './services/file-upload-service/file-upload-service';
 
 @NgModule({
   declarations: [
@@ -27,11 +29,14 @@ import { ContentCreateComponent } from './compontents/content-create/content-cre
     MatInputModule,
     MessageModule,
     ContentRoutingModule,
-    CoreModule
+    CoreModule,
+    MatProgressBarModule,
+    HttpClientModule
   ],
   exports: [
   ],
   providers: [
+    FileUploadService
   ],
   id: 'Event'
 })
