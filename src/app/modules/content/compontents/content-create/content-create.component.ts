@@ -1,7 +1,9 @@
 import { HttpEventType } from '@angular/common/http';
 import { Component, ElementRef, ViewChild } from '@angular/core';
-import { USER_TYPE } from 'src/app/core/utility/global-constant';
+import { ROUTE_LIST, USER_TYPE } from 'src/app/core/utility/global-constant';
 import { FileUploadService } from '../../services/file-upload-service/file-upload-service';
+import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'unievent-content-create',
@@ -22,8 +24,9 @@ export class ContentCreateComponent {
   savedTextAfterAt: string = '';
   eventListner: any;
   characterCount: number = 0;
+  privacyContent: string = "all"
 
-  constructor(private fileUploadService: FileUploadService) {
+  constructor(private fileUploadService: FileUploadService, private toastr: ToastrService, private router: Router) {
     this.step = this.userType === USER_TYPE.ARTIST ? 1 : 2;
     switch (this.userType) {
       case USER_TYPE.CREATOR:
@@ -136,14 +139,6 @@ export class ContentCreateComponent {
     }
   }
 
-  discard() {
-    window.location.reload();
-  }
-
-  publicContent() {
-
-  }
-
   addHashtag() {
     this.insertTextToTextarea('#');
     this.eventListner = this.handleAfterAtKeypress.bind(this);
@@ -194,4 +189,14 @@ export class ContentCreateComponent {
   updateCharacterCount() {
     this.characterCount = this.descriptionTextarea?.nativeElement.value.length;
   }
+
+  discard() {
+    window.location.reload();
+  }
+
+  publicContent() {
+    this.toastr.success(null, "Contenuto pubblicato con successo", { progressBar: true });
+    this.router.navigate([ROUTE_LIST.content.manage]);
+  }
+
 }

@@ -86,7 +86,7 @@
                     <p>MB caricati: {{ (uploadProgress || 0) * selectedFile.size / 100 / (1024 * 1024) | number:'1.2-2'
                         }}
                         MB / {{selectedFile.size / (1024 * 1024)| number:'1.2-2'}} MB</p>
-                    <p>Caricamento in corso: {{ uploadProgress }}%</p>
+                    <p>Percentuale completamento: {{ uploadProgress }}%</p>
                 </div>
             </div>
             <div *ngIf="previewUrl" class="col-4">
@@ -142,7 +142,8 @@
                                 object-position: center;
                                 align-content: center;">
                                 <span (click)="inputCoverFile.click()" class="rounded edit-cover-container shadow">
-                                    <input #inputCoverFile type="file" style="display: none;" (change)="onCoverFileSelected($event)">
+                                    <input accept="image/*" #inputCoverFile type="file" style="display: none;"
+                                        (change)="onCoverFileSelected($event)">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor"
                                         class="bi bi-file-image-fill" viewBox="0 0 16 16">
                                         <path
@@ -187,11 +188,11 @@
         <div class="d-flex flex-column">
             <h3>Chi può vedere questo contenuto?</h3>
             <div class="d-flex">
-                <select class="pointer" name="privacy" id="privacy">
+                <select [(ngModel)]="privacyContent" class="pointer" name="privacy" id="privacy">
                     <option value="all">Tutti</option>
                     <option value="amici">Amici</option>
                     <!--Solo gli utenti che si followano tra di loro sono considerati amici-->
-                    <option value="mercedes">Solo tu</option>
+                    <option value="onlyu">Solo tu</option>
                 </select>
             </div>
         </div>
