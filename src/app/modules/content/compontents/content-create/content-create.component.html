@@ -49,7 +49,8 @@
             <div [class.activedrag]="isDraggedOver"
                 class="file-upload pointer rounded h-100 d-flex flex-column gap-1 justify-content-center align-items-center"
                 (drop)="onFileDropped($event)" (dragover)="onDragOver($event)" (dragleave)="onDragLeave($event)">
-                <div class="d-flex flex-column gap-1 justify-content-center align-items-center" (click)="fileInput.click()">
+                <div class="d-flex flex-column gap-1 justify-content-center align-items-center"
+                    (click)="fileInput.click()">
                     <svg xmlns="http://www.w3.org/2000/svg" width="130" height="130" fill="currentColor"
                         class="bi bi-cloud-upload" viewBox="0 0 16 16">
                         <path fill-rule="evenodd"
@@ -102,17 +103,101 @@
         class="d-flex flex-column rounded upload-esit-container p-3 shadow mt-3 gap-3">
         <div class="d-flex flex-column">
             <h3>Descrizione</h3>
-            <textarea class="rounded"></textarea>
+            <textarea rows="4" [attr.maxlength]="maxTextAreaCharacter" (input)="updateCharacterCount()"
+                (blur)="removeListner()" #descriptionTextarea class="no-resize rounded border-0 px-2 py-1"
+                style="border-bottom-left-radius: 0px !important; border-bottom-right-radius: 0px !important;"></textarea>
+            <div class="d-flex flex-row justify-content-between rounded bottom-textarea-container"
+                style="border-top-left-radius: 0px !important; border-top-right-radius: 0px !important; background:white;">
+                <div class="d-flex flex-row gap-3 mx-2 ">
+                    <span (click)="addHashtag()" class="text-secondary pointer">#Hashtag</span>
+                    <span (click)="addTag()" class="text-secondary pointer">@Menziona</span>
+                </div>
+                <div class="text-secondary pointer mx-2">
+                    {{getCharacterCount()}}/{{maxTextAreaCharacter}}
+                </div>
+            </div>
         </div>
-        <div class="d-flex flex-column">
+        <div class="d-flex flex-column" *ngIf="selectedFile.type.startsWith('video')">
             <h3>Copertina</h3>
+            <div class="card d-flex flex-column card-image border-0" style="padding-top: 280px;
+                    overflow: hidden;
+                    border-radius: 5px;
+                    width: 190px;">
+                <picture class="picture-container pointer">
+                    <a tabindex="-1">
+                        <div class="thumbnail">
+                            <div style="z-index: 3;
+                                position: absolute;
+                                inset: 0px;
+                                box-sizing: border-box;
+                                padding: 0px;
+                                border: none;
+                                margin: auto;
+                                display: block;
+                                min-width: 100%;
+                                max-width: 100%;
+                                min-height: 100%;
+                                max-height: 100%;
+                                text-align: center;
+                                object-position: center;
+                                align-content: center;">
+                                <span (click)="inputCoverFile.click()" class="rounded edit-cover-container shadow">
+                                    <input #inputCoverFile type="file" style="display: none;" (change)="onCoverFileSelected($event)">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor"
+                                        class="bi bi-file-image-fill" viewBox="0 0 16 16">
+                                        <path
+                                            d="M4 0h8a2 2 0 0 1 2 2v8.293l-2.73-2.73a1 1 0 0 0-1.52.127l-1.889 2.644-1.769-1.062a1 1 0 0 0-1.222.15L2 12.292V2a2 2 0 0 1 2-2m4.002 5.5a1.5 1.5 0 1 0-3 0 1.5 1.5 0 0 0 3 0" />
+                                        <path
+                                            d="M10.564 8.27 14 11.708V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2v-.293l3.578-3.577 2.56 1.536 2.426-3.395z" />
+                                    </svg>
+                                    Modifica</span>
+                            </div>
+                            <div style="z-index: 2;
+                            background: #00000042;
+                            position: absolute;
+                            inset: 0px;
+                            box-sizing: border-box;
+                            padding: 0px;
+                            border: none;
+                            margin: auto;
+                            display: block;
+                            min-width: 100%;
+                            max-width: 100%;
+                            min-height: 100%;
+                            max-height: 100%;"></div>
+                            <img [src]="coverUrl" alt="Video Thumbnail" class="picture-preview" style="position: absolute;
+                                    inset: 0px;
+                                    box-sizing: border-box;
+                                    padding: 0px;
+                                    border: none;
+                                    margin: auto;
+                                    display: block;
+                                    width: 0px;
+                                    height: 0px;
+                                    min-width: 100%;
+                                    max-width: 100%;
+                                    min-height: 100%;
+                                    max-height: 100%;
+                                    object-fit: cover;">
+                        </div>
+                    </a>
+                </picture>
+            </div>
         </div>
         <div class="d-flex flex-column">
-            <h3>Chi può vedere questo video?</h3>
+            <h3>Chi può vedere questo contenuto?</h3>
+            <div class="d-flex">
+                <select class="pointer" name="privacy" id="privacy">
+                    <option value="all">Tutti</option>
+                    <option value="amici">Amici</option>
+                    <!--Solo gli utenti che si followano tra di loro sono considerati amici-->
+                    <option value="mercedes">Solo tu</option>
+                </select>
+            </div>
         </div>
-        <div class="d-flex flex-row justify-content-end gap-4">
-            <button class="btn btn-secondary rounded-0">Scarta</button>
-            <button class="btn btn-danger rounded-0">Pubblica</button>
+        <div class="d-flex flex-row justify-content-end gap-3 mt-3">
+            <button class="btn btn-sm btn-secondary rounded-0" (click)="discard()">Scarta</button>
+            <button class="btn btn-sm btn-danger rounded-0" (click)="publicContent()">Pubblica</button>
         </div>
     </div>
 </div>

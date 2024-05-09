@@ -1,10 +1,10 @@
-.event-option-container{
+.event-option-container {
     background: var(--bs-gray-200);
     color: var(--bs-dark);
     min-height: 300px;
 }
 
-.topic-option-container{
+.topic-option-container {
     background: var(--bs-gray-200);
     color: var(--bs-dark);
     min-height: 300px;
@@ -19,45 +19,96 @@
     text-overflow: ellipsis;
 }
 
-::ng-deep .bg-dark-mode .event-option-container{
+::ng-deep .bg-dark-mode .event-option-container {
     background: var(--bs-gray-800);
     color: var(--bs-white);
 }
 
-::ng-deep .bg-dark-mode .topic-option-container{
+::ng-deep .bg-dark-mode .topic-option-container {
     background: var(--bs-gray-800);
     color: var(--bs-white);
 }
 
-.content-container{
+.content-container {
     background: var(--bs-light);
     height: calc(100vh - 120px);
 }
 
-.upload-esit-container{
+.upload-esit-container {
     background: var(--bs-light);
 }
 
-::ng-deep .bg-dark-mode .content-container, ::ng-deep .bg-dark-mode .upload-esit-container{
+::ng-deep .bg-dark-mode .content-container,
+::ng-deep .bg-dark-mode .upload-esit-container {
     background: var(--bs-dark);
 }
 
 ::ng-deep .content-container input[type="radio"] {
-    accent-color:#d32e2a !important;
+    accent-color: #d32e2a !important;
 }
 
-.active{
-    color:#d32e2a !important;
+.active {
+    color: #d32e2a !important;
 }
 
-.file-upload{
+.file-upload {
     border: 2px dashed rgb(163 163 163 / 52%);
 }
 
-.file-upload.activedrag{
+.file-upload.activedrag {
     border-color: #d32e2a !important;
 }
 
-.activedrag svg{
-    color:#d32e2a !important;
+.activedrag svg {
+    color: #d32e2a !important;
+}
+
+#privacy {
+    min-width: 120px;
+    padding: 5px;
+    border: none;
+    border-radius: 3px;
+    background: var(--bs-gray-200);
+}
+
+::ng-deep .bg-dark-mode #privacy {
+    background: #343a40 !important;
+    color: white;
+}
+
+.no-resize {
+    resize: none;
+}
+
+.upload-esit-container textarea {
+    background-color: var(--bs-gray-200);
+    color: var(--bs-dark);
+}
+
+.bottom-textarea-container {
+    background-color: var(--bs-gray-200) !important;
+    color: var(--bs-dark);
+    padding-bottom: 7px;
+}
+
+::ng-deep .bg-dark-mode .upload-esit-container textarea,
+::ng-deep .bg-dark-mode .bottom-textarea-container {
+    background-color: var(--bs-gray-800) !important;
+    color: white !important;
+}
+
+.edit-cover-container {
+    padding: 20px;
+    padding-bottom: 35px;
+    padding-top: 35px;
+    background: rgb(167 167 167);
+    color: white;
+}
+
+::ng-deep .bg-dark-mode .edit-cover-container {
+    padding: 10px;
+    padding-bottom: 25px;
+    padding-top: 25px;
+    background: #343a40eb;
+    color: white;
 }

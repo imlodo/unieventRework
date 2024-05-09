@@ -1,5 +1,5 @@
 import { HttpEventType } from '@angular/common/http';
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { USER_TYPE } from 'src/app/core/utility/global-constant';
 import { FileUploadService } from '../../services/file-upload-service/file-upload-service';
 
@@ -9,17 +9,23 @@ import { FileUploadService } from '../../services/file-upload-service/file-uploa
   styleUrls: ['./content-create.component.scss']
 })
 export class ContentCreateComponent {
-  step:number = 1;
-  selectedContentType:"Event"|"Topic";
+  step: number = 1;
+  selectedContentType: "Event" | "Topic";
   selectedFile: File | null = null;
   userType: USER_TYPE = USER_TYPE.ARTIST;
   isDraggedOver: boolean = false;
   uploadProgress: number | null = null;
   previewUrl: any = null;
+  coverUrl: any = null;
+  maxTextAreaCharacter: number = 200;
+  @ViewChild('descriptionTextarea') descriptionTextarea!: ElementRef<HTMLTextAreaElement>;
+  savedTextAfterAt: string = '';
+  eventListner: any;
+  characterCount: number = 0;
 
-  constructor(private fileUploadService: FileUploadService){
+  constructor(private fileUploadService: FileUploadService) {
     this.step = this.userType === USER_TYPE.ARTIST ? 1 : 2;
-    switch(this.userType){
+    switch (this.userType) {
       case USER_TYPE.CREATOR:
         this.selectedContentType = "Topic";
         break;
@@ -29,18 +35,18 @@ export class ContentCreateComponent {
     }
   }
 
-  incrementStep(){
-    this.step+=1;
+  incrementStep() {
+    this.step += 1;
   }
 
   onFileSelected(event: any) {
     const file: File = event.target.files[0];
     this.selectedFile = file;
     this.incrementStep();
-    setTimeout(()=>{
+    setTimeout(() => {
       this.uploadFile();
       this.generatePreview();
-    },1)
+    }, 1)
   }
 
   onFileDropped(event: any) {
@@ -50,10 +56,10 @@ export class ContentCreateComponent {
     const file: File = event.dataTransfer.files[0];
     this.selectedFile = file;
     this.incrementStep();
-    setTimeout(()=>{
+    setTimeout(() => {
       this.uploadFile();
       this.generatePreview();
-    },1)
+    }, 1)
   }
 
   onDragOver(event: any) {
@@ -96,11 +102,31 @@ export class ContentCreateComponent {
     }
   }
 
+  onCoverFileSelected(event: any) {
+    const file: File = event.target.files[0];
+    this.generateNewPreview(file);
+  }
+
+  generateNewPreview(file: File) {
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = (e: any) => {
+        this.coverUrl = e.target.result;
+      };
+      if (file.type.startsWith('video')) {
+        reader.readAsDataURL(file);
+      } else {
+        reader.readAsDataURL(file);
+      }
+    }
+  }
+
   generatePreview() {
     if (this.selectedFile) {
       const reader = new FileReader();
       reader.onload = (e: any) => {
         this.previewUrl = e.target.result;
+        this.coverUrl = e.target.result;
       };
       if (this.selectedFile.type.startsWith('video')) {
         reader.readAsDataURL(this.selectedFile);
@@ -110,4 +136,62 @@ export class ContentCreateComponent {
     }
   }
 
+  discard() {
+    window.location.reload();
+  }
+
+  publicContent() {
+
+  }
+
+  addHashtag() {
+    this.insertTextToTextarea('#');
+    this.eventListner = this.handleAfterAtKeypress.bind(this);
+    this.descriptionTextarea.nativeElement.addEventListener('keypress', this.eventListner);
+  }
+
+  addTag() {
+    this.insertTextToTextarea('@');
+    this.eventListner = this.handleAfterAtKeypress.bind(this);
+    this.descriptionTextarea.nativeElement.addEventListener('keypress', this.eventListner);
+  }
+
+  insertTextToTextarea(text: string) {
+    const textarea = this.descriptionTextarea.nativeElement;
+    const start = textarea.selectionStart;
+    const end = textarea.selectionEnd;
+    const textBefore = textarea.value.substring(0, start);
+    const textAfter = textarea.value.substring(end, textarea.value.length);
+    if (text === '#') {
+      this.savedTextAfterAt = textAfter;
+    } else if (text === '@') {
+      this.savedTextAfterAt = textAfter;
+    }
+    textarea.value = textBefore + text;
+    textarea.selectionStart = textarea.selectionEnd = start + text.length;
+    textarea.focus();
+  }
+
+  handleAfterAtKeypress(event: KeyboardEvent) {
+    const char = event.key;
+    if (char === ' ') {
+      this.removeListner();
+      this.savedTextAfterAt = "";
+    } else {
+      this.savedTextAfterAt += char;
+      console.log(this.savedTextAfterAt.replace("#", "").replace("@", ""))
+    }
+  }
+
+  removeListner() {
+    this.descriptionTextarea.nativeElement.removeEventListener('keypress', this.eventListner);
+  }
+
+  getCharacterCount() {
+    return this.characterCount;
+  }
+
+  updateCharacterCount() {
+    this.characterCount = this.descriptionTextarea?.nativeElement.value.length;
+  }
 }
