@@ -22,9 +22,20 @@ export class ContentCreateComponent {
   maxTextAreaCharacter: number = 200;
   @ViewChild('descriptionTextarea') descriptionTextarea!: ElementRef<HTMLTextAreaElement>;
   savedTextAfterAt: string = '';
+  lastSavedTextAfterAt: string = null;
   eventListner: any;
   characterCount: number = 0;
-  privacyContent: string = "all"
+  privacyContent: string = "all";
+  currentSuggestPrefix = null;
+  suggestArray: Array<String> = [
+    "antoniolodato1",
+    "mariobaldi",
+    "bocconcino",
+    "video pazzi"
+  ]
+  suggestArrayFiltered: Array<String> = [];
+  tagArray: Array<String> = new Array();
+  hashTagArray: Array<String> = new Array();
 
   constructor(private fileUploadService: FileUploadService, private toastr: ToastrService, private router: Router) {
     this.step = this.userType === USER_TYPE.ARTIST ? 1 : 2;
@@ -142,44 +153,50 @@ export class ContentCreateComponent {
   addHashtag() {
     this.insertTextToTextarea('#');
     this.eventListner = this.handleAfterAtKeypress.bind(this);
-    this.descriptionTextarea.nativeElement.addEventListener('keypress', this.eventListner);
+    this.savedTextAfterAt += "#";
+    this.currentSuggestPrefix = "#";
+    this.descriptionTextarea.nativeElement.addEventListener('keydown', this.eventListner);
   }
 
   addTag() {
     this.insertTextToTextarea('@');
     this.eventListner = this.handleAfterAtKeypress.bind(this);
-    this.descriptionTextarea.nativeElement.addEventListener('keypress', this.eventListner);
+    this.savedTextAfterAt += "@";
+    this.currentSuggestPrefix = "@";
+    this.descriptionTextarea.nativeElement.addEventListener('keydown', this.eventListner);
   }
 
   insertTextToTextarea(text: string) {
     const textarea = this.descriptionTextarea.nativeElement;
-    const start = textarea.selectionStart;
-    const end = textarea.selectionEnd;
-    const textBefore = textarea.value.substring(0, start);
-    const textAfter = textarea.value.substring(end, textarea.value.length);
-    if (text === '#') {
-      this.savedTextAfterAt = textAfter;
-    } else if (text === '@') {
-      this.savedTextAfterAt = textAfter;
-    }
-    textarea.value = textBefore + text;
-    textarea.selectionStart = textarea.selectionEnd = start + text.length;
+    textarea.value = textarea.value + " " + text
     textarea.focus();
+    this.updateCharacterCount();
   }
 
   handleAfterAtKeypress(event: KeyboardEvent) {
     const char = event.key;
     if (char === ' ') {
       this.removeListner();
-      this.savedTextAfterAt = "";
-    } else {
+    }
+    else if (char === "Backspace") {
+      this.savedTextAfterAt = this.savedTextAfterAt.slice(0, this.savedTextAfterAt.length - 1);
+      if (this.savedTextAfterAt.length == 0)
+        this.removeListner();
+    }
+    else {
       this.savedTextAfterAt += char;
-      console.log(this.savedTextAfterAt.replace("#", "").replace("@", ""))
+      this.filterSuggest();
     }
   }
 
+  filterSuggest() {
+    this.suggestArrayFiltered = this.suggestArray.filter(el => el.includes(this.savedTextAfterAt.replace("@", "").replace("#", "")));
+  }
+
   removeListner() {
-    this.descriptionTextarea.nativeElement.removeEventListener('keypress', this.eventListner);
+    this.descriptionTextarea.nativeElement.removeEventListener('keydown', this.eventListner);
+    this.lastSavedTextAfterAt = this.savedTextAfterAt;
+    this.savedTextAfterAt = "";
   }
 
   getCharacterCount() {
@@ -199,4 +216,22 @@ export class ContentCreateComponent {
     this.router.navigate([ROUTE_LIST.content.manage]);
   }
 
+  addSuggestToTagArea(suggestWord: String) {
+    setTimeout(() => {
+      if (this.currentSuggestPrefix.includes("#")) {
+        if (!this.hashTagArray.includes(suggestWord))
+          this.hashTagArray.push(suggestWord);
+      } else if (this.currentSuggestPrefix.includes("@")) {
+        if (!this.tagArray.includes(suggestWord))
+          this.tagArray.push(suggestWord);
+      }
+      this.descriptionTextarea.nativeElement.value = this.descriptionTextarea.nativeElement.value.replace(this.lastSavedTextAfterAt, "").trimStart();
+      this.updateCharacterCount();
+      this.suggestArrayFiltered = new Array();
+    }, 100)
+  }
+
+  removeHashTagElement(hashTag:String){
+    this.hashTagArray = this.hashTagArray.filter(el => el != hashTag);
+  }
 }

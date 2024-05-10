@@ -85,14 +85,16 @@
     color: var(--bs-dark);
 }
 
-.bottom-textarea-container {
+.bottom-textarea-container, .suggestContainer {
     background-color: var(--bs-gray-200) !important;
     color: var(--bs-dark);
     padding-bottom: 7px;
 }
 
 ::ng-deep .bg-dark-mode .upload-esit-container textarea,
-::ng-deep .bg-dark-mode .bottom-textarea-container {
+::ng-deep .bg-dark-mode .bottom-textarea-container,
+::ng-deep .bg-dark-mode .suggestContainer
+{
     background-color: var(--bs-gray-800) !important;
     color: white !important;
 }

@@ -116,8 +116,40 @@
                     {{getCharacterCount()}}/{{maxTextAreaCharacter}}
                 </div>
             </div>
+            <div *ngIf="suggestArrayFiltered?.length > 0" class="suggestContainer mt-2 rounded d-flex flex-column">
+                <!-- Pannello suggerimenti -->
+                <ng-container *ngFor="let el of suggestArrayFiltered">
+                    <span (click)="addSuggestToTagArea(el)" class="pointer p-3">{{el}}</span>
+                </ng-container>
+            </div>
+            <div *ngIf="tagArray?.length > 0" class="mt-2 rounded d-flex flex-column">
+                <h3>Menzioni</h3>
+                <div class="d-flex flex-row">
+                    <ng-container *ngFor="let el of tagArray">
+                        <span class="pointer p-3 suggestContainer rounded mx-2">{{el}}</span>
+                    </ng-container>
+                </div>
+            </div>
+            <div *ngIf="hashTagArray?.length > 0" class="mt-2 rounded d-flex flex-column">
+                <h3>Hashtag</h3>
+                <div class="d-flex flex-row">
+                    <ng-container *ngFor="let el of hashTagArray">
+                        <div class="">
+                            <div class="p-2 suggestContainer rounded mx-2">
+                                <span style="margin-right:7px; margin-top:2px">{{el}}</span>
+                                <svg (click)="removeHashTagElement(el)" style="border-left: 1px solid white;" xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
+                                class="bi bi-x suggestContainer p-0 pointer" viewBox="0 0 16 16">
+                                <path
+                                    d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708" />
+                            </svg>
+                            </div>
+                            
+                        </div>
+                    </ng-container>
+                </div>
+            </div>
         </div>
-        <div class="d-flex flex-column" *ngIf="selectedFile.type.startsWith('video')">
+        <div class="d-flex flex-column">
             <h3>Copertina</h3>
             <div class="card d-flex flex-column card-image border-0" style="padding-top: 280px;
                     overflow: hidden;
@@ -126,7 +158,7 @@
                 <picture class="picture-container pointer">
                     <a tabindex="-1">
                         <div class="thumbnail">
-                            <div style="z-index: 3;
+                            <div *ngIf="selectedFile.type.startsWith('video')" style="z-index: 3;
                                 position: absolute;
                                 inset: 0px;
                                 box-sizing: border-box;
