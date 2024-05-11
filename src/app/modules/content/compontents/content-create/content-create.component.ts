@@ -4,7 +4,6 @@ import { ROUTE_LIST, USER_TYPE } from 'src/app/core/utility/global-constant';
 import { FileUploadService } from '../../services/file-upload-service/file-upload-service';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
-import { createFFmpeg, fetchFile } from '@ffmpeg/ffmpeg';
 
 @Component({
   selector: 'unievent-content-create',
