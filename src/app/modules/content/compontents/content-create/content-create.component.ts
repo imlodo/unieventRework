@@ -190,6 +190,12 @@ export class ContentCreateComponent {
   }
 
   filterSuggest() {
+    //Qui vanno presi dal backend
+    if(this.savedTextAfterAt.includes("@")){
+
+    } else if(this.savedTextAfterAt.includes("#")){
+      
+    }
     this.suggestArrayFiltered = this.suggestArray.filter(el => el.includes(this.savedTextAfterAt.replace("@", "").replace("#", "")));
   }
 
@@ -233,5 +239,9 @@ export class ContentCreateComponent {
 
   removeHashTagElement(hashTag:String){
     this.hashTagArray = this.hashTagArray.filter(el => el != hashTag);
+  }
+
+  removeTagElement(tag:String){
+    this.tagArray = this.tagArray.filter(el => el != tag);
   }
 }
