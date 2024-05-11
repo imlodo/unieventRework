@@ -4,6 +4,7 @@ import { ROUTE_LIST, USER_TYPE } from 'src/app/core/utility/global-constant';
 import { FileUploadService } from '../../services/file-upload-service/file-upload-service';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
+import { createFFmpeg, fetchFile } from '@ffmpeg/ffmpeg';
 
 @Component({
   selector: 'unievent-content-create',
@@ -143,11 +144,16 @@ export class ContentCreateComponent {
         this.coverUrl = e.target.result;
       };
       if (this.selectedFile.type.startsWith('video')) {
-        reader.readAsDataURL(this.selectedFile);
+        this.getVideoPreview();
       } else {
         reader.readAsDataURL(this.selectedFile);
       }
     }
+  }
+
+  getVideoPreview(){
+    this.previewUrl = "/assets/img/topic-image-placeholder.jpg";
+    this.coverUrl = "/assets/img/topic-image-placeholder.jpg";
   }
 
   addHashtag() {
@@ -191,10 +197,10 @@ export class ContentCreateComponent {
 
   filterSuggest() {
     //Qui vanno presi dal backend
-    if(this.savedTextAfterAt.includes("@")){
+    if (this.savedTextAfterAt.includes("@")) {
 
-    } else if(this.savedTextAfterAt.includes("#")){
-      
+    } else if (this.savedTextAfterAt.includes("#")) {
+
     }
     this.suggestArrayFiltered = this.suggestArray.filter(el => el.includes(this.savedTextAfterAt.replace("@", "").replace("#", "")));
   }
@@ -237,11 +243,11 @@ export class ContentCreateComponent {
     }, 100)
   }
 
-  removeHashTagElement(hashTag:String){
+  removeHashTagElement(hashTag: String) {
     this.hashTagArray = this.hashTagArray.filter(el => el != hashTag);
   }
 
-  removeTagElement(tag:String){
+  removeTagElement(tag: String) {
     this.tagArray = this.tagArray.filter(el => el != tag);
   }
 }
