@@ -1,9 +1,11 @@
 import { HttpEventType } from '@angular/common/http';
 import { Component, ElementRef, ViewChild } from '@angular/core';
-import { ROUTE_LIST, USER_TYPE } from 'src/app/core/utility/global-constant';
+import { MAP_TYPE, ROUTE_LIST, USER_TYPE } from 'src/app/core/utility/global-constant';
 import { FileUploadService } from '../../services/file-upload-service/file-upload-service';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
+import { Map } from 'src/app/core/models/map';
+import { FormControl, FormGroup, NgForm } from '@angular/forms';
 
 @Component({
   selector: 'unievent-content-create',
@@ -11,7 +13,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./content-create.component.scss']
 })
 export class ContentCreateComponent {
-  step: number = 1;
+  step: number = 4;
   selectedContentType: "Event" | "Topic";
   selectedFile: File | null = null;
   userType: USER_TYPE = USER_TYPE.ARTIST;
@@ -36,9 +38,24 @@ export class ContentCreateComponent {
   suggestArrayFiltered: Array<String> = [];
   tagArray: Array<String> = new Array();
   hashTagArray: Array<String> = new Array();
+  mapArray: Array<{ t_map_id: number, t_map_name: string, t_map_object: Map }> = new Array();
+  selectedMap: Map;
+  mapTypeArray: string[] = Object.values(MAP_TYPE);
+  selectedMapType: string;
+  showAddMap: boolean = false;
+  formMap = new FormGroup({
+    mapName: new FormControl(''),
+    mapType: new FormControl(''),
+    numRows: new FormControl(''),
+    numColumns: new FormControl('')
+  });
+  numRows: number;
+  numColumns: number;
+  currentSelectedMap: Map;
+  currentMapIndex = 1;
 
   constructor(private fileUploadService: FileUploadService, private toastr: ToastrService, private router: Router) {
-    this.step = this.userType === USER_TYPE.ARTIST ? 1 : 2;
+    //this.step = this.userType === USER_TYPE.ARTIST ? 1 : 2;
     switch (this.userType) {
       case USER_TYPE.CREATOR:
         this.selectedContentType = "Topic";
@@ -150,7 +167,7 @@ export class ContentCreateComponent {
     }
   }
 
-  getVideoPreview(){
+  getVideoPreview() {
     this.previewUrl = "/assets/img/topic-image-placeholder.jpg";
     this.coverUrl = "/assets/img/topic-image-placeholder.jpg";
   }
@@ -248,5 +265,77 @@ export class ContentCreateComponent {
 
   removeTagElement(tag: String) {
     this.tagArray = this.tagArray.filter(el => el != tag);
+  }
+
+  isValidStep3() {
+    return this.descriptionTextarea?.nativeElement.value.length > 3 && this.uploadProgress === 100;
+  }
+
+  isValidStep4() {
+    return this.descriptionTextarea?.nativeElement.value.length > 3 && this.uploadProgress === 100;
+  }
+
+  clearAddMap(): void {
+    this.showAddMap = false;
+  }
+
+  openAddMapPanel(): void {
+    this.showAddMap = true;
+  }
+
+  addMap(form: any) {
+    if (form.valid) {
+      this.mapArray.push(
+        {
+          t_map_id: this.currentMapIndex,
+          t_map_name: form.value.mapName,
+          t_map_object: {
+            t_map_id: this.currentMapIndex, //viene dato dal back-end
+            t_map_event_id: 1, //è associato all'evento creato allo step precedente 
+            t_map_name: form.value.mapName,
+            t_map_total_seat: 0, //perchè non vengono aggiunti ancora elementi,
+            t_object_maps: new Array(),
+            t_map_type: MAP_TYPE[form.value.mapType],
+            t_map_num_column: form.value.numColumns,
+            t_map_num_rows: form.value.numRows
+          }
+        });
+
+      this.mapArray = [...this.mapArray];
+      form.reset();
+      this.showAddMap = false;
+      this.currentMapIndex += 1;
+    }
+  }
+
+  onMapSelectionChanged(event: any) {
+    this.currentSelectedMap = null;
+    this.numColumns = null;
+    this.numRows = null;
+    this.selectedMapType = null;
+
+    if (event) {
+      this.numColumns = event.t_map_object.t_map_num_column;
+      this.numRows = event.t_map_object.t_map_num_rows;
+      this.selectedMapType = event.t_map_object.t_map_type;
+      this.currentSelectedMap = event.t_map_object;
+    }
+  }
+
+  deleteCurrentMap() {
+    let copyArray = new Array();
+    this.mapArray.forEach(el=>{
+      if(el.t_map_id != this.currentSelectedMap.t_map_id){
+        copyArray.push(el)
+      } 
+    })
+    this.mapArray = copyArray;
+    // Resetta le variabili dopo la rimozione
+    this.currentSelectedMap = null;
+    this.selectedMap = null;
+    this.numColumns = null;
+    this.numRows = null;
+    this.selectedMapType = null;
+
   }
 }

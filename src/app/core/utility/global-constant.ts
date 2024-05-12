@@ -4,9 +4,9 @@ import { Event } from "../models/event";
 export const MAX_NUM_SLIDE = 5;
 
 export enum MAP_TYPE {
-    STADIUM,
-    DISCOTECA
+    DISCOTECA = 'DISCOTECA'
 }
+
 export enum USER_TYPE {
     ARTIST,
     CREATOR,

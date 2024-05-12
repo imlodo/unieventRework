@@ -89,20 +89,16 @@
                     <p>Percentuale completamento: {{ uploadProgress }}%</p>
                 </div>
             </div>
-            <div *ngIf="previewUrl" class="col-4">
+            <div *ngIf="previewUrl" class="col-4 text-end">
                 <img class="rounded" style="width:180px; max-width: -webkit-fill-available;" [src]="previewUrl"
                     alt="Anteprima file">
             </div>
         </div>
         <mat-progress-bar mode="determinate" [value]="uploadProgress"></mat-progress-bar>
     </div>
-    <div *ngIf="step==3 && selectedContentType==='Event'"
-        class="d-flex flex-column rounded upload-esit-container p-3 shadow mt-3">
-    </div>
-    <div *ngIf=" step==3 && selectedContentType==='Topic'"
-        class="d-flex flex-column rounded upload-esit-container p-3 shadow mt-3 gap-3">
+    <div *ngIf="step == 3" class="d-flex flex-column rounded upload-esit-container p-3 shadow mt-3 gap-3">
         <div class="d-flex flex-column">
-            <h3>Descrizione</h3>
+            <h3>Descrizione *</h3>
             <textarea rows="4" [attr.maxlength]="maxTextAreaCharacter" (input)="updateCharacterCount()"
                 (blur)="removeListner()" #descriptionTextarea class="no-resize rounded border-0 px-2 py-1"
                 style="border-bottom-left-radius: 0px !important; border-bottom-right-radius: 0px !important;"></textarea>
@@ -236,7 +232,117 @@
         </div>
         <div class="d-flex flex-row justify-content-end gap-3 mt-3">
             <button class="btn btn-sm btn-secondary rounded-0" (click)="discard()">Scarta</button>
-            <button class="btn btn-sm btn-danger rounded-0" (click)="publicContent()">Pubblica</button>
+            <button [disabled]="!isValidStep3()" *ngIf="selectedContentType==='Topic'"
+                class="btn btn-sm btn-danger rounded-0" (click)="publicContent()">Pubblica</button>
+            <button [disabled]="!isValidStep3()" *ngIf="selectedContentType==='Event'"
+                class="btn btn-sm btn-danger rounded-0" (click)="incrementStep()">Avanti</button>
         </div>
+    </div>
+    <div *ngIf="step == 4" class="d-flex flex-column rounded upload-esit-container p-3 shadow mt-3 gap-3">
+        <h1>Scelta Mappa</h1>
+        <div class="d-flex justify-content-end mb-2">
+            <button *ngIf="selectedMap" class="btn btn-sm btn-secondary" (click)="deleteCurrentMap()">Elimina
+                Mappa</button>
+            <button *ngIf="selectedMap && selectedMapType" class="btn btn-sm btn-secondary mx-3">Aggiungi
+                Elemento</button>
+            <button class="btn btn-sm btn-secondary" (click)="openAddMapPanel()">Aggiungi Mappa</button>
+        </div>
+        <div class="d-flex flex-row row">
+            <div class="col-xl-3 mb-2 mb-md-0">
+                <div class="form-group">
+                    <span>Seleziona Mappa</span>
+                    <ng-select class="bgcolor-transparent" [items]="mapArray" [(ngModel)]="selectedMap"
+                        bindLabel="t_map_name" bindValue="t_map_id" placeholder="Seleziona mappa"
+                        (change)="onMapSelectionChanged($event)">
+                    </ng-select>
+                </div>
+            </div>
+            <div class="col-xl-3 mb-2 mb-md-0">
+                <div class="form-group">
+                    <span>Tipo Mappa</span>
+                    <ng-select class="bgcolor-transparent" [items]="mapTypeArray" [(ngModel)]="selectedMapType"
+                        [clearable]="false" placeholder="Seleziona tipo mappa" [disabled]="!selectedMap">
+                    </ng-select>
+                </div>
+            </div>
+            <div class="col-xl-3 mb-2 mb-md-0">
+                <div class="form-group">
+                    <span>Numero righe</span>
+                    <input [disabled]="!selectedMap || !selectedMapType" class="form-control" [(ngModel)]="numRows"
+                        type="number">
+                </div>
+            </div>
+            <div class="col-xl-3 mb-2 mb-md-0">
+                <div class="form-group">
+                    <span>Numero colonne</span>
+                    <input [disabled]="!selectedMap || !selectedMapType" [(ngModel)]="numColumns" class="form-control"
+                        type="number">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="step == 4 && currentSelectedMap"
+        class="d-flex flex-column rounded upload-esit-container p-3 shadow mt-3 gap-3">
+        <h1>{{currentSelectedMap.t_map_name}}</h1>
+        <div class="row shadow m-2 rounded p-3 event-plan-list-container">
+            <div class="d-flex justify-content-between align-items-center p-0"
+                *ngFor="let row of mapSeatList[selectedMapIndex]">
+                <ng-container *ngFor="let object of row">
+                    <div (click)="buyTicket(object)" *ngIf="object.n_id"
+                        [ngClass]="object.is_acquistabile ? '' : 'not-buy'"
+                        class="d-none d-xl-flex rounded justify-content-center align-items-center pointer border m-2"
+                        [matTooltip]="!object.is_acquistabile ? null : object.n_obj_map_text ? 'Acquista : ' + object.n_obj_map_text : 'Acquista posto numero: ' + object.t_seat_list[0].n_seat_num + '' "
+                        matTooltipPosition="above"
+                        [style]="object.n_obj_map_width && object.n_obj_map_height ? 
+                        'width:'+object.n_obj_map_width+'px; height:'+object.n_obj_map_height+'px;background:'+object.n_obj_map_fill+';':'min-width:80px;height:40px;'">
+                        {{object.n_obj_map_text ? object.n_obj_map_text : object.t_seat_list[0].n_seat_num}}</div>
+                    <div (click)="buyTicket(object)" *ngIf="object.n_id"
+                        [ngClass]="object.is_acquistabile ? '' : 'not-buy'"
+                        [matTooltip]="!object.is_acquistabile ? null : object.n_obj_map_text ? 'Acquista : ' + object.n_obj_map_text : 'Acquista posto numero: ' + object.t_seat_list[0].n_seat_num + '' "
+                        matTooltipPosition="above"
+                        class="d-flex d-xl-none rounded justify-content-center align-items-center pointer border"
+                        [style]="'background:'+object.n_obj_map_fill+';'"
+                        style="min-width: 15px;min-height: 15px;border-radius: 56px !important; margin-bottom: 10px; margin-right: 5px; font-size:8px">
+                        <span
+                            [ngClass]="!object.n_obj_map_text ? 'd-none d-lg-block mx-2' : 'mx-2'">{{object.n_obj_map_text
+                            ? object.n_obj_map_text : object.t_seat_list[0].n_seat_num}}</span>
+                    </div>
+                    <div *ngIf="!object.n_id" style="width: 40px;height: 20px;border-radius: 56px !important;"></div>
+                </ng-container>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="showAddMap" class="modal-overlay" style="z-index:10">
+    <div class="modal-content container p-3 m-3">
+        <div class="d-flex justify-content-between border-bottom mb-3">
+            <h2 class="mb-2">Aggiungi Mappa</h2>
+            <span style="font-size:38px;" class="pointer" (click)="clearAddMap()" aria-hidden="true">&times;</span>
+        </div>
+        <form [formGroup]="formMap" #formAddMap="ngForm" (ngSubmit)="addMap(formAddMap)">
+            <div class="form-group">
+                <label>Nome Mappa</label>
+                <input type="text" name="mapName" formControlName="mapName">
+            </div>
+            <div class="form-group">
+                <span>Tipo Mappa</span>
+                <ng-select class="bgcolor-transparent" [items]="mapTypeArray" [clearable]="false"
+                    placeholder="Seleziona tipo mappa" name="mapType" formControlName="mapType">
+                </ng-select>
+            </div>
+            <div class="form-group">
+                <span>Numero righe</span>
+                <input min="1" max="10" [disabled]="!selectedMap || !selectedMapType" class="form-control" type="number"
+                    name="numRows" formControlName="numRows">
+            </div>
+            <div class="form-group">
+                <span>Numero colonne</span>
+                <input min="1" max="10" [disabled]="!selectedMap || !selectedMapType" class="form-control" type="number"
+                    name="numColumns" formControlName="numColumns">
+            </div>
+            <button class="btn btn-secondary btn-sm" (click)="clearAddMap()">Annulla</button>
+            <button class="btn btn-danger btn-sm" type="submit">Aggiungi</button>
+        </form>
     </div>
 </div>

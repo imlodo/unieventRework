@@ -13,6 +13,7 @@ import { MessageModule } from '../message/message.module';
 import { ContentCreateComponent } from './compontents/content-create/content-create.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FileUploadService } from './services/file-upload-service/file-upload-service';
+import { NgSelectModule } from '@ng-select/ng-select';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { FileUploadService } from './services/file-upload-service/file-upload-se
     ContentRoutingModule,
     CoreModule,
     MatProgressBarModule,
-    HttpClientModule
+    HttpClientModule,
+    NgSelectModule
   ],
   exports: [
   ],
