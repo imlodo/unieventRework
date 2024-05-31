@@ -173,3 +173,56 @@
     background: var(--bs-dark);
     color: var(--bs-white)
 }
+
+::ng-deep .bg-dark-mode .form-group input, ::ng-deep .bg-dark-mode .form-group textarea{
+    background: var(--bs-dark);
+    color: var(--bs-gray-200);
+}
+
+
+::ng-deep .bg-dark-mode .form-group input:disabled, ::ng-deep .bg-dark-mode .form-group input:not(.n_obj_map_fill):read-only{
+    background: var(--bs-gray-800);
+    cursor: not-allowed;
+}
+
+/* Sovrascrivi lo stile di default di ng-select */
+::ng-deep .bg-dark-mode .ng-select {
+    background-color: transparent !important;
+}
+
+::ng-deep .bg-dark-mode .ng-select-container {
+    background-color: transparent !important;
+    background: transparent !important;
+    color: white !important;
+}
+
+::ng-deep input[type="radio"], ::ng-deep input[type="checkbox"]  {
+    accent-color:#d32e2a !important;
+    cursor: pointer!important;
+}
+
+::ng-deep .bg-dark-mode .ng-dropdown-panel .ng-dropdown-panel-items .ng-option {
+    background-color: rgb(37, 37, 37) !important;
+    color: white;
+    border-radius: 0px;
+}
+
+::ng-deep .bg-dark-mode .ng-option-label {
+    color: rgb(179, 179, 179) !important;
+}
+
+::ng-deep .bg-dark-mode .ng-dropdown-panel .ng-dropdown-panel-items .ng-option:hover {
+    background-color: #505355 !important;
+}
+
+/* Opzionale: Imposta il background dell'opzione selezionata */
+::ng-deep .bg-dark-mode .ng-option-marked {
+    background-color: rgba(0, 0, 0, 0.1) !important;
+    /* Cambia il colore di sfondo selezionato */
+}
+
+.form-control:focus {
+    box-shadow: 0.1rem 0 0.1rem 0.1rem #d32e2a !important; 
+    border-color: #d32e2a !important;
+    border-right: 0px !important;
+}

@@ -243,7 +243,8 @@
         <div class="d-flex justify-content-end mb-2">
             <button *ngIf="selectedMap" class="btn btn-sm btn-secondary" (click)="deleteCurrentMap()">Elimina
                 Mappa</button>
-            <button *ngIf="selectedMap && selectedMapType" class="btn btn-sm btn-secondary mx-3">Aggiungi
+            <button *ngIf="selectedMap && selectedMapType" (click)="openAddElementToCurrentMapPanel()"
+                class="btn btn-sm btn-secondary mx-3">Aggiungi
                 Elemento</button>
             <button class="btn btn-sm btn-secondary" (click)="openAddMapPanel()">Aggiungi Mappa</button>
         </div>
@@ -260,55 +261,64 @@
             <div class="col-xl-3 mb-2 mb-md-0">
                 <div class="form-group">
                     <span>Tipo Mappa</span>
-                    <ng-select class="bgcolor-transparent" [items]="mapTypeArray" [(ngModel)]="selectedMapType"
-                        [clearable]="false" placeholder="Seleziona tipo mappa" [disabled]="!selectedMap">
+                    <ng-select class="bgcolor-transparent" (change)="changeMapType()" [items]="mapTypeArray"
+                        [(ngModel)]="selectedMapType" [clearable]="false" placeholder="Seleziona tipo mappa"
+                        [disabled]="!selectedMap">
                     </ng-select>
                 </div>
             </div>
             <div class="col-xl-3 mb-2 mb-md-0">
                 <div class="form-group">
                     <span>Numero righe</span>
-                    <input [disabled]="!selectedMap || !selectedMapType" class="form-control" [(ngModel)]="numRows"
-                        type="number">
+                    <input min="1" [disabled]="!selectedMap || !selectedMapType" (keyup)="resizeMap(1)"
+                        class="form-control" [(ngModel)]="numRows" type="number">
                 </div>
             </div>
             <div class="col-xl-3 mb-2 mb-md-0">
                 <div class="form-group">
                     <span>Numero colonne</span>
-                    <input [disabled]="!selectedMap || !selectedMapType" [(ngModel)]="numColumns" class="form-control"
-                        type="number">
+                    <input min="1" max="10" [disabled]="!selectedMap || !selectedMapType" (keyup)="resizeMap(2)"
+                        [(ngModel)]="numColumns" class="form-control" type="number">
                 </div>
+            </div>
+            <div class="d-flex flex-row justify-content-end gap-3 mt-3">
+                <button class="btn btn-sm btn-secondary rounded-0" (click)="discard()">Scarta</button>
+                <button [disabled]="!isValidStep4()" *ngIf="selectedContentType==='Event'"
+                    class="btn btn-sm btn-danger rounded-0" (click)="publicContent()">Pubblica</button>
             </div>
         </div>
     </div>
     <div *ngIf="step == 4 && currentSelectedMap"
         class="d-flex flex-column rounded upload-esit-container p-3 shadow mt-3 gap-3">
-        <h1>{{currentSelectedMap.t_map_name}}</h1>
-        <div class="row shadow m-2 rounded p-3 event-plan-list-container">
+        <div class="d-flex justify-content-between align-content-center">
+            <h1>{{currentSelectedMap.t_map_name}}</h1>
+            <button class="btn btn-sm btn-secondary" (click)="automaticFillSeat()">Riempimento automatico</button>
+        </div>
+        <div *ngIf="currentSelectedMap" class="row shadow m-2 rounded p-3 event-plan-list-container"
+            style="overflow-x:scroll">
             <div class="d-flex justify-content-between align-items-center p-0"
-                *ngFor="let row of mapSeatList[selectedMapIndex]">
-                <ng-container *ngFor="let object of row">
-                    <div (click)="buyTicket(object)" *ngIf="object.n_id"
+                *ngFor="let row of seatMapList; let i = index">
+                <div style="border: 1px dashed !important; margin-bottom: 8px; margin-left:5px; margin-right:5px"
+                    *ngFor="let object of row; let j = index">
+                    <div (click)="showTicketDetail(object, i, j)" *ngIf="object.n_id"
                         [ngClass]="object.is_acquistabile ? '' : 'not-buy'"
                         class="d-none d-xl-flex rounded justify-content-center align-items-center pointer border m-2"
-                        [matTooltip]="!object.is_acquistabile ? null : object.n_obj_map_text ? 'Acquista : ' + object.n_obj_map_text : 'Acquista posto numero: ' + object.t_seat_list[0].n_seat_num + '' "
-                        matTooltipPosition="above"
+                        [matTooltip]="'Modifica'" matTooltipPosition="above"
                         [style]="object.n_obj_map_width && object.n_obj_map_height ? 
                         'width:'+object.n_obj_map_width+'px; height:'+object.n_obj_map_height+'px;background:'+object.n_obj_map_fill+';':'min-width:80px;height:40px;'">
                         {{object.n_obj_map_text ? object.n_obj_map_text : object.t_seat_list[0].n_seat_num}}</div>
-                    <div (click)="buyTicket(object)" *ngIf="object.n_id"
-                        [ngClass]="object.is_acquistabile ? '' : 'not-buy'"
-                        [matTooltip]="!object.is_acquistabile ? null : object.n_obj_map_text ? 'Acquista : ' + object.n_obj_map_text : 'Acquista posto numero: ' + object.t_seat_list[0].n_seat_num + '' "
+                    <div (click)="showTicketDetail(object, i, j)" *ngIf="object.n_id"
+                        [ngClass]="object.is_acquistabile ? '' : 'not-buy'" [matTooltip]="'Modifica'"
                         matTooltipPosition="above"
                         class="d-flex d-xl-none rounded justify-content-center align-items-center pointer border"
                         [style]="'background:'+object.n_obj_map_fill+';'"
-                        style="min-width: 15px;min-height: 15px;border-radius: 56px !important; margin-bottom: 10px; margin-right: 5px; font-size:8px">
+                        style="min-width: 15px;min-height: 15px;border-radius: 56px !important; margin:5px; font-size:8px;">
                         <span
                             [ngClass]="!object.n_obj_map_text ? 'd-none d-lg-block mx-2' : 'mx-2'">{{object.n_obj_map_text
                             ? object.n_obj_map_text : object.t_seat_list[0].n_seat_num}}</span>
                     </div>
                     <div *ngIf="!object.n_id" style="width: 40px;height: 20px;border-radius: 56px !important;"></div>
-                </ng-container>
+                </div>
             </div>
         </div>
     </div>
@@ -323,26 +333,159 @@
         <form [formGroup]="formMap" #formAddMap="ngForm" (ngSubmit)="addMap(formAddMap)">
             <div class="form-group">
                 <label>Nome Mappa</label>
-                <input type="text" name="mapName" formControlName="mapName">
+                <input class="form-control" type="text" name="mapName" formControlName="mapName" required>
             </div>
             <div class="form-group">
                 <span>Tipo Mappa</span>
                 <ng-select class="bgcolor-transparent" [items]="mapTypeArray" [clearable]="false"
-                    placeholder="Seleziona tipo mappa" name="mapType" formControlName="mapType">
+                    placeholder="Seleziona tipo mappa" name="mapType" formControlName="mapType" required>
                 </ng-select>
             </div>
             <div class="form-group">
                 <span>Numero righe</span>
-                <input min="1" max="10" [disabled]="!selectedMap || !selectedMapType" class="form-control" type="number"
-                    name="numRows" formControlName="numRows">
+                <input min="1" max="20" [disabled]="!selectedMap || !selectedMapType" class="form-control" type="number"
+                    name="numRows" formControlName="numRows" required>
             </div>
             <div class="form-group">
                 <span>Numero colonne</span>
-                <input min="1" max="10" [disabled]="!selectedMap || !selectedMapType" class="form-control" type="number"
-                    name="numColumns" formControlName="numColumns">
+                <input min="1" max="20" [disabled]="!selectedMap || !selectedMapType" class="form-control" type="number"
+                    name="numColumns" formControlName="numColumns" required>
             </div>
             <button class="btn btn-secondary btn-sm" (click)="clearAddMap()">Annulla</button>
-            <button class="btn btn-danger btn-sm" type="submit">Aggiungi</button>
+            <button class="btn btn-danger btn-sm" type="submit" [disabled]="!formAddMap.valid">Aggiungi</button>
+        </form>
+    </div>
+</div>
+
+<div *ngIf="showAddElement" class="modal-overlay" style="z-index:10">
+    <div class="modal-content container p-3 m-3">
+        <div class="d-flex justify-content-between border-bottom mb-3">
+            <h2 class="mb-2">Aggiungi Elemento</h2>
+            <span style="font-size:38px;" class="pointer" (click)="closeAddElementToCurrentMapPanel()"
+                aria-hidden="true">&times;</span>
+        </div>
+        <form class="row" [formGroup]="formAddElementToMap" #formAddElementToMapContainer="ngForm"
+            (ngSubmit)="addElementToCurrentMap(formAddElementToMapContainer)">
+            <div *ngIf="formAddElementToMapContainer?.value?.elementType != 'CONSOLE' " class="form-group col-12">
+                <span>Nome elemento</span>
+                <input class="form-control" type="text" name="n_obj_map_text" formControlName="n_obj_map_text" required>
+            </div>
+            <div class="form-group col-6">
+                <span>Tipo Elemento</span>
+                <ng-select class="bgcolor-transparent" [items]="objectTypeArray" [clearable]="false"
+                    placeholder="Seleziona tipo elemento" name="elementType" formControlName="elementType" required>
+                </ng-select>
+            </div>
+            <div *ngIf="formAddElementToMapContainer?.value?.elementType != 'CONSOLE' " class="form-group col-6">
+                <span>Costo in euro</span>
+                <input min="1" step="0.01" class="form-control" type="number" name="price" formControlName="price" required>
+            </div>
+
+            <div class="form-group col-4">
+                <span>Posizione X</span>
+                <input min="0" max="10" step="1" class="form-control" type="number" name="xPos"
+                    formControlName="xPos" required>
+            </div>
+            <div class="form-group col-4">
+                <span>Posizione Y</span>
+                <input min="0" max="10" step="1" class="form-control" type="number" name="yPos"
+                    formControlName="yPos" required>
+            </div>
+
+            <div *ngIf="formAddElementToMapContainer?.value?.elementType != 'CONSOLE' " class="form-group col-4">
+                <span>Numero min. persone</span>
+                <input min="0" max="10" step="1" class="form-control" (change)="checkNumMinMaxPerson(1,formAddElementToMapContainer)" type="number" name="n_min_num_person"
+                    formControlName="n_min_num_person" required>
+            </div>
+            <div *ngIf="formAddElementToMapContainer?.value?.elementType != 'CONSOLE' " class="form-group col-4">
+                <span>Numero max. persone</span>
+                <input min="0" max="10" step="1" class="form-control" (change)="checkNumMinMaxPerson(1,formAddElementToMapContainer)" type="number" name="n_max_num_person"
+                    formControlName="n_max_num_person" required>
+            </div>
+            <div *ngIf="formAddElementToMapContainer?.value?.elementType != 'CONSOLE' " class="form-group col-4">
+                <span>Colore elemento</span>
+                <input style="min-height:38px" class="form-control n_obj_map_fill" type="color" name="n_obj_map_fill"
+                    formControlName="n_obj_map_fill">
+            </div>
+            <div *ngIf="formAddElementToMapContainer?.value?.elementType != 'CONSOLE' " class="form-group col-12">
+                <span>Nota (Informazioni aggiuntive)</span>
+                <textarea class="form-control" name="t_note" rows="5" (resize)="false" formControlName="t_note"
+                    style="resize: none;"></textarea>
+            </div>
+            <div *ngIf="formAddElementToMapContainer?.value?.elementType != 'CONSOLE' " class="form-group">
+                <span>Acquistabile? </span>
+                <input type="checkbox" name="is_acquistabile" formControlName="is_acquistabile">
+            </div>
+            <div class="d-flex justify-content-end">
+                <button class="btn btn-secondary btn-sm" (click)="closeAddElementToCurrentMapPanel()">Annulla</button>
+                <button class="btn btn-danger btn-sm" type="submit" [disabled]="!formAddElementToMapContainer.valid">Aggiungi</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div *ngIf="showEditElement" class="modal-overlay" style="z-index:10">
+    <div class="modal-content container p-3 m-3">
+        <div class="d-flex justify-content-between border-bottom mb-3">
+            <h2 class="mb-2">Modifica Elemento</h2>
+            <span style="font-size:38px;" class="pointer" (click)="closeEditElement()" aria-hidden="true">&times;</span>
+        </div>
+        <form class="row" [formGroup]="formEditElementToMap" #formEditElementToMapContainer="ngForm"
+            (ngSubmit)="editElementToCurrentMap(formEditElementToMapContainer)">
+            <div *ngIf="formEditElementToMapContainer?.value?.elementType != 'CONSOLE' " class="form-group col-12">
+                <span>Nome elemento</span>
+                <input class="form-control" type="text" name="n_obj_map_text" formControlName="n_obj_map_text" required>
+            </div>
+            <div class="form-group col-6">
+                <span>Tipo Elemento</span>
+                <ng-select class="bgcolor-transparent" [items]="objectTypeArray" [clearable]="false"
+                    placeholder="Seleziona tipo elemento" name="elementType" formControlName="elementType" required>
+                </ng-select>
+            </div>
+            <div *ngIf="formEditElementToMapContainer?.value?.elementType != 'CONSOLE' " class="form-group col-6">
+                <span>Costo in euro</span>
+                <input min="1" step="0.01" class="form-control" type="number" name="price" formControlName="price" required>
+            </div>
+
+            <div class="form-group col-4">
+                <span>Posizione X</span>
+                <input readonly min="0" max="10" step="1" class="form-control" type="number" name="xPos"
+                    formControlName="xPos" required>
+            </div>
+            <div class="form-group col-4">
+                <span>Posizione Y</span>
+                <input readonly min="0" max="10" step="1" class="form-control" type="number" name="yPos"
+                    formControlName="yPos" required>
+            </div>
+
+            <div *ngIf="formEditElementToMapContainer?.value?.elementType != 'CONSOLE' " class="form-group col-4">
+                <span>Numero min. persone</span>
+                <input min="0" max="10" step="1" class="form-control" (change)="checkNumMinMaxPerson(2,formEditElementToMapContainer)" type="number" name="n_min_num_person"
+                    formControlName="n_min_num_person" required>
+            </div>
+            <div *ngIf="formEditElementToMapContainer?.value?.elementType != 'CONSOLE' " class="form-group col-4">
+                <span>Numero max. persone</span>
+                <input min="0" max="10" step="1" class="form-control" (change)="checkNumMinMaxPerson(2,formEditElementToMapContainer)" type="number" name="n_max_num_person"
+                    formControlName="n_max_num_person" required>
+            </div>
+            <div *ngIf="formEditElementToMapContainer?.value?.elementType != 'CONSOLE' " class="form-group col-4">
+                <span>Colore elemento</span>
+                <input style="min-height:38px" class="form-control n_obj_map_fill" type="color" name="n_obj_map_fill"
+                    formControlName="n_obj_map_fill">
+            </div>
+            <div *ngIf="formEditElementToMapContainer?.value?.elementType != 'CONSOLE' " class="form-group col-12">
+                <span>Nota (Informazioni aggiuntive)</span>
+                <textarea class="form-control" name="t_note" rows="5" (resize)="false" formControlName="t_note"
+                    style="resize: none;"></textarea>
+            </div>
+            <div *ngIf="formEditElementToMapContainer?.value?.elementType != 'CONSOLE' " class="form-group">
+                <span>Acquistabile? </span>
+                <input type="checkbox" name="is_acquistabile" formControlName="is_acquistabile">
+            </div>
+            <div class="d-flex justify-content-end">
+                <button type="button" class="btn btn-secondary btn-sm" (click)="deleteElement(formEditElementToMapContainer)">Elimina</button>
+                <button class="btn btn-danger btn-sm" type="submit" [disabled]="!formEditElementToMapContainer.valid">Modifica</button>
+            </div>
         </form>
     </div>
 </div>

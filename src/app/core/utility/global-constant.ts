@@ -4,7 +4,9 @@ import { Event } from "../models/event";
 export const MAX_NUM_SLIDE = 5;
 
 export enum MAP_TYPE {
-    DISCOTECA = 'DISCOTECA'
+    DISCOTECA = 'DISCOTECA',
+    //CONCERTO = 'CONCERTO',
+    //STADIO = 'STADIO'
 }
 
 export enum USER_TYPE {
@@ -57,6 +59,15 @@ export enum EVENT_TICKET_TYPE {
     BOTTLE_TICKET_PRICE,
     BOTTLE_VIP_TICKET_PRICE
 }
+
+export enum OBJECT_MAP_TYPE_STRING {
+    "CONSOLE" = "CONSOLE",
+    "TABLE_DISCOTECA_DJ" = "TAVOLO DJ DISCOTECA",
+    "TABLE_DISCOTECA" = "TAVOLO DISCOTECA",
+    "SEAT_NO_CONSUMATION" = "POSTO SENZA CONSUMAZIONE",
+    "SEAT_WITH_CONSUMATION" = "POSTO CON CONSUMAZIONE",
+}
+
 export interface OBJECT_MAP_TYPE {
     TABLE?: {
         DISCOTECA?: boolean;
@@ -66,11 +77,6 @@ export interface OBJECT_MAP_TYPE {
         TYPE: {
             NO_CONSUMATION?: boolean;
             WITH_CONSUMATION?: boolean;
-        },
-        ROW?: {
-            NO_ROW?: boolean;
-            A?: boolean;
-            B?: boolean;
         }
     }
 }
@@ -31756,15 +31762,15 @@ export const COLORS: Record<string, EventColor> = {
 export function getTicketNameByType(etpType: OBJECT_MAP_TYPE) {
     switch (true) {
         case etpType.TABLE?.DISCOTECA === true:
-            return "Tavolo";
+            return OBJECT_MAP_TYPE_STRING["TABLE_DISCOTECA"];
         case etpType.SEAT?.TYPE.NO_CONSUMATION === true:
-            return "Standard";
+            return OBJECT_MAP_TYPE_STRING["SEAT_NO_CONSUMATION"];
         case etpType.SEAT?.TYPE.WITH_CONSUMATION === true:
-            return "Consumazione";
+            return OBJECT_MAP_TYPE_STRING["SEAT_WITH_CONSUMATION"];
         case etpType.TABLE?.DISCOTECA_DJ === true:
-            return "Tavolo DJ";
+            return OBJECT_MAP_TYPE_STRING["TABLE_DISCOTECA_DJ"];
         default:
-            return "Standard";
+            return OBJECT_MAP_TYPE_STRING["SEAT_NO_CONSUMATION"];
     }
 }
 

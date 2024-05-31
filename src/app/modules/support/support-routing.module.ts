@@ -17,6 +17,10 @@ const routes: Routes = [
       {
         path: "detail/:params",
         component: SupportTicketDetailComponent
+      },
+      {
+        path: ":params",
+        component: SupportAndHelpComponent
       }
     ]
   }

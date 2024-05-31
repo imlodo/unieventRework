@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomepageComponent, InternalServerErrorComponent, LoginComponent, NotFoundComponent, SignupComponent } from './core/components';
 import { ContentCreateComponent } from './modules/content/compontents/content-create/content-create.component';
+import { OurMissionsComponent } from './modules/about/components/our-missions/our-missions.component';
 
 const routes: Routes = [
 	{
@@ -75,6 +76,13 @@ const routes: Routes = [
 				component: ContentCreateComponent,
 				data: {
 					title: 'Crea Contenuto',
+				},
+			},
+			{
+				path: 'our-mission',
+				component: OurMissionsComponent,
+				data: {
+					title: 'La nostra missione',
 				},
 			}
 		]

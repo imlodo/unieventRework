@@ -1,0 +1,9 @@
+#our-mission{
+    background: var(--bs-light);
+    color: black;
+}
+
+::ng-deep .bg-dark-mode #our-mission{
+    background: var(--bs-dark);
+    color: white;
+}

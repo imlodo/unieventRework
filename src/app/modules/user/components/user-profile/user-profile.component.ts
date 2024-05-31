@@ -81,6 +81,9 @@ export class UserProfileComponent implements AfterViewInit {
           if(decode.profileItemType === "Booked"){
             this.selectedType = ProfileItemType.Booked;
           }
+          if(decode.profileItemType === "Liked"){
+            this.selectedType = ProfileItemType.Liked;
+          }
         }
       }
       );
