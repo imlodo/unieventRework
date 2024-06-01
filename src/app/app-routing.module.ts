@@ -3,6 +3,12 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomepageComponent, InternalServerErrorComponent, LoginComponent, NotFoundComponent, SignupComponent } from './core/components';
 import { ContentCreateComponent } from './modules/content/compontents/content-create/content-create.component';
 import { OurMissionsComponent } from './modules/about/components/our-missions/our-missions.component';
+import { OurCommitmentComponent } from './modules/about/components/our-commitment/our-commitment.component';
+import { PartnerComponent } from './modules/about/components/partner/partner.component';
+import { PrivacyPolicyComponent } from './modules/legal/components/privacy-policy/privacy-policy.component';
+import { DataProcessingComponent } from './modules/legal/components/data-processing/data-processing.component';
+import { CookiePolicyComponent } from './modules/legal/components/cookie-policy/cookie-policy.component';
+import { RulesComponent } from './modules/legal/components/rules/rules.component';
 
 const routes: Routes = [
 	{
@@ -83,6 +89,48 @@ const routes: Routes = [
 				component: OurMissionsComponent,
 				data: {
 					title: 'La nostra missione',
+				},
+			},
+			{
+				path: 'our-commitment',
+				component: OurCommitmentComponent,
+				data: {
+					title: 'Il nostro impegno',
+				},
+			},
+			{
+				path: 'partner',
+				component: PartnerComponent,
+				data: {
+					title: 'Partners',
+				},
+			},
+			{
+				path: 'privacy-policy',
+				component: PrivacyPolicyComponent,
+				data: {
+					title: 'Privacy policy',
+				},
+			},
+			{
+				path: 'terms-of-use',
+				component: DataProcessingComponent,
+				data: {
+					title: 'Terms of use',
+				},
+			},
+			{
+				path: 'cookie-policy',
+				component: CookiePolicyComponent,
+				data: {
+					title: 'Terms of use',
+				},
+			},
+			{
+				path: 'rules',
+				component: RulesComponent,
+				data: {
+					title: 'Terms of use',
 				},
 			}
 		]

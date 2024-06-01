@@ -11,10 +11,13 @@ import { HttpClientModule } from '@angular/common/http';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { AboutRoutingModule } from './about-routing.module';
 import { OurMissionsComponent } from './components/our-missions/our-missions.component';
-
+import { OurCommitmentComponent } from './components/our-commitment/our-commitment.component';
+import { PartnerComponent } from './components/partner/partner.component';
 @NgModule({
   declarations: [
-    OurMissionsComponent
+    OurMissionsComponent,
+    OurCommitmentComponent,
+    PartnerComponent,
   ],
   imports: [
     CommonModule,

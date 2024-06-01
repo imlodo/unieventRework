@@ -1,0 +1,9 @@
+#our-commitment{
+    background: var(--bs-light);
+    color: black;
+}
+
+::ng-deep .bg-dark-mode #our-commitment{
+    background: var(--bs-dark);
+    color: white;
+}

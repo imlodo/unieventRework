@@ -1,0 +1,33 @@
+#our-partners {
+    background: var(--bs-light);
+    color: black;
+}
+
+::ng-deep .bg-dark-mode #our-partners {
+    background: var(--bs-dark);
+    color: white;
+}
+
+::ng-deep .bg-dark-mode .card {
+    background: #343a41;
+    color: white;
+}
+
+.card {
+    align-items: center;
+}
+
+.card img {
+    max-width: 150px;
+    min-width: 150px;
+    max-height: 100px;
+    min-height: 100px;
+    object-fit: contain;
+}
+
+.card-text {
+    display: -webkit-box;
+    -webkit-line-clamp: 6;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}

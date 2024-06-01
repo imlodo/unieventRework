@@ -12,11 +12,15 @@ import { HttpClientModule } from '@angular/common/http';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { PrivacyPolicyComponent } from './components/privacy-policy/privacy-policy.component';
 import { DataProcessingComponent } from './components/data-processing/data-processing.component';
+import { CookiePolicyComponent } from './components/cookie-policy/cookie-policy.component';
+import { RulesComponent } from './components/rules/rules.component';
 
 @NgModule({
   declarations: [
     PrivacyPolicyComponent,
-    DataProcessingComponent
+    DataProcessingComponent,
+    CookiePolicyComponent,
+    RulesComponent
   ],
   imports: [
     CommonModule,
