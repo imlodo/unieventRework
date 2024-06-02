@@ -10,20 +10,12 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { HttpClientModule } from '@angular/common/http';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { ExploreRoutingModule } from './explore-routing.module';
-import { FollowedComponent } from './components/followed/followed.component';
-import { FeaturedComponent } from './components/featured/featured.component';
-import { EventsComponent } from './components/events/events.component';
-import { TopicsComponent } from './components/topics/topics.component';
 import { ExploreComponent } from './components/explore/explore.component';
 import { CoreModule } from 'src/app/core/core.module';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
 @NgModule({
   declarations: [
-    FollowedComponent,
-    FeaturedComponent,
-    EventsComponent,
-    TopicsComponent,
     ExploreComponent
   ],
   imports: [

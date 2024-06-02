@@ -13,7 +13,7 @@
             </a>
         </li>
         <li class="nav-item" [ngClass]="{ 'active': isLinkActive('/explore/followed') }">
-            <a class="nav-link" href="/explore/followed">
+            <a class="nav-link" style="cursor:pointer" (click)="navigateToExploreSection('Followed')">
                 <div class="d-flex flex-row align-items-center">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
                         class="bi bi-person-video3 icon-sx-margin" viewBox="0 0 16 16">
@@ -55,7 +55,7 @@
     </div>
     <ul class="navbar-nav ms-auto">
         <li class="nav-item" [ngClass]="{ 'active': isLinkActive('/explore/featured') }">
-            <a class="nav-link" href="/explore/featured">
+            <a class="nav-link" style="cursor:pointer" (click)="navigateToExploreSection('Featured')">
                 <div class="d-flex flex-row align-items-center">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                         class="bi bi-fire icon-sx-margin" viewBox="0 0 16 16">
@@ -67,7 +67,7 @@
             </a>
         </li>
         <li class="nav-item" [ngClass]="{ 'active': isLinkActive('/explore/events') }">
-            <a class="nav-link" href="/explore/events">
+            <a class="nav-link" style="cursor:pointer" (click)="navigateToExploreSection('Events')">
                 <div class="d-flex flex-row align-items-center">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                         class="bi bi-calendar-event icon-sx-margin" viewBox="0 0 16 16">
@@ -80,7 +80,7 @@
             </a>
         </li>
         <li class="nav-item" [ngClass]="{ 'active': isLinkActive('/explore/topics') }">
-            <a class="nav-link" href="/explore/topics">
+            <a class="nav-link" style="cursor:pointer" (click)="navigateToExploreSection('Topics')">
                 <div class="d-flex flex-row align-items-center">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                         class="bi bi-camera-reels icon-sx-margin" viewBox="0 0 16 16">

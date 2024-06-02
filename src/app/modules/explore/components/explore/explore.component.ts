@@ -5,6 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { randomIntFromInterval } from 'src/app/core/utility/functions-constants';
 import { User } from 'src/app/core/models/user';
 import moment from 'moment';
+import { pluck } from 'rxjs';
 
 @Component({
   selector: 'unievent-explore',
@@ -51,6 +52,25 @@ export class ExploreComponent {
 
   constructor(private cdr: ChangeDetectorRef, private elementRef: ElementRef, private renderer: Renderer2, private globalService: GlobalService, private route: ActivatedRoute, private router: Router) {
     this.bodyElement = this.elementRef.nativeElement.ownerDocument.body;
+  }
+
+  ngAfterViewInit(){
+    this.decodeParams();
+    this.cdr.detectChanges();
+  }
+
+  decodeParams() {
+    this.route.params
+      .pipe(pluck('params'))
+      .subscribe((result) => {
+        const decode = this.globalService.decodeParams(result);
+        this.selectedType = decode.exploreItemType;
+        this.initialize();
+      }
+      );
+  }
+
+  initialize(){
     this.loadMoreItems(this.selectedType);
   }
 

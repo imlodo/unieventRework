@@ -1,7 +1,7 @@
 import { AfterViewInit, Component, ElementRef, HostListener, Input, Renderer2 } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { User } from '../../models/user';
-import { ProfileItemType, USER_TYPE } from '../../utility/global-constant';
+import { ExploreItemType, ProfileItemType, ROUTE_LIST, USER_TYPE } from '../../utility/global-constant';
 import { GlobalService } from '../../services';
 
 @Component({
@@ -63,6 +63,35 @@ export class NavbarLeftMenuComponent implements AfterViewInit {
         this.router.navigate([link]);
         break;
     }
+  }
+
+  navigateToExploreSection(type: string) {
+    let params = this.globalService.encodeParams({
+      exploreItemType: ExploreItemType.All
+    });
+    switch (type) {
+      case "Featured":
+        params = this.globalService.encodeParams({
+          exploreItemType: ExploreItemType.Featured
+        });
+        break;
+      case "Followed":
+        params = this.globalService.encodeParams({
+          exploreItemType: ExploreItemType.Followed
+        });
+        break;
+      case "Topics":
+        params = this.globalService.encodeParams({
+          exploreItemType: ExploreItemType.Topics
+        });
+        break;
+      case "Events":
+        params = this.globalService.encodeParams({
+          exploreItemType: ExploreItemType.Events
+        });
+        break;
+    }
+    this.router.navigate([ROUTE_LIST.explore, params]);
   }
 
   private updateMargin(): void {
