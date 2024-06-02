@@ -9,15 +9,22 @@ import { MatInputModule } from '@angular/material/input';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { HttpClientModule } from '@angular/common/http';
 import { MatTooltipModule } from '@angular/material/tooltip';
-import { AboutRoutingModule } from './about-routing.module';
-import { OurMissionsComponent } from './components/our-missions/our-missions.component';
-import { OurCommitmentComponent } from './components/our-commitment/our-commitment.component';
-import { PartnerComponent } from './components/partner/partner.component';
+import { ExploreRoutingModule } from './explore-routing.module';
+import { FollowedComponent } from './components/followed/followed.component';
+import { FeaturedComponent } from './components/featured/featured.component';
+import { EventsComponent } from './components/events/events.component';
+import { TopicsComponent } from './components/topics/topics.component';
+import { ExploreComponent } from './components/explore/explore.component';
+import { CoreModule } from 'src/app/core/core.module';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+
 @NgModule({
   declarations: [
-    OurMissionsComponent,
-    OurCommitmentComponent,
-    PartnerComponent,
+    FollowedComponent,
+    FeaturedComponent,
+    EventsComponent,
+    TopicsComponent,
+    ExploreComponent
   ],
   imports: [
     CommonModule,
@@ -29,17 +36,19 @@ import { PartnerComponent } from './components/partner/partner.component';
     MatFormFieldModule,
     MatInputModule,
     BsDatepickerModule.forRoot(),
-    AboutRoutingModule,
-    HttpClientModule
+    ExploreRoutingModule,
+    HttpClientModule,
+    CoreModule,
+    InfiniteScrollModule
   ],
   exports: [
   ],
-  id: 'About'
+  id: 'Explore'
 })
-export class AboutModule {
+export class ExportModule {
   static forRoot() {
     return {
-      ngModule: AboutModule,
+      ngModule: ExportModule,
       providers: [],
     };
   }

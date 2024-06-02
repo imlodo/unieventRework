@@ -78,6 +78,10 @@ const routes: Routes = [
 				loadChildren: () => import('./modules/legal/legal.module').then((m) => m.LegalModule),
 			},
 			{
+				path: 'explore',
+				loadChildren: () => import('./modules/explore/explore.module').then((m) => m.ExportModule),
+			},
+			{
 				path: 'create',
 				component: ContentCreateComponent,
 				data: {

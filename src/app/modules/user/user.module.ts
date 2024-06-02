@@ -30,7 +30,7 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
   ],
   providers: [
   ],
-  id: 'Event'
+  id: 'User'
 })
 export class UserModule {
   static forRoot() {

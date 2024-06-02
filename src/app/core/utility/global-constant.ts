@@ -40,6 +40,14 @@ export enum ProfileItemType {
     Booked = "Booked"
 }
 
+export enum ExploreItemType {
+    All = "All",
+    Featured = "Featured",
+    Followed = "Followed",
+    Events = "Events",
+    Topics = "Topics"
+}
+
 export const EVENT_TYPE_ARRAY = [
     { id: EVENT_TYPE.PARTY, value: EVENT_TYPE.PARTY },
     { id: EVENT_TYPE.CINEMA, value: EVENT_TYPE.CINEMA },

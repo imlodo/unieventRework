@@ -40,7 +40,7 @@ import { NgSelectModule } from '@ng-select/ng-select';
   providers: [
     FileUploadService
   ],
-  id: 'Event'
+  id: 'Content'
 })
 export class ContentModule {
   static forRoot() {
