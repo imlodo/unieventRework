@@ -9,6 +9,7 @@ import { PrivacyPolicyComponent } from './modules/legal/components/privacy-polic
 import { DataProcessingComponent } from './modules/legal/components/data-processing/data-processing.component';
 import { CookiePolicyComponent } from './modules/legal/components/cookie-policy/cookie-policy.component';
 import { RulesComponent } from './modules/legal/components/rules/rules.component';
+import { ForgotPasswordComponent } from './core/components/forgot-password/forgot-password.component';
 
 const routes: Routes = [
 	{
@@ -120,21 +121,28 @@ const routes: Routes = [
 				path: 'terms-of-use',
 				component: DataProcessingComponent,
 				data: {
-					title: 'Terms of use',
+					title: 'Termini e condizioni',
 				},
 			},
 			{
 				path: 'cookie-policy',
 				component: CookiePolicyComponent,
 				data: {
-					title: 'Terms of use',
+					title: 'Trattamento cookie',
 				},
 			},
 			{
 				path: 'rules',
 				component: RulesComponent,
 				data: {
-					title: 'Terms of use',
+					title: 'Regolamenti',
+				},
+			},
+			{
+				path: 'forgot-password',
+				component: ForgotPasswordComponent,
+				data: {
+					title: 'Password Dimenticata',
 				},
 			}
 		]

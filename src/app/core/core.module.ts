@@ -30,6 +30,7 @@ import { ApproximateNumberPipe } from './pipe/approximate-number.pipe';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { ParametricModalComponent } from './components/parametric-modal/parametric-modal.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 
 @NgModule({
 	declarations: [
@@ -62,7 +63,8 @@ import { MatDialogModule } from '@angular/material/dialog';
 		NavbarSearchbarComponent,
 		ContentInfiniteScrollComponent,
 		ApproximateNumberPipe,
-		ParametricModalComponent
+		ParametricModalComponent,
+  ForgotPasswordComponent
 	],
 	imports: [
 		CommonModule,
