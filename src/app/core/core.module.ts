@@ -31,6 +31,7 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { ParametricModalComponent } from './components/parametric-modal/parametric-modal.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
+import { ForgotPasswordFormComponent } from './forms/forgot-password-form/forgot-password-form.component';
 
 @NgModule({
 	declarations: [
@@ -64,7 +65,8 @@ import { ForgotPasswordComponent } from './components/forgot-password/forgot-pas
 		ContentInfiniteScrollComponent,
 		ApproximateNumberPipe,
 		ParametricModalComponent,
-  ForgotPasswordComponent
+  ForgotPasswordComponent,
+  ForgotPasswordFormComponent
 	],
 	imports: [
 		CommonModule,

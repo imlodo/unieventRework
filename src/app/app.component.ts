@@ -3,6 +3,7 @@ import { HomepageComponent, LoginComponent, NavbarComponent, NotFoundComponent, 
 import { ActivatedRouteSnapshot, NavigationEnd, NavigationStart, Router, RoutesRecognized } from '@angular/router';
 import { filter } from 'rxjs';
 import { ContentDetailComponent } from './modules/content/compontents/content-detail/content-detail.component';
+import { ForgotPasswordComponent } from './core/components/forgot-password/forgot-password.component';
 
 @Component({
   selector: 'app-root',
@@ -21,16 +22,21 @@ export class AppComponent implements OnInit, AfterViewInit {
   darkMode: boolean = false;
 
   constructor(private router: Router, private cdr: ChangeDetectorRef) {
-   
+
   }
 
   ngOnInit(): void {
-    
+
     this.router.events.pipe(
       filter((event) => event instanceof NavigationEnd)
     ).subscribe((event: NavigationEnd) => {
       const rootRoute = this.findRootRoute(this.router.routerState.snapshot.root);
-      this.showMenu = rootRoute && rootRoute.routeConfig?.component !== LoginComponent && rootRoute.routeConfig?.component !== SignupComponent && rootRoute.routeConfig?.component !== ContentDetailComponent;
+      this.showMenu =
+        rootRoute &&
+        rootRoute.routeConfig?.component !== LoginComponent &&
+        rootRoute.routeConfig?.component !== SignupComponent &&
+        rootRoute.routeConfig?.component !== ContentDetailComponent &&
+        rootRoute.routeConfig?.component !== ForgotPasswordComponent;
       this.showMenuLeft = this.showMenu && rootRoute && rootRoute.routeConfig?.component === HomepageComponent;
     });
 
@@ -68,10 +74,10 @@ export class AppComponent implements OnInit, AfterViewInit {
   }
 
   closeCollapse() {
-    if(this.searchCollapse){
+    if (this.searchCollapse) {
       this.searchCollapse.isShow = false;
     }
-    if(this.navbar){
+    if (this.navbar) {
       this.navbar.isShowed = false;
     }
   }
