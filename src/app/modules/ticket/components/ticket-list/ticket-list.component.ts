@@ -6,6 +6,7 @@ import { MatSort } from '@angular/material/sort';
 import { Router } from '@angular/router';
 import { ROUTE_LIST } from 'src/app/core/utility/global-constant';
 import { GlobalService } from 'src/app/core/services';
+import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'unievent-ticket-list',
@@ -17,8 +18,16 @@ export class TicketListComponent {
   @ViewChild(MatSort, { static: true }) sort: MatSort;
   ticketData: MatTableDataSource<any>;
   displayedColumns: string[] = ['numeroTicket', 'titolo', 'stato', 'dataCreazione', 'azioni'];
+  showReviewsPanel: boolean = false;
+  formReview = new FormGroup({
+    title: new FormControl(''),
+    body: new FormControl(''),
+    date: new FormControl(''),
+    starsNum: new FormControl('')
+  });
+  constructor(private router: Router, private globalService: GlobalService) {
 
-  constructor(private router: Router, private globalService: GlobalService) { }
+  }
 
   ngOnInit(): void {
     const data: any[] = [];
@@ -47,7 +56,16 @@ export class TicketListComponent {
     this.router.navigate([ROUTE_LIST.tickets, params]);
   }
 
-  openReviewsPanel(){
-    
+  openReviewsPanel() {
+    this.showReviewsPanel = true;
   }
+
+  cancelAddReview(){
+    this.showReviewsPanel = false;
+  }
+
+  addReview(form:any){
+
+  }
+
 }

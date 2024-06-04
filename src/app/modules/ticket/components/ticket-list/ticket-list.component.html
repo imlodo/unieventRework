@@ -2,34 +2,68 @@
     <h1>Lista Biglietti</h1>
     <table mat-table [dataSource]="ticketData" class="mat-elevation-z8" matSort>
         <ng-container matColumnDef="numeroTicket">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header> Numero ticket </th>
-            <td mat-cell *matCellDef="let ticket"> {{ticket.numeroTicket}} </td>
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Numero ticket</th>
+            <td mat-cell *matCellDef="let ticket">{{ ticket.numeroTicket }}</td>
         </ng-container>
 
         <ng-container matColumnDef="titolo">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header> Evento </th>
-            <td mat-cell *matCellDef="let ticket"> {{ticket.titolo}} </td>
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Evento</th>
+            <td mat-cell *matCellDef="let ticket">{{ ticket.titolo }}</td>
         </ng-container>
 
         <ng-container matColumnDef="stato">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header> Stato </th>
-            <td mat-cell *matCellDef="let ticket"> {{ticket.stato}} </td>
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Stato</th>
+            <td mat-cell *matCellDef="let ticket">{{ ticket.stato }}</td>
         </ng-container>
 
         <ng-container matColumnDef="dataCreazione">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header> Data Creazione </th>
-            <td mat-cell *matCellDef="let ticket"> {{ticket.dataCreazione}} </td>
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Data Creazione</th>
+            <td mat-cell *matCellDef="let ticket">{{ ticket.dataCreazione }}</td>
         </ng-container>
 
         <ng-container matColumnDef="azioni">
-            <th mat-header-cell *matHeaderCellDef> Azioni </th>
+            <th mat-header-cell *matHeaderCellDef>Azioni</th>
             <td mat-cell *matCellDef="let ticket">
                 <button class="btn btn-secondary" (click)="showDetails(ticket)">Dettaglio</button>
                 <button class="btn btn-secondary mx-3" (click)="openReviewsPanel()">Lascia recensione</button>
             </td>
         </ng-container>
+
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
     <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" showFirstLastButtons></mat-paginator>
+</div>
+
+<div id="reviewPanel" *ngIf="showReviewsPanel" class="modal-overlay" style="z-index:10">
+    <div class="modal-content container p-3 m-3">
+        <div class="d-flex justify-content-between border-bottom mb-3">
+            <h2 class="mb-2">Valuta la tua esperienza</h2>
+            <span style="font-size:38px;" class="pointer" (click)="cancelAddReview()" aria-hidden="true">&times;</span>
+        </div>
+        <form class="mb-5" [formGroup]="formReview" #formAddReview="ngForm" (ngSubmit)="addReview(formAddReview)">
+            <div class="form-group">
+                <label>Vota la tua esperienza</label>
+                <br>
+                <span>Qui vanno le stelle</span>
+            </div>
+            <div class="form-group">
+                <span>Titolo</span>
+                <input class="form-control" type="text" name="title" formControlName="title" required>
+            </div>
+            <div class="form-group">
+                <label>Raccontaci la tua esperienza</label>
+                <textarea class="form-control" name="body" formControlName="body" required></textarea>
+            </div>
+            <div class="form-group">
+                <span>Data dell'esperienza</span>
+                <input class="form-control date" type="date" name="date" formControlName="date" required>
+            </div>
+            <h5 class="text-secondary">Pubblicando questa recensione, confermi che si basa su un'esperienza reale e che non hai ricevuto alcun incentivo per scriverla.</h5>
+            <div class="d-flex flex-row justify-content-end">
+                <button class="btn btn-secondary btn-sm" (click)="cancelAddReview()">Annulla</button>
+                <button class="btn btn-danger btn-sm" type="submit" [disabled]="!formAddReview.valid">Invia</button>
+            </div>
+        </form>
+    </div>
 </div>
