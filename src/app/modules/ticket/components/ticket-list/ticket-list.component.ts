@@ -58,14 +58,17 @@ export class TicketListComponent {
 
   openReviewsPanel() {
     this.showReviewsPanel = true;
+    this.formReview.reset();
   }
 
   cancelAddReview(){
     this.showReviewsPanel = false;
+    this.formReview.reset();
   }
 
   addReview(form:any){
-
+    this.showReviewsPanel = false;
+    this.formReview.reset();
   }
 
 }
