@@ -79,13 +79,55 @@ export class FrequentlyAnswersComponent {
       },
       {
         id: 3,
-        captionTitle: "Come cambio la mia password?",
+        captionTitle: "Come modifico la mia password?",
         contentItem: {
-          title: "Cambio della password"
+          title: "Modifica della password",
+          body: {
+            paragraphList: [
+              {
+                html: `<span>Dalla schermata principale fare click sull'icona profilo (1), e dal menù a tendina fare click su Impostazioni (2)</span> `,
+                image: { url: "/assets/img/cp.jpg", width: 200 }
+              },
+              {
+                html: `<span>Nella schermata successiva fare click su Modifica in corrispondenza di Modifica password (3)</span>`,
+                image: { url: "/assets/img/cp2.jpg"}
+              },
+              {
+                html: `Compilare i campi password, inserendo prima la password attuale (4) e poi la nuova password (5). Infine fare click sul pulsante Modifica per salvare le modifiche. (6)`,
+                image: { url: "/assets/img/cp3.jpg", width: 400}
+              }
+            ]
+          }
         }
       },
       {
         id: 4,
+        captionTitle: "Come richiedo il reset della password?",
+        contentItem: {
+          title: "Reset password",
+          body: {
+            paragraphList: [
+              {
+                html: `<span>Dalla schermata principale fare click sul pulsante "Accedi"</span> `,
+                image: { url: "/assets/img/login1.jpg", width: 200 }
+              },
+              {
+                html: `<span>Nella schermata di login fare click su "Password Dimenticata"(1) </span> `,
+                image: { url: "/assets/img/fp.jpg", width: 400 }
+              },
+              {
+                html: `<span>Infine inserire il proprio username (2) e fare click sul pulsante recupera (3).</span>`,
+                image: { url: "/assets/img/fp2.jpg", width: 400 }
+              },
+              {
+                html: `<span>Riceverai una mail contenente le nuove credenziali.</span>`
+              }
+            ]
+          }
+        }
+      },
+      {
+        id: 5,
         captionTitle: "Come creo un Account Artista?",
         contentItem: {
           title: "Verificare il proprio account come Artista",
@@ -116,7 +158,7 @@ export class FrequentlyAnswersComponent {
         }
       },
       {
-        id: 5,
+        id: 6,
         captionTitle: "Notifiche e Messaggi",
         contentItem: {
           title: "Problemi comuni con notifiche e messaggi",

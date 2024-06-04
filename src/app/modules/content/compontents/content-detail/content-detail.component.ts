@@ -3,7 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import moment from 'moment';
 import { pluck } from 'rxjs';
 import { GlobalService } from 'src/app/core/services';
-import { ItemType, USER_TYPE } from 'src/app/core/utility/global-constant';
+import { ItemType, ROUTE_LIST, USER_TYPE } from 'src/app/core/utility/global-constant';
 import { Comment } from '../../models/comment';
 import { randomIntFromInterval } from 'src/app/core/utility/functions-constants';
 
@@ -322,7 +322,10 @@ export class ContentDetailComponent implements AfterViewInit, AfterViewChecked {
   }
 
   navigateToBuyTicket() {
-    alert("xd")
+    const params = this.globalService.encodeParams({
+      n_id: this.item.id
+    });
+    this.router.navigate([ROUTE_LIST.event.detail, params]);
   }
 
   addLike(item: any) {

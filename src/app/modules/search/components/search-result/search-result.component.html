@@ -131,7 +131,7 @@
                                             <div [ngClass]=" item.type === ItemType.Eventi ? 'justify-content-between' : 'justify-content-end' "
                                                 class="d-flex flex-row">
                                                 <div *ngIf="item.type === ItemType.Eventi"
-                                                    class="d-flex flex-row text-white" (click)="navigateToBuyTicket()">
+                                                    class="d-flex flex-row text-white" (click)="navigateToBuyTicket($event,item)">
                                                     <span #tooltip="matTooltip" matTooltip="Acquista biglietto"
                                                         matTooltipPosition="right" class="bg-primary-color"
                                                         style="border-radius: 3px;padding: 7px;padding-top: 0px;padding-bottom: 4px;margin-bottom: 3px;">
@@ -362,7 +362,7 @@
                                         <div [ngClass]=" item.type === ItemType.Eventi ? 'justify-content-between' : 'justify-content-end' "
                                             class="d-flex flex-row">
                                             <div *ngIf="item.type === ItemType.Eventi"
-                                                class="d-flex flex-row text-white" (click)="navigateToBuyTicket()">
+                                                class="d-flex flex-row text-white" (click)="navigateToBuyTicket($event,item)">
                                                 <span #tooltip="matTooltip" matTooltip="Acquista biglietto"
                                                     matTooltipPosition="right" class="bg-primary-color"
                                                     style="border-radius: 3px;padding: 7px;padding-top: 0px;padding-bottom: 4px;margin-bottom: 3px;">

@@ -1,5 +1,5 @@
 import { AfterContentChecked, AfterViewChecked, AfterViewInit, ChangeDetectorRef, Component, ElementRef, QueryList, ViewChildren } from "@angular/core";
-import { ItemType, USER_TYPE } from "../../../../core/utility/global-constant";
+import { ItemType, ROUTE_LIST, USER_TYPE } from "../../../../core/utility/global-constant";
 import { GlobalService } from "src/app/core/services";
 import { ActivatedRoute, Router } from "@angular/router";
 import { pluck } from "rxjs";
@@ -62,8 +62,12 @@ export class SearchResultComponent implements AfterViewInit, AfterViewChecked {
     //event.preventDefault();
   }
 
-  navigateToBuyTicket() {
-    alert("xd")
+  navigateToBuyTicket(event:any, item:any) {
+    event.preventDefault();
+    const params = this.globalService.encodeParams({
+      n_id: item.id
+    });
+    this.router.navigate([ROUTE_LIST.event.detail, params]);
   }
 
   simulateClickOnBody() {

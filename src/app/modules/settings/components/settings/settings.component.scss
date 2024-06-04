@@ -191,3 +191,59 @@
     background-color: rgb(117 117 117);
     border-radius: 50%;
 }
+
+
+/*Per cambio password*/
+.social_icon span {
+    font-size: 60px;
+    margin-left: 10px;
+    color: #d32e2a;
+}
+
+.form-control:focus {
+    box-shadow: 0.1rem 0 0.1rem 0.1rem #d32e2a !important; 
+    border-color: #d32e2a !important;
+    border-right: 0px !important;
+}
+
+.input-group-prepend span {
+    width: 50px;
+    background-color: #d32e2a;
+    color: white;
+    border: 0 !important;
+}
+
+.remember {
+    color: white;
+}
+
+.remember input {
+    width: 20px;
+    height: 20px;
+    margin-left: 15px;
+    margin-right: 5px;
+}
+
+.login_btn {
+    color: white;
+    background-color: #d32e2a;
+    width: 100px;
+    cursor: pointer;
+}
+
+.login_btn:hover {
+    color: black;
+    background-color: white;
+}
+
+.input-w-icon {
+    background-color: #d32e2a !important;
+    color: white !important;
+    width: 50px;
+    text-align: center;
+    justify-content: center;
+}
+
+::ng-deep .bg-dark-mode .form-control::placeholder{
+    color:white;
+}

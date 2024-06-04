@@ -60,6 +60,12 @@
                         <h3 class="text-danger pointer" (click)="executeAction('delete')">Elimina</h3>
                     </div>
                 </div>
+                <div class="container">
+                    <div class="d-flex flex-row justify-content-between">
+                        <h3>Modifica la password</h3>
+                        <h3 class="text-danger pointer" (click)="executeAction('changePassword')">Modifica</h3>
+                    </div>
+                </div>
             </div>
             <hr class="m-0 mb-3">
             <div id="privacy">
@@ -374,135 +380,192 @@
     </div>
 </div>
 
-<div *ngIf="showDataDownloadPanel" class="modal-overlay" style="z-index:10">
-    <div class="modal-content container p-3 m-3">
+<div *ngIf="showChangePasswordPanel" class="modal-overlay" style="z-index:10">
+    <div class="modal-content container p-3 m-3" style="max-width: 480px;">
         <div class="d-flex justify-content-between border-bottom mb-3">
-            <h2 class="mb-2">Scarica i tuoi dati memorizzati su Unievent</h2>
-            <span style="font-size:38px;" class="pointer" (click)="closeDownloadPanel()"
+            <h2 class="mb-2">Modifica password</h2>
+            <span style="font-size:38px;" class="pointer" (click)="cancelChangePassword()"
                 aria-hidden="true">&times;</span>
         </div>
         <div style="overflow-y: auto;">
-            <div class="mx-4 mt-4 type-buttons d-flex mb-4">
-                <span class="menuEl pointer py-2 col-6" [class.active]="selectedOption === 'Request'"
-                    (click)="changeOption('Request')">Richiedi i tuoi dati</span>
-                <span class="menuEl mr-4 pointer py-2 col-6" [class.active]="selectedOption === 'Download'"
-                    (click)="changeOption('Download')">Scarica i tuoi dati</span>
-            </div>
-        </div>
-        <div class="p-2 px-4" *ngIf="selectedOption === 'Request'">
-            <div>
-                <div class="mb-3"> Puoi richiedere una copia dei tuoi dati in qualsiasi momento per eseguire il backup
-                    del tuo account o esportarlo su altri servizi.</div>
-                <div>
-                    <h2>Seleziona i dati da scaricare</h2>
-                    <div role="radiogroup" aria-labelledby="data-options">
-                        <div class="mb-3">
-                            <label>
-                                <input [(ngModel)]="optionValue" [disabled]="isRequested || isDataAvailable"
-                                    class="pointer" type="radio" name="data-option" value="all" checked>
-                                <span class="mx-2 pointer">Tutti i dati</span>
-                            </label>
-                            <h5 class="text-secondary">Scarica tutte le informazioni disponibili associate al tuo
-                                account. Questo file includerà più dati rispetto a quelli selezionati dalle opzioni
-                                personalizzate.</h5>
-                        </div>
-                        <div class="mb-3">
-                            <label>
-                                <input [(ngModel)]="optionValue" [disabled]="isRequested || isDataAvailable"
-                                    class="pointer" type="radio" name="data-option" value="custom">
-                                <span class="mx-2 pointer">Personalizzato</span>
-                            </label>
-                            <h5 class="text-secondary">Scegli quali informazioni desideri includere nel tuo file.</h5>
-                            <div *ngIf="optionValue === 'custom'" class="d-flex flex-row">
-                                <label>
-                                    <input type="checkbox" [(ngModel)]="chatChecked" [disabled]="isRequested || isDataAvailable" class="pointer" name="chat-option" value="Chat">
-                                    <span class="mx-2 pointer">Chat</span>
-                                </label>
-                                <label>
-                                    <input type="checkbox" [(ngModel)]="contentChecked" [disabled]="isRequested || isDataAvailable" class="pointer" name="content-option" value="Contenuti">
-                                    <span class="mx-2 pointer">Contenuti</span>
-                                </label>
-                                <label>
-                                    <input type="checkbox" [(ngModel)]="favoritesChecked" [disabled]="isRequested || isDataAvailable" class="pointer" name="favorites-option" value="Preferiti">
-                                    <span class="mx-2 pointer">Preferiti</span>
-                                </label>
-                                <label>
-                                    <input type="checkbox" [(ngModel)]="interactionsChecked" [disabled]="isRequested || isDataAvailable" class="pointer" name="interactions-option" value="Interazioni">
-                                    <span class="mx-2 pointer">Interazioni</span>
-                                </label>
-                            </div>
-                            
-                            <!--Aggiungere checkbox di selezione-->
+            <form [formGroup]="formChangePassword" #formAddMap="ngForm" (ngSubmit)="changePassword(formAddMap)">
+                <div class="form-group">
+                    <div class="d-flex flex-column mb-2 p-2">
+                        <label>Password Attuale *</label>
+                        <div class="d-flex flex-row input-group">
+                            <span [ngClass]="dynamicClass['old_password']" class="input-group-text input-w-icon"><i
+                                    class="gg-key"></i></span>
+                            <input minlength="5" formControlName="old_password" id="old_password" type="password"
+                                autocomplete="current-password" class="form-control" name="password"
+                                placeholder="Password attuale" (focus)="addFocusClass('old_password')"
+                                (focusout)="removeFocusClass('old_password')" required>
                         </div>
                     </div>
+                    <div class="d-flex flex-column my-2 p-2">
+                        <label>Nuova Password *</label>
+                        <div class="d-flex flex-row input-group">
+                            <span [ngClass]="dynamicClass['new_password']" class="input-group-text input-w-icon"><i
+                                    class="gg-key"></i></span>
+                            <input minlength="5" formControlName="new_password" id="new_password" type="password"
+                                autocomplete="current-password" class="form-control" name="password"
+                                placeholder="Nuova password" (focus)="addFocusClass('new_password')"
+                                (focusout)="removeFocusClass('new_password')" required>
+                        </div>
+                    </div>
+                    <label class="text-secondary my-2 p-2">Il numero minimo di caratteri per la password è 5</label>
+                    <div class="d-flex flex-row justify-content-end">
+                        <button class="btn btn-secondary btn-sm" type="button"
+                            (click)="cancelChangePassword()">Annulla</button>
+                        <button [disabled]="!formChangePassword.valid" class="btn btn-color-primary text-white btn-sm"
+                            type="submit">Conferma</button>
+                    </div>
+                </div>
 
-                    <h2>Seleziona il formato del file</h2>
-                    <div role="radiogroup" aria-labelledby="data-formats">
-                        <div class="mb-3">
-                            <label>
-                                <input [(ngModel)]="formatValue" [disabled]="isRequested || isDataAvailable"
-                                    class="pointer" type="radio" name="data-format" value="TXT" checked>
-                                <span class="mx-2 pointer">TXT</span>
-                            </label>
-                            <h5 class="text-secondary">File
-                                di testo leggibile</h5>
-                        </div>
-                        <div class="mb-3">
-                            <label>
-                                <input [(ngModel)]="formatValue" [disabled]="isRequested || isDataAvailable"
-                                    class="pointer" type="radio" name="data-format" value="JSON">
-                                <span class="mx-2 pointer">JSON</span>
-                            </label>
-                            <h5 class="text-secondary">Consente ad altri servizi di importare il tuo file</h5>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <form (submit)="sendDownloadDataRequest()">
-                <div class="form-group">
-                    <div class="d-flex flex-row justify-content-end">
-                        <button [disabled]="isRequested || isDataAvailable"
-                            class="btn btn-color-primary text-white btn-sm" type="submit">Richiedi</button>
-                    </div>
-                </div>
-            </form>
-        </div>
-        <div class="p-4" *ngIf="selectedOption === 'Download'">
-            <div class="text-center mb-5">
-                <svg *ngIf="!isRequested" xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="currentColor"
-                    class="bi bi-download mb-2" viewBox="0 0 16 16">
-                    <path
-                        d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5" />
-                    <path
-                        d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708z" />
-                </svg>
-                <svg *ngIf="isRequested" xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="currentColor"
-                    class="bi bi-stopwatch mb-2" viewBox="0 0 16 16">
-                    <path d="M8.5 5.6a.5.5 0 1 0-1 0v2.9h-3a.5.5 0 0 0 0 1H8a.5.5 0 0 0 .5-.5z" />
-                    <path
-                        d="M6.5 1A.5.5 0 0 1 7 .5h2a.5.5 0 0 1 0 1v.57c1.36.196 2.594.78 3.584 1.64l.012-.013.354-.354-.354-.353a.5.5 0 0 1 .707-.708l1.414 1.415a.5.5 0 1 1-.707.707l-.353-.354-.354.354-.013.012A7 7 0 1 1 7 2.071V1.5a.5.5 0 0 1-.5-.5M8 3a6 6 0 1 0 .001 12A6 6 0 0 0 8 3" />
-                </svg>
-                <h3 *ngIf="!isDataAvailable && !isRequested" class="m-0">Ancora nessuna richiesta</h3>
-                <h5 *ngIf="!isDataAvailable && !isRequested" class="m-0 text-secondary">Avvia una richiesta per
-                    scaricare i dati</h5>
-                <h3 *ngIf="!isDataAvailable && isRequested" class="m-0">I tuoi dati sono stati richiesti</h3>
-                <h5 *ngIf="!isDataAvailable && isRequested" class="m-0 text-secondary">Stiamo elaborando i tuoi dati,
-                    appena pronti riceverai una notifica</h5>
-                <h3 *ngIf="isDataAvailable" class="m-0">I tuoi dati sono pronti</h3>
-                <h5 *ngIf="isDataAvailable" class="m-0 text-secondary">Clicca sul pulsante in basso per scaricare i dati
-                </h5>
-            </div>
-            <form>
-                <div class="form-group">
-                    <div class="d-flex flex-row justify-content-end">
-                        <button (click)="sendDownloadDataRequest()" *ngIf="isDataAvailable"
-                            class="btn btn-color-primary text-white btn-sm" type="submit">Scarica</button>
-                        <button (click)="sendDownloadDataRequest()" *ngIf="!isDataAvailable"
-                            class="btn btn-color-primary text-white btn-sm" type="submit"
-                            [disabled]="isRequested">Richiedi</button>
-                    </div>
-                </div>
             </form>
         </div>
     </div>
-</div>
+
+    <div *ngIf="showDataDownloadPanel" class="modal-overlay" style="z-index:10">
+        <div class="modal-content container p-3 m-3">
+            <div class="d-flex justify-content-between border-bottom mb-3">
+                <h2 class="mb-2">Scarica i tuoi dati memorizzati su Unievent</h2>
+                <span style="font-size:38px;" class="pointer" (click)="closeDownloadPanel()"
+                    aria-hidden="true">&times;</span>
+            </div>
+            <div style="overflow-y: auto;">
+                <div class="mx-4 mt-4 type-buttons d-flex mb-4">
+                    <span class="menuEl pointer py-2 col-6" [class.active]="selectedOption === 'Request'"
+                        (click)="changeOption('Request')">Richiedi i tuoi dati</span>
+                    <span class="menuEl mr-4 pointer py-2 col-6" [class.active]="selectedOption === 'Download'"
+                        (click)="changeOption('Download')">Scarica i tuoi dati</span>
+                </div>
+            </div>
+            <div class="p-2 px-4" *ngIf="selectedOption === 'Request'">
+                <div>
+                    <div class="mb-3"> Puoi richiedere una copia dei tuoi dati in qualsiasi momento per eseguire il
+                        backup
+                        del tuo account o esportarlo su altri servizi.</div>
+                    <div>
+                        <h2>Seleziona i dati da scaricare</h2>
+                        <div role="radiogroup" aria-labelledby="data-options">
+                            <div class="mb-3">
+                                <label>
+                                    <input [(ngModel)]="optionValue" [disabled]="isRequested || isDataAvailable"
+                                        class="pointer" type="radio" name="data-option" value="all" checked>
+                                    <span class="mx-2 pointer">Tutti i dati</span>
+                                </label>
+                                <h5 class="text-secondary">Scarica tutte le informazioni disponibili associate al tuo
+                                    account. Questo file includerà più dati rispetto a quelli selezionati dalle opzioni
+                                    personalizzate.</h5>
+                            </div>
+                            <div class="mb-3">
+                                <label>
+                                    <input [(ngModel)]="optionValue" [disabled]="isRequested || isDataAvailable"
+                                        class="pointer" type="radio" name="data-option" value="custom">
+                                    <span class="mx-2 pointer">Personalizzato</span>
+                                </label>
+                                <h5 class="text-secondary">Scegli quali informazioni desideri includere nel tuo file.
+                                </h5>
+                                <div *ngIf="optionValue === 'custom'" class="d-flex flex-row">
+                                    <label>
+                                        <input type="checkbox" [(ngModel)]="chatChecked"
+                                            [disabled]="isRequested || isDataAvailable" class="pointer"
+                                            name="chat-option" value="Chat">
+                                        <span class="mx-2 pointer">Chat</span>
+                                    </label>
+                                    <label>
+                                        <input type="checkbox" [(ngModel)]="contentChecked"
+                                            [disabled]="isRequested || isDataAvailable" class="pointer"
+                                            name="content-option" value="Contenuti">
+                                        <span class="mx-2 pointer">Contenuti</span>
+                                    </label>
+                                    <label>
+                                        <input type="checkbox" [(ngModel)]="favoritesChecked"
+                                            [disabled]="isRequested || isDataAvailable" class="pointer"
+                                            name="favorites-option" value="Preferiti">
+                                        <span class="mx-2 pointer">Preferiti</span>
+                                    </label>
+                                    <label>
+                                        <input type="checkbox" [(ngModel)]="interactionsChecked"
+                                            [disabled]="isRequested || isDataAvailable" class="pointer"
+                                            name="interactions-option" value="Interazioni">
+                                        <span class="mx-2 pointer">Interazioni</span>
+                                    </label>
+                                </div>
+
+                                <!--Aggiungere checkbox di selezione-->
+                            </div>
+                        </div>
+
+                        <h2>Seleziona il formato del file</h2>
+                        <div role="radiogroup" aria-labelledby="data-formats">
+                            <div class="mb-3">
+                                <label>
+                                    <input [(ngModel)]="formatValue" [disabled]="isRequested || isDataAvailable"
+                                        class="pointer" type="radio" name="data-format" value="TXT" checked>
+                                    <span class="mx-2 pointer">TXT</span>
+                                </label>
+                                <h5 class="text-secondary">File
+                                    di testo leggibile</h5>
+                            </div>
+                            <div class="mb-3">
+                                <label>
+                                    <input [(ngModel)]="formatValue" [disabled]="isRequested || isDataAvailable"
+                                        class="pointer" type="radio" name="data-format" value="JSON">
+                                    <span class="mx-2 pointer">JSON</span>
+                                </label>
+                                <h5 class="text-secondary">Consente ad altri servizi di importare il tuo file</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <form (submit)="sendDownloadDataRequest()">
+                    <div class="form-group">
+                        <div class="d-flex flex-row justify-content-end">
+                            <button [disabled]="isRequested || isDataAvailable"
+                                class="btn btn-color-primary text-white btn-sm" type="submit">Richiedi</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="p-4" *ngIf="selectedOption === 'Download'">
+                <div class="text-center mb-5">
+                    <svg *ngIf="!isRequested" xmlns="http://www.w3.org/2000/svg" width="64" height="64"
+                        fill="currentColor" class="bi bi-download mb-2" viewBox="0 0 16 16">
+                        <path
+                            d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5" />
+                        <path
+                            d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708z" />
+                    </svg>
+                    <svg *ngIf="isRequested" xmlns="http://www.w3.org/2000/svg" width="64" height="64"
+                        fill="currentColor" class="bi bi-stopwatch mb-2" viewBox="0 0 16 16">
+                        <path d="M8.5 5.6a.5.5 0 1 0-1 0v2.9h-3a.5.5 0 0 0 0 1H8a.5.5 0 0 0 .5-.5z" />
+                        <path
+                            d="M6.5 1A.5.5 0 0 1 7 .5h2a.5.5 0 0 1 0 1v.57c1.36.196 2.594.78 3.584 1.64l.012-.013.354-.354-.354-.353a.5.5 0 0 1 .707-.708l1.414 1.415a.5.5 0 1 1-.707.707l-.353-.354-.354.354-.013.012A7 7 0 1 1 7 2.071V1.5a.5.5 0 0 1-.5-.5M8 3a6 6 0 1 0 .001 12A6 6 0 0 0 8 3" />
+                    </svg>
+                    <h3 *ngIf="!isDataAvailable && !isRequested" class="m-0">Ancora nessuna richiesta</h3>
+                    <h5 *ngIf="!isDataAvailable && !isRequested" class="m-0 text-secondary">Avvia una richiesta per
+                        scaricare i dati</h5>
+                    <h3 *ngIf="!isDataAvailable && isRequested" class="m-0">I tuoi dati sono stati richiesti</h3>
+                    <h5 *ngIf="!isDataAvailable && isRequested" class="m-0 text-secondary">Stiamo elaborando i tuoi
+                        dati,
+                        appena pronti riceverai una notifica</h5>
+                    <h3 *ngIf="isDataAvailable" class="m-0">I tuoi dati sono pronti</h3>
+                    <h5 *ngIf="isDataAvailable" class="m-0 text-secondary">Clicca sul pulsante in basso per scaricare i
+                        dati
+                    </h5>
+                </div>
+                <form>
+                    <div class="form-group">
+                        <div class="d-flex flex-row justify-content-end">
+                            <button (click)="sendDownloadDataRequest()" *ngIf="isDataAvailable"
+                                class="btn btn-color-primary text-white btn-sm" type="submit">Scarica</button>
+                            <button (click)="sendDownloadDataRequest()" *ngIf="!isDataAvailable"
+                                class="btn btn-color-primary text-white btn-sm" type="submit"
+                                [disabled]="isRequested">Richiedi</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>

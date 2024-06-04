@@ -1,4 +1,5 @@
 import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ROUTE_LIST } from 'src/app/core/utility/global-constant';
 
@@ -12,6 +13,7 @@ export class SettingsComponent implements AfterViewInit {
   activeMenu: string = 'account';
   showDeleteAccountPanel: boolean = false;
   showDataDownloadPanel: boolean = false;
+  showChangePasswordPanel: boolean = false;
   selectedOption: string = 'Request';
   marginTopOffset: number = 80;
   isRequested: boolean = false;
@@ -22,6 +24,11 @@ export class SettingsComponent implements AfterViewInit {
   favoritesChecked: boolean = false;
   contentChecked: boolean = false;
   chatChecked: boolean = false;
+  dynamicClass = [];
+  formChangePassword = new FormGroup({
+    old_password: new FormControl(null),
+    new_password: new FormControl(null),
+  });
 
   //Current user settings (vanno prese dal back-end)
   settings = {
@@ -78,6 +85,9 @@ export class SettingsComponent implements AfterViewInit {
       case "delete":
         this.showDeleteAccountPanel = true;
         break;
+      case "changePassword":
+        this.showChangePasswordPanel = true;
+        break;
       case "artist":
         this.router.navigate([ROUTE_LIST.artist.verify]);
         break;
@@ -97,6 +107,17 @@ export class SettingsComponent implements AfterViewInit {
     //Logica per cancellare l'account, dopo effettuare il logout dell'utente
   }
 
+  cancelChangePassword() {
+    this.showChangePasswordPanel = false;
+    this.formChangePassword.reset();
+  }
+
+  changePassword(form:any){
+    this.showChangePasswordPanel = false;
+    this.formChangePassword.reset();
+    //Logica per cambiare la password
+  }
+
   closeDownloadPanel() {
     this.showDataDownloadPanel = false;
   }
@@ -113,6 +134,14 @@ export class SettingsComponent implements AfterViewInit {
 
   changeOption(option: string) {
     this.selectedOption = option;
+  }
+
+  addFocusClass(field: string) {
+    this.dynamicClass[field] = "explode-span";
+  }
+
+  removeFocusClass(field: string) {
+    this.dynamicClass[field] = "";
   }
 
 }

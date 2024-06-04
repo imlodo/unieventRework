@@ -1,5 +1,5 @@
 import { ChangeDetectorRef, Component, ElementRef, Renderer2 } from '@angular/core';
-import { ExploreItemType, ItemType, USER_TYPE } from '../../../../core/utility/global-constant';
+import { ExploreItemType, ItemType, ROUTE_LIST, USER_TYPE } from '../../../../core/utility/global-constant';
 import { GlobalService } from 'src/app/core/services';
 import { ActivatedRoute, Router } from '@angular/router';
 import { randomIntFromInterval } from 'src/app/core/utility/functions-constants';
@@ -105,8 +105,12 @@ export class ExploreComponent {
     }
   }
 
-  navigateToBuyTicket() {
-    alert("xd")
+  navigateToBuyTicket(event:any, item:any) {
+    event.preventDefault();
+    const params = this.globalService.encodeParams({
+      n_id: item.id
+    });
+    this.router.navigate([ROUTE_LIST.event.detail, params]);
   }
 
   navigateToUserProfile(item: any) {

@@ -5,7 +5,7 @@ import { pluck } from 'rxjs';
 import { User } from 'src/app/core/models/user';
 import { GlobalService } from 'src/app/core/services';
 import { randomIntFromInterval } from 'src/app/core/utility/functions-constants';
-import { ItemType, ProfileItemType, USER_TYPE } from 'src/app/core/utility/global-constant';
+import { ItemType, ProfileItemType, ROUTE_LIST, USER_TYPE } from 'src/app/core/utility/global-constant';
 
 @Component({
   selector: 'unievent-user-profile',
@@ -94,9 +94,14 @@ export class UserProfileComponent implements AfterViewInit {
     this.cdr.detectChanges();
   }
 
-  navigateToBuyTicket() {
-    alert("xd")
+  navigateToBuyTicket(event:any, item:any) {
+    event.preventDefault();
+    const params = this.globalService.encodeParams({
+      n_id: item.id
+    });
+    this.router.navigate([ROUTE_LIST.event.detail, params]);
   }
+
 
   getUserInfoById() {
     return {
