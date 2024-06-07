@@ -26,7 +26,7 @@
                 </div>
             </div>
         </div>
-        <div class="right-panel-container col-lg-4 d-lg-block d-none">
+        <div #rightPanelContainer class="right-panel-container col-lg-4 d-lg-block d-none">
             <div class="d-flex flex-column w-100 p-3 rounded mt-3 content-user-container-panel">
                 <div class="d-flex flex-row w-100">
                     <div class="card-top flex-column w-100">
@@ -55,7 +55,7 @@
                                         {{formatDateString(item?.created_date)}}</div>
                                 </div>
                                 <span class="bg-danger p-2 pointer"
-                                    style="height: fit-content;width: 120px;text-align: center;margin-top: 10px;">Segui</span>
+                                    style="height: fit-content;width: 120px;text-align: center;margin-top: 10px;" (click)="followUser()">Segui</span>
                             </div>
                         </div>
                         <div *ngIf="item?.t_caption || item?.t_name" class="caption">{{item?.t_caption ?
@@ -128,7 +128,7 @@
                 </div>
                 <div class="copy-link-container mt-3 d-flex flex-row w-100 align-items-center rounded">
                     <input disabled="" class="w-100" type="text" [ngModel]="currentLink">
-                    <span class="btn-copy-link rounded pointer">Copia Link</span>
+                    <span class="btn-copy-link rounded pointer" (click)="copyToClipboard()">Copia Link</span>
                 </div>
                 <div class="comment-container d-flex flex-column mt-4">
                     <span>Commenti (100)</span>

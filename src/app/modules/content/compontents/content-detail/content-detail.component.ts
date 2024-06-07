@@ -14,6 +14,7 @@ import { randomIntFromInterval } from 'src/app/core/utility/functions-constants'
 })
 export class ContentDetailComponent implements AfterViewInit, AfterViewChecked {
   @ViewChild('messageInput') messageInput: ElementRef;
+  @ViewChild('rightPanelContainer') rightPanelContainer!: ElementRef;
   protected item: any = null;
   bgLeftPanel: string = null;
   ItemType: any = ItemType;
@@ -179,7 +180,7 @@ export class ContentDetailComponent implements AfterViewInit, AfterViewChecked {
       created_date: this.generateRandomDate()
     }
   ];
-
+  discussionIdReply: number = null;
 
   constructor(private cdr: ChangeDetectorRef, private globalService: GlobalService,
     private route: ActivatedRoute, private router: Router) {
@@ -337,6 +338,24 @@ export class ContentDetailComponent implements AfterViewInit, AfterViewChecked {
   }
 
   addComment() {
+    if (this.commentValue.length > 0) {
+      if (this.discussionIdReply) {
+        //è la risposta ad un commento
+      } else {
+        //Va aggiunto al back-end il nuovo commento
+        let newComment: Comment = {
+          discussion_id: this.comments.length + 1,
+          body: this.commentValue,
+          like_count: 0,
+          children: [],
+          t_user: this.comments[0].t_user, //qui va il current user
+          created_date: moment().toDate()
+        }
+        this.comments.push(newComment);
+        this.commentValue = null;
+        this.scrollToBottom();
+      }
+    }
     /*if (this.messageValue.length === 0) {
       return;
     }
@@ -379,7 +398,18 @@ export class ContentDetailComponent implements AfterViewInit, AfterViewChecked {
   }
 
   focusComment() {
+    const messageInput = document.querySelector('.message-input') as HTMLElement;
+    if (messageInput) {
+      // Mette a fuoco l'elemento
+      messageInput.focus();
+    }
+    this.scrollToBottom();
+  }
 
+  scrollToBottom() {
+    setTimeout(() => {
+      this.rightPanelContainer.nativeElement.scrollTop = this.rightPanelContainer.nativeElement.scrollHeight;
+    }, 0)
   }
 
   private generateRandomAccount(index: number): any { //Account
@@ -403,5 +433,20 @@ export class ContentDetailComponent implements AfterViewInit, AfterViewChecked {
     const randomDate = new Date(today);
     randomDate.setDate(today.getDate() - randomNumberOfDays);
     return randomDate;
+  }
+
+  copyToClipboard() {
+    const tempInput = document.createElement('input');
+    tempInput.value = this.currentLink as string;
+    document.body.appendChild(tempInput);
+    tempInput.select();
+    tempInput.setSelectionRange(0, 99999);
+    document.execCommand('copy');
+    document.body.removeChild(tempInput);
+  }
+
+  followUser() {
+    //if((this.currentUser.n_id != this.item.t_user.n_id) && l'utente del contenuto non è già seguito dall'utente corrente allora effettua la chiamata per seguire l'utente) 
+    alert("follow")
   }
 }
