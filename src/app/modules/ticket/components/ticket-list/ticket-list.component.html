@@ -44,8 +44,7 @@
         <form class="mb-5" [formGroup]="formReview" #formAddReview="ngForm" (ngSubmit)="addReview(formAddReview)">
             <div class="form-group">
                 <label>Vota la tua esperienza</label>
-                <br>
-                <span>Qui vanno le stelle</span>
+                <ngx-stars [size]="2" [color]="'#ff5266'"></ngx-stars>
             </div>
             <div class="form-group">
                 <span>Titolo</span>
@@ -62,7 +61,7 @@
             <h5 class="text-secondary">Pubblicando questa recensione, confermi che si basa su un'esperienza reale e che non hai ricevuto alcun incentivo per scriverla.</h5>
             <div class="d-flex flex-row justify-content-end">
                 <button class="btn btn-secondary btn-sm" (click)="cancelAddReview()">Annulla</button>
-                <button class="btn btn-danger btn-sm" type="submit" [disabled]="!formAddReview.valid">Invia</button>
+                <button class="btn btn-danger btn-sm" type="submit" [disabled]="!isValidForm(formAddReview)">Invia</button>
             </div>
         </form>
     </div>

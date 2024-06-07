@@ -32,6 +32,7 @@ import { ParametricModalComponent } from './components/parametric-modal/parametr
 import { MatDialogModule } from '@angular/material/dialog';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 import { ForgotPasswordFormComponent } from './forms/forgot-password-form/forgot-password-form.component';
+import { NgxStarsComponent } from './components/ngx-stars/ngx-stars.component';
 
 @NgModule({
 	declarations: [
@@ -65,8 +66,9 @@ import { ForgotPasswordFormComponent } from './forms/forgot-password-form/forgot
 		ContentInfiniteScrollComponent,
 		ApproximateNumberPipe,
 		ParametricModalComponent,
-  ForgotPasswordComponent,
-  ForgotPasswordFormComponent
+		ForgotPasswordComponent,
+		ForgotPasswordFormComponent,
+		NgxStarsComponent
 	],
 	imports: [
 		CommonModule,
@@ -80,6 +82,7 @@ import { ForgotPasswordFormComponent } from './forms/forgot-password-form/forgot
 	],
 	exports: [
 		NavbarComponent,
+		NgxStarsComponent,
 		ContentInfiniteScrollComponent,
 		ModalComponent,
 		SearchCollapseComponent,

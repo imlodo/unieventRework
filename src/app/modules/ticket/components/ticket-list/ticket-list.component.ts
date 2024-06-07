@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
 import { ROUTE_LIST } from 'src/app/core/utility/global-constant';
 import { GlobalService } from 'src/app/core/services';
 import { FormControl, FormGroup } from '@angular/forms';
+import { NgxStarsComponent } from 'src/app/core/components/ngx-stars/ngx-stars.component';
 
 @Component({
   selector: 'unievent-ticket-list',
@@ -16,6 +17,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 export class TicketListComponent {
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   @ViewChild(MatSort, { static: true }) sort: MatSort;
+  @ViewChild(NgxStarsComponent) starsComponent: NgxStarsComponent;
   ticketData: MatTableDataSource<any>;
   displayedColumns: string[] = ['numeroTicket', 'titolo', 'stato', 'dataCreazione', 'azioni'];
   showReviewsPanel: boolean = false;
@@ -23,7 +25,6 @@ export class TicketListComponent {
     title: new FormControl(''),
     body: new FormControl(''),
     date: new FormControl(''),
-    starsNum: new FormControl('')
   });
   constructor(private router: Router, private globalService: GlobalService) {
 
@@ -67,8 +68,14 @@ export class TicketListComponent {
   }
 
   addReview(form:any){
+    console.log(form.value);
+    console.log(this.starsComponent.rating);
     this.showReviewsPanel = false;
     this.formReview.reset();
+  }
+
+  isValidForm(form:any){
+    return form.valid && this.starsComponent.rating > 0;
   }
 
 }
