@@ -6,6 +6,7 @@ import { GlobalService } from 'src/app/core/services';
 import { ItemType, ROUTE_LIST, USER_TYPE } from 'src/app/core/utility/global-constant';
 import { Comment } from '../../models/comment';
 import { randomIntFromInterval } from 'src/app/core/utility/functions-constants';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'unievent-content-detail',
@@ -14,14 +15,21 @@ import { randomIntFromInterval } from 'src/app/core/utility/functions-constants'
 })
 export class ContentDetailComponent implements AfterViewInit, AfterViewChecked {
   @ViewChild('messageInput') messageInput: ElementRef;
+  @ViewChild('messageReplyInput') messageReplyInput: ElementRef;
   @ViewChild('rightPanelContainer') rightPanelContainer!: ElementRef;
+  @ViewChild('replyPanel') replyPanel!: ElementRef;
   protected item: any = null;
   bgLeftPanel: string = null;
   ItemType: any = ItemType;
   commentValue: string = '';
+  commentReplyValue: string = '';
   showEmoticonPanel = false;
+  showEmoticonReplyPanel = false;
   darkMode = false;
   currentLink: String = window.location.href;
+  showChildrenCommentArray: Array<any> = [];
+  commentNumberOnShow: number = 5;
+  activeReplyComment: Comment = null;
   comments: Comment[] = [
     {
       discussion_id: 1,
@@ -181,9 +189,11 @@ export class ContentDetailComponent implements AfterViewInit, AfterViewChecked {
     }
   ];
   discussionIdReply: number = null;
+  numOfComment: number = this.getCommentCount();
+  isReplyCommentArray: Array<boolean> = new Array(this.numOfComment).fill(false);
 
   constructor(private cdr: ChangeDetectorRef, private globalService: GlobalService,
-    private route: ActivatedRoute, private router: Router) {
+    private route: ActivatedRoute, private router: Router, private toastr: ToastrService) {
   }
 
   ngAfterViewChecked(): void {
@@ -206,8 +216,29 @@ export class ContentDetailComponent implements AfterViewInit, AfterViewChecked {
       );
   }
 
-  getOtherActionLabel(discussion_lenght: number) {
-    return 'Visualizza ' + (discussion_lenght > 1 ? `${discussion_lenght} risposte` : '1 risposta');
+  getOtherActionLabel(discussion_lenght: number, showedComment: Array<Comment>) {
+
+    return 'Visualizza ' + (discussion_lenght > 1 ? `${discussion_lenght - (showedComment ? showedComment.length : 0)} risposte` : '1 risposta');
+  }
+
+  showChildrenComment(comment: Comment) {
+    let index = this.showChildrenCommentArray[comment.discussion_id] ? this.showChildrenCommentArray[comment.discussion_id].length : 0;
+    const childrenToAdd = comment.children.slice(index, index+this.commentNumberOnShow);
+    if (!this.showChildrenCommentArray[comment.discussion_id]) { this.showChildrenCommentArray[comment.discussion_id] = [] }
+    this.showChildrenCommentArray[comment.discussion_id] = [...this.showChildrenCommentArray[comment.discussion_id], ...childrenToAdd];
+  }
+
+  getCommentCount(): number {
+    let count = 0;
+
+    for (const comment of this.comments) {
+      count++; // Conta il commento principale
+      if (comment.children && comment.children.length > 0) {
+        count += comment.children.length; // Conta i commenti figli
+      }
+    }
+
+    return count;
   }
 
   initialize() {
@@ -339,22 +370,18 @@ export class ContentDetailComponent implements AfterViewInit, AfterViewChecked {
 
   addComment() {
     if (this.commentValue.length > 0) {
-      if (this.discussionIdReply) {
-        //è la risposta ad un commento
-      } else {
-        //Va aggiunto al back-end il nuovo commento
-        let newComment: Comment = {
-          discussion_id: this.comments.length + 1,
-          body: this.commentValue,
-          like_count: 0,
-          children: [],
-          t_user: this.comments[0].t_user, //qui va il current user
-          created_date: moment().toDate()
-        }
-        this.comments.push(newComment);
-        this.commentValue = null;
-        this.scrollToBottom();
+      //Va aggiunto al back-end il nuovo commento
+      let newComment: Comment = {
+        discussion_id: this.comments.length + 1,
+        body: this.commentValue,
+        like_count: 0,
+        children: [],
+        t_user: this.comments[0].t_user, //qui va il current user
+        created_date: moment().toDate()
       }
+      this.comments.push(newComment);
+      this.commentValue = null;
+      this.scrollToBottom();
     }
     /*if (this.messageValue.length === 0) {
       return;
@@ -381,8 +408,47 @@ export class ContentDetailComponent implements AfterViewInit, AfterViewChecked {
     }*/
   }
 
+  addReplyComment(comment:Comment) {
+    if(this.comments[0].t_user.t_alias_generated === this.activeReplyComment.t_user.t_alias_generated){ //poi controlla il t_current_user al posto di this.comments[0]
+      this.toastr.warning(null, "Non puoi rispondere a te stesso", { progressBar: true });
+      this.resetAddReply();
+      return ;
+    }
+    if (this.commentReplyValue.length > 0) {
+      //Va aggiunto al back-end il nuovo commento
+      let newComment: Comment = {
+        discussion_id: this.comments.length + 1,
+        body: "@"+ this.activeReplyComment.t_user.t_alias_generated +" "+ this.commentReplyValue,
+        like_count: 0,
+        children: [],
+        t_user: this.comments[0].t_user, //qui va il current user
+        created_date: moment().toDate()
+      }
+      comment.children = comment.children ? [...comment.children, newComment] : [newComment];
+      this.commentReplyValue = null;
+      this.scrollToBottomReply();
+      this.resetAddReply();
+
+    }
+  }
+
+  resetAddReply(){
+    this.isReplyCommentArray = [...this.isReplyCommentArray.map(el => false)]
+    this.commentReplyValue = "";
+    this.activeReplyComment = null;
+    this.closeEmoticonReplyPanel();
+  }
+
   openEmoticonPanel() {
     this.showEmoticonPanel = !this.showEmoticonPanel;
+  }
+
+  openReplyEmoticonPanel() {
+    this.showEmoticonReplyPanel = !this.showEmoticonReplyPanel;
+  }
+
+  closeEmoticonReplyPanel() {
+    this.showEmoticonReplyPanel = false;
   }
 
   closeEmoticonPanel() {
@@ -394,6 +460,14 @@ export class ContentDetailComponent implements AfterViewInit, AfterViewChecked {
     const currentCursorPosition = inputElement.selectionStart;
     this.commentValue = `${this.commentValue.slice(0, currentCursorPosition)}${emoji}${this.commentValue.slice(currentCursorPosition)}`;
     inputElement.setSelectionRange(this.commentValue.length, this.commentValue.length);
+    inputElement.focus();
+  }
+
+  addEmoticonToReplyChat(emoji: string) {
+    const inputElement = this.messageReplyInput.nativeElement;
+    const currentCursorPosition = inputElement.selectionStart;
+    this.commentReplyValue = `${this.commentReplyValue.slice(0, currentCursorPosition)}${emoji}${this.commentReplyValue.slice(currentCursorPosition)}`;
+    inputElement.setSelectionRange(this.commentReplyValue.length, this.commentReplyValue.length);
     inputElement.focus();
   }
 
@@ -409,6 +483,12 @@ export class ContentDetailComponent implements AfterViewInit, AfterViewChecked {
   scrollToBottom() {
     setTimeout(() => {
       this.rightPanelContainer.nativeElement.scrollTop = this.rightPanelContainer.nativeElement.scrollHeight;
+    }, 0)
+  }
+
+  scrollToBottomReply() {
+    setTimeout(() => {
+      this.replyPanel.nativeElement.scrollTop = this.replyPanel.nativeElement.scrollHeight;
     }, 0)
   }
 
@@ -448,5 +528,12 @@ export class ContentDetailComponent implements AfterViewInit, AfterViewChecked {
   followUser() {
     //if((this.currentUser.n_id != this.item.t_user.n_id) && l'utente del contenuto non è già seguito dall'utente corrente allora effettua la chiamata per seguire l'utente) 
     alert("follow")
+  }
+
+  openDiscussionReplyPanel(comment:Comment, childComment:Comment) {
+    this.isReplyCommentArray = [...this.isReplyCommentArray.map(el => false)]
+    this.isReplyCommentArray[comment.discussion_id] = true;
+    this.activeReplyComment = childComment ? childComment : comment;
+    this.commentReplyValue = '';
   }
 }

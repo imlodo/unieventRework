@@ -55,7 +55,8 @@
                                         {{formatDateString(item?.created_date)}}</div>
                                 </div>
                                 <span class="bg-danger p-2 pointer"
-                                    style="height: fit-content;width: 120px;text-align: center;margin-top: 10px;" (click)="followUser()">Segui</span>
+                                    style="height: fit-content;width: 120px;text-align: center;margin-top: 10px;"
+                                    (click)="followUser()">Segui</span>
                             </div>
                         </div>
                         <div *ngIf="item?.t_caption || item?.t_name" class="caption">{{item?.t_caption ?
@@ -131,7 +132,7 @@
                     <span class="btn-copy-link rounded pointer" (click)="copyToClipboard()">Copia Link</span>
                 </div>
                 <div class="comment-container d-flex flex-column mt-4">
-                    <span>Commenti (100)</span>
+                    <span>Commenti ({{getCommentCount()}})</span>
                     <hr class="mt-2">
                     <div class="comment-section">
                         <div class="comment-list d-flex flex-column">
@@ -163,29 +164,124 @@
                                                     </p>
                                                 </div>
                                                 <span class="mx-2">{{comment.body}}</span>
-                                                <div class="mx-2 text-secondary d-flex flex-row" style="gap:20px; font-size:0.8rem">
-                                                    <span>{{formatDateString(comment.created_date.toDateString())}}</span>    
-                                                    <span class="reply pointer">Rispondi</span>
+                                                <div class="mx-2 text-secondary d-flex flex-row"
+                                                    style="gap:20px; font-size:0.8rem">
+                                                    <span>{{formatDateString(comment.created_date.toDateString())}}</span>
+                                                    <span class="reply pointer"
+                                                        (click)="openDiscussionReplyPanel(comment, null)">Rispondi</span>
                                                 </div>
-                                                <span *ngIf="comment?.children?.length > 0"
-                                                    class="other-disc-action text-secondary mx-2 mt-2 pointer">{{getOtherActionLabel(comment.children.length)}}
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                                        fill="currentColor" class="bi bi-chevron-down"
-                                                        viewBox="0 0 16 16">
-                                                        <path fill-rule="evenodd"
-                                                            d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708" />
-                                                    </svg></span>
                                             </div>
                                         </div>
                                         <div class="like-discussion-btn mx-3 d-flex flex-column align-items-center">
-                                            <svg (click)="addLike(comment)" xmlns="http://www.w3.org/2000/svg" width="22" height="22"
-                                                fill="currentColor" viewBox="0 0 16 16"
+                                            <svg (click)="addLike(comment)" xmlns="http://www.w3.org/2000/svg"
+                                                width="22" height="22" fill="currentColor" viewBox="0 0 16 16"
                                                 class="mat-mdc-tooltip-trigger bi bi-heart pointer">
                                                 <path
                                                     d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143q.09.083.176.171a3 3 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15">
                                                 </path>
                                             </svg>
                                             <span>{{comment.like_count}}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--Commenti 2 livello (quando si clicca su rispondi si deve taggare l'utente e mettere il commento al 2 livello)-->
+                                <div *ngFor="let childComment of showChildrenCommentArray[comment?.discussion_id]"
+                                    [attr.id]="childComment.discussion_id" class="d-flex flex-column mt-2 mb-3 mx-4">
+                                    <div class="d-flex flex-row">
+                                        <div *ngIf="childComment.t_user"
+                                            class="d-flex flex-row align-items-normal w-100">
+                                            <span (click)="navigateToUserProfile(childComment.t_user)" shape="circle"
+                                                class="user-profile-photo-container pointer"><img
+                                                    [attr.src]="childComment.t_user?.t_profile_photo"
+                                                    class="user-profile-photo"></span>
+                                            <div class="d-flex flex-row w-100 justify-content-between">
+                                                <div class="d-flex flex-column w-100">
+                                                    <div class="d-flex flex-row align-items-center">
+                                                        <p class="m-0 mx-1"><span
+                                                                (click)="navigateToUserProfile(childComment.t_user)"
+                                                                class="mx-1 alias pointer">{{
+                                                                childComment.t_user?.t_alias_generated
+                                                                }}</span>
+                                                            <svg *ngIf="childComment.t_user?.is_verified"
+                                                                xmlns="http://www.w3.org/2000/svg" width="16"
+                                                                height="16" fill="currentColor" #tooltip="matTooltip"
+                                                                matTooltipPosition="right"
+                                                                matTooltip="Account verificato"
+                                                                class="bi bi-check2-circle pointer" viewBox="0 0 16 16">
+                                                                <path
+                                                                    d="M2.5 8a5.5 5.5 0 0 1 8.25-4.764.5.5 0 0 0 .5-.866A6.5 6.5 0 1 0 14.5 8a.5.5 0 0 0-1 0 5.5 5.5 0 1 1-11 0" />
+                                                                <path
+                                                                    d="M15.354 3.354a.5.5 0 0 0-.708-.708L8 9.293 5.354 6.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0z" />
+                                                            </svg>
+                                                        </p>
+                                                    </div>
+                                                    <span class="mx-2">{{childComment.body}}</span>
+                                                    <div class="mx-2 text-secondary d-flex flex-row"
+                                                        style="gap:20px; font-size:0.8rem">
+                                                        <span>{{formatDateString(childComment.created_date.toDateString())}}</span>
+                                                        <span class="reply pointer"
+                                                            (click)="openDiscussionReplyPanel(comment, childComment)">Rispondi</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="like-discussion-btn mx-3 d-flex flex-column align-items-center">
+                                                <svg (click)="addLike(childComment)" xmlns="http://www.w3.org/2000/svg"
+                                                    width="22" height="22" fill="currentColor" viewBox="0 0 16 16"
+                                                    class="mat-mdc-tooltip-trigger bi bi-heart pointer">
+                                                    <path
+                                                        d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143q.09.083.176.171a3 3 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15">
+                                                    </path>
+                                                </svg>
+                                                <span>{{childComment.like_count}}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--Pannello per commentare sotto al commento genitore-->
+                                <div class="d-flex flex-row justify-content-between mt-2" style="margin-left: 43px;">
+                                    <span
+                                        *ngIf="comment?.children?.length > 0 && (comment?.children?.length > (showChildrenCommentArray[comment?.discussion_id] ? showChildrenCommentArray[comment?.discussion_id].length : 0))"
+                                        class="other-disc-action text-secondary pointer d-flex flex-row justify-content-center align-items-center gap-1"
+                                        (click)="showChildrenComment(comment)">{{getOtherActionLabel(comment.children.length,
+                                        showChildrenCommentArray[comment?.discussion_id])}}
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                            fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16">
+                                            <path fill-rule="evenodd"
+                                                d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708" />
+                                        </svg>
+                                    </span>
+                                    <span *ngIf="showChildrenCommentArray[comment?.discussion_id]?.length > 0"
+                                        class="other-disc-action text-secondary pointer d-flex flex-row justify-content-center align-items-center gap-1"
+                                        (click)="showChildrenCommentArray[comment?.discussion_id] = []">Nascondi
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                            fill="currentColor" class="bi bi-chevron-up" viewBox="0 0 16 16">
+                                            <path fill-rule="evenodd"
+                                                d="M7.646 4.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1-.708.708L8 5.707l-5.646 5.647a.5.5 0 0 1-.708-.708z" />
+                                        </svg>
+                                    </span>
+                                </div>
+                                <div *ngIf="isReplyCommentArray[comment.discussion_id]" class="mt-2"
+                                    style="margin-left: 43px;">
+                                    <div #replyPanel class="comment-add-container d-flex flex-row p-3">
+                                        <div class="d-flex w-100 message-container">
+                                            <input #messageReplyInput (keyup.enter)="addReplyComment(comment)"
+                                                [(ngModel)]="commentReplyValue" type="text"
+                                                class="message-input w-100 bg-transparent border-0"
+                                                placeholder="Scrivi un commento...">
+                                            <button (click)="openReplyEmoticonPanel()"
+                                                class="emoji-button bg-transparent border-0">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                                    fill="currentColor" class="bi bi-emoji-smile" viewBox="0 0 16 16">
+                                                    <path
+                                                        d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
+                                                    <path
+                                                        d="M4.285 9.567a.5.5 0 0 1 .683.183A3.5 3.5 0 0 0 8 11.5a3.5 3.5 0 0 0 3.032-1.75.5.5 0 1 1 .866.5A4.5 4.5 0 0 1 8 12.5a4.5 4.5 0 0 1-3.898-2.25.5.5 0 0 1 .183-.683M7 6.5C7 7.328 6.552 8 6 8s-1-.672-1-1.5S5.448 5 6 5s1 .672 1 1.5m4 0c0 .828-.448 1.5-1 1.5s-1-.672-1-1.5S9.448 5 10 5s1 .672 1 1.5" />
+                                                </svg>
+                                            </button>
+                                            <unievent-message-emoticon-panel [darkMode]="darkMode"
+                                                (closePanelEvent)="closeEmoticonReplyPanel()"
+                                                (emojiSelected)="addEmoticonToReplyChat($event)"
+                                                *ngIf="showEmoticonReplyPanel"></unievent-message-emoticon-panel>
                                         </div>
                                     </div>
                                 </div>
@@ -205,8 +301,8 @@
                                             d="M4.285 9.567a.5.5 0 0 1 .683.183A3.5 3.5 0 0 0 8 11.5a3.5 3.5 0 0 0 3.032-1.75.5.5 0 1 1 .866.5A4.5 4.5 0 0 1 8 12.5a4.5 4.5 0 0 1-3.898-2.25.5.5 0 0 1 .183-.683M7 6.5C7 7.328 6.552 8 6 8s-1-.672-1-1.5S5.448 5 6 5s1 .672 1 1.5m4 0c0 .828-.448 1.5-1 1.5s-1-.672-1-1.5S9.448 5 10 5s1 .672 1 1.5" />
                                     </svg>
                                 </button>
-                                <unievent-message-emoticon-panel [darkMode]="darkMode" (closePanelEvent)="closeEmoticonPanel()"
-                                    (emojiSelected)="addEmoticonToChat($event)"
+                                <unievent-message-emoticon-panel [darkMode]="darkMode"
+                                    (closePanelEvent)="closeEmoticonPanel()" (emojiSelected)="addEmoticonToChat($event)"
                                     *ngIf="showEmoticonPanel"></unievent-message-emoticon-panel>
                             </div>
                             <div (click)="addComment()" class="d-flex send-container align-items-center mx-2 pointer">
