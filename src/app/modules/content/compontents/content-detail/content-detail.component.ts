@@ -365,7 +365,7 @@ export class ContentDetailComponent implements AfterViewInit, AfterViewChecked {
   }
 
   book(item: any) {
-    alert("SHARE")
+    alert("Book")
   }
 
   addComment() {
@@ -428,7 +428,6 @@ export class ContentDetailComponent implements AfterViewInit, AfterViewChecked {
       this.commentReplyValue = null;
       this.scrollToBottomReply();
       this.resetAddReply();
-
     }
   }
 

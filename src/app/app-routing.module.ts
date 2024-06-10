@@ -10,6 +10,8 @@ import { DataProcessingComponent } from './modules/legal/components/data-process
 import { CookiePolicyComponent } from './modules/legal/components/cookie-policy/cookie-policy.component';
 import { RulesComponent } from './modules/legal/components/rules/rules.component';
 import { ForgotPasswordComponent } from './core/components/forgot-password/forgot-password.component';
+import { HistoryComponent } from './core/components/history/history.component';
+import { VisitedPagesGuard } from './core/guards/VisitedPagesGuard/visited-pages.guard';
 
 const routes: Routes = [
 	{
@@ -31,59 +33,71 @@ const routes: Routes = [
 			{
 				path: 'artist',
 				loadChildren: () => import('./modules/artist/artist.module').then((m) => m.ArtistModule),
+				canActivate: [VisitedPagesGuard]
 			},
 			{
 				path: 'payment',
 				loadChildren: () => import('./modules/payment/payment.module').then((m) => m.PaymentModule),
+				canActivate: [VisitedPagesGuard]
 			},
 			{
 				path: 'event',
 				loadChildren: () => import('./modules/event/event.module').then((m) => m.EventModule),
+				canActivate: [VisitedPagesGuard]
 			},
 			{
 				path: 'notification',
 				loadChildren: () => import('./modules/notification/notification.module').then((m) => m.NotificationModule),
-
+				canActivate: [VisitedPagesGuard]
 			},
 			{
 				path: 'search',
 				loadChildren: () => import('./modules/search/search.module').then((m) => m.SearchModule),
+				canActivate: [VisitedPagesGuard]
 			},
 			{
 				path: 'messages',
 				loadChildren: () => import('./modules/message/message.module').then((m) => m.MessageModule),
-
+				canActivate: [VisitedPagesGuard]
 			},
 			{
 				path: 'tickets',
 				loadChildren: () => import('./modules/ticket/ticket.module').then((m) => m.TicketModule),
+				canActivate: [VisitedPagesGuard]
 			},
 			{
 				path: 'settings',
-				loadChildren: () => import('./modules/settings/settings.module').then((m) => m.SettingsModule)
+				loadChildren: () => import('./modules/settings/settings.module').then((m) => m.SettingsModule),
+				canActivate: [VisitedPagesGuard]
 			},
 			{
 				path: 'supports',
-				loadChildren: () => import('./modules/support/support.module').then((m) => m.SupportModule)
+				loadChildren: () => import('./modules/support/support.module').then((m) => m.SupportModule),
+				canActivate: [VisitedPagesGuard]
 			},
 			{
 				path: '@/:subpath/content',
 				loadChildren: () => import('./modules/content/content.module').then((m) => m.ContentModule),
+				canActivate: [VisitedPagesGuard]
 			},
 			{
 				path: '@/:userAliasGenerated',
 				loadChildren: () => import('./modules/user/user.module').then((m) => m.UserModule),
+				canActivate: [VisitedPagesGuard]
 			},
 			{
 				path: 'legal',
 				loadChildren: () => import('./modules/legal/legal.module').then((m) => m.LegalModule),
+				canActivate: [VisitedPagesGuard],
 			},
 			{
 				path: 'explore',
 				loadChildren: () => import('./modules/explore/explore.module').then((m) => m.ExportModule),
+				canActivate: [VisitedPagesGuard]
 			},
 			{
 				path: 'create',
+				canActivate: [VisitedPagesGuard],
 				component: ContentCreateComponent,
 				data: {
 					title: 'Crea Contenuto',
@@ -91,6 +105,7 @@ const routes: Routes = [
 			},
 			{
 				path: 'our-mission',
+				canActivate: [VisitedPagesGuard],
 				component: OurMissionsComponent,
 				data: {
 					title: 'La nostra missione',
@@ -98,6 +113,7 @@ const routes: Routes = [
 			},
 			{
 				path: 'our-commitment',
+				canActivate: [VisitedPagesGuard],
 				component: OurCommitmentComponent,
 				data: {
 					title: 'Il nostro impegno',
@@ -105,6 +121,7 @@ const routes: Routes = [
 			},
 			{
 				path: 'partner',
+				canActivate: [VisitedPagesGuard],
 				component: PartnerComponent,
 				data: {
 					title: 'Partners',
@@ -112,6 +129,7 @@ const routes: Routes = [
 			},
 			{
 				path: 'privacy-policy',
+				canActivate: [VisitedPagesGuard],
 				component: PrivacyPolicyComponent,
 				data: {
 					title: 'Privacy policy',
@@ -119,6 +137,7 @@ const routes: Routes = [
 			},
 			{
 				path: 'terms-of-use',
+				canActivate: [VisitedPagesGuard],
 				component: DataProcessingComponent,
 				data: {
 					title: 'Termini e condizioni',
@@ -126,6 +145,7 @@ const routes: Routes = [
 			},
 			{
 				path: 'cookie-policy',
+				canActivate: [VisitedPagesGuard],
 				component: CookiePolicyComponent,
 				data: {
 					title: 'Trattamento cookie',
@@ -133,6 +153,7 @@ const routes: Routes = [
 			},
 			{
 				path: 'rules',
+				canActivate: [VisitedPagesGuard],
 				component: RulesComponent,
 				data: {
 					title: 'Regolamenti',
@@ -140,15 +161,25 @@ const routes: Routes = [
 			},
 			{
 				path: 'forgot-password',
+				canActivate: [VisitedPagesGuard],
 				component: ForgotPasswordComponent,
 				data: {
 					title: 'Password Dimenticata',
+				},
+			},
+			{
+				path: 'history',
+				canActivate: [VisitedPagesGuard],
+				component: HistoryComponent,
+				data: {
+					title: 'Cronologia',
 				},
 			}
 		]
 	},
 	{
 		path: 'login',
+		canActivate: [VisitedPagesGuard],
 		component: LoginComponent,
 		data: {
 			title: 'Login',
@@ -157,6 +188,7 @@ const routes: Routes = [
 	},
 	{
 		path: 'signup',
+		canActivate: [VisitedPagesGuard],
 		component: SignupComponent,
 		data: {
 			title: 'Registrazione',

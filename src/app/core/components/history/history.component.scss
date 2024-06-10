@@ -1,0 +1,8 @@
+.history-container{
+    background: var(--bs-light);
+    margin-top: 120px;
+}
+
+::ng-deep .bg-dark-mode .history-container{
+    background: var(--bs-dark);
+}

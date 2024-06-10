@@ -33,6 +33,8 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 import { ForgotPasswordFormComponent } from './forms/forgot-password-form/forgot-password-form.component';
 import { NgxStarsComponent } from './components/ngx-stars/ngx-stars.component';
+import { HistoryComponent } from './components/history/history.component';
+import { DateFormatPipe } from './pipe/date-format.pipe';
 
 @NgModule({
 	declarations: [
@@ -59,6 +61,7 @@ import { NgxStarsComponent } from './components/ngx-stars/ngx-stars.component';
 		NavbarProfileComponent,
 		NavbarChatComponent,
 		FilterByTypePipe,
+		DateFormatPipe,
 		NavbarLeftMenuComponent,
 		NavbarCreateComponent,
 		NavbarSearchComponent,
@@ -68,7 +71,8 @@ import { NgxStarsComponent } from './components/ngx-stars/ngx-stars.component';
 		ParametricModalComponent,
 		ForgotPasswordComponent,
 		ForgotPasswordFormComponent,
-		NgxStarsComponent
+		NgxStarsComponent,
+  HistoryComponent
 	],
 	imports: [
 		CommonModule,
@@ -94,7 +98,8 @@ import { NgxStarsComponent } from './components/ngx-stars/ngx-stars.component';
 		FooterComponent,
 		FilterByTypePipe,
 		NavbarLeftMenuComponent,
-		ApproximateNumberPipe
+		ApproximateNumberPipe,
+		DateFormatPipe
 	],
 	providers: [
 	]
