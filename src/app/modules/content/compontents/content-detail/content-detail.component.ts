@@ -23,8 +23,9 @@ export class ContentDetailComponent implements AfterViewInit, AfterViewChecked {
   ItemType: any = ItemType;
   commentValue: string = '';
   commentReplyValue: string = '';
-  showEmoticonPanel = false;
-  showEmoticonReplyPanel = false;
+  showEmoticonPanel: boolean = false;
+  showEmoticonReplyPanel: boolean = false;
+  showSharePanel: boolean = false;
   darkMode = false;
   currentLink: String = window.location.href;
   showChildrenCommentArray: Array<any> = [];
@@ -223,7 +224,7 @@ export class ContentDetailComponent implements AfterViewInit, AfterViewChecked {
 
   showChildrenComment(comment: Comment) {
     let index = this.showChildrenCommentArray[comment.discussion_id] ? this.showChildrenCommentArray[comment.discussion_id].length : 0;
-    const childrenToAdd = comment.children.slice(index, index+this.commentNumberOnShow);
+    const childrenToAdd = comment.children.slice(index, index + this.commentNumberOnShow);
     if (!this.showChildrenCommentArray[comment.discussion_id]) { this.showChildrenCommentArray[comment.discussion_id] = [] }
     this.showChildrenCommentArray[comment.discussion_id] = [...this.showChildrenCommentArray[comment.discussion_id], ...childrenToAdd];
   }
@@ -368,6 +369,30 @@ export class ContentDetailComponent implements AfterViewInit, AfterViewChecked {
     alert("Book")
   }
 
+  closeSharePanel() {
+    this.showSharePanel = false;
+  }
+
+  openSharePanel() {
+    this.showSharePanel = true;
+  }
+
+  
+  shareOnWhatsApp() {
+    const whatsappUrl = `https://api.whatsapp.com/send?text=${encodeURIComponent(window.location.href)}`;
+    window.open(whatsappUrl, '_blank');
+  }
+
+  shareOnTelegram() {
+    const telegramUrl = `https://t.me/share/url?url=${encodeURIComponent(window.location.href)}`;
+    window.open(telegramUrl, '_blank');
+  }
+
+  shareOnFacebook() {
+    const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(window.location.href)}`;
+    window.open(facebookUrl, '_blank');
+  }
+
   addComment() {
     if (this.commentValue.length > 0) {
       //Va aggiunto al back-end il nuovo commento
@@ -386,10 +411,10 @@ export class ContentDetailComponent implements AfterViewInit, AfterViewChecked {
     /*if (this.messageValue.length === 0) {
       return;
     }
-
+  
     const activeChatAlias = this.activeChatUser.t_alias_generated;
     const chat = this.chatList.find(el => el.userChat.t_alias_generated === activeChatAlias);
-
+  
     if (chat) {
       const newMessage = {
         user_to: this.currentUser,
@@ -397,7 +422,7 @@ export class ContentDetailComponent implements AfterViewInit, AfterViewChecked {
         message: this.messageValue,
         dateTime: moment(moment(), "DD/MM/YYYY HH:MM:SS")
       };
-
+  
       chat.messages.push(newMessage);
       this.groupMessagesByDate();
       this.groupMessagesByActiveChatUserByDate();
@@ -408,17 +433,17 @@ export class ContentDetailComponent implements AfterViewInit, AfterViewChecked {
     }*/
   }
 
-  addReplyComment(comment:Comment) {
-    if(this.comments[0].t_user.t_alias_generated === this.activeReplyComment.t_user.t_alias_generated){ //poi controlla il t_current_user al posto di this.comments[0]
+  addReplyComment(comment: Comment) {
+    if (this.comments[0].t_user.t_alias_generated === this.activeReplyComment.t_user.t_alias_generated) { //poi controlla il t_current_user al posto di this.comments[0]
       this.toastr.warning(null, "Non puoi rispondere a te stesso", { progressBar: true });
       this.resetAddReply();
-      return ;
+      return;
     }
     if (this.commentReplyValue.length > 0) {
       //Va aggiunto al back-end il nuovo commento
       let newComment: Comment = {
         discussion_id: this.comments.length + 1,
-        body: "@"+ this.activeReplyComment.t_user.t_alias_generated +" "+ this.commentReplyValue,
+        body: "@" + this.activeReplyComment.t_user.t_alias_generated + " " + this.commentReplyValue,
         like_count: 0,
         children: [],
         t_user: this.comments[0].t_user, //qui va il current user
@@ -431,7 +456,7 @@ export class ContentDetailComponent implements AfterViewInit, AfterViewChecked {
     }
   }
 
-  resetAddReply(){
+  resetAddReply() {
     this.isReplyCommentArray = [...this.isReplyCommentArray.map(el => false)]
     this.commentReplyValue = "";
     this.activeReplyComment = null;
@@ -529,7 +554,7 @@ export class ContentDetailComponent implements AfterViewInit, AfterViewChecked {
     alert("follow")
   }
 
-  openDiscussionReplyPanel(comment:Comment, childComment:Comment) {
+  openDiscussionReplyPanel(comment: Comment, childComment: Comment) {
     this.isReplyCommentArray = [...this.isReplyCommentArray.map(el => false)]
     this.isReplyCommentArray[comment.discussion_id] = true;
     this.activeReplyComment = childComment ? childComment : comment;
