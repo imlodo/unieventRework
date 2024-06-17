@@ -4,6 +4,7 @@ import { NavbarProfileComponent } from '../navbar-profile/navbar-profile.compone
 import { GlobalService } from '../../services';
 import { Router } from '@angular/router';
 import { ROUTE_LIST } from '../../utility/global-constant';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'unievent-navbar',
@@ -38,7 +39,7 @@ export class NavbarComponent {
     this.isMobileSearch = false;
   }
 
-  constructor(private elementRef: ElementRef, private router: Router, private globalService: GlobalService) {
+  constructor(private elementRef: ElementRef, private cookieService: CookieService, private router: Router, private globalService: GlobalService) {
   }
 
   showMobileLeftPanel() {
@@ -46,7 +47,9 @@ export class NavbarComponent {
   }
 
   logout() {
-    alert("Implementare logout")
+    this.cookieService.delete('auth_token');
+    this.cookieService.delete('current_user');
+    this.router.navigate(["/login"])
   }
 
   showCollapse() {
