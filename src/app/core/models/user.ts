@@ -1,4 +1,4 @@
-import { USER_TYPE } from "../utility/global-constant";
+import { USER_ROLE, USER_TYPE } from "../utility/global-constant";
 
 export interface User {
     t_username?: string;
@@ -10,4 +10,5 @@ export interface User {
     t_profile_photo: string;
     is_verified?: boolean; // Rendere obbligatorio
     t_type: USER_TYPE;
+    t_role?: USER_ROLE;
 }

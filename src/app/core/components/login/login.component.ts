@@ -52,12 +52,12 @@ export class LoginComponent implements AfterViewInit, OnInit {
           error => {
             this.toastr.error(error.error);
           }
-        )
-
+        );
       },
       error => {
         this.toastr.error(error.error);
       }
     );
   }
+
 }

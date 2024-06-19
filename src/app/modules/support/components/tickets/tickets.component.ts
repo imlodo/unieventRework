@@ -7,7 +7,8 @@ import { Router } from '@angular/router';
 import moment from 'moment';
 import { GlobalService } from 'src/app/core/services';
 import { generateAlphanumericSequence, randomIntFromInterval } from 'src/app/core/utility/functions-constants';
-import { ExtendedFile, ROUTE_LIST } from 'src/app/core/utility/global-constant';
+import { ExtendedFile, ROUTE_LIST, TICKET_STATUS } from 'src/app/core/utility/global-constant';
+import { Ticket } from '../support-ticket-detail/support-ticket-detail.component';
 
 @Component({
   selector: 'unievent-tickets',
@@ -182,7 +183,7 @@ export class TicketsComponent {
       data.push({
         id: generateAlphanumericSequence(randomIntFromInterval(1,10000), 25),
         description: `Descrizione ${i} Descrizione ${i} Descrizione ${i} Descrizione ${i} Descrizione ${i} Descrizione ${i} Descrizione ${i} Descrizione ${i} Descrizione ${i} Descrizione ${i} Descrizione ${i} Descrizione ${i} Descrizione ${i} Descrizione ${i} Descrizione ${i} Descrizione ${i} Descrizione ${i} Descrizione ${i}`,
-        status: Math.random() < 0.5 ? 'Aperto' : Math.random() < 0.5 ? 'Chiuso' : 'Necessaria risposta',
+        status: Math.random() < 0.5 ? TICKET_STATUS.Aperto : Math.random() < 0.5 ? TICKET_STATUS.Chiuso : TICKET_STATUS.NecessariaRisposta,
         isScaduto: new Date(this.randomDate(new Date(2022, 0, 1), new Date())) < new Date()
       });
     }
@@ -199,7 +200,7 @@ export class TicketsComponent {
     return moment(new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime())).toDateString()).format("DD/MM/YYYY");
   }
 
-  showDetails(ticket: any): void {
+  showDetails(ticket: Ticket): void {
     const params = this.globalService.encodeParams({
       ticket: ticket
     });

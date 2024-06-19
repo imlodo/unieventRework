@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable, throwError } from 'rxjs';
-import { catchError, tap } from 'rxjs/operators';
+import { Observable, of, throwError } from 'rxjs';
+import { catchError, map, tap } from 'rxjs/operators';
 import { CookieService } from 'ngx-cookie-service';
-import { GENERATE_TOKEN, GET_USER } from '../../utility/api-constant';
+import { GENERATE_TOKEN, GET_USER, VERIFY_TOKEN } from '../../utility/api-constant';
 
 @Injectable({
   providedIn: 'root'
@@ -38,6 +38,30 @@ export class AuthenticationService {
           this.cookieService.set('current_user', JSON.stringify(response.user));
         }),
         catchError(this.handleError)
+      );
+  }
+
+  verifyToken(): Observable<boolean> {
+    const token = this.cookieService.get('auth_token');
+
+    if (!token) {
+      return of(false);
+    }
+
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    });
+
+    return this.http.post<boolean>(VERIFY_TOKEN, {}, { headers })
+      .pipe(
+        map(response => {
+          return true
+        }
+      ),
+        catchError(error => {
+          return of(false);
+        } )
       );
   }
 

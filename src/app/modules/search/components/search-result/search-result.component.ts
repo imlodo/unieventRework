@@ -1,6 +1,7 @@
 import { AfterViewInit, ChangeDetectorRef, Component, ElementRef, HostListener, Input, Renderer2, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import moment from 'moment';
+import { CookieService } from 'ngx-cookie-service';
 import { pluck } from 'rxjs';
 import { User } from 'src/app/core/models/user';
 import { GlobalService } from 'src/app/core/services';
@@ -16,15 +17,7 @@ export class SearchResultComponent implements AfterViewInit {
   @ViewChild('scrollableContent') scrollableContent: ElementRef;
   bodyElement: ElementRef;
   currentUserAliasGenerated: string = "mariobaldi2";
-  user: User = {
-    t_name: "Mario",
-    t_surname: "Baldi",
-    t_alias_generated: "mariobaldi1",
-    t_description: "Sono un bel ragazzo",
-    t_profile_photo: "/assets/img/userExampleImg.jpeg",
-    is_verified: true,
-    t_type: USER_TYPE.CREATOR
-  }
+  user: User;
   isLoading: boolean = false;
   scrollDistance = 1;
   scrollUpDistance = 1;
@@ -34,7 +27,7 @@ export class SearchResultComponent implements AfterViewInit {
   eventContentList: any[] = [];
   topicContentList: any[] = [];
   userContentList: any[] = [];
-  allContentList: any [] = [];
+  allContentList: any[] = [];
   searchInput: string = null;
   protected decodedParams: {
     searchInput: string;
@@ -64,7 +57,12 @@ export class SearchResultComponent implements AfterViewInit {
   countAccounts: number = 1; //questi devono essere precaricati dal back-end che ci dice quanti account sono stati trovati
   countArtists: number = 1;  //questi devono essere precaricati dal back-end che ci dice quanti artisti sono stati trovati
 
-  constructor(private cdr: ChangeDetectorRef, private elementRef: ElementRef, private renderer: Renderer2, private globalService: GlobalService, private route: ActivatedRoute, private router: Router) {
+  constructor(private cdr: ChangeDetectorRef, private cookieService: CookieService, private elementRef: ElementRef, private renderer: Renderer2, private globalService: GlobalService, private route: ActivatedRoute, private router: Router) {
+
+    const cookieCurrentUser = this.cookieService.get('current_user');
+    if (cookieCurrentUser) {
+      this.user = JSON.parse(cookieCurrentUser);
+    }
     this.bodyElement = this.elementRef.nativeElement.ownerDocument.body;
     this.loadMoreItems(ItemType.Tutti);
     this.isLoading = false;

@@ -14,6 +14,22 @@ export enum USER_TYPE {
     CREATOR,
     COMPANY
 }
+
+export enum USER_ROLE {
+    Utente="Utente",
+    Moderatore="Moderatore",
+    SuperModeratore = "Super Moderatore"
+}
+
+export enum TICKET_STATUS {
+    Chiuso = "Chiuso",
+    Aperto = "Aperto",
+    SollecitoRiapertura = "Sollecito Riapertura",
+    AttesaRisposta = "Attesa Risposta Operatore",
+    NecessariaRisposta = "Necessaria Risposta"
+}
+
+
 export enum EVENT_TYPE {
     PARTY = "PARTY",
     CINEMA = "CINEMA",
@@ -99,6 +115,7 @@ export interface EVENT_SERVICE_TYPE {
         FRITTURA?: boolean
     }
 }
+
 export const eventOrderedBySell: Array<Event> = [
     {
         n_id: 1,

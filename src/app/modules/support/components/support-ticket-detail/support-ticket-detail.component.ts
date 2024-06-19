@@ -3,16 +3,17 @@ import { AfterViewInit, ChangeDetectorRef, Component, ElementRef, Renderer2, Vie
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import moment from 'moment';
+import { CookieService } from 'ngx-cookie-service';
 import { pluck } from 'rxjs';
+import { User } from 'src/app/core/models/user';
 import { GlobalService } from 'src/app/core/services';
-import { ExtendedFile } from 'src/app/core/utility/global-constant';
+import { ExtendedFile, TICKET_STATUS, USER_ROLE } from 'src/app/core/utility/global-constant';
 
 interface TicketDiscussion {
-  id_user: number;
   alias: string,
   body: string;
   replyDateHour: string;
-  role: string;
+  role: USER_ROLE;
   attachments: string[];
 }
 
@@ -21,10 +22,10 @@ interface TicketDetail {
   discussion_list: TicketDiscussion[];
 }
 
-interface Ticket {
+export interface Ticket {
   id: number;
   description: string;
-  status: string;
+  status: TICKET_STATUS;
   isScaduto: boolean;
 }
 
@@ -37,25 +38,36 @@ export class SupportTicketDetailComponent implements AfterViewInit {
 
   ticket: Ticket;
   discussionData: TicketDiscussion[];
-  currentUserId: number = 1;
+  currentUser: User;
   ticketReplyCaption: string = '';
   randomImage = this.createRandomImageFile(1000, 1000, 'random_image.png');
   @ViewChild('replyTicketContainer') replyTicketContainer: ElementRef;
+  @ViewChild('fileInput') fileInput: ElementRef<HTMLInputElement>;
+  uploadedFiles: File[] = [];
+  countReplyCharacter: number = 0;
 
-  constructor(private cdr: ChangeDetectorRef, private renderer: Renderer2, private http: HttpClient, private globalService: GlobalService, private route: ActivatedRoute, private router: Router, private sanitizer: DomSanitizer) {
+  constructor(private cdr: ChangeDetectorRef, private cookieService: CookieService, private renderer: Renderer2, private http: HttpClient, private globalService: GlobalService, private route: ActivatedRoute, private router: Router, private sanitizer: DomSanitizer) {
+    const cookieCurrentUser = this.cookieService.get('current_user');
+    if (cookieCurrentUser) {
+      this.currentUser = JSON.parse(cookieCurrentUser);
+    }
   }
 
   ngAfterViewInit(): void {
     this.decodeParams();
-    console.log(this.ticket.status)
-    if (this.ticket.status != 'Chiuso') {
-      document.body.classList.add('overflow-y-scroll-force');
-      document.body.classList.remove('overflow-y-scroll-none');
-    } else {
+    this.updateGlobalScroll()
+    this.cdr.detectChanges();
+  }
+
+  updateGlobalScroll() {
+    document.getElementsByTagName("body")[0].scrollTo(0, 0);
+    if (this.ticket.status != TICKET_STATUS.Aperto && this.ticket.status != TICKET_STATUS.NecessariaRisposta) {
       document.body.classList.remove('overflow-y-scroll-force');
       document.body.classList.add('overflow-y-scroll-none');
+    } else {
+      document.body.classList.add('overflow-y-scroll-force');
+      document.body.classList.remove('overflow-y-scroll-none');
     }
-    this.cdr.detectChanges();
   }
 
   decodeParams() {
@@ -72,36 +84,37 @@ export class SupportTicketDetailComponent implements AfterViewInit {
       );
   }
 
-  getColorByStatus(status: string) {
-    switch (status) {
-      case "Chiuso":
-        return 'color:red;'
-      case "Aperto":
-        return 'color:green;'
-      case "Sollecito Riapertura" || "Necessaria Risposta":
-        return 'color:orange;'
-      default:
-        return '';
-    }
+  getColorByStatus(status: TICKET_STATUS): string {
+    const statusColors: { [key: string]: string } = {
+      [TICKET_STATUS.Chiuso]: 'color:red;',
+      [TICKET_STATUS.Aperto]: 'color:green;',
+      [TICKET_STATUS.SollecitoRiapertura]: 'color:orange;',
+      [TICKET_STATUS.NecessariaRisposta]: 'color:yellow;',
+      [TICKET_STATUS.AttesaRisposta]: 'color:white;'
+    };
+
+    const color = statusColors[status];
+
+    return color || '';
   }
 
   getTicketDiscussionById(id: number) {
     //Questo va recuperato dopo aver caricato il ticket
     this.discussionData = [
       {
-        id_user: 1, alias: "mariobaldi", role: "Utente", replyDateHour: moment().format("DD/MM/YYYY hh:mm"), body: "Primo messaggio", attachments: [
+        alias: this.currentUser.t_alias_generated, role: this.currentUser.t_role, replyDateHour: moment().format("DD/MM/YYYY hh:mm"), body: "Primo messaggio", attachments: [
           this.getFileObjectURL(this.randomImage),
           this.getFileObjectURL(this.randomImage),
           this.getFileObjectURL(this.randomImage)
         ]
       },
       {
-        id_user: 2, alias: "operatore1", role: "Moderatore", replyDateHour: moment().format("DD/MM/YYYY hh:mm"), body: "Risposta al primo messaggio", attachments: [
+        alias: "operatore1", role: USER_ROLE.Moderatore, replyDateHour: moment().format("DD/MM/YYYY hh:mm"), body: "Risposta al primo messaggio", attachments: [
           this.getFileObjectURL(this.randomImage),
           this.getFileObjectURL(this.randomImage)
         ]
       },
-      { id_user: 3, alias: "operatore2", role: "Super Moderatore", replyDateHour: moment().format("DD/MM/YYYY hh:mm"), body: "Attenzione ho provveduto a chiudere il ticket poichè non hai risposto per 48h", attachments: [] }
+      { alias: "operatore2", role: USER_ROLE.SuperModeratore, replyDateHour: moment().format("DD/MM/YYYY hh:mm"), body: "Attenzione ho provveduto a chiudere il ticket poichè non hai risposto per 48h", attachments: [] }
     ];
   }
 
@@ -153,11 +166,6 @@ export class SupportTicketDetailComponent implements AfterViewInit {
     return '';
   }
 
-  /*REPLY*/
-  @ViewChild('fileInput') fileInput: ElementRef<HTMLInputElement>;
-  uploadedFiles: File[] = [];
-  countReplyCharacter: number = 0;
-
   changeTicketCaptionControl() {
     if (this.ticketReplyCaption.length > 1000) {
       this.ticketReplyCaption = this.ticketReplyCaption.slice(0, 1000);
@@ -175,16 +183,14 @@ export class SupportTicketDetailComponent implements AfterViewInit {
   handleFileInput(fileInput: HTMLInputElement) {
     const files = fileInput.files;
     if (files) {
-      // Aggiungi i file alla lista dei file caricati
       for (let i = 0; i < files.length; i++) {
-        const file = files.item(i) as ExtendedFile; // Cast esplicito a ExtendedFile
+        const file = files.item(i) as ExtendedFile; 
         if (file) {
-          file.preview = this.createFilePreview(file); // Aggiungi la preview all'oggetto file
+          file.preview = this.createFilePreview(file);
           this.uploadedFiles.push(file);
         }
       }
 
-      // Limita la lista dei file caricati a un massimo di 4
       if (this.uploadedFiles.length > 4) {
         this.uploadedFiles = this.uploadedFiles.slice(0, 4);
       }
@@ -195,7 +201,6 @@ export class SupportTicketDetailComponent implements AfterViewInit {
     const reader = new FileReader();
     reader.readAsDataURL(file);
     reader.onload = () => {
-      // Ottieni l'anteprima dell'immagine come URL base64
       if (typeof reader.result === 'string') {
         file.preview = reader.result;
       }
@@ -295,9 +300,10 @@ export class SupportTicketDetailComponent implements AfterViewInit {
   sendReply() {
     let uploadedFilesString = this.uploadedFiles.map(el => this.getUrlImage(el));
     this.discussionData.push({
-      //alias da cambiare con current_user_alias (anche role con current_user_role)
-      id_user: 1, alias: "mariobaldi", role: "Utente", replyDateHour: moment().format("DD/MM/YYYY hh:mm"), body: this.ticketReplyCaption, attachments: uploadedFilesString
+      alias: this.currentUser.t_alias_generated, role: this.currentUser.t_role, replyDateHour: moment().format("DD/MM/YYYY hh:mm"), body: this.ticketReplyCaption, attachments: uploadedFilesString
     });
+    this.ticket.status = TICKET_STATUS.AttesaRisposta;
+    this.updateGlobalScroll();
     this.resetReplyFields();
   }
 
@@ -320,8 +326,9 @@ export class SupportTicketDetailComponent implements AfterViewInit {
   }
 
   sendReOpeningReminder() {
-    this.ticket.status = "Sollecito Riapertura";
-    this.discussionData.push({id_user: this.currentUserId, alias: "mariobaldi", role:"Utente", replyDateHour: moment().format("DD/MM/YYYY hh:mm"), body: "Sollecito la riapertura di questo ticket", attachments:[]})
+    this.ticket.status = TICKET_STATUS.SollecitoRiapertura;
+    this.updateGlobalScroll();
+    this.discussionData.push({ alias: this.currentUser.t_alias_generated, role: this.currentUser.t_role, replyDateHour: moment().format("DD/MM/YYYY hh:mm"), body: "Sollecito la riapertura di questo ticket", attachments: [] })
     this.scrollToBottom();
   }
 

@@ -15,20 +15,20 @@
         <div #replyListContainer class="reply-list-container container p-3 rounded shadow">
             <ng-container *ngFor="let discussion of discussionData">
                 <div class="reply-outer-container">
-                    <h3 *ngIf="discussion.id_user === currentUserId" class="text-start"><span class="text-secondary">Hai
+                    <h3 *ngIf="discussion.alias === currentUser?.t_alias_generated" class="text-start"><span class="text-secondary">Hai
                             scritto:</span></h3>
-                    <h3 *ngIf="discussion.id_user !== currentUserId" class="text-end"><span
+                    <h3 *ngIf="discussion.alias !== currentUser?.t_alias_generated" class="text-end"><span
                             class="text-secondary">Risposta
                             da:</span> {{discussion.alias}} ({{discussion.role}}) </h3>
                     <div class="d-flex flex-row mb-4"
-                        [ngClass]="discussion.id_user != currentUserId ? 'justify-content-end' : 'justify-content-start'">
-                        <div [ngClass]="discussion.id_user != currentUserId ? 'reply-operator-container' : 'reply-user-container'"
+                        [ngClass]="discussion.alias !== currentUser?.t_alias_generated ? 'justify-content-end' : 'justify-content-start'">
+                        <div [ngClass]="discussion.alias !== currentUser?.t_alias_generated ? 'reply-operator-container' : 'reply-user-container'"
                             class="p-3 rounded d-flex flex-column">
                             <h3 class="m-0">{{discussion.body}}</h3>
                             <h5 class="text-secondary m-0 text-end">{{discussion.replyDateHour}}</h5>
                         </div>
                     </div>
-                    <div [ngClass]="discussion.id_user != currentUserId ? 'justify-content-end' : 'justify-content-start'"
+                    <div [ngClass]="discussion.alias !== currentUser?.t_alias_generated ? 'justify-content-end' : 'justify-content-start'"
                         class="d-flex flex-row mb-4 gap-3">
                         <ng-container *ngFor="let attachment of discussion.attachments">
                             <!--*ngIf="attachment.type.startsWith('image')"-->
@@ -39,7 +39,7 @@
                 </div>
             </ng-container>
         </div>
-        <ng-container *ngIf="ticket?.status!=='Chiuso' && ticket?.status !== 'Sollecito Riapertura'">
+        <ng-container *ngIf="ticket?.status!=='Chiuso' && ticket?.status !== 'Sollecito Riapertura' && ticket?.status !== 'Attesa Risposta Operatore'">
             <div #replyTicketContainer class="p-4 reply-ticket-container rounded shadow">
                 <h1>Invia nuova risposta</h1>
                 <div class="reply-ticket-panel rounded d-flex flex-column p-3">

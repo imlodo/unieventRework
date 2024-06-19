@@ -3,6 +3,7 @@ import { NavigationEnd, Router } from '@angular/router';
 import { User } from '../../models/user';
 import { ExploreItemType, ProfileItemType, ROUTE_LIST, USER_TYPE } from '../../utility/global-constant';
 import { GlobalService } from '../../services';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'unievent-navbar-left-menu',
@@ -12,22 +13,25 @@ import { GlobalService } from '../../services';
 export class NavbarLeftMenuComponent implements AfterViewInit {
   isDNone: boolean;
   activePath: string;
-  currentUser: User = {
-    t_name: "Mario",
-    t_surname: "Baldi",
-    t_alias_generated: "mariobaldi1",
-    t_description: "Sono un bel ragazzo",
-    t_profile_photo: "/assets/img/userExampleImg.jpeg",
-    is_verified: true,
-    t_type: USER_TYPE.CREATOR
-  }
+  currentUser: User;
 
-  constructor(private renderer: Renderer2, private el: ElementRef, private router: Router, private globalService: GlobalService) {
+  constructor(
+    private renderer: Renderer2,
+    private el: ElementRef,
+    private router: Router,
+    private globalService: GlobalService,
+    private cookieService: CookieService
+  ) {
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
         this.activePath = event.url;
       }
     });
+    
+    const cookieCurrentUser = this.cookieService.get('current_user');
+    if (cookieCurrentUser) {
+      this.currentUser = JSON.parse(cookieCurrentUser);
+    }
   }
 
   ngAfterViewInit(): void {
@@ -47,50 +51,15 @@ export class NavbarLeftMenuComponent implements AfterViewInit {
   navigateToUserProfile(type: string) {
     let link = "/@/" + this.currentUser.t_alias_generated;
     let params = this.globalService.encodeParams({
-      profileItemType: ProfileItemType.Booked
+      profileItemType: type === "Booked" ? ProfileItemType.Booked : ProfileItemType.Liked
     });
-    switch (type) {
-      case "Booked":
-        this.router.navigate([link, params]);
-        break;
-      case "Liked":
-        params = this.globalService.encodeParams({
-          profileItemType: ProfileItemType.Liked
-        });
-        this.router.navigate([link, params]);
-        break;
-      default:
-        this.router.navigate([link]);
-        break;
-    }
+    this.router.navigate([link, params]);
   }
 
   navigateToExploreSection(type: string) {
     let params = this.globalService.encodeParams({
-      exploreItemType: ExploreItemType.All
+      exploreItemType: ExploreItemType[type]
     });
-    switch (type) {
-      case "Featured":
-        params = this.globalService.encodeParams({
-          exploreItemType: ExploreItemType.Featured
-        });
-        break;
-      case "Followed":
-        params = this.globalService.encodeParams({
-          exploreItemType: ExploreItemType.Followed
-        });
-        break;
-      case "Topics":
-        params = this.globalService.encodeParams({
-          exploreItemType: ExploreItemType.Topics
-        });
-        break;
-      case "Events":
-        params = this.globalService.encodeParams({
-          exploreItemType: ExploreItemType.Events
-        });
-        break;
-    }
     this.router.navigate([ROUTE_LIST.explore, params]);
   }
 
@@ -105,4 +74,5 @@ export class NavbarLeftMenuComponent implements AfterViewInit {
   isLinkActive(link: string): boolean {
     return this.activePath === link;
   }
+
 }
