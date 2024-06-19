@@ -16,7 +16,6 @@ import { ItemType, ROUTE_LIST, USER_TYPE } from 'src/app/core/utility/global-con
 export class SearchResultComponent implements AfterViewInit {
   @ViewChild('scrollableContent') scrollableContent: ElementRef;
   bodyElement: ElementRef;
-  currentUserAliasGenerated: string = "mariobaldi2";
   user: User;
   isLoading: boolean = false;
   scrollDistance = 1;

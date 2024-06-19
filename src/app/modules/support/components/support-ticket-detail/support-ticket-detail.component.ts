@@ -43,6 +43,7 @@ export class SupportTicketDetailComponent implements AfterViewInit {
   randomImage = this.createRandomImageFile(1000, 1000, 'random_image.png');
   @ViewChild('replyTicketContainer') replyTicketContainer: ElementRef;
   @ViewChild('fileInput') fileInput: ElementRef<HTMLInputElement>;
+  @ViewChild('replyListContainer') replyListContainer: ElementRef;
   uploadedFiles: File[] = [];
   countReplyCharacter: number = 0;
 
@@ -59,17 +60,6 @@ export class SupportTicketDetailComponent implements AfterViewInit {
     this.cdr.detectChanges();
   }
 
-  updateGlobalScroll() {
-    document.getElementsByTagName("body")[0].scrollTo(0, 0);
-    if (this.ticket.status != TICKET_STATUS.Aperto && this.ticket.status != TICKET_STATUS.NecessariaRisposta) {
-      document.body.classList.remove('overflow-y-scroll-force');
-      document.body.classList.add('overflow-y-scroll-none');
-    } else {
-      document.body.classList.add('overflow-y-scroll-force');
-      document.body.classList.remove('overflow-y-scroll-none');
-    }
-  }
-
   decodeParams() {
     this.route.params
       .pipe(pluck('params'))
@@ -84,6 +74,17 @@ export class SupportTicketDetailComponent implements AfterViewInit {
       );
   }
 
+  updateGlobalScroll() {
+    document.getElementsByTagName("body")[0].scrollTo(0, 0);
+    if (this.ticket.status != TICKET_STATUS.Aperto && this.ticket.status != TICKET_STATUS.NecessariaRisposta) {
+      document.body.classList.remove('overflow-y-scroll-force');
+      document.body.classList.add('overflow-y-scroll-none');
+    } else {
+      document.body.classList.add('overflow-y-scroll-force');
+      document.body.classList.remove('overflow-y-scroll-none');
+    }
+  }
+
   getColorByStatus(status: TICKET_STATUS): string {
     const statusColors: { [key: string]: string } = {
       [TICKET_STATUS.Chiuso]: 'color:red;',
@@ -94,7 +95,6 @@ export class SupportTicketDetailComponent implements AfterViewInit {
     };
 
     const color = statusColors[status];
-
     return color || '';
   }
 
@@ -229,7 +229,6 @@ export class SupportTicketDetailComponent implements AfterViewInit {
       anchor.download = this.getFileNameFromUrl(fileUrl);
       anchor.click();
 
-      // Pulisce l'URL del Blob dopo il download
       URL.revokeObjectURL(blobUrl);
     });
   }
@@ -250,7 +249,6 @@ export class SupportTicketDetailComponent implements AfterViewInit {
   }
 
   getFileNameFromUrl(url: string): string {
-    // Ottiene il nome del file dalla URL
     const parts = url.split('/');
     return parts[parts.length - 1];
   }
@@ -263,8 +261,7 @@ export class SupportTicketDetailComponent implements AfterViewInit {
     }
     const byteArray = new Uint8Array(byteNumbers);
 
-    // Determina il tipo MIME in base all'intestazione della stringa base64
-    let mimeType = 'application/octet-stream'; // Tipo MIME di default
+    let mimeType = 'application/octet-stream'; 
     if (base64.startsWith('data:image/jpeg')) {
       mimeType = 'image/jpeg';
     } else if (base64.startsWith('data:image/png')) {
@@ -313,8 +310,6 @@ export class SupportTicketDetailComponent implements AfterViewInit {
     this.countReplyCharacter = 0;
     this.scrollToBottom();
   }
-
-  @ViewChild('replyListContainer') replyListContainer: ElementRef;
 
   scrollToBottom(): void {
     try {

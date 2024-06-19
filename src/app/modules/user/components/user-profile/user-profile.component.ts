@@ -1,9 +1,11 @@
-import { AfterViewInit, ChangeDetectorRef, Component, ElementRef, HostListener, Input, Renderer2, ViewChild } from '@angular/core';
+import { AfterViewChecked, AfterViewInit, ChangeDetectorRef, Component, ElementRef, Renderer2, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import moment from 'moment';
-import { pluck } from 'rxjs';
+import { CookieService } from 'ngx-cookie-service';
+import { ToastrService } from 'ngx-toastr';
+import { pluck, switchMap } from 'rxjs';
 import { User } from 'src/app/core/models/user';
-import { GlobalService } from 'src/app/core/services';
+import { GlobalService, UserService } from 'src/app/core/services';
 import { randomIntFromInterval } from 'src/app/core/utility/functions-constants';
 import { ItemType, ProfileItemType, ROUTE_LIST, USER_TYPE } from 'src/app/core/utility/global-constant';
 
@@ -23,16 +25,8 @@ export class UserProfileComponent implements AfterViewInit {
   biography: string = ""; // initial values for editing
   profile_photo: string = "";
   isFollowed: boolean = false; //Vale per l'utente corrente che visita il profilo
-  currentUserAliasGenerated: string = "mariobaldi2";
-  user: User = {
-    t_name: "Mario",
-    t_surname: "Baldi",
-    t_alias_generated: "mariobaldi1",
-    t_description: "Sono un bel ragazzo",
-    t_profile_photo: "/assets/img/userExampleImg.jpeg",
-    is_verified: true,
-    t_type: USER_TYPE.CREATOR
-  }
+  user: User;  //User recuperato dal backend
+  currentUser: User;
   isLoading: boolean = false;
   scrollDistance = 1;
   scrollUpDistance = 1;
@@ -56,32 +50,23 @@ export class UserProfileComponent implements AfterViewInit {
   userInfo: any;
   selectedType: ProfileItemType = ProfileItemType.Content;
 
-  constructor(private cdr: ChangeDetectorRef, private elementRef: ElementRef, private renderer: Renderer2, private globalService: GlobalService, private route: ActivatedRoute, private router: Router) {
-    this.userInfo = this.getUserInfoById();
-    this.bodyElement = this.elementRef.nativeElement.ownerDocument.body;
-    this.loadMoreItems(ProfileItemType.Content);
-    this.isLoading = false;
-    this.loadMoreItems(ProfileItemType.Liked);
-    this.isLoading = false;
-    this.loadMoreItems(ProfileItemType.Booked);
-    this.username = this.user.t_alias_generated;
-    this.firstName = this.user.t_name;
-    this.lastName = this.user.t_surname;
-    this.biography = this.user.t_description;
-    this.profile_photo = this.user.t_profile_photo;
-    this.decodeParams();
+  constructor(private cdr: ChangeDetectorRef, private toastr: ToastrService, private userService: UserService, private cookieService: CookieService, private elementRef: ElementRef, private renderer: Renderer2, private globalService: GlobalService, private route: ActivatedRoute, private router: Router) {
+    const cookieCurrentUser = this.cookieService.get('current_user');
+    if (cookieCurrentUser) {
+      this.currentUser = JSON.parse(cookieCurrentUser);
+    }
   }
 
   decodeParams() {
     this.route.params
       .pipe(pluck('params'))
       .subscribe((result) => {
-        if(result){
+        if (result) {
           const decode = this.globalService.decodeParams(result);
-          if(decode.profileItemType === "Booked"){
+          if (decode.profileItemType === "Booked") {
             this.selectedType = ProfileItemType.Booked;
           }
-          if(decode.profileItemType === "Liked"){
+          if (decode.profileItemType === "Liked") {
             this.selectedType = ProfileItemType.Liked;
           }
         }
@@ -89,12 +74,44 @@ export class UserProfileComponent implements AfterViewInit {
       );
   }
 
+  ngOnInit(): void {
+
+  }
+
   ngAfterViewInit(): void {
-    //this.loadMoreItems();
+    this.route.paramMap.subscribe(params => {
+      const userAliasGenerated = params.get('userAliasGenerated');
+      if (userAliasGenerated) {
+        this.userService.getUser(userAliasGenerated).subscribe(
+          (response: any) => {
+            this.user = response.user;
+            this.userInfo = this.getUserInfoById();
+            this.loadMoreItems(ProfileItemType.Content);
+            this.isLoading = false;
+            this.loadMoreItems(ProfileItemType.Liked);
+            this.isLoading = false;
+            this.loadMoreItems(ProfileItemType.Booked);
+            this.bodyElement = this.elementRef.nativeElement.ownerDocument.body;
+            this.username = this.user.t_alias_generated;
+            this.firstName = this.user.t_name;
+            this.lastName = this.user.t_surname;
+            this.biography = this.user.t_description;
+            this.profile_photo = this.user.t_profile_photo;
+            this.decodeParams();
+            this.isLoading = false;
+          },
+          error => {
+            console.error('Errore nel recupero dell\'utente:', error);
+          }
+        );
+      } else {
+        console.error('Parametro userAliasGenerated non trovato nell\'URL');
+      }
+    });
     this.cdr.detectChanges();
   }
 
-  navigateToBuyTicket(event:any, item:any) {
+  navigateToBuyTicket(event: any, item: any) {
     event.preventDefault();
     const params = this.globalService.encodeParams({
       n_id: item.id

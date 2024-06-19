@@ -3,6 +3,7 @@ import { User } from '../../models/user';
 import { ProfileItemType, ROUTE_LIST, USER_TYPE } from '../../utility/global-constant';
 import { Router } from '@angular/router';
 import { GlobalService } from '../../services';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'unievent-navbar-profile',
@@ -17,16 +18,7 @@ export class NavbarProfileComponent {
   showProfilePanel: boolean = false;
   activeMod: boolean = false;
   @Input() darkMode: boolean;
-  user: User = {
-    t_username: "lodo",
-    t_password: "lodo",
-    t_name: "Antonio",
-    t_surname: "Lodato",
-    t_alias_generated: "lodo32",
-    t_description: "Sono un bel ragazzo",
-    t_profile_photo: "/assets/img/userExampleImg.jpeg",
-    t_type: USER_TYPE.CREATOR
-  };
+  user: User;
 
   @HostListener('document:click', ['$event'])
   handleClickOutside(event: Event) {
@@ -37,7 +29,11 @@ export class NavbarProfileComponent {
     }
   }
 
-  constructor(private elementRef: ElementRef, private router: Router, private globalService: GlobalService) {
+  constructor(private elementRef: ElementRef, private cookieService: CookieService, private router: Router, private globalService: GlobalService) {
+    const cookieCurrentUser = this.cookieService.get('current_user');
+    if (cookieCurrentUser) {
+      this.user = JSON.parse(cookieCurrentUser);
+    }
     let darkModeChoice = localStorage.getItem("darkModeChoice");
     if (darkModeChoice === "0") {
       this.activeMod = false;
