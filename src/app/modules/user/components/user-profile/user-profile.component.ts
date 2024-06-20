@@ -3,7 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import moment from 'moment';
 import { CookieService } from 'ngx-cookie-service';
 import { ToastrService } from 'ngx-toastr';
-import { pluck, switchMap } from 'rxjs';
+import { catchError, map, of, pluck, switchMap } from 'rxjs';
 import { User } from 'src/app/core/models/user';
 import { GlobalService, UserService } from 'src/app/core/services';
 import { randomIntFromInterval } from 'src/app/core/utility/functions-constants';
@@ -235,6 +235,16 @@ export class UserProfileComponent implements AfterViewInit {
     this.user.t_surname = this.lastName;
     this.user.t_description = this.biography;
     this.user.t_profile_photo = this.profile_photo;
+
+    this.userService.editUser(this.firstName, this.lastName, this.biography, this.profile_photo, null).subscribe(
+      response => {
+        this.toastr.success(response.message)
+      },
+      error => {
+        this.toastr.error(error.error);
+      }
+    );
+
   }
 
   resetFormFields(): void {

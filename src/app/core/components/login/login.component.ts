@@ -18,10 +18,6 @@ export class LoginComponent implements AfterViewInit, OnInit {
   }
 
   ngOnInit(): void {
-    const authToken = this.cookieService.get("auth_token");
-    if (authToken) {
-      this.router.navigate(["/"]);
-    }
   }
 
   ngAfterViewInit(): void {

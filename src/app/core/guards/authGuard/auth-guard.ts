@@ -16,8 +16,12 @@ export class AuthGuard implements CanActivate {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    if (state.url === '/login' || state.url === '/signup') {
-      return true; // Permetti sempre l'accesso alla pagina di login e signup
+    if (state.url === '/login' || state.url === '/signup' || state.url === '/forgot-password') {
+      const authToken = this.cookieService.get("auth_token");
+      if (authToken) {
+        this.router.navigate(["/"]);
+      } 
+      return true; 
     }
 
     return this.authService.verifyToken().pipe(

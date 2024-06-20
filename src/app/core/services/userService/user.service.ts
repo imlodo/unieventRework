@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
 import { Observable, catchError, tap, throwError } from 'rxjs';
-import { GET_USER } from '../../utility/api-constant';
+import { EDIT_USER, GET_USER } from '../../utility/api-constant';
 
 @Injectable({
   providedIn: 'root'
@@ -24,6 +24,24 @@ export class UserService {
       .pipe(
         tap((response: any) => {
           return response;
+        }),
+        catchError(this.handleError)
+      );
+  }
+
+  editUser(t_name: string, t_surname: string, t_description: string, t_profile_photo: string, t_password: string): Observable<any> {
+    const token = this.cookieService.get('auth_token');
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    });
+
+    const body = { t_name, t_surname, t_description, t_profile_photo, t_password };
+
+    return this.http.post(EDIT_USER, body, { headers })
+      .pipe(
+        tap((response: any) => {
+          return response
         }),
         catchError(this.handleError)
       );

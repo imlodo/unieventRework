@@ -163,7 +163,7 @@ const routes: Routes = [
 			},
 			{
 				path: 'forgot-password',
-				canActivate: [VisitedPagesGuard],
+				canActivate: [AuthGuard, VisitedPagesGuard],
 				component: ForgotPasswordComponent,
 				data: {
 					title: 'Password Dimenticata',
