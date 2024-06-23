@@ -47,14 +47,14 @@ export class UserService {
       );
   }
 
-  getUserProfileInfo(t_username: string): Observable<any> {
+  getUserProfileInfo(t_alias_generated: string): Observable<any> {
     const token = this.cookieService.get('auth_token');
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${token}`
     });
 
-    const params = new HttpParams().set('t_username', t_username);
+    const params = new HttpParams().set('t_alias_generated', t_alias_generated);
 
     return this.http.get(GET_USER_PROFILE_INFO, { headers, params })
       .pipe(

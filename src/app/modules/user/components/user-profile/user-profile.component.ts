@@ -6,6 +6,8 @@ import { ToastrService } from 'ngx-toastr';
 import { catchError, map, of, pluck, switchMap } from 'rxjs';
 import { User } from 'src/app/core/models/user';
 import { GlobalService, UserService } from 'src/app/core/services';
+import { ContentService } from 'src/app/core/services/contentService/content.service';
+import { MORE_CONTENT_TYPE } from 'src/app/core/utility/enum-constant';
 import { randomIntFromInterval } from 'src/app/core/utility/functions-constants';
 import { ItemType, ProfileItemType, ROUTE_LIST, USER_TYPE } from 'src/app/core/utility/global-constant';
 
@@ -33,6 +35,10 @@ export class UserProfileComponent implements AfterViewInit {
   ItemType: any = ItemType;
   currentGifLoading = 'assets/img/loader_white.gif';
   items: any[] = [];
+  currentContentPageNumber: number = 1;
+  currentLikedPageNumber: number = 1;
+  currentBookedPageNumber: number = 1;
+  pageSize : number = 5;
   didascalie = [
     'Evento emozionante', 'Esperienza indimenticabile', 'Avventura entusiasmante', 'Momenti avvincenti',
     'Una serata da ricordare', 'Raduno magico', 'Spettacolo spettacolare', 'Celebrazione della comunità',
@@ -50,7 +56,9 @@ export class UserProfileComponent implements AfterViewInit {
   userInfo: any;
   selectedType: ProfileItemType = ProfileItemType.Content;
 
-  constructor(private cdr: ChangeDetectorRef, private toastr: ToastrService, private userService: UserService, private cookieService: CookieService, private elementRef: ElementRef, private renderer: Renderer2, private globalService: GlobalService, private route: ActivatedRoute, private router: Router) {
+  constructor(private cdr: ChangeDetectorRef, private toastr: ToastrService, private contentService: ContentService,
+    private userService: UserService, private cookieService: CookieService, private elementRef: ElementRef,
+    private renderer: Renderer2, private globalService: GlobalService, private route: ActivatedRoute, private router: Router) {
     const cookieCurrentUser = this.cookieService.get('current_user');
     if (cookieCurrentUser) {
       this.currentUser = JSON.parse(cookieCurrentUser);
@@ -117,7 +125,7 @@ export class UserProfileComponent implements AfterViewInit {
 
 
   getUserProfileInfoByUsername() {
-    this.userService.getUserProfileInfo(this.user.t_username).subscribe(
+    this.userService.getUserProfileInfo(this.user.t_alias_generated).subscribe(
       (response: any) => {
         this.userInfo = response.user_profile_info;
       },
@@ -174,36 +182,6 @@ export class UserProfileComponent implements AfterViewInit {
       type: ItemType.Topics,
       created_date: this.generateRandomDate()
     };
-  }
-
-  private loadMoreItems(profileItemType: ProfileItemType) {
-    console.log(profileItemType)
-    if (this.isLoading) {
-      return;
-    }
-
-    this.isLoading = true;
-    setTimeout(() => {
-      const newItems = Array.from({ length: 10 }, (_, index) => {
-        const type = this.getRandomType();
-        switch (type) {
-          case ItemType.Eventi:
-            return this.generateRandomEvent(index);
-          default:
-            return this.generateRandomTopics(index);
-        }
-      });
-      if (profileItemType === ProfileItemType.Content) {
-        this.userInfo.contentList = [...this.userInfo.contentList, ...newItems];
-      }
-      if (profileItemType === ProfileItemType.Liked) {
-        this.userInfo.likedList = [...this.userInfo.likedList, ...newItems];
-      }
-      if (profileItemType === ProfileItemType.Booked) {
-        this.userInfo.bookedList = [...this.userInfo.bookedList, ...newItems];
-      }
-      this.isLoading = false;
-    }, 1);
   }
 
   navigateToUserProfile(item: any) {
@@ -300,7 +278,52 @@ export class UserProfileComponent implements AfterViewInit {
   }
 
   onScroll(profileItemType: ProfileItemType) {
-    this.loadMoreItems(profileItemType);
+    
+    this.isLoading = true;
+
+    let moreContentType: MORE_CONTENT_TYPE = null;
+    let pageNumber: number = 1;
+    switch (profileItemType) {
+      case ProfileItemType.Content:
+        moreContentType = MORE_CONTENT_TYPE.PROFILE_CONTENT;
+        pageNumber = this.currentContentPageNumber + 1;
+        this.currentContentPageNumber += 1;
+        break;
+      case ProfileItemType.Liked:
+        moreContentType = MORE_CONTENT_TYPE.PROFILE_LIKED;
+        pageNumber = this.currentLikedPageNumber + 1;
+        this.currentLikedPageNumber += 1;
+        break;
+      case ProfileItemType.Booked:
+        moreContentType = MORE_CONTENT_TYPE.PROFILE_BOOKED;
+        pageNumber = this.currentBookedPageNumber + 1;
+        this.currentBookedPageNumber += 1;
+        break;
+    }
+    
+    this.contentService.getMoreContent(null, this.user.t_alias_generated, moreContentType, "created_date", "DESC", pageNumber ,this.pageSize).subscribe(
+      (response: any) => {
+        if (profileItemType === ProfileItemType.Content) {
+          if(response.content_list.length > 0)
+            this.userInfo.contentList = [...this.userInfo.contentList, ...response.content_list];
+        }
+        if (profileItemType === ProfileItemType.Liked) {
+          if(response.content_list.length > 0)
+            this.userInfo.likedList = [...this.userInfo.likedList, ...response.content_list];
+        }
+        if (profileItemType === ProfileItemType.Booked) {
+          if(response.content_list.length > 0)
+            this.userInfo.bookedList = [...this.userInfo.bookedList, ...response.content_list];
+        }
+        this.isLoading = false;
+      },
+      error => {
+        console.error('Errore nel recupero dei contenuti:', error);
+      }
+    );
+
+    this.isLoading = false;
+
   }
 
   trackByFn(index: number, item: any): number {
