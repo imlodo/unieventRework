@@ -55,6 +55,7 @@ export class UserProfileComponent implements AfterViewInit {
     if (cookieCurrentUser) {
       this.currentUser = JSON.parse(cookieCurrentUser);
     }
+    this.simulateClickOnBody();
   }
 
   decodeParams() {
@@ -85,12 +86,7 @@ export class UserProfileComponent implements AfterViewInit {
         this.userService.getUser(userAliasGenerated).subscribe(
           (response: any) => {
             this.user = response.user;
-            this.userInfo = this.getUserInfoById();
-            this.loadMoreItems(ProfileItemType.Content);
-            this.isLoading = false;
-            this.loadMoreItems(ProfileItemType.Liked);
-            this.isLoading = false;
-            this.loadMoreItems(ProfileItemType.Booked);
+            this.getUserProfileInfoByUsername();
             this.bodyElement = this.elementRef.nativeElement.ownerDocument.body;
             this.username = this.user.t_alias_generated;
             this.firstName = this.user.t_name;
@@ -120,16 +116,15 @@ export class UserProfileComponent implements AfterViewInit {
   }
 
 
-  getUserInfoById() {
-    return {
-      contentList: [],
-      countFollowed: 5312,
-      countFollower: 3452,
-      countLike: 13891,
-      bookedList: [],
-      likedList: [],
-      isPublic: true
-    }
+  getUserProfileInfoByUsername() {
+    this.userService.getUserProfileInfo(this.user.t_username).subscribe(
+      (response: any) => {
+        this.userInfo = response.user_profile_info;
+      },
+      error => {
+        console.error('Errore nel recupero dell\'utente:', error);
+      }
+    );
   }
 
   sanitizeFirstName(): void {
@@ -182,6 +177,7 @@ export class UserProfileComponent implements AfterViewInit {
   }
 
   private loadMoreItems(profileItemType: ProfileItemType) {
+    console.log(profileItemType)
     if (this.isLoading) {
       return;
     }

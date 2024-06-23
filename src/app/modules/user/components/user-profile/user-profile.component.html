@@ -74,7 +74,7 @@
             </span>
         </div>
 
-        <div class="p-4" *ngIf="selectedType === ProfileItemType.Content">
+        <div class="p-4" style="min-height: 569px;" *ngIf="selectedType === ProfileItemType.Content">
             <ng-container>
                 <div *ngIf="userInfo?.contentList.length > 0"
                     class="scrollable-content p-4 row row-cols-1 row-cols-sm-2 row-cols-lg-3 row-cols-xl-4 g-4 justify-content-start">
@@ -148,7 +148,7 @@
                 <img [attr.src]="currentGifLoading" />Loading...
             </div>
         </div>
-        <div class="p-4" *ngIf="selectedType === ProfileItemType.Liked">
+        <div class="p-4" style="min-height: 569px;" *ngIf="selectedType === ProfileItemType.Liked">
             <div *ngIf="userInfo.likedList.length > 0"
                 class="scrollable-content p-4 row row-cols-1 row-cols-sm-2 row-cols-lg-3 row-cols-xl-4 g-4 justify-content-start">
                 <ng-container *ngFor="let item of userInfo.likedList; trackBy: trackByFn;">
@@ -242,7 +242,7 @@
             <div infinite-scroll [infiniteScrollContainer]="bodyElement" [infiniteScrollDistance]="scrollDistance"
                 (scrolled)="onScroll(ProfileItemType.Liked)"></div>
         </div>
-        <div class="p-4" *ngIf="selectedType === ProfileItemType.Booked">
+        <div class="p-4" style="min-height: 569px;" *ngIf="selectedType === ProfileItemType.Booked">
             <div *ngIf="userInfo.bookedList.length > 0"
                 class="scrollable-content p-4 row row-cols-1 row-cols-sm-2 row-cols-lg-3 row-cols-xl-4 g-4 justify-content-start">
                 <ng-container *ngFor="let item of userInfo.bookedList; trackBy: trackByFn;">
