@@ -1,15 +1,14 @@
-import { AfterViewChecked, AfterViewInit, ChangeDetectorRef, Component, ElementRef, Renderer2, ViewChild } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, ElementRef, Renderer2, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import moment from 'moment';
 import { CookieService } from 'ngx-cookie-service';
 import { ToastrService } from 'ngx-toastr';
-import { catchError, map, of, pluck, switchMap } from 'rxjs';
+import { pluck, } from 'rxjs';
 import { User } from 'src/app/core/models/user';
 import { GlobalService, UserService } from 'src/app/core/services';
 import { ContentService } from 'src/app/core/services/contentService/content.service';
 import { MORE_CONTENT_TYPE } from 'src/app/core/utility/enum-constant';
-import { randomIntFromInterval } from 'src/app/core/utility/functions-constants';
-import { ItemType, ProfileItemType, ROUTE_LIST, USER_TYPE } from 'src/app/core/utility/global-constant';
+import { ItemType, ProfileItemType, ROUTE_LIST } from 'src/app/core/utility/global-constant';
 
 @Component({
   selector: 'unievent-user-profile',
@@ -17,48 +16,34 @@ import { ItemType, ProfileItemType, ROUTE_LIST, USER_TYPE } from 'src/app/core/u
   styleUrls: ['./user-profile.component.scss']
 })
 export class UserProfileComponent implements AfterViewInit {
-  ProfileItemType: any = ProfileItemType;
   @ViewChild('scrollableContent') scrollableContent: ElementRef;
+  ProfileItemType: any = ProfileItemType;
+  ItemType: any = ItemType;
   bodyElement: ElementRef;
   showEditPanel: boolean = false;
-  username: string = ""; // assuming this is fetched from somewhere
-  firstName: string = ""; // initial values for editing
-  lastName: string = ""; // initial values for editing
-  biography: string = ""; // initial values for editing
+  isFollowed: boolean = false; // Vale per l'utente corrente che visita il profilo
+  isLoading: boolean = false;
+  username: string = "";
+  firstName: string = "";
+  lastName: string = "";
+  biography: string = "";
   profile_photo: string = "";
-  isFollowed: boolean = false; //Vale per l'utente corrente che visita il profilo
+  currentGifLoading: string = 'assets/img/loader_white.gif';
   user: User;  //User recuperato dal backend
   currentUser: User;
-  isLoading: boolean = false;
   scrollDistance = 1;
   scrollUpDistance = 1;
-  ItemType: any = ItemType;
-  currentGifLoading = 'assets/img/loader_white.gif';
   items: any[] = [];
   currentContentPageNumber: number = 1;
   currentLikedPageNumber: number = 1;
   currentBookedPageNumber: number = 1;
-  pageSize : number = 5;
-  didascalie = [
-    'Evento emozionante', 'Esperienza indimenticabile', 'Avventura entusiasmante', 'Momenti avvincenti',
-    'Una serata da ricordare', 'Raduno magico', 'Spettacolo spettacolare', 'Celebrazione della comunità',
-    'Simposio ispiratore', 'Estravaganza culturale', 'Performance mozzafiato', 'Vetrina artistica',
-    'Laboratorio interattivo', 'Concerto epico', 'Forum educativo', 'Festività all\'aperto',
-    'Mostra innovativa', 'Simposio creativo', 'Esposizione divertente', 'Occasione speciale',
-    'Conferenza dinamica', 'Incontro sociale', 'Esperienza di realtà virtuale', 'Presentazione unica',
-    'Vertice tecnologico', 'Estravaganza di moda', 'Ritiro benessere', 'Scoperta di nuovi orizzonti',
-    'Viaggio musicale', 'Vetrina artigianale', 'Evento di networking globale', 'Intrattenimento sbalorditivo',
-    'Seminario impattante', 'Festival gastronomico', 'Iniziativa eco-friendly', 'Delizie epicuree',
-    'Esplorazione di nuovi fronti', 'Campionamento del cambiamento', 'Performance teatrale', 'Gemme nascoste rivelate',
-    'Celebrare la diversità', 'Avventura gastronomica', 'Simposio futuristico', 'Delizie culinarie',
-    'Esperienza interattiva', 'Idee rivoluzionarie', 'Sotto i riflettori dei talenti emergenti'
-  ];
+  pageSize: number = 5;
   userInfo: any;
   selectedType: ProfileItemType = ProfileItemType.Content;
 
   constructor(private cdr: ChangeDetectorRef, private toastr: ToastrService, private contentService: ContentService,
     private userService: UserService, private cookieService: CookieService, private elementRef: ElementRef,
-    private renderer: Renderer2, private globalService: GlobalService, private route: ActivatedRoute, private router: Router) {
+    private globalService: GlobalService, private route: ActivatedRoute, private router: Router) {
     const cookieCurrentUser = this.cookieService.get('current_user');
     if (cookieCurrentUser) {
       this.currentUser = JSON.parse(cookieCurrentUser);
@@ -95,6 +80,7 @@ export class UserProfileComponent implements AfterViewInit {
           (response: any) => {
             this.user = response.user;
             this.getUserProfileInfoByUsername();
+            this.checkIsFollowedByCurrentUser();
             this.bodyElement = this.elementRef.nativeElement.ownerDocument.body;
             this.username = this.user.t_alias_generated;
             this.firstName = this.user.t_name;
@@ -135,6 +121,14 @@ export class UserProfileComponent implements AfterViewInit {
     );
   }
 
+  checkIsFollowedByCurrentUser() {
+    this.userService.checkIsFollowedByCurrentUser(this.currentUser.t_alias_generated, this.user.t_alias_generated).subscribe(
+      response => {
+        this.isFollowed = Boolean(response.follows);
+      }
+    );
+  }
+
   sanitizeFirstName(): void {
     this.firstName = this.sanitizeInput(this.firstName);
   }
@@ -152,46 +146,23 @@ export class UserProfileComponent implements AfterViewInit {
     this.selectedType = type;
   }
 
-  private generateRandomEvent(index: number): any { //Event
-    const randomIntValue = randomIntFromInterval(0, 1);
-    return {
-      id: this.items.length + index,
-      t_caption: this.didascalie[Math.floor(Math.random() * this.didascalie.length)],
-      t_image_link: randomIntValue === 0 ? '/assets/img/exampleEventFirstFrame.png' : '/assets/img/event-image-placeholder.jpg',
-      t_video_link: randomIntValue === 0 ? '/assets/videos/exampleEventVideo.mp4' : null,
-      t_event_date: new Date(), // Imposta la data dell'evento secondo le tue esigenze
-      t_user: this.user,
-      n_click: randomIntFromInterval(1, 10000000),
-      type: ItemType.Eventi,
-      created_date: this.generateRandomDate(),
-      event_first_date: this.generateRandomNextTodayDate(),
-      event_last_date: this.generateRandomNextTodayDate()
-    };
-  }
-
-  private generateRandomTopics(index: number): any { //Topic
-    const randomIntValue = randomIntFromInterval(0, 1);
-    return {
-      id: this.items.length + index,
-      t_caption: this.didascalie[Math.floor(Math.random() * this.didascalie.length)],
-      t_image_link: randomIntValue === 0 ? '/assets/img/exampleTopicImageFristFrame.png' : '/assets/img/topic-image-placeholder.jpg',
-      t_video_link: randomIntValue === 0 ? '/assets/videos/exampleTopicsVideo.mp4' : null,
-      t_topic_date: new Date(), // Imposta la data del topic secondo le tue esigenze
-      t_user: this.user,
-      n_click: randomIntFromInterval(1, 10000000),
-      type: ItemType.Topics,
-      created_date: this.generateRandomDate()
-    };
-  }
-
   navigateToUserProfile(item: any) {
     const link = "/@/" + item.t_user.t_alias_generated;
     this.router.navigate([link]);
   }
 
   followThisUserByCurrentUser() {
-    this.userInfo.countFollower += 1;
-    this.isFollowed = true;
+    this.userService.followUser(this.currentUser.t_alias_generated, this.user.t_alias_generated)
+      .subscribe(
+        response => {
+          this.toastr.success(response.message);
+          this.userInfo.countFollower += 1;
+          this.isFollowed = true;
+        },
+        error => {
+          this.toastr.error('Errore nel seguire l\'utente');
+        }
+      );
   }
 
   openEditProfilePanel() {
@@ -247,12 +218,6 @@ export class UserProfileComponent implements AfterViewInit {
     }
   }
 
-  private getRandomType(): ItemType {
-    const types = Object.values(ItemType).filter(type => type !== ItemType.Tutti && type !== ItemType.Artisti);
-    const randomIndex = Math.floor(Math.random() * types.length);
-    return types[randomIndex] as ItemType;
-  }
-
   generateRandomDate(): Date {
     const today = new Date();
     const randomNumberOfDays = Math.floor(Math.random() * 30); // Puoi regolare il numero di giorni come preferisci
@@ -278,7 +243,7 @@ export class UserProfileComponent implements AfterViewInit {
   }
 
   onScroll(profileItemType: ProfileItemType) {
-    
+
     this.isLoading = true;
 
     let moreContentType: MORE_CONTENT_TYPE = null;
@@ -300,19 +265,19 @@ export class UserProfileComponent implements AfterViewInit {
         this.currentBookedPageNumber += 1;
         break;
     }
-    
-    this.contentService.getMoreContent(null, this.user.t_alias_generated, moreContentType, "created_date", "DESC", pageNumber ,this.pageSize).subscribe(
+
+    this.contentService.getMoreContent(null, this.user.t_alias_generated, moreContentType, "created_date", "DESC", pageNumber, this.pageSize).subscribe(
       (response: any) => {
         if (profileItemType === ProfileItemType.Content) {
-          if(response.content_list.length > 0)
+          if (response.content_list.length > 0)
             this.userInfo.contentList = [...this.userInfo.contentList, ...response.content_list];
         }
         if (profileItemType === ProfileItemType.Liked) {
-          if(response.content_list.length > 0)
+          if (response.content_list.length > 0)
             this.userInfo.likedList = [...this.userInfo.likedList, ...response.content_list];
         }
         if (profileItemType === ProfileItemType.Booked) {
-          if(response.content_list.length > 0)
+          if (response.content_list.length > 0)
             this.userInfo.bookedList = [...this.userInfo.bookedList, ...response.content_list];
         }
         this.isLoading = false;

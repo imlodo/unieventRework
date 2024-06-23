@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
 import { Observable, catchError, tap, throwError } from 'rxjs';
-import { EDIT_USER, GET_USER, GET_USER_PROFILE_INFO } from '../../utility/api-constant';
+import { CHECK_IS_FOLLOWED, EDIT_USER, FOLLOW_USER, GET_USER, GET_USER_PROFILE_INFO } from '../../utility/api-constant';
 
 @Injectable({
   providedIn: 'root'
@@ -63,6 +63,18 @@ export class UserService {
         }),
         catchError(this.handleError)
       );
+  }
+
+  followUser(t_alias_generated_from: string, t_alias_generated_to: string): Observable<any> {
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    const body = { t_alias_generated_from, t_alias_generated_to };
+    return this.http.post<any>(FOLLOW_USER, body, { headers });
+  }
+
+  checkIsFollowedByCurrentUser(t_alias_generated_to: string, t_alias_generated_from: string){
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    const body = { t_alias_generated_from, t_alias_generated_to };
+    return this.http.post<any>(CHECK_IS_FOLLOWED, body, { headers });
   }
 
   private handleError(error: any) {
