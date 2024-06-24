@@ -63,6 +63,9 @@ export class UserProfileComponent implements AfterViewInit {
           if (decode.profileItemType === "Liked") {
             this.selectedType = ProfileItemType.Liked;
           }
+          if (decode.profileItemType === "Content") {
+            this.selectedType = ProfileItemType.Content;
+          }
         }
       }
       );

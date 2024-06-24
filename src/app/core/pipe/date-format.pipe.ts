@@ -10,6 +10,11 @@ export class DateFormatPipe implements PipeTransform {
     if (!value) {
       return '';
     }
-    return moment(value).format(format);
+    // Specifica il formato dell'input
+    const parsedDate = moment(value, 'DD/MM/YYYY HH:mm:ss');
+    if (!parsedDate.isValid()) {
+      return 'Data non valida';
+    }
+    return parsedDate.format(format);
   }
 }

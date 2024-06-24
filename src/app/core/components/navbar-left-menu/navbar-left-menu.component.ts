@@ -51,7 +51,7 @@ export class NavbarLeftMenuComponent implements AfterViewInit {
   navigateToUserProfile(type: string) {
     let link = "/@/" + this.currentUser.t_alias_generated;
     let params = this.globalService.encodeParams({
-      profileItemType: type === "Booked" ? ProfileItemType.Booked : ProfileItemType.Liked
+      profileItemType: type === "Booked" ? ProfileItemType.Booked : type === "Liked" ? ProfileItemType.Liked : ProfileItemType.Content
     });
     this.router.navigate([link, params]);
   }
