@@ -3,29 +3,29 @@
     <table mat-table [dataSource]="ticketData" class="mat-elevation-z8" matSort>
         <ng-container matColumnDef="numeroTicket">
             <th mat-header-cell *matHeaderCellDef mat-sort-header>Numero ticket</th>
-            <td mat-cell *matCellDef="let ticket">{{ ticket.numeroTicket }}</td>
+            <td mat-cell *matCellDef="let ticket">{{ ticket.ticket_id }}</td>
         </ng-container>
 
         <ng-container matColumnDef="titolo">
             <th mat-header-cell *matHeaderCellDef mat-sort-header>Evento</th>
-            <td mat-cell *matCellDef="let ticket">{{ ticket.titolo }}</td>
+            <td mat-cell *matCellDef="let ticket">{{ ticket.event_name }}</td>
         </ng-container>
 
         <ng-container matColumnDef="stato">
             <th mat-header-cell *matHeaderCellDef mat-sort-header>Stato</th>
-            <td mat-cell *matCellDef="let ticket">{{ ticket.stato }}</td>
+            <td mat-cell *matCellDef="let ticket">{{ ticket.status === "Confermato" ? "Confermato ✅" : "Annullato ❌" }}</td>
         </ng-container>
 
         <ng-container matColumnDef="dataCreazione">
             <th mat-header-cell *matHeaderCellDef mat-sort-header>Data Creazione</th>
-            <td mat-cell *matCellDef="let ticket">{{ ticket.dataCreazione }}</td>
+            <td mat-cell *matCellDef="let ticket">{{ ticket.creation_date }}</td>
         </ng-container>
 
         <ng-container matColumnDef="azioni">
             <th mat-header-cell *matHeaderCellDef>Azioni</th>
             <td mat-cell *matCellDef="let ticket">
                 <button class="btn btn-secondary" (click)="showDetails(ticket)">Dettaglio</button>
-                <button class="btn btn-secondary mx-3" (click)="openReviewsPanel()">Lascia recensione</button>
+                <button class="btn btn-secondary mx-3" (click)="openReviewsPanel(ticket.ticket_id)">Lascia recensione</button>
             </td>
         </ng-container>
 

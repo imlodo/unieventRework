@@ -184,7 +184,7 @@ export class UserProfileComponent implements AfterViewInit {
     this.user.t_description = this.biography;
     this.user.t_profile_photo = this.profile_photo;
 
-    this.userService.editUser(this.firstName, this.lastName, this.biography, this.profile_photo, null).subscribe(
+    this.userService.editUser(this.firstName, this.lastName, this.biography, this.profile_photo, null, null).subscribe(
       response => {
         this.toastr.success(response.message)
       },

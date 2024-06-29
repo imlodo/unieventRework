@@ -1,6 +1,9 @@
 import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
+import { ToastrService } from 'ngx-toastr';
+import { UserService } from 'src/app/core/services';
 import { ROUTE_LIST } from 'src/app/core/utility/global-constant';
 
 @Component({
@@ -29,41 +32,22 @@ export class SettingsComponent implements AfterViewInit {
     old_password: new FormControl(null),
     new_password: new FormControl(null),
   });
+  formRequestData = new FormGroup({
+    dataOption: new FormControl('all'),
+    chatOption: new FormControl(null),
+    contentOption: new FormControl(null),
+    favoritesOption: new FormControl(null),
+    interactionsOption: new FormControl(null),
+    dataFormat: new FormControl('JSON')
+  });
 
   //Current user settings (vanno prese dal back-end)
-  settings = {
-    privacy: {
-      visibility: {
-        private_account: false,
-        show_booked: false
-      },
-      messages: {
-        all_user_send_message: false
-      }
-    },
-    notification:
-    {
-      desktop: {
-        browser_consent: false,
-      },
-      interaction: {
-        like: false,
-        comments: false,
-        tag: false,
-        new_follower_request: false,
-        follower_suggest: false,
-        terms_and_condition: false,
-        payments: false,
-        tickets: false
-      }
-    }
-  }
-
-  constructor(private router: Router) { }
+  settings = null;
 
   ngAfterViewInit() {
     this.activeMenu = window.location.href.split("#")[1] || 'account'; // Utilizzo '||' per impostare 'account' se il frammento è vuoto
     this.scrollTo(this.activeMenu);
+
   }
 
   scrollTo(section: string): void {
@@ -77,10 +61,20 @@ export class SettingsComponent implements AfterViewInit {
     }
   }
 
+  constructor(private router: Router, private userService: UserService, private toastr: ToastrService, private cookieService: CookieService) {
+    userService.getUserSettings(null).subscribe(
+      (response: any) => {
+        this.settings = response;
+      },
+      error => {
+        this.toastr.error('Errore nel recupero delle impostazioni');
+      });
+  }
+
   executeAction(action: string) {
     switch (action) {
       case "data":
-        this.showDataDownloadPanel = true;
+        this.getRequestPersonalDataStatus();
         break;
       case "delete":
         this.showDeleteAccountPanel = true;
@@ -103,8 +97,18 @@ export class SettingsComponent implements AfterViewInit {
   }
 
   deleteAccount() {
+    this.userService.deleteAccount().subscribe(
+      (response: any) => {
+        this.toastr.success(response.message);
+        this.cookieService.delete('auth_token');
+        this.cookieService.delete('current_user');
+        this.router.navigate(["/login"])
+      },
+      error => {
+        this.toastr.error('Errore nell\' eliminazione dell\' account');
+      }
+    );
     this.showDeleteAccountPanel = false;
-    //Logica per cancellare l'account, dopo effettuare il logout dell'utente
   }
 
   cancelChangePassword() {
@@ -112,24 +116,136 @@ export class SettingsComponent implements AfterViewInit {
     this.formChangePassword.reset();
   }
 
-  changePassword(form:any){
+  changePassword(form: any) {
+    this.userService.editUser(null, null, null, null, form.value.old_password, form.value.new_password).subscribe(
+      (response: any) => {
+        this.toastr.success(response.message);
+      },
+      error => {
+        this.toastr.error('Errore nella modifica delle credenziali, controllare e correggere i campi');
+      }
+    );
     this.showChangePasswordPanel = false;
     this.formChangePassword.reset();
-    //Logica per cambiare la password
   }
 
   closeDownloadPanel() {
     this.showDataDownloadPanel = false;
   }
 
-  sendDownloadDataRequest() {
-    this.isRequested = true;
-    //Qui va aggiunto toast per confermare che la richiesta è presa in carico
-    this.showDataDownloadPanel = false;
+  sendDataRequest(form: any) {
+    this.userService.requestPersonalData(form.value.dataOption,
+      form.value.chatOption,
+      form.value.contentOption,
+      form.value.favoritesOption,
+      form.value.interactionsOption,
+      form.value.dataFormat).subscribe(
+        (response: any) => {
+          this.toastr.success(response.message);
+          this.isRequested = true;
+          this.showDataDownloadPanel = false;
+        },
+        error => {
+          this.toastr.error('Errore nella richiesta dei dati personali, riprova più tardi');
+        });
+  }
+
+  getRequestPersonalDataStatus() {
+    this.userService.getRequestPersonalDataStatus().subscribe(
+      (response: any) => {
+        if (response.status === "REQUESTED") {
+          this.isRequested = true;
+          this.isDataAvailable = false;
+        } else {
+          this.isRequested = false;
+          this.isDataAvailable = true;
+        }
+      },
+      error => {
+        this.isRequested = false;
+        this.isDataAvailable = false;
+      });
+    this.showDataDownloadPanel = true;
   }
 
   sendDownloadData() {
+    this.userService.downloadPersonalData().subscribe(
+      (response: any) => {
+        const type = response.type_data_download;
+        const data = response.download_file;
+        let fileContent: string;
 
+        if (type === 'JSON') {
+          fileContent = JSON.stringify(data, null, 2);
+        } else {
+          fileContent = this.convertToText(data);
+        }
+
+        const blob = new Blob([fileContent], { type: 'text/plain;charset=utf-8' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `personal_data.${type.toLowerCase()}`;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+      },
+      error => {
+        this.isRequested = false;
+        this.isDataAvailable = false;
+      });
+
+    this.showDataDownloadPanel = false;
+  }
+
+  private convertToText(data: any): string {
+    let textContent = '';
+
+    if (data.chat_data) {
+      textContent += 'Chat Data:\n';
+      data.chat_data.conversations.forEach((conversation: any) => {
+        textContent += `With: ${conversation.with}\n`;
+        conversation.messages.forEach((message: any) => {
+          textContent += `  [${message.timestamp}] ${message.message}\n`;
+        });
+      });
+      textContent += '\n';
+    }
+
+    if (data.content_data) {
+      textContent += 'Content Data:\n';
+      data.content_data.posts.forEach((post: any) => {
+        textContent += `Post ID: ${post.post_id}\n  Content: ${post.content}\n  Timestamp: ${post.timestamp}\n`;
+      });
+      textContent += '\n';
+      data.content_data.likes.forEach((like: any) => {
+        textContent += `Liked Post ID: ${like.post_id}\n  Timestamp: ${like.timestamp}\n`;
+      });
+      textContent += '\n';
+    }
+
+    if (data.booked_data) {
+      textContent += 'Booked Data:\n';
+      data.booked_data.events.forEach((event: any) => {
+        textContent += `Event ID: ${event.event_id}\n  Name: ${event.name}\n  Date: ${event.date}\n`;
+      });
+      textContent += '\n';
+    }
+
+    if (data.interaction_data) {
+      textContent += 'Interaction Data:\n';
+      data.interaction_data.followers.forEach((follower: any) => {
+        textContent += `Follower: ${follower.username}\n  Followed On: ${follower.followed_on}\n`;
+      });
+      textContent += '\n';
+      data.interaction_data.following.forEach((following: any) => {
+        textContent += `Following: ${following.username}\n  Followed On: ${following.followed_on}\n`;
+      });
+      textContent += '\n';
+    }
+
+    return textContent;
   }
 
   changeOption(option: string) {
@@ -142,6 +258,93 @@ export class SettingsComponent implements AfterViewInit {
 
   removeFocusClass(field: string) {
     this.dynamicClass[field] = "";
+  }
+
+  editSettings(type: string) {
+    let value = null;
+    switch (type) {
+      case "PRIVATE_ACCOUNT_TOGGLE":
+        value = !this.settings.privacy.visibility.show_booked;
+        break;
+      case "SHOW_BOOKED_TOGGLE":
+        value = !this.settings.privacy.visibility.show_booked;
+        break;
+      case "MESSAGE_TOGGLE":
+        value = !this.settings.privacy.messages.all_user_send_message;
+        break;
+      case "DESKTOP_NOTIFICATION_TOGGLE":
+        value = !this.settings.notification.desktop.browser_consent;
+        break;
+      case "INTERACTION_LIKE_TOGGLE":
+        value = !this.settings.notification.interaction.like;
+        break;
+      case "INTERACTION_DISCUSSION_TOGGLE":
+        value = !this.settings.notification.interaction.comments;
+        break;
+      case "INTERACTION_TAG_TOGGLE":
+        value = !this.settings.notification.interaction.tag;
+        break;
+      case "INTERACTION_NEW_FOLLOWER_TOGGLE":
+        value = !this.settings.notification.interaction.new_follower_request;
+        break;
+      case "INTERACTION_SUGGEST_FOLLOWER_TOGGLE":
+        value = !this.settings.notification.interaction.follower_suggest;
+        break;
+      case "INTERACTION_TERMS_AND_CONDITION_TOGGLE":
+        value = !this.settings.notification.interaction.terms_and_condition;
+        break;
+      case "INTERACTION_PAYMENTS_TOGGLE":
+        value = !this.settings.notification.interaction.payments;
+        break;
+      case "INTERACTION_TICKETS_TOGGLE":
+        value = !this.settings.notification.interaction.tickets;
+        break;
+    }
+    this.userService.saveUserSettings(type, value).subscribe(
+      (response: any) => {
+        switch (type) {
+          case "PRIVATE_ACCOUNT_TOGGLE":
+            this.settings.privacy.visibility.private_account = !this.settings.privacy.visibility.private_account;
+            break;
+          case "SHOW_BOOKED_TOGGLE":
+            this.settings.privacy.visibility.show_booked = !this.settings.privacy.visibility.show_booked;
+            break;
+          case "MESSAGE_TOGGLE":
+            this.settings.privacy.messages.all_user_send_message = !this.settings.privacy.messages.all_user_send_message;
+            break;
+          case "DESKTOP_NOTIFICATION_TOGGLE":
+            this.settings.notification.desktop.browser_consent = !this.settings.notification.desktop.browser_consent;
+            break;
+          case "INTERACTION_LIKE_TOGGLE":
+            this.settings.notification.interaction.like = !this.settings.notification.interaction.like;
+            break;
+          case "INTERACTION_DISCUSSION_TOGGLE":
+            this.settings.notification.interaction.comments = !this.settings.notification.interaction.comments;
+            break;
+          case "INTERACTION_TAG_TOGGLE":
+            this.settings.notification.interaction.tag = !this.settings.notification.interaction.tag;
+            break;
+          case "INTERACTION_NEW_FOLLOWER_TOGGLE":
+            this.settings.notification.interaction.new_follower_request = !this.settings.notification.interaction.new_follower_request;
+            break;
+          case "INTERACTION_SUGGEST_FOLLOWER_TOGGLE":
+            this.settings.notification.interaction.follower_suggest = !this.settings.notification.interaction.follower_suggest;
+            break;
+          case "INTERACTION_TERMS_AND_CONDITION_TOGGLE":
+            this.settings.notification.interaction.terms_and_condition = !this.settings.notification.interaction.terms_and_condition;
+            break;
+          case "INTERACTION_PAYMENTS_TOGGLE":
+            this.settings.notification.interaction.payments = !this.settings.notification.interaction.payments;
+            break;
+          case "INTERACTION_TICKETS_TOGGLE":
+            this.settings.notification.interaction.tickets = !this.settings.notification.interaction.tickets
+            break;
+        }
+      },
+      error => {
+        this.toastr.error('Errore nell\' aggiornamento dell\' impostazione');
+      }
+    );
   }
 
 }
