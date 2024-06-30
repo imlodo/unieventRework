@@ -2,16 +2,16 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
 import { Observable, catchError, tap, throwError } from 'rxjs';
-import { ADD_TICKET_REVIEW, GET_TICKET_DETAIL, GET_TICKET_LIST, GET_TICKET_REVIEWS } from '../../utility/api-constant';
+import { ADD_TICKET_REVIEW, CREATE_NEW_SUPPORT_TICKET, GET_SUPPORT_TICKET_LIST, GET_TICKET_DETAIL, GET_TICKET_LIST, GET_TICKET_REVIEWS } from '../../utility/api-constant';
 
 @Injectable({
   providedIn: 'root'
 })
-export class TicketService {
+export class SupportService {
 
   constructor(private http: HttpClient, private cookieService: CookieService) { }
 
-  getTicketList(): Observable<any> {
+  getSupportTicketList(): Observable<any> {
     const token = this.cookieService.get('auth_token');
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
@@ -20,7 +20,7 @@ export class TicketService {
 
     //const params = new HttpParams().set('t_alias_generated', alias);
 
-    return this.http.get(GET_TICKET_LIST, { headers }) //headers, params
+    return this.http.get(GET_SUPPORT_TICKET_LIST, { headers }) //headers, params
       .pipe(
         tap((response: any) => {
           return response;
@@ -29,16 +29,16 @@ export class TicketService {
       );
   }
 
-  addTicketReview(t_ticket_id: string, t_title: string, t_body: string, n_star: number, review_date: string): Observable<any> {
+  createNewSupportTicket(description: string, attachments:Array<String>): Observable<any> {
     const token = this.cookieService.get('auth_token');
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${token}`
     });
 
-    const body = { t_ticket_id, t_title, t_body, n_star, review_date };
+    const body = { description, attachments };
 
-    return this.http.post(ADD_TICKET_REVIEW, body, { headers })
+    return this.http.post(CREATE_NEW_SUPPORT_TICKET, body, { headers })
       .pipe(
         tap((response: any) => {
           return response

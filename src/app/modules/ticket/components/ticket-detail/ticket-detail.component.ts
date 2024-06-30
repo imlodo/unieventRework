@@ -1,7 +1,12 @@
 import { Component, ElementRef, ViewChild, AfterViewInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import JsBarcode from 'jsbarcode';
 import moment from 'moment';
-import { OBJECT_MAP_TYPE, getTicketNameByType } from 'src/app/core/utility/global-constant';
+import { ToastrService } from 'ngx-toastr';
+import { pluck } from 'rxjs';
+import { GlobalService } from 'src/app/core/services';
+import { TicketService } from 'src/app/core/services/ticketService/ticket.service';
+import { OBJECT_MAP_TYPE, ROUTE_LIST, getTicketNameByType } from 'src/app/core/utility/global-constant';
 @Component({
   selector: 'unievent-ticket-detail',
   templateUrl: './ticket-detail.component.html',
@@ -13,7 +18,9 @@ export class TicketDetailComponent implements AfterViewInit {
   ticket: any;
   event: any;
 
-  constructor() {
+  constructor(private ticketService: TicketService, private toastr: ToastrService,
+    private route: ActivatedRoute, private router: Router, private globalService: GlobalService) {
+    this.decodeParams();
     this.ticket = {
       id: this.generateRandomId(),
       type: {
@@ -32,6 +39,34 @@ export class TicketDetailComponent implements AfterViewInit {
 
   ngAfterViewInit(): void {
     this.generateBarcode(this.ticket.id);
+  }
+
+  decodeParams() {
+    this.route.params
+      .pipe(pluck('params'))
+      .subscribe((result) => {
+        const decode = this.globalService.decodeParams(result);
+        console.log(decode.ticket)
+        this.ticketService.getTicketDetail(decode.ticket.ticket_id).subscribe(
+          (response: any) => {
+            console.log(response)
+            this.ticket = {
+              id: response.ticket_id,
+              type: response.ticket_type,
+              price: response.price,
+            }
+            this.event = {
+              title: response.event.t_title,
+              date: response.event.t_event_date,
+              image_url: response.event.t_image_link
+            }
+          },
+          error => {
+            this.toastr.error('Errore nel recupero del ticket');
+          }
+        );
+      }
+      );
   }
 
   generateRandomId(): string {
@@ -98,5 +133,9 @@ export class TicketDetailComponent implements AfterViewInit {
       </html>
     `);
     popupWindow.document.close();
+  }
+
+  navigateToSupport(){
+    this.router.navigate([ROUTE_LIST.supports.basepath])
   }
 }

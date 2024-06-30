@@ -6,9 +6,10 @@ import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import moment from 'moment';
 import { GlobalService } from 'src/app/core/services';
-import { generateAlphanumericSequence, randomIntFromInterval } from 'src/app/core/utility/functions-constants';
 import { ExtendedFile, ROUTE_LIST, TICKET_STATUS } from 'src/app/core/utility/global-constant';
 import { Ticket } from '../support-ticket-detail/support-ticket-detail.component';
+import { SupportService } from 'src/app/core/services/supportService/support.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'unievent-tickets',
@@ -21,9 +22,42 @@ export class TicketsComponent {
   characterCount: number = 0;
   @ViewChild('fileInput') fileInput: ElementRef<HTMLInputElement>;
   uploadedFiles: File[] = [];
+  sort: MatSort;
+  paginator: MatPaginator;
+  @ViewChild(MatSort) set matSort(ms: MatSort) {
+    this.sort = ms;
+    this.setDataSourceAttributes();
+  }
+  @ViewChild(MatPaginator) set matPaginator(mp: MatPaginator) {
+    this.paginator = mp;
+    this.setDataSourceAttributes();
+  }
+  ticketData: MatTableDataSource<any>;
+  displayedColumns: string[] = ['description', 'status', 'actions'];
 
-  constructor(private router: Router, private globalService: GlobalService, private http: HttpClient, private cr: ChangeDetectorRef) {
+  constructor(private router: Router, private globalService: GlobalService, private http: HttpClient, private cr: ChangeDetectorRef,
+    private supportService: SupportService, private toastr: ToastrService
+  ) {
 
+  }
+
+  ngAfterViewInit(): void {
+    this.cr.detectChanges();
+  }
+
+
+  ngOnInit(): void {
+    this.supportService.getSupportTicketList().subscribe(
+      (response: any) => {
+        const data: any[] = response;
+        this.ticketData = new MatTableDataSource(data);
+        this.ticketData.sort = this.sort;
+        this.ticketData.paginator = this.paginator;
+      },
+      error => {
+        this.toastr.error('Errore nel recupero dei ticket di supporto');
+      }
+    );
   }
 
   updateCharacterCount() {
@@ -153,48 +187,33 @@ export class TicketsComponent {
     this.uploadedFiles = this.uploadedFiles.filter(f => f !== file);
   }
 
+  transformFilesToURLs(files: File[]): string[] {
+    return files.map(file => this.getFileObjectURL(file));
+  }
+
   openTicket() {
-    //Qui apri il ticket e lanci la modale (ticket aperto con successo oppure quella di errore)
+    this.supportService.createNewSupportTicket(this.ticketDescription,this.transformFilesToURLs(this.uploadedFiles)).subscribe(
+      (response: any) => {
+        this.toastr.success(response.message);
+        this.uploadedFiles = [];
+        this.ticketDescription = "";
+        this.currentTicketPanel = "ticket-list"
+      },
+      error => {
+        this.toastr.error('Errore non è stato possibile creare la tua richiesta di supporto' );
+      }
+    );
   }
 
   /* Ticket List */
 
   setDataSourceAttributes() {
-    this.ticketData.paginator = this.paginator;
-    this.ticketData.sort = this.sort;
+    setTimeout(()=>{
+      this.ticketData.paginator = this.paginator;
+      this.ticketData.sort = this.sort;
+    },1)
   }
 
-  sort: MatSort;
-  paginator: MatPaginator;
-  @ViewChild(MatSort) set matSort(ms: MatSort) {
-    this.sort = ms;
-    this.setDataSourceAttributes();
-  }
-  @ViewChild(MatPaginator) set matPaginator(mp: MatPaginator) {
-    this.paginator = mp;
-    this.setDataSourceAttributes();
-  }
-  ticketData: MatTableDataSource<any>;
-  displayedColumns: string[] = ['description', 'status', 'actions'];
-
-  ngOnInit(): void {
-    const data: any[] = [];
-    for (let i = 1; i <= 50; i++) {
-      data.push({
-        id: generateAlphanumericSequence(randomIntFromInterval(1,10000), 25),
-        description: `Descrizione ${i} Descrizione ${i} Descrizione ${i} Descrizione ${i} Descrizione ${i} Descrizione ${i} Descrizione ${i} Descrizione ${i} Descrizione ${i} Descrizione ${i} Descrizione ${i} Descrizione ${i} Descrizione ${i} Descrizione ${i} Descrizione ${i} Descrizione ${i} Descrizione ${i} Descrizione ${i}`,
-        status: Math.random() < 0.5 ? TICKET_STATUS.Aperto : Math.random() < 0.5 ? TICKET_STATUS.Chiuso : TICKET_STATUS.NecessariaRisposta,
-        isScaduto: new Date(this.randomDate(new Date(2022, 0, 1), new Date())) < new Date()
-      });
-    }
-    this.ticketData = new MatTableDataSource(data);
-    this.ticketData.sort = this.sort;
-    this.ticketData.paginator = this.paginator;
-  }
-
-  ngAfterViewInit(): void {
-    this.cr.detectChanges();
-  }
 
   randomDate(start: Date, end: Date): string {
     return moment(new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime())).toDateString()).format("DD/MM/YYYY");
@@ -216,7 +235,4 @@ export class TicketsComponent {
     }
   }
 
-  openReviewsPanel() {
-
-  }
 }
