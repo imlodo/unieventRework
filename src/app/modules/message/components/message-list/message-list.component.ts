@@ -1,12 +1,13 @@
 import { AfterViewChecked, Component, ElementRef, Renderer2, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { Message } from '../../models/message';
-import { USER_TYPE } from 'src/app/core/utility/global-constant';
 import moment from 'moment';
 import { Chat } from '../../models/chat';
 import { User } from 'src/app/core/models/user';
 import { ChatDate } from '../../models/chat-date';
 import { CookieService } from 'ngx-cookie-service';
+import { UserService } from 'src/app/core/services';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'unievent-message-list',
@@ -26,58 +27,22 @@ export class MessageListComponent implements AfterViewChecked {
   groupedByDateActiveChatUser: ChatDate = null;
   showEmoticonPanel = false;
 
-  constructor(private router: Router, private cookieService: CookieService) {
+  constructor(private router: Router, private cookieService: CookieService, private userService: UserService, private toastr: ToastrService) {
     const cookieCurrentUser = this.cookieService.get('current_user');
     if (cookieCurrentUser) {
       this.currentUser = JSON.parse(cookieCurrentUser);
     }
-    this.chatList = [
-      {
-        userChat: {
-          t_username: null,
-          t_password: null,
-          t_name: "Antonio",
-          t_surname: "Baldi",
-          t_alias_generated: "baldilodo",
-          t_profile_photo: "https://staff.polito.it/mario.baldi/images/Mario%20202004.jpg",
-          t_type: USER_TYPE.CREATOR
-        },
-        messages: [
-          {
-            user_to: { t_username: null, t_password: null, t_name: "Antonio", t_surname: "Baldi", t_alias_generated: "baldilodo", t_profile_photo: "https://staff.polito.it/mario.baldi/images/Mario%20202004.jpg", t_type: USER_TYPE.CREATOR },
-            user_at: this.currentUser,
-            message: "Ciao, come stai?",
-            dateTime: moment("15/02/2024 12:40PM", "D/M/YYYY HH:mm:ss")
-          },
-          {
-            user_to: this.currentUser,
-            user_at: { t_username: null, t_password: null, t_name: "Antonio", t_surname: "Baldi", t_alias_generated: "baldilodo", t_profile_photo: "https://staff.polito.it/mario.baldi/images/Mario%20202004.jpg", t_type: USER_TYPE.CREATOR },
-            message: "Bene e tu?",
-            dateTime: moment("15/02/2024 12:42PM", "D/M/YYYY HH:mm:ss")
-          }
-        ]
+
+    this.userService.getChatList().subscribe(
+      (response: any) => {
+        console.log(response)
+        this.chatList = response;
+        this.groupMessagesByDate();
       },
-      {
-        userChat: {
-          t_username: null,
-          t_password: null,
-          t_name: "Maria",
-          t_surname: "Politano",
-          t_alias_generated: "mariapolitano1",
-          t_profile_photo: "https://cdn.21buttons.com/posts/640x799/a4f98433206c47f3ac3b47039996f26f_1080x1349.jpg",
-          t_type: USER_TYPE.CREATOR
-        },
-        messages: [
-          {
-            user_to: { t_username: null, t_password: null, t_name: "Maria", t_surname: "Politano", t_alias_generated: "mariapolitano1", t_profile_photo: "https://cdn.21buttons.com/posts/640x799/a4f98433206c47f3ac3b47039996f26f_1080x1349.jpg", t_type: USER_TYPE.CREATOR },
-            user_at: this.currentUser,
-            message: "Sei un bel ragazzo, lo sai? Blbllb",
-            dateTime: moment("26/02/2024 12:40PM", "D/M/YYYY HH:mm:ss")
-          }
-        ]
+      error => {
+        this.toastr.error('Errore non è stato possibile recuperare le chat' );
       }
-    ];
-    this.groupMessagesByDate();
+    );
   }
 
   ngAfterViewChecked(): void {
@@ -104,7 +69,7 @@ export class MessageListComponent implements AfterViewChecked {
       const groupedMessages: { [date: string]: Message[] } = {};
 
       chat.messages.forEach(message => {
-        const dateKey = message.dateTime.format("D/M/YYYY HH:mm");
+        const dateKey = moment(message.dateTime).format("D/M/YYYY HH:mm");
 
         groupedMessages[dateKey] = groupedMessages[dateKey] || [];
         groupedMessages[dateKey].push(message);
@@ -120,7 +85,7 @@ export class MessageListComponent implements AfterViewChecked {
   groupMessagesByActiveChatUserByDate() {
     const groupedMessagesByActiveUser: { [date: string]: Message[] } = {};
     for (const message of this.filteredListByActiveChat.messages) {
-      const dateKey = message.dateTime.format("D/M/YYYY HH:mm");
+      const dateKey = moment(message.dateTime).format("D/M/YYYY HH:mm");
       groupedMessagesByActiveUser[dateKey] = groupedMessagesByActiveUser[dateKey] || [];
       groupedMessagesByActiveUser[dateKey].push(message);
     }
@@ -150,7 +115,7 @@ export class MessageListComponent implements AfterViewChecked {
       return this.translate(date.fromNow());
     }
 
-    return date.format("DD/MM/YYYY HH:mm");
+    return moment(date).format("DD/MM/YYYY HH:mm");
   }
 
   translate(str: string): string {
@@ -162,9 +127,18 @@ export class MessageListComponent implements AfterViewChecked {
   }
 
   setActiveUser(user: User) {
-    this.activeChatUser = user;
-    this.filteredListByActiveChat = this.chatList.find(chat => chat.userChat.t_alias_generated === user.t_alias_generated);
-    this.groupMessagesByActiveChatUserByDate();
+    this.userService.getChatMessageList(user.t_alias_generated).subscribe(
+      (response: any) => {
+        this.filteredListByActiveChat = this.chatList.find(chat => chat.userChat.t_alias_generated === user.t_alias_generated);
+        this.activeChatUser = user;
+        this.filteredListByActiveChat.messages = response;
+        this.groupMessagesByActiveChatUserByDate();
+      },
+      error => {
+        this.toastr.error('Errore non è stato possibile recuperare la chat' );
+      }
+    );
+    
   }
 
   removeActiveUser() {
@@ -197,7 +171,7 @@ export class MessageListComponent implements AfterViewChecked {
 
     if (chat) {
       const newMessage = {
-        user_to: this.currentUser,
+        user_from: this.currentUser,
         user_at: this.activeChatUser,
         message: this.messageValue,
         dateTime: moment(moment(), "DD/MM/YYYY HH:MM:SS")

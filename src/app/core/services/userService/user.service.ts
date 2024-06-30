@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
 import { Observable, catchError, tap, throwError } from 'rxjs';
-import { CHECK_IS_FOLLOWED, DELETE_ACCOUNT, DOWNLOAD_PERSONAL_DATA, EDIT_USER, FOLLOW_USER, GET_REQUEST_PERSONAL_DATA_STATUS, GET_USER, GET_USER_PROFILE_INFO, GET_USER_SETTINGS, REQUEST_PERSONAL_DATA, SAVE_USER_SETTINGS } from '../../utility/api-constant';
+import { CHECK_IS_FOLLOWED, DELETE_ACCOUNT, DOWNLOAD_PERSONAL_DATA, EDIT_USER, FOLLOW_USER, GET_CHAT_LIST, GET_CHAT_MESSAGE_LIST, GET_REQUEST_PERSONAL_DATA_STATUS, GET_USER, GET_USER_PROFILE_INFO, GET_USER_SETTINGS, REQUEST_PERSONAL_DATA, SAVE_USER_SETTINGS } from '../../utility/api-constant';
 
 @Injectable({
   providedIn: 'root'
@@ -203,6 +203,39 @@ export class UserService {
       }),
       catchError(this.handleError)
     );
+  }
+
+  getChatList(){
+    const token = this.cookieService.get('auth_token');
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    });
+
+    return this.http.get(GET_CHAT_LIST, { headers }).pipe(
+      tap((response: any) => {
+        return response;
+      }),
+      catchError(this.handleError)
+    );
+  }
+
+  getChatMessageList(alias:string){
+    const token = this.cookieService.get('auth_token');
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    });
+
+    const params = new HttpParams().set('target_alias', alias);
+
+    return this.http.get(GET_CHAT_MESSAGE_LIST, { headers, params })
+      .pipe(
+        tap((response: any) => {
+          return response;
+        }),
+        catchError(this.handleError)
+      );
   }
 
   private handleError(error: any) {

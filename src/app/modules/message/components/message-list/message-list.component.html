@@ -1,6 +1,6 @@
 <div class="d-flex flex-row p-3 container">
     <div [ngClass]="darkMode ? 'friends-list-bg-dark text-white' : 'bg-light text-dark shadow-sm' "
-        class="d-flex flex-column p-3 friends-list col-4">
+        class="d-flex flex-column p-3 friends-list col-4 overflow-auto">
         <div class="d-flex flex-row justify-content-between">
             <h1><b>Messaggi</b></h1>
         </div>
@@ -48,16 +48,16 @@
                             <span class="messageDate">{{getMessageStatus(groupedByDateActiveChatUser.messages[key][0].dateTime)}}</span>
                         </div>
                         <ng-container *ngFor="let message of groupedByDateActiveChatUser.messages[key]">
-                            <div [ngClass]=" message.user_to.t_alias_generated === currentUser.t_alias_generated ? 'justify-content-end' : 'justify-content-start' "
+                            <div [ngClass]=" message.user_from.t_alias_generated === currentUser.t_alias_generated ? 'justify-content-end' : 'justify-content-start' "
                                 class="px-4 pt-4 pb-1 d-flex flex-row">
                                 <div class="activeUserMessage"
-                                    *ngIf="message.user_to.t_alias_generated === currentUser.t_alias_generated">
+                                    *ngIf="message.user_from.t_alias_generated === currentUser.t_alias_generated">
                                     {{message.message}}
                                 </div>
                                 <img width="42" height="42" class="chatMinImage" style="border-radius: 100px;"
-                                    [attr.src]="message.user_to.t_profile_photo">
+                                    [attr.src]="message.user_from.t_profile_photo">
                                 <div class="activeChatUserMessage"
-                                    *ngIf="message.user_to.t_alias_generated !== currentUser.t_alias_generated">
+                                    *ngIf="message.user_from.t_alias_generated !== currentUser.t_alias_generated">
                                     {{message.message}}
                                 </div>
                             </div>
