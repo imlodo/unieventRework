@@ -4,9 +4,11 @@ import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import moment from 'moment';
 import { CookieService } from 'ngx-cookie-service';
+import { ToastrService } from 'ngx-toastr';
 import { pluck } from 'rxjs';
 import { User } from 'src/app/core/models/user';
 import { GlobalService } from 'src/app/core/services';
+import { SupportService } from 'src/app/core/services/supportService/support.service';
 import { ExtendedFile, TICKET_STATUS, USER_ROLE } from 'src/app/core/utility/global-constant';
 
 interface TicketDiscussion {
@@ -18,12 +20,12 @@ interface TicketDiscussion {
 }
 
 interface TicketDetail {
-  id: number;
+  id: string;
   discussion_list: TicketDiscussion[];
 }
 
 export interface Ticket {
-  id: number;
+  id: string;
   description: string;
   status: TICKET_STATUS;
   isScaduto: boolean;
@@ -47,7 +49,9 @@ export class SupportTicketDetailComponent implements AfterViewInit {
   uploadedFiles: File[] = [];
   countReplyCharacter: number = 0;
 
-  constructor(private cdr: ChangeDetectorRef, private cookieService: CookieService, private renderer: Renderer2, private http: HttpClient, private globalService: GlobalService, private route: ActivatedRoute, private router: Router, private sanitizer: DomSanitizer) {
+  constructor(private cdr: ChangeDetectorRef, private cookieService: CookieService, private renderer: Renderer2, private http: HttpClient,
+    private globalService: GlobalService, private route: ActivatedRoute, private router: Router, private sanitizer: DomSanitizer,
+    private supportService: SupportService, private toastr: ToastrService) {
     const cookieCurrentUser = this.cookieService.get('current_user');
     if (cookieCurrentUser) {
       this.currentUser = JSON.parse(cookieCurrentUser);
@@ -98,24 +102,16 @@ export class SupportTicketDetailComponent implements AfterViewInit {
     return color || '';
   }
 
-  getTicketDiscussionById(id: number) {
-    //Questo va recuperato dopo aver caricato il ticket
-    this.discussionData = [
-      {
-        alias: this.currentUser.t_alias_generated, role: this.currentUser.t_role, replyDateHour: moment().format("DD/MM/YYYY hh:mm"), body: "Primo messaggio", attachments: [
-          this.getFileObjectURL(this.randomImage),
-          this.getFileObjectURL(this.randomImage),
-          this.getFileObjectURL(this.randomImage)
-        ]
+  getTicketDiscussionById(id: string) {
+    this.supportService.getSupportTicketDiscussionList(id).subscribe(
+      (response: any) => {
+        console.log(this.currentUser.t_alias_generated)
+        this.discussionData = response;
       },
-      {
-        alias: "operatore1", role: USER_ROLE.Moderatore, replyDateHour: moment().format("DD/MM/YYYY hh:mm"), body: "Risposta al primo messaggio", attachments: [
-          this.getFileObjectURL(this.randomImage),
-          this.getFileObjectURL(this.randomImage)
-        ]
-      },
-      { alias: "operatore2", role: USER_ROLE.SuperModeratore, replyDateHour: moment().format("DD/MM/YYYY hh:mm"), body: "Attenzione ho provveduto a chiudere il ticket poichè non hai risposto per 48h", attachments: [] }
-    ];
+      error => {
+        this.toastr.error('Errore non è stato possibile recuperare la tua richiesta di supporto' );
+      }
+    );
   }
 
   createTicketDetail(ticket: Ticket, discussionList: TicketDiscussion[]): TicketDetail {
@@ -184,7 +180,7 @@ export class SupportTicketDetailComponent implements AfterViewInit {
     const files = fileInput.files;
     if (files) {
       for (let i = 0; i < files.length; i++) {
-        const file = files.item(i) as ExtendedFile; 
+        const file = files.item(i) as ExtendedFile;
         if (file) {
           file.preview = this.createFilePreview(file);
           this.uploadedFiles.push(file);
@@ -261,7 +257,7 @@ export class SupportTicketDetailComponent implements AfterViewInit {
     }
     const byteArray = new Uint8Array(byteNumbers);
 
-    let mimeType = 'application/octet-stream'; 
+    let mimeType = 'application/octet-stream';
     if (base64.startsWith('data:image/jpeg')) {
       mimeType = 'image/jpeg';
     } else if (base64.startsWith('data:image/png')) {
@@ -296,12 +292,22 @@ export class SupportTicketDetailComponent implements AfterViewInit {
 
   sendReply() {
     let uploadedFilesString = this.uploadedFiles.map(el => this.getUrlImage(el));
-    this.discussionData.push({
+
+    let reply = {
       alias: this.currentUser.t_alias_generated, role: this.currentUser.t_role, replyDateHour: moment().format("DD/MM/YYYY hh:mm"), body: this.ticketReplyCaption, attachments: uploadedFilesString
-    });
-    this.ticket.status = TICKET_STATUS.AttesaRisposta;
-    this.updateGlobalScroll();
-    this.resetReplyFields();
+    }
+    this.supportService.addSupportTicketReply(this.ticket.id, this.ticketReplyCaption, uploadedFilesString, TICKET_STATUS.AttesaRisposta).subscribe(
+      (response: any) => {
+        this.toastr.success(response.message);
+        this.discussionData.push(reply);
+        this.ticket.status = TICKET_STATUS.AttesaRisposta;
+        this.updateGlobalScroll();
+        this.resetReplyFields();
+      },
+      error => {
+        this.toastr.error('Errore non è stato possibile aggiungere una risposta, riprova più tardi' );
+      }
+    );
   }
 
   resetReplyFields() {
