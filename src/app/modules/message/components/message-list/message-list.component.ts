@@ -1,13 +1,13 @@
-import { AfterViewChecked, Component, ElementRef, Renderer2, ViewChild } from '@angular/core';
+import { Component, AfterViewChecked, ElementRef, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { Message } from '../../models/message';
-import moment from 'moment';
-import { Chat } from '../../models/chat';
 import { User } from 'src/app/core/models/user';
 import { ChatDate } from '../../models/chat-date';
 import { CookieService } from 'ngx-cookie-service';
-import { UserService } from 'src/app/core/services';
+import { UserService, WebSocketService } from 'src/app/core/services';
 import { ToastrService } from 'ngx-toastr';
+import { Chat } from '../../models/chat';
+import moment from 'moment';
 
 @Component({
   selector: 'unievent-message-list',
@@ -27,7 +27,12 @@ export class MessageListComponent implements AfterViewChecked {
   groupedByDateActiveChatUser: ChatDate = null;
   showEmoticonPanel = false;
 
-  constructor(private router: Router, private cookieService: CookieService, private userService: UserService, private toastr: ToastrService) {
+  constructor(
+    private cookieService: CookieService,
+    private userService: UserService,
+    private toastr: ToastrService,
+    private websocketService: WebSocketService
+  ) {
     const cookieCurrentUser = this.cookieService.get('current_user');
     if (cookieCurrentUser) {
       this.currentUser = JSON.parse(cookieCurrentUser);
@@ -35,14 +40,15 @@ export class MessageListComponent implements AfterViewChecked {
 
     this.userService.getChatList().subscribe(
       (response: any) => {
-        console.log(response)
         this.chatList = response;
         this.groupMessagesByDate();
       },
       error => {
-        this.toastr.error('Errore non è stato possibile recuperare le chat' );
+        this.toastr.error('Errore non è stato possibile recuperare le chat');
       }
     );
+
+    this.negotiateWebSocket();
   }
 
   ngAfterViewChecked(): void {
@@ -55,8 +61,7 @@ export class MessageListComponent implements AfterViewChecked {
     }
   }
 
-  onInputChange(): void {
-  }
+  onInputChange(): void { }
 
   getLatestMessageElement(chat: ChatDate): Message | null {
     const lastKey = Object.keys(chat.messages).pop();
@@ -104,7 +109,7 @@ export class MessageListComponent implements AfterViewChecked {
     const diffInHours = now.diff(date, 'hours');
 
     if (diffInHours < 24) {
-      return date.format("HH:mm");
+      return moment(date).format("HH:mm");
     }
 
     if (diffInHours < 48) {
@@ -135,10 +140,9 @@ export class MessageListComponent implements AfterViewChecked {
         this.groupMessagesByActiveChatUserByDate();
       },
       error => {
-        this.toastr.error('Errore non è stato possibile recuperare la chat' );
+        this.toastr.error('Errore non è stato possibile recuperare la chat');
       }
     );
-    
   }
 
   removeActiveUser() {
@@ -177,13 +181,68 @@ export class MessageListComponent implements AfterViewChecked {
         dateTime: moment(moment(), "DD/MM/YYYY HH:MM:SS")
       };
 
+      this.messageValue = '';
+
+      // Invia il messaggio tramite WebSocket
+      const messageObject = {
+        token: this.cookieService.get("auth_token"),
+        t_alias_generated: activeChatAlias,
+        content: newMessage.message
+      };
+
+      this.userService.addChatReply(activeChatAlias, newMessage.message).subscribe(
+        (response: any) => {
+          //Inserito con successo
+        },
+        error => {
+          this.toastr.error("Errore nell'invio del messaggio")
+        }
+      );
+
+      this.websocketService.send(JSON.stringify(messageObject));
+      setTimeout(() => {
+        this.scrollChatToBottom();
+      }, 1);
+    }
+  }
+
+  private negotiateWebSocket() {
+    this.websocketService.negotiateSocketUrl("your-username-here").subscribe(
+      (response: any) => {
+        const wsUrl = response.url;
+        this.websocketService.connect(wsUrl).subscribe(
+          (message: string) => {
+            const messageData = JSON.parse(message);
+            this.handleNewMessage(messageData);
+          },
+          error => console.error(error),
+          () => console.warn('WebSocket connection completed!')
+        );
+      },
+      error => {
+        this.toastr.error('Errore connessione assente (NEGOTIATE ERROR)');
+        console.error('WebSocket negotiation error:', error);
+      }
+    );
+  }
+
+  private handleNewMessage(newMessage: Message) {
+    var chat = null;
+    //Sta ricevendo un messaggio da qualcuno
+    if (this.currentUser.t_alias_generated === newMessage.user_at.t_alias_generated) {
+      chat = this.chatList.find(el => el.userChat.t_alias_generated === newMessage.user_from.t_alias_generated);
+    } else if(this.currentUser.t_alias_generated === newMessage.user_from.t_alias_generated){
+      //Ha ricevuto la conferma dell'invio del messaggio
+      chat = this.chatList.find(el => el.userChat.t_alias_generated === newMessage.user_at.t_alias_generated);
+    }
+
+    if (chat) {
       chat.messages.push(newMessage);
       this.groupMessagesByDate();
       this.groupMessagesByActiveChatUserByDate();
-      this.messageValue = '';
-      setTimeout(()=>{
+      setTimeout(() => {
         this.scrollChatToBottom();
-      },1)
+      }, 1);
     }
   }
 }

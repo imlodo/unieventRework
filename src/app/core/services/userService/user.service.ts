@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
 import { Observable, catchError, tap, throwError } from 'rxjs';
-import { CHECK_IS_FOLLOWED, DELETE_ACCOUNT, DOWNLOAD_PERSONAL_DATA, EDIT_USER, FOLLOW_USER, GET_CHAT_LIST, GET_CHAT_MESSAGE_LIST, GET_REQUEST_PERSONAL_DATA_STATUS, GET_USER, GET_USER_PROFILE_INFO, GET_USER_SETTINGS, REQUEST_PERSONAL_DATA, SAVE_USER_SETTINGS } from '../../utility/api-constant';
+import { ADD_CHAT_REPLY, CHECK_IS_FOLLOWED, DELETE_ACCOUNT, DOWNLOAD_PERSONAL_DATA, EDIT_USER, FOLLOW_USER, GET_CHAT_LIST, GET_CHAT_MESSAGE_LIST, GET_REQUEST_PERSONAL_DATA_STATUS, GET_USER, GET_USER_PROFILE_INFO, GET_USER_SETTINGS, REQUEST_PERSONAL_DATA, SAVE_USER_SETTINGS } from '../../utility/api-constant';
 
 @Injectable({
   providedIn: 'root'
@@ -190,7 +190,7 @@ export class UserService {
     );
   }
 
-  downloadPersonalData(){
+  downloadPersonalData() {
     const token = this.cookieService.get('auth_token');
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
@@ -205,7 +205,7 @@ export class UserService {
     );
   }
 
-  getChatList(){
+  getChatList() {
     const token = this.cookieService.get('auth_token');
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
@@ -220,7 +220,7 @@ export class UserService {
     );
   }
 
-  getChatMessageList(alias:string){
+  getChatMessageList(alias: string) {
     const token = this.cookieService.get('auth_token');
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
@@ -233,6 +233,24 @@ export class UserService {
       .pipe(
         tap((response: any) => {
           return response;
+        }),
+        catchError(this.handleError)
+      );
+  }
+
+  addChatReply(t_alias_generated: string, message: string) {
+    const token = this.cookieService.get('auth_token');
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    });
+
+    const body = { t_alias_generated, message };
+
+    return this.http.post(ADD_CHAT_REPLY, body, { headers })
+      .pipe(
+        tap((response: any) => {
+          return response
         }),
         catchError(this.handleError)
       );

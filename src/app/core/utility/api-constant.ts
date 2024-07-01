@@ -1,6 +1,7 @@
 const BASE_URL = 'http://localhost:7071';
 export const ADD_TICKET_REVIEW = `${BASE_URL}/api/ticket/addTicketReview`;
 export const ADD_SUPPORT_TICKET_REPLY = `${BASE_URL}/api/support/addSupportTicketReply`;
+export const ADD_CHAT_REPLY = `${BASE_URL}/api/user/addChatReply`;
 export const CHECK_IS_FOLLOWED = `${BASE_URL}/api/user/checkIsFollowedByCurrentUser`;
 export const CREATE_NEW_SUPPORT_TICKET = `${BASE_URL}/api/support/createNewTicket`;
 export const DOWNLOAD_PERSONAL_DATA = `${BASE_URL}/api/user/downloadPersonalData`;
@@ -23,3 +24,4 @@ export const GET_REQUEST_PERSONAL_DATA_STATUS = `${BASE_URL}/api/user/getRequest
 export const REQUEST_PERSONAL_DATA = `${BASE_URL}/api/user/requestPersonalData`;
 export const SAVE_USER_SETTINGS = `${BASE_URL}/api/user/saveUserSettings`;
 export const VERIFY_TOKEN = `${BASE_URL}/api/token/verifyToken`;
+export const NEGOTIATE = `${BASE_URL}/api/Negotiate`;
