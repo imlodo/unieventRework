@@ -1,4 +1,4 @@
-import { Component, AfterViewChecked, ElementRef, ViewChild } from '@angular/core';
+import { Component, AfterViewChecked, ElementRef, ViewChild, AfterViewInit, ChangeDetectorRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { Message } from '../../models/message';
 import { User } from 'src/app/core/models/user';
@@ -14,7 +14,7 @@ import moment from 'moment';
   templateUrl: './message-list.component.html',
   styleUrls: ['./message-list.component.scss']
 })
-export class MessageListComponent implements AfterViewChecked {
+export class MessageListComponent implements AfterViewChecked, AfterViewInit {
   @ViewChild('messageInput') messageInput: ElementRef;
   @ViewChild('chatContainer') chatContainer: ElementRef;
   darkMode = false;
@@ -31,7 +31,8 @@ export class MessageListComponent implements AfterViewChecked {
     private cookieService: CookieService,
     private userService: UserService,
     private toastr: ToastrService,
-    private websocketService: WebSocketService
+    private websocketService: WebSocketService,
+    private cdr: ChangeDetectorRef
   ) {
     const cookieCurrentUser = this.cookieService.get('current_user');
     if (cookieCurrentUser) {
@@ -49,6 +50,9 @@ export class MessageListComponent implements AfterViewChecked {
     );
 
     this.negotiateWebSocket();
+  }
+  ngAfterViewInit(): void {
+    this.cdr.detectChanges();
   }
 
   ngAfterViewChecked(): void {
@@ -226,18 +230,40 @@ export class MessageListComponent implements AfterViewChecked {
     );
   }
 
+  private sortChatsByLatestMessage() {
+    this.chatList = [...this.chatList.sort((a, b) => {
+      const aLatestMessage = this.getLatestMessage(a);
+      const bLatestMessage = this.getLatestMessage(b);
+
+      if (!aLatestMessage && !bLatestMessage) {
+        return 0;
+      } else if (!aLatestMessage) {
+        return 1;
+      } else if (!bLatestMessage) {
+        return -1;
+      } else {
+        return moment(bLatestMessage.dateTime).diff(moment(aLatestMessage.dateTime));
+      }
+    })]
+  }
+
+  private getLatestMessage(chat: Chat): Message | null {
+    return chat.messages.length > 0 ? chat.messages[chat.messages.length - 1] : null;
+  }
+
   private handleNewMessage(newMessage: Message) {
     var chat = null;
     //Sta ricevendo un messaggio da qualcuno
     if (this.currentUser.t_alias_generated === newMessage.user_at.t_alias_generated) {
       chat = this.chatList.find(el => el.userChat.t_alias_generated === newMessage.user_from.t_alias_generated);
-    } else if(this.currentUser.t_alias_generated === newMessage.user_from.t_alias_generated){
+    } else if (this.currentUser.t_alias_generated === newMessage.user_from.t_alias_generated) {
       //Ha ricevuto la conferma dell'invio del messaggio
       chat = this.chatList.find(el => el.userChat.t_alias_generated === newMessage.user_at.t_alias_generated);
     }
 
     if (chat) {
       chat.messages.push(newMessage);
+      this.sortChatsByLatestMessage();
       this.groupMessagesByDate();
       this.groupMessagesByActiveChatUserByDate();
       setTimeout(() => {
