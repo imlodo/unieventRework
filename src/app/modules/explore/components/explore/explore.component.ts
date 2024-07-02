@@ -1,11 +1,13 @@
 import { ChangeDetectorRef, Component, ElementRef, Renderer2 } from '@angular/core';
-import { ExploreItemType, ItemType, ROUTE_LIST, USER_TYPE } from '../../../../core/utility/global-constant';
+import { ExploreItemType, ItemType, ROUTE_LIST } from '../../../../core/utility/global-constant';
 import { GlobalService } from 'src/app/core/services';
 import { ActivatedRoute, Router } from '@angular/router';
-import { randomIntFromInterval } from 'src/app/core/utility/functions-constants';
 import { User } from 'src/app/core/models/user';
 import moment from 'moment';
 import { pluck } from 'rxjs';
+import { MORE_CONTENT_TYPE } from 'src/app/core/utility/enum-constant';
+import { ContentService } from 'src/app/core/services/contentService/content.service';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'unievent-explore',
@@ -22,39 +24,28 @@ export class ExploreComponent {
   featuredContentList: Array<any> = new Array();
   followedContentList: Array<any> = new Array();
   isLoading: boolean = false;
-  didascalie = [
-    'Evento emozionante', 'Esperienza indimenticabile', 'Avventura entusiasmante', 'Momenti avvincenti',
-    'Una serata da ricordare', 'Raduno magico', 'Spettacolo spettacolare', 'Celebrazione della comunità',
-    'Simposio ispiratore', 'Estravaganza culturale', 'Performance mozzafiato', 'Vetrina artistica',
-    'Laboratorio interattivo', 'Concerto epico', 'Forum educativo', 'Festività all\'aperto',
-    'Mostra innovativa', 'Simposio creativo', 'Esposizione divertente', 'Occasione speciale',
-    'Conferenza dinamica', 'Incontro sociale', 'Esperienza di realtà virtuale', 'Presentazione unica',
-    'Vertice tecnologico', 'Estravaganza di moda', 'Ritiro benessere', 'Scoperta di nuovi orizzonti',
-    'Viaggio musicale', 'Vetrina artigianale', 'Evento di networking globale', 'Intrattenimento sbalorditivo',
-    'Seminario impattante', 'Festival gastronomico', 'Iniziativa eco-friendly', 'Delizie epicuree',
-    'Esplorazione di nuovi fronti', 'Campionamento del cambiamento', 'Performance teatrale', 'Gemme nascoste rivelate',
-    'Celebrare la diversità', 'Avventura gastronomica', 'Simposio futuristico', 'Delizie culinarie',
-    'Esperienza interattiva', 'Idee rivoluzionarie', 'Sotto i riflettori dei talenti emergenti'
-  ];
-  user: User = {
-    t_name: "Mario",
-    t_surname: "Baldi",
-    t_alias_generated: "mariobaldi1",
-    t_description: "Sono un bel ragazzo",
-    t_profile_photo: "/assets/img/userExampleImg.jpeg",
-    is_verified: true,
-    t_type: USER_TYPE.CREATOR
-  }
+  user: User;
   scrollDistance = 1;
   scrollUpDistance = 1;
   bodyElement: ElementRef;
   currentGifLoading = 'assets/img/loader_white.gif';
+  currentAllPageNumber: number = 1;
+  currentFollowedPageNumber: number = 1;
+  currentFeaturedPageNumber: number = 1;
+  currentEventsPageNumber: number = 1;
+  currentTopicsPageNumber: number = 1;
+  pageSize: number = 5;
 
-  constructor(private cdr: ChangeDetectorRef, private elementRef: ElementRef, private renderer: Renderer2, private globalService: GlobalService, private route: ActivatedRoute, private router: Router) {
+  constructor(private cdr: ChangeDetectorRef, private elementRef: ElementRef, private renderer: Renderer2, private cookieService: CookieService,
+    private globalService: GlobalService, private route: ActivatedRoute, private router: Router, private contentService: ContentService) {
+    const cookieCurrentUser = this.cookieService.get('current_user');
+    if (cookieCurrentUser) {
+      this.user = JSON.parse(cookieCurrentUser);
+    }
     this.bodyElement = this.elementRef.nativeElement.ownerDocument.body;
   }
 
-  ngAfterViewInit(){
+  ngAfterViewInit() {
     this.decodeParams();
     this.cdr.detectChanges();
   }
@@ -70,7 +61,7 @@ export class ExploreComponent {
       );
   }
 
-  initialize(){
+  initialize() {
     this.loadMoreItems(this.selectedType);
   }
 
@@ -105,7 +96,7 @@ export class ExploreComponent {
     }
   }
 
-  navigateToBuyTicket(event:any, item:any) {
+  navigateToBuyTicket(event: any, item: any) {
     event.preventDefault();
     const params = this.globalService.encodeParams({
       n_id: item.id
@@ -146,94 +137,73 @@ export class ExploreComponent {
   }
 
   private loadMoreItems(exploreItemType: ExploreItemType) {
-    if (this.isLoading) {
-      return;
+    this.isLoading = true;
+
+    let moreContentType: MORE_CONTENT_TYPE = null;
+    let pageNumber: number = 1;
+    switch (exploreItemType) {
+      case ExploreItemType.All:
+        moreContentType = MORE_CONTENT_TYPE.EXPLORE_ALL;
+        pageNumber = this.currentAllPageNumber + 1;
+        this.currentAllPageNumber += 1;
+        break;
+      case ExploreItemType.Featured:
+        moreContentType = MORE_CONTENT_TYPE.EXPLORE_FEATURED;
+        pageNumber = this.currentFeaturedPageNumber + 1;
+        this.currentFeaturedPageNumber += 1;
+        break;
+      case ExploreItemType.Followed:
+        moreContentType = MORE_CONTENT_TYPE.EXPLORE_FOLLOWED;
+        pageNumber = this.currentFollowedPageNumber + 1;
+        this.currentFollowedPageNumber += 1;
+        break;
+      case ExploreItemType.Events:
+        moreContentType = MORE_CONTENT_TYPE.EXPLORE_EVENTS;
+        pageNumber = this.currentEventsPageNumber + 1;
+        this.currentEventsPageNumber += 1;
+        break;
+      case ExploreItemType.Topics:
+        moreContentType = MORE_CONTENT_TYPE.EXPLORE_TOPICS;
+        pageNumber = this.currentTopicsPageNumber + 1;
+        this.currentTopicsPageNumber += 1;
+        break;
     }
 
-    this.isLoading = true;
-    setTimeout(() => {
-      const newItems = Array.from({ length: 10 }, (_, index) => {
-        if(exploreItemType === ExploreItemType.Topics){
-          return this.generateRandomTopics(index);
+    this.contentService.getMoreContent(null, this.user.t_alias_generated, moreContentType, "created_date", "DESC", pageNumber, this.pageSize).subscribe(
+      (response: any) => {
+        if (exploreItemType === ExploreItemType.All) {
+          if (response.content_list.length > 0) {
+            this.allContentList = [...this.allContentList, ...response.content_list];
+          }
         }
-        if(exploreItemType === ExploreItemType.Events){
-          return this.generateRandomEvent(index);
+        if (exploreItemType === ExploreItemType.Events) {
+          if (response.content_list.length > 0) {
+            this.eventsContentList = [...this.eventsContentList, ...response.content_list];
+          }
         }
-        const type = this.getRandomType();
-        switch (type) {
-          case ItemType.Eventi:
-            return this.generateRandomEvent(index);
-          default:
-            return this.generateRandomTopics(index);
+        if (exploreItemType === ExploreItemType.Topics) {
+          if (response.content_list.length > 0) {
+            this.topicsContentList = [...this.topicsContentList, ...response.content_list];
+          }
         }
-      });
-      if (exploreItemType === ExploreItemType.All) {
-        this.allContentList = [...this.allContentList, ...newItems];
-      } else if (exploreItemType === ExploreItemType.Events) {
-        this.eventsContentList = [...this.eventsContentList, ...newItems];
-      } else if (exploreItemType === ExploreItemType.Topics) {
-        this.topicsContentList = [...this.topicsContentList, ...newItems];
-      } else if (exploreItemType === ExploreItemType.Featured) {
-        this.featuredContentList = [...this.featuredContentList, ...newItems];
-      } else if (exploreItemType === ExploreItemType.Followed) {
-        this.followedContentList = [...this.followedContentList, ...newItems];
+        if (exploreItemType === ExploreItemType.Featured) {
+          if (response.content_list.length > 0) {
+            this.featuredContentList = [...this.featuredContentList, ...response.content_list];
+          }
+        }
+        if (exploreItemType === ExploreItemType.Followed) {
+          if (response.content_list.length > 0) {
+            this.followedContentList = [...this.followedContentList, ...response.content_list];
+          }
+        }
+        this.isLoading = false;
+      },
+      error => {
+        console.error('Errore nel recupero dei contenuti:', error);
       }
-      this.isLoading = false;
-    }, 1);
-  }
+    );
 
-  private getRandomType(): ItemType {
-    const types = Object.values(ItemType).filter(type => type !== ItemType.Tutti && type !== ItemType.Artisti);
-    const randomIndex = Math.floor(Math.random() * types.length);
-    return types[randomIndex] as ItemType;
-  }
-
-  generateRandomDate(): Date {
-    const today = new Date();
-    const randomNumberOfDays = Math.floor(Math.random() * 30); // Puoi regolare il numero di giorni come preferisci
-    const randomDate = new Date(today);
-    randomDate.setDate(today.getDate() - randomNumberOfDays);
-    return randomDate;
-  }
-
-  generateRandomNextTodayDate(): Date {
-    const today = new Date();
-    const randomNumberOfDays = Math.floor(Math.random() * 30); // Puoi regolare il numero di giorni come preferisci
-    const randomDate = new Date(today);
-    randomDate.setDate(today.getDate() + randomNumberOfDays);
-    return randomDate;
-  }
-
-  private generateRandomEvent(index: number): any { //Event
-    const randomIntValue = randomIntFromInterval(0, 1);
-    return {
-      id: index,
-      t_caption: this.didascalie[Math.floor(Math.random() * this.didascalie.length)],
-      t_image_link: randomIntValue === 0 ? '/assets/img/exampleEventFirstFrame.png' : '/assets/img/event-image-placeholder.jpg',
-      t_video_link: randomIntValue === 0 ? '/assets/videos/exampleEventVideo.mp4' : null,
-      t_event_date: new Date(), // Imposta la data dell'evento secondo le tue esigenze
-      t_user: this.user,
-      n_click: randomIntFromInterval(1, 10000000),
-      type: ItemType.Eventi,
-      created_date: this.generateRandomDate(),
-      event_first_date: this.generateRandomNextTodayDate(),
-      event_last_date: this.generateRandomNextTodayDate()
-    };
-  }
-
-  private generateRandomTopics(index: number): any { //Topic
-    const randomIntValue = randomIntFromInterval(0, 1);
-    return {
-      id: index,
-      t_caption: this.didascalie[Math.floor(Math.random() * this.didascalie.length)],
-      t_image_link: randomIntValue === 0 ? '/assets/img/exampleTopicImageFristFrame.png' : '/assets/img/topic-image-placeholder.jpg',
-      t_video_link: randomIntValue === 0 ? '/assets/videos/exampleTopicsVideo.mp4' : null,
-      t_topic_date: new Date(), // Imposta la data del topic secondo le tue esigenze
-      t_user: this.user,
-      n_click: randomIntFromInterval(1, 10000000),
-      type: ItemType.Topics,
-      created_date: this.generateRandomDate()
-    };
+    this.isLoading = false;
   }
 
   private startVideo(item: any, itemId: number, videoLink: string) {
@@ -314,7 +284,7 @@ export class ExploreComponent {
   }
 
   addComment(item: any) {
-    
+
   }
 
 }
