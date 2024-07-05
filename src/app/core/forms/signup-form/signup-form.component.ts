@@ -4,6 +4,7 @@ import { RxFormBuilder } from '@rxweb/reactive-form-validators';
 import { SignUpFormDataModel } from './signup-form.model';
 import { ToastrService } from 'ngx-toastr';
 import { USER_TYPE } from '../../utility/global-constant';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'unievent-signup-form',
@@ -20,13 +21,11 @@ export class SignupFormComponent {
   dynamicClass = [];
 
   //constructor(private formBuilder: RxFormBuilder, private localeService: BsLocaleService, public ls: LocaleService) { }
-  constructor(private formBuilder: RxFormBuilder, private toastr: ToastrService) {
+  constructor(private formBuilder: RxFormBuilder, private toastr: ToastrService, private translate: TranslateService) {
     console.log(this.USER_TYPE_OBJECT)
    }
 
   ngOnInit() {
-    //defineLocale("it", itLocale);
-    //this.localeService.use("it");
   }
 
   createForm(sfdm: SignUpFormDataModel) {
@@ -56,7 +55,7 @@ export class SignupFormComponent {
         if (control.status === "INVALID") {
           Object.keys(control.errors).forEach(index => {
             //Aggiungere traduzione del message 
-            this.toastr.warning(null, control.errors[index].message, { progressBar: true });
+            this.toastr.warning(null, this.translate.instant(control.errors[index].message), { progressBar: true });
           });
         }
       });

@@ -14,7 +14,8 @@ export const regex_form_control = {
 export const messages = {
     t_username: {
 		required: "Core.form.errors.t_username.required",
-		pattern: "Core.form.errors.t_username.pattern"
+		pattern: "Core.form.errors.t_username.pattern",
+		email: "Core.form.errors.t_username.email"
 	},
 	t_password: {
 		required: "Core.form.errors.t_password.required",
@@ -32,5 +33,7 @@ export const messages = {
 	t_birthday: {
 		required: "Core.form.errors.t_birthday.required",
 	},
-
+	t_type: {
+		required: "Core.form.errors.t_type.required",
+	},
 };

@@ -2,7 +2,8 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
 import { Observable, catchError, tap, throwError } from 'rxjs';
-import { ADD_CHAT_REPLY, CHECK_IS_FOLLOWED, DELETE_ACCOUNT, DOWNLOAD_PERSONAL_DATA, EDIT_USER, FOLLOW_USER, GET_CHAT_LIST, GET_CHAT_MESSAGE_LIST, GET_REQUEST_PERSONAL_DATA_STATUS, GET_USER, GET_USER_PROFILE_INFO, GET_USER_SETTINGS, REQUEST_PERSONAL_DATA, SAVE_USER_SETTINGS } from '../../utility/api-constant';
+import { ADD_CHAT_REPLY, CHECK_IS_FOLLOWED, CREATE_NEW_USER, DELETE_ACCOUNT, DOWNLOAD_PERSONAL_DATA, EDIT_USER, FOLLOW_USER, GET_CHAT_LIST, GET_CHAT_MESSAGE_LIST, GET_REQUEST_PERSONAL_DATA_STATUS, GET_USER, GET_USER_PROFILE_INFO, GET_USER_SETTINGS, REQUEST_PERSONAL_DATA, SAVE_USER_SETTINGS, SEND_CONFIRMATION_EMAIL, SEND_NEW_PASSWORD } from '../../utility/api-constant';
+import { USER_TYPE } from '../../utility/global-constant';
 
 @Injectable({
   providedIn: 'root'
@@ -85,7 +86,7 @@ export class UserService {
     return this.http.post<any>(CHECK_IS_FOLLOWED, body, { headers });
   }
 
-  deleteAccount() {
+  deleteAccount(): Observable<any> {
     const token = this.cookieService.get('auth_token');
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
@@ -101,7 +102,7 @@ export class UserService {
       );
   }
 
-  saveUserSettings(type: string, isActive: boolean) {
+  saveUserSettings(type: string, isActive: boolean): Observable<any> {
     const token = this.cookieService.get('auth_token');
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
@@ -119,7 +120,7 @@ export class UserService {
       );
   }
 
-  getUserSettings(type: string) {
+  getUserSettings(type: string): Observable<any> {
     const token = this.cookieService.get('auth_token');
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
@@ -146,7 +147,7 @@ export class UserService {
 
   }
 
-  requestPersonalData(dataOption: string, chatOption: string, contentOption: string, favoritesOption: string, interactionsOption: string, dataFormat: string) {
+  requestPersonalData(dataOption: string, chatOption: string, contentOption: string, favoritesOption: string, interactionsOption: string, dataFormat: string): Observable<any> {
     const token = this.cookieService.get('auth_token');
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
@@ -175,7 +176,7 @@ export class UserService {
       );
   }
 
-  getRequestPersonalDataStatus() {
+  getRequestPersonalDataStatus(): Observable<any> {
     const token = this.cookieService.get('auth_token');
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
@@ -190,7 +191,7 @@ export class UserService {
     );
   }
 
-  downloadPersonalData() {
+  downloadPersonalData(): Observable<any> {
     const token = this.cookieService.get('auth_token');
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
@@ -205,7 +206,7 @@ export class UserService {
     );
   }
 
-  getChatList() {
+  getChatList(): Observable<any> {
     const token = this.cookieService.get('auth_token');
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
@@ -220,7 +221,7 @@ export class UserService {
     );
   }
 
-  getChatMessageList(alias: string) {
+  getChatMessageList(alias: string): Observable<any> {
     const token = this.cookieService.get('auth_token');
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
@@ -238,7 +239,7 @@ export class UserService {
       );
   }
 
-  addChatReply(t_alias_generated: string, message: string) {
+  addChatReply(t_alias_generated: string, message: string): Observable<any> {
     const token = this.cookieService.get('auth_token');
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
@@ -254,6 +255,57 @@ export class UserService {
         }),
         catchError(this.handleError)
       );
+  }
+
+  createNewUser(t_username: string, t_password: string, t_name: string, t_surname: string, t_birthdate: string, t_type: USER_TYPE) {
+    const token = this.cookieService.get('auth_token');
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    });
+
+    const body = { t_username, t_birthdate, t_password, t_name, t_surname, t_type };
+
+    return this.http.post(CREATE_NEW_USER, body, { headers })
+      .pipe(
+        tap((response: any) => {
+          return response
+        }),
+        catchError(this.handleError)
+      );
+  }
+
+  generateNewPasswordConfirmationLink(username: string): Observable<any> {
+    const token = this.cookieService.get('auth_token');
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    });
+
+    const body = {username} //{ t_username, t_birthdate, t_password, t_name, t_surname, t_type };
+
+    return this.http.post(SEND_CONFIRMATION_EMAIL, body, { headers })
+      .pipe(
+        tap((response: any) => {
+          return response
+        }),
+        catchError(this.handleError)
+      );
+  }
+
+  resetPassword(token: string) {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    });
+    const params = new HttpParams().set('token', token);
+
+    return this.http.get(SEND_NEW_PASSWORD, { headers, params }).pipe(
+      tap((response: any) => {
+        return response;
+      }),
+      catchError(this.handleError)
+    );
   }
 
   private handleError(error: any) {

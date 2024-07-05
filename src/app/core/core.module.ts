@@ -35,6 +35,7 @@ import { ForgotPasswordFormComponent } from './forms/forgot-password-form/forgot
 import { NgxStarsComponent } from './components/ngx-stars/ngx-stars.component';
 import { HistoryComponent } from './components/history/history.component';
 import { DateFormatPipe } from './pipe/date-format.pipe';
+import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
 
 @NgModule({
 	declarations: [
@@ -72,7 +73,8 @@ import { DateFormatPipe } from './pipe/date-format.pipe';
 		ForgotPasswordComponent,
 		ForgotPasswordFormComponent,
 		NgxStarsComponent,
-  HistoryComponent
+		HistoryComponent,
+		ResetPasswordComponent
 	],
 	imports: [
 		CommonModule,

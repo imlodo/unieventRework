@@ -13,6 +13,7 @@ import { ForgotPasswordComponent } from './core/components/forgot-password/forgo
 import { HistoryComponent } from './core/components/history/history.component';
 import { VisitedPagesGuard } from './core/guards/VisitedPagesGuard/visited-pages.guard';
 import { AuthGuard } from './core/guards/authGuard/auth-guard';
+import { ResetPasswordComponent } from './core/components/reset-password/reset-password.component';
 
 const routes: Routes = [
 	{
@@ -176,7 +177,15 @@ const routes: Routes = [
 				data: {
 					title: 'Cronologia',
 				},
-			}
+			},
+			{
+				path: 'reset-password',
+				canActivate: [VisitedPagesGuard],
+				component: ResetPasswordComponent,
+				data: {
+					title: 'Conferma Reset Password',
+				},
+			},
 		]
 	},
 	{

@@ -1,4 +1,4 @@
-import { minLength, pattern, prop, required } from "@rxweb/reactive-form-validators";
+import { email, minLength, pattern, prop, required } from "@rxweb/reactive-form-validators";
 import { messages, regex_form_control } from "../../utility/form-constant";
 
 export class SignUpFormDataModel {
@@ -6,12 +6,13 @@ export class SignUpFormDataModel {
     @required({ message: messages.t_name.required })
     @minLength({ value: 2, message: messages.t_name.minLenght })
     t_name: string;
-    
+
     @required({ message: messages.t_surname.required })
     @minLength({ value: 2, message: messages.t_surname.minLenght })
     t_surname: string;
 
     @required({ message: messages.t_username.required })
+    @email({ message: messages.t_username.email })
     t_username: string;
 
     @pattern({ expression: { alphaNumeric: regex_form_control.t_password_regex }, message: messages.t_password.pattern })
@@ -22,7 +23,7 @@ export class SignUpFormDataModel {
     @required({ message: messages.t_birthday.required })
     t_birthday: Date;
 
-    @prop()
+    @required({ message: messages.t_type.required })
     t_type: String;
 
     constructor() {

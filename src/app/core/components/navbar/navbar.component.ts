@@ -14,7 +14,7 @@ import { CookieService } from 'ngx-cookie-service';
 export class NavbarComponent {
   @ViewChild(NavbarNotificationComponent) notificationComponent: NavbarNotificationComponent;
   @ViewChild(NavbarProfileComponent) profileComponent: NavbarProfileComponent;
-  online: boolean = true;
+  online: boolean = false;
   @Output() onShowCollapse: EventEmitter<void> = new EventEmitter();
   @Output() onCloseCollapse: EventEmitter<void> = new EventEmitter();
   @Output() updateThemeEvent: EventEmitter<void> = new EventEmitter();
@@ -40,6 +40,9 @@ export class NavbarComponent {
   }
 
   constructor(private elementRef: ElementRef, private cookieService: CookieService, private router: Router, private globalService: GlobalService) {
+    if(this.cookieService.get("auth_token")){
+      this.online=true;
+    }
   }
 
   showMobileLeftPanel() {
@@ -47,6 +50,7 @@ export class NavbarComponent {
   }
 
   logout() {
+    this.online=false;
     this.cookieService.delete('auth_token');
     this.cookieService.delete('current_user');
     this.router.navigate(["/login"])

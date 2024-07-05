@@ -1,0 +1,27 @@
+{
+    "Core":{
+        "form":{
+            "errors":{
+                "t_name":{
+                    "required": "Il nome è richiesto"
+                },
+                "t_surname":{
+                    "required": "Il cognome è richiesto"
+                },
+                "t_birthday":{
+                    "required": "La data di nascita è richiesta"
+                },
+                "t_type":{
+                    "required": "Il tipo è richiesto"
+                },
+                "t_username":{
+                    "required": "L'username è richiesto",
+                    "email": "L'username deve essere una email valida"
+                },
+                "t_password":{
+                    "required": "La password è richiesta"
+                }
+            }
+        }
+    }
+}

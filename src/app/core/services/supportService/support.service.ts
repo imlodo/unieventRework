@@ -3,7 +3,6 @@ import { Injectable } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
 import { Observable, catchError, tap, throwError } from 'rxjs';
 import { ADD_SUPPORT_TICKET_REPLY, CREATE_NEW_SUPPORT_TICKET, GET_SUPPORT_TICKET_DISCUSSION_LIST, GET_SUPPORT_TICKET_LIST } from '../../utility/api-constant';
-import { StringComparisonConfig } from '@rxweb/reactive-form-validators/models/config/string-comparison-config';
 
 @Injectable({
   providedIn: 'root'

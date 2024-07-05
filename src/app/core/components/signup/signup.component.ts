@@ -1,6 +1,10 @@
 import { AfterViewInit, ChangeDetectorRef, Component, ViewChild } from '@angular/core';
-import { LocalService } from '../../services';
 import { SignUpFormDataModel, SignupFormComponent } from '../../forms';
+import { UserService } from '../../services';
+import moment from 'moment';
+import { ROUTE_LIST, USER_TYPE } from '../../utility/global-constant';
+import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'unievent-signup',
@@ -11,9 +15,8 @@ export class SignupComponent implements AfterViewInit {
   
   @ViewChild(SignupFormComponent) signUpForm:SignupFormComponent
 
-  constructor(private localStore: LocalService, private cdr:ChangeDetectorRef) {
-    this.localStore.saveData("x","lodolodo");
-    console.log(this.localStore.getData("x"));
+  constructor(private cdr:ChangeDetectorRef, private userService: UserService, private toastr: ToastrService, private route: Router) {
+    
   }
   ngAfterViewInit(): void {
     this.signUpForm.createForm(new SignUpFormDataModel());
@@ -21,6 +24,14 @@ export class SignupComponent implements AfterViewInit {
   }
 
   signUp(){
-    console.log('sign up');
+    this.userService.createNewUser(this.signUpForm.t_username, this.signUpForm.t_password, this.signUpForm.t_name, this.signUpForm.t_surname, moment(this.signUpForm.t_birthday).format("DD-MM-YYYY"), USER_TYPE[this.signUpForm.t_type]).subscribe(
+      (response: any) => {
+        this.toastr.success(response.message);
+        this.route.navigate([ROUTE_LIST.login])
+      },
+      error => {
+        this.toastr.error('Non è stato possibile creare il tuo account, controlla i tuoi dati e riprova.');
+      }
+    );
   }
 }

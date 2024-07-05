@@ -24,6 +24,8 @@
     "@angular/router": "^16.0.0",
     "@ng-bootstrap/ng-bootstrap": "^15.1.1",
     "@ng-select/ng-select": "^11.1.1",
+    "@ngx-translate/core": "^15.0.0",
+    "@ngx-translate/http-loader": "^8.0.0",
     "@popperjs/core": "^2.11.6",
     "@rxweb/reactive-form-validators": "^13.0.1",
     "@schematics/angular": "^16.2.6",

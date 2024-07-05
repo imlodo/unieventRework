@@ -4,6 +4,7 @@ import { ActivatedRouteSnapshot, NavigationEnd, NavigationStart, Router, RoutesR
 import { filter } from 'rxjs';
 import { ContentDetailComponent } from './modules/content/compontents/content-detail/content-detail.component';
 import { ForgotPasswordComponent } from './core/components/forgot-password/forgot-password.component';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-root',
@@ -21,8 +22,16 @@ export class AppComponent implements OnInit, AfterViewInit {
   showMenuLeft: boolean = true;
   darkMode: boolean = false;
 
-  constructor(private router: Router, private cdr: ChangeDetectorRef) {
+  constructor(private router: Router, private cdr: ChangeDetectorRef, private translate: TranslateService) {
+    // Imposta la lingua predefinita
+    this.translate.setDefaultLang('en');
+  
+    this.translate.use('it')
 
+  }
+
+  changeLanguage(language: string) {
+    this.translate.use(language);
   }
 
   ngOnInit(): void {
