@@ -5,6 +5,8 @@ import { CookieService } from 'ngx-cookie-service';
 import { pluck } from 'rxjs';
 import { User } from 'src/app/core/models/user';
 import { GlobalService } from 'src/app/core/services';
+import { ContentService } from 'src/app/core/services/contentService/content.service';
+import { MORE_CONTENT_TYPE } from 'src/app/core/utility/enum-constant';
 import { randomIntFromInterval } from 'src/app/core/utility/functions-constants';
 import { ItemType, ROUTE_LIST, USER_TYPE } from 'src/app/core/utility/global-constant';
 
@@ -22,11 +24,11 @@ export class SearchResultComponent implements AfterViewInit {
   scrollUpDistance = 1;
   ItemType: any = ItemType;
   currentGifLoading = 'assets/img/loader_white.gif';
-  artistContentList: any[] = [];
-  eventContentList: any[] = [];
-  topicContentList: any[] = [];
-  userContentList: any[] = [];
-  allContentList: any[] = [];
+  artistContentList: Array<any> = new Array();
+  eventContentList: Array<any> = new Array();
+  topicContentList: Array<any> = new Array();
+  userContentList: Array<any> = new Array();
+  allContentList: Array<any> = new Array();
   searchInput: string = null;
   protected decodedParams: {
     searchInput: string;
@@ -38,25 +40,18 @@ export class SearchResultComponent implements AfterViewInit {
     };
     searchType: string;
   } = null;
-  didascalie = [
-    'Evento emozionante', 'Esperienza indimenticabile', 'Avventura entusiasmante', 'Momenti avvincenti',
-    'Una serata da ricordare', 'Raduno magico', 'Spettacolo spettacolare', 'Celebrazione della comunità',
-    'Simposio ispiratore', 'Estravaganza culturale', 'Performance mozzafiato', 'Vetrina artistica',
-    'Laboratorio interattivo', 'Concerto epico', 'Forum educativo', 'Festività all\'aperto',
-    'Mostra innovativa', 'Simposio creativo', 'Esposizione divertente', 'Occasione speciale',
-    'Conferenza dinamica', 'Incontro sociale', 'Esperienza di realtà virtuale', 'Presentazione unica',
-    'Vertice tecnologico', 'Estravaganza di moda', 'Ritiro benessere', 'Scoperta di nuovi orizzonti',
-    'Viaggio musicale', 'Vetrina artigianale', 'Evento di networking globale', 'Intrattenimento sbalorditivo',
-    'Seminario impattante', 'Festival gastronomico', 'Iniziativa eco-friendly', 'Delizie epicuree',
-    'Esplorazione di nuovi fronti', 'Campionamento del cambiamento', 'Performance teatrale', 'Gemme nascoste rivelate',
-    'Celebrare la diversità', 'Avventura gastronomica', 'Simposio futuristico', 'Delizie culinarie',
-    'Esperienza interattiva', 'Idee rivoluzionarie', 'Sotto i riflettori dei talenti emergenti'
-  ];
   selectedType: ItemType = ItemType.Tutti;
   countAccounts: number = 1; //questi devono essere precaricati dal back-end che ci dice quanti account sono stati trovati
   countArtists: number = 1;  //questi devono essere precaricati dal back-end che ci dice quanti artisti sono stati trovati
+  currentAllPageNumber: number = 1;
+  currentUserPageNumber: number = 1;
+  currentArtistPageNumber: number = 1;
+  currentEventsPageNumber: number = 1;
+  currentTopicsPageNumber: number = 1;
+  pageSize: number = 5;
 
-  constructor(private cdr: ChangeDetectorRef, private cookieService: CookieService, private elementRef: ElementRef, private renderer: Renderer2, private globalService: GlobalService, private route: ActivatedRoute, private router: Router) {
+  constructor(private cdr: ChangeDetectorRef, private cookieService: CookieService, private elementRef: ElementRef, private contentService: ContentService,
+    private renderer: Renderer2, private globalService: GlobalService, private route: ActivatedRoute, private router: Router) {
 
     const cookieCurrentUser = this.cookieService.get('current_user');
     if (cookieCurrentUser) {
@@ -65,13 +60,13 @@ export class SearchResultComponent implements AfterViewInit {
     this.bodyElement = this.elementRef.nativeElement.ownerDocument.body;
     this.loadMoreItems(ItemType.Tutti);
     this.isLoading = false;
+    this.loadMoreItems(ItemType.Utenti);
+    this.isLoading = false;
     this.loadMoreItems(ItemType.Artisti);
     this.isLoading = false;
     this.loadMoreItems(ItemType.Eventi);
     this.isLoading = false;
     this.loadMoreItems(ItemType.Topics);
-    this.isLoading = false;
-    this.loadMoreItems(ItemType.Utenti);
     this.decodeParams();
   }
 
@@ -120,149 +115,78 @@ export class SearchResultComponent implements AfterViewInit {
     this.selectedType = type;
   }
 
-  protected getLastTwoAccounts(items: any[], type: ItemType.Artisti | ItemType.Utenti): any[] {
-    const utentiAccounts = items
-      .filter(item => item.type === ItemType.Utenti && (type === ItemType.Artisti ? item.t_type === 0 : item.t_type > 0))
-      .slice(-2);
-    return utentiAccounts;
-  }
-
-  private generateRandomEvent(index: number, lenghtArray: number): any { //Event
-    const randomIntValue = randomIntFromInterval(0, 1);
-    return {
-      id: lenghtArray + index,
-      t_caption: this.didascalie[Math.floor(Math.random() * this.didascalie.length)],
-      t_image_link: randomIntValue === 0 ? '/assets/img/exampleEventFirstFrame.png' : '/assets/img/event-image-placeholder.jpg',
-      t_video_link: randomIntValue === 0 ? '/assets/videos/exampleEventVideo.mp4' : null,
-      t_event_date: new Date(), // Imposta la data dell'evento secondo le tue esigenze
-      t_user: this.generateRandomAccount(index, lenghtArray),
-      n_click: randomIntFromInterval(1, 10000000),
-      type: ItemType.Eventi,
-      created_date: this.generateRandomDate(),
-      event_first_date: this.generateRandomNextTodayDate(),
-      event_last_date: this.generateRandomNextTodayDate()
-    };
-  }
-
-  private generateRandomTopics(index: number, lenghtArray: number): any { //Topic
-    const randomIntValue = randomIntFromInterval(0, 1);
-    return {
-      id: lenghtArray + index,
-      t_caption: this.didascalie[Math.floor(Math.random() * this.didascalie.length)],
-      t_image_link: randomIntValue === 0 ? '/assets/img/exampleTopicImageFristFrame.png' : '/assets/img/topic-image-placeholder.jpg',
-      t_video_link: randomIntValue === 0 ? '/assets/videos/exampleTopicsVideo.mp4' : null,
-      t_topic_date: new Date(), // Imposta la data del topic secondo le tue esigenze
-      t_user: this.generateRandomAccount(index, lenghtArray),
-      n_click: randomIntFromInterval(1, 10000000),
-      type: ItemType.Topics,
-      created_date: this.generateRandomDate()
-    };
-  }
-
-  private generateRandomAccount(index: number, lenghtArray: number): any { //Account
-    const randomAccountType = randomIntFromInterval(1, 3) === 1 ? USER_TYPE.ARTIST : randomIntFromInterval(1, 3) === 2 ? USER_TYPE.COMPANY : USER_TYPE.CREATOR;
-    return {
-      id: lenghtArray + index,
-      t_name: `Name ${index + 1}`,
-      t_follower_number: 1705,
-      t_alias_generated: `Alias${index + 1}`,
-      t_description: "Ti aiutiamo a diventare la versione migliore di TE STESSO! Seguici su Instagram.",
-      t_profile_photo: randomAccountType === 0 ? '/assets/img/example_artist_image.jpg' : "/assets/img/userExampleImg.jpeg",
-      t_type: randomAccountType,
-      is_verified: randomIntFromInterval(0, 5) > 3 ? true : false,
-      type: ItemType.Utenti
-    };
-  }
-
-  private generateRandomUser(index: number, lenghtArray: number): any { //Account
-    const randomAccountType = randomIntFromInterval(1, 3) === 1 ? USER_TYPE.ARTIST : randomIntFromInterval(1, 3) === 2 ? USER_TYPE.COMPANY : USER_TYPE.CREATOR;
-    return {
-      id: lenghtArray + index,
-      t_name: `Name ${index + 1}`,
-      t_follower_number: 1705,
-      t_alias_generated: `Alias${index + 1}`,
-      t_description: "Ti aiutiamo a diventare la versione migliore di TE STESSO! Seguici su Instagram.",
-      t_profile_photo: randomAccountType === 0 ? '/assets/img/example_artist_image.jpg' : "/assets/img/userExampleImg.jpeg",
-      t_type: randomAccountType,
-      is_verified: false,
-      type: ItemType.Utenti
-    };
-  }
-
-  private generateRandomArtist(index: number, lenghtArray: number): any { //Account
-    const randomAccountType = randomIntFromInterval(1, 3) === 1 ? USER_TYPE.ARTIST : randomIntFromInterval(1, 3) === 2 ? USER_TYPE.COMPANY : USER_TYPE.CREATOR;
-    return {
-      id: lenghtArray + index,
-      t_name: `Name ${index + 1}`,
-      t_follower_number: 1705,
-      t_alias_generated: `Alias${index + 1}`,
-      t_description: "Ti aiutiamo a diventare la versione migliore di TE STESSO! Seguici su Instagram.",
-      t_profile_photo: randomAccountType === 0 ? '/assets/img/example_artist_image.jpg' : "/assets/img/userExampleImg.jpeg",
-      t_type: randomAccountType,
-      is_verified: true,
-      type: ItemType.Utenti
-    };
+  protected getLastTwoAccounts(items: any[]): any[] {
+    return items.slice(-2);
   }
 
   private loadMoreItems(itemType: ItemType) {
-    if (this.isLoading) {
-      return;
+    this.isLoading = true;
+
+    let moreContentType: MORE_CONTENT_TYPE = null;
+    let pageNumber: number = 1;
+    switch (itemType) {
+      case ItemType.Tutti:
+        moreContentType = MORE_CONTENT_TYPE.SEARCH_ALL;
+        pageNumber = this.currentAllPageNumber + 1;
+        this.currentAllPageNumber += 1;
+        break;
+      case ItemType.Utenti:
+        moreContentType = MORE_CONTENT_TYPE.SEARCH_USER;
+        pageNumber = this.currentUserPageNumber + 1;
+        this.currentUserPageNumber += 1;
+        break;
+      case ItemType.Artisti:
+        moreContentType = MORE_CONTENT_TYPE.SEARCH_ARTIST;
+        pageNumber = this.currentArtistPageNumber + 1;
+        this.currentArtistPageNumber += 1;
+        break;
+      case ItemType.Eventi:
+        moreContentType = MORE_CONTENT_TYPE.SEARCH_EVENTS;
+        pageNumber = this.currentEventsPageNumber + 1;
+        this.currentEventsPageNumber += 1;
+        break;
+      case ItemType.Topics:
+        moreContentType = MORE_CONTENT_TYPE.SEARCH_TOPICS;
+        pageNumber = this.currentTopicsPageNumber + 1;
+        this.currentTopicsPageNumber += 1;
+        break;
     }
 
-    this.isLoading = true;
-    setTimeout(() => {
-      if (itemType === ItemType.Tutti) {
-        for (let i = 0; i < 25; i++) {
-          let type = this.getRandomType();
-          switch (type) {
-            case ItemType.Artisti:
-              this.artistContentList = [...this.artistContentList, ...[this.generateRandomArtist(i, this.artistContentList.length)]];
-              break;
-            case ItemType.Utenti:
-              this.userContentList = [...this.userContentList, ...[this.generateRandomUser(i, this.userContentList.length)]];
-              break;
-            case ItemType.Eventi:
-              this.eventContentList = [...this.eventContentList, ...[this.generateRandomEvent(i, this.eventContentList.length)]];
-              break;
-            case ItemType.Topics:
-              this.topicContentList = [...this.topicContentList, ...[this.generateRandomTopics(i, this.topicContentList.length)]];
-              break;
+    this.contentService.getMoreContent(null, this.user.t_alias_generated, moreContentType, "created_date", "DESC", pageNumber, this.pageSize).subscribe(
+      (response: any) => {
+        if (itemType === ItemType.Tutti) {
+          if (response.content_list.length > 0) {
+            this.allContentList = [...this.allContentList, ...response.content_list];
           }
-        }
-        this.allContentList = this.shuffleArray([...this.eventContentList, ...this.topicContentList]);
-      } else {
-        const newItems = Array.from({ length: 25 }, (_, index) => {
-          switch (itemType) {
-            case ItemType.Artisti:
-              return this.generateRandomArtist(index, this.artistContentList.length);
-            case ItemType.Utenti:
-              return this.generateRandomUser(index, this.userContentList.length);
-            case ItemType.Eventi:
-              return this.generateRandomEvent(index, this.eventContentList.length);
-            case ItemType.Topics:
-              return this.generateRandomTopics(index, this.topicContentList.length);
-            default:
-              break;
-          }
-        });
-        if (itemType === ItemType.Artisti) {
-          this.artistContentList = [...this.artistContentList, ...newItems];
         }
         if (itemType === ItemType.Eventi) {
-          this.eventContentList = [...this.eventContentList, ...newItems];
+          if (response.content_list.length > 0) {
+            this.eventContentList = [...this.eventContentList, ...response.content_list];
+          }
         }
         if (itemType === ItemType.Topics) {
-          this.topicContentList = [...this.topicContentList, ...newItems];
+          if (response.content_list.length > 0) {
+            this.topicContentList = [...this.topicContentList, ...response.content_list];
+          }
         }
         if (itemType === ItemType.Utenti) {
-          this.userContentList = [...this.userContentList, ...newItems];
+          if (response.content_list.length > 0) {
+            this.userContentList = [...this.userContentList, ...response.content_list];
+          }
         }
-
-        this.allContentList = this.shuffleArray([...this.eventContentList, ...this.topicContentList]);
+        if (itemType === ItemType.Artisti) {
+          if (response.content_list.length > 0) {
+            this.artistContentList = [...this.artistContentList, ...response.content_list];
+          }
+        }
+        this.isLoading = false;
+      },
+      error => {
+        console.error('Errore nel recupero dei contenuti:', error);
       }
+    );
 
-      this.isLoading = false;
-    }, 1);
+    this.isLoading = false;
   }
 
   shuffleArray(array: any[]) {
