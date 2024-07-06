@@ -1,6 +1,11 @@
 import { HttpClient } from '@angular/common/http';
 import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
+import moment from 'moment';
+import { CookieService } from 'ngx-cookie-service';
+import { ToastrService } from 'ngx-toastr';
+import { User } from 'src/app/core/models/user';
+import { UserService } from 'src/app/core/services';
 import { ExtendedFile } from 'src/app/core/utility/global-constant';
 
 @Component({
@@ -32,19 +37,46 @@ export class ArtistVerifyComponent implements AfterViewInit {
       consentClauses: false
     }
 
-  constructor(private http: HttpClient, private sanitizer: DomSanitizer) {
+  constructor(private http: HttpClient, private sanitizer: DomSanitizer, private userService: UserService, private toastr: ToastrService, private cookieService: CookieService) {
 
   }
 
   ngAfterViewInit(): void {
-    //Qui recuperare lo stato della verifica artista
     this.requestStatus = 'not-verified';
+    let t_alias_generated = (JSON.parse(this.cookieService.get("current_user")) as User).t_alias_generated;
+    this.userService.getVerifyAccountStatus(t_alias_generated).subscribe(
+      (response: any) => {
+        this.requestStatus = response.status;
+        
+      },
+      error => {
+        this.toastr.error('Errore nel recupero dello stato della richiesta');
+      }
+    );
   }
 
   sendVerifyAccount() {
-    //Fare chiamata back-end
-    this.requestStatus = "requested";
-    return false;
+    this.userService.verifyAccount(this.formData.name, this.formData.surname, moment(this.formData.birthdate).format("DD-MM-YYYY"), this.formData.pIva, 
+      this.formData.companyName, this.formData.companyAddress, this.formData.pec, this.formData.consentClauses, this.uploadedFiles, "requested", null, null).subscribe(
+        (response: any) => {
+          this.toastr.success(response.message);
+          this.requestStatus = "requested";
+          this.formData = {
+            name: '',
+            surname: '',
+            birthdate: new Date(),
+            pIva: '',
+            companyName: '',
+            companyAddress: '',
+            pec: '',
+            consentClauses: false
+          }      
+        },
+        error => {
+          this.toastr.error('Errore nella richiesta di verifica, controlla i dati e riprova');
+        }
+      );
+    return true;
   }
 
   handleFileInput(fileInput: HTMLInputElement, key: string) {
