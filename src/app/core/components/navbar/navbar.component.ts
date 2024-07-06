@@ -28,10 +28,14 @@ export class NavbarComponent {
     const targetElement = event.target as HTMLElement;
     const hasSearchClasses = targetElement.classList.contains('bi-search') ||
       targetElement.classList.contains('path-bi-search') ||
-      targetElement.classList.contains('link-search-text');
+      targetElement.classList.contains('link-search-text') || 
+      targetElement.classList.contains('bi-mic-fill') || 
+      targetElement.classList.contains('mat-mdc-tooltip-trigger') ||
+      targetElement.classList.contains('bi-path')
+    console.log(targetElement.classList)
     if (!clickedInsideComponent && !hasSearchClasses) {
       this.isMobileSearch = false;
-    }
+    } 
   }
 
   @HostListener('window:resize', ['$event'])
