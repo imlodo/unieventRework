@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
 import { Observable, catchError, tap, throwError } from 'rxjs';
-import { ADD_CONTENT_BOOKED, ADD_LIKE_BY_TYPE, CHECK_CONTENT_IS_BOOKED_BY_CURRENT_USER, CHECK_CONTENT_IS_LIKED_BY_CURRENT_USER, GET_MORE_CONTENT, GET_SINGLE_CONTENT } from '../../utility/api-constant';
+import { ADD_CONTENT_BOOKED, ADD_DISCUSSION, ADD_LIKE_BY_TYPE, CHECK_CONTENT_IS_BOOKED_BY_CURRENT_USER, CHECK_CONTENT_IS_LIKED_BY_CURRENT_USER, GET_CONTENT_DISCUSSIONS, GET_MORE_CONTENT, GET_SINGLE_CONTENT } from '../../utility/api-constant';
 import { MORE_CONTENT_TYPE } from '../../utility/enum-constant';
 
 @Injectable({
@@ -115,7 +115,7 @@ export class ContentService {
       );
   }
 
-  addLikeByType(t_alias_generated: string, content_id: string, discussion_id:string, like_type:"LIKE_CONTENT"|"LIKE_DISCUSSION"): Observable<any> {
+  addLikeByType(t_alias_generated: string, content_id: string, discussion_id: string, like_type: "LIKE_CONTENT" | "LIKE_DISCUSSION"): Observable<any> {
 
     const token = this.cookieService.get('auth_token');
     const headers = new HttpHeaders({
@@ -126,6 +126,41 @@ export class ContentService {
     const body = { t_alias_generated, content_id, discussion_id, like_type };
 
     return this.http.post(ADD_LIKE_BY_TYPE, body, { headers })
+      .pipe(
+        tap((response: any) => {
+          return response
+        }),
+        catchError(this.handleError)
+      );
+  }
+
+  getContentDiscussions(content_id: string) {
+    const token = this.cookieService.get('auth_token');
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    });
+
+    const params = new HttpParams().set('content_id', content_id);
+
+    return this.http.get(GET_CONTENT_DISCUSSIONS, { headers, params }).pipe(
+      tap((response: any) => {
+        return response;
+      }),
+      catchError(this.handleError)
+    );
+  }
+
+  addContentDiscussion(content_id: string, parent_discussion_id: string, body: string, t_alias_generated_reply: string) {
+    const token = this.cookieService.get('auth_token');
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    });
+
+    const postBody = { content_id, parent_discussion_id, body, t_alias_generated_reply };
+
+    return this.http.post(ADD_DISCUSSION, postBody, { headers })
       .pipe(
         tap((response: any) => {
           return response

@@ -125,7 +125,8 @@
                             <div [ngClass]="isBooked ? 'active' : '' " class="icon-btn rounded-circle">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor"
                                     class="bi bi-bookmark-star pointer" viewBox="0 0 16 16" #tooltip="matTooltip"
-                                    matTooltipPosition="above" [matTooltip]="!isBooked?'Aggiungi ai preferiti':'Rimuovi dai preferiti'">
+                                    matTooltipPosition="above"
+                                    [matTooltip]="!isBooked?'Aggiungi ai preferiti':'Rimuovi dai preferiti'">
                                     <path
                                         d="M7.84 4.1a.178.178 0 0 1 .32 0l.634 1.285a.18.18 0 0 0 .134.098l1.42.206c.145.021.204.2.098.303L9.42 6.993a.18.18 0 0 0-.051.158l.242 1.414a.178.178 0 0 1-.258.187l-1.27-.668a.18.18 0 0 0-.165 0l-1.27.668a.178.178 0 0 1-.257-.187l.242-1.414a.18.18 0 0 0-.05-.158l-1.03-1.001a.178.178 0 0 1 .098-.303l1.42-.206a.18.18 0 0 0 .134-.098z" />
                                     <path
@@ -180,22 +181,31 @@
                                                         </svg>
                                                     </p>
                                                 </div>
-                                                <span class="mx-2">{{comment.body}}</span>
+                                                <div class="mx-2"><span class="text-danger" *ngIf="comment.t_alias_generated_reply">@{{comment.t_alias_generated_reply}}</span> {{comment.body}}</div>
                                                 <div class="mx-2 text-secondary d-flex flex-row"
                                                     style="gap:20px; font-size:0.8rem">
-                                                    <span>{{formatDateString(comment.created_date.toDateString())}}</span>
+                                                    <span>{{formatDateString(comment.created_date)}}</span>
                                                     <span class="reply pointer"
                                                         (click)="openDiscussionReplyPanel(comment, null)">Rispondi</span>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="like-discussion-btn mx-3 d-flex flex-column align-items-center">
-                                            <svg (click)="addLike(comment)" xmlns="http://www.w3.org/2000/svg"
+                                            <svg *ngIf="!comment.is_liked_by_current_user"
+                                                (click)="addDiscussionLike(comment)" xmlns="http://www.w3.org/2000/svg"
                                                 width="22" height="22" fill="currentColor" viewBox="0 0 16 16"
                                                 class="mat-mdc-tooltip-trigger bi bi-heart pointer">
                                                 <path
                                                     d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143q.09.083.176.171a3 3 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15">
                                                 </path>
+                                            </svg>
+                                            <svg *ngIf="comment.is_liked_by_current_user"
+                                                (click)="addDiscussionLike(comment)" xmlns="http://www.w3.org/2000/svg"
+                                                xmlns="http://www.w3.org/2000/svg" width="22" height="22"
+                                                fill="currentColor" viewBox="0 0 16 16"
+                                                class="mat-mdc-tooltip-trigger bi bi-heart-fill pointer">
+                                                <path fill-rule="evenodd"
+                                                    d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314" />
                                             </svg>
                                             <span>{{comment.like_count}}</span>
                                         </div>
@@ -232,22 +242,33 @@
                                                             </svg>
                                                         </p>
                                                     </div>
-                                                    <span class="mx-2">{{childComment.body}}</span>
+                                                    <div class="mx-2"><span class="text-danger" *ngIf="childComment.t_alias_generated_reply">@{{childComment.t_alias_generated_reply}}</span> {{childComment.body}}</div>
                                                     <div class="mx-2 text-secondary d-flex flex-row"
                                                         style="gap:20px; font-size:0.8rem">
-                                                        <span>{{formatDateString(childComment.created_date.toDateString())}}</span>
+                                                        <span>{{formatDateString(childComment.created_date)}}</span>
                                                         <span class="reply pointer"
                                                             (click)="openDiscussionReplyPanel(comment, childComment)">Rispondi</span>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="like-discussion-btn mx-3 d-flex flex-column align-items-center">
-                                                <svg (click)="addLike(childComment)" xmlns="http://www.w3.org/2000/svg"
-                                                    width="22" height="22" fill="currentColor" viewBox="0 0 16 16"
-                                                    class="mat-mdc-tooltip-trigger bi bi-heart pointer">
+                                                <svg *ngIf="!childComment.is_liked_by_current_user" (click)="addDiscussionLike(childComment)"
+                                                    xmlns="http://www.w3.org/2000/svg" width="22" height="22"
+                                                    fill="currentColor" viewBox="0 0 16 16"
+                                                    class="mat-mdc-tooltip-trigger bi bi-heart pointer"
+                                                    [ngClass]="comment?.is_liked_by_current_user ? 'active' : '' ">
                                                     <path
                                                         d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143q.09.083.176.171a3 3 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15">
                                                     </path>
+                                                </svg>
+                                                <svg *ngIf="childComment.is_liked_by_current_user"
+                                                    (click)="addDiscussionLike(childComment)"
+                                                    xmlns="http://www.w3.org/2000/svg"
+                                                    xmlns="http://www.w3.org/2000/svg" width="22" height="22"
+                                                    fill="currentColor" viewBox="0 0 16 16"
+                                                    class="mat-mdc-tooltip-trigger bi bi-heart-fill pointer">
+                                                    <path fill-rule="evenodd"
+                                                        d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314" />
                                                 </svg>
                                                 <span>{{childComment.like_count}}</span>
                                             </div>

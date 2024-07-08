@@ -3,9 +3,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import moment from 'moment';
 import { pluck } from 'rxjs';
 import { GlobalService, UserService } from 'src/app/core/services';
-import { ItemType, ROUTE_LIST, USER_TYPE } from 'src/app/core/utility/global-constant';
+import { ItemType, ROUTE_LIST } from 'src/app/core/utility/global-constant';
 import { Comment } from '../../models/comment';
-import { randomIntFromInterval } from 'src/app/core/utility/functions-constants';
 import { ToastrService } from 'ngx-toastr';
 import { ContentService } from 'src/app/core/services/contentService/content.service';
 import { User } from 'src/app/core/models/user';
@@ -35,164 +34,7 @@ export class ContentDetailComponent implements AfterViewInit, AfterViewChecked {
   commentNumberOnShow: number = 5;
   activeReplyComment: Comment = null;
   currentUser: User;
-  comments: Comment[] = [] //[
-  //   {
-  //     discussion_id: 1,
-  //     body: "Primo commento",
-  //     like_count: 10,
-  //     t_user: this.generateRandomAccount(0),
-  //     created_date: this.generateRandomDate(),
-  //     children: [
-  //       {
-  //         discussion_id: 2,
-  //         body: "Commento figlio del primo commento",
-  //         like_count: 5,
-  //         t_user: this.generateRandomAccount(1),
-  //         created_date: this.generateRandomDate(),
-  //       },
-  //       {
-  //         discussion_id: 3,
-  //         body: "Altro commento figlio del primo commento",
-  //         like_count: 2,
-  //         t_user: this.generateRandomAccount(2),
-  //         created_date: this.generateRandomDate()
-  //       }
-  //     ]
-  //   },
-  //   {
-  //     discussion_id: 4,
-  //     body: "Secondo commento",
-  //     like_count: 8,
-  //     t_user: this.generateRandomAccount(3),
-  //     created_date: this.generateRandomDate()
-  //   },
-  //   {
-  //     discussion_id: 5,
-  //     body: "Terzo commento",
-  //     like_count: 3,
-  //     t_user: this.generateRandomAccount(4),
-  //     created_date: this.generateRandomDate()
-  //   },
-  //   {
-  //     discussion_id: 6,
-  //     body: "Quarto commento",
-  //     like_count: 12,
-  //     t_user: this.generateRandomAccount(5),
-  //     created_date: this.generateRandomDate()
-  //   },
-  //   {
-  //     discussion_id: 7,
-  //     body: "Quinto commento",
-  //     like_count: 6,
-  //     t_user: this.generateRandomAccount(6),
-  //     created_date: this.generateRandomDate()
-  //   },
-  //   {
-  //     discussion_id: 8,
-  //     body: "Sesto commento",
-  //     like_count: 4,
-  //     t_user: this.generateRandomAccount(7),
-  //     created_date: this.generateRandomDate()
-  //   },
-  //   {
-  //     discussion_id: 9,
-  //     body: "Settimo commento",
-  //     like_count: 7,
-  //     t_user: this.generateRandomAccount(8),
-  //     created_date: this.generateRandomDate()
-  //   },
-  //   {
-  //     discussion_id: 10,
-  //     body: "Ottavo commento",
-  //     like_count: 11,
-  //     t_user: this.generateRandomAccount(9),
-  //     created_date: this.generateRandomDate()
-  //   },
-  //   {
-  //     discussion_id: 11,
-  //     body: "Nono commento",
-  //     like_count: 9,
-  //     t_user: this.generateRandomAccount(10),
-  //     created_date: this.generateRandomDate()
-  //   },
-  //   {
-  //     discussion_id: 12,
-  //     body: "Decimo commento",
-  //     like_count: 14,
-  //     t_user: this.generateRandomAccount(11),
-  //     created_date: this.generateRandomDate()
-  //   },
-  //   {
-  //     discussion_id: 13,
-  //     body: "Undicesimo commento",
-  //     like_count: 5,
-  //     t_user: this.generateRandomAccount(12),
-  //     created_date: this.generateRandomDate()
-  //   },
-  //   {
-  //     discussion_id: 14,
-  //     body: "Dodicesimo commento",
-  //     like_count: 8,
-  //     t_user: this.generateRandomAccount(13),
-  //     created_date: this.generateRandomDate()
-  //   },
-  //   {
-  //     discussion_id: 15,
-  //     body: "Tredicesimo commento",
-  //     like_count: 3,
-  //     t_user: this.generateRandomAccount(14),
-  //     created_date: this.generateRandomDate()
-  //   },
-  //   {
-  //     discussion_id: 16,
-  //     body: "Quattordicesimo commento",
-  //     like_count: 10,
-  //     t_user: this.generateRandomAccount(15),
-  //     created_date: this.generateRandomDate()
-  //   },
-  //   {
-  //     discussion_id: 17,
-  //     body: "Quindicesimo commento",
-  //     like_count: 6,
-  //     t_user: this.generateRandomAccount(16),
-  //     created_date: this.generateRandomDate()
-  //   },
-  //   {
-  //     discussion_id: 18,
-  //     body: "Sedicesimo commento",
-  //     like_count: 9,
-  //     t_user: this.generateRandomAccount(17),
-  //     created_date: this.generateRandomDate()
-  //   },
-  //   {
-  //     discussion_id: 19,
-  //     body: "Diciassettesimo commento",
-  //     like_count: 7,
-  //     t_user: this.generateRandomAccount(18),
-  //     created_date: this.generateRandomDate()
-  //   },
-  //   {
-  //     discussion_id: 20,
-  //     body: "Diciottesimo commento",
-  //     like_count: 15,
-  //     t_user: this.generateRandomAccount(19),
-  //     created_date: this.generateRandomDate()
-  //   },
-  //   {
-  //     discussion_id: 21,
-  //     body: "Diciannovesimo commento",
-  //     like_count: 8,
-  //     t_user: this.generateRandomAccount(20),
-  //     created_date: this.generateRandomDate()
-  //   },
-  //   {
-  //     discussion_id: 22,
-  //     body: "Ventesimo commento",
-  //     like_count: 13,
-  //     t_user: this.generateRandomAccount(21),
-  //     created_date: this.generateRandomDate()
-  //   }
-  // ];
+  comments: Comment[] = [];
   discussionIdReply: number = null;
   isReplyCommentArray: Array<boolean>;
   isFollowed: boolean = false;
@@ -252,6 +94,7 @@ export class ContentDetailComponent implements AfterViewInit, AfterViewChecked {
             this.checkIsFollowedByCurrentUser();
             this.checkIsBookedByCurrentUser();
             this.checkIsLikedByCurrentUser();
+            this.getDiscussions();
             this.initialize();
           },
           error => {
@@ -260,6 +103,19 @@ export class ContentDetailComponent implements AfterViewInit, AfterViewChecked {
         );
       }
       );
+  }
+
+  getDiscussions() {
+    this.contentService.getContentDiscussions(this.item.id).subscribe(
+      (response: any) => {
+        this.comments = response;
+        this.resetAddReply();
+        console.log(response);
+      },
+      error => {
+        console.error('Errore nel recupero del contenuto:', error);
+      }
+    );
   }
 
   getOtherActionLabel(discussion_lenght: number, showedComment: Array<Comment>) {
@@ -364,7 +220,7 @@ export class ContentDetailComponent implements AfterViewInit, AfterViewChecked {
   }
 
   formatDateString(dateString: string): string {
-    moment.locale('it'); // Imposta la lingua italiana
+    moment.locale('en'); // Imposta la lingua italiana
 
     const currentDate = moment();
     const formattedDate = moment(dateString);
@@ -397,6 +253,28 @@ export class ContentDetailComponent implements AfterViewInit, AfterViewChecked {
     this.contentService.addLikeByType(this.currentUser.t_alias_generated, item.id, null, "LIKE_CONTENT").subscribe(
       (response: any) => {
         this.isLiked = response.liked;
+        if (response.liked)
+          item.like_count += 1;
+        else
+          item.like_count -= 1;
+        this.toastr.clear();
+        this.toastr.success(response.message)
+      },
+      error => {
+        this.toastr.clear();
+        this.toastr.error('Errore nell\'aggiunta del like');
+      }
+    );
+  }
+
+  addDiscussionLike(item: any) {
+    this.contentService.addLikeByType(this.currentUser.t_alias_generated, this.item.id, item.discussion_id, "LIKE_DISCUSSION").subscribe(
+      (response: any) => {
+        item.is_liked_by_current_user = response.liked;
+        if (response.liked)
+          item.like_count += 1;
+        else
+          item.like_count -= 1;
         this.toastr.clear();
         this.toastr.success(response.message)
       },
@@ -429,7 +307,6 @@ export class ContentDetailComponent implements AfterViewInit, AfterViewChecked {
     this.showSharePanel = true;
   }
 
-
   shareOnWhatsApp() {
     const whatsappUrl = `https://api.whatsapp.com/send?text=${encodeURIComponent(window.location.href)}`;
     window.open(whatsappUrl, '_blank');
@@ -447,43 +324,40 @@ export class ContentDetailComponent implements AfterViewInit, AfterViewChecked {
 
   addComment() {
     if (this.commentValue.length > 0) {
-      //Va aggiunto al back-end il nuovo commento
-      let newComment: Comment = {
-        discussion_id: this.comments.length + 1,
-        body: this.commentValue,
-        like_count: 0,
-        children: [],
-        t_user: this.currentUser,
-        created_date: moment().toDate()
-      }
-      this.comments.push(newComment);
-      this.item.numOfComment+=1;
-      this.commentValue = "";
-      this.scrollToBottom();
+      this.contentService.addContentDiscussion(this.item.id, null, this.commentValue, null).subscribe(
+        (response: any) => {
+          this.comments.push(response.discussion);
+          this.item.numOfComment += 1;
+          this.commentValue = "";
+          this.scrollToBottom();
+        },
+        error => {
+          this.toastr.clear();
+          this.toastr.error('Errore nell\'aggiunta del commento');
+      });      
     }
   }
 
   addReplyComment(comment: Comment) {
-    if (this.comments[0].t_user.t_alias_generated === this.activeReplyComment.t_user.t_alias_generated) { //poi controlla il t_current_user al posto di this.comments[0]
+    if (this.currentUser.t_alias_generated === this.activeReplyComment.t_user.t_alias_generated) { 
       this.toastr.clear();
       this.toastr.warning(null, "Non puoi rispondere a te stesso", { progressBar: true });
       this.resetAddReply();
       return;
     }
     if (this.commentReplyValue.length > 0) {
-      //Va aggiunto al back-end il nuovo commento
-      let newComment: Comment = {
-        discussion_id: this.comments.length + 1,
-        body: "@" + this.activeReplyComment.t_user.t_alias_generated + " " + this.commentReplyValue,
-        like_count: 0,
-        children: [],
-        t_user: this.comments[0].t_user, //qui va il current user
-        created_date: moment().toDate()
-      }
-      comment.children = comment.children ? [...comment.children, newComment] : [newComment];
-      this.commentReplyValue = null;
-      this.scrollToBottomReply();
-      this.resetAddReply();
+      this.contentService.addContentDiscussion(this.item.id, this.activeReplyComment.discussion_id , this.commentReplyValue, this.activeReplyComment.t_user.t_alias_generated).subscribe(
+        (response: any) => {
+          comment.children = comment.children ? [...comment.children, response.discussion] : [response.discussion];
+          this.commentReplyValue = null;
+          this.item.numOfComment += 1;
+          //this.scrollToBottomReply();
+          this.resetAddReply();
+        },
+        error => {
+          this.toastr.clear();
+          this.toastr.error('Errore nell\'aggiunta del commento');
+      });    
     }
   }
 
@@ -545,14 +419,6 @@ export class ContentDetailComponent implements AfterViewInit, AfterViewChecked {
     setTimeout(() => {
       this.replyPanel.nativeElement.scrollTop = this.replyPanel.nativeElement.scrollHeight;
     }, 0)
-  }
-
-  generateRandomDate(): Date {
-    const today = new Date();
-    const randomNumberOfDays = Math.floor(Math.random() * 30); // Puoi regolare il numero di giorni come preferisci
-    const randomDate = new Date(today);
-    randomDate.setDate(today.getDate() - randomNumberOfDays);
-    return randomDate;
   }
 
   copyToClipboard() {
