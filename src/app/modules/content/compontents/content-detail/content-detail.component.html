@@ -97,10 +97,10 @@
                     <div class="action-container col-md-6 col-12 mt-2 d-flex align-item-center"
                         style="font-size:0.8rem;">
                         <div class="d-flex align-items-center" (click)="addLike(item)">
-                            <div class="icon-btn rounded-circle">
+                            <div [ngClass]="isLiked ? 'active' : '' " class="icon-btn rounded-circle">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor"
                                     viewBox="0 0 16 16" class="bi bi-heart pointer" #tooltip="matTooltip"
-                                    matTooltipPosition="above" matTooltip="Mi piace">
+                                    matTooltipPosition="above" [matTooltip]="isLiked?'Non mi piace':'Mi piace'">
                                     <path
                                         d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143q.09.083.176.171a3 3 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15">
                                     </path>
@@ -122,10 +122,10 @@
                                 ApproximateNumber) : "0"}}</span>
                         </div>
                         <div class="d-flex align-items-center" (click)="book(item)">
-                            <div class="icon-btn rounded-circle">
+                            <div [ngClass]="isBooked ? 'active' : '' " class="icon-btn rounded-circle">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor"
                                     class="bi bi-bookmark-star pointer" viewBox="0 0 16 16" #tooltip="matTooltip"
-                                    matTooltipPosition="above" matTooltip="Aggiungi ai preferiti">
+                                    matTooltipPosition="above" [matTooltip]="!isBooked?'Aggiungi ai preferiti':'Rimuovi dai preferiti'">
                                     <path
                                         d="M7.84 4.1a.178.178 0 0 1 .32 0l.634 1.285a.18.18 0 0 0 .134.098l1.42.206c.145.021.204.2.098.303L9.42 6.993a.18.18 0 0 0-.051.158l.242 1.414a.178.178 0 0 1-.258.187l-1.27-.668a.18.18 0 0 0-.165 0l-1.27.668a.178.178 0 0 1-.257-.187l.242-1.414a.18.18 0 0 0-.05-.158l-1.03-1.001a.178.178 0 0 1 .098-.303l1.42-.206a.18.18 0 0 0 .134-.098z" />
                                     <path

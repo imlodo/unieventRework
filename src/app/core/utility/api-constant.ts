@@ -1,8 +1,11 @@
 const BASE_URL = 'http://localhost:7071';
 export const ADD_CONTENT_BOOKED = `${BASE_URL}/api/content/addContentBooked`;
+export const ADD_LIKE_BY_TYPE = `${BASE_URL}/api/content/addLikeByType`;
 export const ADD_TICKET_REVIEW = `${BASE_URL}/api/ticket/addTicketReview`;
 export const ADD_SUPPORT_TICKET_REPLY = `${BASE_URL}/api/support/addSupportTicketReply`;
 export const ADD_CHAT_REPLY = `${BASE_URL}/api/user/addChatReply`;
+export const CHECK_CONTENT_IS_BOOKED_BY_CURRENT_USER = `${BASE_URL}/api/content/checkContentIsBookedByCurrentUser`;
+export const CHECK_CONTENT_IS_LIKED_BY_CURRENT_USER = `${BASE_URL}/api/content/checkContentIsLikedByCurrentUser`;
 export const CHECK_IS_FOLLOWED = `${BASE_URL}/api/user/checkIsFollowedByCurrentUser`;
 export const CREATE_NEW_SUPPORT_TICKET = `${BASE_URL}/api/support/createNewTicket`;
 export const CREATE_NEW_USER = `${BASE_URL}/api/user/createNewUser`;

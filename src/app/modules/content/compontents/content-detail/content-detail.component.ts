@@ -196,6 +196,8 @@ export class ContentDetailComponent implements AfterViewInit, AfterViewChecked {
   discussionIdReply: number = null;
   isReplyCommentArray: Array<boolean>;
   isFollowed: boolean = false;
+  isBooked: boolean = false;
+  isLiked: boolean = true;
 
   constructor(private cdr: ChangeDetectorRef, private globalService: GlobalService, private userService: UserService, private cookieService: CookieService,
     private route: ActivatedRoute, private router: Router, private toastr: ToastrService, private contentService: ContentService) {
@@ -222,6 +224,22 @@ export class ContentDetailComponent implements AfterViewInit, AfterViewChecked {
     );
   }
 
+  checkIsBookedByCurrentUser() {
+    this.contentService.checkContentIsBookedByCurrentUser(this.currentUser.t_alias_generated, this.item.id).subscribe(
+      response => {
+        this.isBooked = Boolean(response.booked);
+      }
+    );
+  }
+
+  checkIsLikedByCurrentUser() {
+    this.contentService.checkContentIsLikedByCurrentUser(this.currentUser.t_alias_generated, this.item.id).subscribe(
+      response => {
+        this.isLiked = Boolean(response.liked);
+      }
+    );
+  }
+
   decodeParams() {
     this.route.params
       .pipe(pluck('params'))
@@ -232,6 +250,8 @@ export class ContentDetailComponent implements AfterViewInit, AfterViewChecked {
             this.item = response;
             this.isReplyCommentArray = new Array(this.item.numOfComment).fill(false);
             this.checkIsFollowedByCurrentUser();
+            this.checkIsBookedByCurrentUser();
+            this.checkIsLikedByCurrentUser();
             this.initialize();
           },
           error => {
@@ -374,16 +394,29 @@ export class ContentDetailComponent implements AfterViewInit, AfterViewChecked {
   }
 
   addLike(item: any) {
-    alert("LIKE")
+    this.contentService.addLikeByType(this.currentUser.t_alias_generated, item.id, null, "LIKE_CONTENT").subscribe(
+      (response: any) => {
+        this.isLiked = response.liked;
+        this.toastr.clear();
+        this.toastr.success(response.message)
+      },
+      error => {
+        this.toastr.clear();
+        this.toastr.error('Errore nell\'aggiunta del like');
+      }
+    );
   }
 
   book(item: any) {
     this.contentService.addContentBooked(this.currentUser.t_alias_generated, item.id).subscribe(
       (response: any) => {
-        this.toastr.success(response.message)
+        this.isBooked = response.booked;
+        this.toastr.clear();
+        this.toastr.success(response.message);
       },
       error => {
-        console.error('Errore nel recupero del contenuto:', error);
+        this.toastr.clear();
+        this.toastr.error('Errore nell\' aggiunta del contento ai preferiti');
       }
     );
   }
@@ -432,6 +465,7 @@ export class ContentDetailComponent implements AfterViewInit, AfterViewChecked {
 
   addReplyComment(comment: Comment) {
     if (this.comments[0].t_user.t_alias_generated === this.activeReplyComment.t_user.t_alias_generated) { //poi controlla il t_current_user al posto di this.comments[0]
+      this.toastr.clear();
       this.toastr.warning(null, "Non puoi rispondere a te stesso", { progressBar: true });
       this.resetAddReply();
       return;
@@ -535,10 +569,12 @@ export class ContentDetailComponent implements AfterViewInit, AfterViewChecked {
     this.userService.followUser(this.item.t_user.t_alias_generated, this.item.t_user.t_alias_generated)
       .subscribe(
         response => {
+          this.toastr.clear();
           this.toastr.success(response.message);
           this.isFollowed = true;
         },
         error => {
+          this.toastr.clear();
           this.toastr.error('Errore nel seguire l\'utente');
         }
       );

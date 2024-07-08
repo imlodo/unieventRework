@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
 import { Observable, catchError, tap, throwError } from 'rxjs';
-import { ADD_CONTENT_BOOKED, GET_MORE_CONTENT, GET_SINGLE_CONTENT } from '../../utility/api-constant';
+import { ADD_CONTENT_BOOKED, ADD_LIKE_BY_TYPE, CHECK_CONTENT_IS_BOOKED_BY_CURRENT_USER, CHECK_CONTENT_IS_LIKED_BY_CURRENT_USER, GET_MORE_CONTENT, GET_SINGLE_CONTENT } from '../../utility/api-constant';
 import { MORE_CONTENT_TYPE } from '../../utility/enum-constant';
 
 @Injectable({
@@ -44,16 +44,16 @@ export class ContentService {
       );
   }
 
-  getSingleContent(id:string, t_alias_generated:string){
+  getSingleContent(id: string, t_alias_generated: string): Observable<any> {
     const token = this.cookieService.get('auth_token');
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${token}`
     });
 
-    const params = new HttpParams().set('t_alias_generated', t_alias_generated).set("id",id);
+    const params = new HttpParams().set('t_alias_generated', t_alias_generated).set("id", id);
 
-    return this.http.get(GET_SINGLE_CONTENT, { headers, params}).pipe(
+    return this.http.get(GET_SINGLE_CONTENT, { headers, params }).pipe(
       tap((response: any) => {
         return response;
       }),
@@ -61,37 +61,71 @@ export class ContentService {
     );
   }
 
-  /*getCountByType(countType:"Booked"|"Discussion"|"LikeContent"|"LikeDiscussion", content_id:string, discussion_id:string){
+  addContentBooked(t_alias_generated: string, content_id: string): Observable<any> {
     const token = this.cookieService.get('auth_token');
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${token}`
     });
 
-    const params = new HttpParams().set('countType', countType);
-    if(content_id)
-      params.set("content_id", content_id);
-    if(discussion_id)
-      params.set("discussion_id", discussion_id);
-
-    return this.http.get(GET_COUNT_BY_TYPE, { headers, params}).pipe(
-      tap((response: any) => {
-        return response;
-      }),
-      catchError(this.handleError)
-    );
-  }*/
-
-  addContentBooked(t_alias_generated:string, content_id:string){
-    const token = this.cookieService.get('auth_token');
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-      'Authorization': `Bearer ${token}`
-    });
-
-    const body = { t_alias_generated, content_id};
+    const body = { t_alias_generated, content_id };
 
     return this.http.post(ADD_CONTENT_BOOKED, body, { headers })
+      .pipe(
+        tap((response: any) => {
+          return response
+        }),
+        catchError(this.handleError)
+      );
+  }
+
+  checkContentIsBookedByCurrentUser(t_alias_generated: string, content_id: string): Observable<any> {
+    const token = this.cookieService.get('auth_token');
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    });
+
+    const body = { t_alias_generated, content_id };
+
+    return this.http.post(CHECK_CONTENT_IS_BOOKED_BY_CURRENT_USER, body, { headers })
+      .pipe(
+        tap((response: any) => {
+          return response
+        }),
+        catchError(this.handleError)
+      );
+  }
+
+  checkContentIsLikedByCurrentUser(t_alias_generated: string, content_id: string): Observable<any> {
+    const token = this.cookieService.get('auth_token');
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    });
+
+    const body = { t_alias_generated, content_id };
+
+    return this.http.post(CHECK_CONTENT_IS_LIKED_BY_CURRENT_USER, body, { headers })
+      .pipe(
+        tap((response: any) => {
+          return response
+        }),
+        catchError(this.handleError)
+      );
+  }
+
+  addLikeByType(t_alias_generated: string, content_id: string, discussion_id:string, like_type:"LIKE_CONTENT"|"LIKE_DISCUSSION"): Observable<any> {
+
+    const token = this.cookieService.get('auth_token');
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    });
+
+    const body = { t_alias_generated, content_id, discussion_id, like_type };
+
+    return this.http.post(ADD_LIKE_BY_TYPE, body, { headers })
       .pipe(
         tap((response: any) => {
           return response

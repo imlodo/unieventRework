@@ -158,6 +158,17 @@
     background: var(--bs-dark) !important;
 }
 
+.icon-btn.active {
+    background: rgb(215 215 215);
+    padding: 8px;
+    width: 40px;
+    height: 40px;
+}
+
+::ng-deep .bg-dark-mode .icon-btn.active {
+    background: #6c757d !important
+}
+
 .bi-heart {
     margin-top: 3px;
     margin-left: 1px;
@@ -255,6 +266,14 @@
 }
 
 .comment-add-container{
+    position: sticky;
+    right: 0;
+    bottom: 0;
+    background: #a8a8a8;
+    border-top: 1px solid #9d9e9f;
+}
+
+::ng-deep .bg-dark-mode .comment-add-container{
     position: sticky;
     right: 0;
     bottom: 0;
