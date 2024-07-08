@@ -1,4 +1,5 @@
 const BASE_URL = 'http://localhost:7071';
+export const ADD_CONTENT_BOOKED = `${BASE_URL}/api/content/addContentBooked`;
 export const ADD_TICKET_REVIEW = `${BASE_URL}/api/ticket/addTicketReview`;
 export const ADD_SUPPORT_TICKET_REPLY = `${BASE_URL}/api/support/addSupportTicketReply`;
 export const ADD_CHAT_REPLY = `${BASE_URL}/api/user/addChatReply`;
@@ -17,6 +18,7 @@ export const GET_MORE_CONTENT = `${BASE_URL}/api/content/getMoreContent`;
 export const GET_USER_PROFILE_INFO = `${BASE_URL}/api/user/getUserProfileInfo`;
 export const GET_USER_SETTINGS = `${BASE_URL}/api/user/getUserSettings`;
 export const GET_TICKET_LIST = `${BASE_URL}/api/ticket/getTicketList`;
+export const GET_SINGLE_CONTENT = `${BASE_URL}/api/content/getSingleContent`;
 export const GET_SUPPORT_TICKET_LIST = `${BASE_URL}/api/support/getSupportTicketList`;
 export const GET_SUPPORT_TICKET_DISCUSSION_LIST = `${BASE_URL}/api/support/getSupportTicketDiscussionList`;
 export const GET_TICKET_REVIEWS = `${BASE_URL}/api/ticket/getTicketReviews`;

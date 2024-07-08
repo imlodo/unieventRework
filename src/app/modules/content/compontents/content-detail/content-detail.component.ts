@@ -2,11 +2,14 @@ import { AfterViewChecked, AfterViewInit, ChangeDetectorRef, Component, ElementR
 import { ActivatedRoute, Router } from '@angular/router';
 import moment from 'moment';
 import { pluck } from 'rxjs';
-import { GlobalService } from 'src/app/core/services';
+import { GlobalService, UserService } from 'src/app/core/services';
 import { ItemType, ROUTE_LIST, USER_TYPE } from 'src/app/core/utility/global-constant';
 import { Comment } from '../../models/comment';
 import { randomIntFromInterval } from 'src/app/core/utility/functions-constants';
 import { ToastrService } from 'ngx-toastr';
+import { ContentService } from 'src/app/core/services/contentService/content.service';
+import { User } from 'src/app/core/models/user';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'unievent-content-detail',
@@ -31,170 +34,175 @@ export class ContentDetailComponent implements AfterViewInit, AfterViewChecked {
   showChildrenCommentArray: Array<any> = [];
   commentNumberOnShow: number = 5;
   activeReplyComment: Comment = null;
-  comments: Comment[] = [
-    {
-      discussion_id: 1,
-      body: "Primo commento",
-      like_count: 10,
-      t_user: this.generateRandomAccount(0),
-      created_date: this.generateRandomDate(),
-      children: [
-        {
-          discussion_id: 2,
-          body: "Commento figlio del primo commento",
-          like_count: 5,
-          t_user: this.generateRandomAccount(1),
-          created_date: this.generateRandomDate(),
-        },
-        {
-          discussion_id: 3,
-          body: "Altro commento figlio del primo commento",
-          like_count: 2,
-          t_user: this.generateRandomAccount(2),
-          created_date: this.generateRandomDate()
-        }
-      ]
-    },
-    {
-      discussion_id: 4,
-      body: "Secondo commento",
-      like_count: 8,
-      t_user: this.generateRandomAccount(3),
-      created_date: this.generateRandomDate()
-    },
-    {
-      discussion_id: 5,
-      body: "Terzo commento",
-      like_count: 3,
-      t_user: this.generateRandomAccount(4),
-      created_date: this.generateRandomDate()
-    },
-    {
-      discussion_id: 6,
-      body: "Quarto commento",
-      like_count: 12,
-      t_user: this.generateRandomAccount(5),
-      created_date: this.generateRandomDate()
-    },
-    {
-      discussion_id: 7,
-      body: "Quinto commento",
-      like_count: 6,
-      t_user: this.generateRandomAccount(6),
-      created_date: this.generateRandomDate()
-    },
-    {
-      discussion_id: 8,
-      body: "Sesto commento",
-      like_count: 4,
-      t_user: this.generateRandomAccount(7),
-      created_date: this.generateRandomDate()
-    },
-    {
-      discussion_id: 9,
-      body: "Settimo commento",
-      like_count: 7,
-      t_user: this.generateRandomAccount(8),
-      created_date: this.generateRandomDate()
-    },
-    {
-      discussion_id: 10,
-      body: "Ottavo commento",
-      like_count: 11,
-      t_user: this.generateRandomAccount(9),
-      created_date: this.generateRandomDate()
-    },
-    {
-      discussion_id: 11,
-      body: "Nono commento",
-      like_count: 9,
-      t_user: this.generateRandomAccount(10),
-      created_date: this.generateRandomDate()
-    },
-    {
-      discussion_id: 12,
-      body: "Decimo commento",
-      like_count: 14,
-      t_user: this.generateRandomAccount(11),
-      created_date: this.generateRandomDate()
-    },
-    {
-      discussion_id: 13,
-      body: "Undicesimo commento",
-      like_count: 5,
-      t_user: this.generateRandomAccount(12),
-      created_date: this.generateRandomDate()
-    },
-    {
-      discussion_id: 14,
-      body: "Dodicesimo commento",
-      like_count: 8,
-      t_user: this.generateRandomAccount(13),
-      created_date: this.generateRandomDate()
-    },
-    {
-      discussion_id: 15,
-      body: "Tredicesimo commento",
-      like_count: 3,
-      t_user: this.generateRandomAccount(14),
-      created_date: this.generateRandomDate()
-    },
-    {
-      discussion_id: 16,
-      body: "Quattordicesimo commento",
-      like_count: 10,
-      t_user: this.generateRandomAccount(15),
-      created_date: this.generateRandomDate()
-    },
-    {
-      discussion_id: 17,
-      body: "Quindicesimo commento",
-      like_count: 6,
-      t_user: this.generateRandomAccount(16),
-      created_date: this.generateRandomDate()
-    },
-    {
-      discussion_id: 18,
-      body: "Sedicesimo commento",
-      like_count: 9,
-      t_user: this.generateRandomAccount(17),
-      created_date: this.generateRandomDate()
-    },
-    {
-      discussion_id: 19,
-      body: "Diciassettesimo commento",
-      like_count: 7,
-      t_user: this.generateRandomAccount(18),
-      created_date: this.generateRandomDate()
-    },
-    {
-      discussion_id: 20,
-      body: "Diciottesimo commento",
-      like_count: 15,
-      t_user: this.generateRandomAccount(19),
-      created_date: this.generateRandomDate()
-    },
-    {
-      discussion_id: 21,
-      body: "Diciannovesimo commento",
-      like_count: 8,
-      t_user: this.generateRandomAccount(20),
-      created_date: this.generateRandomDate()
-    },
-    {
-      discussion_id: 22,
-      body: "Ventesimo commento",
-      like_count: 13,
-      t_user: this.generateRandomAccount(21),
-      created_date: this.generateRandomDate()
-    }
-  ];
+  currentUser: User;
+  comments: Comment[] = [] //[
+  //   {
+  //     discussion_id: 1,
+  //     body: "Primo commento",
+  //     like_count: 10,
+  //     t_user: this.generateRandomAccount(0),
+  //     created_date: this.generateRandomDate(),
+  //     children: [
+  //       {
+  //         discussion_id: 2,
+  //         body: "Commento figlio del primo commento",
+  //         like_count: 5,
+  //         t_user: this.generateRandomAccount(1),
+  //         created_date: this.generateRandomDate(),
+  //       },
+  //       {
+  //         discussion_id: 3,
+  //         body: "Altro commento figlio del primo commento",
+  //         like_count: 2,
+  //         t_user: this.generateRandomAccount(2),
+  //         created_date: this.generateRandomDate()
+  //       }
+  //     ]
+  //   },
+  //   {
+  //     discussion_id: 4,
+  //     body: "Secondo commento",
+  //     like_count: 8,
+  //     t_user: this.generateRandomAccount(3),
+  //     created_date: this.generateRandomDate()
+  //   },
+  //   {
+  //     discussion_id: 5,
+  //     body: "Terzo commento",
+  //     like_count: 3,
+  //     t_user: this.generateRandomAccount(4),
+  //     created_date: this.generateRandomDate()
+  //   },
+  //   {
+  //     discussion_id: 6,
+  //     body: "Quarto commento",
+  //     like_count: 12,
+  //     t_user: this.generateRandomAccount(5),
+  //     created_date: this.generateRandomDate()
+  //   },
+  //   {
+  //     discussion_id: 7,
+  //     body: "Quinto commento",
+  //     like_count: 6,
+  //     t_user: this.generateRandomAccount(6),
+  //     created_date: this.generateRandomDate()
+  //   },
+  //   {
+  //     discussion_id: 8,
+  //     body: "Sesto commento",
+  //     like_count: 4,
+  //     t_user: this.generateRandomAccount(7),
+  //     created_date: this.generateRandomDate()
+  //   },
+  //   {
+  //     discussion_id: 9,
+  //     body: "Settimo commento",
+  //     like_count: 7,
+  //     t_user: this.generateRandomAccount(8),
+  //     created_date: this.generateRandomDate()
+  //   },
+  //   {
+  //     discussion_id: 10,
+  //     body: "Ottavo commento",
+  //     like_count: 11,
+  //     t_user: this.generateRandomAccount(9),
+  //     created_date: this.generateRandomDate()
+  //   },
+  //   {
+  //     discussion_id: 11,
+  //     body: "Nono commento",
+  //     like_count: 9,
+  //     t_user: this.generateRandomAccount(10),
+  //     created_date: this.generateRandomDate()
+  //   },
+  //   {
+  //     discussion_id: 12,
+  //     body: "Decimo commento",
+  //     like_count: 14,
+  //     t_user: this.generateRandomAccount(11),
+  //     created_date: this.generateRandomDate()
+  //   },
+  //   {
+  //     discussion_id: 13,
+  //     body: "Undicesimo commento",
+  //     like_count: 5,
+  //     t_user: this.generateRandomAccount(12),
+  //     created_date: this.generateRandomDate()
+  //   },
+  //   {
+  //     discussion_id: 14,
+  //     body: "Dodicesimo commento",
+  //     like_count: 8,
+  //     t_user: this.generateRandomAccount(13),
+  //     created_date: this.generateRandomDate()
+  //   },
+  //   {
+  //     discussion_id: 15,
+  //     body: "Tredicesimo commento",
+  //     like_count: 3,
+  //     t_user: this.generateRandomAccount(14),
+  //     created_date: this.generateRandomDate()
+  //   },
+  //   {
+  //     discussion_id: 16,
+  //     body: "Quattordicesimo commento",
+  //     like_count: 10,
+  //     t_user: this.generateRandomAccount(15),
+  //     created_date: this.generateRandomDate()
+  //   },
+  //   {
+  //     discussion_id: 17,
+  //     body: "Quindicesimo commento",
+  //     like_count: 6,
+  //     t_user: this.generateRandomAccount(16),
+  //     created_date: this.generateRandomDate()
+  //   },
+  //   {
+  //     discussion_id: 18,
+  //     body: "Sedicesimo commento",
+  //     like_count: 9,
+  //     t_user: this.generateRandomAccount(17),
+  //     created_date: this.generateRandomDate()
+  //   },
+  //   {
+  //     discussion_id: 19,
+  //     body: "Diciassettesimo commento",
+  //     like_count: 7,
+  //     t_user: this.generateRandomAccount(18),
+  //     created_date: this.generateRandomDate()
+  //   },
+  //   {
+  //     discussion_id: 20,
+  //     body: "Diciottesimo commento",
+  //     like_count: 15,
+  //     t_user: this.generateRandomAccount(19),
+  //     created_date: this.generateRandomDate()
+  //   },
+  //   {
+  //     discussion_id: 21,
+  //     body: "Diciannovesimo commento",
+  //     like_count: 8,
+  //     t_user: this.generateRandomAccount(20),
+  //     created_date: this.generateRandomDate()
+  //   },
+  //   {
+  //     discussion_id: 22,
+  //     body: "Ventesimo commento",
+  //     like_count: 13,
+  //     t_user: this.generateRandomAccount(21),
+  //     created_date: this.generateRandomDate()
+  //   }
+  // ];
   discussionIdReply: number = null;
-  numOfComment: number = this.getCommentCount();
-  isReplyCommentArray: Array<boolean> = new Array(this.numOfComment).fill(false);
+  isReplyCommentArray: Array<boolean>;
+  isFollowed: boolean = false;
 
-  constructor(private cdr: ChangeDetectorRef, private globalService: GlobalService,
-    private route: ActivatedRoute, private router: Router, private toastr: ToastrService) {
+  constructor(private cdr: ChangeDetectorRef, private globalService: GlobalService, private userService: UserService, private cookieService: CookieService,
+    private route: ActivatedRoute, private router: Router, private toastr: ToastrService, private contentService: ContentService) {
+    const cookieCurrentUser = this.cookieService.get('current_user');
+    if (cookieCurrentUser) {
+      this.currentUser = JSON.parse(cookieCurrentUser);
+    }
   }
 
   ngAfterViewChecked(): void {
@@ -206,13 +214,30 @@ export class ContentDetailComponent implements AfterViewInit, AfterViewChecked {
     this.cdr.detectChanges();
   }
 
+  checkIsFollowedByCurrentUser() {
+    this.userService.checkIsFollowedByCurrentUser(this.item.t_user.t_alias_generated, this.item.t_user.t_alias_generated).subscribe(
+      response => {
+        this.isFollowed = Boolean(response.follows);
+      }
+    );
+  }
+
   decodeParams() {
     this.route.params
       .pipe(pluck('params'))
       .subscribe((result) => {
         const decode = this.globalService.decodeParams(result);
-        this.item = decode.item;
-        this.initialize();
+        this.contentService.getSingleContent(decode.item.id, decode.item.t_user.t_alias_generated).subscribe(
+          (response: any) => {
+            this.item = response;
+            this.isReplyCommentArray = new Array(this.item.numOfComment).fill(false);
+            this.checkIsFollowedByCurrentUser();
+            this.initialize();
+          },
+          error => {
+            console.error('Errore nel recupero del contenuto:', error);
+          }
+        );
       }
       );
   }
@@ -227,19 +252,6 @@ export class ContentDetailComponent implements AfterViewInit, AfterViewChecked {
     const childrenToAdd = comment.children.slice(index, index + this.commentNumberOnShow);
     if (!this.showChildrenCommentArray[comment.discussion_id]) { this.showChildrenCommentArray[comment.discussion_id] = [] }
     this.showChildrenCommentArray[comment.discussion_id] = [...this.showChildrenCommentArray[comment.discussion_id], ...childrenToAdd];
-  }
-
-  getCommentCount(): number {
-    let count = 0;
-
-    for (const comment of this.comments) {
-      count++; // Conta il commento principale
-      if (comment.children && comment.children.length > 0) {
-        count += comment.children.length; // Conta i commenti figli
-      }
-    }
-
-    return count;
   }
 
   initialize() {
@@ -366,7 +378,14 @@ export class ContentDetailComponent implements AfterViewInit, AfterViewChecked {
   }
 
   book(item: any) {
-    alert("Book")
+    this.contentService.addContentBooked(this.currentUser.t_alias_generated, item.id).subscribe(
+      (response: any) => {
+        this.toastr.success(response.message)
+      },
+      error => {
+        console.error('Errore nel recupero del contenuto:', error);
+      }
+    );
   }
 
   closeSharePanel() {
@@ -377,7 +396,7 @@ export class ContentDetailComponent implements AfterViewInit, AfterViewChecked {
     this.showSharePanel = true;
   }
 
-  
+
   shareOnWhatsApp() {
     const whatsappUrl = `https://api.whatsapp.com/send?text=${encodeURIComponent(window.location.href)}`;
     window.open(whatsappUrl, '_blank');
@@ -401,36 +420,14 @@ export class ContentDetailComponent implements AfterViewInit, AfterViewChecked {
         body: this.commentValue,
         like_count: 0,
         children: [],
-        t_user: this.comments[0].t_user, //qui va il current user
+        t_user: this.currentUser,
         created_date: moment().toDate()
       }
       this.comments.push(newComment);
-      this.commentValue = null;
+      this.item.numOfComment+=1;
+      this.commentValue = "";
       this.scrollToBottom();
     }
-    /*if (this.messageValue.length === 0) {
-      return;
-    }
-  
-    const activeChatAlias = this.activeChatUser.t_alias_generated;
-    const chat = this.chatList.find(el => el.userChat.t_alias_generated === activeChatAlias);
-  
-    if (chat) {
-      const newMessage = {
-        user_to: this.currentUser,
-        user_at: this.activeChatUser,
-        message: this.messageValue,
-        dateTime: moment(moment(), "DD/MM/YYYY HH:MM:SS")
-      };
-  
-      chat.messages.push(newMessage);
-      this.groupMessagesByDate();
-      this.groupMessagesByActiveChatUserByDate();
-      this.messageValue = '';
-      setTimeout(()=>{
-        this.scrollChatToBottom();
-      },1)
-    }*/
   }
 
   addReplyComment(comment: Comment) {
@@ -516,21 +513,6 @@ export class ContentDetailComponent implements AfterViewInit, AfterViewChecked {
     }, 0)
   }
 
-  private generateRandomAccount(index: number): any { //Account
-    const randomAccountType = randomIntFromInterval(1, 3) === 1 ? USER_TYPE.ARTIST : randomIntFromInterval(1, 3) === 2 ? USER_TYPE.COMPANY : USER_TYPE.CREATOR;
-    return {
-      id: index,
-      t_name: `Name ${index + 1}`,
-      t_follower_number: 1705,
-      t_alias_generated: `Alias${index + 1}`,
-      t_description: "Ti aiutiamo a diventare la versione migliore di TE STESSO! Seguici su Instagram.",
-      t_profile_photo: randomAccountType === 0 ? '/assets/img/example_artist_image.jpg' : "/assets/img/userExampleImg.jpeg",
-      t_type: randomAccountType,
-      is_verified: randomIntFromInterval(0, 5) > 3 ? true : false,
-      type: ItemType.Utenti
-    };
-  }
-
   generateRandomDate(): Date {
     const today = new Date();
     const randomNumberOfDays = Math.floor(Math.random() * 30); // Puoi regolare il numero di giorni come preferisci
@@ -550,8 +532,16 @@ export class ContentDetailComponent implements AfterViewInit, AfterViewChecked {
   }
 
   followUser() {
-    //if((this.currentUser.n_id != this.item.t_user.n_id) && l'utente del contenuto non è già seguito dall'utente corrente allora effettua la chiamata per seguire l'utente) 
-    alert("follow")
+    this.userService.followUser(this.item.t_user.t_alias_generated, this.item.t_user.t_alias_generated)
+      .subscribe(
+        response => {
+          this.toastr.success(response.message);
+          this.isFollowed = true;
+        },
+        error => {
+          this.toastr.error('Errore nel seguire l\'utente');
+        }
+      );
   }
 
   openDiscussionReplyPanel(comment: Comment, childComment: Comment) {
