@@ -6,6 +6,10 @@ import { pluck } from "rxjs";
 import { randomIntFromInterval } from "src/app/core/utility/functions-constants";
 import moment from "moment";
 import 'moment/locale/it'; // Importa la localizzazione italiana di moment
+import { ContentService } from "src/app/core/services/contentService/content.service";
+import { User } from "src/app/core/models/user";
+import { CookieService } from "ngx-cookie-service";
+import { ToastrService } from "ngx-toastr";
 
 @Component({
   selector: 'unievent-content-infinite-scroll',
@@ -14,6 +18,11 @@ import 'moment/locale/it'; // Importa la localizzazione italiana di moment
 })
 export class ContentInfiniteScrollComponent implements AfterViewInit, AfterViewChecked, OnDestroy {
   @ViewChild('cardElement', { static: false }) cardElement!: ElementRef<HTMLDivElement>;
+  
+  currentUser: User;
+  showSharePanel: boolean = false;
+  currentLink: String = window.location.href;
+
   currentPlayingVideo: HTMLVideoElement = null;
   intersectionObserver: IntersectionObserver;
   scrollDistance = 2;
@@ -54,7 +63,12 @@ export class ContentInfiniteScrollComponent implements AfterViewInit, AfterViewC
     searchType: string;
   } = null;
 
-  constructor(private cdr: ChangeDetectorRef, private globalService: GlobalService, private route: ActivatedRoute, private router: Router) {
+  constructor(private cdr: ChangeDetectorRef, private globalService: GlobalService, private route: ActivatedRoute, private toastr: ToastrService, 
+              private router: Router, private contentService:ContentService, private cookieService: CookieService) {
+    const cookieCurrentUser = this.cookieService.get('current_user');
+    if (cookieCurrentUser) {
+      this.currentUser = JSON.parse(cookieCurrentUser);
+    }
   }
 
   ngAfterViewInit(): void {
@@ -197,15 +211,64 @@ private applyUnmuteToSubsequentVideos() {
   }
 
   addLike(item: any) {
-    alert("LIKE")
+    this.contentService.addLikeByType(this.currentUser.t_alias_generated, item.id, null, "LIKE_CONTENT").subscribe(
+      (response: any) => {
+        item.is_liked_by_current_user = response.liked;
+        if (response.liked)
+          item.like_count += 1;
+        else
+          item.like_count -= 1;
+        this.toastr.clear();
+        this.toastr.success(response.message)
+      },
+      error => {
+        this.toastr.clear();
+        this.toastr.error('Errore nell\'aggiunta del like');
+      }
+    );
   }
 
-  addComment(item: any) {
-    alert("COMMENT")
+  closeSharePanel() {
+    this.showSharePanel = false;
   }
 
-  share(item: any) {
-    alert("SHARE")
+  openSharePanel(item:any) {
+    this.showSharePanel = true;
+    this.currentLink = this.generatePath(item);
+  }
+
+  generatePath(item: any): string {
+    const link = "/@/" + item.t_user.t_alias_generated + "/content";
+    const params = this.globalService.encodeParams({
+      item: item
+    });
+    const fullPath =  window.location.origin + this.router.serializeUrl(this.router.createUrlTree([link,params]));
+    return fullPath;
+  }
+
+  shareOnWhatsApp() {
+    const whatsappUrl = `https://api.whatsapp.com/send?text=${encodeURIComponent(window.location.href)}`;
+    window.open(whatsappUrl, '_blank');
+  }
+
+  shareOnTelegram() {
+    const telegramUrl = `https://t.me/share/url?url=${encodeURIComponent(window.location.href)}`;
+    window.open(telegramUrl, '_blank');
+  }
+
+  shareOnFacebook() {
+    const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(window.location.href)}`;
+    window.open(facebookUrl, '_blank');
+  }
+
+  copyToClipboard() {
+    const tempInput = document.createElement('input');
+    tempInput.value = this.currentLink as string;
+    document.body.appendChild(tempInput);
+    tempInput.select();
+    tempInput.setSelectionRange(0, 99999);
+    document.execCommand('copy');
+    document.body.removeChild(tempInput);
   }
 
   private generateRandomAccount(index: number): any { //Account
@@ -242,7 +305,7 @@ private applyUnmuteToSubsequentVideos() {
   private generateRandomEvent(index: number): any { //Event
     const randomIntValue = randomIntFromInterval(0, 1);
     return {
-      id: this.items.length + index,
+      id: (this.items.length + index + 1),
       t_caption: this.didascalie[Math.floor(Math.random() * this.didascalie.length)],
       t_image_link: randomIntValue === 0 ? '/assets/img/exampleEventFirstFrame.png' : '/assets/img/event-image-placeholder.jpg',
       t_video_link: randomIntValue === 0 ? 'https://media.istockphoto.com/id/1144640568/it/video/loperaio-spinge-bottiglie-di-plastica-con-una-pala-per-il-riciclaggio-lavorare-in-una.mp4?s=mp4-640x640-is&k=20&c=zeB2A9MHShH9jFSThzmTm3tCnBOFSahY7OEai63HQDM=' : null,
@@ -252,7 +315,8 @@ private applyUnmuteToSubsequentVideos() {
       type: ItemType.Eventi,
       created_date: this.generateRandomDate(),
       event_first_date: this.generateRandomNextTodayDate(),
-      event_last_date: this.generateRandomNextTodayDate()
+      event_last_date: this.generateRandomNextTodayDate(),
+      is_liked_by_current_user: randomIntFromInterval(0,1) ? true : false
     };
   }
 
@@ -272,7 +336,7 @@ private applyUnmuteToSubsequentVideos() {
   private generateRandomTopics(index: number): any { //Topic
     const randomIntValue = randomIntFromInterval(0, 1);
     return {
-      id: this.items.length + index,
+      id: (this.items.length + index + 1),
       t_caption: this.didascalie[Math.floor(Math.random() * this.didascalie.length)],
       t_image_link: randomIntValue === 0 ? '/assets/img/exampleTopicImageFristFrame.png' : '/assets/img/topic-image-placeholder.jpg',
       t_video_link: randomIntValue === 0 ? '/assets/videos/exampleTopicsVideo.mp4' : null,
@@ -280,7 +344,8 @@ private applyUnmuteToSubsequentVideos() {
       t_user: this.generateRandomAccount(index),
       n_click: randomIntFromInterval(1, 10000000),
       type: ItemType.Topics,
-      created_date: this.generateRandomDate()
+      created_date: this.generateRandomDate(),
+      is_liked_by_current_user: randomIntFromInterval(0,1) ? true : false
     };
   }
 

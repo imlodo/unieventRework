@@ -39,7 +39,7 @@ export class ContentDetailComponent implements AfterViewInit, AfterViewChecked {
   isReplyCommentArray: Array<boolean>;
   isFollowed: boolean = false;
   isBooked: boolean = false;
-  isLiked: boolean = true;
+  isLiked: boolean = false;
 
   constructor(private cdr: ChangeDetectorRef, private globalService: GlobalService, private userService: UserService, private cookieService: CookieService,
     private route: ActivatedRoute, private router: Router, private toastr: ToastrService, private contentService: ContentService) {
