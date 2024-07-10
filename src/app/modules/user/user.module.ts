@@ -9,10 +9,12 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
 import { UserRoutingModule } from './user-routing.module';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+import { UserFollowedListComponent } from './components/user-followed-list/user-followed-list.component';
 
 @NgModule({
   declarations: [
-    UserProfileComponent
+    UserProfileComponent,
+    UserFollowedListComponent
   ],
   imports: [
     CommonModule,

@@ -55,3 +55,27 @@
 .nav-item {
     padding: 3px 7px;
 }
+
+.user-left-card:hover{
+    text-decoration: underline;
+}
+
+.user-profile-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.user-profile-photo-container {
+    width: 34px;
+    min-width: 34px;
+    height: 34px;
+    position: relative;
+    overflow: hidden;
+    white-space: nowrap;
+    border-radius: 50%;
+}
+
+.view-all-action:hover{
+    color: var(--bs-danger)
+}

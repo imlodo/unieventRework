@@ -17,6 +17,7 @@ export const FOLLOW_USER = `${BASE_URL}/api/user/followUser`;
 export const UNFOLLOW_USER = `${BASE_URL}/api/user/unfollowUser`;
 export const GENERATE_TOKEN = `${BASE_URL}/api/token/generateToken`;
 export const GET_USER = `${BASE_URL}/api/user/getUser`;
+export const GET_USER_FOLLOWED_BY_CURRENT_USER = `${BASE_URL}/api/user/getUserFollowedByCurrentUser`;
 export const GET_CHAT_LIST = `${BASE_URL}/api/user/getChatList`;
 export const GET_CONTENT_DISCUSSIONS = `${BASE_URL}/api/content/getContentDiscussions`;
 export const GET_CHAT_MESSAGE_LIST = `${BASE_URL}/api/user/getChatMessageList`;

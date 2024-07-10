@@ -1,0 +1,49 @@
+.follow-page{
+    height: calc(100vh - 80px);
+}
+
+.users-card-container {
+    border-radius: var(--bs-border-radius);
+}
+
+::ng-deep .bg-dark-mode .users-card-container {
+    background: var(--bs-dark);
+    color: var(--bs-white);
+}
+
+::ng-deep .bg-light-mode .users-card-container {
+    background: var(--bs-light);
+    color: var(--bs-dark);
+}
+
+::ng-deep .bg-dark-mode .user-card {
+    color: var(--bs-white);
+}
+
+::ng-deep .bg-dark-mode .user-card:hover {
+    background-color: #404952 !important;
+}
+
+::ng-deep .bg-light-mode .user-card:hover {
+    background-color: #e1e1e1 !important;
+}
+
+::ng-deep .bg-light-mode .user-card {
+    color: var(--bs-dark);
+}
+
+.profile-photo-container {
+    width: 100px;
+    height: 100px;
+    min-width: 100px;
+    position: relative;
+    overflow: hidden;
+    white-space: nowrap;
+    border-radius: 50%;
+}
+
+.user-profile-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}

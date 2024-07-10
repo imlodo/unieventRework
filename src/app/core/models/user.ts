@@ -11,4 +11,5 @@ export interface User {
     is_verified?: boolean; // Rendere obbligatorio
     t_type: USER_TYPE;
     t_role?: USER_ROLE;
+    t_follower_number?: number;
 }

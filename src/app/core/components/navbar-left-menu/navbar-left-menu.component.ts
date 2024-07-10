@@ -2,8 +2,9 @@ import { AfterViewInit, Component, ElementRef, HostListener, Input, Renderer2 } 
 import { NavigationEnd, Router } from '@angular/router';
 import { User } from '../../models/user';
 import { ExploreItemType, ProfileItemType, ROUTE_LIST, USER_TYPE } from '../../utility/global-constant';
-import { GlobalService } from '../../services';
+import { GlobalService, UserService } from '../../services';
 import { CookieService } from 'ngx-cookie-service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'unievent-navbar-left-menu',
@@ -14,13 +15,16 @@ export class NavbarLeftMenuComponent implements AfterViewInit {
   isDNone: boolean;
   activePath: string;
   currentUser: User;
+  followedUser: Array<User> = new Array();
 
   constructor(
     private renderer: Renderer2,
     private el: ElementRef,
     private router: Router,
     private globalService: GlobalService,
-    private cookieService: CookieService
+    private cookieService: CookieService,
+    private userService: UserService,
+    private toastr: ToastrService
   ) {
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
@@ -32,6 +36,17 @@ export class NavbarLeftMenuComponent implements AfterViewInit {
     if (cookieCurrentUser) {
       this.currentUser = JSON.parse(cookieCurrentUser);
     }
+
+    this.userService.getUserFollowedByCurrentUser(5).subscribe(
+      (response: any) => {
+        this.followedUser = response.followed_users;
+        console.log(response.followed_users)
+      },
+      error => {
+        this.toastr.clear();
+        this.toastr.error('Errore nel recupero degli utenti seguiti');
+      }
+    );
   }
 
   ngAfterViewInit(): void {
@@ -54,6 +69,18 @@ export class NavbarLeftMenuComponent implements AfterViewInit {
       profileItemType: type === "Booked" ? ProfileItemType.Booked : type === "Liked" ? ProfileItemType.Liked : ProfileItemType.Content
     });
     this.router.navigate([link, params]);
+  }
+
+  navigateToItemUserProfile(t_alias_generated: string) {
+    let link = "/@/" + t_alias_generated
+    let params = this.globalService.encodeParams({
+      profileItemType: ProfileItemType.Content
+    });
+    this.router.navigate([link, params]);
+  }
+
+  navigateToViewAllFollowedUser(){
+    this.router.navigate([ROUTE_LIST.followed])
   }
 
   navigateToExploreSection(type: string) {

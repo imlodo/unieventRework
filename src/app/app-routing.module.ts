@@ -14,6 +14,8 @@ import { HistoryComponent } from './core/components/history/history.component';
 import { VisitedPagesGuard } from './core/guards/VisitedPagesGuard/visited-pages.guard';
 import { AuthGuard } from './core/guards/authGuard/auth-guard';
 import { ResetPasswordComponent } from './core/components/reset-password/reset-password.component';
+import { ROUTE_LIST } from './core/utility/global-constant';
+import { UserFollowedListComponent } from './modules/user/components/user-followed-list/user-followed-list.component';
 
 const routes: Routes = [
 	{
@@ -186,6 +188,14 @@ const routes: Routes = [
 					title: 'Conferma Reset Password',
 				},
 			},
+			{
+				path: 'followed',
+				canActivate: [AuthGuard, VisitedPagesGuard],
+				component: UserFollowedListComponent,
+				data: {
+					title: 'Followed User',
+				},
+			}
 		]
 	},
 	{

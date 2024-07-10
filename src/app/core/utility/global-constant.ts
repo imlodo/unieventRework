@@ -31776,7 +31776,8 @@ export const ROUTE_LIST =
     bookmarks: "/bookmark",
     messages: "/messages",
     explore: "/explore",
-    login: "/login"
+    login: "/login",
+    followed: "/followed"
 };
 
 export const COLORS: Record<string, EventColor> = {

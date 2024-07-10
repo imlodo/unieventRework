@@ -1,0 +1,40 @@
+<div [ngClass]="followList.length > 0 ? '' : 'follow-page' "
+    class="container align-items-center d-flex flex-row justify-content-center">
+    <div class="p-4">
+        <div *ngIf="followList.length > 0" class="scrollable-content row row-cols-1">
+            <h1>Utenti seguiti</h1>
+            <ng-container *ngFor="let item of followList;">
+                <div (click)="navigateToUserProfile({t_user:item})" class="users-card-container shadow mb-4 p-3">
+                    <div class="d-flex flex-row justify-content-between">
+                        <div class="card-body d-flex flex-row pointer">
+                            <span shape="circle" class="profile-photo-container"><img class="user-profile-photo"
+                                    [attr.src]="item.t_profile_photo"></span>
+                            <div class="d-flex flex-column mx-2">
+                                <h3 class="m-0 mb-1"><b>@{{ item.t_alias_generated }}</b></h3>
+                                <span class="mb-1">{{item.t_name}} · <b>{{item.t_follower_number}}</b>
+                                    Follower</span>
+                                <span class="search-description">{{item.t_description}}</span>
+                            </div>
+                        </div>
+                        <div class="d-flex flex-column justify-content-center">
+                            <span (click)="unfollowUser($event, item)" class="bg-secondary p-2 pointer"
+                                style="height: fit-content;width: 150px;text-align: center;margin-top: 10px;">Rimuovi</span>
+                        </div>
+                    </div>
+                </div>
+            </ng-container>
+        </div>
+        <div *ngIf="followList.length === 0">
+            <ng-container *ngTemplateOutlet="noresult"></ng-container>
+        </div>
+
+    </div>
+
+</div>
+
+<ng-template #noresult>
+    <div class="d-flex flex-column justify-content-center align-items-center mt-5">
+        <span style="font-size: 90px; height:90px">🙁</span>
+        <h1>Nessun utente seguito</h1>
+    </div>
+</ng-template>
