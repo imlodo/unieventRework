@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, ElementRef, Renderer2 } from '@angular/core';
+import { ChangeDetectorRef, Component, ElementRef } from '@angular/core';
 import { ExploreItemType, ItemType, ROUTE_LIST } from '../../../../core/utility/global-constant';
 import { GlobalService } from 'src/app/core/services';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -8,6 +8,7 @@ import { pluck } from 'rxjs';
 import { MORE_CONTENT_TYPE } from 'src/app/core/utility/enum-constant';
 import { ContentService } from 'src/app/core/services/contentService/content.service';
 import { CookieService } from 'ngx-cookie-service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'unievent-explore',
@@ -35,8 +36,10 @@ export class ExploreComponent {
   currentEventsPageNumber: number = 1;
   currentTopicsPageNumber: number = 1;
   pageSize: number = 5;
+  showSharePanel: boolean = false;
+  currentLink: String = "";
 
-  constructor(private cdr: ChangeDetectorRef, private elementRef: ElementRef, private renderer: Renderer2, private cookieService: CookieService,
+  constructor(private cdr: ChangeDetectorRef, private elementRef: ElementRef, private toastr: ToastrService, private cookieService: CookieService,
     private globalService: GlobalService, private route: ActivatedRoute, private router: Router, private contentService: ContentService) {
     const cookieCurrentUser = this.cookieService.get('current_user');
     if (cookieCurrentUser) {
@@ -276,15 +279,64 @@ export class ExploreComponent {
 
 
   addLike(item: any) {
-    alert("LIKE")
+    this.contentService.addLikeByType(this.user.t_alias_generated, item.id, null, "LIKE_CONTENT").subscribe(
+      (response: any) => {
+        item.is_liked_by_current_user = response.liked;
+        if (response.liked)
+          item.numOfLike += 1;
+        else
+          item.numOfLike -= 1;
+        this.toastr.clear();
+        this.toastr.success(response.message)
+      },
+      error => {
+        this.toastr.clear();
+        this.toastr.error('Errore nell\'aggiunta del like');
+      }
+    );
   }
 
-  book(item: any) {
-    alert("SHARE")
+  closeSharePanel() {
+    this.showSharePanel = false;
   }
 
-  addComment(item: any) {
+  openSharePanel(item:any) {
+    this.showSharePanel = true;
+    this.currentLink = this.generatePath(item);
+  }
 
+  generatePath(item: any): string {
+    const link = "/@/" + item.t_user.t_alias_generated + "/content";
+    const params = this.globalService.encodeParams({
+      item: item
+    });
+    const fullPath =  window.location.origin + this.router.serializeUrl(this.router.createUrlTree([link,params]));
+    return fullPath;
+  }
+
+  shareOnWhatsApp() {
+    const whatsappUrl = `https://api.whatsapp.com/send?text=${encodeURIComponent(String(this.currentLink))}`;
+    window.open(whatsappUrl, '_blank');
+  }
+
+  shareOnTelegram() {
+    const telegramUrl = `https://t.me/share/url?url=${encodeURIComponent(String(this.currentLink))}`;
+    window.open(telegramUrl, '_blank');
+  }
+
+  shareOnFacebook() {
+    const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(String(this.currentLink))}`;
+    window.open(facebookUrl, '_blank');
+  }
+
+  copyToClipboard() {
+    const tempInput = document.createElement('input');
+    tempInput.value = this.currentLink as string;
+    document.body.appendChild(tempInput);
+    tempInput.select();
+    tempInput.setSelectionRange(0, 99999);
+    document.execCommand('copy');
+    document.body.removeChild(tempInput);
   }
 
 }

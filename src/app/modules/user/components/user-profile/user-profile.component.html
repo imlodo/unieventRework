@@ -27,7 +27,7 @@
             <div>
                 <button *ngIf="currentUser.t_alias_generated != user?.t_alias_generated && !isFollowed" class="btn btn-color-primary rounded-0 text-white"
                     (click)="followThisUserByCurrentUser()">Segui</button>
-                <button *ngIf="currentUser.t_alias_generated != user?.t_alias_generated && isFollowed" disabled class="btn btn-secondary rounded-0 text-white">Segui Già</button>
+                <button (click)="unfollowUser()" *ngIf="currentUser.t_alias_generated != user?.t_alias_generated && isFollowed" class="btn btn-secondary rounded-0 text-white">Rimuovi Segui</button>
             </div>
         </div>
         <div class="d-flex flex-row mt-4 mx-4" style="gap: 25px;">

@@ -446,6 +446,21 @@ export class ContentDetailComponent implements AfterViewInit, AfterViewChecked {
       );
   }
 
+  unfollowUser() {
+    this.userService.unfollowUser(this.item.t_user.t_alias_generated)
+      .subscribe(
+        response => {
+          this.toastr.clear();
+          this.toastr.success(response.message);
+          this.isFollowed = false;
+        },
+        error => {
+          this.toastr.clear();
+          this.toastr.error('Errore nel unfollow dell\'utente');
+        }
+      );
+  }
+
   openDiscussionReplyPanel(comment: Comment, childComment: Comment) {
     this.isReplyCommentArray = [...this.isReplyCommentArray.map(el => false)]
     this.isReplyCommentArray[comment.discussion_id] = true;

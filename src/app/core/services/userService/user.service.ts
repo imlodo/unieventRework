@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
 import { Observable, catchError, tap, throwError } from 'rxjs';
-import { ADD_CHAT_REPLY, CHECK_IS_FOLLOWED, CREATE_NEW_USER, DELETE_ACCOUNT, DOWNLOAD_PERSONAL_DATA, EDIT_USER, FOLLOW_USER, GET_CHAT_LIST, GET_CHAT_MESSAGE_LIST, GET_REQUEST_PERSONAL_DATA_STATUS, GET_USER, GET_USER_PROFILE_INFO, GET_USER_SETTINGS, GET_VERIFY_ACCOUNT_STATUS, REQUEST_PERSONAL_DATA, SAVE_USER_SETTINGS, SEND_CONFIRMATION_EMAIL, SEND_NEW_PASSWORD, VERIFY_ACCOUNT } from '../../utility/api-constant';
+import { ADD_CHAT_REPLY, CHECK_IS_FOLLOWED, CREATE_NEW_USER, DELETE_ACCOUNT, DOWNLOAD_PERSONAL_DATA, EDIT_USER, FOLLOW_USER, GET_CHAT_LIST, GET_CHAT_MESSAGE_LIST, GET_REQUEST_PERSONAL_DATA_STATUS, GET_USER, GET_USER_PROFILE_INFO, GET_USER_SETTINGS, GET_VERIFY_ACCOUNT_STATUS, REQUEST_PERSONAL_DATA, SAVE_USER_SETTINGS, SEND_CONFIRMATION_EMAIL, SEND_NEW_PASSWORD, UNFOLLOW_USER, VERIFY_ACCOUNT } from '../../utility/api-constant';
 import { USER_TYPE } from '../../utility/global-constant';
 
 @Injectable({
@@ -74,6 +74,16 @@ export class UserService {
     });
     const body = { t_alias_generated_from, t_alias_generated_to };
     return this.http.post<any>(FOLLOW_USER, body, { headers });
+  }
+
+  unfollowUser(t_alias_generated_to: string): Observable<any> {
+    const token = this.cookieService.get('auth_token');
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    });
+    const body = { t_alias_generated_to };
+    return this.http.post<any>(UNFOLLOW_USER, body, { headers });
   }
 
   checkIsFollowedByCurrentUser(t_alias_generated_to: string, t_alias_generated_from: string) {

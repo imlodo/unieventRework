@@ -155,12 +155,28 @@ export class UserProfileComponent implements AfterViewInit {
   }
 
   followThisUserByCurrentUser() {
+    this.toastr.clear()
     this.userService.followUser(this.currentUser.t_alias_generated, this.user.t_alias_generated)
       .subscribe(
         response => {
           this.toastr.success(response.message);
           this.userInfo.countFollower += 1;
           this.isFollowed = true;
+        },
+        error => {
+          this.toastr.error('Errore nel seguire l\'utente');
+        }
+      );
+  }
+
+  unfollowUser() {
+    this.toastr.clear()
+    this.userService.unfollowUser(this.user.t_alias_generated)
+      .subscribe(
+        response => {
+          this.toastr.success(response.message);
+          this.userInfo.countFollower -= 1;
+          this.isFollowed = false;
         },
         error => {
           this.toastr.error('Errore nel seguire l\'utente');

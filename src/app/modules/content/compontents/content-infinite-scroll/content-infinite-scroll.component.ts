@@ -1,79 +1,116 @@
-import { AfterContentChecked, AfterViewChecked, AfterViewInit, ChangeDetectorRef, Component, ElementRef, OnDestroy, OnInit, QueryList, ViewChild, ViewChildren } from "@angular/core";
-import { ItemType, ROUTE_LIST, USER_TYPE } from "../../../../core/utility/global-constant";
-import { GlobalService } from "src/app/core/services";
-import { ActivatedRoute, Router } from "@angular/router";
-import { pluck } from "rxjs";
-import { randomIntFromInterval } from "src/app/core/utility/functions-constants";
-import moment from "moment";
-import 'moment/locale/it'; // Importa la localizzazione italiana di moment
-import { ContentService } from "src/app/core/services/contentService/content.service";
-import { User } from "src/app/core/models/user";
-import { CookieService } from "ngx-cookie-service";
-import { ToastrService } from "ngx-toastr";
+import { ChangeDetectorRef, Component, ElementRef } from '@angular/core';
+import { ExploreItemType, ItemType, ROUTE_LIST } from '../../../../core/utility/global-constant';
+import { GlobalService } from 'src/app/core/services';
+import { ActivatedRoute, Router } from '@angular/router';
+import { User } from 'src/app/core/models/user';
+import moment from 'moment';
+import { ContentService } from 'src/app/core/services/contentService/content.service';
+import { CookieService } from 'ngx-cookie-service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'unievent-content-infinite-scroll',
   templateUrl: './content-infinite-scroll.component.html',
   styleUrls: ['./content-infinite-scroll.component.scss']
 })
-export class ContentInfiniteScrollComponent implements AfterViewInit, AfterViewChecked, OnDestroy {
-  @ViewChild('cardElement', { static: false }) cardElement!: ElementRef<HTMLDivElement>;
-  
-  currentUser: User;
-  showSharePanel: boolean = false;
-  currentLink: String = window.location.href;
-
-  currentPlayingVideo: HTMLVideoElement = null;
-  intersectionObserver: IntersectionObserver;
-  scrollDistance = 2;
-  scrollUpDistance = 1;
-  items: any[] = [];
-  filteredItems: any[] = [];
-  isLoading: boolean = false;
-  selectedType: ItemType = ItemType.Tutti;
+export class ContentInfiniteScrollComponent {
+  ExploreItemType: any = ExploreItemType;
   ItemType: any = ItemType;
-  searchInput: string = null;
-  isMuted: boolean = true;
-  volumeLevel: number = 0.5; // livello predefinito del volume
-  countAccounts: number = 1; //questi devono essere precaricati dal back-end che ci dice quanti account sono stati trovati
-  countArtists: number = 1;  //questi devono essere precaricati dal back-end che ci dice quanti artisti sono stati trovati
-  didascalie = [
-    'Evento emozionante', 'Esperienza indimenticabile', 'Avventura entusiasmante', 'Momenti avvincenti',
-    'Una serata da ricordare', 'Raduno magico', 'Spettacolo spettacolare', 'Celebrazione della comunità',
-    'Simposio ispiratore', 'Estravaganza culturale', 'Performance mozzafiato', 'Vetrina artistica',
-    'Laboratorio interattivo', 'Concerto epico', 'Forum educativo', 'Festività all\'aperto',
-    'Mostra innovativa', 'Simposio creativo', 'Esposizione divertente', 'Occasione speciale',
-    'Conferenza dinamica', 'Incontro sociale', 'Esperienza di realtà virtuale', 'Presentazione unica',
-    'Vertice tecnologico', 'Estravaganza di moda', 'Ritiro benessere', 'Scoperta di nuovi orizzonti',
-    'Viaggio musicale', 'Vetrina artigianale', 'Evento di networking globale', 'Intrattenimento sbalorditivo',
-    'Seminario impattante', 'Festival gastronomico', 'Iniziativa eco-friendly', 'Delizie epicuree',
-    'Esplorazione di nuovi fronti', 'Campionamento del cambiamento', 'Performance teatrale', 'Gemme nascoste rivelate',
-    'Celebrare la diversità', 'Avventura gastronomica', 'Simposio futuristico', 'Delizie culinarie',
-    'Esperienza interattiva', 'Idee rivoluzionarie', 'Sotto i riflettori dei talenti emergenti'
-  ];
+  selectedType: ExploreItemType = ExploreItemType.All;
+  allContentList: Array<any> = new Array();
+  isLoading: boolean = false;
+  user: User;
+  scrollDistance = 1;
+  scrollUpDistance = 1;
+  bodyElement: ElementRef;
   currentGifLoading = 'assets/img/loader_white.gif';
-  protected decodedParams: {
-    searchInput: string;
-    filter: {
-      selectedCity?: string;
-      whenFilter: string;
-      eventType?: number,
-      topicType?: number
-    };
-    searchType: string;
-  } = null;
+  pageNumber: number = 1;
+  pageSize: number = 5;
+  showSharePanel: boolean = false;
+  currentLink: String = "";
+  currentPlayingVideo: HTMLVideoElement;
+  isMuted: boolean = false;
+  volumeLevel: number = 0.5;
+  intersectionObserver: IntersectionObserver;
 
-  constructor(private cdr: ChangeDetectorRef, private globalService: GlobalService, private route: ActivatedRoute, private toastr: ToastrService, 
-              private router: Router, private contentService:ContentService, private cookieService: CookieService) {
+  constructor(private cdr: ChangeDetectorRef, private elementRef: ElementRef, private toastr: ToastrService, private cookieService: CookieService,
+    private globalService: GlobalService, private route: ActivatedRoute, private router: Router, private contentService: ContentService) {
+    this.simulateClickOnBody();
     const cookieCurrentUser = this.cookieService.get('current_user');
     if (cookieCurrentUser) {
-      this.currentUser = JSON.parse(cookieCurrentUser);
+      this.user = JSON.parse(cookieCurrentUser);
+    }
+    this.bodyElement = this.elementRef.nativeElement.ownerDocument.body;
+    this.loadMoreItems();
+  }
+
+  ngAfterViewInit() {
+    this.cdr.detectChanges();
+  }
+
+  trackByFn(index: number, item: any): number {
+    return item.id;
+  }
+
+  navigateToBuyTicket(event: any, item: any) {
+    event.preventDefault();
+    const params = this.globalService.encodeParams({
+      n_id: item.id
+    });
+    this.router.navigate([ROUTE_LIST.event.detail, params]);
+  }
+
+  navigateToUserProfile(item: any) {
+    const link = "/@/" + item.t_user.t_alias_generated;
+    this.router.navigate([link]);
+  }
+
+  formatDateString(dateString: string): string {
+    moment.locale('it'); // Imposta la lingua italiana
+
+    const currentDate = moment();
+    const formattedDate = moment(dateString);
+    const diffInHours = currentDate.diff(formattedDate, 'hours');
+    const diffInDays = currentDate.diff(formattedDate, 'days');
+
+    if (diffInHours < 24) {
+      if (diffInHours <= 1) {
+        return 'meno di un\'ora fa';
+      } else {
+        return `${diffInHours} ore fa`;
+      }
+    } else {
+      if (diffInDays <= 1) {
+        return 'ieri';
+      } else {
+        return `${diffInDays} giorni fa`;
+      }
     }
   }
 
-  ngAfterViewInit(): void {
-    this.decodeParams();
+  onScroll() {
     this.loadMoreItems();
+  }
+
+  private loadMoreItems() {
+    this.isLoading = true;
+
+    this.contentService.getMoreContentBasedOnCurrentUser("created_date", "DESC", this.pageNumber, this.pageSize).subscribe(
+      (response: any) => {
+        this.allContentList = [...this.allContentList, ...response.content_list];
+        this.pageNumber += 1;
+        this.isLoading = false;
+        this.simulateClickOnBody();
+        this.addObserver();
+      },
+      error => {
+        console.error('Errore nel recupero dei contenuti:', error);
+        this.isLoading = false;
+      }
+    );
+  }
+
+  private addObserver() {
     this.intersectionObserver = new IntersectionObserver(entries => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -83,23 +120,21 @@ export class ContentInfiniteScrollComponent implements AfterViewInit, AfterViewC
         }
       });
     });
-    // Seleziona tutti gli elementi card e osserva ognuno di essi
     setTimeout(() => {
       const cardElements = document.querySelectorAll('.picture-container');
-      console.log(cardElements)
       cardElements.forEach(cardElement => {
         this.intersectionObserver.observe(cardElement);
       });
     }, 1);
-
-    this.cdr.detectChanges();
   }
 
   private startVideo(target: HTMLElement) {
+    this.simulateClickOnBody();
     const video = target.querySelector('video') as HTMLVideoElement;
     if (video) {
       video.currentTime = 0;
       video.autoplay = true;
+      video.loop = true;
       video.muted = this.isMuted; // Assicura che tutti i video siano inizialmente muted
       video.volume = this.volumeLevel;
       video.addEventListener('volumechange', () => {
@@ -122,11 +157,11 @@ export class ContentInfiniteScrollComponent implements AfterViewInit, AfterViewC
       }, 1); // Regola il ritardo a seconda delle tue esigenze
       this.currentPlayingVideo = video as HTMLVideoElement;
     }
-}
+  }
 
-private applyUnmuteToSubsequentVideos() {
-  this.isMuted = false;
-}
+  private applyUnmuteToSubsequentVideos() {
+    this.isMuted = false;
+  }
   // Modifica il metodo stopVideo
   private stopVideo(target: HTMLElement) {
     const video = target.querySelector('video');
@@ -139,85 +174,33 @@ private applyUnmuteToSubsequentVideos() {
     }
   }
 
-  ngOnDestroy(): void {
-    //throw new Error("Method not implemented.");
-  }
-
-  onContextMenu(event: MouseEvent): void {
-    //event.preventDefault();
-  }
-
-  navigateToBuyTicket() {
-    alert("xd")
-  }
-
   simulateClickOnBody() {
     const bodyElement = document.querySelector('body');
     const clickEvent = new Event('click');
     bodyElement.dispatchEvent(clickEvent);
   }
 
-  protected getLastTwoAccounts(items: any[], type: ItemType.Artisti | ItemType.Utenti): any[] {
-    const utentiAccounts = items
-      .filter(item => item.type === ItemType.Utenti && (type === ItemType.Artisti ? item.t_type === 0 : item.t_type > 0))
-      .slice(-2);
-    return utentiAccounts;
+  onContextMenu(event: MouseEvent): void {
+    //event.preventDefault();
   }
 
-  ngAfterViewChecked(): void {
-    let darkModeChoice = localStorage.getItem("darkModeChoice");
-    if (darkModeChoice === "0") {
-      this.currentGifLoading = 'assets/img/loader_black.gif';
-    } else {
-      this.currentGifLoading = 'assets/img/loader_white.gif';
-    }
+  navigateToContent(item: any) {
+    const link = "/@/" + item.t_user.t_alias_generated + "/content";
+    const params = this.globalService.encodeParams({
+      item: item
+    });
+    this.router.navigate([link, params]);
   }
 
-  onScroll(type: ItemType) {
-    //Bisogna parametrizzare la funziona perchè in base a dove si scrolla carica solo elementi di un dato tipo (questo devi farlo anche per il resto del codice)
-
-    this.loadMoreItems();
-  }
-
-  private loadMoreItems() {
-    if (this.isLoading) {
-      return;
-    }
-
-    this.isLoading = true;
-    setTimeout(() => {
-      const newItems = Array.from({ length: 25 }, (_, index) => {
-        const type = this.getRandomType();
-        switch (type) {
-          case ItemType.Utenti:
-            return this.generateRandomAccount(index);
-          case ItemType.Eventi:
-            return this.generateRandomEvent(index);
-          case ItemType.Topics:
-            return this.generateRandomTopics(index);
-          default:
-            break;
-        }
-      });
-      this.items = [...this.items, ...newItems];
-      this.filterItemsByType();
-      this.isLoading = false;
-    }, 1);
-  }
-
-  navigateToUserProfile(item: any) {
-    const link = "/@/" + item.t_user.t_alias_generated;
-    this.router.navigate([link]);
-  }
 
   addLike(item: any) {
-    this.contentService.addLikeByType(this.currentUser.t_alias_generated, item.id, null, "LIKE_CONTENT").subscribe(
+    this.contentService.addLikeByType(this.user.t_alias_generated, item.id, null, "LIKE_CONTENT").subscribe(
       (response: any) => {
         item.is_liked_by_current_user = response.liked;
         if (response.liked)
-          item.like_count += 1;
+          item.numOfLike += 1;
         else
-          item.like_count -= 1;
+          item.numOfLike -= 1;
         this.toastr.clear();
         this.toastr.success(response.message)
       },
@@ -232,7 +215,7 @@ private applyUnmuteToSubsequentVideos() {
     this.showSharePanel = false;
   }
 
-  openSharePanel(item:any) {
+  openSharePanel(item: any) {
     this.showSharePanel = true;
     this.currentLink = this.generatePath(item);
   }
@@ -242,22 +225,22 @@ private applyUnmuteToSubsequentVideos() {
     const params = this.globalService.encodeParams({
       item: item
     });
-    const fullPath =  window.location.origin + this.router.serializeUrl(this.router.createUrlTree([link,params]));
+    const fullPath = window.location.origin + this.router.serializeUrl(this.router.createUrlTree([link, params]));
     return fullPath;
   }
 
   shareOnWhatsApp() {
-    const whatsappUrl = `https://api.whatsapp.com/send?text=${encodeURIComponent(window.location.href)}`;
+    const whatsappUrl = `https://api.whatsapp.com/send?text=${encodeURIComponent(String(this.currentLink))}`;
     window.open(whatsappUrl, '_blank');
   }
 
   shareOnTelegram() {
-    const telegramUrl = `https://t.me/share/url?url=${encodeURIComponent(window.location.href)}`;
+    const telegramUrl = `https://t.me/share/url?url=${encodeURIComponent(String(this.currentLink))}`;
     window.open(telegramUrl, '_blank');
   }
 
   shareOnFacebook() {
-    const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(window.location.href)}`;
+    const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(String(this.currentLink))}`;
     window.open(facebookUrl, '_blank');
   }
 
@@ -270,147 +253,5 @@ private applyUnmuteToSubsequentVideos() {
     document.execCommand('copy');
     document.body.removeChild(tempInput);
   }
-
-  private generateRandomAccount(index: number): any { //Account
-    const randomAccountType = randomIntFromInterval(1, 3) === 1 ? USER_TYPE.ARTIST : randomIntFromInterval(1, 3) === 2 ? USER_TYPE.COMPANY : USER_TYPE.CREATOR;
-    return {
-      id: this.items.length + index,
-      t_name: `Name ${index + 1}`,
-      t_follower_number: 1705,
-      t_alias_generated: `Alias${index + 1}`,
-      t_description: "Ti aiutiamo a diventare la versione migliore di TE STESSO! Seguici su Instagram.",
-      t_profile_photo: randomAccountType === 0 ? '/assets/img/example_artist_image.jpg' : "/assets/img/userExampleImg.jpeg",
-      t_type: randomAccountType,
-      is_verified: randomIntFromInterval(0, 5) > 3 ? true : false,
-      type: ItemType.Utenti
-    };
-  }
-
-  generateRandomDate(): Date {
-    const today = new Date();
-    const randomNumberOfDays = Math.floor(Math.random() * 30); // Puoi regolare il numero di giorni come preferisci
-    const randomDate = new Date(today);
-    randomDate.setDate(today.getDate() - randomNumberOfDays);
-    return randomDate;
-  }
-
-  generateRandomNextTodayDate(): Date {
-    const today = new Date();
-    const randomNumberOfDays = Math.floor(Math.random() * 30); // Puoi regolare il numero di giorni come preferisci
-    const randomDate = new Date(today);
-    randomDate.setDate(today.getDate() + randomNumberOfDays);
-    return randomDate;
-  }
-
-  private generateRandomEvent(index: number): any { //Event
-    const randomIntValue = randomIntFromInterval(0, 1);
-    return {
-      id: (this.items.length + index + 1),
-      t_caption: this.didascalie[Math.floor(Math.random() * this.didascalie.length)],
-      t_image_link: randomIntValue === 0 ? '/assets/img/exampleEventFirstFrame.png' : '/assets/img/event-image-placeholder.jpg',
-      t_video_link: randomIntValue === 0 ? 'https://media.istockphoto.com/id/1144640568/it/video/loperaio-spinge-bottiglie-di-plastica-con-una-pala-per-il-riciclaggio-lavorare-in-una.mp4?s=mp4-640x640-is&k=20&c=zeB2A9MHShH9jFSThzmTm3tCnBOFSahY7OEai63HQDM=' : null,
-      t_event_date: new Date(), // Imposta la data dell'evento secondo le tue esigenze
-      t_user: this.generateRandomAccount(index),
-      n_click: randomIntFromInterval(1, 10000000),
-      type: ItemType.Eventi,
-      created_date: this.generateRandomDate(),
-      event_first_date: this.generateRandomNextTodayDate(),
-      event_last_date: this.generateRandomNextTodayDate(),
-      is_liked_by_current_user: randomIntFromInterval(0,1) ? true : false
-    };
-  }
-
-  formatDateString(dateString: string): string {
-    moment.locale('it'); // Imposta la lingua italiana
-
-    const currentDate = moment();
-    const formattedDate = moment(dateString);
-
-    if (formattedDate.isBefore(currentDate, 'day')) {
-      return formattedDate.format('DD MMMM YYYY [alle] HH:mm');
-    } else {
-      return formattedDate.format('DD MMMM YYYY');
-    }
-  }
-
-  private generateRandomTopics(index: number): any { //Topic
-    const randomIntValue = randomIntFromInterval(0, 1);
-    return {
-      id: (this.items.length + index + 1),
-      t_caption: this.didascalie[Math.floor(Math.random() * this.didascalie.length)],
-      t_image_link: randomIntValue === 0 ? '/assets/img/exampleTopicImageFristFrame.png' : '/assets/img/topic-image-placeholder.jpg',
-      t_video_link: randomIntValue === 0 ? '/assets/videos/exampleTopicsVideo.mp4' : null,
-      t_topic_date: new Date(), // Imposta la data del topic secondo le tue esigenze
-      t_user: this.generateRandomAccount(index),
-      n_click: randomIntFromInterval(1, 10000000),
-      type: ItemType.Topics,
-      created_date: this.generateRandomDate(),
-      is_liked_by_current_user: randomIntFromInterval(0,1) ? true : false
-    };
-  }
-
-  private filterItemsByType() {
-    this.filteredItems = this.selectedType === ItemType.Tutti
-      ? this.items
-      : this.selectedType === ItemType.Artisti ? this.items.filter(item => item.t_type === 0)
-        : this.selectedType === ItemType.Utenti ? this.items.filter(item => item.t_type > 0)
-          : this.items.filter(item => item.type === this.selectedType);
-  }
-
-  changeType(type: ItemType) {
-    this.selectedType = type;
-    this.filterItemsByType();
-  }
-
-  navigateToContent(item: any) {
-    const link = "/@/" + item.t_user.t_alias_generated + "/content";
-    const params = this.globalService.encodeParams({
-      item: item
-    });
-    this.router.navigate([link, params]);
-  }
-
-  private getRandomType(): ItemType {
-    const types = Object.values(ItemType).filter(type => type !== ItemType.Tutti && type !== ItemType.Artisti);
-    const randomIndex = Math.floor(Math.random() * types.length);
-    return types[randomIndex] as ItemType;
-  }
-
-  trackByFn(index: number, item: any): number {
-    return item.id;
-  }
-
-  decodeParams() {
-    this.route.params
-      .pipe(pluck('params'))
-      .subscribe((result) => {
-        const decode = this.globalService.decodeParams(result);
-        this.decodedParams = decode;
-        this.initialize();
-      }
-      );
-  }
-
-  initialize() {
-    this.searchInput = this.decodedParams.searchInput;
-    switch (this.decodedParams.searchType) {
-      case "Tutti":
-        this.selectedType = ItemType.Tutti;
-        break;
-      case "Eventi":
-        this.selectedType = ItemType.Eventi;
-        break;
-      case "Topics":
-        this.selectedType = ItemType.Topics;
-        break;
-      case "Utenti":
-        this.selectedType = ItemType.Utenti;
-        break;
-    }
-  }
-
-  searchByLookedFor(lookedValue: string) {
-  }
-
 
 }

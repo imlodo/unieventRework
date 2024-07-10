@@ -61,10 +61,10 @@
                                     style="height: fit-content;width: 120px;text-align: center;margin-top: 10px;"
                                     (click)="followUser()">Segui</span>
                                 <span
+                                    (click)="unfollowUser()"
                                     *ngIf="currentUser.t_alias_generated != item?.t_user?.t_alias_generated && isFollowed"
                                     class="bg-secondary p-2 pointer"
-                                    style="height: fit-content;width: 120px;text-align: center;margin-top: 10px;">Segui
-                                    Già</span>
+                                    style="height: fit-content;width: 150px;text-align: center;margin-top: 10px;">Rimuovi Segui</span>
                             </div>
                         </div>
                         <div *ngIf="item?.t_caption || item?.t_name" class="caption">{{item?.t_caption ?
