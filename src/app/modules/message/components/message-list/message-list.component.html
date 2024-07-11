@@ -1,8 +1,16 @@
 <div class="d-flex flex-row p-3 container">
     <div [ngClass]="darkMode ? 'friends-list-bg-dark text-white' : 'bg-light text-dark shadow-sm' "
         class="d-flex flex-column p-3 friends-list col-4 overflow-auto">
-        <div class="d-flex flex-row justify-content-between">
+        <div class="d-flex flex-row justify-content-between align-items-center">
             <h1><b>Messaggi</b></h1>
+            <svg (click)="openNewChatModal()" #tooltip="matTooltip" matTooltip="Nuova chat" matTooltipPosition="left"
+                matTooltipHideDelay="100" xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor"
+                class="bi bi-box-arrow-up-right mb-3 pointer" viewBox="0 0 16 16">
+                <path fill-rule="evenodd"
+                    d="M8.636 3.5a.5.5 0 0 0-.5-.5H1.5A1.5 1.5 0 0 0 0 4.5v10A1.5 1.5 0 0 0 1.5 16h10a1.5 1.5 0 0 0 1.5-1.5V7.864a.5.5 0 0 0-1 0V14.5a.5.5 0 0 1-.5.5h-10a.5.5 0 0 1-.5-.5v-10a.5.5 0 0 1 .5-.5h6.636a.5.5 0 0 0 .5-.5" />
+                <path fill-rule="evenodd"
+                    d="M16 .5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h3.793L6.146 9.146a.5.5 0 1 0 .708.708L15 1.707V5.5a.5.5 0 0 0 1 0z" />
+            </svg>
         </div>
         <div *ngIf="chatListGroupedByDate.length > 0" class="d-flex flex-column">
             <ng-container *ngFor="let chat of chatListGroupedByDate">
@@ -45,7 +53,8 @@
                 <div #chatContainer class="chat-container">
                     <ng-container *ngFor="let key of getObjectKeys(groupedByDateActiveChatUser.messages)">
                         <div class="px-4 pt-4 pb-1 d-flex flex-row justify-content-center">
-                            <span class="messageDate">{{getMessageStatus(groupedByDateActiveChatUser.messages[key][0].dateTime)}}</span>
+                            <span
+                                class="messageDate">{{getMessageStatus(groupedByDateActiveChatUser.messages[key][0].dateTime)}}</span>
                         </div>
                         <ng-container *ngFor="let message of groupedByDateActiveChatUser.messages[key]">
                             <div [ngClass]=" message.user_from.t_alias_generated === currentUser.t_alias_generated ? 'justify-content-end' : 'justify-content-start' "
@@ -90,6 +99,41 @@
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="showNewChatPanel" class="modal-overlay" style="z-index:10;">
+    <div class="modal-content container p-3 m-3" style="max-width: 400px;">
+        <div class="d-flex justify-content-between border-bottom mb-3">
+            <div class="d-flex flex-column">
+                <h2 class="mb-2">Nuova Chat</h2>
+                <h5 class="text-secondary">Invia un nuovo messaggio ad un amico o un conoscente.</h5>
+            </div>
+            <span style="font-size:38px;" class="pointer" (click)="closeNewChatModal()"
+                aria-hidden="true">&times;</span>
+        </div>
+        <div class="d-flex flex-column">
+            <ng-select [items]="users" bindLabel="t_alias_generated" placeholder="Ricerca utente"
+                (search)="searchUserService($event.term, $event.items)" [searchable]="true" [(ngModel)]="selectedUser">
+                <ng-template ng-option-tmp let-item="item">
+                    <div class="d-flex align-items-center gap-3">
+                        <div class="profile-photo-container">
+                            <img *ngIf="item.t_profile_photo" [src]="item.t_profile_photo" alt="Profile Photo"
+                                class="profile-photo">
+                        </div>
+                        <span>{{ item.t_alias_generated }}</span>
+                    </div>
+                </ng-template>
+            </ng-select>
+            <textarea class="form-control mt-3" rows="3" [(ngModel)]="messageText"
+                placeholder="Scrivi il tuo messaggio..." style="resize: none;"></textarea>
+            <button [disabled]="selectedUser && messageText.length > 0 ? null : true" class="btn btn-danger mt-3"
+                (click)="sendNewChatMessage()">Invia <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22"
+                    fill="currentColor" class="bi bi-send" viewBox="0 0 16 16" style="fill: white!important;">
+                    <path
+                        d="M15.854.146a.5.5 0 0 1 .11.54l-5.819 14.547a.75.75 0 0 1-1.329.124l-3.178-4.995L.643 7.184a.75.75 0 0 1 .124-1.33L15.314.037a.5.5 0 0 1 .54.11ZM6.636 10.07l2.761 4.338L14.13 2.576zm6.787-8.201L1.591 6.602l4.339 2.76z" />
+                </svg></button>
         </div>
     </div>
 </div>

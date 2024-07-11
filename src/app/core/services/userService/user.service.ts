@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
 import { Observable, catchError, tap, throwError } from 'rxjs';
-import { ADD_CHAT_REPLY, CHECK_IS_FOLLOWED, CREATE_NEW_USER, DELETE_ACCOUNT, DOWNLOAD_PERSONAL_DATA, EDIT_USER, FOLLOW_USER, GET_CHAT_LIST, GET_CHAT_MESSAGE_LIST, GET_REQUEST_PERSONAL_DATA_STATUS, GET_USER, GET_USER_FOLLOWED_BY_CURRENT_USER, GET_USER_PROFILE_INFO, GET_USER_SETTINGS, GET_VERIFY_ACCOUNT_STATUS, REQUEST_PERSONAL_DATA, SAVE_USER_SETTINGS, SEND_CONFIRMATION_EMAIL, SEND_NEW_PASSWORD, UNFOLLOW_USER, VERIFY_ACCOUNT } from '../../utility/api-constant';
+import { ADD_CHAT_REPLY, CHECK_IS_FOLLOWED, CREATE_NEW_USER, DELETE_ACCOUNT, DOWNLOAD_PERSONAL_DATA, EDIT_USER, FOLLOW_USER, GET_CHAT_LIST, GET_CHAT_MESSAGE_LIST, GET_REQUEST_PERSONAL_DATA_STATUS, GET_USER, GET_USER_FOLLOWED_BY_CURRENT_USER, GET_USER_PROFILE_INFO, GET_USER_SETTINGS, GET_VERIFY_ACCOUNT_STATUS, REQUEST_PERSONAL_DATA, SAVE_USER_SETTINGS, SEARCH_USER, SEND_CONFIRMATION_EMAIL, SEND_NEW_PASSWORD, UNFOLLOW_USER, VERIFY_ACCOUNT } from '../../utility/api-constant';
 import { USER_TYPE } from '../../utility/global-constant';
 
 @Injectable({
@@ -22,6 +22,24 @@ export class UserService {
     const params = new HttpParams().set('t_alias_generated', alias);
 
     return this.http.get(GET_USER, { headers, params })
+      .pipe(
+        tap((response: any) => {
+          return response;
+        }),
+        catchError(this.handleError)
+      );
+  }
+
+  searchUser(t_alias_generated_liked: string): Observable<any> {
+    const token = this.cookieService.get('auth_token');
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    });
+
+    const params = new HttpParams().set('t_alias_generated_liked', t_alias_generated_liked);
+
+    return this.http.get(SEARCH_USER, { headers, params })
       .pipe(
         tap((response: any) => {
           return response;

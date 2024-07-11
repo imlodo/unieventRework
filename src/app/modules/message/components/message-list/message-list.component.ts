@@ -8,6 +8,7 @@ import { UserService, WebSocketService } from 'src/app/core/services';
 import { ToastrService } from 'ngx-toastr';
 import { Chat } from '../../models/chat';
 import moment from 'moment';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'unievent-message-list',
@@ -26,14 +27,20 @@ export class MessageListComponent implements AfterViewChecked, AfterViewInit {
   chatListGroupedByDate: ChatDate[] = [];
   groupedByDateActiveChatUser: ChatDate = null;
   showEmoticonPanel = false;
+  showNewChatPanel = false;
+  users: any[] = [];
+  selectedUser: any;
+  messageText: string = '';
+  currentTerm: string = '';
 
   constructor(
     private cookieService: CookieService,
     private userService: UserService,
     private toastr: ToastrService,
     private websocketService: WebSocketService,
-    private cdr: ChangeDetectorRef
-  ) {
+    private cdr: ChangeDetectorRef,
+    private http: HttpClient) {
+
     const cookieCurrentUser = this.cookieService.get('current_user');
     if (cookieCurrentUser) {
       this.currentUser = JSON.parse(cookieCurrentUser);
@@ -51,6 +58,94 @@ export class MessageListComponent implements AfterViewChecked, AfterViewInit {
 
     this.negotiateWebSocket();
   }
+
+  searchUserService(term: string, items: User[]) {
+
+    this.currentTerm = term;
+
+    setTimeout(() => {
+      if (this.currentTerm === term) {
+        this.userService.searchUser(term).subscribe(
+          (response) => {
+            this.users = response.users;
+            items = response.users;
+          },
+          error => console.error(error),
+          () => {
+            this.currentTerm = "";
+          }
+        );
+      }
+    }, 700)
+  }
+
+  sendNewChatMessage() {
+    if (this.selectedUser && this.messageText.trim()) {
+      const activeChatAlias = this.selectedUser.t_alias_generated;
+      let chat = this.chatList.find(el => el.userChat.t_alias_generated === activeChatAlias);
+
+      if (!chat) {
+        //crea una nuova chat
+        chat = {
+          userChat: this.selectedUser,
+          messages: [
+            {
+              user_from: this.currentUser,
+              user_at: this.selectedUser,
+              message: this.messageText,
+              dateTime: moment(moment(), "DD/MM/YYYY HH:MM:SS")
+            }
+          ]
+        }
+        this.chatList.push(chat);
+      }
+
+      if (chat) {
+        const newMessage = {
+          user_from: this.currentUser,
+          user_at: this.selectedUser,
+          message: this.messageText,
+          dateTime: moment(moment(), "DD/MM/YYYY HH:MM:SS")
+        };
+
+        this.messageValue = '';
+
+        // Invia il messaggio tramite WebSocket
+        const messageObject = {
+          token: this.cookieService.get("auth_token"),
+          t_alias_generated: this.selectedUser.t_alias_generated,
+          content: newMessage.message
+        };
+
+        this.userService.addChatReply(this.selectedUser.t_alias_generated, newMessage.message).subscribe(
+          (response: any) => {
+            //Inserito con successo
+          },
+          error => {
+            this.toastr.error("Errore nell'invio del messaggio")
+          }
+        );
+
+        this.websocketService.send(JSON.stringify(messageObject));
+        this.setActiveUser(this.selectedUser);
+        this.resetModalFieldsAndClose();
+        this.sortChatsByLatestMessage();
+        this.groupMessagesByDate();
+        setTimeout(()=>{
+          this.scrollChatToBottom();
+        },200)
+      }
+    }
+  }
+
+  resetModalFieldsAndClose() {
+    this.closeNewChatModal();
+    this.users = [];
+    this.selectedUser = null;
+    this.messageText = "";
+    this.currentTerm = "";
+  }
+
   ngAfterViewInit(): void {
     this.cdr.detectChanges();
   }
@@ -271,4 +366,13 @@ export class MessageListComponent implements AfterViewChecked, AfterViewInit {
       }, 1);
     }
   }
+
+  openNewChatModal() {
+    this.showNewChatPanel = true;
+  }
+
+  closeNewChatModal() {
+    this.showNewChatPanel = false;
+  }
+
 }

@@ -3,7 +3,7 @@
     <div class="mx-3 mt-2 d-flex mb-4 justify-content-center">
         <ng-container>
             <div *ngIf="allContentList.length > 0"
-                class="scrollable-content p-4 row row-cols-1 row-cols-sm-2 row-cols-lg-3 row-cols-xl-1 g-4 justify-content-start">
+                class="scrollable-content p-4 row row-cols-1 row-cols-sm-1 row-cols-lg-1 row-cols-xl-1 g-4 justify-content-start">
                 <ng-container *ngFor="let item of allContentList; trackBy: trackByFn;">
                     <ng-container *ngTemplateOutlet="result; context: { item: item }"></ng-container>
                 </ng-container>

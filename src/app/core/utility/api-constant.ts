@@ -37,6 +37,7 @@ export const REQUEST_PERSONAL_DATA = `${BASE_URL}/api/user/requestPersonalData`;
 export const SAVE_USER_SETTINGS = `${BASE_URL}/api/user/saveUserSettings`;
 export const SEND_NEW_PASSWORD = `${BASE_URL}/api/user/sendNewPassword`;
 export const SEND_CONFIRMATION_EMAIL= `${BASE_URL}/api/user/sendConfirmationEmail`;
+export const SEARCH_USER = `${BASE_URL}/api/user/searchUser`;
 export const VERIFY_TOKEN = `${BASE_URL}/api/token/verifyToken`;
 export const VERIFY_ACCOUNT = `${BASE_URL}/api/user/verifyAccount`; 
 export const NEGOTIATE = `${BASE_URL}/api/Negotiate`;

@@ -159,3 +159,115 @@
 .friends-list-bg-dark .message-input::placeholder{
     color: rgb(212, 212, 212) !important;
 }
+
+/* MODALE */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: #fff;
+    color: black;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.modal-content button {
+    padding: 10px 20px;
+    margin-right: 10px;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+}
+
+::ng-deep .bg-dark-mode .modal-content {
+    background: var(--bs-dark);
+    color: var(--bs-white)
+}
+
+textarea{
+    background-color: var(--bs-light);
+    color: var(--bs-dark);
+}
+
+textarea:focus{
+    accent-color: var(--bs-danger);
+    border-color: var(--bs-danger);
+}
+
+::ng-deep .bg-dark-mode textarea,::ng-deep .bg-dark-mode textarea::placeholder{
+    background-color: var(--bs-dark) !important;
+    color: var(--bs-white) !important;
+}
+
+/* Sovrascrivi lo stile di default di ng-select */
+::ng-deep .bg-dark-mode .ng-select {
+    background-color: transparent !important;
+}
+
+::ng-deep .bg-dark-mode .ng-select-container {
+    background-color: transparent !important;
+    background: transparent !important;
+    color: white !important;
+}
+
+::ng-deep .bg-dark-mode .ng-select .ng-select-container .ng-value-container .ng-input>input{
+    color: white !important;
+}
+
+::ng-deep .bg-dark-mode .ng-dropdown-panel .ng-dropdown-panel-items .ng-option {
+    background-color: rgb(37, 37, 37) !important;
+    color: white;
+    border-radius: 0px;
+}
+
+::ng-deep .bg-dark-mode .ng-option-label {
+    color: rgb(179, 179, 179) !important;
+}
+
+::ng-deep .bg-dark-mode .ng-dropdown-panel .ng-dropdown-panel-items .ng-option:hover {
+    background-color: #505355 !important;
+}
+
+/* Opzionale: Imposta il background dell'opzione selezionata */
+::ng-deep .bg-dark-mode .ng-option-marked {
+    background-color: rgba(0, 0, 0, 0.1) !important;
+    /* Cambia il colore di sfondo selezionato */
+}
+
+
+.profile-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.profile-photo-container {
+    width: 34px;
+    min-width: 34px;
+    height: 34px;
+    position: relative;
+    overflow: hidden;
+    white-space: nowrap;
+    border-radius: 50%;
+}
