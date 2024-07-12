@@ -148,7 +148,7 @@ export class EventTicketListComponent implements AfterViewInit {
       n_group_id: this.eventData.n_group_id,
       n_click: this.eventData.n_click,
       t_title: this.eventData.t_title,
-      t_description: this.eventData.t_description,
+      t_caption: this.eventData.t_caption,
       t_image_link: this.eventData.t_image_link,
       t_event_date: this.eventData.t_event_date,
       t_map_list: [],

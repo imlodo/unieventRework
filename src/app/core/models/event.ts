@@ -12,7 +12,7 @@ export interface Event {
     n_group_id?: number;
     n_click: number;
     t_title: string;
-    t_description?: string;
+    t_caption: string;
     t_image_link: string; 
     t_external_link?: string;
     t_event_date: Date; //Data Evento, considerare anche gli orari

@@ -54,6 +54,7 @@ export class ContentInfiniteScrollComponent {
 
   navigateToBuyTicket(event: any, item: any) {
     event.preventDefault();
+    event.stopPropagation();
     const params = this.globalService.encodeParams({
       n_id: item.id
     });

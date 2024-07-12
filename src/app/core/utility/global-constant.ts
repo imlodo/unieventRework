@@ -122,7 +122,7 @@ export const eventOrderedBySell: Array<Event> = [
         n_group_id: 1,
         n_click: 1899,
         t_title: "Discoteca tropicale",
-        t_description: "Migliore discoteca del pianeta",
+        t_caption: "Migliore discoteca del pianeta",
         t_image_link: "https://rivieraticket.it/wp-content/uploads/2023/08/Tropical-closing-party-Byblos-01-09-23.jpg",
         //t_external_link: 'http://www.google.com',
         t_event_date: new Date("2024-04-15"),
@@ -359,7 +359,7 @@ export const eventOrderedBySell: Array<Event> = [
                 n_id: 1,
                 event_id: 1,
                 n_stars: 5,
-                t_object: "Discoteca fantastica!",
+                t_title: "Discoteca fantastica!",
                 t_body: "Siamo stati alla discoteca 31-12-2022, non vediamo l'ora di tornarci con questo fantastico evento.",
                 t_image_link: ["/gbpr?hash=3jsadksdkhh3sadjkbmnsa3%sgdaska"],
                 t_user: { t_name: "Pasquale", t_surname: "Schettino", t_alias_generated: "passchet2308abgd", t_type: USER_TYPE.CREATOR }
@@ -368,7 +368,7 @@ export const eventOrderedBySell: Array<Event> = [
                 n_id: 2,
                 event_id: 1,
                 n_stars: 1,
-                t_object: "Discoteca mediocre!",
+                t_title: "Discoteca mediocre!",
                 t_body: "Personale scortese, e cocktail senza giacchio, non ci torneremo mai più! Da chiudere...",
                 t_image_link: ["/gpbr?hash=ffdassdasd3jads325r79hfdzafhk"], //get photo by review
                 t_user: { t_name: "Antonio", t_surname: "Lodato", t_alias_generated: "alod323453asd", t_type: USER_TYPE.CREATOR }
@@ -409,7 +409,7 @@ export const eventOrderedBySell: Array<Event> = [
         n_group_id: 2,
         n_click: 699,
         t_title: "Ladies Night",
-        t_description: "Le migliori donne sono qui!",
+        t_caption: "Le migliori donne sono qui!",
         t_image_link: "https://img.freepik.com/free-vector/gradient-girls-night-neon-poster-template_52683-86711.jpg?w=740&t=st=1696171997~exp=1696172597~hmac=ac486126a384bafb1ab62294d5643e6bea2b06338c7633dce9fd352d051c2027",
         t_event_date: new Date("2024-11-30"),
         t_service_list: [
@@ -645,7 +645,7 @@ export const eventOrderedBySell: Array<Event> = [
                 n_id: 1,
                 event_id: 1,
                 n_stars: 5,
-                t_object: "Discoteca fantastica!",
+                t_title: "Discoteca fantastica!",
                 t_body: "Siamo stati alla discoteca 31-12-2022, non vediamo l'ora di tornarci con questo fantastico evento.",
                 t_image_link: ["/gbpr?hash=3jsadksdkhh3sadjkbmnsa3%sgdaska"],
                 t_user: { t_name: "Pasquale", t_surname: "Schettino", t_alias_generated: "passchet2308abgd", t_type: USER_TYPE.CREATOR }
@@ -654,7 +654,7 @@ export const eventOrderedBySell: Array<Event> = [
                 n_id: 2,
                 event_id: 1,
                 n_stars: 1,
-                t_object: "Discoteca mediocre!",
+                t_title: "Discoteca mediocre!",
                 t_body: "Personale scortese, e cocktail senza giacchio, non ci torneremo mai più! Da chiudere...",
                 t_image_link: ["/gpbr?hash=ffdassdasd3jads325r79hfdzafhk"], //get photo by review
                 t_user: { t_name: "Antonio", t_surname: "Lodato", t_alias_generated: "alod323453asd", t_type: USER_TYPE.CREATOR }
@@ -725,6 +725,7 @@ export const eventOrderedBySell: Array<Event> = [
                 }
             }
         ],
+        t_caption: "",
         t_map_list: [
             {
                 t_map_name: "Sala Superiore",
@@ -930,7 +931,7 @@ export const eventOrderedBySell: Array<Event> = [
                 n_id: 1,
                 event_id: 1,
                 n_stars: 5,
-                t_object: "Discoteca fantastica!",
+                t_title: "Discoteca fantastica!",
                 t_body: "Siamo stati alla discoteca 31-12-2022, non vediamo l'ora di tornarci con questo fantastico evento.",
                 t_image_link: ["/gbpr?hash=3jsadksdkhh3sadjkbmnsa3%sgdaska"],
                 t_user: { t_name: "Pasquale", t_surname: "Schettino", t_alias_generated: "passchet2308abgd", t_type: USER_TYPE.CREATOR }
@@ -939,7 +940,7 @@ export const eventOrderedBySell: Array<Event> = [
                 n_id: 2,
                 event_id: 1,
                 n_stars: 1,
-                t_object: "Discoteca mediocre!",
+                t_title: "Discoteca mediocre!",
                 t_body: "Personale scortese, e cocktail senza giacchio, non ci torneremo mai più! Da chiudere...",
                 t_image_link: ["/gpbr?hash=ffdassdasd3jads325r79hfdzafhk"], //get photo by review
                 t_user: { t_name: "Antonio", t_surname: "Lodato", t_alias_generated: "alod323453asd", t_type: USER_TYPE.CREATOR }
@@ -977,6 +978,7 @@ export const eventOrderedBySell: Array<Event> = [
     },
     {
         n_id: 4,
+        t_caption: "",
         t_title: "Wine Music",
         t_image_link: "https://www.toteadv.it/wp-content/uploads/2020/08/locandina_eventi_2017_antica_cantina_veneta.jpg",
         t_location: {
@@ -1041,6 +1043,7 @@ export const eventOrderedBySell: Array<Event> = [
                 }
             }
         ],
+        t_caption: "",
         t_map_list: [
             {
                 t_map_name: "Sala Superiore",
@@ -1246,7 +1249,7 @@ export const eventOrderedBySell: Array<Event> = [
                 n_id: 1,
                 event_id: 1,
                 n_stars: 5,
-                t_object: "Discoteca fantastica!",
+                t_title: "Discoteca fantastica!",
                 t_body: "Siamo stati alla discoteca 31-12-2022, non vediamo l'ora di tornarci con questo fantastico evento.",
                 t_image_link: ["/gbpr?hash=3jsadksdkhh3sadjkbmnsa3%sgdaska"],
                 t_user: { t_name: "Pasquale", t_surname: "Schettino", t_alias_generated: "passchet2308abgd", t_type: USER_TYPE.CREATOR }
@@ -1255,7 +1258,7 @@ export const eventOrderedBySell: Array<Event> = [
                 n_id: 2,
                 event_id: 1,
                 n_stars: 1,
-                t_object: "Discoteca mediocre!",
+                t_title: "Discoteca mediocre!",
                 t_body: "Personale scortese, e cocktail senza giacchio, non ci torneremo mai più! Da chiudere...",
                 t_image_link: ["/gpbr?hash=ffdassdasd3jads325r79hfdzafhk"], //get photo by review
                 t_user: { t_name: "Antonio", t_surname: "Lodato", t_alias_generated: "alod323453asd", t_type: USER_TYPE.CREATOR }
@@ -1326,6 +1329,7 @@ export const eventOrderedBySell: Array<Event> = [
                 }
             }
         ],
+        t_caption: "",
         t_map_list: [
             {
                 t_map_name: "Sala Superiore",
@@ -1531,7 +1535,7 @@ export const eventOrderedBySell: Array<Event> = [
                 n_id: 1,
                 event_id: 1,
                 n_stars: 5,
-                t_object: "Discoteca fantastica!",
+                t_title: "Discoteca fantastica!",
                 t_body: "Siamo stati alla discoteca 31-12-2022, non vediamo l'ora di tornarci con questo fantastico evento.",
                 t_image_link: ["/gbpr?hash=3jsadksdkhh3sadjkbmnsa3%sgdaska"],
                 t_user: { t_name: "Pasquale", t_surname: "Schettino", t_alias_generated: "passchet2308abgd", t_type: USER_TYPE.CREATOR }
@@ -1540,7 +1544,7 @@ export const eventOrderedBySell: Array<Event> = [
                 n_id: 2,
                 event_id: 1,
                 n_stars: 1,
-                t_object: "Discoteca mediocre!",
+                t_title: "Discoteca mediocre!",
                 t_body: "Personale scortese, e cocktail senza giacchio, non ci torneremo mai più! Da chiudere...",
                 t_image_link: ["/gpbr?hash=ffdassdasd3jads325r79hfdzafhk"], //get photo by review
                 t_user: { t_name: "Antonio", t_surname: "Lodato", t_alias_generated: "alod323453asd", t_type: USER_TYPE.CREATOR }
@@ -1574,7 +1578,7 @@ export const allEventList: Array<Event> = [
         n_group_id: 1,
         n_click: 1899,
         t_title: "Discoteca tropicale",
-        t_description: "Migliore discoteca del pianeta",
+        t_caption: "Migliore discoteca del pianeta",
         t_image_link: "https://rivieraticket.it/wp-content/uploads/2023/08/Tropical-closing-party-Byblos-01-09-23.jpg",
         //t_external_link: 'http://www.google.com',
         t_event_date: new Date("2024-04-15"),
@@ -1811,19 +1815,17 @@ export const allEventList: Array<Event> = [
                 n_id: 1,
                 event_id: 1,
                 n_stars: 5,
-                t_object: "Discoteca fantastica!",
+                t_title: "Discoteca fantastica!",
                 t_body: "Siamo stati alla discoteca 31-12-2022, non vediamo l'ora di tornarci con questo fantastico evento.",
-                t_image_link: ["/gbpr?hash=3jsadksdkhh3sadjkbmnsa3%sgdaska"],
-                t_user: { t_name: "Pasquale", t_surname: "Schettino", t_alias_generated: "passchet2308abgd", t_type: USER_TYPE.CREATOR }
+                t_user: { t_name: "Pasquale", t_surname: "Schettino", t_alias_generated: "passchet2308abgd", t_type: USER_TYPE.CREATOR, t_profile_photo:"/assets/img/userExampleImg.jpeg" }
             },
             {
                 n_id: 2,
                 event_id: 1,
-                n_stars: 1,
-                t_object: "Discoteca mediocre!",
+                n_stars: 1.5,
+                t_title: "Discoteca mediocre!",
                 t_body: "Personale scortese, e cocktail senza giacchio, non ci torneremo mai più! Da chiudere...",
-                t_image_link: ["/gpbr?hash=ffdassdasd3jads325r79hfdzafhk"], //get photo by review
-                t_user: { t_name: "Antonio", t_surname: "Lodato", t_alias_generated: "alod323453asd", t_type: USER_TYPE.CREATOR }
+                t_user: { t_name: "Antonio", t_surname: "Lodato", t_alias_generated: "alod323453asd", t_type: USER_TYPE.CREATOR, t_profile_photo:"/assets/img/userExampleImg.jpeg" }
             }
         ],
         t_discussions: [
@@ -1861,7 +1863,7 @@ export const allEventList: Array<Event> = [
         n_group_id: 2,
         n_click: 699,
         t_title: "Ladies Night",
-        t_description: "Le migliori donne sono qui!",
+        t_caption: "Le migliori donne sono qui!",
         t_image_link: "https://img.freepik.com/free-vector/gradient-girls-night-neon-poster-template_52683-86711.jpg?w=740&t=st=1696171997~exp=1696172597~hmac=ac486126a384bafb1ab62294d5643e6bea2b06338c7633dce9fd352d051c2027",
         t_event_date: new Date("2024-11-30"),
         t_service_list: [
@@ -28206,7 +28208,7 @@ export const allEventList: Array<Event> = [
                 n_id: 1,
                 event_id: 1,
                 n_stars: 5,
-                t_object: "Discoteca fantastica!",
+                t_title: "Discoteca fantastica!",
                 t_body: "Siamo stati alla discoteca 31-12-2022, non vediamo l'ora di tornarci con questo fantastico evento.",
                 t_image_link: ["/gbpr?hash=3jsadksdkhh3sadjkbmnsa3%sgdaska"],
                 t_user: { t_name: "Pasquale", t_surname: "Schettino", t_alias_generated: "passchet2308abgd", t_type: USER_TYPE.CREATOR }
@@ -28215,7 +28217,7 @@ export const allEventList: Array<Event> = [
                 n_id: 2,
                 event_id: 1,
                 n_stars: 1,
-                t_object: "Discoteca mediocre!",
+                t_title: "Discoteca mediocre!",
                 t_body: "Personale scortese, e cocktail senza giacchio, non ci torneremo mai più! Da chiudere...",
                 t_image_link: ["/gpbr?hash=ffdassdasd3jads325r79hfdzafhk"], //get photo by review
                 t_user: { t_name: "Antonio", t_surname: "Lodato", t_alias_generated: "alod323453asd", t_type: USER_TYPE.CREATOR }
@@ -28286,6 +28288,7 @@ export const allEventList: Array<Event> = [
                 }
             }
         ],
+        t_caption: "",
         t_map_list: [
             {
                 t_map_name: "Sala Superiore",
@@ -28491,7 +28494,7 @@ export const allEventList: Array<Event> = [
                 n_id: 1,
                 event_id: 1,
                 n_stars: 5,
-                t_object: "Discoteca fantastica!",
+                t_title: "Discoteca fantastica!",
                 t_body: "Siamo stati alla discoteca 31-12-2022, non vediamo l'ora di tornarci con questo fantastico evento.",
                 t_image_link: ["/gbpr?hash=3jsadksdkhh3sadjkbmnsa3%sgdaska"],
                 t_user: { t_name: "Pasquale", t_surname: "Schettino", t_alias_generated: "passchet2308abgd", t_type: USER_TYPE.CREATOR }
@@ -28500,7 +28503,7 @@ export const allEventList: Array<Event> = [
                 n_id: 2,
                 event_id: 1,
                 n_stars: 1,
-                t_object: "Discoteca mediocre!",
+                t_title: "Discoteca mediocre!",
                 t_body: "Personale scortese, e cocktail senza giacchio, non ci torneremo mai più! Da chiudere...",
                 t_image_link: ["/gpbr?hash=ffdassdasd3jads325r79hfdzafhk"], //get photo by review
                 t_user: { t_name: "Antonio", t_surname: "Lodato", t_alias_generated: "alod323453asd", t_type: USER_TYPE.CREATOR }
@@ -28555,7 +28558,8 @@ export const allEventList: Array<Event> = [
         b_active: true,
         b_external_event: true,
         t_external_link: "https://www.google.com",
-        n_click: 6499
+        n_click: 6499,
+        t_caption: ""
     },
     {
         n_id: 5,
@@ -28602,6 +28606,7 @@ export const allEventList: Array<Event> = [
                 }
             }
         ],
+        t_caption: "",
         t_map_list: [
             {
                 t_map_name: "Sala Superiore",
@@ -28807,7 +28812,7 @@ export const allEventList: Array<Event> = [
                 n_id: 1,
                 event_id: 1,
                 n_stars: 5,
-                t_object: "Discoteca fantastica!",
+                t_title: "Discoteca fantastica!",
                 t_body: "Siamo stati alla discoteca 31-12-2022, non vediamo l'ora di tornarci con questo fantastico evento.",
                 t_image_link: ["/gbpr?hash=3jsadksdkhh3sadjkbmnsa3%sgdaska"],
                 t_user: { t_name: "Pasquale", t_surname: "Schettino", t_alias_generated: "passchet2308abgd", t_type: USER_TYPE.CREATOR }
@@ -28816,7 +28821,7 @@ export const allEventList: Array<Event> = [
                 n_id: 2,
                 event_id: 1,
                 n_stars: 1,
-                t_object: "Discoteca mediocre!",
+                t_title: "Discoteca mediocre!",
                 t_body: "Personale scortese, e cocktail senza giacchio, non ci torneremo mai più! Da chiudere...",
                 t_image_link: ["/gpbr?hash=ffdassdasd3jads325r79hfdzafhk"], //get photo by review
                 t_user: { t_name: "Antonio", t_surname: "Lodato", t_alias_generated: "alod323453asd", t_type: USER_TYPE.CREATOR }
@@ -28887,6 +28892,7 @@ export const allEventList: Array<Event> = [
                 }
             }
         ],
+        t_caption: "",
         t_map_list: [
             {
                 t_map_name: "Sala Superiore",
@@ -29092,7 +29098,7 @@ export const allEventList: Array<Event> = [
                 n_id: 1,
                 event_id: 1,
                 n_stars: 5,
-                t_object: "Discoteca fantastica!",
+                t_title: "Discoteca fantastica!",
                 t_body: "Siamo stati alla discoteca 31-12-2022, non vediamo l'ora di tornarci con questo fantastico evento.",
                 t_image_link: ["/gbpr?hash=3jsadksdkhh3sadjkbmnsa3%sgdaska"],
                 t_user: { t_name: "Pasquale", t_surname: "Schettino", t_alias_generated: "passchet2308abgd", t_type: USER_TYPE.CREATOR }
@@ -29101,7 +29107,7 @@ export const allEventList: Array<Event> = [
                 n_id: 2,
                 event_id: 1,
                 n_stars: 1,
-                t_object: "Discoteca mediocre!",
+                t_title: "Discoteca mediocre!",
                 t_body: "Personale scortese, e cocktail senza giacchio, non ci torneremo mai più! Da chiudere...",
                 t_image_link: ["/gpbr?hash=ffdassdasd3jads325r79hfdzafhk"], //get photo by review
                 t_user: { t_name: "Antonio", t_surname: "Lodato", t_alias_generated: "alod323453asd", t_type: USER_TYPE.CREATOR }
@@ -29163,6 +29169,7 @@ export const allEventList: Array<Event> = [
                 }
             }
         ],
+        t_caption: "",
         t_map_list: [
             {
                 t_map_name: "Sala Superiore",
@@ -29368,7 +29375,7 @@ export const allEventList: Array<Event> = [
                 n_id: 1,
                 event_id: 1,
                 n_stars: 5,
-                t_object: "Discoteca fantastica!",
+                t_title: "Discoteca fantastica!",
                 t_body: "Siamo stati alla discoteca 31-12-2022, non vediamo l'ora di tornarci con questo fantastico evento.",
                 t_image_link: ["/gbpr?hash=3jsadksdkhh3sadjkbmnsa3%sgdaska"],
                 t_user: { t_name: "Pasquale", t_surname: "Schettino", t_alias_generated: "passchet2308abgd", t_type: USER_TYPE.CREATOR }
@@ -29377,7 +29384,7 @@ export const allEventList: Array<Event> = [
                 n_id: 2,
                 event_id: 1,
                 n_stars: 1,
-                t_object: "Discoteca mediocre!",
+                t_title: "Discoteca mediocre!",
                 t_body: "Personale scortese, e cocktail senza giacchio, non ci torneremo mai più! Da chiudere...",
                 t_image_link: ["/gpbr?hash=ffdassdasd3jads325r79hfdzafhk"], //get photo by review
                 t_user: { t_name: "Antonio", t_surname: "Lodato", t_alias_generated: "alod323453asd", t_type: USER_TYPE.CREATOR }
@@ -29420,6 +29427,7 @@ export const allEventList: Array<Event> = [
         t_image_link: "https://rivieraticket.it/wp-content/uploads/2023/08/Tropical-closing-party-Byblos-01-09-23.jpg",
         t_type: EVENT_TYPE.PARTY,
         t_event_date: new Date("2024-05-15"),
+        t_caption: "",
         t_service_list: [
             {
                 n_service_id: 1,
@@ -29653,7 +29661,7 @@ export const allEventList: Array<Event> = [
                 n_id: 1,
                 event_id: 1,
                 n_stars: 5,
-                t_object: "Discoteca fantastica!",
+                t_title: "Discoteca fantastica!",
                 t_body: "Siamo stati alla discoteca 31-12-2022, non vediamo l'ora di tornarci con questo fantastico evento.",
                 t_image_link: ["/gbpr?hash=3jsadksdkhh3sadjkbmnsa3%sgdaska"],
                 t_user: { t_name: "Pasquale", t_surname: "Schettino", t_alias_generated: "passchet2308abgd", t_type: USER_TYPE.CREATOR }
@@ -29662,7 +29670,7 @@ export const allEventList: Array<Event> = [
                 n_id: 2,
                 event_id: 1,
                 n_stars: 1,
-                t_object: "Discoteca mediocre!",
+                t_title: "Discoteca mediocre!",
                 t_body: "Personale scortese, e cocktail senza giacchio, non ci torneremo mai più! Da chiudere...",
                 t_image_link: ["/gpbr?hash=ffdassdasd3jads325r79hfdzafhk"], //get photo by review
                 t_user: { t_name: "Antonio", t_surname: "Lodato", t_alias_generated: "alod323453asd", t_type: USER_TYPE.CREATOR }
@@ -29713,6 +29721,7 @@ export const allEventList: Array<Event> = [
             t_state: "Italy",
             t_location_name: "Vanilla Disque"
         },
+        t_caption: "",
         t_event_date: new Date("2024-08-15"),
         t_service_list: [
             {
@@ -29947,7 +29956,7 @@ export const allEventList: Array<Event> = [
                 n_id: 1,
                 event_id: 1,
                 n_stars: 5,
-                t_object: "Discoteca fantastica!",
+                t_title: "Discoteca fantastica!",
                 t_body: "Siamo stati alla discoteca 31-12-2022, non vediamo l'ora di tornarci con questo fantastico evento.",
                 t_image_link: ["/gbpr?hash=3jsadksdkhh3sadjkbmnsa3%sgdaska"],
                 t_user: { t_name: "Pasquale", t_surname: "Schettino", t_alias_generated: "passchet2308abgd", t_type: USER_TYPE.CREATOR }
@@ -29956,7 +29965,7 @@ export const allEventList: Array<Event> = [
                 n_id: 2,
                 event_id: 1,
                 n_stars: 1,
-                t_object: "Discoteca mediocre!",
+                t_title: "Discoteca mediocre!",
                 t_body: "Personale scortese, e cocktail senza giacchio, non ci torneremo mai più! Da chiudere...",
                 t_image_link: ["/gpbr?hash=ffdassdasd3jads325r79hfdzafhk"], //get photo by review
                 t_user: { t_name: "Antonio", t_surname: "Lodato", t_alias_generated: "alod323453asd", t_type: USER_TYPE.CREATOR }
@@ -29999,6 +30008,7 @@ export const allEventList: Array<Event> = [
             t_state: "Italy",
             t_location_name: "Disco Fisciano"
         },
+        t_caption: "",
         t_event_date: new Date("2024-09-15"),
         t_service_list: [
             {
@@ -30233,7 +30243,7 @@ export const allEventList: Array<Event> = [
                 n_id: 1,
                 event_id: 1,
                 n_stars: 5,
-                t_object: "Discoteca fantastica!",
+                t_title: "Discoteca fantastica!",
                 t_body: "Siamo stati alla discoteca 31-12-2022, non vediamo l'ora di tornarci con questo fantastico evento.",
                 t_image_link: ["/gbpr?hash=3jsadksdkhh3sadjkbmnsa3%sgdaska"],
                 t_user: { t_name: "Pasquale", t_surname: "Schettino", t_alias_generated: "passchet2308abgd", t_type: USER_TYPE.CREATOR }
@@ -30242,7 +30252,7 @@ export const allEventList: Array<Event> = [
                 n_id: 2,
                 event_id: 1,
                 n_stars: 1,
-                t_object: "Discoteca mediocre!",
+                t_title: "Discoteca mediocre!",
                 t_body: "Personale scortese, e cocktail senza giacchio, non ci torneremo mai più! Da chiudere...",
                 t_image_link: ["/gpbr?hash=ffdassdasd3jads325r79hfdzafhk"], //get photo by review
                 t_user: { t_name: "Antonio", t_surname: "Lodato", t_alias_generated: "alod323453asd", t_type: USER_TYPE.CREATOR }
@@ -30273,6 +30283,7 @@ export const allEventList: Array<Event> = [
         t_title: "Discoteca tropicale",
         n_group_id: 1,
         n_click: 345,
+        t_caption:"wewewe",
         t_image_link: "https://rivieraticket.it/wp-content/uploads/2023/08/Tropical-closing-party-Byblos-01-09-23.jpg",
         t_type: EVENT_TYPE.PARTY,
         t_location: {
@@ -30518,7 +30529,7 @@ export const allEventList: Array<Event> = [
                 n_id: 1,
                 event_id: 1,
                 n_stars: 5,
-                t_object: "Discoteca fantastica!",
+                t_title: "Discoteca fantastica!",
                 t_body: "Siamo stati alla discoteca 31-12-2022, non vediamo l'ora di tornarci con questo fantastico evento.",
                 t_image_link: ["/gbpr?hash=3jsadksdkhh3sadjkbmnsa3%sgdaska"],
                 t_user: { t_name: "Pasquale", t_surname: "Schettino", t_alias_generated: "passchet2308abgd", t_type: USER_TYPE.CREATOR }
@@ -30527,7 +30538,7 @@ export const allEventList: Array<Event> = [
                 n_id: 2,
                 event_id: 1,
                 n_stars: 1,
-                t_object: "Discoteca mediocre!",
+                t_title: "Discoteca mediocre!",
                 t_body: "Personale scortese, e cocktail senza giacchio, non ci torneremo mai più! Da chiudere...",
                 t_image_link: ["/gpbr?hash=ffdassdasd3jads325r79hfdzafhk"], //get photo by review
                 t_user: { t_name: "Antonio", t_surname: "Lodato", t_alias_generated: "alod323453asd", t_type: USER_TYPE.CREATOR }
@@ -30559,6 +30570,7 @@ export const allEventList: Array<Event> = [
         n_group_id: 2,
         t_title: "Ladies Night",
         n_click: 1256,
+        t_caption: "",
         t_image_link: "https://img.freepik.com/free-vector/gradient-girls-night-neon-poster-template_52683-86711.jpg?w=740&t=st=1696171997~exp=1696172597~hmac=ac486126a384bafb1ab62294d5643e6bea2b06338c7633dce9fd352d051c2027",
         t_location: {
             n_id: 11,
@@ -30805,7 +30817,7 @@ export const allEventList: Array<Event> = [
                 n_id: 1,
                 event_id: 1,
                 n_stars: 5,
-                t_object: "Discoteca fantastica!",
+                t_title: "Discoteca fantastica!",
                 t_body: "Siamo stati alla discoteca 31-12-2022, non vediamo l'ora di tornarci con questo fantastico evento.",
                 t_image_link: ["/gbpr?hash=3jsadksdkhh3sadjkbmnsa3%sgdaska"],
                 t_user: { t_name: "Pasquale", t_surname: "Schettino", t_alias_generated: "passchet2308abgd", t_type: USER_TYPE.CREATOR }
@@ -30814,7 +30826,7 @@ export const allEventList: Array<Event> = [
                 n_id: 2,
                 event_id: 1,
                 n_stars: 1,
-                t_object: "Discoteca mediocre!",
+                t_title: "Discoteca mediocre!",
                 t_body: "Personale scortese, e cocktail senza giacchio, non ci torneremo mai più! Da chiudere...",
                 t_image_link: ["/gpbr?hash=ffdassdasd3jads325r79hfdzafhk"], //get photo by review
                 t_user: { t_name: "Antonio", t_surname: "Lodato", t_alias_generated: "alod323453asd", t_type: USER_TYPE.CREATOR }
@@ -30855,6 +30867,7 @@ export const allEventList: Array<Event> = [
             t_state: "Italy",
             t_location_name: "Teatro Verdi"
         },
+        t_caption: "",
         t_event_date: new Date("2024-03-23"),
         t_type: EVENT_TYPE.PARTY,
         t_service_list: [
@@ -31090,7 +31103,7 @@ export const allEventList: Array<Event> = [
                 n_id: 1,
                 event_id: 1,
                 n_stars: 5,
-                t_object: "Discoteca fantastica!",
+                t_title: "Discoteca fantastica!",
                 t_body: "Siamo stati alla discoteca 31-12-2022, non vediamo l'ora di tornarci con questo fantastico evento.",
                 t_image_link: ["/gbpr?hash=3jsadksdkhh3sadjkbmnsa3%sgdaska"],
                 t_user: { t_name: "Pasquale", t_surname: "Schettino", t_alias_generated: "passchet2308abgd", t_type: USER_TYPE.CREATOR }
@@ -31099,7 +31112,7 @@ export const allEventList: Array<Event> = [
                 n_id: 2,
                 event_id: 1,
                 n_stars: 1,
-                t_object: "Discoteca mediocre!",
+                t_title: "Discoteca mediocre!",
                 t_body: "Personale scortese, e cocktail senza giacchio, non ci torneremo mai più! Da chiudere...",
                 t_image_link: ["/gpbr?hash=ffdassdasd3jads325r79hfdzafhk"], //get photo by review
                 t_user: { t_name: "Antonio", t_surname: "Lodato", t_alias_generated: "alod323453asd", t_type: USER_TYPE.CREATOR }
@@ -31140,6 +31153,7 @@ export const allEventList: Array<Event> = [
             t_state: "Italy",
             t_location_name: "Teatro della disgrazia"
         },
+        t_caption: "",
         t_event_date: new Date("2023-12-24"),
         t_type: EVENT_TYPE.PARTY,
         t_service_list: [
@@ -31375,7 +31389,7 @@ export const allEventList: Array<Event> = [
                 n_id: 1,
                 event_id: 1,
                 n_stars: 5,
-                t_object: "Discoteca fantastica!",
+                t_title: "Discoteca fantastica!",
                 t_body: "Siamo stati alla discoteca 31-12-2022, non vediamo l'ora di tornarci con questo fantastico evento.",
                 t_image_link: ["/gbpr?hash=3jsadksdkhh3sadjkbmnsa3%sgdaska"],
                 t_user: { t_name: "Pasquale", t_surname: "Schettino", t_alias_generated: "passchet2308abgd", t_type: USER_TYPE.CREATOR }
@@ -31384,7 +31398,7 @@ export const allEventList: Array<Event> = [
                 n_id: 2,
                 event_id: 1,
                 n_stars: 1,
-                t_object: "Discoteca mediocre!",
+                t_title: "Discoteca mediocre!",
                 t_body: "Personale scortese, e cocktail senza giacchio, non ci torneremo mai più! Da chiudere...",
                 t_image_link: ["/gpbr?hash=ffdassdasd3jads325r79hfdzafhk"], //get photo by review
                 t_user: { t_name: "Antonio", t_surname: "Lodato", t_alias_generated: "alod323453asd", t_type: USER_TYPE.CREATOR }
@@ -31425,6 +31439,7 @@ export const allEventList: Array<Event> = [
             t_state: "Italy",
             t_location_name: "Teatro della disgrazia"
         },
+        t_caption: "",
         t_event_date: new Date("2023-02-02"),
         t_type: EVENT_TYPE.PARTY,
         t_service_list: [
@@ -31659,7 +31674,7 @@ export const allEventList: Array<Event> = [
                 n_id: 1,
                 event_id: 1,
                 n_stars: 5,
-                t_object: "Discoteca fantastica!",
+                t_title: "Discoteca fantastica!",
                 t_body: "Siamo stati alla discoteca 31-12-2022, non vediamo l'ora di tornarci con questo fantastico evento.",
                 t_image_link: ["/gbpr?hash=3jsadksdkhh3sadjkbmnsa3%sgdaska"],
                 t_user: { t_name: "Pasquale", t_surname: "Schettino", t_alias_generated: "passchet2308abgd", t_type: USER_TYPE.CREATOR }
@@ -31668,7 +31683,7 @@ export const allEventList: Array<Event> = [
                 n_id: 2,
                 event_id: 1,
                 n_stars: 1,
-                t_object: "Discoteca mediocre!",
+                t_title: "Discoteca mediocre!",
                 t_body: "Personale scortese, e cocktail senza giacchio, non ci torneremo mai più! Da chiudere...",
                 t_image_link: ["/gpbr?hash=ffdassdasd3jads325r79hfdzafhk"], //get photo by review
                 t_user: { t_name: "Antonio", t_surname: "Lodato", t_alias_generated: "alod323453asd", t_type: USER_TYPE.CREATOR }

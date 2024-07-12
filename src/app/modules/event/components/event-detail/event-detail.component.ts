@@ -5,6 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { pluck } from 'rxjs';
 import { ROUTE_LIST, allEventList } from '../../../../core/utility/global-constant';
 import { EventPosterComponent } from '../event-poster/event-poster.component';
+import { ContentService } from 'src/app/core/services/contentService/content.service';
 
 @Component({
   selector: 'app-event-detail',
@@ -15,9 +16,10 @@ import { EventPosterComponent } from '../event-poster/event-poster.component';
 export class EventDetailComponent implements AfterViewInit {
   @ViewChild(EventListComponent) elc: EventListComponent;
   @ViewChild(EventPosterComponent) epc: EventPosterComponent;
-  n_id: number;
+  n_id: string;
 
-  constructor(private cdr: ChangeDetectorRef, private globalService: GlobalService, private route: ActivatedRoute, private router: Router) {
+  constructor(private cdr: ChangeDetectorRef, private globalService: GlobalService, private contentService: ContentService,
+    private route: ActivatedRoute, private router: Router) {
   }
 
   ngAfterViewInit(): void {
@@ -44,19 +46,26 @@ export class EventDetailComponent implements AfterViewInit {
   }
 
   getEvent() {
-    let index = allEventList.findIndex(el => el.n_id == this.n_id);
-    let tmpEvent = allEventList.at(index);
-    this.epc.eventData = tmpEvent;
-    this.getGroupEvents(tmpEvent.n_group_id);
+    this.contentService.getSingleContent(this.n_id).subscribe(
+      (response: any) => {
+        console.log(response)
+        this.epc.eventData = response;
+        this.getGroupEvents(response.n_group_id);
+      },
+      error => {
+        console.error('Errore nel recupero del contenuto:', error);
+      }
+    );
   }
 
   initializeData() {
-    this.epc.n_id = this.n_id;
+    this.epc.n_id = Number(this.n_id);
     this.getEvent();
   }
 
   getGroupEvents(n_group_id: number) {
     let groupEvents = allEventList.filter(el => el.n_group_id == n_group_id);
+    console.log(groupEvents)
     this.elc.setEventList(groupEvents);
     this.epc.groupEvents = groupEvents;
     this.epc.initializeData();

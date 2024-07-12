@@ -87,7 +87,7 @@ export class ContentDetailComponent implements AfterViewInit, AfterViewChecked {
       .pipe(pluck('params'))
       .subscribe((result) => {
         const decode = this.globalService.decodeParams(result);
-        this.contentService.getSingleContent(decode.item.id, decode.item.t_user.t_alias_generated).subscribe(
+        this.contentService.getSingleContent(decode.item.id).subscribe(
           (response: any) => {
             this.item = response;
             this.isReplyCommentArray = new Array(this.item.numOfComment).fill(false);

@@ -6,5 +6,5 @@ export interface UserInfo {
     t_description?: string;
     t_alias_generated: string;
     t_type: USER_TYPE;
-    t_img_link?: string;
+    t_profile_photo?: string;
 }

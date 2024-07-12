@@ -67,20 +67,19 @@
                                     *ngIf="item.t_video_link" [src]="item.t_video_link"
                                     class="video-canvas custom-video-player"
                                     style="position: absolute; inset: 0px; box-sizing: border-box; padding: 0px; border: none; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"
-                                    controls disablepictureinpicture
-                                    controlsList="nofullscreen nodownload noremoteplayback noplaybackrate">
+                                    >
                                     Your browser does not support video
                                 </video>
 
                                 <img class="picture-preview" [attr.src]="item.t_image_link" alt="Video Thumbnail"
                                     style="position: absolute; inset: 0px; box-sizing: border-box; padding: 0px; border: none; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;">
                             </div>
-                            <!--<div
+                            <div
                                 class="video-info d-flex flex-column justify-content-center align-items-beetween">
                                 <div [ngClass]=" item.type === ItemType.Eventi ? 'justify-content-between' : 'justify-content-end' "
                                     class="d-flex flex-row">
                                     <div *ngIf="item.type === ItemType.Eventi"
-                                        class="d-flex flex-row text-white" (click)="navigateToBuyTicket()">
+                                        class="d-flex flex-row text-white" (click)="navigateToBuyTicket($event, item)">
                                         <span #tooltip="matTooltip" matTooltip="Acquista biglietto"
                                             matTooltipPosition="right" class="bg-primary-color"
                                             style="border-radius: 3px;padding: 7px;padding-top: 0px;padding-bottom: 4px;margin-bottom: 3px;">
@@ -104,7 +103,7 @@
                                         <span class="mt-1">{{item.n_click | ApproximateNumber}}</span>
                                     </div>
                                 </div>
-                            </div>-->
+                            </div>
                         </a>
                     </picture>
                 </div>

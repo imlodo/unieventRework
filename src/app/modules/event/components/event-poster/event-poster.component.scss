@@ -6,5 +6,91 @@
 
 .orange-icon {
     color: #FFBB33;
-    transform: scale(0.8);
+    transform: scale(1);
+}
+
+/* MODALE */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: #fff;
+    color: black;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.modal-content button {
+    padding: 10px 20px;
+    margin-right: 10px;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+}
+
+::ng-deep .bg-dark-mode .modal-content {
+    background: var(--bs-dark);
+    color: var(--bs-white)
+}
+
+.reviews-body{
+    max-height: 500px;
+    overflow: scroll;
+}
+
+/* Stili per la scrollbar thumb */
+::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: #777777;
+}
+
+/* Stili per la scrollbar track */
+::-webkit-scrollbar-track {
+    visibility: hidden;
+}
+
+::ng-deep .bg-light-mode ::-webkit-scrollbar-thumb {
+    background-color: #e2e2e2 !important;
+}
+
+::ng-deep .bg-dark-mode .card {
+    background: #343a41;
+    color: white;
+}
+
+.user-profile-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.user-profile-photo-container {
+    width: 34px;
+    min-width: 34px;
+    height: 34px;
+    position: relative;
+    overflow: hidden;
+    white-space: nowrap;
+    border-radius: 50%;
 }

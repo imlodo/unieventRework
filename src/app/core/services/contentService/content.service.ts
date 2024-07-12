@@ -70,14 +70,14 @@ export class ContentService {
         );
     }
 
-  getSingleContent(id: string, t_alias_generated: string): Observable<any> {
+  getSingleContent(id: string): Observable<any> {
     const token = this.cookieService.get('auth_token');
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${token}`
     });
 
-    const params = new HttpParams().set('t_alias_generated', t_alias_generated).set("id", id);
+    const params = new HttpParams().set("id", id);
 
     return this.http.get(GET_SINGLE_CONTENT, { headers, params }).pipe(
       tap((response: any) => {

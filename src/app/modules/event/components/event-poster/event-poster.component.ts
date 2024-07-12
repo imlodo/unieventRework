@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Output, AfterViewInit, ChangeDetectorRef } from '@angular/core';
 import { Event } from '../../../../core/models/event';
+import moment from 'moment';
 
 @Component({
   selector: 'unievent-event-poster',
@@ -17,6 +18,7 @@ export class EventPosterComponent implements AfterViewInit {
   countReviews: number;
   ratingArr = [];
   @Output() onBuy: EventEmitter<void> = new EventEmitter();
+  isShowReviewsPanel: boolean = false;
 
   constructor(private cdr: ChangeDetectorRef) {
 
@@ -33,6 +35,7 @@ export class EventPosterComponent implements AfterViewInit {
   }
 
   setEventRangeDate() {
+    console.log(this.eventData.t_event_date)
     this.minStartDate = this.eventData.t_event_date;
     this.maxStartDate = this.eventData.t_event_date;
     if (this.groupEvents.length) {
@@ -43,6 +46,8 @@ export class EventPosterComponent implements AfterViewInit {
           this.maxStartDate = el.t_event_date;
       })
     }
+    this.minStartDate = moment(this.minStartDate).toDate();
+    this.maxStartDate = moment(this.maxStartDate).toDate();
   }
 
   setMinPrice() {
@@ -95,4 +100,28 @@ export class EventPosterComponent implements AfterViewInit {
     }
   }
 
+  getArrayFromRatingNumber(stars: number): number[] {
+    const fullStars = Math.floor(stars);
+    const hasHalfStar = stars % 1 !== 0;
+    const starArray = Array(fullStars).fill(1);
+  
+    if (hasHalfStar) {
+      starArray.push(0.5);
+    }
+  
+    return starArray;
+  }
+  
+  showStarViewIcon(starValue: number): string {
+    return starValue === 1 ? 'star' : 'star_half';
+  }
+  
+
+  openReviewsPanel(){
+    this.isShowReviewsPanel=true;
+  }
+
+  closeReviewsPanel(){
+    this.isShowReviewsPanel=false;
+  }
 }
