@@ -1,10 +1,13 @@
 import { Component, ChangeDetectorRef, ViewChild, ElementRef, } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { GlobalService } from '../../../../core/services';
+import { AuthenticationService, GlobalService } from '../../../../core/services';
 import { ROUTE_LIST, getTicketNameByType } from 'src/app/core/utility/global-constant';
 import { pluck } from 'rxjs';
 import { ObjectMap } from 'src/app/core/models/objectMap';
 import { Event } from 'src/app/core/models/event';
+import { CookieService } from 'ngx-cookie-service';
+import { ToastrService } from 'ngx-toastr';
+import moment from 'moment';
 
 @Component({
   selector: 'unievent-payment-overview',
@@ -17,16 +20,16 @@ export class PaymentOverviewComponent {
   imgLink: string;
   totalTicketPrice: string;
   totalTicketPriceWithoutCommission: string;
-  newCouponPrice : string;
+  newCouponPrice: string;
   totalTicket: number;
   currency: string = "€";
   commissionsOfService: number = 3.55; //5%
   eventData: Event;
   isAvailableTimeout: boolean = false;
-  timeoutDate:Date= new Date(new Date().getTime() + 15*60000); //ho aggiunto 15 minuti
+  timeoutDate: Date;
   serviceCommission: string;
   dynamicClass: string;
-  applyedCoupon: {code:string, sconto:number} = {code:"TEST2023",sconto:30}
+  applyedCoupon: { code: string, sconto: number } = { code: "TEST2023", sconto: 30 }
   successApplyCoupon: boolean = null;
   isCoupon: boolean = false;
   interval: any;
@@ -36,7 +39,8 @@ export class PaymentOverviewComponent {
   @ViewChild('seconds', { static: true }) seconds: ElementRef;
   @ViewChild('couponCode', { static: true }) couponCode: ElementRef;
 
-  constructor(private cdr: ChangeDetectorRef, private globalService: GlobalService, private route: ActivatedRoute, private router: Router) {
+  constructor(private cdr: ChangeDetectorRef, private globalService: GlobalService, private cookieService: CookieService,
+    private route: ActivatedRoute, private router: Router, private authenticationService: AuthenticationService, private toastr: ToastrService) {
   }
 
   ngAfterViewInit(): void {
@@ -45,9 +49,6 @@ export class PaymentOverviewComponent {
       this.timeoutDate.setSeconds(this.timeoutDate.getSeconds() - 1);
       this.updateTimeout();
     }, 1000);
-    
-
-
     this.cdr.detectChanges();
   }
 
@@ -61,9 +62,40 @@ export class PaymentOverviewComponent {
             this.eventTicketList = decode.eventTicketList;
             this.eventData = decode.eventData;
             this.totalTicket = this.eventTicketList.length;
-            console.log(this.eventTicketList)
-
-            this.getTotalTicketPrice();
+            const buyToken = this.cookieService.get("buy_token");
+            if (buyToken) {
+              this.authenticationService.getBuyTokenDetail().subscribe(
+                (response: any) => {
+                  if (response.t_event_ticket_list[0].n_id !== this.eventTicketList[0].n_id) {
+                    window.history.back();
+                    this.cookieService.delete("buy_token")
+                  }
+                  this.timeoutDate = moment(response.exp).add(2, 'hours').toDate();
+                  this.getTotalTicketPrice();
+                },
+                error => {
+                  this.toastr.clear();
+                  this.toastr.error('Errore nel recupero dei biglietti');
+                }
+              );
+            } else {
+              const cookieCurrentUser = this.cookieService.get('current_user');
+              if (cookieCurrentUser) {
+                this.authenticationService.generateTokenForBuy(JSON.parse(cookieCurrentUser), this.eventTicketList).subscribe(
+                  (response: any) => {
+                    this.timeoutDate = moment().add(15,"minutes").toDate();
+                    this.getTotalTicketPrice();
+                  },
+                  error => {
+                    this.toastr.clear();
+                    this.toastr.error('Errore nel recupero dei biglietti');
+                  }
+                );
+              } else {
+                this.cookieService.delete("buy_token");
+                window.history.back();
+              }
+            }
           } else {
             this.router.navigate(['404']);
           }
@@ -80,8 +112,8 @@ export class PaymentOverviewComponent {
     })
     this.totalTicketPriceWithoutCommission = totalPrice.toFixed(2).replace(".", ",");
     let totalPriceCopy = totalPrice;
-    totalPrice = totalPrice + (totalPrice*(this.commissionsOfService/100));
-    this.serviceCommission = (totalPrice - totalPriceCopy).toFixed(2).replace(".",",");
+    totalPrice = totalPrice + (totalPrice * (this.commissionsOfService / 100));
+    this.serviceCommission = (totalPrice - totalPriceCopy).toFixed(2).replace(".", ",");
     this.totalTicketPrice = totalPrice.toFixed(2).replace(".", ",");
   }
 
@@ -90,53 +122,55 @@ export class PaymentOverviewComponent {
   }
 
   getTicketPriceString(price: number) {
-    return this.currency +' '+ price.toFixed(2).replace(".", ",");
+    return this.currency + ' ' + price.toFixed(2).replace(".", ",");
   }
 
-  goBack(){
+  goBack() {
     const params = this.globalService.encodeParams({
-      n_id:this.eventData.id
+      n_id: this.eventData.id
     });
     this.router.navigate([ROUTE_LIST.event.ticket.list, params]);
   }
 
-  updateTimeout(){
+  updateTimeout() {
     let currentDate = new Date();
     let days = 0;
     let hours = 0;
     let minutes = 0;
     let seconds = 0;
-    if(this.timeoutDate > currentDate ){
+    if (this.timeoutDate > currentDate) {
+      console.log(this.timeoutDate, currentDate)
       this.isAvailableTimeout = true;
-      seconds = Math.abs(this.timeoutDate.getTime()-currentDate.getTime()) / 1000;
-      days = Math.trunc(seconds/(60*60*24));
-      hours = Math.trunc(seconds/(60*60)) - days*24;
-      minutes = Math.trunc(seconds/(60)) - (hours*60 + days*24*60);
-      seconds = Math.trunc(seconds) - (minutes*60 + hours*60*60 + days*24*60*60);
-    } else{
+      seconds = Math.abs(this.timeoutDate.getTime() - currentDate.getTime()) / 1000;
+      days = Math.trunc(seconds / (60 * 60 * 24));
+      hours = Math.trunc(seconds / (60 * 60)) - days * 24;
+      minutes = Math.trunc(seconds / (60)) - (hours * 60 + days * 24 * 60);
+      seconds = Math.trunc(seconds) - (minutes * 60 + hours * 60 * 60 + days * 24 * 60 * 60);
+    } else {
       this.isAvailableTimeout = false;
       const params = this.globalService.encodeParams({
-        n_id:this.eventData.id
+        n_id: this.eventData.id
       });
       clearInterval(this.interval);
+      this.cookieService.delete("buy_token")
       this.router.navigate([ROUTE_LIST.event.ticket.list, params]);
     }
     this.days.nativeElement.innerText = days;
     this.hours.nativeElement.innerText = hours;
     this.minutes.nativeElement.innerText = minutes;
     this.seconds.nativeElement.innerText = seconds;
-    
+
   }
 
-  getNumeroPosti(object:ObjectMap){
-    return object.t_seat_list.map(el=>el.n_seat_num).toString();
+  getNumeroPosti(object: ObjectMap) {
+    return object.t_seat_list.map(el => el.n_seat_num).toString();
   }
 
-  applyCoupon(){
-    let couponCodeStr=this.couponCode.nativeElement.value;
-    if(couponCodeStr === this.applyedCoupon.code){
-      let ttwc = Number(this.totalTicketPrice.replace(",","."));
-      this.newCouponPrice = (ttwc - (ttwc / 100 * this.applyedCoupon.sconto)).toFixed(2).replace(".",",");
+  applyCoupon() {
+    let couponCodeStr = this.couponCode.nativeElement.value;
+    if (couponCodeStr === this.applyedCoupon.code) {
+      let ttwc = Number(this.totalTicketPrice.replace(",", "."));
+      this.newCouponPrice = (ttwc - (ttwc / 100 * this.applyedCoupon.sconto)).toFixed(2).replace(".", ",");
       this.isCoupon = true;
       this.successApplyCoupon = true;
     } else {
@@ -146,16 +180,16 @@ export class PaymentOverviewComponent {
     }
   }
 
-  goToBuyStepper(){
+  goToBuyStepper() {
     const params = this.globalService.encodeParams({
       buyMapObjectList: this.eventTicketList,
-      applyedCoupon:this.applyedCoupon,
+      applyedCoupon: this.applyedCoupon,
       idEvent: this.eventData.id
     });
     this.router.navigate([ROUTE_LIST.payment.checkout, params]);
   }
 
-  getCouponValue(){
+  getCouponValue() {
     return this.couponCode.nativeElement.value;
   }
 }

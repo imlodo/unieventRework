@@ -3,7 +3,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of, throwError } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 import { CookieService } from 'ngx-cookie-service';
-import { GENERATE_TOKEN, GET_USER, VERIFY_TOKEN } from '../../utility/api-constant';
+import { GENERATE_TOKEN, GENERATE_TOKEN_FOR_BUY, GET_BUY_TOKEN_DETAIL, GET_USER, VERIFY_TOKEN } from '../../utility/api-constant';
+import { ObjectMap } from '../../models/objectMap';
 
 @Injectable({
   providedIn: 'root'
@@ -60,6 +61,44 @@ export class AuthenticationService {
         }
       ),
         catchError(error => {
+          return of(false);
+        } )
+      );
+  }
+
+  generateTokenForBuy(t_username:string, t_event_ticket_list: Array<ObjectMap>): Observable<any> {
+    const body = { t_username, t_event_ticket_list };
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+
+    return this.http.post(GENERATE_TOKEN_FOR_BUY, body, { headers })
+      .pipe(
+        tap((response: any) => {
+          this.cookieService.set('buy_token', response.token);
+        }),
+        catchError(this.handleError)
+      );
+  }
+
+  getBuyTokenDetail(): Observable<any>{
+    const token = this.cookieService.get('buy_token');
+
+    if (!token) {
+      return of(false);
+    }
+
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    });
+
+    return this.http.post<any>(GET_BUY_TOKEN_DETAIL, {}, { headers })
+      .pipe(
+        map(response => {
+          return response
+        }
+      ),
+        catchError(error => {
+          this.cookieService.delete("buy_token")
           return of(false);
         } )
       );
