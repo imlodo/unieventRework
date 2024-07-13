@@ -8,20 +8,20 @@ import { EventDiscussion } from "./eventDiscussion";
 import { Map } from "./map";
 
 export interface Event {
-    n_id: number;
+    id: string;
     n_group_id?: number;
     n_click: number;
     t_title: string;
     t_caption: string;
     t_image_link: string; 
     t_external_link?: string;
-    t_event_date: Date; //Data Evento, considerare anche gli orari
+    t_event_date: Date;
     t_service_list?: Array<EventService>;
     t_map_list: Array<Map>;
     t_reviews?: Array<EventReview>;
     t_discussions?: Array<EventDiscussion>;
     t_artist_list?: Array<EventArtist>;
-    t_company?: UserInfo;
+    t_user?: UserInfo;
     t_location: EventLocation;
     t_type: EVENT_TYPE;
     b_external_event: boolean; //Se evento esterno allora non è acquistabile il biglietto sul sito

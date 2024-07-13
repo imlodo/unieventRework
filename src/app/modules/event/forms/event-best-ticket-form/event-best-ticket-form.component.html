@@ -1,4 +1,4 @@
-<div *ngIf="formRows" class="row justify-content-center align-items-center py-4 ticket-list-container rounded shadow">
+<div *ngIf="formRows" class="row justify-content-center align-items-start py-4 ticket-list-container rounded shadow">
     <div class="d-flex flex-column col-xl-8 col-12">
         <span class="h5 text-center">Lista biglietti</span>
         <div class="">
@@ -31,8 +31,8 @@
                             style="width: 10px; height: 10px; border-radius: 50%; display: inline-block; margin: 2px;"></span>
                         <span>Disponibile</span>
                     </div>
-                    <div *ngIf="eventBestTicket.get('ticket_avilable_seat').value < 0"
-                        class="d-flex mb-2 mx-3 my-2 justify-content-center align-items-center">
+                    <div *ngIf="eventBestTicket.get('ticket_avilable_seat').value <= 0"
+                        class="d-flex mb-2 mx-3 my-2 justify-content-center align-items-center" style="min-width: 86px;">
                         <span [style]="'background-color: #9b1717;border: 1px solid #797979;'"
                             style="width: 10px; height: 10px; border-radius: 50%; display: inline-block; margin: 2px;"></span>
                         <span>Esaurito</span>

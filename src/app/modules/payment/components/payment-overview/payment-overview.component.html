@@ -25,9 +25,9 @@
                         </div>
                         <br>
                         <span>{{eventData.t_location.t_city|uppercase}}, {{eventData.t_location.t_location_name}}</span>
-                        <span>{{getDate()}}</span>
+                        <span>{{eventData.t_event_date | dateFormat:"DD-MM-YYYY HH:mm"}}</span>
                         <br>
-                        <span>Organizzatore: {{eventData.t_company.t_name}}</span>
+                        <span *ngIf="eventData.t_user">Organizzatore: {{eventData.t_user?.t_name}}</span>
                         <br>
                         <span>{{getTicketName(object.t_type)}}, Intero</span>
                         <div *ngIf="object.t_object_commissions" class="d-flex justify-content-between">
@@ -62,17 +62,18 @@
             <div class="card overview-container">
                 <div class="card-body">
                     <h2 class="card-title">Riepilogo</h2>
-                    <div *ngFor="let object of eventTicketList" class="d-flex justify-content-between">
-                        <span>1x {{eventData.t_title}}, {{getTicketName(object.t_type)}}</span>
-                        <span>{{getTicketPriceString(object.n_object_price)}}</span>
+                    <div *ngFor="let object of eventTicketList" class="d-flex justify-content-between mb-3">
+                        <span class="text-secondary">1x {{eventData.t_title}}, {{getTicketName(object.t_type)}}</span>
+                        <span class="text-secondary" style="min-width:60px">{{getTicketPriceString(object.n_object_price)}}</span>
                     </div>
-                    <div class="d-flex justify-content-between border-top">
+                    <div class="border-bottom"></div>
+                    <div class="d-flex justify-content-between mt-3">
                         <h4>Totale biglietti: </h4>
-                        <h4>€ {{totalTicketPriceWithoutCommission}}</h4>
+                        <h4 >€ {{totalTicketPriceWithoutCommission}}</h4>
                     </div>
                     <div class="d-flex justify-content-between">
-                        <h5>Commissioni di servizio: </h5>
-                        <h5>€ {{serviceCommission}}</h5>
+                        <h5 class="text-secondary">Commissioni di servizio: </h5>
+                        <h5 class="text-secondary">€ {{serviceCommission}}</h5>
                     </div>
                     <div class="d-flex justify-content-between">
                         <span class="h6">Totale</span>
@@ -90,7 +91,7 @@
                         <h5>Sconto applicato: </h5>
                         <h5>{{applyedCoupon.sconto}}%</h5>
                     </div>
-                    <h5>incl. IVA, più costi di consegna/servizio</h5>
+                    <h5 class="text-secondary">incl. IVA, più costi di consegna/servizio</h5>
                     <button class="my-2 btn btn-color-no-hover text-white rounded-1 w-100"
                         (click)="goToBuyStepper()">Procedi all'acquisto</button>
                 </div>

@@ -38,7 +38,7 @@ export class SlideshowComponent {
     }
     else {
       const params = this.globalService.encodeParams({
-        n_id: el.n_id
+        n_id: el.id
       });
       if (type == 'go') {
         this.router.navigate([ROUTE_LIST.event.detail, params]);

@@ -10,6 +10,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { NgxStarsComponent } from 'src/app/core/components/ngx-stars/ngx-stars.component';
 import { TicketService } from 'src/app/core/services/ticketService/ticket.service';
 import { ToastrService } from 'ngx-toastr';
+import { Ticket } from 'src/app/core/models/ticket';
 
 @Component({
   selector: 'unievent-ticket-list',
@@ -24,12 +25,13 @@ export class TicketListComponent {
   displayedColumns: string[] = ['numeroTicket', 'titolo', 'stato', 'dataCreazione', 'azioni'];
   showReviewsPanel: boolean = false;
   currentReviewTicketNumber: string = null;
+  currentTicket: any = null;
   formReview = new FormGroup({
     title: new FormControl(''),
     body: new FormControl(''),
     date: new FormControl(''),
   });
-  isEditReview:boolean = false;
+  isEditReview: boolean = false;
 
   constructor(private router: Router, private globalService: GlobalService, private ticketService: TicketService, private toastr: ToastrService) {
 
@@ -60,8 +62,9 @@ export class TicketListComponent {
     this.router.navigate([ROUTE_LIST.tickets, params]);
   }
 
-  openReviewsPanel(ticket_number: string) {
+  openReviewsPanel(ticket_number: string, ticket: any) {
     this.currentReviewTicketNumber = ticket_number;
+    this.currentTicket = ticket;
     this.getTicketReviews(ticket_number);
   }
 
@@ -94,7 +97,7 @@ export class TicketListComponent {
   }
 
   addReview(form: any) {
-    this.ticketService.addTicketReview(this.currentReviewTicketNumber, form.value.title, form.value.body, this.starsComponent.rating, form.value.date).subscribe(
+    this.ticketService.addTicketReview(this.currentReviewTicketNumber, this.currentTicket.event_id, form.value.title, form.value.body, this.starsComponent.rating, form.value.date).subscribe(
       (response: any) => {
         console.log(response)
         this.toastr.success(response.message);

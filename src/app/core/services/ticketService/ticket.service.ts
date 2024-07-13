@@ -29,14 +29,14 @@ export class TicketService {
       );
   }
 
-  addTicketReview(t_ticket_id: string, t_title: string, t_body: string, n_star: number, review_date: string): Observable<any> {
+  addTicketReview(t_ticket_id: string, t_event_id:string, t_title: string, t_body: string, n_star: number, review_date: string): Observable<any> {
     const token = this.cookieService.get('auth_token');
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${token}`
     });
 
-    const body = { t_ticket_id, t_title, t_body, n_star, review_date };
+    const body = { t_ticket_id, t_event_id, t_title, t_body, n_star, review_date };
 
     return this.http.post(ADD_TICKET_REVIEW, body, { headers })
       .pipe(

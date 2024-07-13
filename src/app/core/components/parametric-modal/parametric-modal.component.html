@@ -2,8 +2,8 @@
     <h1 mat-dialog-title>Riepilogo</h1>
     <div mat-dialog-content>
         <p>Sei sicuro di voler acquistare il biglietto seguente?</p>
-        <p>Biglietto {{getTicketNameByType(data.object.t_type)}}, <b>{{data.object.n_object_price}}€</b></p>
-        <p>Fila {{data.object.n_obj_map_cord_y + 1}}, Posto {{data.object.n_obj_map_cord_x + 1}}</p>
+        <p>Biglietto 1x {{data.object.n_obj_map_text}} - {{getTicketNameByType(data.object.t_type)}}, <b>{{data.object.n_object_price}}€</b></p>
+        <p>Fila {{data.object.n_obj_map_cord_y + 1}}, Posti {{getSeatList(data.object)}}</p>
         <p *ngIf="data.object.t_note"><b>NB</b>: {{data.object.t_note}}</p>
     </div>
     <div mat-dialog-actions>

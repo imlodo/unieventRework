@@ -35,7 +35,6 @@ export class EventPosterComponent implements AfterViewInit {
   }
 
   setEventRangeDate() {
-    console.log(this.eventData.t_event_date)
     this.minStartDate = this.eventData.t_event_date;
     this.maxStartDate = this.eventData.t_event_date;
     if (this.groupEvents.length) {

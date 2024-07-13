@@ -118,7 +118,7 @@ export interface EVENT_SERVICE_TYPE {
 
 export const eventOrderedBySell: Array<Event> = [
     {
-        n_id: 1,
+        id: "1",
         n_group_id: 1,
         n_click: 1899,
         t_title: "Discoteca tropicale",
@@ -390,7 +390,7 @@ export const eventOrderedBySell: Array<Event> = [
                 t_image_link: "https://images.everyeye.it/img-screenshot/lock-stock-pazzi-scatenati-v1-535042.jpg"
             }
         ],
-        t_company: { t_name: "Disco Club S.R.L", t_surname: "", t_alias_generated: "disco-club-srl", t_type: USER_TYPE.COMPANY },
+        t_user: { t_name: "Disco Club S.R.L", t_surname: "", t_alias_generated: "disco-club-srl", t_type: USER_TYPE.COMPANY },
         t_location: {
             n_id: 1,
             t_address: "Via Roma 19",
@@ -405,7 +405,7 @@ export const eventOrderedBySell: Array<Event> = [
         b_external_event: false,
     },
     {
-        n_id: 2,
+        id: "2",
         n_group_id: 2,
         n_click: 699,
         t_title: "Ladies Night",
@@ -676,7 +676,7 @@ export const eventOrderedBySell: Array<Event> = [
                 t_image_link: "https://images.everyeye.it/img-screenshot/lock-stock-pazzi-scatenati-v1-535042.jpg"
             }
         ],
-        t_company: { t_name: "Disco Club S.R.L", t_surname: "", t_alias_generated: "disco-club-srl", t_type: USER_TYPE.COMPANY },
+        t_user: { t_name: "Disco Club S.R.L", t_surname: "", t_alias_generated: "disco-club-srl", t_type: USER_TYPE.COMPANY },
         t_location: {
             n_id: 2,
             t_address: "Viale Antonio Bandiera 14",
@@ -691,7 +691,7 @@ export const eventOrderedBySell: Array<Event> = [
         b_external_event: false,
     },
     {
-        n_id: 3,
+        id: "3",
         n_group_id: 3,
         n_click: 179,
         t_title: "Carnival Party",
@@ -962,7 +962,7 @@ export const eventOrderedBySell: Array<Event> = [
                 t_image_link: "https://images.everyeye.it/img-screenshot/lock-stock-pazzi-scatenati-v1-535042.jpg"
             }
         ],
-        t_company: { t_name: "Disco Club S.R.L", t_surname: "", t_alias_generated: "disco-club-srl", t_type: USER_TYPE.COMPANY },
+        t_user: { t_name: "Disco Club S.R.L", t_surname: "", t_alias_generated: "disco-club-srl", t_type: USER_TYPE.COMPANY },
         t_location: {
             n_id: 3,
             t_address: "SS7 12",
@@ -977,7 +977,7 @@ export const eventOrderedBySell: Array<Event> = [
         b_external_event: false,
     },
     {
-        n_id: 4,
+        id: "4",
         t_caption: "",
         t_title: "Wine Music",
         t_image_link: "https://www.toteadv.it/wp-content/uploads/2020/08/locandina_eventi_2017_antica_cantina_veneta.jpg",
@@ -999,7 +999,7 @@ export const eventOrderedBySell: Array<Event> = [
         n_click: 6499
     },
     {
-        n_id: 5,
+        id: "5",
         n_group_id: 4,
         n_click: 4899,
         t_title: "Memorie di natale",
@@ -1280,12 +1280,12 @@ export const eventOrderedBySell: Array<Event> = [
                 t_image_link: "https://images.everyeye.it/img-screenshot/lock-stock-pazzi-scatenati-v1-535042.jpg"
             }
         ],
-        t_company: { t_name: "Disco Club S.R.L", t_surname: "", t_alias_generated: "disco-club-srl", t_type: USER_TYPE.COMPANY },
+        t_user: { t_name: "Disco Club S.R.L", t_surname: "", t_alias_generated: "disco-club-srl", t_type: USER_TYPE.COMPANY },
         b_active: true,
         b_external_event: false,
     },
     {
-        n_id: 6,
+        id: "6",
         n_group_id: 5,
         n_click: 3500,
         t_title: "Vegvisir Dark Ambient Festival",
@@ -1566,7 +1566,7 @@ export const eventOrderedBySell: Array<Event> = [
                 t_image_link: "https://images.everyeye.it/img-screenshot/lock-stock-pazzi-scatenati-v1-535042.jpg"
             }
         ],
-        t_company: { t_name: "Disco Club S.R.L", t_surname: "", t_alias_generated: "disco-club-srl", t_type: USER_TYPE.COMPANY },
+        t_user: { t_name: "Disco Club S.R.L", t_surname: "", t_alias_generated: "disco-club-srl", t_type: USER_TYPE.COMPANY },
         b_active: true,
         b_external_event: false,
     }
@@ -1574,7 +1574,7 @@ export const eventOrderedBySell: Array<Event> = [
 
 export const allEventList: Array<Event> = [
     {
-        n_id: 1,
+        id: "1",
         n_group_id: 1,
         n_click: 1899,
         t_title: "Discoteca tropicale",
@@ -1844,7 +1844,7 @@ export const allEventList: Array<Event> = [
                 t_image_link: "https://images.everyeye.it/img-screenshot/lock-stock-pazzi-scatenati-v1-535042.jpg"
             }
         ],
-        t_company: { t_name: "Disco Club S.R.L", t_surname: "", t_alias_generated: "disco-club-srl", t_type: USER_TYPE.COMPANY },
+        t_user: { t_name: "Disco Club S.R.L", t_surname: "", t_alias_generated: "disco-club-srl", t_type: USER_TYPE.COMPANY },
         t_location: {
             n_id: 1,
             t_address: "Via Roma 19",
@@ -1859,7 +1859,7 @@ export const allEventList: Array<Event> = [
         b_external_event: false,
     },
     {
-        n_id: 2,
+        id: "2",
         n_group_id: 2,
         n_click: 699,
         t_title: "Ladies Night",
@@ -28239,7 +28239,7 @@ export const allEventList: Array<Event> = [
                 t_image_link: "https://images.everyeye.it/img-screenshot/lock-stock-pazzi-scatenati-v1-535042.jpg"
             }
         ],
-        t_company: { t_name: "Disco Club S.R.L", t_surname: "", t_alias_generated: "disco-club-srl", t_type: USER_TYPE.COMPANY },
+        t_user: { t_name: "Disco Club S.R.L", t_surname: "", t_alias_generated: "disco-club-srl", t_type: USER_TYPE.COMPANY },
         t_location: {
             n_id: 2,
             t_address: "Viale Antonio Bandiera 14",
@@ -28254,7 +28254,7 @@ export const allEventList: Array<Event> = [
         b_external_event: false,
     },
     {
-        n_id: 3,
+        id: "3",
         n_group_id: 3,
         n_click: 179,
         t_title: "Carnival Party",
@@ -28525,7 +28525,7 @@ export const allEventList: Array<Event> = [
                 t_image_link: "https://images.everyeye.it/img-screenshot/lock-stock-pazzi-scatenati-v1-535042.jpg"
             }
         ],
-        t_company: { t_name: "Disco Club S.R.L", t_surname: "", t_alias_generated: "disco-club-srl", t_type: USER_TYPE.COMPANY },
+        t_user: { t_name: "Disco Club S.R.L", t_surname: "", t_alias_generated: "disco-club-srl", t_type: USER_TYPE.COMPANY },
         t_location: {
             n_id: 3,
             t_address: "SS7 12",
@@ -28540,7 +28540,7 @@ export const allEventList: Array<Event> = [
         b_external_event: false,
     },
     {
-        n_id: 4,
+        id: "4",
         t_title: "Wine Music",
         t_image_link: "https://www.toteadv.it/wp-content/uploads/2020/08/locandina_eventi_2017_antica_cantina_veneta.jpg",
         t_location: {
@@ -28562,7 +28562,7 @@ export const allEventList: Array<Event> = [
         t_caption: ""
     },
     {
-        n_id: 5,
+        id: "5",
         n_group_id: 4,
         n_click: 4899,
         t_title: "Memorie di natale",
@@ -28843,12 +28843,12 @@ export const allEventList: Array<Event> = [
                 t_image_link: "https://images.everyeye.it/img-screenshot/lock-stock-pazzi-scatenati-v1-535042.jpg"
             }
         ],
-        t_company: { t_name: "Disco Club S.R.L", t_surname: "", t_alias_generated: "disco-club-srl", t_type: USER_TYPE.COMPANY },
+        t_user: { t_name: "Disco Club S.R.L", t_surname: "", t_alias_generated: "disco-club-srl", t_type: USER_TYPE.COMPANY },
         b_active: true,
         b_external_event: false,
     },
     {
-        n_id: 6,
+        id: "6",
         n_group_id: 5,
         n_click: 3500,
         t_title: "Vegvisir Dark Ambient Festival",
@@ -29129,12 +29129,12 @@ export const allEventList: Array<Event> = [
                 t_image_link: "https://images.everyeye.it/img-screenshot/lock-stock-pazzi-scatenati-v1-535042.jpg"
             }
         ],
-        t_company: { t_name: "Disco Club S.R.L", t_surname: "", t_alias_generated: "disco-club-srl", t_type: USER_TYPE.COMPANY },
+        t_user: { t_name: "Disco Club S.R.L", t_surname: "", t_alias_generated: "disco-club-srl", t_type: USER_TYPE.COMPANY },
         b_active: true,
         b_external_event: false,
     },
     {
-        n_id: 7,
+        id: "7",
         t_title: "Discoteca tropicale",
         n_group_id: 1,
         n_click: 3941,
@@ -29406,7 +29406,7 @@ export const allEventList: Array<Event> = [
                 t_image_link: "https://images.everyeye.it/img-screenshot/lock-stock-pazzi-scatenati-v1-535042.jpg"
             }
         ],
-        t_company: { t_name: "Disco Club S.R.L", t_surname: "", t_alias_generated: "disco-club-srl", t_type: USER_TYPE.COMPANY },
+        t_user: { t_name: "Disco Club S.R.L", t_surname: "", t_alias_generated: "disco-club-srl", t_type: USER_TYPE.COMPANY },
         t_location: {
             n_id: 1,
             t_address: "Via Roma 19",
@@ -29420,7 +29420,7 @@ export const allEventList: Array<Event> = [
         b_external_event: false,
     },
     {
-        n_id: 8,
+        id: "8",
         t_title: "Discoteca tropicale",
         n_group_id: 1,
         n_click: 1239,
@@ -29692,7 +29692,7 @@ export const allEventList: Array<Event> = [
                 t_image_link: "https://images.everyeye.it/img-screenshot/lock-stock-pazzi-scatenati-v1-535042.jpg"
             }
         ],
-        t_company: { t_name: "Disco Club S.R.L", t_surname: "", t_alias_generated: "disco-club-srl", t_type: USER_TYPE.COMPANY },
+        t_user: { t_name: "Disco Club S.R.L", t_surname: "", t_alias_generated: "disco-club-srl", t_type: USER_TYPE.COMPANY },
         t_location: {
             n_id: 1,
             t_address: "Via Roma 19",
@@ -29706,7 +29706,7 @@ export const allEventList: Array<Event> = [
         b_external_event: false,
     },
     {
-        n_id: 9,
+        id: "9",
         t_title: "Discoteca tropicale",
         n_group_id: 1,
         t_image_link: "https://rivieraticket.it/wp-content/uploads/2023/08/Tropical-closing-party-Byblos-01-09-23.jpg",
@@ -29987,13 +29987,13 @@ export const allEventList: Array<Event> = [
                 t_image_link: "https://images.everyeye.it/img-screenshot/lock-stock-pazzi-scatenati-v1-535042.jpg"
             }
         ],
-        t_company: { t_name: "Disco Club S.R.L", t_surname: "", t_alias_generated: "disco-club-srl", t_type: USER_TYPE.COMPANY },
+        t_user: { t_name: "Disco Club S.R.L", t_surname: "", t_alias_generated: "disco-club-srl", t_type: USER_TYPE.COMPANY },
 
         b_active: true,
         b_external_event: false,
     },
     {
-        n_id: 10,
+        id: "10",
         t_title: "Discoteca tropicale",
         n_click: 1049,
         n_group_id: 1,
@@ -30274,12 +30274,12 @@ export const allEventList: Array<Event> = [
                 t_image_link: "https://images.everyeye.it/img-screenshot/lock-stock-pazzi-scatenati-v1-535042.jpg"
             }
         ],
-        t_company: { t_name: "Disco Club S.R.L", t_surname: "", t_alias_generated: "disco-club-srl", t_type: USER_TYPE.COMPANY },
+        t_user: { t_name: "Disco Club S.R.L", t_surname: "", t_alias_generated: "disco-club-srl", t_type: USER_TYPE.COMPANY },
         b_active: true,
         b_external_event: false,
     },
     {
-        n_id: 11,
+        id: "11",
         t_title: "Discoteca tropicale",
         n_group_id: 1,
         n_click: 345,
@@ -30560,13 +30560,13 @@ export const allEventList: Array<Event> = [
                 t_image_link: "https://images.everyeye.it/img-screenshot/lock-stock-pazzi-scatenati-v1-535042.jpg"
             }
         ],
-        t_company: { t_name: "Disco Club S.R.L", t_surname: "", t_alias_generated: "disco-club-srl", t_type: USER_TYPE.COMPANY },
+        t_user: { t_name: "Disco Club S.R.L", t_surname: "", t_alias_generated: "disco-club-srl", t_type: USER_TYPE.COMPANY },
 
         b_active: true,
         b_external_event: false,
     },
     {
-        n_id: 12,
+        id: "12",
         n_group_id: 2,
         t_title: "Ladies Night",
         n_click: 1256,
@@ -30848,12 +30848,12 @@ export const allEventList: Array<Event> = [
                 t_image_link: "https://images.everyeye.it/img-screenshot/lock-stock-pazzi-scatenati-v1-535042.jpg"
             }
         ],
-        t_company: { t_name: "Disco Club S.R.L", t_surname: "", t_alias_generated: "disco-club-srl", t_type: USER_TYPE.COMPANY },
+        t_user: { t_name: "Disco Club S.R.L", t_surname: "", t_alias_generated: "disco-club-srl", t_type: USER_TYPE.COMPANY },
         b_active: true,
         b_external_event: false,
     },
     {
-        n_id: 13,
+        id: "13",
         n_group_id: 3,
         t_title: "Carnival Party",
         n_click: 903,
@@ -31134,12 +31134,12 @@ export const allEventList: Array<Event> = [
                 t_image_link: "https://images.everyeye.it/img-screenshot/lock-stock-pazzi-scatenati-v1-535042.jpg"
             }
         ],
-        t_company: { t_name: "Disco Club S.R.L", t_surname: "", t_alias_generated: "disco-club-srl", t_type: USER_TYPE.COMPANY },
+        t_user: { t_name: "Disco Club S.R.L", t_surname: "", t_alias_generated: "disco-club-srl", t_type: USER_TYPE.COMPANY },
         b_active: true,
         b_external_event: false,
     },
     {
-        n_id: 14,
+        id: "14",
         n_group_id: 4,
         n_click: 983,
         t_title: "Memorie di natale",
@@ -31420,12 +31420,12 @@ export const allEventList: Array<Event> = [
                 t_image_link: "https://images.everyeye.it/img-screenshot/lock-stock-pazzi-scatenati-v1-535042.jpg"
             }
         ],
-        t_company: { t_name: "Disco Club S.R.L", t_surname: "", t_alias_generated: "disco-club-srl", t_type: USER_TYPE.COMPANY },
+        t_user: { t_name: "Disco Club S.R.L", t_surname: "", t_alias_generated: "disco-club-srl", t_type: USER_TYPE.COMPANY },
         b_active: true,
         b_external_event: false,
     },
     {
-        n_id: 15,
+        id: "15",
         n_group_id: 5,
         n_click: 287,
         t_title: "Vegvisir Dark Ambient Festival",
@@ -31705,7 +31705,7 @@ export const allEventList: Array<Event> = [
                 t_image_link: "https://images.everyeye.it/img-screenshot/lock-stock-pazzi-scatenati-v1-535042.jpg"
             }
         ],
-        t_company: { t_name: "Disco Club S.R.L", t_surname: "", t_alias_generated: "disco-club-srl", t_type: USER_TYPE.COMPANY },
+        t_user: { t_name: "Disco Club S.R.L", t_surname: "", t_alias_generated: "disco-club-srl", t_type: USER_TYPE.COMPANY },
         b_active: true,
         b_external_event: false,
     }

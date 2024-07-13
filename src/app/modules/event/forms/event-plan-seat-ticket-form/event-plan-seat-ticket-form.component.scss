@@ -3,7 +3,9 @@
 }
 
 .not-buy{
-    background-color: #9b1717;
+    background-color: transparent !important;
+    border-color: #9b1717 !important;
+    cursor: not-allowed;
 }
 
 ::ng-deep .bg-dark-mode .event-plan-container{

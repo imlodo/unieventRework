@@ -13,8 +13,12 @@ export class DateFormatPipe implements PipeTransform {
     // Specifica il formato dell'input
     const parsedDate = moment(value, 'DD/MM/YYYY HH:mm:ss');
     if (!parsedDate.isValid()) {
+      const newParsedDate = moment(value);
+      if(newParsedDate.isValid())
+        return newParsedDate.locale("it").format(format)
+
       return 'Data non valida';
     }
-    return parsedDate.format(format);
+    return parsedDate.locale("it").format(format);
   }
 }

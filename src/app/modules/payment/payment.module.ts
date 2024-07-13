@@ -13,6 +13,8 @@ import { PaymentStep1FormComponent } from './forms/payment-step1-form/payment-st
 import { PaymentMethodStep2FormComponent } from './forms/payment-step2-payment-method-form/payment-step2-payment-method-form.component';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { PaymentStep2PaymentAddressFormComponent } from './forms/payment-step2-payment-address-form/payment-step2-payment-address-form.component';
+import { DateFormatPipe } from 'src/app/core/pipe/date-format.pipe';
+import { CoreModule } from 'src/app/core/core.module';
 
 @NgModule({
   declarations: [
@@ -30,6 +32,7 @@ import { PaymentStep2PaymentAddressFormComponent } from './forms/payment-step2-p
     RxReactiveFormsModule,
     MatStepperModule,
     MatFormFieldModule,
+    CoreModule,
     MatInputModule,
     BsDatepickerModule.forRoot(),
     PaymentRoutingModule

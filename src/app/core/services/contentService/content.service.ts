@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
 import { Observable, catchError, tap, throwError } from 'rxjs';
-import { ADD_CONTENT_BOOKED, ADD_DISCUSSION, ADD_LIKE_BY_TYPE, CHECK_CONTENT_IS_BOOKED_BY_CURRENT_USER, CHECK_CONTENT_IS_LIKED_BY_CURRENT_USER, GET_CONTENT_DISCUSSIONS, GET_MORE_CONTENT, GET_MORE_CONTENT_BASED_ON_CURRENT_USER, GET_SINGLE_CONTENT } from '../../utility/api-constant';
+import { ADD_CONTENT_BOOKED, ADD_DISCUSSION, ADD_LIKE_BY_TYPE, CHECK_CONTENT_IS_BOOKED_BY_CURRENT_USER, CHECK_CONTENT_IS_LIKED_BY_CURRENT_USER, GET_CONTENT_DISCUSSIONS, GET_MORE_CONTENT, GET_MORE_CONTENT_BASED_ON_CURRENT_USER, GET_RELATED_EVENTS, GET_SINGLE_CONTENT } from '../../utility/api-constant';
 import { MORE_CONTENT_TYPE } from '../../utility/enum-constant';
 
 @Injectable({
@@ -48,27 +48,27 @@ export class ContentService {
     order_direction: "ASC" | "DESC",
     pageNumber: number,
     pageSize: number): Observable<any> {
-      const token = this.cookieService.get('auth_token');
-      const headers = new HttpHeaders({
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${token}`
-      });
-  
-      const body = {
-        order_by,
-        order_direction,
-        pageNumber,
-        pageSize
-      };
-  
-      return this.http.post(GET_MORE_CONTENT_BASED_ON_CURRENT_USER, body, { headers })
-        .pipe(
-          tap((response: any) => {
-            return response
-          }),
-          catchError(this.handleError)
-        );
-    }
+    const token = this.cookieService.get('auth_token');
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    });
+
+    const body = {
+      order_by,
+      order_direction,
+      pageNumber,
+      pageSize
+    };
+
+    return this.http.post(GET_MORE_CONTENT_BASED_ON_CURRENT_USER, body, { headers })
+      .pipe(
+        tap((response: any) => {
+          return response
+        }),
+        catchError(this.handleError)
+      );
+  }
 
   getSingleContent(id: string): Observable<any> {
     const token = this.cookieService.get('auth_token');
@@ -80,6 +80,23 @@ export class ContentService {
     const params = new HttpParams().set("id", id);
 
     return this.http.get(GET_SINGLE_CONTENT, { headers, params }).pipe(
+      tap((response: any) => {
+        return response;
+      }),
+      catchError(this.handleError)
+    );
+  }
+
+  getRelatedEvents(n_group_id:number): Observable<any> {
+    const token = this.cookieService.get('auth_token');
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    });
+
+    const params = new HttpParams().set("n_group_id", n_group_id);
+
+    return this.http.get(GET_RELATED_EVENTS, { headers, params }).pipe(
       tap((response: any) => {
         return response;
       }),

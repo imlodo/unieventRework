@@ -27,6 +27,7 @@ export const GET_USER_PROFILE_INFO = `${BASE_URL}/api/user/getUserProfileInfo`;
 export const GET_USER_SETTINGS = `${BASE_URL}/api/user/getUserSettings`;
 export const GET_TICKET_LIST = `${BASE_URL}/api/ticket/getTicketList`;
 export const GET_SINGLE_CONTENT = `${BASE_URL}/api/content/getSingleContent`;
+export const GET_RELATED_EVENTS = `${BASE_URL}/api/content/getRelatedEvents`;
 export const GET_SUPPORT_TICKET_LIST = `${BASE_URL}/api/support/getSupportTicketList`;
 export const GET_SUPPORT_TICKET_DISCUSSION_LIST = `${BASE_URL}/api/support/getSupportTicketDiscussionList`;
 export const GET_TICKET_REVIEWS = `${BASE_URL}/api/ticket/getTicketReviews`;

@@ -3,7 +3,7 @@ import { EventListComponent } from '../event-list/event-list.component';
 import { GlobalService } from 'src/app/core/services';
 import { ActivatedRoute, Router } from '@angular/router';
 import { pluck } from 'rxjs';
-import { ROUTE_LIST, allEventList } from '../../../../core/utility/global-constant';
+import { ROUTE_LIST } from '../../../../core/utility/global-constant';
 import { EventPosterComponent } from '../event-poster/event-poster.component';
 import { ContentService } from 'src/app/core/services/contentService/content.service';
 
@@ -48,7 +48,6 @@ export class EventDetailComponent implements AfterViewInit {
   getEvent() {
     this.contentService.getSingleContent(this.n_id).subscribe(
       (response: any) => {
-        console.log(response)
         this.epc.eventData = response;
         this.getGroupEvents(response.n_group_id);
       },
@@ -64,14 +63,19 @@ export class EventDetailComponent implements AfterViewInit {
   }
 
   getGroupEvents(n_group_id: number) {
-    let groupEvents = allEventList.filter(el => el.n_group_id == n_group_id);
-    console.log(groupEvents)
-    this.elc.setEventList(groupEvents);
-    this.epc.groupEvents = groupEvents;
-    this.epc.initializeData();
+    this.contentService.getRelatedEvents(n_group_id).subscribe(
+      (response: any) => {
+        this.elc.setEventList(response);
+        this.epc.groupEvents = response;
+        this.epc.initializeData();
+      },
+      error => {
+        console.error('Errore nel recupero dei contenuti correlati:', error);
+      }
+    );
   }
 
-  goToBuyTicket(n_id: number) {
+  goToBuyTicket(n_id: string) {
     const params = this.globalService.encodeParams({
       n_id: n_id
     });

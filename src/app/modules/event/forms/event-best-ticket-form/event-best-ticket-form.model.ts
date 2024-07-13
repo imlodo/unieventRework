@@ -16,6 +16,8 @@ export class EventBestTicketFormModel {
     ticket_is_available:boolean;
     @prop()
     ticket_avilable_seat:number;
+    @prop()
+    ticket_map_id:number;
 
     constructor() {
         this.n_ticket = null;
@@ -25,5 +27,6 @@ export class EventBestTicketFormModel {
         this.ticket_person_limit = null;
         this.ticket_is_available = null;
         this.ticket_avilable_seat = null;
+        this.ticket_map_id = null;
     }
 }

@@ -47,6 +47,9 @@ export class EventBestTicketFormComponent {
   get ticket_avilable_seat() {
     return this.form.get('ticket_avilable_seat').value;
   }
+  get ticket_map_id(){
+    return this.form.get('ticket_avilable_seat').value;
+  }
 
   set n_id_ticket(n_id_ticket: number) {
     this.form.get("n_id_ticket").setValue(n_id_ticket);
@@ -68,6 +71,9 @@ export class EventBestTicketFormComponent {
   }
   set ticket_avilable_seat(ticket_avilable_seat: number) {
     this.form.get("ticket_avilable_seat").setValue(ticket_avilable_seat);
+  }
+  set ticket_map_id(ticket_map_id:number){
+    this.form.get("ticket_map_id").setValue(ticket_map_id);
   }
 
   isValid(): boolean {
@@ -131,10 +137,10 @@ export class EventBestTicketFormComponent {
     this.formRows.controls.forEach(el => {
       if(el.get("n_ticket").value > 0){
         let eventBuyTicketRequest: EventBuyTicketRequest = {
-          n_event_id: -1,
+          n_event_id: "-1",
           n_object_id: el.get("n_id_ticket").value,
           n_quantity: el.get("n_ticket").value,
-          n_id_map: -1
+          n_id_map: el.get("ticket_map_id").value
         }
         eventBuyTicketRequestList.push(eventBuyTicketRequest);
       }

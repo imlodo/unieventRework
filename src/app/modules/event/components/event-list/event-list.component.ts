@@ -10,6 +10,7 @@ import { startOfDay, isSameDay, isSameMonth } from 'date-fns';
 import { CalendarEvent, CalendarEventAction, CalendarView, collapseAnimation } from 'angular-calendar';
 import { registerLocaleData } from '@angular/common';
 import localeIt from '@angular/common/locales/it';
+import moment from 'moment';
 const displayNameMap = new Map([[Breakpoints.XSmall, 'xs'], [Breakpoints.Small, 'sm'], [Breakpoints.Medium, 'md'], [Breakpoints.Large, 'lg'], [Breakpoints.XLarge, 'xl']]);
 registerLocaleData(localeIt);
 
@@ -20,7 +21,7 @@ registerLocaleData(localeIt);
   animations: [collapseAnimation]
 })
 export class EventListComponent implements AfterViewInit {
-  @Output() onGoToBuyTicket: EventEmitter<number> = new EventEmitter<number>();
+  @Output() onGoToBuyTicket: EventEmitter<string> = new EventEmitter<string>();
   @ViewChild(ModalComponent) mc: ModalComponent;
   eventList: Array<Event>;
   actions: CalendarEventAction[] = [
@@ -87,8 +88,8 @@ export class EventListComponent implements AfterViewInit {
     return eventMinPrice;
   }
 
-  goToBuyTicket(n_id: number) {
-    this.onGoToBuyTicket.emit(n_id);
+  goToBuyTicket(id: string) {
+    this.onGoToBuyTicket.emit(id);
   }
 
   scrollToBottom() {
@@ -122,10 +123,10 @@ export class EventListComponent implements AfterViewInit {
     this.eventList.forEach(elEvent => {
       let tmpColor = this.getEventTicketAvailability(elEvent);
       let calendarEvent: CalendarEvent = {
-        id: elEvent.n_id,
-        title: elEvent.t_title,
-        start: startOfDay(elEvent.t_event_date),
-        end: startOfDay(elEvent.t_event_date),
+        id: elEvent.id,
+        title: elEvent.t_caption,
+        start: startOfDay(moment(elEvent.t_event_date).toDate()),
+        end: startOfDay(moment(elEvent.t_event_date).toDate()),
         color: tmpColor,
         meta: { eventData: elEvent },
       };
@@ -139,23 +140,23 @@ export class EventListComponent implements AfterViewInit {
   }
 
   increment() {
-    this.viewDate = new Date(this.viewDate.toDateString());
+    this.viewDate = new Date(this.viewDate);
     this.viewDate.setMonth(this.viewDate.getMonth() + 1);
     this.closeOpenMonthViewDay();
     this.refresh.next();
   }
 
   decrement() {
-    this.viewDate = new Date(this.viewDate.toDateString());
+    this.viewDate = new Date(this.viewDate);
     this.viewDate.setMonth(this.viewDate.getMonth() - 1);
     this.closeOpenMonthViewDay();
     this.refresh.next();
   }
 
   dayClicked({ date, events }: { date: Date; events: CalendarEvent[] }): void {
-    if (isSameMonth(date, this.viewDate)) {
+    if (isSameMonth(new Date(date), new Date(this.viewDate))) {
       if (
-        (isSameDay(this.viewDate, date) && this.activeDayIsOpen === true) ||
+        (isSameDay(new Date(this.viewDate), new Date(date)) && this.activeDayIsOpen === true) ||
         events.length === 0
       ) {
         this.activeDayIsOpen = false;

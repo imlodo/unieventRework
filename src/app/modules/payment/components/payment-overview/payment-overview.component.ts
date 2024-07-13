@@ -61,6 +61,8 @@ export class PaymentOverviewComponent {
             this.eventTicketList = decode.eventTicketList;
             this.eventData = decode.eventData;
             this.totalTicket = this.eventTicketList.length;
+            console.log(this.eventTicketList)
+
             this.getTotalTicketPrice();
           } else {
             this.router.navigate(['404']);
@@ -93,13 +95,9 @@ export class PaymentOverviewComponent {
 
   goBack(){
     const params = this.globalService.encodeParams({
-      n_id:this.eventData.n_id
+      n_id:this.eventData.id
     });
     this.router.navigate([ROUTE_LIST.event.ticket.list, params]);
-  }
-
-  getDate(){
-    return new Date(this.eventData.t_event_date).toLocaleDateString('it-it', { weekday:"long", year:"numeric", month:"long",day:"numeric", hour:"numeric", minute:"numeric"});
   }
 
   updateTimeout(){
@@ -118,7 +116,7 @@ export class PaymentOverviewComponent {
     } else{
       this.isAvailableTimeout = false;
       const params = this.globalService.encodeParams({
-        n_id:this.eventData.n_id
+        n_id:this.eventData.id
       });
       clearInterval(this.interval);
       this.router.navigate([ROUTE_LIST.event.ticket.list, params]);
@@ -152,7 +150,7 @@ export class PaymentOverviewComponent {
     const params = this.globalService.encodeParams({
       buyMapObjectList: this.eventTicketList,
       applyedCoupon:this.applyedCoupon,
-      idEvent: this.eventData.n_id
+      idEvent: this.eventData.id
     });
     this.router.navigate([ROUTE_LIST.payment.checkout, params]);
   }

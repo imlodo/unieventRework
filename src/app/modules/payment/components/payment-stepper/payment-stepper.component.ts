@@ -27,7 +27,7 @@ export class PaymentStepperComponent implements AfterViewInit {
   applyedCoupon: { code: string, sconto: number }
   commissionsOfService: number = 3.55;
   contrassegnoFee: number = 4.99;
-  idEvent: number;
+  idEvent: string;
   isShowCreditCard: boolean = false;
   isShowAddAddress: boolean = false;
   addressList = [];
@@ -165,7 +165,7 @@ export class PaymentStepperComponent implements AfterViewInit {
 
   getTotalPrice() {
     let total = 0;
-    let eventMapList = allEventList.filter(event => event.n_id === this.idEvent)[0]?.t_map_list;
+    let eventMapList = allEventList.filter(event => event.id === this.idEvent)[0]?.t_map_list;
     this.eventTicketList?.forEach(el => {
       let filteredMap = eventMapList.filter(map => {
         return map.t_map_id == el.n_id_map;

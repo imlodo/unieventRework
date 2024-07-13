@@ -66,15 +66,16 @@ export class EventPlanSeatTicketFormComponent implements AfterViewInit {
 
   createSeatMapByMapList() {
     this.mapList.forEach(el => {
-      let row = Array(this.getNumOfRowAndColByTotalSeat(el.t_map_total_seat)).fill(0).map((x, i) => i);
-      let column = row;
+      let totalSeat = 0;
+      el.t_object_maps.forEach(obj=> totalSeat+=obj.t_seat_list.length);
       let seatMap: ObjectMap[][] | any[][] = [];
-      row.forEach(rowIndex => {
+      console.log(el)
+      for (let rowIndex = 0; rowIndex < el.t_map_num_rows; rowIndex++) {
         seatMap[rowIndex] = [];
-        column.forEach(columnIndex => {
+        for (let columnIndex = 0; columnIndex < el.t_map_num_column; columnIndex++) {
           seatMap[rowIndex][columnIndex] = [];
-        });
-      })
+        }
+      }
       el.t_object_maps.forEach(object => {
         if (seatMap[object.n_obj_map_cord_y] && seatMap[object.n_obj_map_cord_y][object.n_obj_map_cord_x])
           seatMap[object.n_obj_map_cord_y][object.n_obj_map_cord_x] = object;
@@ -135,15 +136,6 @@ export class EventPlanSeatTicketFormComponent implements AfterViewInit {
     return objectMapDraw;
   }*/
 
-  getNumOfRowAndColByTotalSeat(maxSeat: number) {
-    let num = 1;
-    while (true) {
-      if ((num * num) >= maxSeat)
-        return num;
-      num += 1;
-    }
-  }
-
 
   buyTicket(object: ObjectMap): void {
     //Verificare se l'utente corrente può acquistare tale biglietto perchè c'è un campo n_limit_buy_for_person (vedi quanti biglietti ha acquistato fin ora)
@@ -158,7 +150,7 @@ export class EventPlanSeatTicketFormComponent implements AfterViewInit {
       dialogRef.afterClosed().subscribe(result => {
         if (result) {
           let eventBuyTicketRequest: EventBuyTicketRequest = {
-            n_event_id: -1,
+            n_event_id: "-1",
             n_object_id: object.n_id,
             n_quantity: 1,
             n_id_map: object.n_id_map

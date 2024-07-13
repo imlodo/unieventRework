@@ -11,15 +11,15 @@
             <p class="d-flex m-0 align-items-center justify-content-center"><i
                     class="gg-layout-list margin-right-5"></i> Elenco date</p>
         </button>
-        <button type="button" class="btn btn-action-color" (click)="isFilter=!isFilter;">
+        <!-- <button type="button" class="btn btn-action-color" (click)="isFilter=!isFilter;">
             <p class="d-flex m-0 align-items-center justify-content-center"><i
                     class="gg-layout-list margin-right-5"></i> Filtri</p>
-        </button>
+        </button> -->
     </div>
 </div>
-<div *ngIf="isFilter">
+<!--<div *ngIf="isFilter">
     <unievent-event-filter-form></unievent-event-filter-form>
-</div>
+</div>-->
 <div *ngIf="!isCalendar" class="m-1 row" id="eventCalendarList">
     <div class="col-12 my-2" *ngFor="let el of eventList">
         <div class="d-flex justify-content-between align-items-center">
@@ -27,13 +27,10 @@
                 <div [ngClass]="currentScreenSize != 'xl' && currentScreenSize != 'lg' ? 'col-12' : 'd-flex' ">
                     <div [ngClass]="currentScreenSize != 'xl' && currentScreenSize != 'lg' ? 'col-xs-12 border-bottom' : 'border-end p-3' "
                         class=" text-center d-grid align-items-center justify-content-center p-2"
-                        style="justify-items: center; min-width: 110px;">
-                        <h1 class="primary-event-color m-0">{{el.t_event_date.toLocaleDateString('it-it',
-                            {day:"numeric"})}}</h1>
-                        <h4 class="m-0">{{el.t_event_date.toLocaleDateString('it-it', {month:"short",
-                            year:"numeric"})}}</h4>
-                        <h5 class="m-0">{{el.t_event_date.toLocaleDateString('it-it', {weekday:"short", hour:
-                            '2-digit', minute: '2-digit'})}}</h5>
+                        style="justify-items: center; min-width: 150px;">
+                        <h1 class="primary-event-color m-0">{{ el.t_event_date | dateFormat:'DD' }}</h1>
+                        <h4 class="m-0">{{el.t_event_date | dateFormat:"MMMM YYYY"}}</h4>
+                        <h5 class="m-0">{{el.t_event_date | dateFormat:"dddd HH:mm"}}</h5>
                     </div>
                     <div
                         [ngClass]="currentScreenSize != 'xl' && currentScreenSize != 'lg' ? 'col-12 text-center p-0' : 'd-flex col justify-content-between p-2'">
@@ -41,6 +38,7 @@
                             [ngClass]="currentScreenSize != 'xl' && currentScreenSize != 'lg' ? 'col-12 border-bottom py-2' : 'd-grid text-start p-2'">
                             <h1 class="m-0">{{el.t_title}}</h1>
                             <h3 class="m-0">{{el.t_location.t_location_name}}</h3>
+                            <h5 class="m-0">{{el.t_location.t_address}}, {{el.t_location.t_city}} - {{el.t_location.t_cap}} ({{el.t_location.t_province}}), {{el.t_location.t_state}}</h5>
                             <h5 class="m-0">{{el.t_caption}}</h5>
                         </div>
                         <div
@@ -57,7 +55,7 @@
                             </div>
                             <div class="h6 m-0 pb-2">da {{getMinPriceForEvent(el)}} €</div>
                             <button style="background-color:rgb(255 87 37) !important; color:white" class="btn rounded-0"
-                                (click)="goToBuyTicket(el.n_id)">Acquista</button>
+                                (click)="goToBuyTicket(el.id)">Acquista</button>
                         </div>
                     </div>
                 </div>
@@ -69,8 +67,7 @@
     <div class="d-flex justify-content-center align-items-center">
         <span class="pointer" (click)="decrement()" style="margin-top: 3px; margin-right: 3px;"><i
                 class="gg-chevron-left"></i></span>
-        <h2 class="m-0" style="margin-top: 3px !important;">{{viewDate.toLocaleDateString('it-it', {month:"long",
-            year:"numeric"})}}</h2>
+        <h2 class="m-0" style="margin-top: 3px !important;">{{viewDate|dateFormat:"MMMM YYYY"}}</h2>
         <span class="pointer" (click)="increment()" style="margin-top: 3px; margin-left: 3px;"><i
                 class="gg-chevron-right"></i></span>
     </div>
@@ -86,7 +83,7 @@
             <span class="fw-light h3 col-12">{{ day.date | calendarDate:'monthViewDayNumber':locale }}</span>
             <span class="col-12" *ngIf="day.events.length > 0">{{day.events[0].title|uppercase}}</span>
             <span style="font-size:0.75rem" class="col-12" *ngIf="day.events.length > 0">{{day.events[0].meta.eventData.t_location.t_location_name}}</span>
-            <span style="font-size:0.75rem" class="col-12" *ngIf="day.events.length > 0">{{day.events[0].meta.eventData.t_event_date?.toLocaleDateString('it-it',{weekday:"short",hour:'2-digit', minute: '2-digit'})}}</span>
+            <span style="font-size:0.75rem" class="col-12" *ngIf="day.events.length > 0">{{day.events[0].meta.eventData.t_event_date|dateFormat:"dddd HH:mm"}}</span>
             <span style="font-size:0.75rem" class="col-12 primary-event-color" *ngIf="day.events.length > 0">da {{getMinPriceForEvent(day.events[0].meta.eventData)}} €</span>
         </div>
         <div class="cal-cell-top" *ngIf="currentScreenSize != 'xl' && currentScreenSize != 'lg'">
@@ -118,14 +115,9 @@
                         class=" text-center d-grid align-items-center justify-content-center p-2"
                         style="justify-items: center; min-width: 110px;">
                         <h1 class="primary-event-color m-0">
-                            {{event.meta.eventData.t_event_date?.toLocaleDateString('it-it',
-                            {day:"numeric"})}}</h1>
-                        <h4 class="m-0">{{event.meta.eventData.t_event_date?.toLocaleDateString('it-it',
-                            {month:"short",
-                            year:"numeric"})}}</h4>
-                        <h5 class="m-0">{{event.meta.eventData.t_event_date?.toLocaleDateString('it-it',
-                            {weekday:"short", hour:
-                            '2-digit', minute: '2-digit'})}}</h5>
+                            {{event.meta.eventData.t_event_date|dateFormat:"DD"}}</h1>
+                        <h4 class="m-0">{{event.meta.eventData.t_event_date|dateFormat:"MMMM YYYY"}}</h4>
+                        <h5 class="m-0">{{event.meta.eventData.t_event_date|dateFormat:"dddd HH:mm"}}</h5>
                     </div>
                     <div
                         [ngClass]="currentScreenSize != 'xl' && currentScreenSize != 'lg' ? 'col-12 text-center p-0' : 'd-flex col justify-content-between p-2'">
