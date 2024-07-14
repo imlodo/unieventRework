@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
 import { Observable, catchError, tap, throwError } from 'rxjs';
-import { ADD_CONTENT_BOOKED, ADD_DISCUSSION, ADD_LIKE_BY_TYPE, CHECK_CONTENT_IS_BOOKED_BY_CURRENT_USER, CHECK_CONTENT_IS_LIKED_BY_CURRENT_USER, GET_CONTENT_DISCUSSIONS, GET_MORE_CONTENT, GET_MORE_CONTENT_BASED_ON_CURRENT_USER, GET_RELATED_EVENTS, GET_SINGLE_CONTENT } from '../../utility/api-constant';
+import { ADD_CONTENT_BOOKED, ADD_DISCUSSION, ADD_LIKE_BY_TYPE, CHECK_CONTENT_IS_BOOKED_BY_CURRENT_USER, CHECK_CONTENT_IS_LIKED_BY_CURRENT_USER, GET_CONTENT_DISCUSSIONS, GET_COUPON_DISCOUNT_PERCENTAGE, GET_MORE_CONTENT, GET_MORE_CONTENT_BASED_ON_CURRENT_USER, GET_RELATED_EVENTS, GET_SINGLE_CONTENT } from '../../utility/api-constant';
 import { MORE_CONTENT_TYPE } from '../../utility/enum-constant';
 
 @Injectable({
@@ -87,7 +87,7 @@ export class ContentService {
     );
   }
 
-  getRelatedEvents(n_group_id:number): Observable<any> {
+  getRelatedEvents(n_group_id: number): Observable<any> {
     const token = this.cookieService.get('auth_token');
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
@@ -177,7 +177,7 @@ export class ContentService {
       );
   }
 
-  getContentDiscussions(content_id: string) {
+  getContentDiscussions(content_id: string): Observable<any> {
     const token = this.cookieService.get('auth_token');
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
@@ -194,7 +194,7 @@ export class ContentService {
     );
   }
 
-  addContentDiscussion(content_id: string, parent_discussion_id: string, body: string, t_alias_generated_reply: string) {
+  addContentDiscussion(content_id: string, parent_discussion_id: string, body: string, t_alias_generated_reply: string): Observable<any> {
     const token = this.cookieService.get('auth_token');
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
@@ -210,6 +210,27 @@ export class ContentService {
         }),
         catchError(this.handleError)
       );
+  }
+
+  getCouponDiscountPercentage(event_id: string, coupon_code: string): Observable<any> {
+    const token = this.cookieService.get('auth_token');
+    const buyToken = this.cookieService.get('buy_token');
+
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`,
+      'Buy-Token': `Bearer ${buyToken}`,
+    });
+
+    const params = new HttpParams().set('event_id', event_id).set('coupon_code', coupon_code);
+
+    return this.http.get(GET_COUPON_DISCOUNT_PERCENTAGE, { headers, params }).pipe(
+      tap((response: any) => {
+        return response;
+      }),
+      catchError(this.handleError)
+    );
+
   }
 
   private handleError(error: any) {

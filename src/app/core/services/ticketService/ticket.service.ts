@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
 import { Observable, catchError, tap, throwError } from 'rxjs';
-import { ADD_TICKET_REVIEW, GET_TICKET_DETAIL, GET_TICKET_LIST, GET_TICKET_REVIEWS } from '../../utility/api-constant';
+import { ADD_TICKET_REVIEW, GET_TICKET_DETAIL, GET_TICKET_LIST, GET_TICKET_REVIEWS, PURCHASE_TICKET } from '../../utility/api-constant';
 
 @Injectable({
   providedIn: 'root'
@@ -78,6 +78,25 @@ export class TicketService {
       .pipe(
         tap((response: any) => {
           return response;
+        }),
+        catchError(this.handleError)
+      );
+
+  }
+  
+  purchase(event_id:string, card_id:string, address_id:string, coupon_id:string, eventTicketList:any): Observable<any> {
+    const token = this.cookieService.get('auth_token');
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    });
+
+    const body = {event_id, card_id, address_id, coupon_id, eventTicketList} 
+
+    return this.http.post(PURCHASE_TICKET, body, { headers })
+      .pipe(
+        tap((response: any) => {
+          return response
         }),
         catchError(this.handleError)
       );

@@ -1,10 +1,9 @@
 import { AfterViewInit, ChangeDetectorRef, Component, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { pluck } from 'rxjs';
-import { GlobalService } from '../../../../core/services';
+import { AuthenticationService, GlobalService, UserService } from '../../../../core/services';
 import { FormBuilder, Validators } from '@angular/forms';
-import { allEventList, getTicketNameByType } from 'src/app/core/utility/global-constant';
-import { ObjectMap } from 'src/app/core/models/objectMap';
+import { ROUTE_LIST, getTicketNameByType } from 'src/app/core/utility/global-constant';
 import { PaymentStep1FormComponent } from '../../forms/payment-step1-form/payment-step1-form.component';
 import { PaymentMethodStep2FormComponent } from '../../forms/payment-step2-payment-method-form/payment-step2-payment-method-form.component';
 import { defineLocale } from 'ngx-bootstrap/chronos';
@@ -12,6 +11,9 @@ import { itLocale } from 'ngx-bootstrap/locale';
 import { BsLocaleService } from 'ngx-bootstrap/datepicker';
 import moment from 'moment';
 import { ToastrService } from 'ngx-toastr';
+import { MatStepper } from '@angular/material/stepper';
+import { TicketService } from 'src/app/core/services/ticketService/ticket.service';
+import { CookieService } from 'ngx-cookie-service';
 defineLocale('it', itLocale);
 
 @Component({
@@ -22,9 +24,10 @@ defineLocale('it', itLocale);
 export class PaymentStepperComponent implements AfterViewInit {
   @ViewChild(PaymentStep1FormComponent) paymentStep1FormComponent!: PaymentStep1FormComponent;
   @ViewChild(PaymentMethodStep2FormComponent) paymentMethodStep2FormComponent!: PaymentMethodStep2FormComponent;
+  @ViewChild('stepper') stepper!: MatStepper;
   eventTicketList: Array<any>;
   minExpiryDate: Date;
-  applyedCoupon: { code: string, sconto: number }
+  applyedCoupon: { coupon_id: string, code: string, discount: number }
   commissionsOfService: number = 3.55;
   contrassegnoFee: number = 4.99;
   idEvent: string;
@@ -32,20 +35,17 @@ export class PaymentStepperComponent implements AfterViewInit {
   isShowAddAddress: boolean = false;
   addressList = [];
   selectedAddressIndex: number;
-  selectedCardIndex: number = 0;
+  selectedCardIndex: number;
   isShowCvv: Array<boolean> = [false];
   isShowBack: Array<boolean> = [false];
-  cardList = [{cardName:"Antonio Lodato", cardNumber:"4830636459388384", expiryDate: moment().add(2,'months').toDate().toDateString(), cvv: "341"}];
+  cardList = [];
   creditCard: { cardName: string, cardNumber: string, expiryDate: string, cvv: string } = { cardName: '', cardNumber: '', expiryDate: '', cvv: '' };
   activeStepIndex: number = 0;
   redirectCountdown: number = 10;
-  /* 
-    Se non vuoi far apparire la carta inizialmente 
-    cardList = [];
-    selectedCardIndex: number;
-    isShowCvv: Array<boolean> = [];
-    isShowBack: Array<boolean> = [];
-  */
+  totalPrice: number = 0;
+  shippingFee: number = 0;
+  isPaymentError: boolean = false;
+  isTokenError: boolean = false;
 
   firstFormGroup = this._formBuilder.group({
     firstCtrl: ['', Validators.required],
@@ -54,9 +54,30 @@ export class PaymentStepperComponent implements AfterViewInit {
     secondCtrl: ['', Validators.required],
   });
 
-  constructor(private localeService: BsLocaleService, private router: Router, private toastr: ToastrService, private cdr: ChangeDetectorRef, private globalService: GlobalService, private route: ActivatedRoute, private _formBuilder: FormBuilder) {
+  constructor(private localeService: BsLocaleService, private router: Router, private toastr: ToastrService, private cdr: ChangeDetectorRef, private ticketService: TicketService, private cookieService: CookieService,
+    private globalService: GlobalService, private route: ActivatedRoute, private _formBuilder: FormBuilder, private userService: UserService, private authenticationService: AuthenticationService) {
     this.localeService.use('it');
     this.minExpiryDate = moment().add(1, 'month').toDate();
+    this.userService.getUserCreditCards().subscribe(
+      response => {
+        this.cardList = response;
+        if (this.cardList.length > 0)
+          this.selectedCardIndex = 0;
+      },
+      error => {
+        this.toastr.error(error.error);
+      }
+    );
+    this.userService.getUserAddressList().subscribe(
+      response => {
+        this.addressList = response;
+        if (this.addressList.length > 0)
+          this.selectedAddressIndex = 0;
+      },
+      error => {
+        this.toastr.error(error.error);
+      }
+    );
   }
 
   ngAfterViewInit(): void {
@@ -73,16 +94,73 @@ export class PaymentStepperComponent implements AfterViewInit {
           this.applyedCoupon = decode.applyedCoupon;
           this.eventTicketList = decode.buyMapObjectList;
           this.idEvent = decode.idEvent;
+          this.totalPrice = this.getTotalPrice();
+          this.shippingFee = this.getShippingFee();
+          this.eventTicketList.forEach(el => {
+            el.objectMapType = this.getTypeByEvent(el);
+          })
         }
       }
       );
   }
 
   setActiveStep(index: number) {
-    this.activeStepIndex = index;
-    if (index === 3) {
-      this.startRedirectCountdown();
+    this.verifyBuyToken();
+
+    if (!this.isTokenError) {
+      if (index < this.activeStepIndex) {
+        this.stepper.previous();
+        this.activeStepIndex = index;
+        return;
+      }
+
+      if (index == 2) {
+        if (this.paymentMethodStep2FormComponent.contrassegnoSelected === "Carta di credito" && this.selectedCardIndex === undefined) {
+          this.toastr.clear();
+          this.toastr.error("Devi selezionare almeno una carta per poter proseguire")
+          return;
+        }
+        if (this.selectedAddressIndex === undefined) {
+          this.toastr.clear();
+          this.toastr.error("Devi selezionare almeno un indirizzo per poter proseguire")
+          return;
+        }
+      }
+
+      if (index == 3) {
+        //card_id, coupon_id, addressId
+        this.ticketService.purchase(this.idEvent, this.applyedCoupon ? this.applyedCoupon.coupon_id : null, this.addressList[this.selectedAddressIndex].address_id, this.cardList[this.selectedCardIndex].card_id, this.eventTicketList).subscribe(
+          response => {
+            this.cookieService.delete("buy_token")
+            this.startRedirectCountdown();
+          },
+          error => {
+            this.cookieService.delete("buy_token")
+            this.isPaymentError = true;
+            this.startRedirectCountdown();
+          }
+        );
+      }
+
+      this.activeStepIndex = index;
+      this.stepper.next();
     }
+
+  }
+
+  verifyBuyToken() {
+    this.authenticationService.getBuyTokenDetail().subscribe(
+      (response: any) => {
+      },
+      error => {
+        this.isTokenError = true;
+        this.toastr.clear();
+        this.toastr.error('Acquisto non valido, controlla i dati e riprova!');
+        this.cookieService.delete("buy_token");
+        window.history.back();
+      }
+    );
+
   }
 
   startRedirectCountdown() {
@@ -90,29 +168,45 @@ export class PaymentStepperComponent implements AfterViewInit {
       this.redirectCountdown--;
       if (this.redirectCountdown === 0) {
         clearInterval(timer);
-        this.router.navigate(['/']);
+        this.router.navigate([ROUTE_LIST.tickets]);
       }
     }, 1000);
   }
 
-  addAddress(address:{ firstName: string, lastName: string, street: string, city: string, state: string, zip: string }){
-    this.addressList.push(address);
-    this.isShowAddAddress = false;
-    this.selectedAddressIndex = 0;
+  addAddress(address: { firstName: string, lastName: string, street: string, city: string, state: string, zip: string }) {
+    this.userService.addAddress(address.firstName, address.lastName, address.street, address.city, address.state, address.zip).subscribe(
+      response => {
+        this.addressList.push(address);
+        this.isShowAddAddress = false;
+        this.selectedAddressIndex = 0;
+        this.toastr.clear();
+        this.toastr.success(null, "Indirizzo aggiunto con successo", { progressBar: true });
+      },
+      error => {
+        this.toastr.error(error.error);
+      }
+    );
   }
 
   addCreditCard() {
     if (this.isValidCreditCard(this.creditCard.cardNumber)) {
       if (this.isValidExpiryDate(this.creditCard.expiryDate)) {
         if (/^\d{3}$/.test(this.creditCard.cvv)) {
-          this.cardList.push(this.creditCard);
-          this.creditCard = { cardName: '', cardNumber: '', expiryDate: '', cvv: '' };
-          this.isShowCreditCard = false;
-          this.selectedCardIndex = 0;
-          this.toastr.clear();
-          this.toastr.success(null, "Carta di credito aggiunta", { progressBar: true });
-          this.isShowCvv.push(false);
-          this.isShowBack.push(false);
+          this.userService.addUserCard(this.creditCard.cardName, this.creditCard.cardNumber, this.creditCard.expiryDate, this.creditCard.cvv).subscribe(
+            response => {
+              this.cardList.push(this.creditCard);
+              this.creditCard = { cardName: '', cardNumber: '', expiryDate: '', cvv: '' };
+              this.isShowCreditCard = false;
+              this.selectedCardIndex = 0;
+              this.toastr.clear();
+              this.toastr.success(null, "Carta di credito aggiunta", { progressBar: true });
+              this.isShowCvv.push(false);
+              this.isShowBack.push(false);
+            },
+            error => {
+              this.toastr.error(error.error);
+            }
+          );
         } else {
           this.toastr.clear();
           this.toastr.error(null, "CVV non valido (deve essere di 3 cifre)", { progressBar: true });
@@ -149,7 +243,6 @@ export class PaymentStepperComponent implements AfterViewInit {
   }
 
   isValidExpiryDate(expiryDate: string): boolean {
-    console.log(expiryDate)
     if (!expiryDate) {
       return false;
     }
@@ -165,15 +258,8 @@ export class PaymentStepperComponent implements AfterViewInit {
 
   getTotalPrice() {
     let total = 0;
-    let eventMapList = allEventList.filter(event => event.id === this.idEvent)[0]?.t_map_list;
     this.eventTicketList?.forEach(el => {
-      let filteredMap = eventMapList.filter(map => {
-        return map.t_map_id == el.n_id_map;
-      });
-      let objectMapFiltered: ObjectMap = filteredMap[0].t_object_maps.filter(objectMap => {
-        return objectMap.n_id == el.n_id;
-      })[0];
-      total += objectMapFiltered.n_object_price;
+      total += el.n_object_price;
     });
     if (this.paymentMethodStep2FormComponent && this.paymentMethodStep2FormComponent.contrassegnoSelected === "Contrassegno") {
       total += this.contrassegnoFee;
@@ -202,11 +288,7 @@ export class PaymentStepperComponent implements AfterViewInit {
     }
   }
 
-  getExpiryDate(expiryDate: string){
-    return moment(expiryDate).format("MM/YYYY");
-  }
-
-  getCvv(card:{ cardName: string, cardNumber: string, expiryDate: string, cvv: string }){
+  getCvv(card: { cardName: string, cardNumber: string, expiryDate: string, cvv: string }) {
     return card.cvv;
   }
 

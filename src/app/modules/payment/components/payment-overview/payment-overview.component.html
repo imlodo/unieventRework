@@ -85,11 +85,11 @@
                     </div>
                     <div *ngIf="isCoupon" class="d-flex justify-content-between">
                         <h5>Coupon applicato: </h5>
-                        <h5>{{applyedCoupon.code}}</h5>
+                        <h5>{{applyedCoupon.coupon_code}}</h5>
                     </div>
                     <div *ngIf="isCoupon" class="d-flex justify-content-between">
                         <h5>Sconto applicato: </h5>
-                        <h5>{{applyedCoupon.sconto}}%</h5>
+                        <h5>{{applyedCoupon.discount}}%</h5>
                     </div>
                     <h5 class="text-secondary">incl. IVA, più costi di consegna/servizio</h5>
                     <button class="my-2 btn btn-color-no-hover text-white rounded-1 w-100"
@@ -108,8 +108,7 @@
             </div>
             <div class="d-flex my-2">
                 <span class="text-success" *ngIf="isCoupon && successApplyCoupon">Coupon applicato con successo</span>
-                <span class="text-danger" *ngIf="!isCoupon && getCouponValue() != '' && successApplyCoupon==false">Coupon
-                    non esistente</span>
+                <span class="text-danger" *ngIf="!isCoupon && getCouponValue() != '' && successApplyCoupon==false">Coupon non esistente</span>
             </div>
         </div>
     </div>

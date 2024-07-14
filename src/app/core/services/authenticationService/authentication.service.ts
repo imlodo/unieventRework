@@ -83,7 +83,8 @@ export class AuthenticationService {
     const token = this.cookieService.get('buy_token');
 
     if (!token) {
-      return of(false);
+      this.cookieService.delete("buy_token")
+      return this.handleError("Error")
     }
 
     const headers = new HttpHeaders({
@@ -99,7 +100,7 @@ export class AuthenticationService {
       ),
         catchError(error => {
           this.cookieService.delete("buy_token")
-          return of(false);
+          return this.handleError(error);
         } )
       );
   }

@@ -8,6 +8,7 @@ import { Event } from 'src/app/core/models/event';
 import { CookieService } from 'ngx-cookie-service';
 import { ToastrService } from 'ngx-toastr';
 import moment from 'moment';
+import { ContentService } from 'src/app/core/services/contentService/content.service';
 
 @Component({
   selector: 'unievent-payment-overview',
@@ -29,7 +30,7 @@ export class PaymentOverviewComponent {
   timeoutDate: Date;
   serviceCommission: string;
   dynamicClass: string;
-  applyedCoupon: { code: string, sconto: number } = { code: "TEST2023", sconto: 30 }
+  applyedCoupon: { coupon_id:string, coupon_code: string, discount: number };
   successApplyCoupon: boolean = null;
   isCoupon: boolean = false;
   interval: any;
@@ -39,14 +40,15 @@ export class PaymentOverviewComponent {
   @ViewChild('seconds', { static: true }) seconds: ElementRef;
   @ViewChild('couponCode', { static: true }) couponCode: ElementRef;
 
-  constructor(private cdr: ChangeDetectorRef, private globalService: GlobalService, private cookieService: CookieService,
+  constructor(private cdr: ChangeDetectorRef, private globalService: GlobalService, private cookieService: CookieService, private contentService: ContentService,
     private route: ActivatedRoute, private router: Router, private authenticationService: AuthenticationService, private toastr: ToastrService) {
+
   }
 
   ngAfterViewInit(): void {
     this.decodeParams();
     this.interval = setInterval(() => {
-      this.timeoutDate.setSeconds(this.timeoutDate.getSeconds() - 1);
+      this.timeoutDate.setSeconds(this.timeoutDate.getSeconds());
       this.updateTimeout();
     }, 1000);
     this.cdr.detectChanges();
@@ -63,12 +65,13 @@ export class PaymentOverviewComponent {
             this.eventData = decode.eventData;
             this.totalTicket = this.eventTicketList.length;
             const buyToken = this.cookieService.get("buy_token");
+            const cookieCurrentUser = this.cookieService.get('current_user');
             if (buyToken) {
               this.authenticationService.getBuyTokenDetail().subscribe(
                 (response: any) => {
                   if (response.t_event_ticket_list[0].n_id !== this.eventTicketList[0].n_id) {
-                    window.history.back();
                     this.cookieService.delete("buy_token")
+                    this.generateNewBuyToken(cookieCurrentUser);
                   }
                   this.timeoutDate = moment(response.exp).add(2, 'hours').toDate();
                   this.getTotalTicketPrice();
@@ -79,18 +82,8 @@ export class PaymentOverviewComponent {
                 }
               );
             } else {
-              const cookieCurrentUser = this.cookieService.get('current_user');
               if (cookieCurrentUser) {
-                this.authenticationService.generateTokenForBuy(JSON.parse(cookieCurrentUser), this.eventTicketList).subscribe(
-                  (response: any) => {
-                    this.timeoutDate = moment().add(15,"minutes").toDate();
-                    this.getTotalTicketPrice();
-                  },
-                  error => {
-                    this.toastr.clear();
-                    this.toastr.error('Errore nel recupero dei biglietti');
-                  }
-                );
+                this.generateNewBuyToken(cookieCurrentUser);
               } else {
                 this.cookieService.delete("buy_token");
                 window.history.back();
@@ -103,6 +96,19 @@ export class PaymentOverviewComponent {
     } catch (error) {
       this.router.navigate(['404']);
     }
+  }
+
+  generateNewBuyToken(cookieCurrentUser: any) {
+    this.authenticationService.generateTokenForBuy(JSON.parse(cookieCurrentUser), this.eventTicketList).subscribe(
+      (response: any) => {
+        this.timeoutDate = moment().add(15, "minutes").toDate();
+        this.getTotalTicketPrice();
+      },
+      error => {
+        this.toastr.clear();
+        this.toastr.error('Errore nel recupero dei biglietti');
+      }
+    );
   }
 
   getTotalTicketPrice() {
@@ -139,7 +145,6 @@ export class PaymentOverviewComponent {
     let minutes = 0;
     let seconds = 0;
     if (this.timeoutDate > currentDate) {
-      console.log(this.timeoutDate, currentDate)
       this.isAvailableTimeout = true;
       seconds = Math.abs(this.timeoutDate.getTime() - currentDate.getTime()) / 1000;
       days = Math.trunc(seconds / (60 * 60 * 24));
@@ -168,16 +173,22 @@ export class PaymentOverviewComponent {
 
   applyCoupon() {
     let couponCodeStr = this.couponCode.nativeElement.value;
-    if (couponCodeStr === this.applyedCoupon.code) {
-      let ttwc = Number(this.totalTicketPrice.replace(",", "."));
-      this.newCouponPrice = (ttwc - (ttwc / 100 * this.applyedCoupon.sconto)).toFixed(2).replace(".", ",");
-      this.isCoupon = true;
-      this.successApplyCoupon = true;
-    } else {
-      this.newCouponPrice = null;
-      this.isCoupon = false;
-      this.successApplyCoupon = false;
-    }
+    this.contentService.getCouponDiscountPercentage(this.eventData.id, couponCodeStr).subscribe(
+      (response: any) => {
+        this.applyedCoupon = response;
+        let ttwc = Number(this.totalTicketPrice.replace(",", "."));
+        this.newCouponPrice = (ttwc - (ttwc / 100 * this.applyedCoupon.discount)).toFixed(2).replace(".", ",");
+        this.isCoupon = true;
+        this.successApplyCoupon = true;
+      },
+      error => {
+        this.newCouponPrice = null;
+        this.isCoupon = false;
+        this.successApplyCoupon = false;
+        this.toastr.clear();
+        this.toastr.error(error.error);
+      }
+    );
   }
 
   goToBuyStepper() {

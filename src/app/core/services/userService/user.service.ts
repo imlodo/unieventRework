@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
 import { Observable, catchError, tap, throwError } from 'rxjs';
-import { ADD_CHAT_REPLY, CHECK_IS_FOLLOWED, CREATE_NEW_USER, DELETE_ACCOUNT, DOWNLOAD_PERSONAL_DATA, EDIT_USER, FOLLOW_USER, GET_CHAT_LIST, GET_CHAT_MESSAGE_LIST, GET_REQUEST_PERSONAL_DATA_STATUS, GET_USER, GET_USER_FOLLOWED_BY_CURRENT_USER, GET_USER_PROFILE_INFO, GET_USER_SETTINGS, GET_VERIFY_ACCOUNT_STATUS, REQUEST_PERSONAL_DATA, SAVE_USER_SETTINGS, SEARCH_USER, SEND_CONFIRMATION_EMAIL, SEND_NEW_PASSWORD, UNFOLLOW_USER, VERIFY_ACCOUNT } from '../../utility/api-constant';
+import { ADD_CHAT_REPLY, ADD_USER_ADDRESS, ADD_USER_CARD, CHECK_IS_FOLLOWED, CREATE_NEW_USER, DELETE_ACCOUNT, DOWNLOAD_PERSONAL_DATA, EDIT_USER, FOLLOW_USER, GET_CHAT_LIST, GET_CHAT_MESSAGE_LIST, GET_REQUEST_PERSONAL_DATA_STATUS, GET_USER, GET_USER_ADDRESS, GET_USER_CREDIT_CARDS, GET_USER_FOLLOWED_BY_CURRENT_USER, GET_USER_PROFILE_INFO, GET_USER_SETTINGS, GET_VERIFY_ACCOUNT_STATUS, REQUEST_PERSONAL_DATA, SAVE_USER_SETTINGS, SEARCH_USER, SEND_CONFIRMATION_EMAIL, SEND_NEW_PASSWORD, UNFOLLOW_USER, VERIFY_ACCOUNT } from '../../utility/api-constant';
 import { USER_TYPE } from '../../utility/global-constant';
 
 @Injectable({
@@ -48,7 +48,7 @@ export class UserService {
       );
   }
 
-  getUserFollowedByCurrentUser(limit:number): Observable<any> {
+  getUserFollowedByCurrentUser(limit: number): Observable<any> {
     const token = this.cookieService.get('auth_token');
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
@@ -57,9 +57,9 @@ export class UserService {
 
     let params = null;
 
-    if(limit != null)
+    if (limit != null)
       params = new HttpParams().set('limit', limit);
-    else{
+    else {
       params = new HttpParams();
     }
 
@@ -82,6 +82,42 @@ export class UserService {
     const body = { t_name, t_surname, t_description, t_profile_photo, actual_password, t_password };
 
     return this.http.post(EDIT_USER, body, { headers })
+      .pipe(
+        tap((response: any) => {
+          return response
+        }),
+        catchError(this.handleError)
+      );
+  }
+
+  addUserCard(cardName: string, cardNumber: string, expiryDate: string, cvv: string): Observable<any> {
+    const token = this.cookieService.get('auth_token');
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    });
+
+    const body = { cardName, cardNumber, expiryDate, cvv };
+
+    return this.http.post(ADD_USER_CARD, body, { headers })
+      .pipe(
+        tap((response: any) => {
+          return response
+        }),
+        catchError(this.handleError)
+      );
+  }
+
+  addAddress(firstName: string, lastName: string, street: string, city: string, state: string, zip: string): Observable<any> {
+    const token = this.cookieService.get('auth_token');
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    });
+
+    const body = { firstName, lastName, street, city, state, zip };
+
+    return this.http.post(ADD_USER_ADDRESS, body, { headers })
       .pipe(
         tap((response: any) => {
           return response
@@ -309,7 +345,7 @@ export class UserService {
       );
   }
 
-  createNewUser(t_username: string, t_password: string, t_name: string, t_surname: string, t_birthdate: string, t_type: USER_TYPE) : Observable<any> {
+  createNewUser(t_username: string, t_password: string, t_name: string, t_surname: string, t_birthdate: string, t_type: USER_TYPE): Observable<any> {
     const token = this.cookieService.get('auth_token');
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
@@ -345,7 +381,7 @@ export class UserService {
       );
   }
 
-  resetPassword(token: string) : Observable<any>  {
+  resetPassword(token: string): Observable<any> {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${token}`
@@ -360,14 +396,14 @@ export class UserService {
     );
   }
 
-  verifyAccount(name: string, surname:string, birthdate:string, pIva:string, companyName:string, companyAddress:string, pec:string, consentClauses:boolean, identity_document:Array<{ key: string, file: File }>, status:string, refused_date:string, refused_motivation:string) : Observable<any> {
+  verifyAccount(name: string, surname: string, birthdate: string, pIva: string, companyName: string, companyAddress: string, pec: string, consentClauses: boolean, identity_document: Array<{ key: string, file: File }>, status: string, refused_date: string, refused_motivation: string): Observable<any> {
     const token = this.cookieService.get('auth_token');
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${token}`
     });
 
-    const body = { name, surname, birthdate, pIva, companyName, companyAddress, pec, consentClauses, identity_document, status, refused_date, refused_motivation};
+    const body = { name, surname, birthdate, pIva, companyName, companyAddress, pec, consentClauses, identity_document, status, refused_date, refused_motivation };
 
     return this.http.post(VERIFY_ACCOUNT, body, { headers })
       .pipe(
@@ -378,7 +414,7 @@ export class UserService {
       );
   }
 
-  getVerifyAccountStatus(t_alias_generated:string) : Observable<any> {
+  getVerifyAccountStatus(t_alias_generated: string): Observable<any> {
     const token = this.cookieService.get('auth_token');
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
@@ -387,7 +423,37 @@ export class UserService {
 
     const params = new HttpParams().set('t_alias_generated', t_alias_generated);
 
-    return this.http.get(GET_VERIFY_ACCOUNT_STATUS, { headers, params}).pipe(
+    return this.http.get(GET_VERIFY_ACCOUNT_STATUS, { headers, params }).pipe(
+      tap((response: any) => {
+        return response;
+      }),
+      catchError(this.handleError)
+    );
+  }
+
+  getUserCreditCards(): Observable<any> {
+    const token = this.cookieService.get('auth_token');
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    });
+
+    return this.http.get(GET_USER_CREDIT_CARDS, { headers }).pipe(
+      tap((response: any) => {
+        return response;
+      }),
+      catchError(this.handleError)
+    );
+  }
+
+  getUserAddressList(): Observable<any> {
+    const token = this.cookieService.get('auth_token');
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    });
+
+    return this.http.get(GET_USER_ADDRESS, { headers }).pipe(
       tap((response: any) => {
         return response;
       }),
