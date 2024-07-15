@@ -31,22 +31,12 @@ export class NavbarLeftMenuComponent implements AfterViewInit {
         this.activePath = event.url;
       }
     });
-    
-    const cookieCurrentUser = this.cookieService.get('current_user');
-    if (cookieCurrentUser) {
-      this.currentUser = JSON.parse(cookieCurrentUser);
+    try{
+      this.followedUser = JSON.parse(this.cookieService.get("followed_users")) as User[];
     }
-
-    this.userService.getUserFollowedByCurrentUser(5).subscribe(
-      (response: any) => {
-        this.followedUser = response.followed_users;
-        console.log(response.followed_users)
-      },
-      error => {
-        this.toastr.clear();
-        this.toastr.error('Errore nel recupero degli utenti seguiti');
-      }
-    );
+    catch(error){
+      this.followedUser = []
+    }
   }
 
   ngAfterViewInit(): void {

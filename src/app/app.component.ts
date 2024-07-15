@@ -5,6 +5,10 @@ import { filter } from 'rxjs';
 import { ContentDetailComponent } from './modules/content/compontents/content-detail/content-detail.component';
 import { ForgotPasswordComponent } from './core/components/forgot-password/forgot-password.component';
 import { TranslateService } from '@ngx-translate/core';
+import { CookieService } from 'ngx-cookie-service';
+import { UserService } from './core/services';
+import { ToastrService } from 'ngx-toastr';
+import { NavbarLeftMenuComponent } from './core/components/navbar-left-menu/navbar-left-menu.component';
 
 @Component({
   selector: 'app-root',
@@ -16,17 +20,34 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   @ViewChild(SearchCollapseComponent) searchCollapse: SearchCollapseComponent;
   @ViewChild(NavbarComponent) navbar: NavbarComponent;
+  @ViewChild(NavbarLeftMenuComponent) navbarLeft: NavbarLeftMenuComponent;
   @ViewChild(NotFoundComponent) notfound: NotFoundComponent;
 
   showMenu: boolean = true;
   showMenuLeft: boolean = true;
   darkMode: boolean = false;
 
-  constructor(private router: Router, private cdr: ChangeDetectorRef, private translate: TranslateService) {
+  constructor(private router: Router, private cdr: ChangeDetectorRef, private toastr: ToastrService, private translate: TranslateService, private cookieService: CookieService, private userService: UserService) {
     // Imposta la lingua predefinita
     this.translate.setDefaultLang('en');
-  
-    this.translate.use('it')
+
+    this.translate.use('it');
+
+    const cookieCurrentUser = this.cookieService.get('current_user');
+    const cookieFollowedUser = this.cookieService.get("followed_users");
+    if (cookieCurrentUser && !cookieFollowedUser) {
+      this.userService.getUserFollowedByCurrentUser(5).subscribe(
+        (response: any) => {
+          const followedUsersString = JSON.stringify(response.followed_users);
+          this.cookieService.set("followed_users", followedUsersString);
+          this.navbarLeft.followedUser = response.followed_users
+        },
+        error => {
+          this.toastr.clear();
+          this.toastr.error('Errore nel recupero degli utenti seguiti');
+        }
+      );
+    }
 
   }
 
