@@ -16,6 +16,7 @@ import { AuthGuard } from './core/guards/authGuard/auth-guard';
 import { ResetPasswordComponent } from './core/components/reset-password/reset-password.component';
 import { ROUTE_LIST } from './core/utility/global-constant';
 import { UserFollowedListComponent } from './modules/user/components/user-followed-list/user-followed-list.component';
+import { ContentManageComponent } from './modules/content/compontents/content-manage/content-manage.component';
 
 const routes: Routes = [
 	{
@@ -79,6 +80,11 @@ const routes: Routes = [
 				path: 'supports',
 				loadChildren: () => import('./modules/support/support.module').then((m) => m.SupportModule),
 				canActivate: [AuthGuard, VisitedPagesGuard]
+			},
+			{
+				path: 'content/manage',
+				component: ContentManageComponent,
+				canActivate:[AuthGuard, VisitedPagesGuard]
 			},
 			{
 				path: '@/:subpath/content',

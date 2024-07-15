@@ -162,6 +162,27 @@ export class ContentCreateComponent {
     }
   }
 
+  fileUrl: string | null = null;
+
+  uploadFileAzure() {
+    if (this.selectedFile) {
+      this.uploadProgress = 0;
+      this.fileUploadService.uploadFile(this.selectedFile).subscribe(event => {
+        if (event.type === HttpEventType.UploadProgress && event.total) {
+          this.uploadProgress = Math.round((100 * event.loaded) / event.total);
+        } else if (event.type === HttpEventType.Response) {
+          this.uploadProgress = 100;
+          console.log('File successfully uploaded!', event.body);
+          this.fileUrl = event.body.url;
+        }
+      }, error => {
+        console.error('Error uploading file', error);
+      });
+    } else {
+      console.error('No file selected');
+    }
+  }
+
   onCoverFileSelected(event: any) {
     const file: File = event.target.files[0];
     this.generateNewPreview(file);
@@ -514,32 +535,32 @@ export class ContentCreateComponent {
     }
   }
 
-  checkNumMinMaxPerson(index:number,form: any) {
-    if (form.value.n_min_num_person && form.value.n_max_num_person && (form.value.n_min_num_person > form.value.n_max_num_person)){
-      index === 1 ? 
-      this.formAddElementToMap.patchValue({
-        elementType: form.value.elementType,
-        price: form.value.price,
-        xPos: form.value.xPos,
-        yPos: form.value.yPos,
-        n_min_num_person: null,
-        n_max_num_person: form.value.n_max_num_person,
-        n_obj_map_fill: form.value.n_obj_map_fill ?? '#00000000',
-        n_obj_map_text: form.value.n_obj_map_text,
-        t_note: form.value.t_note,
-        is_acquistabile: form.value.is_acquistabile
-      }) : this.formEditElementToMap.patchValue({
-        elementType: form.value.elementType,
-        price: form.value.price,
-        xPos: form.value.xPos,
-        yPos: form.value.yPos,
-        n_min_num_person: null,
-        n_max_num_person: form.value.n_max_num_person,
-        n_obj_map_fill: form.value.n_obj_map_fill ?? '#00000000',
-        n_obj_map_text: form.value.n_obj_map_text,
-        t_note: form.value.t_note,
-        is_acquistabile: form.value.is_acquistabile
-      }) ;
+  checkNumMinMaxPerson(index: number, form: any) {
+    if (form.value.n_min_num_person && form.value.n_max_num_person && (form.value.n_min_num_person > form.value.n_max_num_person)) {
+      index === 1 ?
+        this.formAddElementToMap.patchValue({
+          elementType: form.value.elementType,
+          price: form.value.price,
+          xPos: form.value.xPos,
+          yPos: form.value.yPos,
+          n_min_num_person: null,
+          n_max_num_person: form.value.n_max_num_person,
+          n_obj_map_fill: form.value.n_obj_map_fill ?? '#00000000',
+          n_obj_map_text: form.value.n_obj_map_text,
+          t_note: form.value.t_note,
+          is_acquistabile: form.value.is_acquistabile
+        }) : this.formEditElementToMap.patchValue({
+          elementType: form.value.elementType,
+          price: form.value.price,
+          xPos: form.value.xPos,
+          yPos: form.value.yPos,
+          n_min_num_person: null,
+          n_max_num_person: form.value.n_max_num_person,
+          n_obj_map_fill: form.value.n_obj_map_fill ?? '#00000000',
+          n_obj_map_text: form.value.n_obj_map_text,
+          t_note: form.value.t_note,
+          is_acquistabile: form.value.is_acquistabile
+        });
     }
   }
 

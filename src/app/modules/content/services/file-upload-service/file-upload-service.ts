@@ -1,29 +1,43 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpEventType, HttpHeaders } from '@angular/common/http';
 import { Observable, delay, interval, map, of, take } from 'rxjs';
+import { CookieService } from 'ngx-cookie-service';
+import { DELETE_FILE, UPLOAD_FILE } from 'src/app/core/utility/api-constant';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FileUploadService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private cookieService: CookieService) { }
 
-  /*uploadFile(file: File): Observable<any> {
+  uploadFileAzure(file: File): Observable<any> {
+    const token = this.cookieService.get('auth_token');
     const formData = new FormData();
-    formData.append('file', file);
+    formData.append('file', file, file.name);
 
-    const uploadUrl = 'https://example.com/upload'; // Modifica l'URL con il tuo endpoint di upload
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}` // Add the token here
+    });
 
-    const options = {
+    return this.http.post(UPLOAD_FILE, formData, {
       reportProgress: true,
-      headers: new HttpHeaders({
-        'Accept': 'application/json'
-      })
-    };
+      observe: 'events',
+      headers: headers
+    });
+  }
 
-    return this.http.post(uploadUrl, formData, options);
-  }*/
+  deleteFileAzure(blobUrl: string): Observable<any> {
+    const token = this.cookieService.get('auth_token');
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}` // Add the token here
+    });
+
+    return this.http.delete(DELETE_FILE, {
+      headers: headers,
+      body: { blob_url: blobUrl }
+    });
+  }
 
   uploadFile(file: File): Observable<any> {
     const totalChunks = 10; // Simula 10 chunk per il caricamento progressivo

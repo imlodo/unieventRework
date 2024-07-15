@@ -129,7 +129,7 @@ export class PaymentStepperComponent implements AfterViewInit {
 
       if (index == 3) {
         //card_id, coupon_id, addressId
-        this.ticketService.purchase(this.idEvent, this.applyedCoupon ? this.applyedCoupon.coupon_id : null, this.addressList[this.selectedAddressIndex].address_id, this.cardList[this.selectedCardIndex].card_id, this.eventTicketList).subscribe(
+        this.ticketService.purchase(this.idEvent, this.cardList[this.selectedCardIndex].card_id, this.addressList[this.selectedAddressIndex].address_id, this.applyedCoupon ? this.applyedCoupon.coupon_id : null, this.eventTicketList).subscribe(
           response => {
             this.cookieService.delete("buy_token")
             this.startRedirectCountdown();

@@ -14,11 +14,13 @@ import { ContentCreateComponent } from './compontents/content-create/content-cre
 import { HttpClientModule } from '@angular/common/http';
 import { FileUploadService } from './services/file-upload-service/file-upload-service';
 import { NgSelectModule } from '@ng-select/ng-select';
+import { ContentManageComponent } from './compontents/content-manage/content-manage.component';
 
 @NgModule({
   declarations: [
     ContentDetailComponent,
-    ContentCreateComponent
+    ContentCreateComponent,
+    ContentManageComponent
   ],
   imports: [
     CommonModule,
