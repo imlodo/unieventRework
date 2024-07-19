@@ -15,6 +15,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FileUploadService } from './services/file-upload-service/file-upload-service';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { ContentManageComponent } from './compontents/content-manage/content-manage.component';
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { ContentManageComponent } from './compontents/content-manage/content-man
     CoreModule,
     MatProgressBarModule,
     HttpClientModule,
-    NgSelectModule
+    NgSelectModule,
+    BsDatepickerModule.forRoot()
   ],
   exports: [
   ],

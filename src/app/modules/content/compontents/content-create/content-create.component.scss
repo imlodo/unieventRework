@@ -190,6 +190,10 @@
     background-color: transparent !important;
 }
 
+::ng-deep .bg-dark-mode .ng-select .ng-select-container .ng-value-container .ng-input>input{
+    color: white !important
+}
+
 ::ng-deep .bg-dark-mode .ng-select-container {
     background-color: transparent !important;
     background: transparent !important;
@@ -225,4 +229,47 @@
     box-shadow: 0.1rem 0 0.1rem 0.1rem #d32e2a !important; 
     border-color: #d32e2a !important;
     border-right: 0px !important;
+}
+
+/* Global scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+    /* Imposta la larghezza desiderata della scrollbar */
+}
+
+/* Stili per la scrollbar thumb */
+::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: #4d5155;
+}
+
+/* Stili per la scrollbar track */
+::-webkit-scrollbar-track {
+    visibility: hidden;
+}
+
+::ng-deep .bg-light-mode .event-plan-list-container::-webkit-scrollbar-thumb {
+    background-color: #a8a8a8 !important;
+}
+
+#t_event_date{
+    background-color: #e9ecef;
+}
+
+::ng-deep .bg-dark-mode #t_event_date, ::ng-deep .bg-dark-mode .bs-datepicker {
+    background: #343a40 !important;
+    color: white !important;
+}
+
+::ng-deep .bg-dark-mode #t_event_date::placeholder{
+    color: white !important;
+}
+
+.location input{
+    background: #e9ecef;
+}
+
+::ng-deep .bg-dark-mode .location input, ::ng-deep .bg-dark-mode .location input::placeholder{
+    background: #343a40 !important;
+    color:white !important;
 }

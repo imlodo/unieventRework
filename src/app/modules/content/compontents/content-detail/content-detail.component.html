@@ -60,16 +60,24 @@
                                     class="bg-danger p-2 pointer"
                                     style="height: fit-content;width: 120px;text-align: center;margin-top: 10px;"
                                     (click)="followUser()">Segui</span>
-                                <span
-                                    (click)="unfollowUser()"
+                                <span (click)="unfollowUser()"
                                     *ngIf="currentUser.t_alias_generated != item?.t_user?.t_alias_generated && isFollowed"
                                     class="bg-secondary p-2 pointer"
-                                    style="height: fit-content;width: 150px;text-align: center;margin-top: 10px;">Rimuovi Segui</span>
+                                    style="height: fit-content;width: 150px;text-align: center;margin-top: 10px;">Rimuovi
+                                    Segui</span>
                             </div>
                         </div>
                         <div *ngIf="item?.t_caption || item?.t_name" class="caption">{{item?.t_caption ?
                             item?.t_caption
                             : item.t_name ? item.t_name : ''}}</div>
+                        <div class="tags pt-3 pb-2">
+                            <span style="margin-right: 10px;" *ngFor="let tag of item?.tags">#{{tag.value}}</span>
+                        </div>
+                        <div class="mentions pt-2">
+                            <span (click)="navigateToUserProfile({t_user:{t_alias_generated:mention.value}})"
+                                class="pointer" style="margin-right: 10px;"
+                                *ngFor="let mention of item?.mentions">@{{mention.value}}</span>
+                        </div>
                         <div *ngIf="item?.type === ItemType.Eventi"
                             class="mt-3 d-flex flex-column justify-content-center align-items-between">
                             <div [ngClass]=" item.type === ItemType.Eventi ? 'justify-content-between' : 'justify-content-end' "
@@ -181,7 +189,9 @@
                                                         </svg>
                                                     </p>
                                                 </div>
-                                                <div class="mx-2"><span class="text-danger" *ngIf="comment.t_alias_generated_reply">@{{comment.t_alias_generated_reply}}</span> {{comment.body}}</div>
+                                                <div class="mx-2"><span class="text-danger"
+                                                        *ngIf="comment.t_alias_generated_reply">@{{comment.t_alias_generated_reply}}</span>
+                                                    {{comment.body}}</div>
                                                 <div class="mx-2 text-secondary d-flex flex-row"
                                                     style="gap:20px; font-size:0.8rem">
                                                     <span>{{formatDateString(comment.created_date)}}</span>
@@ -242,7 +252,9 @@
                                                             </svg>
                                                         </p>
                                                     </div>
-                                                    <div class="mx-2"><span class="text-danger" *ngIf="childComment.t_alias_generated_reply">@{{childComment.t_alias_generated_reply}}</span> {{childComment.body}}</div>
+                                                    <div class="mx-2"><span class="text-danger"
+                                                            *ngIf="childComment.t_alias_generated_reply">@{{childComment.t_alias_generated_reply}}</span>
+                                                        {{childComment.body}}</div>
                                                     <div class="mx-2 text-secondary d-flex flex-row"
                                                         style="gap:20px; font-size:0.8rem">
                                                         <span>{{formatDateString(childComment.created_date)}}</span>
@@ -252,7 +264,8 @@
                                                 </div>
                                             </div>
                                             <div class="like-discussion-btn mx-3 d-flex flex-column align-items-center">
-                                                <svg *ngIf="!childComment.is_liked_by_current_user" (click)="addDiscussionLike(childComment)"
+                                                <svg *ngIf="!childComment.is_liked_by_current_user"
+                                                    (click)="addDiscussionLike(childComment)"
                                                     xmlns="http://www.w3.org/2000/svg" width="22" height="22"
                                                     fill="currentColor" viewBox="0 0 16 16"
                                                     class="mat-mdc-tooltip-trigger bi bi-heart pointer"

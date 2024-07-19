@@ -1,14 +1,18 @@
 import { HttpEventType } from '@angular/common/http';
 import { Component, ElementRef, ViewChild } from '@angular/core';
-import { MAP_TYPE, OBJECT_MAP_TYPE_STRING, ROUTE_LIST, USER_TYPE, getTicketNameByType } from 'src/app/core/utility/global-constant';
+import { MAP_TYPE, OBJECT_MAP_TYPE_STRING, ROUTE_LIST, USER_TYPE, getTicketNameByType, suggestArray } from 'src/app/core/utility/global-constant';
 import { FileUploadService } from '../../services/file-upload-service/file-upload-service';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
 import { Map } from 'src/app/core/models/map';
-import { FormControl, FormGroup, NgForm } from '@angular/forms';
+import { FormControl, FormGroup } from '@angular/forms';
 import { ObjectMap } from 'src/app/core/models/objectMap';
 import { randomIntFromInterval } from 'src/app/core/utility/functions-constants';
-import { Seat } from 'src/app/core/models/seat';
+import { UserService } from 'src/app/core/services';
+import { User } from 'src/app/core/models/user';
+import { ContentService } from 'src/app/core/services/contentService/content.service';
+import { CookieService } from 'ngx-cookie-service';
+import moment from 'moment';
 
 @Component({
   selector: 'unievent-content-create',
@@ -24,20 +28,18 @@ export class ContentCreateComponent {
   uploadProgress: number | null = null;
   previewUrl: any = null;
   coverUrl: any = null;
+  fileUrl: string | null = null;
   maxTextAreaCharacter: number = 200;
   @ViewChild('descriptionTextarea') descriptionTextarea!: ElementRef<HTMLTextAreaElement>;
+  descriptionValue: string = null;
   savedTextAfterAt: string = '';
   lastSavedTextAfterAt: string = null;
   eventListner: any;
   characterCount: number = 0;
   privacyContent: string = "all";
   currentSuggestPrefix = null;
-  suggestArray: Array<String> = [
-    "antoniolodato1",
-    "mariobaldi",
-    "bocconcino",
-    "video pazzi"
-  ]
+  suggestArray: Array<String> = suggestArray;
+  suggestUserArrayFiltered: Array<User> = [];
   suggestArrayFiltered: Array<String> = [];
   tagArray: Array<String> = new Array();
   hashTagArray: Array<String> = new Array();
@@ -83,10 +85,28 @@ export class ContentCreateComponent {
   numColumns: number;
   currentSelectedMap: Map;
   currentMapIndex = 1;
+  group_event_id: number = null;
+  t_event_date: any = null;
   seatMapList: ObjectMap[][] = [];
   currentSelectEditElementIndex: { i: number, j: number };
+  currentUser: User = null;
+  fileType: "video" | "img" = "img";
+  locationData: any = {
+    t_address: "",
+    t_cap: "",
+    t_city: "",
+    t_location_name: "",
+    t_province: "",
+    t_state: "",
+  };
+  minExpiryDate: Date;
+  filteredRelatedEvents: Array<any> = [];
+  relatedEvent: any = null;
 
-  constructor(private fileUploadService: FileUploadService, private toastr: ToastrService, private router: Router) {
+  constructor(private fileUploadService: FileUploadService, private cookieService: CookieService, private toastr: ToastrService, private router: Router, private userService: UserService, private contentService: ContentService) {
+    this.minExpiryDate = moment().add(1, 'day').toDate();
+    this.currentUser = JSON.parse(this.cookieService.get("current_user")) as User;
+    this.userType = USER_TYPE[this.currentUser.t_type];
     this.step = this.userType === USER_TYPE.ARTIST ? 1 : 2;
     switch (this.userType) {
       case USER_TYPE.CREATOR:
@@ -98,7 +118,14 @@ export class ContentCreateComponent {
     }
   }
 
+  updateEventDate(date: Date) {
+    this.t_event_date = date.toDateString();
+  }
+
   incrementStep() {
+    if (this.descriptionTextarea && this.descriptionTextarea.nativeElement) {
+      this.descriptionValue = this.descriptionTextarea.nativeElement.value;
+    }
     this.step += 1;
   }
 
@@ -162,8 +189,6 @@ export class ContentCreateComponent {
     }
   }
 
-  fileUrl: string | null = null;
-
   uploadFileAzure() {
     if (this.selectedFile) {
       this.uploadProgress = 0;
@@ -181,6 +206,16 @@ export class ContentCreateComponent {
     } else {
       console.error('No file selected');
     }
+  }
+
+  searchEvent(term: string, items: any[]) {
+    this.contentService.getEventByName(term).subscribe(
+      (response) => {
+        this.filteredRelatedEvents = response.events;
+        items = response.events;
+      },
+      error => console.error(error)
+    );
   }
 
   onCoverFileSelected(event: any) {
@@ -210,6 +245,7 @@ export class ContentCreateComponent {
         this.coverUrl = e.target.result;
       };
       if (this.selectedFile.type.startsWith('video')) {
+        this.fileType = "video";
         this.getVideoPreview();
       } else {
         reader.readAsDataURL(this.selectedFile);
@@ -247,6 +283,7 @@ export class ContentCreateComponent {
 
   handleAfterAtKeypress(event: KeyboardEvent) {
     const char = event.key;
+    console.log(char);
     if (char === ' ') {
       this.removeListner();
     }
@@ -255,6 +292,12 @@ export class ContentCreateComponent {
       if (this.savedTextAfterAt.length == 0)
         this.removeListner();
     }
+    else if (char === "Enter") {
+      if (this.savedTextAfterAt.includes("#")) {
+        this.lastSavedTextAfterAt = this.savedTextAfterAt;
+        this.addSuggestToTagArea(this.savedTextAfterAt.replace("#", ""));
+      }
+    }
     else {
       this.savedTextAfterAt += char;
       this.filterSuggest();
@@ -262,13 +305,18 @@ export class ContentCreateComponent {
   }
 
   filterSuggest() {
-    //Qui vanno presi dal backend
     if (this.savedTextAfterAt.includes("@")) {
-
+      this.userService.searchUser(this.savedTextAfterAt.replace("@", "")).subscribe(
+        response => {
+          this.suggestUserArrayFiltered = response.users;
+        },
+        error => {
+          // this.toastr.error(error.error);
+        }
+      );
     } else if (this.savedTextAfterAt.includes("#")) {
-
+      this.suggestArrayFiltered = this.suggestArray.filter(el => el.includes(this.savedTextAfterAt.replace("@", "").replace("#", "")));
     }
-    this.suggestArrayFiltered = this.suggestArray.filter(el => el.includes(this.savedTextAfterAt.replace("@", "").replace("#", "")));
   }
 
   removeListner() {
@@ -291,27 +339,46 @@ export class ContentCreateComponent {
 
   publicContent() {
     if (this.selectedContentType === "Event") {
-      //Pubblica evento
+      this.contentService.addContent("Eventi", this.descriptionValue, this.privacyContent, this.currentUser.t_alias_generated, this.coverUrl, this.fileType === "video" ? this.fileUrl : null, this.tagArray, this.hashTagArray, this.t_event_date, this.relatedEvent ? this.relatedEvent.id : null, this.group_event_id, this.locationData, this.mapArray).subscribe(
+        response => {
+          this.toastr.success(null, "Contenuto pubblicato con successo", { progressBar: true });
+          this.router.navigate([ROUTE_LIST.content.manage]);
+        },
+        error => {
+          this.toastr.error(error.error);
+        }
+      );
+
     } else {
-      //Pubblica topic
+      this.contentService.addContent("Topics", this.descriptionTextarea.nativeElement.value, this.privacyContent, this.currentUser.t_alias_generated, this.coverUrl, this.fileType === "video" ? this.fileUrl : null, this.tagArray, this.hashTagArray, null, null, null, null, null).subscribe(
+        response => {
+          this.toastr.success(null, "Contenuto pubblicato con successo", { progressBar: true });
+          this.router.navigate([ROUTE_LIST.content.manage]);
+        },
+        error => {
+          this.toastr.error(error.error);
+        }
+      );
     }
-    this.toastr.success(null, "Contenuto pubblicato con successo", { progressBar: true });
-    this.router.navigate([ROUTE_LIST.content.manage]);
+  }
+
+  changeEvent(event:any){
+    this.group_event_id = event.n_group_id;
+    this.relatedEvent = event;
   }
 
   addSuggestToTagArea(suggestWord: String) {
-    setTimeout(() => {
-      if (this.currentSuggestPrefix.includes("#")) {
-        if (!this.hashTagArray.includes(suggestWord))
-          this.hashTagArray.push(suggestWord);
-      } else if (this.currentSuggestPrefix.includes("@")) {
-        if (!this.tagArray.includes(suggestWord))
-          this.tagArray.push(suggestWord);
-      }
-      this.descriptionTextarea.nativeElement.value = this.descriptionTextarea.nativeElement.value.replace(this.lastSavedTextAfterAt, "").trimStart();
-      this.updateCharacterCount();
-      this.suggestArrayFiltered = new Array();
-    }, 100)
+    if (this.currentSuggestPrefix.includes("#")) {
+      if (!this.hashTagArray.includes(suggestWord))
+        this.hashTagArray.push(suggestWord);
+    } else if (this.currentSuggestPrefix.includes("@")) {
+      if (!this.tagArray.includes(suggestWord))
+        this.tagArray.push(suggestWord);
+    }
+    this.descriptionTextarea.nativeElement.value = this.descriptionTextarea.nativeElement.value.replace(this.lastSavedTextAfterAt, "").trimStart();
+    this.updateCharacterCount();
+    this.suggestArrayFiltered = new Array();
+    this.suggestUserArrayFiltered = new Array();
   }
 
   removeHashTagElement(hashTag: String) {
@@ -323,7 +390,10 @@ export class ContentCreateComponent {
   }
 
   isValidStep3() {
-    return this.descriptionTextarea?.nativeElement.value.length > 3 && this.uploadProgress === 100;
+
+    return this.descriptionTextarea?.nativeElement.value.length > 3 && this.uploadProgress === 100 && this.t_event_date && this.t_event_date.length > 0 && this.locationData.t_address.length > 0 &&
+      this.locationData.t_city.length > 0 && this.locationData.t_cap > 9999 && this.locationData.t_cap <= 99999 && this.locationData.t_province.length > 0 &&
+      this.locationData.t_state.length > 0 && this.locationData.t_location_name.length > 0;
   }
 
   isValidStep4() {

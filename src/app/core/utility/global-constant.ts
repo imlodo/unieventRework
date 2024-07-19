@@ -10,14 +10,14 @@ export enum MAP_TYPE {
 }
 
 export enum USER_TYPE {
-    ARTIST,
-    CREATOR,
-    COMPANY
+    ARTIST="ARTIST",
+    CREATOR="CREATOR",
+    COMPANY="COMPANY"
 }
 
 export enum USER_ROLE {
-    Utente="Utente",
-    Moderatore="Moderatore",
+    Utente = "Utente",
+    Moderatore = "Moderatore",
     SuperModeratore = "Super Moderatore"
 }
 
@@ -1817,7 +1817,7 @@ export const allEventList: Array<Event> = [
                 n_stars: 5,
                 t_title: "Discoteca fantastica!",
                 t_body: "Siamo stati alla discoteca 31-12-2022, non vediamo l'ora di tornarci con questo fantastico evento.",
-                t_user: { t_name: "Pasquale", t_surname: "Schettino", t_alias_generated: "passchet2308abgd", t_type: USER_TYPE.CREATOR, t_profile_photo:"/assets/img/userExampleImg.jpeg" }
+                t_user: { t_name: "Pasquale", t_surname: "Schettino", t_alias_generated: "passchet2308abgd", t_type: USER_TYPE.CREATOR, t_profile_photo: "/assets/img/userExampleImg.jpeg" }
             },
             {
                 n_id: 2,
@@ -1825,7 +1825,7 @@ export const allEventList: Array<Event> = [
                 n_stars: 1.5,
                 t_title: "Discoteca mediocre!",
                 t_body: "Personale scortese, e cocktail senza giacchio, non ci torneremo mai più! Da chiudere...",
-                t_user: { t_name: "Antonio", t_surname: "Lodato", t_alias_generated: "alod323453asd", t_type: USER_TYPE.CREATOR, t_profile_photo:"/assets/img/userExampleImg.jpeg" }
+                t_user: { t_name: "Antonio", t_surname: "Lodato", t_alias_generated: "alod323453asd", t_type: USER_TYPE.CREATOR, t_profile_photo: "/assets/img/userExampleImg.jpeg" }
             }
         ],
         t_discussions: [
@@ -30283,7 +30283,7 @@ export const allEventList: Array<Event> = [
         t_title: "Discoteca tropicale",
         n_group_id: 1,
         n_click: 345,
-        t_caption:"wewewe",
+        t_caption: "wewewe",
         t_image_link: "https://rivieraticket.it/wp-content/uploads/2023/08/Tropical-closing-party-Byblos-01-09-23.jpg",
         t_type: EVENT_TYPE.PARTY,
         t_location: {
@@ -31820,3 +31820,22 @@ export function getTicketNameByType(etpType: OBJECT_MAP_TYPE) {
 export interface ExtendedFile extends File {
     preview?: string; // La proprietà preview è opzionale e sarà un URL base64 dell'anteprima dell'immagine
 }
+
+export const suggestArray: Array<string> = [
+    "gatti", "cani", "video divertenti", "video pazzi", "musica", "sport",
+    "viaggi", "cucina", "tecnologia", "scienza", "educazione", "film",
+    "documentari", "notizie", "giardinaggio", "arte", "fotografia", "moda",
+    "bambini", "giochi", "storie", "automobili", "avventura", "yoga", "salute",
+    "fitness", "meditazione", "danza", "comedy", "tutorial", "recensioni",
+    "interviste", "podcast", "animali", "natura", "eventi", "politica",
+    "cultura", "storia", "fai da te", "artigianato", "lingue", "religione",
+    "spiritualità", "fantasy", "horror", "thriller", "romanzi", "poesia",
+    "letteratura", "filosofia", "economia", "business", "marketing", "psicologia",
+    "sociologia", "architettura", "design", "teatro", "televisione", "radio",
+    "cinema", "opera", "balletto", "musical", "moda uomo", "moda donna",
+    "gioielli", "orologi", "accessori", "calcio", "basket", "tennis", "nuoto",
+    "atletica", "ciclismo", "motociclismo", "automobilismo", "pallavolo",
+    "sci", "snowboard", "surf", "skateboard", "arrampicata", "escursionismo",
+    "campeggio", "pesca", "caccia", "avventura", "viaggi", "vacanze", "turismo"
+];
+

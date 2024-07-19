@@ -118,6 +118,13 @@
                     <span (click)="addSuggestToTagArea(el)" class="pointer p-3">{{el}}</span>
                 </ng-container>
             </div>
+            <div *ngIf="suggestUserArrayFiltered?.length > 0" class="suggestContainer mt-2 rounded d-flex flex-column">
+                <!-- Pannello suggerimenti utente -->
+                <ng-container *ngFor="let el of suggestUserArrayFiltered">
+                    <span (click)="addSuggestToTagArea(el.t_alias_generated)"
+                        class="pointer p-3">{{el.t_alias_generated}}</span>
+                </ng-container>
+            </div>
             <div *ngIf="tagArray?.length > 0" class="mt-2 rounded d-flex flex-column">
                 <h3>Menzioni</h3>
                 <div class="d-flex flex-row">
@@ -220,7 +227,67 @@
             </div>
         </div>
         <div class="d-flex flex-column">
-            <h3>Chi può vedere questo contenuto?</h3>
+            <h3>Data evento *</h3>
+            <input type="text" class="form-control border-0 card-input" id="t_event_date" name="t_event_date"
+                placeholder="DD/MM/YYYY" required (bsValueChange)="updateEventDate($event)" bsDatepicker [bsConfig]="{
+                minMode: 'day',
+                adaptivePosition: true,
+                dateInputFormat: 'DD/MM/YYYY',
+                minDate: minExpiryDate
+            }">
+        </div>
+        <div class="d-flex flex-column location">
+            <h3>Dove si svolge l'evento? *</h3>
+            <div class="d-flex flex-column">
+                <div class="mb-3">
+                    <label for="t_address" class="form-label">Indirizzo *</label>
+                    <input type="text" class="form-control address-input border-0" id="t_address"
+                        [(ngModel)]="locationData.t_address">
+                </div>
+                <div class="row mb-3">
+                    <div class="col">
+                        <label for="t_city" class="form-label">Città *</label>
+                        <input type="text" class="form-control address-input border-0" id="t_city"
+                            [(ngModel)]="locationData.t_city">
+                    </div>
+                    <div class="col">
+                        <label for="t_cap" class="form-label">Cap *</label>
+                        <input type="number" class="form-control address-input border-0" id="t_cap"
+                            [(ngModel)]="locationData.t_cap">
+                    </div>
+                    <div class="col">
+                        <label for="t_province" class="form-label">Provincia *</label>
+                        <input type="text" class="form-control address-input border-0" id="t_province"
+                            [(ngModel)]="locationData.t_province">
+                    </div>
+                    <div class="col">
+                        <label for="t_state" class="form-label">Stato *</label>
+                        <input type="text" class="form-control address-input border-0" id="t_state"
+                            [(ngModel)]="locationData.t_state">
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col">
+                        <label for="t_location_name" class="form-label">Nome località *</label>
+                        <input type="text" class="form-control address-input border-0" id="t_location_name"
+                            [(ngModel)]="locationData.t_location_name">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="d-flex flex-column">
+            <h3>Evento collegato</h3>
+            <ng-select [items]="filteredRelatedEvents" placeholder="Ricerca Evento" bindLabel="t_caption" bindValue="id"
+                (search)="searchEvent($event.term, $event.items)" [searchable]="true" (change)="changeEvent($event)">
+                <ng-template ng-option-tmp let-item="item">
+                    <div class="d-flex align-items-center gap-3">
+                        <span>{{ item.t_caption }}</span>
+                    </div>
+                </ng-template>
+            </ng-select>
+        </div>
+        <div class="d-flex flex-column">
+            <h3>Chi può vedere questo contenuto? *</h3>
             <div class="d-flex">
                 <select [(ngModel)]="privacyContent" class="pointer" name="privacy" id="privacy">
                     <option value="all">Tutti</option>
@@ -378,29 +445,32 @@
             </div>
             <div *ngIf="formAddElementToMapContainer?.value?.elementType != 'CONSOLE' " class="form-group col-6">
                 <span>Costo in euro</span>
-                <input min="1" step="0.01" class="form-control" type="number" name="price" formControlName="price" required>
+                <input min="1" step="0.01" class="form-control" type="number" name="price" formControlName="price"
+                    required>
             </div>
 
             <div class="form-group col-4">
                 <span>Posizione X</span>
-                <input min="0" max="10" step="1" class="form-control" type="number" name="xPos"
-                    formControlName="xPos" required>
+                <input min="0" max="10" step="1" class="form-control" type="number" name="xPos" formControlName="xPos"
+                    required>
             </div>
             <div class="form-group col-4">
                 <span>Posizione Y</span>
-                <input min="0" max="10" step="1" class="form-control" type="number" name="yPos"
-                    formControlName="yPos" required>
+                <input min="0" max="10" step="1" class="form-control" type="number" name="yPos" formControlName="yPos"
+                    required>
             </div>
 
             <div *ngIf="formAddElementToMapContainer?.value?.elementType != 'CONSOLE' " class="form-group col-4">
                 <span>Numero min. persone</span>
-                <input min="0" max="10" step="1" class="form-control" (change)="checkNumMinMaxPerson(1,formAddElementToMapContainer)" type="number" name="n_min_num_person"
-                    formControlName="n_min_num_person" required>
+                <input min="0" max="10" step="1" class="form-control"
+                    (change)="checkNumMinMaxPerson(1,formAddElementToMapContainer)" type="number"
+                    name="n_min_num_person" formControlName="n_min_num_person" required>
             </div>
             <div *ngIf="formAddElementToMapContainer?.value?.elementType != 'CONSOLE' " class="form-group col-4">
                 <span>Numero max. persone</span>
-                <input min="0" max="10" step="1" class="form-control" (change)="checkNumMinMaxPerson(1,formAddElementToMapContainer)" type="number" name="n_max_num_person"
-                    formControlName="n_max_num_person" required>
+                <input min="0" max="10" step="1" class="form-control"
+                    (change)="checkNumMinMaxPerson(1,formAddElementToMapContainer)" type="number"
+                    name="n_max_num_person" formControlName="n_max_num_person" required>
             </div>
             <div *ngIf="formAddElementToMapContainer?.value?.elementType != 'CONSOLE' " class="form-group col-4">
                 <span>Colore elemento</span>
@@ -418,7 +488,8 @@
             </div>
             <div class="d-flex justify-content-end">
                 <button class="btn btn-secondary btn-sm" (click)="closeAddElementToCurrentMapPanel()">Annulla</button>
-                <button class="btn btn-danger btn-sm" type="submit" [disabled]="!formAddElementToMapContainer.valid">Aggiungi</button>
+                <button class="btn btn-danger btn-sm" type="submit"
+                    [disabled]="!formAddElementToMapContainer.valid">Aggiungi</button>
             </div>
         </form>
     </div>
@@ -444,7 +515,8 @@
             </div>
             <div *ngIf="formEditElementToMapContainer?.value?.elementType != 'CONSOLE' " class="form-group col-6">
                 <span>Costo in euro</span>
-                <input min="1" step="0.01" class="form-control" type="number" name="price" formControlName="price" required>
+                <input min="1" step="0.01" class="form-control" type="number" name="price" formControlName="price"
+                    required>
             </div>
 
             <div class="form-group col-4">
@@ -460,13 +532,15 @@
 
             <div *ngIf="formEditElementToMapContainer?.value?.elementType != 'CONSOLE' " class="form-group col-4">
                 <span>Numero min. persone</span>
-                <input min="0" max="10" step="1" class="form-control" (change)="checkNumMinMaxPerson(2,formEditElementToMapContainer)" type="number" name="n_min_num_person"
-                    formControlName="n_min_num_person" required>
+                <input min="0" max="10" step="1" class="form-control"
+                    (change)="checkNumMinMaxPerson(2,formEditElementToMapContainer)" type="number"
+                    name="n_min_num_person" formControlName="n_min_num_person" required>
             </div>
             <div *ngIf="formEditElementToMapContainer?.value?.elementType != 'CONSOLE' " class="form-group col-4">
                 <span>Numero max. persone</span>
-                <input min="0" max="10" step="1" class="form-control" (change)="checkNumMinMaxPerson(2,formEditElementToMapContainer)" type="number" name="n_max_num_person"
-                    formControlName="n_max_num_person" required>
+                <input min="0" max="10" step="1" class="form-control"
+                    (change)="checkNumMinMaxPerson(2,formEditElementToMapContainer)" type="number"
+                    name="n_max_num_person" formControlName="n_max_num_person" required>
             </div>
             <div *ngIf="formEditElementToMapContainer?.value?.elementType != 'CONSOLE' " class="form-group col-4">
                 <span>Colore elemento</span>
@@ -483,8 +557,10 @@
                 <input type="checkbox" name="is_acquistabile" formControlName="is_acquistabile">
             </div>
             <div class="d-flex justify-content-end">
-                <button type="button" class="btn btn-secondary btn-sm" (click)="deleteElement(formEditElementToMapContainer)">Elimina</button>
-                <button class="btn btn-danger btn-sm" type="submit" [disabled]="!formEditElementToMapContainer.valid">Modifica</button>
+                <button type="button" class="btn btn-secondary btn-sm"
+                    (click)="deleteElement(formEditElementToMapContainer)">Elimina</button>
+                <button class="btn btn-danger btn-sm" type="submit"
+                    [disabled]="!formEditElementToMapContainer.valid">Modifica</button>
             </div>
         </form>
     </div>

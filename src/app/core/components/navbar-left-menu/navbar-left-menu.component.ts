@@ -26,16 +26,28 @@ export class NavbarLeftMenuComponent implements AfterViewInit {
     private userService: UserService,
     private toastr: ToastrService
   ) {
+    this.currentUser = (JSON.parse(this.cookieService.get("current_user")) as User);
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
         this.activePath = event.url;
       }
     });
-    try{
+    try {
       this.followedUser = JSON.parse(this.cookieService.get("followed_users")) as User[];
     }
-    catch(error){
-      this.followedUser = []
+    catch (error) {
+      this.userService.getUserFollowedByCurrentUser(5).subscribe(
+        (response: any) => {
+          const followedUsersString = JSON.stringify(response.followed_users);
+          this.cookieService.set("followed_users", followedUsersString);
+          this.followedUser = response.followed_users;        
+        },
+        error => {
+          this.toastr.clear();
+          this.toastr.error('Errore nel recupero degli utenti seguiti');
+          this.followedUser = [];
+        }
+      );
     }
   }
 
@@ -61,6 +73,10 @@ export class NavbarLeftMenuComponent implements AfterViewInit {
     this.router.navigate([link, params]);
   }
 
+  navigateToContentManage(){
+    this.router.navigate([ROUTE_LIST.content.manage]);
+  }
+
   navigateToItemUserProfile(t_alias_generated: string) {
     let link = "/@/" + t_alias_generated
     let params = this.globalService.encodeParams({
@@ -69,7 +85,7 @@ export class NavbarLeftMenuComponent implements AfterViewInit {
     this.router.navigate([link, params]);
   }
 
-  navigateToViewAllFollowedUser(){
+  navigateToViewAllFollowedUser() {
     this.router.navigate([ROUTE_LIST.followed])
   }
 
