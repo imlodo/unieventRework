@@ -4,9 +4,9 @@
         <div *ngIf="contentList.length > 0" class="scrollable-content row row-cols-1">
             <h1>Gestione Contenuti</h1>
             <ng-container *ngFor="let item of contentList; let i = index;">
-                <div (click)="navigateToContentDetail(item)" class="shadow mb-4 p-3 events-card-container">
+                <div class="shadow mb-4 p-3 events-card-container">
                     <div class="d-flex flex-row justify-content-between">
-                        <div class="card-body d-flex flex-row pointer">
+                        <div class="card-body d-flex flex-row pointer" (click)="navigateToContentDetail(item)">
                             <span shape="circle" class="event-photo-container"><img class="event-photo"
                                     [attr.src]="item.t_image_link"></span>
                             <div class="d-flex flex-column mx-2">
@@ -21,7 +21,7 @@
                             </div>
                         </div>
                         <div class="d-flex flex-column justify-content-center">
-                            <select [(ngModel)]="privacyContent[i]" (change)="changeEventPrivacy(item, i)"
+                            <select [(ngModel)]="privacyContent[i]" (change)="changeEventPrivacy($event,item, i)"
                                 class="pointer" name="privacy" id="privacy">
                                 <option value="all">Tutti</option>
                                 <option value="amici">Amici</option>
@@ -65,13 +65,13 @@
                 aria-hidden="true">&times;</span>
         </div>
         <div class="d-flex justify-content-end mb-4">
-            <span class="bg-secondary p-2 pointer" style="height: fit-content;width: 150px;text-align: center;margin-top: 10px;">Aggiungi Coupon</span>
+            <span (click)="openAddCoupon()" class="bg-secondary p-2 pointer" style="height: fit-content;width: 150px;text-align: center;margin-top: 10px;">Aggiungi Coupon</span>
         </div>
         <div class="d-flex flex-row justify-content-between align-items-center mb-3 p-3 rounded" style="background: #3a424b;" *ngFor="let coupon of couponList">
             <span>{{coupon.coupon_code}} - {{coupon.discount}}% di sconto</span>
             <div class="d-flex gap-2">
                 <span class="bg-secondary p-2 pointer"
-                style="height: fit-content;width: 150px;text-align: center;">Modifica</span>
+                style="height: fit-content;width: 150px;text-align: center;" (click)="openEditCoupon()">Modifica</span>
                 <span (click)="deleteCoupon($event,coupon)" class="bg-danger p-2 pointer"
                 style="height: fit-content;width: 150px;text-align: center;">Elimina</span>
             </div>
@@ -83,10 +83,36 @@
     <div class="modal-content container p-3 m-3">
         <div class="d-flex justify-content-between border-bottom mb-3">
             <h2 class="mb-2">Modifica coupon - {{currentCouponEvent.t_caption}}</h2>
-            <span style="font-size:38px;" class="pointer" (click)="clearManageCoupon()"
+            <span style="font-size:38px;" class="pointer" (click)="closeEditCoupon()"
                 aria-hidden="true">&times;</span>
         </div>
         <div class="d-flex flex-row justify-content-between align-items-center mb-3 p-3 rounded" style="background: #3a424b;">
+        </div>
+    </div>
+</div>
+
+<div *ngIf="showAddCoupon" class="modal-overlay" style="z-index:10">
+    <div class="modal-content container p-3 m-3">
+        <div class="d-flex justify-content-between border-bottom mb-3">
+            <h2 class="mb-2">Aggiungi coupon - {{currentCouponEvent.t_caption}}</h2>
+            <span style="font-size:38px;" class="pointer" (click)="closeAddCoupon()"
+                aria-hidden="true">&times;</span>
+        </div>
+        <div class="d-flex flex-row justify-content-between align-items-center mb-3 p-3 rounded" style="background: #3a424b;">
+            <form class="mb-5 w-100" [formGroup]="formCoupon" #formAddCoupon="ngForm" (ngSubmit)="addCoupon(formAddCoupon)">
+                <div class="form-group">
+                    <span>Codice Coupon</span>
+                    <input class="form-control" type="text" name="coupon_code" formControlName="coupon_code" required>
+                </div>
+                <div class="form-group">
+                    <label>Percentuale di sconto</label>
+                    <input type="number" min="1" max="100" class="form-control" name="discount" formControlName="discount" required>
+                </div>
+                <div class="d-flex flex-row justify-content-end">
+                    <button class="btn btn-secondary btn-sm" (click)="closeAddCoupon()">Annulla</button>
+                    <button class="btn btn-danger btn-sm" type="submit" [disabled]="!formAddCoupon.valid">Aggiorna</button>
+                </div>
+            </form>
         </div>
     </div>
 </div>

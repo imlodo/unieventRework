@@ -1,6 +1,7 @@
 const BASE_URL = 'http://localhost:7071';
 export const ADD_CONTENT_BOOKED = `${BASE_URL}/api/content/addContentBooked`;
 export const ADD_CONTENT = `${BASE_URL}/api/content/addContent`;
+export const ADD_COUPON = `${BASE_URL}/api/content/addCoupon`;
 export const ADD_LIKE_BY_TYPE = `${BASE_URL}/api/content/addLikeByType`;
 export const ADD_TICKET_REVIEW = `${BASE_URL}/api/ticket/addTicketReview`;
 export const ADD_SUPPORT_TICKET_REPLY = `${BASE_URL}/api/support/addSupportTicketReply`;

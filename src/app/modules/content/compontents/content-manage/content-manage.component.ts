@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { ToastrService } from 'ngx-toastr';
@@ -17,8 +18,14 @@ export class ContentManageComponent {
   privacyContent: string[] = new Array();
   showManageCouponPanel: boolean = false;
   showEditCoupon: boolean = false;
+  currentEventId: string  = null;
+  showAddCoupon: boolean = false;
   currentCouponEvent: any = null;
   couponList: Array<{ coupon_id: string, event_id: string, coupon_code: string, discount: number }> = new Array();
+  formCoupon = new FormGroup({
+    coupon_code: new FormControl(''), 
+    discount: new FormControl('')
+  });
 
   constructor(private router: Router,
     private cookieService: CookieService,
@@ -45,7 +52,9 @@ export class ContentManageComponent {
     );
   }
 
-  changeEventPrivacy(item: any, index: number) {
+  changeEventPrivacy(event: any, item: any, index: number) {
+    event.preventDefault();
+    event.stopPropagation();
     this.contentService.updateContentPrivacy(item.id, this.privacyContent[index]).subscribe(
       (response: any) => {
         item.t_privacy = this.privacyContent[index];
@@ -83,7 +92,7 @@ export class ContentManageComponent {
     );
   }
 
-  deleteCoupon(event: any, item: any){
+  deleteCoupon(event: any, item: any) {
     event.preventDefault();
     event.stopPropagation();
     this.contentService.deleteCoupon(item.id).subscribe(
@@ -105,6 +114,7 @@ export class ContentManageComponent {
     this.contentService.getCouponsForEvent(item.id).subscribe(
       (response: any) => {
         this.couponList = response.coupons;
+        this.currentEventId = item.id;
       },
       error => {
         this.toastr.clear();
@@ -115,8 +125,39 @@ export class ContentManageComponent {
     this.showManageCouponPanel = true;
   }
 
+  openAddCoupon() {
+    this.showAddCoupon = true;
+  }
+
+  closeAddCoupon() {
+    this.showAddCoupon = false;
+  }
+
+  openEditCoupon() {
+    this.showEditCoupon = true;
+  }
+
+  closeEditCoupon() {
+    this.showEditCoupon = false;
+  }
+
   clearManageCoupon() {
     this.showManageCouponPanel = false;
     this.currentCouponEvent = null;
+  }
+
+  addCoupon(form: any) {
+    this.contentService.addCoupon(form.value.coupon_code, form.value.discount, this.currentEventId).subscribe(
+      (response: any) => {
+        this.couponList.push(response.coupon);
+        this.toastr.clear();
+        this.toastr.success("Coupon aggiunto con successo");
+      },
+      error => {
+        this.toastr.clear();
+        this.toastr.error('Errore nell\'aggiunta del coupon');
+      }
+    );
+    this.closeAddCoupon();
   }
 }

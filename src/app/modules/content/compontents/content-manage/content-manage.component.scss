@@ -113,3 +113,9 @@
 ::ng-deep body.bg-light-mode .modal-content::-webkit-scrollbar-thumb {
     background-color: #a8a8a8 !important;
 }
+
+::ng-deep .bg-dark-mode input, ::ng-deep .bg-dark-mode input:focus{
+    background-color: #222324;
+    color: white;
+    border: none !important;
+}

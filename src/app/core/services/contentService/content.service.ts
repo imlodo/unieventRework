@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
 import { Observable, catchError, tap, throwError } from 'rxjs';
-import { ADD_CONTENT, ADD_CONTENT_BOOKED, ADD_DISCUSSION, ADD_LIKE_BY_TYPE, CHECK_CONTENT_IS_BOOKED_BY_CURRENT_USER, CHECK_CONTENT_IS_LIKED_BY_CURRENT_USER, DELETE_CONTENT, DELETE_COUPON, GET_CONTENTS_BY_CURRENT_USER, GET_CONTENT_DISCUSSIONS, GET_COUPONS_FOR_EVENT, GET_COUPON_DISCOUNT_PERCENTAGE, GET_EVENT_BY_NAME, GET_MORE_CONTENT, GET_MORE_CONTENT_BASED_ON_CURRENT_USER, GET_RELATED_EVENTS, GET_SINGLE_CONTENT, UPDATE_CONTENT_PRIVACY } from '../../utility/api-constant';
+import { ADD_CONTENT, ADD_CONTENT_BOOKED, ADD_COUPON, ADD_DISCUSSION, ADD_LIKE_BY_TYPE, CHECK_CONTENT_IS_BOOKED_BY_CURRENT_USER, CHECK_CONTENT_IS_LIKED_BY_CURRENT_USER, DELETE_CONTENT, DELETE_COUPON, GET_CONTENTS_BY_CURRENT_USER, GET_CONTENT_DISCUSSIONS, GET_COUPONS_FOR_EVENT, GET_COUPON_DISCOUNT_PERCENTAGE, GET_EVENT_BY_NAME, GET_MORE_CONTENT, GET_MORE_CONTENT_BASED_ON_CURRENT_USER, GET_RELATED_EVENTS, GET_SINGLE_CONTENT, UPDATE_CONTENT_PRIVACY } from '../../utility/api-constant';
 import { MORE_CONTENT_TYPE } from '../../utility/enum-constant';
 
 @Injectable({
@@ -363,6 +363,24 @@ export class ContentService {
       .pipe(
         tap((response: any) => {
           return response;
+        }),
+        catchError(this.handleError)
+      );
+  }
+
+  addCoupon(coupon_code:string, discount: number, content_id: string){
+    const token = this.cookieService.get('auth_token');
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    });
+
+    const postBody = {coupon_code, discount, content_id};
+
+    return this.http.post(ADD_COUPON, postBody, { headers })
+      .pipe(
+        tap((response: any) => {
+          return response
         }),
         catchError(this.handleError)
       );
