@@ -1,12 +1,13 @@
 import { HttpClient } from '@angular/common/http';
 import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
+import { Router } from '@angular/router';
 import moment from 'moment';
 import { CookieService } from 'ngx-cookie-service';
 import { ToastrService } from 'ngx-toastr';
 import { User } from 'src/app/core/models/user';
 import { UserService } from 'src/app/core/services';
-import { ExtendedFile } from 'src/app/core/utility/global-constant';
+import { ExtendedFile, ROUTE_LIST, USER_TYPE } from 'src/app/core/utility/global-constant';
 
 @Component({
   selector: 'unievent-artist-verify',
@@ -37,8 +38,11 @@ export class ArtistVerifyComponent implements AfterViewInit {
       consentClauses: false
     }
 
-  constructor(private http: HttpClient, private sanitizer: DomSanitizer, private userService: UserService, private toastr: ToastrService, private cookieService: CookieService) {
-
+  constructor(private http: HttpClient, private router:Router, private sanitizer: DomSanitizer, private userService: UserService, private toastr: ToastrService, private cookieService: CookieService) {
+    let currentUser = (JSON.parse(this.cookieService.get("current_user")) as User);
+    if(USER_TYPE[currentUser.t_type] === USER_TYPE.COMPANY){
+      this.router.navigate([""])
+    }
   }
 
   ngAfterViewInit(): void {
@@ -46,8 +50,8 @@ export class ArtistVerifyComponent implements AfterViewInit {
     let t_alias_generated = (JSON.parse(this.cookieService.get("current_user")) as User).t_alias_generated;
     this.userService.getVerifyAccountStatus(t_alias_generated).subscribe(
       (response: any) => {
-        this.requestStatus = response.status;
-        
+        let currentUser = (JSON.parse(this.cookieService.get("current_user")) as User);
+        this.requestStatus = USER_TYPE[currentUser.t_type] === USER_TYPE.ARTIST ? "verified" : response.status;    
       },
       error => {
         this.toastr.error('Errore nel recupero dello stato della richiesta');

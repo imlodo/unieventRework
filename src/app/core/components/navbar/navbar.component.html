@@ -2,7 +2,7 @@
     [ngClass]="darkMode ? 'bg-dark-mode navbar-dark' : 'bg-white' " class="navbar navbar-expand-lg">
     <div *ngIf="!isMobileSearch" class="container-fluid">
         <div class="d-flex flex-row align-items-center" style="gap:10px">
-            <button (click)="showMobileLeftPanel()" class="navbar-toggler" type="button" data-bs-toggle="collapse"
+            <button *ngIf="!isModerate" (click)="showMobileLeftPanel()" class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -14,19 +14,19 @@
                 </div>
             </a>
         </div>
-        <div class="d-lg-flex mx-auto w-100 justify-content-center d-none">
+        <div *ngIf="!isModerate" class="d-lg-flex mx-auto w-100 justify-content-center d-none">
             <ng-container *ngTemplateOutlet="search"></ng-container>
         </div>
         <div class="d-flex justify-content-end align-items-center">
             <ng-container *ngIf="online" class="on-nav">
-                <unievent-navbar-search (showMobileSearchEvent)="isMobileSearch = true"
+                <unievent-navbar-search *ngIf="!isModerate" (showMobileSearchEvent)="isMobileSearch = true"
                     class="d-lg-none"></unievent-navbar-search>
-                <unievent-navbar-create></unievent-navbar-create>
-                <unievent-navbar-notification [darkMode]="darkMode"
+                <unievent-navbar-create *ngIf="!isModerate"></unievent-navbar-create>
+                <unievent-navbar-notification *ngIf="!isModerate" [darkMode]="darkMode"
                     (closeOtherNavbarPanelEvent)="closeOtherNavbarPanel('notification')"></unievent-navbar-notification>
-                <unievent-navbar-chat
+                <unievent-navbar-chat *ngIf="!isModerate"
                     (closeOtherNavbarPanelEvent)="closeOtherNavbarPanel('message')"></unievent-navbar-chat>
-                <unievent-navbar-profile [darkMode]="darkMode" (updateThemeEvent)="updateTheme()"
+                <unievent-navbar-profile [isModerate]="isModerate" [darkMode]="darkMode" (updateThemeEvent)="updateTheme()"
                     (closeOtherNavbarPanelEvent)="closeOtherNavbarPanel('profile')"
                     (logoutEvent)="logout()"></unievent-navbar-profile>
             </ng-container>

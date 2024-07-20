@@ -48,6 +48,7 @@ export class SupportTicketDetailComponent implements AfterViewInit {
   @ViewChild('replyListContainer') replyListContainer: ElementRef;
   uploadedFiles: File[] = [];
   countReplyCharacter: number = 0;
+  isModerator: boolean = false;
 
   constructor(private cdr: ChangeDetectorRef, private cookieService: CookieService, private renderer: Renderer2, private http: HttpClient,
     private globalService: GlobalService, private route: ActivatedRoute, private router: Router, private sanitizer: DomSanitizer,
@@ -55,6 +56,9 @@ export class SupportTicketDetailComponent implements AfterViewInit {
     const cookieCurrentUser = this.cookieService.get('current_user');
     if (cookieCurrentUser) {
       this.currentUser = JSON.parse(cookieCurrentUser);
+    }
+    if(this.currentUser.t_role !== "Utente"){
+      this.isModerator = true;
     }
   }
 
@@ -80,7 +84,7 @@ export class SupportTicketDetailComponent implements AfterViewInit {
 
   updateGlobalScroll() {
     document.getElementsByTagName("body")[0].scrollTo(0, 0);
-    if (this.ticket.status != TICKET_STATUS.Aperto && this.ticket.status != TICKET_STATUS.NecessariaRisposta) {
+    if (this.ticket.status != TICKET_STATUS.Aperto && this.ticket.status != TICKET_STATUS.NecessariaRisposta && !this.isModerator) {
       document.body.classList.remove('overflow-y-scroll-force');
       document.body.classList.add('overflow-y-scroll-none');
     } else {
@@ -296,11 +300,11 @@ export class SupportTicketDetailComponent implements AfterViewInit {
     let reply = {
       alias: this.currentUser.t_alias_generated, role: this.currentUser.t_role, replyDateHour: moment().format("DD/MM/YYYY hh:mm"), body: this.ticketReplyCaption, attachments: uploadedFilesString
     }
-    this.supportService.addSupportTicketReply(this.ticket.id, this.ticketReplyCaption, uploadedFilesString, TICKET_STATUS.AttesaRisposta).subscribe(
+    this.supportService.addSupportTicketReply(this.ticket.id, this.ticketReplyCaption, uploadedFilesString, !this.isModerator ? TICKET_STATUS.NecessariaRisposta : TICKET_STATUS.Aperto ).subscribe(
       (response: any) => {
         this.toastr.success(response.message);
         this.discussionData.push(reply);
-        this.ticket.status = TICKET_STATUS.AttesaRisposta;
+        this.ticket.status = !this.isModerator ? TICKET_STATUS.AttesaRisposta : TICKET_STATUS.NecessariaRisposta;
         this.updateGlobalScroll();
         this.resetReplyFields();
       },
@@ -329,7 +333,54 @@ export class SupportTicketDetailComponent implements AfterViewInit {
   sendReOpeningReminder() {
     this.ticket.status = TICKET_STATUS.SollecitoRiapertura;
     this.updateGlobalScroll();
-    this.discussionData.push({ alias: this.currentUser.t_alias_generated, role: this.currentUser.t_role, replyDateHour: moment().format("DD/MM/YYYY hh:mm"), body: "Sollecito la riapertura di questo ticket", attachments: [] })
+    this.supportService.addSupportTicketReply(this.ticket.id, "Sollecito la riapertura di questo ticket", [], TICKET_STATUS.SollecitoRiapertura ).subscribe(
+      (response: any) => {
+        this.toastr.success("Sollecito inviato con successo");
+        this.discussionData.push({ alias: this.currentUser.t_alias_generated, role: this.currentUser.t_role, replyDateHour: moment().format("DD/MM/YYYY hh:mm"), body: "Sollecito la riapertura di questo ticket", attachments: [] })
+        this.ticket.status = TICKET_STATUS.SollecitoRiapertura;
+        this.updateGlobalScroll();
+        this.resetReplyFields();
+      },
+      error => {
+        this.toastr.error('Errore non è stato possibile inviare il sollecito, riprova più tardi' );
+      }
+    );
+    this.scrollToBottom();
+  }
+
+  reOpenTicket(){
+    this.ticket.status = TICKET_STATUS.Aperto;
+    this.supportService.addSupportTicketReply(this.ticket.id, "Dopo un\'attenta analisi del ticket, ho deciso di riaprirlo.", [], TICKET_STATUS.Aperto).subscribe(
+      (response: any) => {
+        this.toastr.success("Ticket riaperto con successo");
+        this.discussionData.push({ alias: this.currentUser.t_alias_generated, role: this.currentUser.t_role, replyDateHour: moment().format("DD/MM/YYYY hh:mm"), body: "Dopo un\'attenta analisi del ticket, ho deciso di riaprirlo.", attachments: [] })
+        this.ticket.status = TICKET_STATUS.Aperto;
+        this.updateGlobalScroll();
+        this.resetReplyFields();
+      },
+      error => {
+        this.toastr.error('Errore non è stato possibile riaprire il ticket, riprova più tardi' );
+      }
+    );
+    this.updateGlobalScroll();
+    this.scrollToBottom();
+  }
+
+  closeTicket(){
+    this.ticket.status = TICKET_STATUS.Chiuso;
+    this.supportService.addSupportTicketReply(this.ticket.id, "Ticket chiuso.", [], TICKET_STATUS.Chiuso).subscribe(
+      (response: any) => {
+        this.toastr.success("Ticket chiuso con successo");
+        this.discussionData.push({ alias: this.currentUser.t_alias_generated, role: this.currentUser.t_role, replyDateHour: moment().format("DD/MM/YYYY hh:mm"), body: "Ticket chiuso.", attachments: [] })
+        this.ticket.status = TICKET_STATUS.Chiuso;
+        this.updateGlobalScroll();
+        this.resetReplyFields();
+      },
+      error => {
+        this.toastr.error('Errore non è stato possibile riaprire il ticket, riprova più tardi' );
+      }
+    );
+    this.updateGlobalScroll();
     this.scrollToBottom();
   }
 

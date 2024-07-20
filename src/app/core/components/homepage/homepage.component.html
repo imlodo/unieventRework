@@ -1,3 +1,4 @@
-<div class="container home-container">
-    <unievent-content-infinite-scroll></unievent-content-infinite-scroll>
+<div [ngClass]="!isModerate ? 'container home-container' : 'container-fluid'">
+    <unievent-content-infinite-scroll *ngIf="!isModerate"></unievent-content-infinite-scroll>
+    <unievent-moderate-panel *ngIf="isModerate"></unievent-moderate-panel>
 </div>

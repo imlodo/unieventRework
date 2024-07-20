@@ -396,6 +396,10 @@ export class ContentCreateComponent {
       this.locationData.t_state.length > 0 && this.locationData.t_location_name.length > 0;
   }
 
+  isValidTopicStep3(){
+    return this.descriptionTextarea?.nativeElement.value.length > 3 && this.uploadProgress === 100;
+  }
+
   isValidStep4() {
     return this.mapArray.length && this.mapArray[0].t_map_object.t_object_maps.length === (this.mapArray[0].t_map_object.t_map_num_column * this.mapArray[0].t_map_object.t_map_num_rows);
   }

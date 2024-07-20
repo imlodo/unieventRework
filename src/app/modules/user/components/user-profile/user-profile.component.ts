@@ -22,6 +22,7 @@ export class UserProfileComponent implements AfterViewInit {
   bodyElement: ElementRef;
   showEditPanel: boolean = false;
   isFollowed: boolean = false; // Vale per l'utente corrente che visita il profilo
+  isFollowRequest: boolean = false;
   isLoading: boolean = false;
   username: string = "";
   firstName: string = "";
@@ -33,6 +34,7 @@ export class UserProfileComponent implements AfterViewInit {
   currentUser: User;
   scrollDistance = 1;
   scrollUpDistance = 1;
+  showBooked: boolean = false;
   items: any[] = [];
   currentContentPageNumber: number = 1;
   currentLikedPageNumber: number = 1;
@@ -40,6 +42,7 @@ export class UserProfileComponent implements AfterViewInit {
   pageSize: number = 5;
   userInfo: any;
   selectedType: ProfileItemType = ProfileItemType.Content;
+  isPrivateAccount: boolean = false;
 
   constructor(private cdr: ChangeDetectorRef, private toastr: ToastrService, private contentService: ContentService,
     private userService: UserService, private cookieService: CookieService, private elementRef: ElementRef,
@@ -82,8 +85,17 @@ export class UserProfileComponent implements AfterViewInit {
         this.userService.getUser(userAliasGenerated).subscribe(
           (response: any) => {
             this.user = response.user;
+            this.userService.getProfileUserSettings(this.user.t_alias_generated,null).subscribe(
+              (response: any) => {
+                this.isPrivateAccount = response.privacy.visibility.private_account;
+                this.showBooked = response.privacy.visibility.show_booked;
+              },
+              error => {
+                this.toastr.error('Errore nel recupero delle impostazioni');
+              });
             this.getUserProfileInfoByUsername();
             this.checkIsFollowedByCurrentUser();
+            this.checkIsFollowRequestByCurrentUser();
             this.bodyElement = this.elementRef.nativeElement.ownerDocument.body;
             this.username = this.user.t_alias_generated;
             this.firstName = this.user.t_name;
@@ -132,6 +144,14 @@ export class UserProfileComponent implements AfterViewInit {
     );
   }
 
+  checkIsFollowRequestByCurrentUser() {
+    this.userService.checkIsFollowRequestByCurrentUser(this.currentUser.t_alias_generated, this.user.t_alias_generated).subscribe(
+      response => {
+        this.isFollowRequest = Boolean(response.followRequest);
+      }
+    );
+  }
+
   sanitizeFirstName(): void {
     this.firstName = this.sanitizeInput(this.firstName);
   }
@@ -156,17 +176,30 @@ export class UserProfileComponent implements AfterViewInit {
 
   followThisUserByCurrentUser() {
     this.toastr.clear()
-    this.userService.followUser(this.currentUser.t_alias_generated, this.user.t_alias_generated)
-      .subscribe(
-        response => {
-          this.toastr.success(response.message);
-          this.userInfo.countFollower += 1;
-          this.isFollowed = true;
-        },
-        error => {
-          this.toastr.error('Errore nel seguire l\'utente');
-        }
+    if (this.isPrivateAccount) {
+      this.userService.sendFollowUserRequest(this.currentUser.t_alias_generated, this.user.t_alias_generated)
+        .subscribe(
+          response => {
+            this.toastr.success(response.message);
+            this.isFollowRequest = true;
+          },
+          error => {
+            this.toastr.error('Errore nell\'invio della richiesta di seguire l\'utente');
+          }
       );
+    } else {
+      this.userService.followUser(this.currentUser.t_alias_generated, this.user.t_alias_generated)
+        .subscribe(
+          response => {
+            this.toastr.success(response.message);
+            this.userInfo.countFollower += 1;
+            this.isFollowed = true;
+          },
+          error => {
+            this.toastr.error('Errore nel seguire l\'utente');
+          }
+        );
+    }
   }
 
   unfollowUser() {
@@ -180,6 +213,20 @@ export class UserProfileComponent implements AfterViewInit {
         },
         error => {
           this.toastr.error('Errore nel seguire l\'utente');
+        }
+      );
+  }
+
+  unReqFollowUser(){
+    this.toastr.clear()
+    this.userService.unReqFollowUser(this.user.t_alias_generated)
+      .subscribe(
+        response => {
+          this.toastr.success(response.message);
+          this.isFollowRequest = false;
+        },
+        error => {
+          this.toastr.error('Errore nell\'eliminare la richiesta di seguire l\'utente');
         }
       );
   }

@@ -71,7 +71,7 @@
             <span>{{coupon.coupon_code}} - {{coupon.discount}}% di sconto</span>
             <div class="d-flex gap-2">
                 <span class="bg-secondary p-2 pointer"
-                style="height: fit-content;width: 150px;text-align: center;" (click)="openEditCoupon()">Modifica</span>
+                style="height: fit-content;width: 150px;text-align: center;" (click)="openEditCoupon(coupon)">Modifica</span>
                 <span (click)="deleteCoupon($event,coupon)" class="bg-danger p-2 pointer"
                 style="height: fit-content;width: 150px;text-align: center;">Elimina</span>
             </div>
@@ -87,6 +87,20 @@
                 aria-hidden="true">&times;</span>
         </div>
         <div class="d-flex flex-row justify-content-between align-items-center mb-3 p-3 rounded" style="background: #3a424b;">
+            <form class="mb-5 w-100" [formGroup]="formCoupon" #formEditCoupon="ngForm" (ngSubmit)="updateCoupon(formEditCoupon)">
+                <div class="form-group">
+                    <span>Codice Coupon</span>
+                    <input class="form-control" type="text" name="coupon_code"  formControlName="coupon_code" required>
+                </div>
+                <div class="form-group">
+                    <label>Percentuale di sconto</label>
+                    <input type="number" min="1" max="100" class="form-control" name="discount" formControlName="discount" required>
+                </div>
+                <div class="d-flex flex-row justify-content-end">
+                    <button class="btn btn-secondary btn-sm" (click)="closeAddCoupon()">Annulla</button>
+                    <button class="btn btn-danger btn-sm" type="submit" [disabled]="!formEditCoupon.valid">Aggiorna</button>
+                </div>
+            </form>
         </div>
     </div>
 </div>

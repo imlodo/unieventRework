@@ -26,6 +26,7 @@ export class AppComponent implements OnInit, AfterViewInit {
   showMenu: boolean = true;
   showMenuLeft: boolean = true;
   darkMode: boolean = false;
+  isModerate: boolean = false;
 
   constructor(private router: Router, private cdr: ChangeDetectorRef, private toastr: ToastrService, private translate: TranslateService, private cookieService: CookieService, private userService: UserService) {
     // Imposta la lingua predefinita
@@ -34,6 +35,10 @@ export class AppComponent implements OnInit, AfterViewInit {
     this.translate.use('it');
 
     const cookieCurrentUser = this.cookieService.get('current_user');
+    if(cookieCurrentUser && JSON.parse(cookieCurrentUser).t_role !== "Utente"){
+      this.isModerate = true;  
+    }
+
     const cookieFollowedUser = this.cookieService.get("followed_users");
     if (cookieCurrentUser && !cookieFollowedUser) {
       this.userService.getUserFollowedByCurrentUser(5).subscribe(

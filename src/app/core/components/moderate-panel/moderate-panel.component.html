@@ -1,0 +1,24 @@
+<div class="container p-3">
+    <div class="d-flex flex-column justify-content-center align-items-center">
+        <svg xmlns="http://www.w3.org/2000/svg" width="82" height="82" fill="currentColor" class="bi bi-grid-1x2-fill my-4"
+            viewBox="0 0 16 16">
+            <path
+                d="M0 1a1 1 0 0 1 1-1h5a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1zm9 0a1 1 0 0 1 1-1h5a1 1 0 0 1 1 1v5a1 1 0 0 1-1 1h-5a1 1 0 0 1-1-1zm0 9a1 1 0 0 1 1-1h5a1 1 0 0 1 1 1v5a1 1 0 0 1-1 1h-5a1 1 0 0 1-1-1z" />
+        </svg>
+        <h2>Pannello Moderazione</h2>
+    </div>
+    <div style="overflow-y: auto;">
+        <div class="mx-4 mt-4 type-buttons d-flex mb-4">
+            <span class="menuEl pointer py-2 col-6" [class.active]="selectedSection === 'Support'"
+                (click)="changeSection('Support')">Ticket di supporto</span>
+            <span class="menuEl mr-4 pointer py-2 col-6" [class.active]="selectedSection === 'Artist'"
+                (click)="changeSection('Artist')">Ticket di verifica Artista</span>
+        </div>
+    </div>
+    <ng-container *ngIf="selectedSection === 'Support'">
+        <unievent-moderate-tickets #tickets></unievent-moderate-tickets>
+    </ng-container>
+    <ng-container *ngIf="selectedSection === 'Artist'">
+        <unievent-moderate-artist #artist></unievent-moderate-artist>
+    </ng-container>
+</div>

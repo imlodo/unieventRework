@@ -21,6 +21,7 @@ export class NavbarComponent {
   isShowed = false;
   isMobileSearch = false;
   @Input() darkMode = false;
+  @Input() isModerate = false;
 
   @HostListener('document:click', ['$event'])
   handleDocumentClick(event: MouseEvent) {

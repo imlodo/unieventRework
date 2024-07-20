@@ -21,10 +21,11 @@ export class ContentManageComponent {
   currentEventId: string  = null;
   showAddCoupon: boolean = false;
   currentCouponEvent: any = null;
+  currentCoupon: {coupon_id:string, event_id:string, coupon_code:string, discount:number}
   couponList: Array<{ coupon_id: string, event_id: string, coupon_code: string, discount: number }> = new Array();
   formCoupon = new FormGroup({
     coupon_code: new FormControl(''), 
-    discount: new FormControl('')
+    discount: new FormControl(null)
   });
 
   constructor(private router: Router,
@@ -133,11 +134,21 @@ export class ContentManageComponent {
     this.showAddCoupon = false;
   }
 
-  openEditCoupon() {
+  openEditCoupon(item:any) {
+    this.currentCoupon = item;
+    this.formCoupon.patchValue({
+      coupon_code: this.currentCoupon.coupon_code,
+      discount: this.currentCoupon.discount
+    });
     this.showEditCoupon = true;
   }
 
   closeEditCoupon() {
+    this.currentCoupon = null;
+    this.formCoupon.patchValue({
+      coupon_code: "",
+      discount: null
+    });
     this.showEditCoupon = false;
   }
 
@@ -159,5 +170,21 @@ export class ContentManageComponent {
       }
     );
     this.closeAddCoupon();
+  }
+
+  updateCoupon(form: any) {
+    this.contentService.updateCoupon(this.currentCoupon.coupon_id, form.value.coupon_code, form.value.discount, this.currentEventId).subscribe(
+      (response: any) => {
+        this.couponList = [...this.couponList.filter(el=>el.coupon_id != response.coupon.coupon_id)];
+        this.couponList.push(response.coupon);
+        this.toastr.clear();
+        this.toastr.success("Coupon aggiornato con successo");
+      },
+      error => {
+        this.toastr.clear();
+        this.toastr.error('Errore nell\'aggiunta del coupon');
+      }
+    );
+    this.closeEditCoupon();
   }
 }

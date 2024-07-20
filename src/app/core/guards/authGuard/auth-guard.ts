@@ -4,6 +4,7 @@ import { Observable, of } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
 import { AuthenticationService } from '../../services';
 import { CookieService } from 'ngx-cookie-service';
+import { User } from '../../models/user';
 
 @Injectable({
   providedIn: 'root'
@@ -16,12 +17,22 @@ export class AuthGuard implements CanActivate {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
+    
+    if (this.cookieService.get("current_user")) {
+      console.log("sono dentro")
+      let currentUser = (JSON.parse(this.cookieService.get("current_user")) as User);
+      if (currentUser.t_role !== "Utente" && (state.url !== '/' && state.url === "/support/detail")  ) {
+        this.router.navigate(["/404"])
+        return false;
+      }
+    }
+
     if (state.url === '/login' || state.url === '/signup' || state.url === '/forgot-password') {
       const authToken = this.cookieService.get("auth_token");
       if (authToken) {
         this.router.navigate(["/"]);
-      } 
-      return true; 
+      }
+      return true;
     }
 
     return this.authService.verifyToken().pipe(

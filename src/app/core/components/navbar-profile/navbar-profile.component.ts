@@ -19,6 +19,7 @@ export class NavbarProfileComponent {
   activeMod: boolean = false;
   @Input() darkMode: boolean;
   user: User;
+  @Input() isModerate: boolean = false;
 
   @HostListener('document:click', ['$event'])
   handleClickOutside(event: Event) {
@@ -77,6 +78,9 @@ export class NavbarProfileComponent {
         break;
       case "tickets":
         this.router.navigate([ROUTE_LIST.tickets]);
+        break;
+      case "moderatePanel":
+        this.router.navigate([""]);
         break;
     }
   }

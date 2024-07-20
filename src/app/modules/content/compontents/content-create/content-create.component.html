@@ -226,7 +226,7 @@
                 </picture>
             </div>
         </div>
-        <div class="d-flex flex-column">
+        <div *ngIf="selectedContentType==='Event'" class="d-flex flex-column">
             <h3>Data evento *</h3>
             <input type="text" class="form-control border-0 card-input" id="t_event_date" name="t_event_date"
                 placeholder="DD/MM/YYYY" required (bsValueChange)="updateEventDate($event)" bsDatepicker [bsConfig]="{
@@ -236,7 +236,7 @@
                 minDate: minExpiryDate
             }">
         </div>
-        <div class="d-flex flex-column location">
+        <div *ngIf="selectedContentType==='Event'" class="d-flex flex-column location">
             <h3>Dove si svolge l'evento? *</h3>
             <div class="d-flex flex-column">
                 <div class="mb-3">
@@ -275,7 +275,7 @@
                 </div>
             </div>
         </div>
-        <div class="d-flex flex-column">
+        <div *ngIf="selectedContentType==='Event'" class="d-flex flex-column">
             <h3>Evento collegato</h3>
             <ng-select [items]="filteredRelatedEvents" placeholder="Ricerca Evento" bindLabel="t_caption" bindValue="id"
                 (search)="searchEvent($event.term, $event.items)" [searchable]="true" (change)="changeEvent($event)">
@@ -299,7 +299,7 @@
         </div>
         <div class="d-flex flex-row justify-content-end gap-3 mt-3">
             <button class="btn btn-sm btn-secondary rounded-0" (click)="discard()">Scarta</button>
-            <button [disabled]="!isValidStep3()" *ngIf="selectedContentType==='Topic'"
+            <button [disabled]="!isValidTopicStep3()" *ngIf="selectedContentType==='Topic'"
                 class="btn btn-sm btn-danger rounded-0" (click)="publicContent()">Pubblica</button>
             <button [disabled]="!isValidStep3()" *ngIf="selectedContentType==='Event'"
                 class="btn btn-sm btn-danger rounded-0" (click)="incrementStep()">Avanti</button>

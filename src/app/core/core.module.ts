@@ -36,6 +36,11 @@ import { NgxStarsComponent } from './components/ngx-stars/ngx-stars.component';
 import { HistoryComponent } from './components/history/history.component';
 import { DateFormatPipe } from './pipe/date-format.pipe';
 import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
+import { ModeratePanelComponent } from './components/moderate-panel/moderate-panel.component';
+import { ModerateTicketsComponent } from './components/moderate-tickets/moderate-tickets.component';
+import { ModerateArtistComponent } from './components/moderate-artist/moderate-artist.component';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 @NgModule({
 	declarations: [
@@ -74,7 +79,10 @@ import { ResetPasswordComponent } from './components/reset-password/reset-passwo
 		ForgotPasswordFormComponent,
 		NgxStarsComponent,
 		HistoryComponent,
-		ResetPasswordComponent
+		ResetPasswordComponent,
+		ModeratePanelComponent,
+		ModerateTicketsComponent,
+		ModerateArtistComponent
 	],
 	imports: [
 		CommonModule,
@@ -84,6 +92,8 @@ import { ResetPasswordComponent } from './components/reset-password/reset-passwo
 		ReactiveFormsModule,
 		InfiniteScrollModule,
 		NgSelectModule,
+		MatTableModule,
+		MatPaginatorModule,
 		ToastrModule.forRoot(), // ToastrModule added
 	],
 	exports: [
