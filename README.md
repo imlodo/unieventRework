@@ -1,4 +1,4 @@
-# UnieventRework
+# Unievent
 
 # Abstract
 Unievent è una piattaforma che consente di pubblicare contenuti. I contenuti possono essere topics o eventi, i contenuti posso avere un immagine descrittiva oppure un video e permettono di connettere persone con gli stessi interessi, attraverso le interazioni e i like. La piattaforma ha tre tipo di utenti: Creator, Organizzatore e Artista. Gli Artisti possono creare sia eventi che topics, i creator possono creare soltanto topics, mentre gli organizzatori solo eventi. Per gli eventi è possibile acquistare un biglietto, ed inoltre è possibile lasciare una recensione.
