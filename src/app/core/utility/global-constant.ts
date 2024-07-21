@@ -31722,6 +31722,7 @@ export const ROUTE_LIST =
         category: {
             list: "/artist/category/list"
         },
+        detail: "/artist/detail",
         verify: "/artist/verify"
     },
     create: "/create",

@@ -16,6 +16,7 @@ export class NavbarLeftMenuComponent implements AfterViewInit {
   activePath: string;
   currentUser: User;
   followedUser: Array<User> = new Array();
+  isModerate:boolean = false;
 
   constructor(
     private renderer: Renderer2,
@@ -26,7 +27,12 @@ export class NavbarLeftMenuComponent implements AfterViewInit {
     private userService: UserService,
     private toastr: ToastrService
   ) {
+    
     this.currentUser = (JSON.parse(this.cookieService.get("current_user")) as User);
+    if(this.currentUser.t_role != "Utente"){
+      this.isModerate = true;
+    }
+
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
         this.activePath = event.url;

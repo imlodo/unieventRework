@@ -11,10 +11,13 @@ import { ArtistRoutingModule } from './artist-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { ArtistVerifyComponent } from './components/artist-verify/artist-verify.component';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { ArtistDetailComponent } from './components/artist-detail/artist-detail.component';
+import { CoreModule } from 'src/app/core/core.module';
 
 @NgModule({
   declarations: [
-    ArtistVerifyComponent
+    ArtistVerifyComponent,
+    ArtistDetailComponent
   ],
   imports: [
     CommonModule,
@@ -27,7 +30,8 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     MatInputModule,
     BsDatepickerModule.forRoot(),
     ArtistRoutingModule,
-    HttpClientModule
+    HttpClientModule, 
+    CoreModule
   ],
   exports: [
   ],

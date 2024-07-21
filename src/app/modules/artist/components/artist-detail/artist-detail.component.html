@@ -1,0 +1,105 @@
+<div class="container rounded p-4" *ngIf="verifiyRequest">
+    <div id="artist-detail" class="row py-4 px-2 rounded">
+        <h2>Dettaglio Richiesta Verifica Artista di {{verifiyRequest.t_alias_generated}} ({{isVerified ? "ACCETTATA" :
+            isRequested ? "IN FASE DI REVISIONE" : "RIFIUTATA"}})</h2>
+        <div class="d-flex w-100 gap-3 justify-content-end mb-4">
+            <button *ngIf="isRequested" (click)="openRefuseModal()" class="btn btn-danger">Rifiuta richiesta</button>
+            <button *ngIf="isRequested" (click)="acceptRequest()" class="btn btn-success">Accetta richiesta</button>
+        </div>
+        <div class="row">
+            <div class="col-6 col-md-4 mb-3">
+                <label><b>Nome:</b></label>
+                <span> {{ verifiyRequest.name }}</span>
+            </div>
+            <div class="col-6 col-md-4 mb-3">
+                <label><b>Cognome: </b></label>
+                <span> {{ verifiyRequest.surname }}</span>
+            </div>
+            <div class="col-6 col-md-4 mb-3">
+                <label><b>Data di Nascita:</b></label>
+                <span> {{ verifiyRequest.birthdate | dateFormat:"DD-MM-YYYY" }}</span>
+            </div>
+            <div class="col-6 col-md-4 mb-3">
+                <label><b>Partita IVA:</b></label>
+                <span> {{ verifiyRequest.pIva }}</span>
+            </div>
+            <div class="col-6 col-md-4 mb-3">
+                <label><b>Nome Azienda:</b></label>
+                <span> {{ verifiyRequest.companyName }}</span>
+            </div>
+        </div>
+
+        <div class="row mt-3">
+            <div class="col-6 col-md-4 mb-3">
+                <label><b>Indirizzo Azienda:</b></label>
+                <span> {{ verifiyRequest.companyAddress }}</span>
+            </div>
+            <div class="col-6 col-md-4 mb-3">
+                <label><b>PEC:</b></label>
+                <span> {{ verifiyRequest.pec }}</span>
+            </div>
+            <div class="col-6 col-md-4 mb-3">
+                <label><b>Consenso Clausole:</b></label>
+                <span> {{ verifiyRequest.consentClauses ? 'Sì' : 'No' }}</span>
+            </div>
+            <div class="col-6 col-md-4 mb-3">
+                <label><b>Stato:</b></label>
+                <span> {{ verifiyRequest.status }}</span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6 d-flex flex-column mt-3">
+                <label class="mb-2"><b>Documento di Identità (Fronte)</b></label>
+                <img (click)="openImage(verifiyRequest.identity_document[0])"
+                    [src]="verifiyRequest.identity_document[0]" alt="Documento di Identità" class="img-fluid"
+                    style="max-width: 300px; max-height: 150px; object-fit: cover; border-radius: 5px; cursor: zoom-in;">
+            </div>
+            <div class="col-6 d-flex flex-column mt-3">
+                <label class="mb-2"><b>Documento di Identità (Retro)</b></label>
+                <img (click)="openImage(verifiyRequest.identity_document[1])"
+                    [src]="verifiyRequest.identity_document[1]" alt="Documento di Identità" class="img-fluid"
+                    style="max-width: 300px; max-height: 150px; object-fit: cover; border-radius: 5px; cursor: zoom-in;">
+            </div>
+        </div>
+
+        <!-- Stato: refused -->
+        <div class="mt-3" *ngIf="isRefused">
+            <div>
+                <p class="text-danger"><b>La richiesta è stata rifiutata.</b></p>
+            </div>
+            <div>
+                <label><b>Data di Rifiuto:</b></label>
+                <span> {{ verifiyRequest.refused_date | dateFormat:"DD-MM-YYYY" }}</span>
+            </div>
+            <div class="mt-3">
+                <label><b>Motivazione del Rifiuto:</b></label>
+                <span> {{ verifiyRequest.refused_motivation }}</span>
+            </div>
+        </div>
+
+        <!-- Stato: requested -->
+        <div class="mt-3" *ngIf="isRequested">
+            <p><b>La richiesta è in attesa di revisione.</b></p>
+        </div>
+
+        <!-- Stato: verified -->
+        <div class="mt-3" *ngIf="isVerified">
+            <p class="text-success"><b>La richiesta è stata verificata con successo.</b></p>
+        </div>
+
+    </div>
+</div>
+
+<div *ngIf="showRefuseModal" class="modal-overlay" style="z-index:10">
+    <div class="modal-content container p-3 m-3">
+        <div class="d-flex justify-content-between border-bottom mb-3">
+            <h2 class="mb-2">Rifiuta richiesta</h2>
+            <span style="font-size:38px;" class="pointer" (click)="closeRefuseModal()" aria-hidden="true">&times;</span>
+        </div>
+        <div class="d-flex flex-column">
+            <label>Motivo del rifiuto</label>
+            <textarea rows="10" style="resize: none;" [(ngModel)]="t_motivation"></textarea>
+            <div (click)="refuseRequest()" class="d-flex justify-content-end mt-4"><button [disabled]="t_motivation.length < 10" class="btn btn-danger">Rifiuta</button></div>
+        </div>
+    </div>
+</div>

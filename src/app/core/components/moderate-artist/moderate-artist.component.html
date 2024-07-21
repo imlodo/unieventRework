@@ -1,1 +1,26 @@
-<p>moderate-artist works!</p>
+<div class="p-4 d-flex flex-column align-items-center">
+    <h1>Lista ticket di verifica artista</h1>
+    <div class="container ticket-list-container">
+        <table mat-table [dataSource]="artistData" class="mat-elevation-z8" matSort>
+            <ng-container matColumnDef="alias">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>Alias Utente</th>
+                <td mat-cell *matCellDef="let row">{{row.t_alias_generated}}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="status">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Stato </th>
+                <td mat-cell *matCellDef="let row">{{row.status}}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="actions">
+                <th mat-header-cell *matHeaderCellDef> Azioni </th>
+                <td mat-cell *matCellDef="let row">
+                    <button class="btn btn-secondary" (click)="showDetails(row)">Dettaglio</button>
+                </td>
+            </ng-container>
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+        <mat-paginator [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]" showFirstLastButtons></mat-paginator>
+    </div>
+</div>

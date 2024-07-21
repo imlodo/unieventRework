@@ -19,9 +19,8 @@ export class AuthGuard implements CanActivate {
   ): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     
     if (this.cookieService.get("current_user")) {
-      console.log("sono dentro")
       let currentUser = (JSON.parse(this.cookieService.get("current_user")) as User);
-      if (currentUser.t_role !== "Utente" && (state.url !== '/' && state.url === "/support/detail")  ) {
+      if (currentUser.t_role !== "Utente" && (state.url !== '/' && !state.url.includes("/supports/detail") && !state.url.includes("/artist/detail"))) {
         this.router.navigate(["/404"])
         return false;
       }

@@ -1,8 +1,8 @@
 <div [ngClass]="darkMode ? 'text-white' : 'text-dark'">
-    <unievent-navbar id="nav" [isModerate]="isModerate" [darkMode]="darkMode" (updateThemeEvent)="updateTheme()" *ngIf="showMenu"
+    <unievent-navbar id="nav" [darkMode]="darkMode" (updateThemeEvent)="updateTheme()" *ngIf="showMenu"
         (onShowCollapse)="showCollapse()" (onCloseCollapse)="closeCollapse()"></unievent-navbar>
     <div [attr.style]="showMenu ? 'margin-top:80px' : null" [attr.class]="showMenuLeft ? 'd-flex flex-row justify-content-between' : null">
-        <unievent-navbar-left-menu *ngIf="showMenuLeft && !isModerate"></unievent-navbar-left-menu>
+        <unievent-navbar-left-menu *ngIf="showMenuLeft"></unievent-navbar-left-menu>
         <router-outlet style="flex: none;"></router-outlet>
     </div> 
     <!--<unievent-search-collapse (onHideSearch)="updateSearchButton()"></unievent-search-collapse>

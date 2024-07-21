@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
 import { Observable, catchError, tap, throwError } from 'rxjs';
-import { ADD_CHAT_REPLY, ADD_USER_ADDRESS, ADD_USER_CARD, CHECK_IS_FOLLOWED, CHECK_IS_FOLLOW_REQUEST_BY_CURRENT_USER, CREATE_NEW_USER, DELETE_ACCOUNT, DOWNLOAD_PERSONAL_DATA, EDIT_USER, FOLLOW_USER, FOLLOW_USER_REQUEST, GET_CHAT_LIST, GET_CHAT_MESSAGE_LIST, GET_PROFILE_USER_SETTINGS, GET_REQUEST_PERSONAL_DATA_STATUS, GET_USER, GET_USER_ADDRESS, GET_USER_CREDIT_CARDS, GET_USER_FOLLOWED_BY_CURRENT_USER, GET_USER_PROFILE_INFO, GET_USER_SETTINGS, GET_VERIFY_ACCOUNT_STATUS, REQUEST_PERSONAL_DATA, SAVE_USER_SETTINGS, SEARCH_USER, SEND_CONFIRMATION_EMAIL, SEND_NEW_PASSWORD, UNFOLLOW_USER, UN_REQUEST_FOLLOW_USER, VERIFY_ACCOUNT } from '../../utility/api-constant';
+import { ADD_CHAT_REPLY, ADD_USER_ADDRESS, ADD_USER_CARD, CHECK_IS_FOLLOWED, CHECK_IS_FOLLOW_REQUEST_BY_CURRENT_USER, CREATE_NEW_USER, DELETE_ACCOUNT, DOWNLOAD_PERSONAL_DATA, EDIT_USER, FOLLOW_USER, FOLLOW_USER_REQUEST, GET_CHAT_LIST, GET_CHAT_MESSAGE_LIST, GET_PROFILE_USER_SETTINGS, GET_REQUEST_PERSONAL_DATA_STATUS, GET_USER, GET_USER_ADDRESS, GET_USER_CREDIT_CARDS, GET_USER_FOLLOWED_BY_CURRENT_USER, GET_USER_PROFILE_INFO, GET_USER_SETTINGS, GET_VERIFY_ACCOUNT_LIST, GET_VERIFY_ACCOUNT_STATUS, REQUEST_PERSONAL_DATA, SAVE_USER_SETTINGS, SEARCH_USER, SEND_CONFIRMATION_EMAIL, SEND_NEW_PASSWORD, UNFOLLOW_USER, UN_REQUEST_FOLLOW_USER, UPDATE_VERIFY_ACCOUNT, VERIFY_ACCOUNT } from '../../utility/api-constant';
 import { USER_TYPE } from '../../utility/global-constant';
 
 @Injectable({
@@ -517,6 +517,39 @@ export class UserService {
       }),
       catchError(this.handleError)
     );
+  }
+  
+  getVerifyAccountList(): Observable<any> {
+    const token = this.cookieService.get('auth_token');
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    });
+
+    return this.http.get(GET_VERIFY_ACCOUNT_LIST, { headers }).pipe(
+      tap((response: any) => {
+        return response;
+      }),
+      catchError(this.handleError)
+    );
+  }
+
+  updateVerifyAccount(request_id:string, t_state:"refused"|"verified", t_motivation:string): Observable<any> {
+    const token = this.cookieService.get('auth_token');
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    });
+
+    const body = { request_id, t_state, t_motivation };
+
+    return this.http.post(UPDATE_VERIFY_ACCOUNT, body, { headers })
+      .pipe(
+        tap((response: any) => {
+          return response
+        }),
+        catchError(this.handleError)
+      );
   }
 
   private handleError(error: any) {

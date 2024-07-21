@@ -1,4 +1,4 @@
-<div [ngClass]="{'d-lg-block': !isDNone, 'd-none': isDNone}" class="left-nav p-4">
+<div *ngIf="!isModerate" [ngClass]="{'d-lg-block': !isDNone, 'd-none': isDNone}" class="left-nav p-4">
     <ul class="navbar-nav ms-auto">
         <li class="nav-item" [ngClass]="{ 'active': isLinkActive('/') }">
             <a href="/" class="nav-link">

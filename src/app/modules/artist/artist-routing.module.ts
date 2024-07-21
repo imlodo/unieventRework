@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { ArtistVerifyComponent } from './components/artist-verify/artist-verify.component';
+import { ArtistDetailComponent } from './components/artist-detail/artist-detail.component';
 
 const routes: Routes = [
   {
@@ -14,6 +15,13 @@ const routes: Routes = [
         component: ArtistVerifyComponent,
         data: {
           title: 'Verifica Artista'
+        }
+      },
+      {
+        path: 'detail/:params',
+        component: ArtistDetailComponent,
+        data: {
+          title: 'Dettaglio Artista'
         }
       }
     ]

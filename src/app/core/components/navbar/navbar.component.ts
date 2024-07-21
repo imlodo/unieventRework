@@ -5,6 +5,7 @@ import { GlobalService } from '../../services';
 import { Router } from '@angular/router';
 import { ROUTE_LIST } from '../../utility/global-constant';
 import { CookieService } from 'ngx-cookie-service';
+import { User } from '../../models/user';
 
 @Component({
   selector: 'unievent-navbar',
@@ -21,7 +22,8 @@ export class NavbarComponent {
   isShowed = false;
   isMobileSearch = false;
   @Input() darkMode = false;
-  @Input() isModerate = false;
+  isModerate = false;
+  currentUser = null;
 
   @HostListener('document:click', ['$event'])
   handleDocumentClick(event: MouseEvent) {
@@ -47,6 +49,11 @@ export class NavbarComponent {
   constructor(private elementRef: ElementRef, private cookieService: CookieService, private router: Router, private globalService: GlobalService) {
     if(this.cookieService.get("auth_token")){
       this.online=true;
+    }
+    
+    this.currentUser = (JSON.parse(this.cookieService.get("current_user")) as User);
+    if(this.currentUser.t_role != "Utente"){
+      this.isModerate = true;
     }
   }
 
