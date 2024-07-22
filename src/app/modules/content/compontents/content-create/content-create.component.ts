@@ -134,7 +134,7 @@ export class ContentCreateComponent {
     this.selectedFile = file;
     this.incrementStep();
     setTimeout(() => {
-      this.uploadFile();
+      this.uploadFileAzure();
       this.generatePreview();
     }, 1)
   }
@@ -147,7 +147,7 @@ export class ContentCreateComponent {
     this.selectedFile = file;
     this.incrementStep();
     setTimeout(() => {
-      this.uploadFile();
+      this.uploadFileAzure();
       this.generatePreview();
     }, 1)
   }
@@ -164,48 +164,78 @@ export class ContentCreateComponent {
     this.isDraggedOver = false;
   }
 
-  uploadFile() {
+  uploadFileAzure(): void {
     if (this.selectedFile) {
       this.uploadProgress = 0;
-      this.fileUploadService.uploadFile(this.selectedFile).subscribe(event => {
-        if (event.type === HttpEventType.UploadProgress) {
-          this.uploadProgress = Math.round((100 * event.loaded) / event.total);
-        } else if (event.type === HttpEventType.Response) {
-          // Aggiungi qui la logica aggiuntiva dopo il caricamento del file
-          this.incrementStep();
-        } else if (event.type === 'progress') {
-          this.uploadProgress = event.progress;
-        } else if (event.type === 'response') {
-          this.uploadProgress = 100;
-          // Aggiungi qui la logica aggiuntiva dopo il caricamento del file
-          //this.incrementStep();
-        }
-      }, error => {
-        console.error('Error uploading file', error);
-        // Gestisci eventuali errori qui
-      });
+      if(this.selectedFile.type.includes("video")){
+        this.fileUploadService.uploadFileVideoAzure(this.selectedFile).subscribe(event => {
+          if (event.type === HttpEventType.UploadProgress && event.total) {
+            this.uploadProgress = Math.round((100 * event.loaded) / event.total);
+          } else if (event.type === HttpEventType.Response) {
+            this.uploadProgress = 100;
+            console.log('File successfully uploaded!', event.body);
+            this.fileUrl = event.body.original_url;
+            this.coverUrl = event.body.preview_url;
+            this.previewUrl = event.body.preview_url;
+          }
+        }, error => {
+          console.error('Error uploading file', error);
+        });
+      } else{
+        this.fileUploadService.uploadFileAzure(this.selectedFile).subscribe(event => {
+          if (event.type === HttpEventType.UploadProgress && event.total) {
+            this.uploadProgress = Math.round((100 * event.loaded) / event.total);
+          } else if (event.type === HttpEventType.Response) {
+            this.uploadProgress = 100;
+            console.log('File successfully uploaded!', event.body);
+            this.fileUrl = event.body.url
+          }
+        }, error => {
+          console.error('Error uploading file', error);
+        });
+      }
     } else {
       console.error('No file selected');
     }
   }
 
-  uploadFileAzure() {
-    if (this.selectedFile) {
+  deleteFileAzure(): void{
+    if (this.fileUrl) {
       this.uploadProgress = 0;
-      this.fileUploadService.uploadFile(this.selectedFile).subscribe(event => {
-        if (event.type === HttpEventType.UploadProgress && event.total) {
-          this.uploadProgress = Math.round((100 * event.loaded) / event.total);
-        } else if (event.type === HttpEventType.Response) {
-          this.uploadProgress = 100;
-          console.log('File successfully uploaded!', event.body);
-          this.fileUrl = event.body.url;
-        }
-      }, error => {
-        console.error('Error uploading file', error);
-      });
+      if(this.selectedFile.type.includes("video")){
+        this.fileUploadService.deleteFileAzure(this.fileUrl).subscribe(event => {
+        }, error => {
+          console.error('Error deleting file', error);
+        });
+        this.fileUploadService.deleteFileAzure(this.previewUrl).subscribe(event => {
+          window.location.reload();
+        }, error => {
+          window.location.reload();
+          console.error('Error deleting file', error);
+        });
+      } else {
+        this.fileUploadService.deleteFileAzure(this.previewUrl).subscribe(event => {
+          window.location.reload();
+        }, error => {
+          window.location.reload();
+          console.error('Error deleting file', error);
+        });
+      }
     } else {
+      window.location.reload();
       console.error('No file selected');
     }
+  }
+
+  convertBlobToBase64(blob: Blob): Promise<string> {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        resolve(reader.result as string);
+      };
+      reader.onerror = reject;
+      reader.readAsDataURL(blob);
+    });
   }
 
   searchEvent(term: string, items: any[]) {
@@ -246,16 +276,10 @@ export class ContentCreateComponent {
       };
       if (this.selectedFile.type.startsWith('video')) {
         this.fileType = "video";
-        this.getVideoPreview();
       } else {
         reader.readAsDataURL(this.selectedFile);
       }
     }
-  }
-
-  getVideoPreview() {
-    this.previewUrl = "/assets/img/topic-image-placeholder.jpg";
-    this.coverUrl = "/assets/img/topic-image-placeholder.jpg";
   }
 
   addHashtag() {
@@ -334,12 +358,16 @@ export class ContentCreateComponent {
   }
 
   discard() {
-    window.location.reload();
+    if(this.fileUrl){
+      this.deleteFileAzure();
+    } else {
+      window.location.reload();
+    }
   }
 
   publicContent() {
     if (this.selectedContentType === "Event") {
-      this.contentService.addContent("Eventi", this.descriptionValue, this.privacyContent, this.currentUser.t_alias_generated, this.coverUrl, this.fileType === "video" ? this.fileUrl : null, this.tagArray, this.hashTagArray, this.t_event_date, this.relatedEvent ? this.relatedEvent.id : null, this.group_event_id, this.locationData, this.mapArray).subscribe(
+      this.contentService.addContent("Eventi", this.descriptionValue, this.privacyContent, this.currentUser.t_alias_generated, this.coverUrl, this.fileType.includes("video") ? this.fileUrl : null, this.tagArray, this.hashTagArray, this.t_event_date, this.relatedEvent ? this.relatedEvent.id : null, this.group_event_id, this.locationData, this.mapArray).subscribe(
         response => {
           this.toastr.success(null, "Contenuto pubblicato con successo", { progressBar: true });
           this.router.navigate([ROUTE_LIST.content.manage]);

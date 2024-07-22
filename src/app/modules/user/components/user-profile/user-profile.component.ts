@@ -9,6 +9,7 @@ import { GlobalService, UserService } from 'src/app/core/services';
 import { ContentService } from 'src/app/core/services/contentService/content.service';
 import { MORE_CONTENT_TYPE } from 'src/app/core/utility/enum-constant';
 import { ItemType, ProfileItemType, ROUTE_LIST } from 'src/app/core/utility/global-constant';
+import { FileUploadService } from 'src/app/modules/content/services/file-upload-service/file-upload-service';
 
 @Component({
   selector: 'unievent-user-profile',
@@ -46,7 +47,7 @@ export class UserProfileComponent implements AfterViewInit {
 
   constructor(private cdr: ChangeDetectorRef, private toastr: ToastrService, private contentService: ContentService,
     private userService: UserService, private cookieService: CookieService, private elementRef: ElementRef,
-    private globalService: GlobalService, private route: ActivatedRoute, private router: Router) {
+    private globalService: GlobalService, private route: ActivatedRoute, private router: Router, private fileService: FileUploadService) {
     const cookieCurrentUser = this.cookieService.get('current_user');
     if (cookieCurrentUser) {
       this.currentUser = JSON.parse(cookieCurrentUser);
@@ -275,12 +276,12 @@ export class UserProfileComponent implements AfterViewInit {
   onFileSelected(event: any): void {
     const selectedFile = event.target.files[0];
     if (selectedFile) {
-      const reader = new FileReader();
-      reader.onload = (e: any) => {
-        const base64Image = e.target.result;
-        this.profile_photo = base64Image;
-      };
-      reader.readAsDataURL(selectedFile);
+      this.fileService.uploadFileAzure(selectedFile).subscribe(event => {
+        this.profile_photo = event.body.url;
+        this.user.t_profile_photo = event.body.url;
+      }, error => {
+        console.error('Error uploading file', error);
+      });
     }
   }
 

@@ -8,6 +8,7 @@ import { ToastrService } from 'ngx-toastr';
 import { User } from 'src/app/core/models/user';
 import { UserService } from 'src/app/core/services';
 import { ExtendedFile, ROUTE_LIST, USER_TYPE } from 'src/app/core/utility/global-constant';
+import { FileUploadService } from 'src/app/modules/content/services/file-upload-service/file-upload-service';
 
 @Component({
   selector: 'unievent-artist-verify',
@@ -37,8 +38,9 @@ export class ArtistVerifyComponent implements AfterViewInit {
       pec: '',
       consentClauses: false
     }
+  fileUrls:Array<string> = new Array();
 
-  constructor(private http: HttpClient, private router:Router, private sanitizer: DomSanitizer, private userService: UserService, private toastr: ToastrService, private cookieService: CookieService) {
+  constructor(private http: HttpClient, private router:Router, private sanitizer: DomSanitizer, private userService: UserService, private toastr: ToastrService, private cookieService: CookieService, private fileService: FileUploadService) {
     let currentUser = (JSON.parse(this.cookieService.get("current_user")) as User);
     if(USER_TYPE[currentUser.t_type] === USER_TYPE.COMPANY){
       this.router.navigate([""])
@@ -61,7 +63,7 @@ export class ArtistVerifyComponent implements AfterViewInit {
 
   sendVerifyAccount() {
     this.userService.verifyAccount(this.formData.name, this.formData.surname, moment(this.formData.birthdate).format("DD-MM-YYYY"), this.formData.pIva, 
-      this.formData.companyName, this.formData.companyAddress, this.formData.pec, this.formData.consentClauses, this.uploadedFiles, "requested", null, null).subscribe(
+      this.formData.companyName, this.formData.companyAddress, this.formData.pec, this.formData.consentClauses, this.fileUrls, "requested", null, null).subscribe(
         (response: any) => {
           this.toastr.success(response.message);
           this.requestStatus = "requested";
@@ -90,6 +92,11 @@ export class ArtistVerifyComponent implements AfterViewInit {
         const file = files.item(i) as ExtendedFile;
         if (file) {
           file.preview = this.createFilePreview(file);
+          this.fileService.uploadFileAzure(file).subscribe(event => {
+            this.fileUrls.push(event.body.url);
+          }, error => {
+            console.error('Error uploading file', error);
+          });
           const existingUploadIndex = this.uploadedFiles.findIndex(upload => upload.key === key);
           if (existingUploadIndex !== -1) {
             this.uploadedFiles[existingUploadIndex] = { key: key, file: file };

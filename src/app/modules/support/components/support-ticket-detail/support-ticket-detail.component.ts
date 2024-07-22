@@ -10,6 +10,7 @@ import { User } from 'src/app/core/models/user';
 import { GlobalService } from 'src/app/core/services';
 import { SupportService } from 'src/app/core/services/supportService/support.service';
 import { ExtendedFile, TICKET_STATUS, USER_ROLE } from 'src/app/core/utility/global-constant';
+import { FileUploadService } from 'src/app/modules/content/services/file-upload-service/file-upload-service';
 
 interface TicketDiscussion {
   alias: string,
@@ -49,10 +50,11 @@ export class SupportTicketDetailComponent implements AfterViewInit {
   uploadedFiles: File[] = [];
   countReplyCharacter: number = 0;
   isModerator: boolean = false;
+  fileUrls: Array<string> = new Array();
 
   constructor(private cdr: ChangeDetectorRef, private cookieService: CookieService, private renderer: Renderer2, private http: HttpClient,
     private globalService: GlobalService, private route: ActivatedRoute, private router: Router, private sanitizer: DomSanitizer,
-    private supportService: SupportService, private toastr: ToastrService) {
+    private supportService: SupportService, private toastr: ToastrService, private fileService: FileUploadService) {
     const cookieCurrentUser = this.cookieService.get('current_user');
     if (cookieCurrentUser) {
       this.currentUser = JSON.parse(cookieCurrentUser);
@@ -186,6 +188,11 @@ export class SupportTicketDetailComponent implements AfterViewInit {
       for (let i = 0; i < files.length; i++) {
         const file = files.item(i) as ExtendedFile;
         if (file) {
+          this.fileService.uploadFileAzure(file).subscribe(event => {
+            this.fileUrls.push(event.body.url);
+          }, error => {
+            console.error('Error uploading file', error);
+          });
           file.preview = this.createFilePreview(file);
           this.uploadedFiles.push(file);
         }
@@ -298,9 +305,9 @@ export class SupportTicketDetailComponent implements AfterViewInit {
     let uploadedFilesString = this.uploadedFiles.map(el => this.getUrlImage(el));
 
     let reply = {
-      alias: this.currentUser.t_alias_generated, role: this.currentUser.t_role, replyDateHour: moment().format("DD/MM/YYYY hh:mm"), body: this.ticketReplyCaption, attachments: uploadedFilesString
+      alias: this.currentUser.t_alias_generated, role: this.currentUser.t_role, replyDateHour: moment().format("DD/MM/YYYY hh:mm"), body: this.ticketReplyCaption, attachments: this.fileUrls
     }
-    this.supportService.addSupportTicketReply(this.ticket.id, this.ticketReplyCaption, uploadedFilesString, !this.isModerator ? TICKET_STATUS.NecessariaRisposta : TICKET_STATUS.Aperto ).subscribe(
+    this.supportService.addSupportTicketReply(this.ticket.id, this.ticketReplyCaption, this.fileUrls, !this.isModerator ? TICKET_STATUS.NecessariaRisposta : TICKET_STATUS.Aperto ).subscribe(
       (response: any) => {
         this.toastr.success(response.message);
         this.discussionData.push(reply);

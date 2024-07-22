@@ -454,7 +454,7 @@ export class UserService {
     );
   }
 
-  verifyAccount(name: string, surname: string, birthdate: string, pIva: string, companyName: string, companyAddress: string, pec: string, consentClauses: boolean, identity_document: Array<{ key: string, file: File }>, status: string, refused_date: string, refused_motivation: string): Observable<any> {
+  verifyAccount(name: string, surname: string, birthdate: string, pIva: string, companyName: string, companyAddress: string, pec: string, consentClauses: boolean, identity_document: Array<string>, status: string, refused_date: string, refused_motivation: string): Observable<any> {
     const token = this.cookieService.get('auth_token');
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',

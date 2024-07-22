@@ -10,6 +10,7 @@ import { ExtendedFile, ROUTE_LIST, TICKET_STATUS } from 'src/app/core/utility/gl
 import { Ticket } from '../support-ticket-detail/support-ticket-detail.component';
 import { SupportService } from 'src/app/core/services/supportService/support.service';
 import { ToastrService } from 'ngx-toastr';
+import { FileUploadService } from 'src/app/modules/content/services/file-upload-service/file-upload-service';
 
 @Component({
   selector: 'unievent-tickets',
@@ -34,9 +35,10 @@ export class TicketsComponent {
   }
   ticketData: MatTableDataSource<any>;
   displayedColumns: string[] = ['description', 'status', 'actions'];
+  fileUrls: Array<String> = new Array();
 
   constructor(private router: Router, private globalService: GlobalService, private http: HttpClient, private cr: ChangeDetectorRef,
-    private supportService: SupportService, private toastr: ToastrService
+    private supportService: SupportService, private toastr: ToastrService, private fileService: FileUploadService
   ) {
 
   }
@@ -79,6 +81,11 @@ export class TicketsComponent {
       for (let i = 0; i < files.length; i++) {
         const file = files.item(i) as ExtendedFile; // Cast esplicito a ExtendedFile
         if (file) {
+          this.fileService.uploadFileAzure(file).subscribe(event => {
+            this.fileUrls.push(event.body.url);
+          }, error => {
+            console.error('Error uploading file', error);
+          });
           file.preview = this.createFilePreview(file); // Aggiungi la preview all'oggetto file
           this.uploadedFiles.push(file);
         }
@@ -192,7 +199,7 @@ export class TicketsComponent {
   }
 
   openTicket() {
-    this.supportService.createNewSupportTicket(this.ticketDescription,this.transformFilesToURLs(this.uploadedFiles)).subscribe(
+    this.supportService.createNewSupportTicket(this.ticketDescription, this.fileUrls).subscribe(
       (response: any) => {
         this.toastr.success(response.message);
         this.uploadedFiles = [];
@@ -200,18 +207,19 @@ export class TicketsComponent {
         this.currentTicketPanel = "ticket-list"
       },
       error => {
-        this.toastr.error('Errore non è stato possibile creare la tua richiesta di supporto' );
+        this.toastr.error('Errore non è stato possibile creare la tua richiesta di supporto');
       }
     );
   }
 
+
   /* Ticket List */
 
   setDataSourceAttributes() {
-    setTimeout(()=>{
+    setTimeout(() => {
       this.ticketData.paginator = this.paginator;
       this.ticketData.sort = this.sort;
-    },1)
+    }, 1)
   }
 
 
