@@ -53,7 +53,7 @@
         <div (click)="navigateToItemUserProfile(userEl.t_alias_generated)"
             class="d-flex flex-row my-2 user-left-card align-items-center gap-2 pointer"
             *ngFor="let userEl of followedUser">
-            <span shape="circle" class="user-profile-photo-container"><img [attr.src]="userEl.t_profile_photo"
+            <span shape="circle" class="user-profile-photo-container"><img [attr.src]="userEl?.t_profile_photo?.length > 0 ? userEl.t_profile_photo : '/assets/img/profile-placeholder.png'"
                     class="user-profile-photo"></span>
             <span>{{userEl.t_alias_generated}}</span>
         </div>

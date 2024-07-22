@@ -51,7 +51,6 @@ export class EventTicketListComponent implements AfterViewInit {
         this.setFormPrice();
       },
       error => {
-        console.error('Errore nel recupero del contenuto:', error);
       }
     );
   }

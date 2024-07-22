@@ -182,7 +182,6 @@ export class SearchResultComponent implements AfterViewInit {
         this.isLoading = false;
       },
       error => {
-        console.error('Errore nel recupero dei contenuti:', error);
       }
     );
 

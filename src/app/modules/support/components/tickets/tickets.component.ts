@@ -57,6 +57,7 @@ export class TicketsComponent {
         this.ticketData.paginator = this.paginator;
       },
       error => {
+        this.toastr.clear();
         this.toastr.error('Errore nel recupero dei ticket di supporto');
       }
     );
@@ -84,7 +85,6 @@ export class TicketsComponent {
           this.fileService.uploadFileAzure(file).subscribe(event => {
             this.fileUrls.push(event.body.url);
           }, error => {
-            console.error('Error uploading file', error);
           });
           file.preview = this.createFilePreview(file); // Aggiungi la preview all'oggetto file
           this.uploadedFiles.push(file);
@@ -201,12 +201,14 @@ export class TicketsComponent {
   openTicket() {
     this.supportService.createNewSupportTicket(this.ticketDescription, this.fileUrls).subscribe(
       (response: any) => {
+        this.toastr.clear();
         this.toastr.success(response.message);
         this.uploadedFiles = [];
         this.ticketDescription = "";
         this.currentTicketPanel = "ticket-list"
       },
       error => {
+        this.toastr.clear();
         this.toastr.error('Errore non è stato possibile creare la tua richiesta di supporto');
       }
     );

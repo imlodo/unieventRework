@@ -27,7 +27,6 @@ export class UserFollowedListComponent {
     this.userService.getUserFollowedByCurrentUser(null).subscribe(
       (response: any) => {
         this.followList = response.followed_users;
-        console.log(response.followed_users)
       },
       error => {
         this.toastr.clear();

@@ -16,7 +16,7 @@
     <div class="d-flex flex-column align-items-center, justify-content-center" style="vertical-align: center;">
         <div *ngIf="!isModerate" class="d-flex flex-row justify-content-start mb-3 p-2 profile-menu-element pointer"
             style="align-items: center;" (click)="goTo('profile')">
-            <img *ngIf="user.t_profile_photo" class="notificationImage" [attr.src]="user.t_profile_photo" width="50" height="50"
+            <img class="notificationImage" [attr.src]="user?.t_profile_photo?.length > 0 ? user.t_profile_photo : 'assets/img/profile-placeholder.png'" width="50" height="50"
                 style="border-radius: 100px;" />
             <h4 class="mx-3 my-0"><b>{{user.t_name}} {{user.t_surname}}</b></h4>
         </div>

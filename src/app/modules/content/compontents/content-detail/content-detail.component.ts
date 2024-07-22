@@ -98,7 +98,6 @@ export class ContentDetailComponent implements AfterViewInit, AfterViewChecked {
             this.initialize();
           },
           error => {
-            console.error('Errore nel recupero del contenuto:', error);
           }
         );
       }
@@ -110,10 +109,8 @@ export class ContentDetailComponent implements AfterViewInit, AfterViewChecked {
       (response: any) => {
         this.comments = response;
         this.resetAddReply();
-        console.log(response);
       },
       error => {
-        console.error('Errore nel recupero del contenuto:', error);
       }
     );
   }

@@ -45,6 +45,7 @@ export class ModerateTicketsComponent {
         this.ticketData.paginator = this.paginator;
       },
       error => {
+        this.toastr.clear();
         this.toastr.error('Errore nel recupero dei ticket di supporto');
       }
     );

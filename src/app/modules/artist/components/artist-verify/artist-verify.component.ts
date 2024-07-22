@@ -56,6 +56,7 @@ export class ArtistVerifyComponent implements AfterViewInit {
         this.requestStatus = USER_TYPE[currentUser.t_type] === USER_TYPE.ARTIST ? "verified" : response.status;    
       },
       error => {
+        this.toastr.clear();
         this.toastr.error('Errore nel recupero dello stato della richiesta');
       }
     );
@@ -65,6 +66,7 @@ export class ArtistVerifyComponent implements AfterViewInit {
     this.userService.verifyAccount(this.formData.name, this.formData.surname, moment(this.formData.birthdate).format("DD-MM-YYYY"), this.formData.pIva, 
       this.formData.companyName, this.formData.companyAddress, this.formData.pec, this.formData.consentClauses, this.fileUrls, "requested", null, null).subscribe(
         (response: any) => {
+          this.toastr.clear();
           this.toastr.success(response.message);
           this.requestStatus = "requested";
           this.formData = {
@@ -95,7 +97,6 @@ export class ArtistVerifyComponent implements AfterViewInit {
           this.fileService.uploadFileAzure(file).subscribe(event => {
             this.fileUrls.push(event.body.url);
           }, error => {
-            console.error('Error uploading file', error);
           });
           const existingUploadIndex = this.uploadedFiles.findIndex(upload => upload.key === key);
           if (existingUploadIndex !== -1) {

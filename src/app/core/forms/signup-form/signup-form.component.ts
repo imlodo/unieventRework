@@ -22,7 +22,6 @@ export class SignupFormComponent {
 
   //constructor(private formBuilder: RxFormBuilder, private localeService: BsLocaleService, public ls: LocaleService) { }
   constructor(private formBuilder: RxFormBuilder, private toastr: ToastrService, private translate: TranslateService) {
-    console.log(this.USER_TYPE_OBJECT)
    }
 
   ngOnInit() {

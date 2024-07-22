@@ -240,8 +240,6 @@ export class ContentService {
       'Authorization': `Bearer ${token}`
     });
 
-    console.log(related_event_id)
-
     const postBody = {
       "t_type": t_type, "t_caption": t_caption, "t_privacy": t_privacy, "t_alias_generated": t_alias_generated,
       "related_event_id": related_event_id, "t_image_link": t_image_link, "t_video_link": t_video_link, "tagArray": tagArray, "hashTag": hashTag,
@@ -405,7 +403,6 @@ export class ContentService {
   }
 
   private handleError(error: any) {
-    console.error('Errore nella richiesta API:', error);
     return throwError(error);
   }
 }

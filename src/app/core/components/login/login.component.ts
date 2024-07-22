@@ -46,11 +46,13 @@ export class LoginComponent implements AfterViewInit, OnInit {
             this.router.navigate(["/"]);
           },
           error => {
+            this.toastr.clear();
             this.toastr.error(error.error);
           }
         );
       },
       error => {
+        this.toastr.clear();
         this.toastr.error(error.error);
       }
     );

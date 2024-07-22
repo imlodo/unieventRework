@@ -24,7 +24,6 @@ export class NavbarProfileComponent {
   @HostListener('document:click', ['$event'])
   handleClickOutside(event: Event) {
     let eventTarget: any = event;
-    console.log()
     if (!this.elementRef.nativeElement.contains(event.target) && !eventTarget.target.toString().includes("SVG")) {
       this.closeProfilePanel();
     }

@@ -33,7 +33,7 @@
                 <div class="card-top flex-column">
                     <div *ngIf="item.t_user" class="d-flex flex-row align-items-center">
                         <span shape="circle" class="user-profile-photo-container"><img
-                                [attr.src]="item.t_user.t_profile_photo" class="user-profile-photo"></span>
+                                [attr.src]="item?.t_user?.t_profile_photo?.length > 0 ? item.t_user.t_profile_photo : 'assets/img/profile-placeholder.png'" class="user-profile-photo"></span>
                         <div class="d-flex flex-column mb-2 mt-2">
                             <div class="d-flex flex-row">
                                 <p class="m-0 mx-1 mt-1"><span (click)="navigateToUserProfile(item)"

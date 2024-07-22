@@ -16,7 +16,6 @@ export class NavbarNotificationComponent {
   activeNotification = [true, false];
   showNotifications = false;
   showNotificationSetting = false;
-  notificationCount: number = 999;
   notificationAllArray: Array<Notification> = [
     {
       notification_id: 1,
@@ -179,6 +178,8 @@ export class NavbarNotificationComponent {
       creationDateTime: moment().subtract(25, 'hours')
     }
   ];
+  notificationCount: number = this.notificationAllArray.length;
+
   protected countNotRead = this.notificationAllArray.filter(el=>el.not_read).length;
   @Input() darkMode:boolean;
 

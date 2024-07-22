@@ -10,7 +10,6 @@ export class PaymentStep1FormComponent {
 
   // Funzione per applicare il coupon
   applyCoupon() {
-    console.log("Metodo di spedizione selezionato:", this.selectedShippingMethod);
     // Aggiungi qui la logica per applicare il coupon in base al metodo di spedizione selezionato
   }
 }

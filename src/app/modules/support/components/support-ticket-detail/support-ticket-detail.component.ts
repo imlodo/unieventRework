@@ -9,7 +9,7 @@ import { pluck } from 'rxjs';
 import { User } from 'src/app/core/models/user';
 import { GlobalService } from 'src/app/core/services';
 import { SupportService } from 'src/app/core/services/supportService/support.service';
-import { ExtendedFile, TICKET_STATUS, USER_ROLE } from 'src/app/core/utility/global-constant';
+import { ExtendedFile, ROUTE_LIST, TICKET_STATUS, USER_ROLE } from 'src/app/core/utility/global-constant';
 import { FileUploadService } from 'src/app/modules/content/services/file-upload-service/file-upload-service';
 
 interface TicketDiscussion {
@@ -111,10 +111,10 @@ export class SupportTicketDetailComponent implements AfterViewInit {
   getTicketDiscussionById(id: string) {
     this.supportService.getSupportTicketDiscussionList(id).subscribe(
       (response: any) => {
-        console.log(this.currentUser.t_alias_generated)
         this.discussionData = response;
       },
       error => {
+        this.toastr.clear();
         this.toastr.error('Errore non è stato possibile recuperare la tua richiesta di supporto' );
       }
     );
@@ -191,7 +191,6 @@ export class SupportTicketDetailComponent implements AfterViewInit {
           this.fileService.uploadFileAzure(file).subscribe(event => {
             this.fileUrls.push(event.body.url);
           }, error => {
-            console.error('Error uploading file', error);
           });
           file.preview = this.createFilePreview(file);
           this.uploadedFiles.push(file);
@@ -307,18 +306,28 @@ export class SupportTicketDetailComponent implements AfterViewInit {
     let reply = {
       alias: this.currentUser.t_alias_generated, role: this.currentUser.t_role, replyDateHour: moment().format("DD/MM/YYYY hh:mm"), body: this.ticketReplyCaption, attachments: this.fileUrls
     }
-    this.supportService.addSupportTicketReply(this.ticket.id, this.ticketReplyCaption, this.fileUrls, !this.isModerator ? TICKET_STATUS.NecessariaRisposta : TICKET_STATUS.Aperto ).subscribe(
+    this.supportService.addSupportTicketReply(this.ticket.id, this.ticketReplyCaption, this.fileUrls, !this.isModerator ? TICKET_STATUS.AttesaRisposta : TICKET_STATUS.Aperto ).subscribe(
       (response: any) => {
+        this.toastr.clear();
         this.toastr.success(response.message);
         this.discussionData.push(reply);
         this.ticket.status = !this.isModerator ? TICKET_STATUS.AttesaRisposta : TICKET_STATUS.NecessariaRisposta;
         this.updateGlobalScroll();
         this.resetReplyFields();
+        this.updateDetail(this.ticket)
       },
       error => {
+        this.toastr.clear();
         this.toastr.error('Errore non è stato possibile aggiungere una risposta, riprova più tardi' );
       }
     );
+  }
+
+  updateDetail(ticket: Ticket): void {
+    const params = this.globalService.encodeParams({
+      ticket: ticket
+    });
+    this.router.navigate([ROUTE_LIST.supports.detail, params]);
   }
 
   resetReplyFields() {
@@ -342,13 +351,16 @@ export class SupportTicketDetailComponent implements AfterViewInit {
     this.updateGlobalScroll();
     this.supportService.addSupportTicketReply(this.ticket.id, "Sollecito la riapertura di questo ticket", [], TICKET_STATUS.SollecitoRiapertura ).subscribe(
       (response: any) => {
+        this.toastr.clear();
         this.toastr.success("Sollecito inviato con successo");
         this.discussionData.push({ alias: this.currentUser.t_alias_generated, role: this.currentUser.t_role, replyDateHour: moment().format("DD/MM/YYYY hh:mm"), body: "Sollecito la riapertura di questo ticket", attachments: [] })
         this.ticket.status = TICKET_STATUS.SollecitoRiapertura;
         this.updateGlobalScroll();
         this.resetReplyFields();
+        this.updateDetail(this.ticket);
       },
       error => {
+        this.toastr.clear();
         this.toastr.error('Errore non è stato possibile inviare il sollecito, riprova più tardi' );
       }
     );
@@ -359,13 +371,16 @@ export class SupportTicketDetailComponent implements AfterViewInit {
     this.ticket.status = TICKET_STATUS.Aperto;
     this.supportService.addSupportTicketReply(this.ticket.id, "Dopo un\'attenta analisi del ticket, ho deciso di riaprirlo.", [], TICKET_STATUS.Aperto).subscribe(
       (response: any) => {
+        this.toastr.clear();
         this.toastr.success("Ticket riaperto con successo");
         this.discussionData.push({ alias: this.currentUser.t_alias_generated, role: this.currentUser.t_role, replyDateHour: moment().format("DD/MM/YYYY hh:mm"), body: "Dopo un\'attenta analisi del ticket, ho deciso di riaprirlo.", attachments: [] })
         this.ticket.status = TICKET_STATUS.Aperto;
         this.updateGlobalScroll();
         this.resetReplyFields();
+        this.updateDetail(this.ticket);
       },
       error => {
+        this.toastr.clear();
         this.toastr.error('Errore non è stato possibile riaprire il ticket, riprova più tardi' );
       }
     );
@@ -377,13 +392,16 @@ export class SupportTicketDetailComponent implements AfterViewInit {
     this.ticket.status = TICKET_STATUS.Chiuso;
     this.supportService.addSupportTicketReply(this.ticket.id, "Ticket chiuso.", [], TICKET_STATUS.Chiuso).subscribe(
       (response: any) => {
+        this.toastr.clear();
         this.toastr.success("Ticket chiuso con successo");
         this.discussionData.push({ alias: this.currentUser.t_alias_generated, role: this.currentUser.t_role, replyDateHour: moment().format("DD/MM/YYYY hh:mm"), body: "Ticket chiuso.", attachments: [] })
         this.ticket.status = TICKET_STATUS.Chiuso;
         this.updateGlobalScroll();
         this.resetReplyFields();
+        this.updateDetail(this.ticket);
       },
       error => {
+        this.toastr.clear();
         this.toastr.error('Errore non è stato possibile riaprire il ticket, riprova più tardi' );
       }
     );

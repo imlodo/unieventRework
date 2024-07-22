@@ -105,7 +105,6 @@ export class ContentInfiniteScrollComponent {
         this.addObserver();
       },
       error => {
-        console.error('Errore nel recupero dei contenuti:', error);
         this.isLoading = false;
       }
     );

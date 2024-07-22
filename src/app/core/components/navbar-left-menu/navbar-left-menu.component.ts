@@ -1,7 +1,7 @@
 import { AfterViewInit, Component, ElementRef, HostListener, Input, Renderer2 } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { User } from '../../models/user';
-import { ExploreItemType, ProfileItemType, ROUTE_LIST, USER_TYPE } from '../../utility/global-constant';
+import { ExploreItemType, ProfileItemType, ROUTE_LIST } from '../../utility/global-constant';
 import { GlobalService, UserService } from '../../services';
 import { CookieService } from 'ngx-cookie-service';
 import { ToastrService } from 'ngx-toastr';

@@ -18,7 +18,7 @@
                     [ngClass]="activeChatUser === chat.userChat ? 'chatElementActive' : '' "
                     class="d-flex flex-row mb-3 chatElement p-2 pointer">
                     <img width="70" height="70" class="chatImage" style="border-radius: 100px;"
-                        [attr.src]="chat.userChat.t_profile_photo">
+                        [attr.src]="chat?.userChat?.t_profile_photo?.length > 0 ? chat.userChat.t_profile_photo : 'assets/img/profile-placeholder.png'">
                     <div class="flex-column mx-2 justify-content-center">
                         <div class="d-flex flex-row my-1">
                             <h2 class="d-none d-lg-block m-0">@{{chat.userChat.t_alias_generated}}</h2>
@@ -40,7 +40,7 @@
         <div *ngIf="activeChatUser != null && groupedByDateActiveChatUser != null" class="d-flex flex-column">
             <div class="px-4 pt-4 pb-1 d-flex flex-row">
                 <img width="70" height="70" class="chatImage" style="border-radius: 100px;"
-                    [attr.src]="activeChatUser?.t_profile_photo">
+                    [attr.src]="activeChatUser?.t_profile_photo?.length > 0 ? activeChatUser?.t_profile_photo : 'assets/img/profile-placeholder.png'">
                 <div class="d-flex flex-column mx-2 justify-content-center">
                     <div class="d-flex flex-column my-1">
                         <h2 class="m-0">{{activeChatUser?.t_alias_generated}}</h2>
@@ -64,7 +64,7 @@
                                     {{message.message}}
                                 </div>
                                 <img width="42" height="42" class="chatMinImage" style="border-radius: 100px;"
-                                    [attr.src]="message.user_from.t_profile_photo">
+                                    [attr.src]="message?.user_from?.t_profile_photo?.length > 0 ? message.user_from.t_profile_photo : 'assets/img/profile-placeholder.png'">
                                 <div class="activeChatUserMessage"
                                     *ngIf="message.user_from.t_alias_generated !== currentUser.t_alias_generated">
                                     {{message.message}}

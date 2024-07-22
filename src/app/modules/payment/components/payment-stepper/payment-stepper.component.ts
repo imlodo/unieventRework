@@ -65,6 +65,7 @@ export class PaymentStepperComponent implements AfterViewInit {
           this.selectedCardIndex = 0;
       },
       error => {
+        this.toastr.clear();
         this.toastr.error(error.error);
       }
     );
@@ -75,6 +76,7 @@ export class PaymentStepperComponent implements AfterViewInit {
           this.selectedAddressIndex = 0;
       },
       error => {
+        this.toastr.clear();
         this.toastr.error(error.error);
       }
     );

@@ -22,16 +22,17 @@ export class ResetPasswordComponent implements OnInit{
   ngOnInit() {
     this.route.queryParams.subscribe(params => {
       const token = params['token'];
-      console.log(token)
       if (token) {
         this.userService.resetPassword(token).subscribe(
           response => { },
           error => {
+            this.toastr.clear();
             this.toastr.error("Errore nel reset della password");
             //this.router.navigate([ROUTE_LIST.login])
           }
         );
       } else {
+        this.toastr.clear();
         this.toastr.error("Errore nel reset della password");
         //this.router.navigate([ROUTE_LIST.login])
       }

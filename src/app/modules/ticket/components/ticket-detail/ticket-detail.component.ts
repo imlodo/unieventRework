@@ -46,10 +46,8 @@ export class TicketDetailComponent implements AfterViewInit {
       .pipe(pluck('params'))
       .subscribe((result) => {
         const decode = this.globalService.decodeParams(result);
-        console.log(decode.ticket)
         this.ticketService.getTicketDetail(decode.ticket.ticket_id).subscribe(
           (response: any) => {
-            console.log(response)
             this.ticket = {
               id: response.ticket_id,
               type: response.ticket_type,
@@ -62,6 +60,7 @@ export class TicketDetailComponent implements AfterViewInit {
             }
           },
           error => {
+            this.toastr.clear();
             this.toastr.error('Errore nel recupero del ticket');
           }
         );
@@ -88,7 +87,6 @@ export class TicketDetailComponent implements AfterViewInit {
         textMargin: 5
       });
     } else {
-      console.error('Elemento barcodeImage non trovato nel DOM.');
     }
   }
 

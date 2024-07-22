@@ -202,7 +202,6 @@ export class ExploreComponent {
         this.isLoading = false;
       },
       error => {
-        console.error('Errore nel recupero dei contenuti:', error);
       }
     );
 

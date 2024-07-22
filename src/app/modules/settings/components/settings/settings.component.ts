@@ -67,6 +67,7 @@ export class SettingsComponent implements AfterViewInit {
         this.settings = response;
       },
       error => {
+        this.toastr.clear();
         this.toastr.error('Errore nel recupero delle impostazioni');
       });
   }
@@ -99,12 +100,14 @@ export class SettingsComponent implements AfterViewInit {
   deleteAccount() {
     this.userService.deleteAccount().subscribe(
       (response: any) => {
+        this.toastr.clear();
         this.toastr.success(response.message);
         this.cookieService.delete('auth_token');
         this.cookieService.delete('current_user');
         this.router.navigate(["/login"])
       },
       error => {
+        this.toastr.clear();
         this.toastr.error('Errore nell\' eliminazione dell\' account');
       }
     );
@@ -119,9 +122,11 @@ export class SettingsComponent implements AfterViewInit {
   changePassword(form: any) {
     this.userService.editUser(null, null, null, null, form.value.old_password, form.value.new_password).subscribe(
       (response: any) => {
+        this.toastr.clear();
         this.toastr.success(response.message);
       },
       error => {
+        this.toastr.clear();
         this.toastr.error('Errore nella modifica delle credenziali, controllare e correggere i campi');
       }
     );
@@ -141,11 +146,13 @@ export class SettingsComponent implements AfterViewInit {
       form.value.interactionsOption,
       form.value.dataFormat).subscribe(
         (response: any) => {
+          this.toastr.clear();
           this.toastr.success(response.message);
           this.isRequested = true;
           this.showDataDownloadPanel = false;
         },
         error => {
+          this.toastr.clear();
           this.toastr.error('Errore nella richiesta dei dati personali, riprova più tardi');
         });
   }
@@ -342,6 +349,7 @@ export class SettingsComponent implements AfterViewInit {
         }
       },
       error => {
+        this.toastr.clear();
         this.toastr.error('Errore nell\' aggiornamento dell\' impostazione');
       }
     );

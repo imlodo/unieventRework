@@ -3,7 +3,7 @@
         <div class="d-flex flex-row justify-content-between">
             <div class="d-flex flex-row">
                 <span shape="circle" class="user-profile-photo-container-main mx-3"><img class="user-profile-photo-main"
-                        [attr.src]="user?.t_profile_photo" />
+                        [attr.src]="user?.t_profile_photo?.length > 0 ? user?.t_profile_photo: 'assets/img/profile-placeholder.png'" />
                 </span>
                 <div class="d-flex flex-column">
                     <span>
@@ -167,7 +167,7 @@
                                 <div *ngIf="item.t_user" class="d-flex flex-row align-items-center">
                                     <span (click)="navigateToUserProfile(item)" shape="circle"
                                         class="user-profile-photo-container pointer"><img
-                                            [attr.src]="item.t_user.t_profile_photo" class="user-profile-photo"></span>
+                                            [attr.src]="item?.t_user?.t_profile_photo?.length > 0 ? item.t_user.t_profile_photo: 'assets/img/profile-placeholder.png'" class="user-profile-photo"></span>
                                     <div class="d-flex flex-column mb-2 mt-2">
                                         <div class="d-flex flex-row">
                                             <p class="m-0 mx-1 mt-1"><span (click)="navigateToUserProfile(item)"
@@ -263,7 +263,7 @@
                                 <div *ngIf="item.t_user" class="d-flex flex-row align-items-center">
                                     <span (click)="navigateToUserProfile(item)" shape="circle"
                                         class="user-profile-photo-container pointer"><img
-                                            [attr.src]="item.t_user.t_profile_photo" class="user-profile-photo"></span>
+                                            [attr.src]="item?.t_user?.t_profile_photo?.length > 0 ? item.t_user.t_profile_photo: 'assets/img/profile-placeholder.png'" class="user-profile-photo"></span>
                                     <div class="d-flex flex-column mb-2 mt-2">
                                         <div class="d-flex flex-row">
                                             <p class="m-0 mx-1 mt-1"><span (click)="navigateToUserProfile(item)"
@@ -400,7 +400,7 @@
                     <i class="fa fa-pencil"></i>
                 </label>
                 <span shape="circle" class="user-profile-photo-container-main pointer mx-3">
-                    <img class="user-profile-photo-main" [attr.src]="profile_photo" />
+                    <img class="user-profile-photo-main" [attr.src]="profile_photo?.length > 0 ? profile_photo: 'assets/img/profile-placeholder.png'" />
                 </span>
                 <input type="file" id="profile-image" name="profile-image" class="invisible"
                     (change)="onFileSelected($event)">

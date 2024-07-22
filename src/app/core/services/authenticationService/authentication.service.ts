@@ -106,7 +106,6 @@ export class AuthenticationService {
   }
 
   private handleError(error: any): Observable<never> {
-    console.error('An error occurred', error);
     return throwError(error);
   }
 }

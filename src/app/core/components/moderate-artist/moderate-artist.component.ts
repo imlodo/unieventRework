@@ -44,6 +44,7 @@ export class ModerateArtistComponent {
         this.artistData.paginator = this.paginator;
       },
       error => {
+        this.toastr.clear();
         this.toastr.error('Errore nel recupero dei ticket di verifica artista');
       }
     );

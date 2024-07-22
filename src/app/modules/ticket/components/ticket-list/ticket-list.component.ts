@@ -46,6 +46,7 @@ export class TicketListComponent {
         this.ticketData.sort = this.sort;
       },
       error => {
+        this.toastr.clear();
         this.toastr.error('Errore nel recupero dei biglietti');
       }
     );
@@ -99,12 +100,13 @@ export class TicketListComponent {
   addReview(form: any) {
     this.ticketService.addTicketReview(this.currentReviewTicketNumber, this.currentTicket.event_id, form.value.title, form.value.body, this.starsComponent.rating, form.value.date).subscribe(
       (response: any) => {
-        console.log(response)
+        this.toastr.clear();
         this.toastr.success(response.message);
         this.showReviewsPanel = false;
         this.formReview.reset();
       },
       error => {
+        this.toastr.clear();
         this.toastr.error('Errore nell\'inserimento della recensione');
       }
     );

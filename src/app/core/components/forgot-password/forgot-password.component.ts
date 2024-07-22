@@ -27,10 +27,12 @@ export class ForgotPasswordComponent {
   forgotPw() {
     this.userService.generateNewPasswordConfirmationLink(this.forgotPasswordForm.t_username).subscribe(
       (response: any) => {
+        this.toastr.clear();
         this.toastr.success(response.message);
         this.router.navigate([ROUTE_LIST.login])
       },
       error => {
+        this.toastr.clear();
         this.toastr.error('Non è stato possibile richiedere una nuova password, controlla i tuoi dati e riprova.');
       }
     );

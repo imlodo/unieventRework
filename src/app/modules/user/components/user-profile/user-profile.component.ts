@@ -92,6 +92,7 @@ export class UserProfileComponent implements AfterViewInit {
                 this.showBooked = response.privacy.visibility.show_booked;
               },
               error => {
+                this.toastr.clear();
                 this.toastr.error('Errore nel recupero delle impostazioni');
               });
             this.getUserProfileInfoByUsername();
@@ -107,11 +108,9 @@ export class UserProfileComponent implements AfterViewInit {
             this.isLoading = false;
           },
           error => {
-            console.error('Errore nel recupero dell\'utente:', error);
           }
         );
       } else {
-        console.error('Parametro userAliasGenerated non trovato nell\'URL');
       }
     });
     this.cdr.detectChanges();
@@ -132,7 +131,6 @@ export class UserProfileComponent implements AfterViewInit {
         this.userInfo = response.user_profile_info;
       },
       error => {
-        console.error('Errore nel recupero dell\'utente:', error);
       }
     );
   }
@@ -280,7 +278,6 @@ export class UserProfileComponent implements AfterViewInit {
         this.profile_photo = event.body.url;
         this.user.t_profile_photo = event.body.url;
       }, error => {
-        console.error('Error uploading file', error);
       });
     }
   }
@@ -350,7 +347,6 @@ export class UserProfileComponent implements AfterViewInit {
         this.isLoading = false;
       },
       error => {
-        console.error('Errore nel recupero dei contenuti:', error);
       }
     );
 

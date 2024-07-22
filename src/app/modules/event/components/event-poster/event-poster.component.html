@@ -44,7 +44,7 @@
           
           <div class="d-flex justify-content-between">
             <div class="d-flex gap-2 align-items-center mb-3">
-              <span shape="circle" class="user-profile-photo-container"><img [attr.src]="review.t_user.t_profile_photo"
+              <span shape="circle" class="user-profile-photo-container"><img [attr.src]="review?.t_user?.t_profile_photo?.length > 0 ? review.t_user.t_profile_photo : 'assets/img/profile-placeholder.png'"
                   class="user-profile-photo"></span>
               <span>{{review.t_user.t_alias_generated}}</span>
               <div class="d-flex align-items-center">

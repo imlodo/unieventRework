@@ -67,10 +67,12 @@ export class ArtistDetailComponent {
     this.verifiyRequest.refused_date = moment();
     this.userService.updateVerifyAccount(this.verifiyRequest._id, "refused", this.t_motivation).subscribe(
       response => {
+        this.toastr.clear();
         this.toastr.success("Richiesta aggiornata con successo")
         this.closeRefuseModal();
       },
       error => {
+        this.toastr.clear();
         this.toastr.error(error.error);
         this.closeRefuseModal();
       }
@@ -81,9 +83,11 @@ export class ArtistDetailComponent {
     this.verifiyRequest.status = "verified";
     this.userService.updateVerifyAccount(this.verifiyRequest._id, "verified", null).subscribe(
       response => {
+        this.toastr.clear();
         this.toastr.success("Richiesta aggiornata con successo")
       },
       error => {
+        this.toastr.clear();
         this.toastr.error(error.error);
       }
     );

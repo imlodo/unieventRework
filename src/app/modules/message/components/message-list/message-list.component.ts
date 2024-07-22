@@ -52,6 +52,7 @@ export class MessageListComponent implements AfterViewChecked, AfterViewInit {
         this.groupMessagesByDate();
       },
       error => {
+        this.toastr.clear();
         this.toastr.error('Errore non è stato possibile recuperare le chat');
       }
     );
@@ -122,6 +123,7 @@ export class MessageListComponent implements AfterViewChecked, AfterViewInit {
             //Inserito con successo
           },
           error => {
+            this.toastr.clear();
             this.toastr.error("Errore nell'invio del messaggio")
           }
         );
@@ -239,6 +241,7 @@ export class MessageListComponent implements AfterViewChecked, AfterViewInit {
         this.groupMessagesByActiveChatUserByDate();
       },
       error => {
+        this.toastr.clear();
         this.toastr.error('Errore non è stato possibile recuperare la chat');
       }
     );
@@ -294,6 +297,7 @@ export class MessageListComponent implements AfterViewChecked, AfterViewInit {
           //Inserito con successo
         },
         error => {
+          this.toastr.clear();
           this.toastr.error("Errore nell'invio del messaggio")
         }
       );
@@ -319,8 +323,8 @@ export class MessageListComponent implements AfterViewChecked, AfterViewInit {
         );
       },
       error => {
+        this.toastr.clear();
         this.toastr.error('Errore connessione assente (NEGOTIATE ERROR)');
-        console.error('WebSocket negotiation error:', error);
       }
     );
   }

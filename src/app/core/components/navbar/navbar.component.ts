@@ -35,7 +35,6 @@ export class NavbarComponent {
       targetElement.classList.contains('bi-mic-fill') || 
       targetElement.classList.contains('mat-mdc-tooltip-trigger') ||
       targetElement.classList.contains('bi-path')
-    console.log(targetElement.classList)
     if (!clickedInsideComponent && !hasSearchClasses) {
       this.isMobileSearch = false;
     } 

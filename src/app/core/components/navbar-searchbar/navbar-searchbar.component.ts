@@ -33,15 +33,12 @@ export class NavbarSearchbarComponent {
         }
       };
       this.recognition.onerror = (event: any) => {
-        console.error(event);
         this.isRecognitionActive = false;
       };
       this.recognition.onend = () => {
-        console.log('Speech recognition service disconnected');
         this.isRecognitionActive = false;
       };
     } else {
-      console.warn('Browser does not support speech recognition');
     }
   }
 
@@ -57,9 +54,7 @@ export class NavbarSearchbarComponent {
     if (this.recognition) {
       this.recognition.start();
       this.isRecognitionActive = true;
-      console.log('Voice recognition started');
     } else {
-      console.warn('Voice recognition is not supported in this browser');
     }
   }
 }

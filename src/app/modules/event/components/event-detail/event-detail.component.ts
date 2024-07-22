@@ -52,7 +52,6 @@ export class EventDetailComponent implements AfterViewInit {
         this.getGroupEvents(response.n_group_id);
       },
       error => {
-        console.error('Errore nel recupero del contenuto:', error);
       }
     );
   }
@@ -70,7 +69,6 @@ export class EventDetailComponent implements AfterViewInit {
         this.epc.initializeData();
       },
       error => {
-        console.error('Errore nel recupero dei contenuti correlati:', error);
       }
     );
   }

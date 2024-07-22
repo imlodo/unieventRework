@@ -104,7 +104,6 @@ export class TicketService {
   }
 
   private handleError(error: any) {
-    console.error('Errore nella richiesta API:', error);
     return throwError(error);
   }
 }

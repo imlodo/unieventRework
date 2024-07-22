@@ -173,13 +173,11 @@ export class ContentCreateComponent {
             this.uploadProgress = Math.round((100 * event.loaded) / event.total);
           } else if (event.type === HttpEventType.Response) {
             this.uploadProgress = 100;
-            console.log('File successfully uploaded!', event.body);
             this.fileUrl = event.body.original_url;
             this.coverUrl = event.body.preview_url;
             this.previewUrl = event.body.preview_url;
           }
         }, error => {
-          console.error('Error uploading file', error);
         });
       } else{
         this.fileUploadService.uploadFileAzure(this.selectedFile).subscribe(event => {
@@ -187,15 +185,12 @@ export class ContentCreateComponent {
             this.uploadProgress = Math.round((100 * event.loaded) / event.total);
           } else if (event.type === HttpEventType.Response) {
             this.uploadProgress = 100;
-            console.log('File successfully uploaded!', event.body);
             this.fileUrl = event.body.url
           }
         }, error => {
-          console.error('Error uploading file', error);
         });
       }
     } else {
-      console.error('No file selected');
     }
   }
 
@@ -205,25 +200,21 @@ export class ContentCreateComponent {
       if(this.selectedFile.type.includes("video")){
         this.fileUploadService.deleteFileAzure(this.fileUrl).subscribe(event => {
         }, error => {
-          console.error('Error deleting file', error);
         });
         this.fileUploadService.deleteFileAzure(this.previewUrl).subscribe(event => {
           window.location.reload();
         }, error => {
           window.location.reload();
-          console.error('Error deleting file', error);
         });
       } else {
         this.fileUploadService.deleteFileAzure(this.previewUrl).subscribe(event => {
           window.location.reload();
         }, error => {
           window.location.reload();
-          console.error('Error deleting file', error);
         });
       }
     } else {
       window.location.reload();
-      console.error('No file selected');
     }
   }
 
@@ -244,7 +235,7 @@ export class ContentCreateComponent {
         this.filteredRelatedEvents = response.events;
         items = response.events;
       },
-      error => console.error(error)
+      error => {}
     );
   }
 
@@ -307,7 +298,6 @@ export class ContentCreateComponent {
 
   handleAfterAtKeypress(event: KeyboardEvent) {
     const char = event.key;
-    console.log(char);
     if (char === ' ') {
       this.removeListner();
     }
@@ -369,10 +359,12 @@ export class ContentCreateComponent {
     if (this.selectedContentType === "Event") {
       this.contentService.addContent("Eventi", this.descriptionValue, this.privacyContent, this.currentUser.t_alias_generated, this.coverUrl, this.fileType.includes("video") ? this.fileUrl : null, this.tagArray, this.hashTagArray, this.t_event_date, this.relatedEvent ? this.relatedEvent.id : null, this.group_event_id, this.locationData, this.mapArray).subscribe(
         response => {
+          this.toastr.clear();
           this.toastr.success(null, "Contenuto pubblicato con successo", { progressBar: true });
           this.router.navigate([ROUTE_LIST.content.manage]);
         },
         error => {
+          this.toastr.clear();
           this.toastr.error(error.error);
         }
       );
@@ -380,10 +372,12 @@ export class ContentCreateComponent {
     } else {
       this.contentService.addContent("Topics", this.descriptionTextarea.nativeElement.value, this.privacyContent, this.currentUser.t_alias_generated, this.coverUrl, this.fileType === "video" ? this.fileUrl : null, this.tagArray, this.hashTagArray, null, null, null, null, null).subscribe(
         response => {
+          this.toastr.clear();
           this.toastr.success(null, "Contenuto pubblicato con successo", { progressBar: true });
           this.router.navigate([ROUTE_LIST.content.manage]);
         },
         error => {
+          this.toastr.clear();
           this.toastr.error(error.error);
         }
       );
@@ -548,6 +542,7 @@ export class ContentCreateComponent {
     if ((totalSeats < (this.currentSelectedMap.t_map_num_rows * this.currentSelectedMap.t_map_num_column)) || this.currentSelectedMap.t_object_maps.length < totalSeats)
       this.showAddElement = true;
     else {
+      this.toastr.clear();
       this.toastr.warning(null, "Non puoi aggiungere elementi, la mappa è piena, modifica gli elementi presenti oppure aumenta il numero di righe (e/o colonne).", { progressBar: true });
     }
   }
@@ -562,6 +557,7 @@ export class ContentCreateComponent {
       (this.currentSelectedMap.t_map_num_rows < (form.value.xPos + 1)) ||
       this.seatMapList[form.value.xPos][form.value.yPos].n_id
     ) {
+      this.toastr.clear();
       this.toastr.warning("Non è possibile inserire l'elemento nella posizione richiesta, è inesistente oppure già occupata");
     }
     else {
@@ -601,6 +597,7 @@ export class ContentCreateComponent {
 
   checkIsValidEditOrInsert(elementType: string) {
     if (this.currentSelectedMap.t_object_maps.filter(element => (element.t_type as any) === "CONSOLE").length > 0 && elementType === "CONSOLE") {
+      this.toastr.clear();
       this.toastr.warning("Non è possibile inserire l'elemento, esiste già una console");
       return false;
     }

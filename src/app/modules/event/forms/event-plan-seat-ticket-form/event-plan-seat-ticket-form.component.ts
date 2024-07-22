@@ -69,7 +69,6 @@ export class EventPlanSeatTicketFormComponent implements AfterViewInit {
       let totalSeat = 0;
       el.t_object_maps.forEach(obj=> totalSeat+=obj.t_seat_list.length);
       let seatMap: ObjectMap[][] | any[][] = [];
-      console.log(el)
       for (let rowIndex = 0; rowIndex < el.t_map_num_rows; rowIndex++) {
         seatMap[rowIndex] = [];
         for (let columnIndex = 0; columnIndex < el.t_map_num_column; columnIndex++) {
@@ -157,7 +156,6 @@ export class EventPlanSeatTicketFormComponent implements AfterViewInit {
           }
           this.onBuyTicket.emit([eventBuyTicketRequest]);
         } else {
-          console.log("Acquisto annullato.");
         }
       });
     }

@@ -33,7 +33,7 @@
                     *ngIf="activeNotification[0] || (activeNotification[1] && notificationEl.not_read && countNotRead > 0)"
                     class="d-flex flex-row mb-3 notificationElement p-2 pointer">
                     <img *ngIf="(notificationEl.type != NOTIFICATION_TYPE_CP.FRIEND_REQUEST_ACCEPTED) && (notificationEl.type != NOTIFICATION_TYPE_CP.FRIEND_REQUEST_REFUSED)"
-                        class="notificationImage" [attr.src]="notificationEl.image" width="70" height="70"
+                        class="notificationImage" [attr.src]="notificationEl?.image?.length > 0 ? notificationEl.image : 'assets/img/profile-placeholder.png'" width="70" height="70"
                         style="border-radius: 100px;" />
                     <div class="d-flex flex-column justify-content-center mx-2">
                         <div class="d-flex flex-column justify-content-center">
