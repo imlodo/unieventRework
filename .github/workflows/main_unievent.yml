@@ -11,7 +11,7 @@ on:
 
 jobs:
   build:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v4
@@ -23,17 +23,18 @@ jobs:
 
       - name: npm install, build, and test
         run: |
-          npm install --legacy-peer-deps
+          npm install
           npm run build --if-present
+          npm run test --if-present
 
-      - name: Archive files
-        run: tar -czf node-app.tar.gz .
+      - name: Zip artifact for deployment
+        run: zip release.zip ./* -r
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
         with:
           name: node-app
-          path: node-app.tar.gz
+          path: release.zip
 
   deploy:
     runs-on: ubuntu-latest
@@ -42,30 +43,29 @@ jobs:
       name: 'Production'
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
     permissions:
-      id-token: write
-  
+      id-token: write #This is required for requesting the JWT
+
     steps:
       - name: Download artifact from build job
         uses: actions/download-artifact@v4
         with:
           name: node-app
-  
-      - name: Extract files
-        run: tar -xzf node-app.tar.gz
-  
+
+      - name: Unzip artifact for deployment
+        run: unzip release.zip
+      
       - name: Login to Azure
         uses: azure/login@v2
         with:
-          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_069829F9992D49E9AB32311863FBC583 }}
-          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_300DAC6358B54ABA9A800C5C83043D34 }}
-          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_AF7FD971DDE74900809CAC7C2AA8F8E4 }}
-  
+          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_39E263E3D2FB44F990CAD9103E6417FA }}
+          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_F0C497469B3B4788B3AF628832E1EEC8 }}
+          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_F22A3AF74DA04F36A884C01190F33FA7 }}
+
       - name: 'Deploy to Azure Web App'
-        uses: azure/webapps-deploy@v3
         id: deploy-to-webapp
+        uses: azure/webapps-deploy@v3
         with:
           app-name: 'unievent'
           slot-name: 'Production'
           package: .
-
           
