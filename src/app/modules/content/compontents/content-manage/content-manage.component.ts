@@ -21,12 +21,13 @@ export class ContentManageComponent {
   currentEventId: string  = null;
   showAddCoupon: boolean = false;
   currentCouponEvent: any = null;
-  currentCoupon: {coupon_id:string, event_id:string, coupon_code:string, discount:number}
-  couponList: Array<{ coupon_id: string, event_id: string, coupon_code: string, discount: number }> = new Array();
+  currentCoupon: {_id?:string, coupon_id:string, event_id:string, coupon_code:string, discount:number}
+  couponList: Array<{_id?:string, coupon_id: string, event_id: string, coupon_code: string, discount: number }> = new Array();
   formCoupon = new FormGroup({
     coupon_code: new FormControl(''), 
     discount: new FormControl(null)
   });
+  loading:boolean = false;
 
   constructor(private router: Router,
     private cookieService: CookieService,
@@ -38,15 +39,17 @@ export class ContentManageComponent {
     if (cookieCurrentUser) {
       this.currentUser = JSON.parse(cookieCurrentUser);
     }
-
+    this.loading = true;
     this.contentService.getContentsByCurrentUser().subscribe(
       (response: any) => {
         this.contentList = response.content_list;
         for (let i = 0; i < response.content_list.length; i++) {
           this.privacyContent[i] = response.content_list[i].t_privacy;
         }
+        this.loading = false;
       },
       error => {
+        this.loading = false;
         this.toastr.clear();
         this.toastr.error('Errore nel recupero dei tuoi contenuti');
       }
@@ -56,11 +59,14 @@ export class ContentManageComponent {
   changeEventPrivacy(event: any, item: any, index: number) {
     event.preventDefault();
     event.stopPropagation();
-    this.contentService.updateContentPrivacy(item.id, this.privacyContent[index]).subscribe(
+    this.loading = true;
+    this.contentService.updateContentPrivacy(item._id, this.privacyContent[index]).subscribe(
       (response: any) => {
         item.t_privacy = this.privacyContent[index];
+        this.loading = false;
       },
       error => {
+        this.loading = false;
         this.privacyContent[index] = item.t_privacy;
         this.toastr.clear();
         this.toastr.error('Errore nell\' aggiornamento della privacy');
@@ -69,7 +75,7 @@ export class ContentManageComponent {
   }
 
   navigateToContentDetail(item: any) {
-    const link = "/@/" + item.t_user.t_alias_generated + "/content";
+    const link = "/@/" + item.t_alias_generated + "/content";
     const params = this.globalService.encodeParams({
       item: item
     });
@@ -80,13 +86,16 @@ export class ContentManageComponent {
   deleteContent(event: any, item: any, index: number) {
     event.preventDefault();
     event.stopPropagation();
-    this.contentService.deleteContent(item.id).subscribe(
+    this.loading = true;
+    this.contentService.deleteContent(item._id).subscribe(
       (response: any) => {
-        this.contentList = [...this.contentList.filter(el => el.id != item.id)];
+        this.loading = false;
+        this.contentList = [...this.contentList.filter(el => el._id != item._id)];
         this.toastr.clear();
         this.toastr.success("Contenuto eliminato con successo.")
       },
       error => {
+        this.loading = false;
         this.toastr.clear();
         this.toastr.error('Errore nell\'eliminazione del contenuto');
       }
@@ -96,13 +105,19 @@ export class ContentManageComponent {
   deleteCoupon(event: any, item: any) {
     event.preventDefault();
     event.stopPropagation();
-    this.contentService.deleteCoupon(item.id).subscribe(
+    this.loading = true;
+
+    this.contentService.deleteCoupon(item._id).subscribe(
       (response: any) => {
-        this.couponList = [...this.couponList.filter(el => el.coupon_id != item.coupon_id)];
+        this.loading = false;
+
+        this.couponList = [...this.couponList.filter(el => el._id != item._id)];
         this.toastr.clear();
         this.toastr.success("Coupon eliminato con successo.")
       },
       error => {
+        this.loading = false;
+
         this.toastr.clear();
         this.toastr.error('Errore nell\'eliminazione del coupon');
       }
@@ -112,12 +127,18 @@ export class ContentManageComponent {
   openEventCouponModal(event: any, item: any, index: number) {
     event.preventDefault();
     event.stopPropagation();
-    this.contentService.getCouponsForEvent(item.id).subscribe(
+    this.loading = true;
+
+    this.contentService.getCouponsForEvent(item._id).subscribe(
       (response: any) => {
+        this.loading = false;
+
         this.couponList = response.coupons;
-        this.currentEventId = item.id;
+        this.currentEventId = item._id;
       },
       error => {
+        this.loading = false;
+
         this.toastr.clear();
         this.toastr.error('Errore nel recupero dei coupons');
       }
@@ -158,13 +179,16 @@ export class ContentManageComponent {
   }
 
   addCoupon(form: any) {
+    this.loading = true;
     this.contentService.addCoupon(form.value.coupon_code, form.value.discount, this.currentEventId).subscribe(
       (response: any) => {
+        this.loading = false;
         this.couponList.push(response.coupon);
         this.toastr.clear();
         this.toastr.success("Coupon aggiunto con successo");
       },
       error => {
+        this.loading = false;
         this.toastr.clear();
         this.toastr.error('Errore nell\'aggiunta del coupon');
       }
@@ -173,14 +197,17 @@ export class ContentManageComponent {
   }
 
   updateCoupon(form: any) {
-    this.contentService.updateCoupon(this.currentCoupon.coupon_id, form.value.coupon_code, form.value.discount, this.currentEventId).subscribe(
+    this.loading = true;
+    this.contentService.updateCoupon(this.currentCoupon._id, form.value.coupon_code, form.value.discount, this.currentEventId).subscribe(
       (response: any) => {
-        this.couponList = [...this.couponList.filter(el=>el.coupon_id != response.coupon.coupon_id)];
+        this.loading = false;
+        this.couponList = [...this.couponList.filter(el=>el._id != response.coupon._id)];
         this.couponList.push(response.coupon);
         this.toastr.clear();
         this.toastr.success("Coupon aggiornato con successo");
       },
       error => {
+        this.loading = false;
         this.toastr.clear();
         this.toastr.error('Errore nell\'aggiunta del coupon');
       }

@@ -14,6 +14,7 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { NgxLoadingModule } from 'ngx-loading';
 
 export function momentAdapterFactory() {
   return adapterFactory(moment);
@@ -37,6 +38,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     NgSelectModule,
     NgbModule,
     NgbModalModule,
+    NgxLoadingModule.forRoot({}),
     InfiniteScrollModule,
     HttpClientModule,
     TranslateModule.forRoot({

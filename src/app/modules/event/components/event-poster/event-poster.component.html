@@ -13,7 +13,7 @@
           {{maxStartDate.toLocaleDateString('it-it', { year:"numeric", month:"numeric",day:"numeric"})}} |
           {{groupEvents.length}} Eventi</p>
         <p *ngIf="eventData && minPrice" class="h6-mobile slide-caption-p-padding-margin pb-1">Biglietti da €
-          {{minPrice}}</p>
+          {{minPrice.toFixed(2)}}</p>
         <div *ngIf="eventData && averangeStars" class="d-flex align-items-end pb-1 slide-caption-p-padding-margin"
           style="margin: 0 -3px 12px;">
           <mat-icon *ngFor="let ratingId of ratingArr; index as i" class="orange-icon">
@@ -48,10 +48,10 @@
                   class="user-profile-photo"></span>
               <span>{{review.t_user.t_alias_generated}}</span>
               <div class="d-flex align-items-center">
-                <mat-icon *ngFor="let k of getArrayFromRatingNumber(review.n_stars)" class="orange-icon mb-1">
+                <mat-icon *ngFor="let k of getArrayFromRatingNumber(review?.n_star)" class="orange-icon mb-1">
                   {{showStarViewIcon(k)}}
                 </mat-icon>
-                <label class="mx-2">({{review.n_stars}})</label>
+                <label class="mx-2">({{review.n_star}})</label>
               </div>
               <label>{{review?.review_date | dateFormat:"DD-MM-YYYY"}}</label>
 

@@ -15,9 +15,9 @@
                                 <span class="mb-1">{{'Numero di mi piace: '}}<b>{{item.numOfLike}}</b></span>
                                 <span class="mb-1">{{'Numero di aggiunte ai preferiti: '}}<b>{{item.numOfBooked}}</b></span>
                                 <span class="search-description mb-1">{{item.t_description}}</span>
-                                <span *ngIf="item.type==='Eventi'" class="mb-1">Data evento: {{item.t_event_date
+                                <span *ngIf="item.t_type==='Eventi'" class="mb-1">Data evento: {{item.t_event_date
                                     |dateFormat:"DD-MM-YYYY"}}</span>
-                                <span>Tipo: {{item.type === "Eventi" ? 'Evento':'Topic' }}</span>
+                                <span>Tipo: {{item.t_type === "Eventi" ? 'Evento':'Topic' }}</span>
                             </div>
                         </div>
                         <div class="d-flex flex-column justify-content-center">
@@ -28,7 +28,7 @@
                                 <!--Solo gli utenti che si followano tra di loro sono considerati amici-->
                                 <option value="onlyu">Solo tu</option>
                             </select>
-                            <span *ngIf="item.type=='Eventi'" (click)="openEventCouponModal($event, item, i)"
+                            <span *ngIf="item.t_type=='Eventi'" (click)="openEventCouponModal($event, item, i)"
                                 class="bg-secondary p-2 pointer"
                                 style="height: fit-content;width: 150px;text-align: center;margin-top: 10px;">Gestisci
                                 Coupon</span>
@@ -43,6 +43,11 @@
             <ng-container *ngTemplateOutlet="noresult"></ng-container>
         </div>
     </div>
+
+    <ngx-loading
+    [show]="loading"
+    [config]="{ backdropBorderRadius: '3px' }"
+  ></ngx-loading>
 </div>
 
 <ng-template #noresult>

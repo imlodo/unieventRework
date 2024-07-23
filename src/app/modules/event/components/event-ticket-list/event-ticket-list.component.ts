@@ -36,7 +36,9 @@ export class EventTicketListComponent implements AfterViewInit {
       .pipe(pluck('params'))
       .subscribe((result) => {
         const decode = this.globalService.decodeParams(result);
+        console.log(decode)
         if (decode.n_id) {
+          
           this.id = decode.n_id;
           this.getEventById();
         }

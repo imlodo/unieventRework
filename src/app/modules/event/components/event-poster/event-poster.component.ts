@@ -69,9 +69,9 @@ export class EventPosterComponent implements AfterViewInit {
       if (el.t_reviews) {
         el.t_reviews.forEach(el2 => {
           if (!this.averangeStars)
-            this.averangeStars = el2.n_stars;
+            this.averangeStars = el2.n_star;
           else
-            this.averangeStars += el2.n_stars;
+            this.averangeStars += el2.n_star;
           this.countReviews += 1;
         });
       }
@@ -100,6 +100,7 @@ export class EventPosterComponent implements AfterViewInit {
   }
 
   getArrayFromRatingNumber(stars: number): number[] {
+    console.log(stars)
     const fullStars = Math.floor(stars);
     const hasHalfStar = stars % 1 !== 0;
     const starArray = Array(fullStars).fill(1);

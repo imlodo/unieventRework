@@ -74,6 +74,7 @@ export class EventDetailComponent implements AfterViewInit {
   }
 
   goToBuyTicket(n_id: string) {
+    console.log(n_id)
     const params = this.globalService.encodeParams({
       n_id: n_id
     });

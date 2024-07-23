@@ -99,7 +99,7 @@ export class PaymentOverviewComponent {
   }
 
   generateNewBuyToken(cookieCurrentUser: any) {
-    this.authenticationService.generateTokenForBuy(JSON.parse(cookieCurrentUser), this.eventTicketList).subscribe(
+    this.authenticationService.generateTokenForBuy(JSON.parse(cookieCurrentUser).t_username, this.eventTicketList).subscribe(
       (response: any) => {
         this.timeoutDate = moment().add(15, "minutes").toDate();
         this.getTotalTicketPrice();

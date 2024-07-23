@@ -33,7 +33,7 @@
                         <div *ngIf="item?.t_user" class="d-flex flex-row align-items-center w-100">
                             <span (click)="navigateToUserProfile(item)" shape="circle"
                                 class="user-profile-photo-container pointer"><img
-                                    [attr.src]="item?.t_user?.t_profile_photo.length > 0 ? item?.t_user?.t_profile_photo : 'assets/img/profile-placeholder.png'"
+                                    [attr.src]="item?.t_user?.t_profile_photo?.length > 0 ? item?.t_user?.t_profile_photo : 'assets/img/profile-placeholder.png'"
                                     class="user-profile-photo"></span>
                             <div class="d-flex flex-row w-100 justify-content-between">
                                 <div class="d-flex flex-column mb-2 mt-2 w-100">
@@ -370,6 +370,10 @@
             </div>
         </div>
     </div>
+    <ngx-loading
+    [show]="loading"
+    [config]="{ backdropBorderRadius: '3px' }"
+  ></ngx-loading>
 </div>
 
 

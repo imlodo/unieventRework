@@ -41,6 +41,7 @@ import { ModerateTicketsComponent } from './components/moderate-tickets/moderate
 import { ModerateArtistComponent } from './components/moderate-artist/moderate-artist.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { NgxLoadingModule } from 'ngx-loading';
 
 @NgModule({
 	declarations: [
@@ -95,6 +96,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 		MatTableModule,
 		MatPaginatorModule,
 		ToastrModule.forRoot(), // ToastrModule added
+		NgxLoadingModule.forRoot({}),
 	],
 	exports: [
 		NavbarComponent,

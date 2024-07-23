@@ -40,6 +40,7 @@ export class ContentDetailComponent implements AfterViewInit, AfterViewChecked {
   isFollowed: boolean = false;
   isBooked: boolean = false;
   isLiked: boolean = false;
+  loading: boolean = false;
 
   constructor(private cdr: ChangeDetectorRef, private globalService: GlobalService, private userService: UserService, private cookieService: CookieService,
     private route: ActivatedRoute, private router: Router, private toastr: ToastrService, private contentService: ContentService) {
@@ -59,25 +60,40 @@ export class ContentDetailComponent implements AfterViewInit, AfterViewChecked {
   }
 
   checkIsFollowedByCurrentUser() {
+    this.loading = true;
     this.userService.checkIsFollowedByCurrentUser(this.item.t_user.t_alias_generated, this.item.t_user.t_alias_generated).subscribe(
       response => {
+        this.loading = false;
         this.isFollowed = Boolean(response.follows);
+      },
+      error =>{
+        this.loading = false;
       }
     );
   }
 
   checkIsBookedByCurrentUser() {
+    this.loading = true
     this.contentService.checkContentIsBookedByCurrentUser(this.currentUser.t_alias_generated, this.item.id).subscribe(
       response => {
         this.isBooked = Boolean(response.booked);
+        this.loading = false;
+      },
+      error =>{
+        this.loading = false;
       }
     );
   }
 
   checkIsLikedByCurrentUser() {
+    this.loading = true;
     this.contentService.checkContentIsLikedByCurrentUser(this.currentUser.t_alias_generated, this.item.id).subscribe(
       response => {
+        this.loading = false;
         this.isLiked = Boolean(response.liked);
+      },
+      error =>{
+        this.loading = false;
       }
     );
   }
@@ -87,7 +103,7 @@ export class ContentDetailComponent implements AfterViewInit, AfterViewChecked {
       .pipe(pluck('params'))
       .subscribe((result) => {
         const decode = this.globalService.decodeParams(result);
-        this.contentService.getSingleContent(decode.item.id).subscribe(
+        this.contentService.getSingleContent(decode.item._id).subscribe(
           (response: any) => {
             this.item = response;
             this.isReplyCommentArray = new Array(this.item.numOfComment).fill(false);
@@ -105,12 +121,15 @@ export class ContentDetailComponent implements AfterViewInit, AfterViewChecked {
   }
 
   getDiscussions() {
+    this.loading = true;
     this.contentService.getContentDiscussions(this.item.id).subscribe(
       (response: any) => {
         this.comments = response;
         this.resetAddReply();
+        this.loading = false;
       },
       error => {
+        this.loading = false;
       }
     );
   }
@@ -247,17 +266,20 @@ export class ContentDetailComponent implements AfterViewInit, AfterViewChecked {
   }
 
   addLike(item: any) {
+    this.loading = true;
     this.contentService.addLikeByType(this.currentUser.t_alias_generated, item.id, null, "LIKE_CONTENT").subscribe(
       (response: any) => {
+        this.loading = false;
         this.isLiked = response.liked;
         if (response.liked)
-          item.like_count += 1;
+          item.numOfLike += 1;
         else
-          item.like_count -= 1;
+          item.numOfLike -= 1;
         this.toastr.clear();
         this.toastr.success(response.message)
       },
       error => {
+        this.loading = false;
         this.toastr.clear();
         this.toastr.error('Errore nell\'aggiunta del like');
       }
@@ -265,8 +287,10 @@ export class ContentDetailComponent implements AfterViewInit, AfterViewChecked {
   }
 
   addDiscussionLike(item: any) {
+    this.loading = true;
     this.contentService.addLikeByType(this.currentUser.t_alias_generated, this.item.id, item.discussion_id, "LIKE_DISCUSSION").subscribe(
       (response: any) => {
+        this.loading = false;
         item.is_liked_by_current_user = response.liked;
         if (response.liked)
           item.like_count += 1;
@@ -276,6 +300,7 @@ export class ContentDetailComponent implements AfterViewInit, AfterViewChecked {
         this.toastr.success(response.message)
       },
       error => {
+        this.loading = false;
         this.toastr.clear();
         this.toastr.error('Errore nell\'aggiunta del like');
       }
@@ -283,13 +308,19 @@ export class ContentDetailComponent implements AfterViewInit, AfterViewChecked {
   }
 
   book(item: any) {
+    this.loading = true;
     this.contentService.addContentBooked(this.currentUser.t_alias_generated, item.id).subscribe(
       (response: any) => {
+        this.loading = false;
         this.isBooked = response.booked;
+        if(this.isBooked)
+          this.item.numOfBooked +=1;
+        else this.item.numOfBooked -=1;
         this.toastr.clear();
         this.toastr.success(response.message);
       },
       error => {
+        this.loading = false;
         this.toastr.clear();
         this.toastr.error('Errore nell\' aggiunta del contento ai preferiti');
       }
@@ -321,14 +352,27 @@ export class ContentDetailComponent implements AfterViewInit, AfterViewChecked {
 
   addComment() {
     if (this.commentValue.length > 0) {
+      this.loading = true;
       this.contentService.addContentDiscussion(this.item.id, null, this.commentValue, null).subscribe(
         (response: any) => {
-          this.comments.push(response.discussion);
+          this.loading = false;
+          let comment:Comment = {
+            discussion_id: response.discussion.discussion_id,
+            body: response.discussion.body,
+            like_count: response.discussion.like_count,
+            children: [],
+            t_user: this.currentUser,
+            created_date:response.discussion.created_date,
+            t_alias_generated_reply: response.discussion.t_alias_generated_reply,
+            is_liked_by_current_user: false
+          }
+          this.comments.push(comment);
           this.item.numOfComment += 1;
           this.commentValue = "";
           this.scrollToBottom();
         },
         error => {
+          this.loading = false;
           this.toastr.clear();
           this.toastr.error('Errore nell\'aggiunta del commento');
       });      
@@ -343,8 +387,10 @@ export class ContentDetailComponent implements AfterViewInit, AfterViewChecked {
       return;
     }
     if (this.commentReplyValue.length > 0) {
+      this.loading = true;
       this.contentService.addContentDiscussion(this.item.id, this.activeReplyComment.discussion_id , this.commentReplyValue, this.activeReplyComment.t_user.t_alias_generated).subscribe(
         (response: any) => {
+          this.loading = false;
           comment.children = comment.children ? [...comment.children, response.discussion] : [response.discussion];
           this.commentReplyValue = null;
           this.item.numOfComment += 1;
@@ -352,6 +398,7 @@ export class ContentDetailComponent implements AfterViewInit, AfterViewChecked {
           this.resetAddReply();
         },
         error => {
+          this.loading = false;
           this.toastr.clear();
           this.toastr.error('Errore nell\'aggiunta del commento');
       });    
@@ -429,14 +476,17 @@ export class ContentDetailComponent implements AfterViewInit, AfterViewChecked {
   }
 
   followUser() {
+    this.loading = true;
     this.userService.followUser(this.item.t_user.t_alias_generated, this.item.t_user.t_alias_generated)
       .subscribe(
         response => {
+          this.loading = false;
           this.toastr.clear();
           this.toastr.success(response.message);
           this.isFollowed = true;
         },
         error => {
+          this.loading = false;
           this.toastr.clear();
           this.toastr.error('Errore nel seguire l\'utente');
         }
@@ -444,14 +494,17 @@ export class ContentDetailComponent implements AfterViewInit, AfterViewChecked {
   }
 
   unfollowUser() {
+    this.loading = true;
     this.userService.unfollowUser(this.item.t_user.t_alias_generated)
       .subscribe(
         response => {
+          this.loading = false;
           this.toastr.clear();
           this.toastr.success(response.message);
           this.isFollowed = false;
         },
         error => {
+          this.loading = false;
           this.toastr.clear();
           this.toastr.error('Errore nel unfollow dell\'utente');
         }

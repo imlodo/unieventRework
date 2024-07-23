@@ -53,7 +53,7 @@
                                 </span>
                                 <span>Biglietti Disponibili</span>
                             </div>
-                            <div class="h6 m-0 pb-2">da {{getMinPriceForEvent(el)}} €</div>
+                            <div class="h6 m-0 pb-2">da {{getMinPriceForEvent(el).toFixed(2) }} €</div>
                             <button style="background-color:rgb(255 87 37) !important; color:white" class="btn rounded-0"
                                 (click)="goToBuyTicket(el.id)">Acquista</button>
                         </div>
@@ -84,7 +84,7 @@
             <span class="col-12" *ngIf="day.events.length > 0">{{day.events[0].title|uppercase}}</span>
             <span style="font-size:0.75rem" class="col-12" *ngIf="day.events.length > 0">{{day.events[0].meta.eventData.t_location.t_location_name}}</span>
             <span style="font-size:0.75rem" class="col-12" *ngIf="day.events.length > 0">{{day.events[0].meta.eventData.t_event_date|dateFormat:"dddd HH:mm"}}</span>
-            <span style="font-size:0.75rem" class="col-12 primary-event-color" *ngIf="day.events.length > 0">da {{getMinPriceForEvent(day.events[0].meta.eventData)}} €</span>
+            <span style="font-size:0.75rem" class="col-12 primary-event-color" *ngIf="day.events.length > 0">da {{getMinPriceForEvent(day.events[0].meta.eventData)?.toFixed("2")}} €</span>
         </div>
         <div class="cal-cell-top" *ngIf="currentScreenSize != 'xl' && currentScreenSize != 'lg'">
             <span class="cal-day-number">{{ day.date | calendarDate:'monthViewDayNumber':locale }}</span>
@@ -133,7 +133,7 @@
                                 <span class="cal-event" [style.backgroundColor]="event.color.primary"></span>
                                 <span>Biglietti Disponibili</span>
                             </div>
-                            <div class="h6 m-0 pb-2">da {{getMinPriceForEvent(event.meta.eventData)}} €</div>
+                            <div class="h6 m-0 pb-2">da {{getMinPriceForEvent(event.meta.eventData)?.toFixed(2)}} €</div>
                             <button style="background-color:rgb(255 87 37) !important; color:white" class="btn rounded-0"
                                 (click)="goToBuyTicket(event.meta.eventData.n_id)">Acquista</button>
                         </div>

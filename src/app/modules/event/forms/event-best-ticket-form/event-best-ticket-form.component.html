@@ -64,7 +64,7 @@
     <div class="shadow col-xl-2 d-flex flex-column col-12 text-center rounded p-3 m-3 overview-container">
         <span class="h4 border-bottom pb-2">Riepilogo</span>
         <span class="m-2">{{'Numero biglietti: ' + getTicketCount() }}</span>
-        <span class="h6 m-2">{{'Prezzo totale: ' + getTicketAmount() + '€'}}</span>
+        <span class="h6 m-2">{{'Prezzo totale: ' + getTicketAmount().toFixed(2) + '€'}}</span>
         <button [disabled]="getTicketCount() > 0 ? false : true" class="btn btn-primary btn-color-hover-border m-2"
             class="btn m-2 border-0 rounded-0"
             [attr.style]="getTicketCount() > 0 ? 'background-color: rgb(255 87 37) !important; color: white;' : 'background-color: gray; color: white;' "
