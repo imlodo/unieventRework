@@ -83,7 +83,6 @@ export class AuthenticationService {
     const token = this.cookieService.get('buy_token');
 
     if (!token) {
-      this.cookieService.delete("buy_token")
       return this.handleError("Error")
     }
 
@@ -99,7 +98,6 @@ export class AuthenticationService {
         }
       ),
         catchError(error => {
-          this.cookieService.delete("buy_token")
           return this.handleError(error);
         } )
       );

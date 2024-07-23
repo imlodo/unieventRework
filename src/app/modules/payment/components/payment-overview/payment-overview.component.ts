@@ -70,7 +70,6 @@ export class PaymentOverviewComponent {
               this.authenticationService.getBuyTokenDetail().subscribe(
                 (response: any) => {
                   if (response.t_event_ticket_list[0].n_id !== this.eventTicketList[0].n_id) {
-                    this.cookieService.delete("buy_token")
                     this.generateNewBuyToken(cookieCurrentUser);
                   }
                   this.timeoutDate = moment(response.exp).add(2, 'hours').toDate();
@@ -85,7 +84,6 @@ export class PaymentOverviewComponent {
               if (cookieCurrentUser) {
                 this.generateNewBuyToken(cookieCurrentUser);
               } else {
-                this.cookieService.delete("buy_token");
                 window.history.back();
               }
             }
@@ -157,7 +155,6 @@ export class PaymentOverviewComponent {
         n_id: this.eventData.id
       });
       clearInterval(this.interval);
-      this.cookieService.delete("buy_token")
       this.router.navigate([ROUTE_LIST.event.ticket.list, params]);
     }
     this.days.nativeElement.innerText = days;

@@ -131,13 +131,11 @@ export class PaymentStepperComponent implements AfterViewInit {
 
       if (index == 3) {
         //card_id, coupon_id, addressId
-        this.ticketService.purchase(this.idEvent, this.cardList[this.selectedCardIndex].card_id, this.addressList[this.selectedAddressIndex].address_id, this.applyedCoupon ? this.applyedCoupon.coupon_id : null, this.eventTicketList).subscribe(
+        this.ticketService.purchase(this.idEvent, this.cardList[this.selectedCardIndex]._id, this.addressList[this.selectedAddressIndex]._id, this.applyedCoupon ? this.applyedCoupon.coupon_id : null, this.eventTicketList).subscribe(
           response => {
-            this.cookieService.delete("buy_token")
             this.startRedirectCountdown();
           },
           error => {
-            this.cookieService.delete("buy_token")
             this.isPaymentError = true;
             this.startRedirectCountdown();
           }
@@ -151,18 +149,17 @@ export class PaymentStepperComponent implements AfterViewInit {
   }
 
   verifyBuyToken() {
-    this.authenticationService.getBuyTokenDetail().subscribe(
-      (response: any) => {
-      },
-      error => {
-        this.isTokenError = true;
-        this.toastr.clear();
-        this.toastr.error('Acquisto non valido, controlla i dati e riprova!');
-        this.cookieService.delete("buy_token");
-        window.history.back();
-      }
-    );
-
+    // this.authenticationService.getBuyTokenDetail().subscribe(
+    //   (response: any) => {
+    //   },
+    //   error => {
+    //     this.isTokenError = true;
+    //     this.toastr.clear();
+    //     this.toastr.error('Acquisto non valido, controlla i dati e riprova!');
+    //     window.history.back();
+    //   }
+    // );
+    return true;
   }
 
   startRedirectCountdown() {
