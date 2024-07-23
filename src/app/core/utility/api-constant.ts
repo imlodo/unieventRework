@@ -1,4 +1,4 @@
-const BASE_URL = 'http://localhost:7071';
+const BASE_URL = 'https://unievent2.azurewebsites.net';
 export const ADD_CONTENT_BOOKED = `${BASE_URL}/api/content/addContentBooked`;
 export const ADD_CONTENT = `${BASE_URL}/api/content/addContent`;
 export const ADD_COUPON = `${BASE_URL}/api/content/addCoupon`;
