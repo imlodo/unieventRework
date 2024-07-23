@@ -29,6 +29,8 @@ jobs:
     - name: Build and push container image to registry
       uses: docker/build-push-action@v3
       with:
+        username: ${{ secrets.AzureAppService_ContainerUsername_088a1cc862ef484a8836d33510f38a4a }}
+        password: ${{ secrets.AzureAppService_ContainerPassword_3e425dd527c0440592946259a934800a }}
         push: true
         tags: mcr.microsoft.com/${{ secrets.AzureAppService_ContainerUsername_088a1cc862ef484a8836d33510f38a4a }}/appsvc/staticsite:${{ github.sha }}
         file: ./Dockerfile
