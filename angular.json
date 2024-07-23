@@ -45,7 +45,8 @@
             "allowedCommonJsDependencies": [
               "lodash",
               "crypto-js",
-              "moment"
+              "moment",
+              "jsbarcode"
            ]
           },
           "configurations": {
