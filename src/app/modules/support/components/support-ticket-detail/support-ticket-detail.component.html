@@ -10,7 +10,7 @@
             <button class="btn btn-danger btn-sm border pointer mx-2 mb-1" (click)="sendReOpeningReminder()">
                 Sollecita riapertura</button>
         </div>
-        <div *ngIf="ticket?.status === 'Sollecito Riapertura'" class="reminder p-2 rounded mb-3 shadow">
+        <div *ngIf="ticket?.status === 'Sollecito Riapertura' && this.currentUser.t_role!='Utente'" class="reminder p-2 rounded mb-3 shadow">
             <span class="text-white">{{!this.isModerator ? "Per questo ticket hai inviato un sollecito di riapertura, stiamo analizzando i dati in nostro possesso, nei prossimi giorni riceverai una notifica con l'esito dell'analisi." : "L'utente ha richiesto una riapertura per questo ticket, fai click sul tasto 'Consenti Risposte' per riaprire il ticket"}}</span>
             <button class="btn btn-secondary btn-sm border pointer mx-2 mb-1" (click)="reOpenTicket()">
                 Consenti risposte</button>

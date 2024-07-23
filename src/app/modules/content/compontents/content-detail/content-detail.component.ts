@@ -61,7 +61,7 @@ export class ContentDetailComponent implements AfterViewInit, AfterViewChecked {
 
   checkIsFollowedByCurrentUser() {
     this.loading = true;
-    this.userService.checkIsFollowedByCurrentUser(this.item.t_user.t_alias_generated, this.item.t_user.t_alias_generated).subscribe(
+    this.userService.checkIsFollowedByCurrentUser(this.currentUser.t_alias_generated, this.item.t_user.t_alias_generated).subscribe(
       response => {
         this.loading = false;
         this.isFollowed = Boolean(response.follows);

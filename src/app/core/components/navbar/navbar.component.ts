@@ -61,10 +61,11 @@ export class NavbarComponent {
   }
 
   logout() {
-    this.online=false;
     this.cookieService.delete('auth_token');
     this.cookieService.delete('current_user');
+    this.cookieService.delete('followed_users');
     this.router.navigate(["/login"])
+    this.online=false;
   }
 
   showCollapse() {

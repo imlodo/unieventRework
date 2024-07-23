@@ -49,17 +49,23 @@ export class ArtistVerifyComponent implements AfterViewInit {
 
   ngAfterViewInit(): void {
     this.requestStatus = 'not-verified';
-    let t_alias_generated = (JSON.parse(this.cookieService.get("current_user")) as User).t_alias_generated;
-    this.userService.getVerifyAccountStatus(t_alias_generated).subscribe(
-      (response: any) => {
-        let currentUser = (JSON.parse(this.cookieService.get("current_user")) as User);
-        this.requestStatus = USER_TYPE[currentUser.t_type] === USER_TYPE.ARTIST ? "verified" : response.status;    
-      },
-      error => {
-        this.toastr.clear();
-        this.toastr.error('Errore nel recupero dello stato della richiesta');
-      }
-    );
+    const current_user = (JSON.parse(this.cookieService.get("current_user")) as User);
+    let t_alias_generated = current_user.t_alias_generated;
+    if(current_user.t_type==="ARTIST"){
+      this.requestStatus="verified";
+    } else {
+      this.userService.getVerifyAccountStatus(t_alias_generated).subscribe(
+        (response: any) => {
+          let currentUser = (JSON.parse(this.cookieService.get("current_user")) as User);
+          this.requestStatus = USER_TYPE[currentUser.t_type] === USER_TYPE.ARTIST ? "verified" : response.status;    
+        },
+        error => {
+          this.toastr.clear();
+          //this.toastr.error('Errore nel recupero dello stato della richiesta');
+        }
+      );
+    }
+    
   }
 
   sendVerifyAccount() {

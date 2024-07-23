@@ -184,7 +184,7 @@ export class UserService {
     return this.http.post<any>(UN_REQUEST_FOLLOW_USER, body, { headers });
   }
 
-  checkIsFollowedByCurrentUser(t_alias_generated_to: string, t_alias_generated_from: string) {
+  checkIsFollowedByCurrentUser(t_alias_generated_from: string,t_alias_generated_to: string) {
     const token = this.cookieService.get('auth_token');
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
@@ -194,7 +194,7 @@ export class UserService {
     return this.http.post<any>(CHECK_IS_FOLLOWED, body, { headers });
   }
 
-  checkIsFollowRequestByCurrentUser(t_alias_generated_to: string, t_alias_generated_from: string) {
+  checkIsFollowRequestByCurrentUser(t_alias_generated_from: string,t_alias_generated_to: string) {
     const token = this.cookieService.get('auth_token');
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
@@ -265,7 +265,7 @@ export class UserService {
 
   }
 
-  getProfileUserSettings(t_alias_generated, type: string): Observable<any> {
+  getProfileUserSettings(t_alias_generated:string, type: string): Observable<any> {
     const token = this.cookieService.get('auth_token');
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
@@ -283,7 +283,7 @@ export class UserService {
     }
     else {
       const params = new HttpParams().set("t_alias_generated", t_alias_generated);
-      return this.http.get(GET_USER_SETTINGS, { headers }).pipe(
+      return this.http.get(GET_PROFILE_USER_SETTINGS, { headers, params }).pipe(
         tap((response: any) => {
           return response;
         }),

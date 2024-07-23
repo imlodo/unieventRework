@@ -7,6 +7,7 @@ import moment from 'moment';
 import { ContentService } from 'src/app/core/services/contentService/content.service';
 import { CookieService } from 'ngx-cookie-service';
 import { ToastrService } from 'ngx-toastr';
+import { MORE_CONTENT_TYPE } from 'src/app/core/utility/enum-constant';
 
 @Component({
   selector: 'unievent-content-infinite-scroll',
@@ -96,7 +97,7 @@ export class ContentInfiniteScrollComponent {
   private loadMoreItems() {
     this.isLoading = true;
 
-    this.contentService.getMoreContentBasedOnCurrentUser("created_date", "DESC", this.pageNumber, this.pageSize).subscribe(
+    this.contentService.getMoreContent(null, this.user.t_alias_generated, MORE_CONTENT_TYPE.EXPLORE_ALL,"created_date", "DESC", this.pageNumber, this.pageSize).subscribe(
       (response: any) => {
         this.allContentList = [...this.allContentList, ...response.content_list];
         this.pageNumber += 1;
