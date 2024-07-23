@@ -39,21 +39,24 @@ jobs:
       name: 'Production'
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
     permissions:
-      id-token: write #This is required for requesting the JWT
-
+      id-token: write
+  
     steps:
       - name: Download artifact from build job
         uses: actions/download-artifact@v4
         with:
           name: node-app
-      
+  
+      - name: Extract files
+        run: tar -xzf node-app.tar.gz
+  
       - name: Login to Azure
         uses: azure/login@v2
         with:
           client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_069829F9992D49E9AB32311863FBC583 }}
           tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_300DAC6358B54ABA9A800C5C83043D34 }}
           subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_AF7FD971DDE74900809CAC7C2AA8F8E4 }}
-
+  
       - name: 'Deploy to Azure Web App'
         uses: azure/webapps-deploy@v3
         id: deploy-to-webapp
@@ -61,4 +64,5 @@ jobs:
           app-name: 'unievent'
           slot-name: 'Production'
           package: .
+
           
